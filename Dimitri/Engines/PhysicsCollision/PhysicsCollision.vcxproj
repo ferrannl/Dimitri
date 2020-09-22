@@ -18,6 +18,28 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Polygon.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeAdapter.cpp" />
+    <ClCompile Include="ShapeController.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="World.cpp" />
+    <ClCompile Include="WorldAdapter.cpp" />
+    <ClCompile Include="WorldController.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeAdapter.h" />
+    <ClInclude Include="ShapeController.h" />
+    <ClInclude Include="Square.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="World.h" />
+    <ClInclude Include="WorldAdapter.h" />
+    <ClInclude Include="WorldController.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -139,8 +161,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
