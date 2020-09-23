@@ -3,4 +3,5 @@
 
 Polygon::Polygon()
 {
+	_shapeAdapter = ShapeAdapter{ "polygon" };
 }

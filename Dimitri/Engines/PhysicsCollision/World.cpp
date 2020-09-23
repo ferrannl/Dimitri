@@ -1,2 +1,6 @@
 #include "World.h"
-#include "WorldAdapter.h"
+
+World::World()
+{
+	_worldAdapter = WorldAdapter{};
+}

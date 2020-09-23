@@ -1,2 +1,6 @@
 #include "Shape.h"
-#include "ShapeAdapter.h"
+
+Shape::Shape()
+{
+	_shapeAdapter = ShapeAdapter{};
+}

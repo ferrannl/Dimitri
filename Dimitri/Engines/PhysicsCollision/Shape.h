@@ -1,4 +1,9 @@
+#pragma once
+
+#include "ShapeAdapter.h"
+
 class Shape {
-private:
+public:
 	ShapeAdapter _shapeAdapter;
+	Shape();
 };
