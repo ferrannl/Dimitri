@@ -3,4 +3,5 @@
 
 Square::Square()
 {
+	_shapeAdapter = ShapeAdapter{ "square" };
 }

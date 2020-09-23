@@ -3,4 +3,5 @@
 
 Triangle::Triangle()
 {
+	_shapeAdapter = ShapeAdapter{ "traingle" };
 }

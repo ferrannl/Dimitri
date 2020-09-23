@@ -1,2 +1,14 @@
 #include "ShapeAdapter.h"
-#include <box2d/b2_shape.h>
+
+ShapeAdapter::ShapeAdapter()
+{
+	_shape = nullptr;
+}
+
+ShapeAdapter::ShapeAdapter(std::string type)
+{
+	if (type == "polygon") {
+		_shape = &b2PolygonShape{};
+		
+	}
+}

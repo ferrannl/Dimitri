@@ -1,14 +1,19 @@
 #include "WorldController.h"
-#include "World.h"
 
 WorldController::WorldController() {
-
+	_shapeController = ShapeController{};
+	setup_world();
 }
 
-World WorldController::setup_world() {
-	
+void WorldController::setup_world() {
+	_world = World{};
 }
 
 void WorldController::clean_up()
 {
+}
+
+void WorldController::create_shape(std::string type)
+{
+	Shape shape = _shapeController.create_shape(type);
 }
