@@ -10,4 +10,5 @@ private:
 public:
 	ShapeAdapter();
 	ShapeAdapter(std::string type);
+	b2Shape& get_shape() const;
 };

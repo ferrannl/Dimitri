@@ -2,5 +2,5 @@
 
 Shape::Shape()
 {
-	_shapeAdapter = ShapeAdapter{};
+	shapeAdapter = ShapeAdapter{};
 }

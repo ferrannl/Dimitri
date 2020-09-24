@@ -13,4 +13,5 @@ public:
 	void setup_world();
 	void clean_up();
 	void create_shape(std::string type);
+	void simulate();
 };
