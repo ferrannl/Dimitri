@@ -9,6 +9,6 @@ private:
 	b2Shape* _shape;
 public:
 	ShapeAdapter();
-	ShapeAdapter(std::string type);
+	ShapeAdapter(std::string type, float x, float y);
 	b2Shape& get_shape() const;
 };

@@ -10,8 +10,8 @@ private:
 	ShapeController _shapeController;
 public:
 	WorldController();
-	void setup_world();
+	void setup_world(float width, float height);
 	void clean_up();
-	void create_shape(std::string type);
+	void create_shape(std::string type, float x, float y, float width, float height);
 	void simulate();
 };

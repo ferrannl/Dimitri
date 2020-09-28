@@ -4,11 +4,12 @@
 
 ShapeController::ShapeController()
 {
+	_shapeFactory = new ShapeFactory{};
 }
 
-Shape ShapeController::create_shape(std::string type)
+Shape ShapeController::create_shape(std::string type, float width, float height)
 {
-	return Polygon{};
+	return _shapeFactory->create_shape(type, width, height);
 }
 
 bool ShapeController::has_collision(Shape shape1, Shape shape2)

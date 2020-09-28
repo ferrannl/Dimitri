@@ -5,11 +5,11 @@ ShapeAdapter::ShapeAdapter()
 	_shape = nullptr;
 }
 
-ShapeAdapter::ShapeAdapter(std::string type)
+ShapeAdapter::ShapeAdapter(std::string type, float width, float height)
 {
 	if (type == "polygon") {
 		_shape = new b2PolygonShape{};
-		((b2PolygonShape*)_shape)->SetAsBox(1.0f, 1.0f);
+		((b2PolygonShape*)_shape)->SetAsBox(width, height);
 	}
 }
 

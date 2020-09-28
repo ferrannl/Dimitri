@@ -3,5 +3,10 @@
 
 Square::Square()
 {
-	shapeAdapter = ShapeAdapter{ "square" };
+	shapeAdapter = nullptr;
+}
+
+Square::Square(float width, float height)
+{
+	shapeAdapter = new ShapeAdapter{ "square", width, height };
 }

@@ -5,7 +5,8 @@
 
 int main() {
 	WorldController worldController = WorldController{};
-	worldController.create_shape("polygon");
+	worldController.setup_world(10.0f, 10.0f);
+	worldController.create_shape("polygon", 1.0f, 4.0f, 1.0f, 1.0f);
 	worldController.simulate();
 
 	return 0;

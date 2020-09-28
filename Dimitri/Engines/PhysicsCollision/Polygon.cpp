@@ -3,5 +3,10 @@
 
 Polygon::Polygon()
 {
-	shapeAdapter = ShapeAdapter{ "polygon" };
+	shapeAdapter = nullptr;
+}
+
+Polygon::Polygon(float width, float height)
+{
+	shapeAdapter = new ShapeAdapter{ "polygon" , width, height };
 }
