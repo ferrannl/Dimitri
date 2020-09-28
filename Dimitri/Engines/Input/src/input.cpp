@@ -6,6 +6,7 @@ and may not be redistributed without written permission.*/
 #include <stdio.h>
 #include <iostream>
 
+<<<<<<< HEAD
 //int main(int argc, char** argv) {
 //	std::cout << "Have " << argc << " arguments:" << std::endl;
 //	for (int i = 0; i < argc; ++i) {
@@ -13,3 +14,9 @@ and may not be redistributed without written permission.*/
 //	}
 //	return 0;
 //}
+=======
+
+int main(int argc, char** argv) {
+	return 0;
+}
+>>>>>>> 8ef27cf... Fix van 2 errors
