@@ -3,5 +3,10 @@
 
 Triangle::Triangle()
 {
-	shapeAdapter = ShapeAdapter{ "triangle" };
+	shapeAdapter = nullptr;
+}
+
+Triangle::Triangle(float width, float height)
+{
+	shapeAdapter = new ShapeAdapter{ "triangle", width, height };
 }

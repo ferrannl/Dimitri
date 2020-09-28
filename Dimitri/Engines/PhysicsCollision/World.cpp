@@ -2,12 +2,16 @@
 
 World::World()
 {
-	_worldAdapter = WorldAdapter{};
 }
 
-void World::add_shape(Shape shape)
+World::World(float width, float height)
 {
-	_worldAdapter.add_shape(shape);
+	_worldAdapter = WorldAdapter{ width, height };
+}
+
+void World::add_shape(Shape shape, float x, float y)
+{
+	_worldAdapter.add_shape(shape, x, y);
 }
 
 void World::simulate()

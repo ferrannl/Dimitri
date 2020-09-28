@@ -9,10 +9,10 @@
 class WorldAdapter {
 private:
 	b2World* _world;
-	b2Body* _groundBody;
-	b2Body* _body;
 public:
 	WorldAdapter();
-	void add_shape(Shape shape);
+	WorldAdapter(float width, float height);
+	void add_shape(Shape shape, float x, float y);
 	void simulate();
+	void create_ground_body(float x, float y, float width, float height);
 };

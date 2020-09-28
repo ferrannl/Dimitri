@@ -4,6 +4,7 @@
 
 class Shape {
 public:
-	ShapeAdapter shapeAdapter;
-	Shape();	
+	ShapeAdapter* shapeAdapter;
+	Shape();
+	Shape(float x, float y);
 };
