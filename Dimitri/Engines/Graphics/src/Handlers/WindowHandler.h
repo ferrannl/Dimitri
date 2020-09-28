@@ -3,9 +3,10 @@
 #include <SDL.h>
 #include <stdio.h>
 
-namespace Input 
+namespace Handlers 
 {
-	class WindowHandler {
+	class WindowHandler 
+	{
 		public: 
 			//Starts up SDL and creates window
 			bool init(const char* title, int xpos, int ypos, int height, int width);

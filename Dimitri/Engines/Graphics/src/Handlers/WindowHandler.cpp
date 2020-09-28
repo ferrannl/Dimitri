@@ -1,6 +1,6 @@
 #include "WindowHandler.h"
 
-bool Input::WindowHandler::init(const char* title, int xpos, int ypos, int height, int width)
+bool Handlers::WindowHandler::init(const char* title, int xpos, int ypos, int height, int width)
 {
     //Initialization flag
     bool success = true;
@@ -30,7 +30,7 @@ bool Input::WindowHandler::init(const char* title, int xpos, int ypos, int heigh
     return success;
 }
 
-void Input::WindowHandler::close()
+void Handlers::WindowHandler::close()
 {
     //Deallocate surface
     SDL_FreeSurface(gHelloWorld);
@@ -44,7 +44,7 @@ void Input::WindowHandler::close()
     SDL_Quit();
 }
 
-void Input::WindowHandler::CreateWindow(const char* title, int xpos, int ypos, int height, int width)
+void Handlers::WindowHandler::CreateWindow(const char* title, int xpos, int ypos, int height, int width)
 {
     //Start up SDL and create window
     if (!init(title, xpos, ypos, height, width))
@@ -58,14 +58,14 @@ void Input::WindowHandler::CreateWindow(const char* title, int xpos, int ypos, i
     }
 }
 
-void Input::WindowHandler::DeleteWindow()
+void Handlers::WindowHandler::DeleteWindow()
 {
     close();
 }
 
-int main(int argc, char** argv) {
-
-    Input::WindowHandler handler = Input::WindowHandler{};
+int main(int argc, char** argv) 
+{
+    Handlers::WindowHandler handler = Handlers::WindowHandler{};
     handler.CreateWindow("Dimitri", 0, 0, 720, 1000);
     //Wait two seconds
     SDL_Delay(10000);
