@@ -56,7 +56,7 @@ void Handlers::WindowHandler::CreateWindow(const char* title, int xpos, int ypos
     }
     else {
         //succes
-        //printf("Ik kom hier!\n");
+
     }
 }
 
