@@ -7,5 +7,6 @@ namespace Models
 		public:
 			std::string Name = NULL;
 			std::string Path = NULL;
+
 	};
 }
