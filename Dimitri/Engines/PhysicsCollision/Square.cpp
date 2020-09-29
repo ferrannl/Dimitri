@@ -6,7 +6,9 @@ Square::Square()
 	shapeAdapter = nullptr;
 }
 
-Square::Square(float width, float height)
+Square::Square(float x, float y, float width, float height)
 {
+	this->x = x;
+	this->y = y;
 	shapeAdapter = new ShapeAdapter{ "square", width, height };
 }

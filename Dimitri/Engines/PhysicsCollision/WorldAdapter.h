@@ -12,7 +12,7 @@ private:
 public:
 	WorldAdapter();
 	WorldAdapter(float width, float height);
-	void add_shape(Shape shape, float x, float y);
+	void add_shape(Shape shape);
 	void simulate();
 	void create_ground_body(float x, float y, float width, float height);
 };

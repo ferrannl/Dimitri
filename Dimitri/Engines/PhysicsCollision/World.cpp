@@ -9,9 +9,9 @@ World::World(float width, float height)
 	_worldAdapter = WorldAdapter{ width, height };
 }
 
-void World::add_shape(Shape shape, float x, float y)
+void World::add_shape(Shape shape)
 {
-	_worldAdapter.add_shape(shape, x, y);
+	_worldAdapter.add_shape(shape);
 }
 
 void World::simulate()
