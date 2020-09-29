@@ -8,5 +8,5 @@
 
 class ShapeFactory {
 public:
-	Shape create_shape(std::string type, float x, float y);
+	Shape create_shape(std::string type, float x, float y, float width, float height);
 };

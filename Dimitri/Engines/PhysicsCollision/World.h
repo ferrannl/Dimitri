@@ -9,6 +9,6 @@ private:
 public:
 	World();
 	World(float width, float height);
-	void add_shape(Shape shape, float x, float y);
+	void add_shape(Shape shape);
 	void simulate();
 };

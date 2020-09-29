@@ -6,7 +6,9 @@ Triangle::Triangle()
 	shapeAdapter = nullptr;
 }
 
-Triangle::Triangle(float width, float height)
+Triangle::Triangle(float x, float y, float width, float height)
 {
+	this->x = x;
+	this->y = y;
 	shapeAdapter = new ShapeAdapter{ "triangle", width, height };
 }

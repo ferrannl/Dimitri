@@ -14,8 +14,8 @@ void WorldController::clean_up()
 
 void WorldController::create_shape(std::string type, float x, float y, float width, float height)
 {
-	Shape shape = _shapeController.create_shape(type, width, height);
-	_world.add_shape(shape, x, y);
+	Shape shape = _shapeController.create_shape(type, x, y, width, height);
+	_world.add_shape(shape);
 }
 
 void WorldController::simulate()
