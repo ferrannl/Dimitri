@@ -31,7 +31,6 @@ SDL_Texture* Handlers::TextureHandler::loadTexture(std::string path)
 	}
 
 	return newTexture;
-	return nullptr;
 }
 
 void Handlers::TextureHandler::CreateRenderer(SDL_Window* gWindow)
@@ -44,7 +43,7 @@ void Handlers::TextureHandler::CreateRenderer(SDL_Window* gWindow)
 	}
 	else
 	{
-		//Succes
+		SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	}
 }
 
@@ -62,4 +61,16 @@ bool Handlers::TextureHandler::loadMedia(std::string path)
 	}
 
 	return success;
+}
+
+void Handlers::TextureHandler::UpdateScreen(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer)
+{
+	//Clear screen
+	SDL_RenderClear(renderer);
+
+	//Render texture to screen
+	SDL_RenderCopy(renderer, texture, NULL, NULL);
+
+	//Update screen
+	SDL_RenderPresent(renderer);
 }

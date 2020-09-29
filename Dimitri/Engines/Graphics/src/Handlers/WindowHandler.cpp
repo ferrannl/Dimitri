@@ -1,4 +1,6 @@
 #include "WindowHandler.h"
+#include "TextureHandler.h"
+#include <string> using namespace std
 
 bool Handlers::WindowHandler::init(const char* title, int xpos, int ypos, int height, int width)
 {
@@ -67,6 +69,13 @@ int main(int argc, char** argv)
 {
     Handlers::WindowHandler handler = Handlers::WindowHandler{};
     handler.CreateWindow("Dimitri", 0, 0, 720, 1000);
+
+    std::string path = "D:/School - Programming/c++/Project/dimitri/Dimitri/Engines/Graphics/src/Handlers/img.png";
+    Handlers::TextureHandler handler2 = Handlers::TextureHandler{};
+    handler2.CreateRenderer(handler.gWindow);
+
+    handler2.gTexture = handler2.loadTexture(path);
+    handler2.UpdateScreen(handler.gWindow, handler2.gTexture, handler2.gRenderer);
     //Wait two seconds
     SDL_Delay(10000);
 

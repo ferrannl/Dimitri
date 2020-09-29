@@ -26,5 +26,7 @@ namespace Handlers
 			void CreateRenderer(SDL_Window* gWindow);
 
 			bool loadMedia(std::string path);
+
+			void UpdateScreen(SDL_Window* window, SDL_Texture* texture, SDL_Renderer* renderer);
 	};
 }
