@@ -1,84 +1,79 @@
 #include "WindowHandler.h"
 #include "TextureHandler.h"
 #include <string> using namespace std
+#include <vector>
 
-bool Handlers::WindowHandler::init(const char* title, int xpos, int ypos, int height, int width)
-{
-    //Initialization flag
-    bool success = true;
-
-    //Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-        success = false;
-    }
-    else
-    {
-        //Create window
-        gWindow = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,  width, height, SDL_WINDOW_SHOWN);
-        if (gWindow == NULL)
-        {
-            printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-            success = false;
-        }
-        else
-        {
-            //Get window surface
-            gScreenSurface = SDL_GetWindowSurface(gWindow);
-        }
-    }
-
-    return success;
-}
-
-void Handlers::WindowHandler::close()
-{
-    //Deallocate surface
-    SDL_FreeSurface(gHelloWorld);
-    gHelloWorld = NULL;
-
-    //Destroy window
-    SDL_DestroyWindow(gWindow);
-    gWindow = NULL;
-
-    //Quit SDL subsystems
-    SDL_Quit();
-}
-
-void Handlers::WindowHandler::CreateWindow(const char* title, int xpos, int ypos, int height, int width)
-{
-    //Start up SDL and create window
-    if (!init(title, xpos, ypos, height, width))
-    {
-        //foutmelding ofzo?
-        printf("Failed to initialize!\n");
-    }
-    else {
-        //succes
-
-    }
-}
-
-void Handlers::WindowHandler::DeleteWindow()
-{
-    close();
-}
 
 int main(int argc, char** argv) 
 {
-    Handlers::WindowHandler handler = Handlers::WindowHandler{};
-    handler.CreateWindow("Dimitri", 0, 0, 720, 1000);
+    // step 1
+    Handlers::WindowHandler handler = {};
+    handler.create_window("Test", 0, 0, 720, 1080);
 
+    // step 2
     std::string path = "D:/School - Programming/c++/Project/dimitri/Dimitri/Engines/Graphics/src/Handlers/img.png";
-    Handlers::TextureHandler handler2 = Handlers::TextureHandler{};
-    handler2.CreateRenderer(handler.gWindow);
+    Models::Sprite* sprite1 = new Models::Sprite{ 0,0,100,100,path };
+    Models::Sprite* sprite2 = new Models::Sprite{ 200,200,100,100,path };
+    Models::Sprite* sprite3 = new Models::Sprite{ 400,400,100,100,path };
+    Models::Sprite* sprite4 = new Models::Sprite{ 500,600,100,100,path };
 
-    handler2.gTexture = handler2.loadTexture(path);
-    handler2.UpdateScreen(handler.gWindow, handler2.gTexture, handler2.gRenderer);
-    //Wait two seconds
-    SDL_Delay(10000);
+    std::vector<Models::Sprite*> sprites = {};
 
-    handler.DeleteWindow();
+    sprites.push_back(sprite1);
+    sprites.push_back(sprite2);
+    sprites.push_back(sprite3);
+    sprites.push_back(sprite4);
+
+    // step 3
+    handler.add_sprites(sprites);
+
+    // step 4 
+    bool isRunning = true;
+    while (isRunning) {
+        handler.update_window();
+
+        for (Models::Sprite* sprite : sprites) {
+            if ((sprite->get_x() + sprite->get_width()) >= handler.get_window()->get_width()) {
+                isRunning = false;
+            }
+
+            sprite->set_x(sprite->get_x() + 1);
+        }
+
+        SDL_Delay(40);
+    }
+
+    SDL_Delay(1000);
+
+    // step 5
+    handler.get_window()->destroy();
+
     return 0;
+}
+
+void Handlers::WindowHandler::create_window(const char* title, int xpos, int ypos, int height, int width)
+{
+    _window = new Models::Window(title, xpos, ypos, height, width);
+    _window->create();
+}
+
+void Handlers::WindowHandler::add_sprites(std::vector<Models::Sprite*> sprites)
+{
+    _window->set_sprites(sprites);
+    _window->create_sprites();
+}
+
+std::vector<Models::Sprite*> Handlers::WindowHandler::get_sprites()
+{
+    return _window->get_sprites();
+}
+
+void Handlers::WindowHandler::update_window()
+{
+    _window->update();
+}
+
+Models::Window* Handlers::WindowHandler::get_window()
+{
+    return _window;
 }

@@ -68,8 +68,14 @@ void Handlers::TextureHandler::UpdateScreen(SDL_Window* window, SDL_Texture* tex
 	//Clear screen
 	SDL_RenderClear(renderer);
 
+	SDL_Rect rect;
+	rect.x = 0; //Extreme left of the window
+	rect.y = 0; //Very bottom of the window
+	rect.w = 100; //100 pixels width
+	rect.h = 100;
+
 	//Render texture to screen
-	SDL_RenderCopy(renderer, texture, NULL, NULL);
+	SDL_RenderCopy(renderer, texture, NULL, &rect);
 
 	//Update screen
 	SDL_RenderPresent(renderer);
