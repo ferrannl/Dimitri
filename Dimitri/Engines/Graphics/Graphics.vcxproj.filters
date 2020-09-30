@@ -18,9 +18,6 @@
     <ClCompile Include="src\Models\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Models\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,15 +27,15 @@
     <ClCompile Include="src\Handlers\WindowHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\WindowAdapter.cpp">
+    <ClCompile Include="src\Facades\WindowFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Facades\TextureFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\Window.h">
@@ -50,7 +47,10 @@
     <ClInclude Include="src\Handlers\WindowHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Adapters\WindowAdapter.h">
+    <ClInclude Include="src\Facades\WindowFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Facades\TextureFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

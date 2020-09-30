@@ -3,15 +3,22 @@
 #include <SDL.h>
 #include <stdio.h>
 #include "../Models/Window.h"
+#include <vector>
 
 namespace Handlers 
 {
 	class WindowHandler 
 	{
+	private:
+		Models::Window* _window;
+
 		public: 
-			void CreateWindow(const char* title, int xpos, int ypos, int height, int width);
-			void DeleteWindow();
-			Models::Window GetWindow();
+			void create_window(const char* title, int xpos, int ypos, int height, int width);
+			void add_sprites(std::vector<Models::Sprite*> sprites);
+			std::vector<Models::Sprite*> get_sprites();
+
+			void update_window();
+			Models::Window* get_window();
 
 
 	private:
