@@ -6,9 +6,9 @@ Polygon::Polygon()
 	shapeAdapter = nullptr;
 }
 
-Polygon::Polygon(float x, float y, float width, float height)
+Polygon::Polygon(float x, float y, std::vector<std::pair<float, float>> position)
 {
 	this->x = x;
 	this->y = y;
-	shapeAdapter = new ShapeAdapter{ "polygon" , width, height };
+	shapeAdapter = new ShapeAdapter{ "polygon" , position};
 }

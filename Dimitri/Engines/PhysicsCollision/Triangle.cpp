@@ -6,9 +6,9 @@ Triangle::Triangle()
 	shapeAdapter = nullptr;
 }
 
-Triangle::Triangle(float x, float y, float width, float height)
+Triangle::Triangle(float x, float y, std::vector<std::pair<float, float>> position)
 {
 	this->x = x;
 	this->y = y;
-	shapeAdapter = new ShapeAdapter{ "triangle", width, height };
+	shapeAdapter = new ShapeAdapter{"triangle" ,position };
 }
