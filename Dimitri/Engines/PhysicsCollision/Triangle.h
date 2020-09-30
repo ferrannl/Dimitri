@@ -3,5 +3,5 @@
 class Triangle : public Shape {
 public:
 	Triangle();
-	Triangle(float x, float y, float width, float height);
+	Triangle(float x, float y, std::vector<std::pair<float, float>> position);
 };

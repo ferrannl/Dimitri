@@ -8,5 +8,5 @@ public:
 	int y;
 	ShapeAdapter* shapeAdapter;
 	Shape();
-	Shape(float x, float y, float width, float height);
+	Shape(std::vector<std::pair<float, float>> position);
 };

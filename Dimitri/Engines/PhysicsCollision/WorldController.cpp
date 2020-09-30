@@ -12,9 +12,9 @@ void WorldController::clean_up()
 {
 }
 
-void WorldController::create_shape(std::string type, float x, float y, float width, float height)
+void WorldController::create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> position)
 {
-	Shape shape = _shapeController.create_shape(type, x, y, width, height);
+	Shape shape = _shapeController.create_shape(type,x,y, position);
 	_world.add_shape(shape);
 }
 

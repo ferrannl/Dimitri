@@ -5,5 +5,5 @@
 class Square : public Shape {
 public:
 	Square();
-	Square(float x, float y, float width, float height);
+	Square(float x, float y, std::vector<std::pair<float, float>> position);
 };
