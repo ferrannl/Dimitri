@@ -1,58 +1,71 @@
 #include "Sprite.h"
 
-int Models::Sprite::get_x()
+const int Models::Sprite::get_converted_y(const int height)
+{
+    return height - (_y + _height);
+}
+
+const int Models::Sprite::get_x()
 {
     return _x;
 }
 
-int Models::Sprite::get_y()
+const int Models::Sprite::get_z()
+{
+    return _z;
+}
+
+const int Models::Sprite::get_y()
 {
     return _y;
 }
 
-int Models::Sprite::get_width()
+const int Models::Sprite::get_width()
 {
     return _width;
 }
 
-int Models::Sprite::get_height()
+const int Models::Sprite::get_height()
 {
     return _height;
 }
 
-void Models::Sprite::set_x(int x)
+Models::Texture* Models::Sprite::get_texture()
 {
-    _x = x;
+    return _texture;
 }
 
-void Models::Sprite::set_y(int y)
-{
-    _y = y;
-}
-
-void Models::Sprite::set_width(int width)
-{
-    _width = width;
-}
-
-void Models::Sprite::set_height(int height)
-{
-    _height = height;
-}
-
-
-
-std::string Models::Sprite::get_path()
+const char* Models::Sprite::get_path()
 {
     return _path;
 }
 
-void Models::Sprite::add_texture(SDL_Texture* texture)
+void Models::Sprite::set_x(const int x)
 {
-    _texture = texture;
+    _x = x;
 }
 
-SDL_Texture* Models::Sprite::get_texture()
+void Models::Sprite::set_z(const int z)
 {
-    return _texture;
+    _z = z;
+}
+
+void Models::Sprite::set_y(const int y)
+{
+    _y = y;
+}
+
+void Models::Sprite::set_width(const int width)
+{
+    _width = width;
+}
+
+void Models::Sprite::set_height(const int height)
+{
+    _height = height;
+}
+
+void Models::Sprite::set_texture(Models::Texture* texture)
+{
+    _texture = texture;
 }

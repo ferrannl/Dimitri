@@ -1,6 +1,4 @@
 #include "TextureFacade.h"
-#include <SDL_image.h>
-
 
 void Facades::TextureFacade::create_renderer(SDL_Window* window)
 {
@@ -16,21 +14,48 @@ void Facades::TextureFacade::create_renderer(SDL_Window* window)
 	}
 }
 
+Models::Texture* Facades::TextureFacade::get_if_exists(const char* path)
+{
+	for (Models::Texture* texture : _textures) {
+		if (texture->get_path() == path) {
+			return texture;
+		}
+	}
+
+	return nullptr;
+}
+
+Models::Texture* Facades::TextureFacade::create_texture_model(const char* path, SDL_Texture* texture)
+{
+	Models::Texture* new_texture = new Models::Texture(path, texture);
+	_textures.push_back(new_texture);
+
+	return new_texture;
+}
+
 bool Facades::TextureFacade::load_sprite(Models::Sprite* sprite)
 {
 	//Loading success flag
 	bool success = true;
 
 	//Load PNG texture
-	SDL_Texture* texture = create_texture(sprite->get_path());
-	if (texture == NULL)
+	Models::Texture* texture = get_if_exists(sprite->get_path());
+
+	if (texture != nullptr) {
+		sprite->set_texture(texture);
+		return success;
+	}
+
+	SDL_Texture* sdltexture = create_texture(sprite->get_path());
+
+	if (sdltexture == NULL)
 	{
-		delete texture;
+		delete sdltexture;
 		printf("Failed to load texture image!\n");
 		success = false;
 	}
 	else {
-		sprite->add_texture(texture);
+		sprite->set_texture(create_texture_model(sprite->get_path(), sdltexture));
 	}
 
 	return success;
@@ -59,6 +84,7 @@ SDL_Texture* Facades::TextureFacade::create_texture(std::string path)
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
+	loadedSurface = NULL;
 
 	return newTexture;
 }
@@ -67,17 +93,25 @@ void Facades::TextureFacade::update_screen(SDL_Window* window, std::vector<Model
 {
 	//Clear screen
 	SDL_RenderClear(_renderer);
+	int depth = 0;
+	int objectcounter = 0;
 
-	for (Models::Sprite* sprite : sprites) {
-		SDL_Rect rect;
-		
-		rect.x = sprite->get_x();
-		rect.y = sprite->get_y();
-		rect.w = sprite->get_width();
-		rect.h = sprite->get_height();
+	while (objectcounter < sprites.size()) {
+		for (Models::Sprite* sprite : sprites) {
+			if (sprite->get_z() == depth) {
+				SDL_Rect rect;
 
-		//Render texture to screen
-		SDL_RenderCopy(_renderer, sprite->get_texture(), NULL, &rect);
+				rect.x = sprite->get_x();
+				rect.y = sprite->get_converted_y(SDL_GetWindowSurface(window)->h);
+				rect.w = sprite->get_width();
+				rect.h = sprite->get_height();
+
+				//Render texture to screen
+				SDL_RenderCopy(_renderer, sprite->get_texture()->get_texture(), NULL, &rect);
+				objectcounter++;
+			}
+		}
+		depth++;
 	}
 
 	//Update screen

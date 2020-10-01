@@ -1,6 +1,6 @@
 #pragma once
-#include <string> using namespace std
 #include <SDL.h>
+#include "Texture.h"
 
 namespace Models 
 {
@@ -8,25 +8,32 @@ namespace Models
 	private:
 		int _x;
 		int _y;
+		int _z;
 		int _width;
 		int _height;
-		std::string _path;
-		SDL_Texture* _texture;
+		const char* _path;
+		Models::Texture* _texture;
+
 	public:
-		Sprite(int x, int y, int height, int width, std::string path) : _x{ x }, _y{ y }, _height{ height }, _width{ width }, _path{ path } {
-			_texture = NULL;
+		Sprite(const int x, const int y, const int z, const int height, const int width, const char* path)
+			: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path } {
+			_texture = nullptr;
 		}
 
-		int get_x();
-		int get_y();
-		int get_width();
-		int get_height();
-		void set_x(int x);
-		void set_y(int y);
-		void set_width(int width);
-		void set_height(int height);
-		std::string get_path();
-		void add_texture(SDL_Texture* texture);
-		SDL_Texture* get_texture();
+		const int get_converted_y(int height);
+		const int get_x();
+		const int get_z();
+		const int get_y();
+		const int get_width();
+		const int get_height();
+		Models::Texture* get_texture();
+
+		const char* get_path();
+		void set_x(const int x);
+		void set_z(const int z);
+		void set_y(const int y);
+		void set_width(const int width);
+		void set_height(const int height);
+		void set_texture(Models::Texture* texture);
 	};
 }

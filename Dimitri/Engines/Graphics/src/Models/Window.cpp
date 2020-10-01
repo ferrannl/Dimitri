@@ -1,7 +1,6 @@
-#include <SDL.h>
 #include "Window.h"
 
-std::vector<Models::Sprite*> Models::Window::get_sprites()
+const std::vector<Models::Sprite*> Models::Window::get_sprites()
 {
 	return _sprites;
 }

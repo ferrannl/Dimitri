@@ -1,4 +1,5 @@
 #pragma once
+#include <SDL.h>
 #include <string>
 #include "../Facades/WindowFacade.h"
 #include <vector>
@@ -21,11 +22,11 @@ namespace Models {
 		}
 
 		void create_sprites();
-		void set_sprites(std::vector<Models::Sprite*> sprites);
-		std::vector<Models::Sprite*> get_sprites();
 		void create();
 		void update();
 		void destroy();
+		void set_sprites(const std::vector<Models::Sprite*> sprites);
+		const std::vector<Models::Sprite*> get_sprites();
 		const int get_x();
 		const int get_y();
 		const int get_height();
