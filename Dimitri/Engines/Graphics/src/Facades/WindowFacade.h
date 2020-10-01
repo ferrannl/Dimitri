@@ -21,7 +21,7 @@ namespace Facades{
 			_foreground = { nullptr };
 		}
 
-		void create(const char* title, int xpos, int ypos, int height, int width);
+		void create(const char* title, const int xpos, const int ypos, const int height, const int width);
 		void create_sprites(std::vector<Models::Sprite*> sprites);
 		void destroy();
 		void update_sprites(std::vector<Models::Sprite*> sprites);

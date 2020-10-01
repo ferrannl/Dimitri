@@ -1,6 +1,6 @@
 #include "WindowFacade.h"
 
-void Facades::WindowFacade::create(const char* title, int xpos, int ypos, int height, int width)
+void Facades::WindowFacade::create(const char* title, const int xpos, const int ypos, const int height, const int width)
 {
     //Start up SDL and create window
     if (!Facades::WindowFacade::Init())
@@ -24,7 +24,7 @@ void Facades::WindowFacade::create_sprites(std::vector<Models::Sprite*> sprites)
     }
 }
 
-    void Facades::WindowFacade::destroy()
+void Facades::WindowFacade::destroy()
 {
         //Deallocate surfaces
         SDL_FreeSurface(_background);
@@ -41,7 +41,7 @@ void Facades::WindowFacade::create_sprites(std::vector<Models::Sprite*> sprites)
         SDL_Quit();
 }
 
-    bool Facades::WindowFacade::Init()
+bool Facades::WindowFacade::Init()
     {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
         {
@@ -54,7 +54,7 @@ void Facades::WindowFacade::create_sprites(std::vector<Models::Sprite*> sprites)
         }
     }
 
-    void Facades::WindowFacade::update_sprites(std::vector<Models::Sprite*> sprites) 
+void Facades::WindowFacade::update_sprites(std::vector<Models::Sprite*> sprites) 
     {
         _textureFacade->update_screen(_window, sprites);
     }
