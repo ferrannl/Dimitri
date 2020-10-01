@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f161c61e-5933-465d-bfe6-6cde545d54bf}</ProjectGuid>
-    <RootNamespace>Graphics</RootNamespace>
+    <ProjectGuid>{538a7dba-273b-4c35-bb1e-e60c866663c9}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -78,9 +78,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <LibraryPath>C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -123,7 +120,6 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,20 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Facades\TextureFacade.cpp" />
-    <ClCompile Include="src\Facades\WindowFacade.cpp" />
-    <ClCompile Include="src\Controllers\GraphicsController.cpp" />
-    <ClCompile Include="src\Models\Sprite.cpp" />
-    <ClCompile Include="src\Models\Texture.cpp" />
-    <ClCompile Include="src\Models\Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Facades\TextureFacade.h" />
-    <ClInclude Include="src\Facades\WindowFacade.h" />
-    <ClInclude Include="src\Controllers\GraphicsController.h" />
-    <ClInclude Include="src\Models\Sprite.h" />
-    <ClInclude Include="src\Models\Texture.h" />
-    <ClInclude Include="src\Models\Window.h" />
+    <Image Include="resources\images\img.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
