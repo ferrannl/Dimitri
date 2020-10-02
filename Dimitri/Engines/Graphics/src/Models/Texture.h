@@ -1,10 +1,8 @@
 #pragma once
 #include <SDL.h>
 
-namespace Models
-{
-	class __declspec(dllexport) Texture
-	{
+namespace Models {
+	class __declspec(dllexport) Texture {
 	private:
 		const char* _path;
 		SDL_Texture* _texture;

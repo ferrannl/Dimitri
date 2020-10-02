@@ -19,25 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Polygon.cpp" />
-    <ClCompile Include="Shape.cpp" />
-    <ClCompile Include="ShapeAdapter.cpp" />
-    <ClCompile Include="ShapeController.cpp" />
-    <ClCompile Include="ShapeFactory.cpp" />
-    <ClCompile Include="World.cpp" />
-    <ClCompile Include="WorldAdapter.cpp" />
-    <ClCompile Include="WorldController.cpp" />
+    <ClCompile Include="src\Models\Polygon.cpp" />
+    <ClCompile Include="src\Models\Shape.cpp" />
+    <ClCompile Include="src\Adapters\ShapeAdapter.cpp" />
+    <ClCompile Include="src\Controllers\ShapeController.cpp" />
+    <ClCompile Include="src\Factories\ShapeFactory.cpp" />
+    <ClCompile Include="src\Models\World.cpp" />
+    <ClCompile Include="src\Adapters\WorldAdapter.cpp" />
+    <ClCompile Include="src\Controllers\WorldController.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Polygon.h" />
-    <ClInclude Include="Shape.h" />
-    <ClInclude Include="ShapeAdapter.h" />
-    <ClInclude Include="ShapeController.h" />
-    <ClInclude Include="ShapeFactory.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="WorldAdapter.h" />
-    <ClInclude Include="WorldController.h" />
+    <ClInclude Include="src\Models\Polygon.h" />
+    <ClInclude Include="src\Models\Shape.h" />
+    <ClInclude Include="src\Adapters\ShapeAdapter.h" />
+    <ClInclude Include="src\Controllers\ShapeController.h" />
+    <ClInclude Include="src\Factories\ShapeFactory.h" />
+    <ClInclude Include="src\Models\World.h" />
+    <ClInclude Include="src\Adapters\WorldAdapter.h" />
+    <ClInclude Include="src\Controllers\WorldController.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -48,13 +47,13 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -67,7 +66,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>

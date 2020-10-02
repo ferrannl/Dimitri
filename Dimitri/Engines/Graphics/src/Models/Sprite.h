@@ -2,10 +2,8 @@
 #include <SDL.h>
 #include "Texture.h"
 
-namespace Models 
-{
-	class __declspec(dllexport) Sprite
-	{
+namespace Models {
+	class __declspec(dllexport) Sprite {
 	private:
 		int _x;
 		int _y;
@@ -14,7 +12,6 @@ namespace Models
 		int _height;
 		const char* _path;
 		Models::Texture* _texture;
-
 	public:
 		Sprite(const int x, const int y, const int z, const int height, const int width, const char* path)
 			: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path } {
