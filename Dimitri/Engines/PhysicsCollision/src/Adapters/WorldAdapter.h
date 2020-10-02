@@ -12,7 +12,7 @@ namespace Adapters {
 	public:
 		WorldAdapter();
 		WorldAdapter(float width, float height);
-		void add_shape(Models::Shape shape);
+		void add_shape(Models::Shape shape, float x, float y);
 		void simulate();
 		void create_ground_body(float x, float y, float width, float height);
 	};

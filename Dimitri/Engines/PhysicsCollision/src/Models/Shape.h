@@ -4,8 +4,6 @@
 namespace Models {
 	class __declspec(dllexport) Shape {
 	public:
-		int x;
-		int y;
 		bool is_dynamic;
 		Adapters::ShapeAdapter* shapeAdapter;
 		Shape();

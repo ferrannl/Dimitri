@@ -9,6 +9,6 @@ namespace Controllers {
 		Factories::ShapeFactory* _shapeFactory;
 	public:
 		ShapeController();
-		Models::Shape create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		Models::Shape create_shape(std::string type, std::vector<std::pair<float, float>> positions, bool is_dynamic);
 	};
 }
