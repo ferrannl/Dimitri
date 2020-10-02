@@ -7,7 +7,8 @@
 #include "Square.h"
 #include <vector>
 
-class ShapeFactory {
+class __declspec(dllexport) ShapeFactory
+{
 public:
-	Shape create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> position);
+	Shape create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> position, bool is_dynamic);
 };

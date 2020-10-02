@@ -3,7 +3,8 @@
 
 namespace Models
 {
-	class Texture {
+	class __declspec(dllexport) Texture
+	{
 	private:
 		const char* _path;
 		SDL_Texture* _texture;

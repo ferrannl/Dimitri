@@ -6,7 +6,8 @@
 #include <box2d/b2_fixture.h>
 #include "Shape.h"
 
-class WorldAdapter {
+class __declspec(dllexport) WorldAdapter
+{
 private:
 	b2World* _world;
 public:

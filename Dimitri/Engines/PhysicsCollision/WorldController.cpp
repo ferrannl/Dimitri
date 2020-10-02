@@ -12,10 +12,11 @@ void WorldController::clean_up()
 {
 }
 
-void WorldController::create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> position)
+Shape WorldController::create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> position, bool is_dynamic)
 {
-	Shape shape = _shapeController.create_shape(type,x,y, position);
+	Shape shape = _shapeController.create_shape(type,x,y, position, is_dynamic);
 	_world.add_shape(shape);
+	return shape;
 }
 
 void WorldController::simulate()
