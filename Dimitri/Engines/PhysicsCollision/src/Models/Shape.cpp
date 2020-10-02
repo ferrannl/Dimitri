@@ -1,21 +1,21 @@
 #include "Shape.h"
 
-Shape::Shape()
+Models::Shape::Shape()
 {
 	shapeAdapter = nullptr;
 }
 
-void Shape::add_body(b2Body* body)
+void Models::Shape::add_body(b2Body* body)
 {
 	shapeAdapter->add_body(body);
 }
 
-float Shape::get_x()
+float Models::Shape::get_x()
 {
 	return shapeAdapter->get_x();
 }
 
-float Shape::get_y()
+float Models::Shape::get_y()
 {
 	return shapeAdapter->get_y();
 }

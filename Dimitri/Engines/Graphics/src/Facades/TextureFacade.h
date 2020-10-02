@@ -7,10 +7,8 @@
 #include <vector>
 #include <SDL_image.h>
 
-namespace Facades
-{
-	class __declspec(dllexport) TextureFacade
-	{
+namespace Facades {
+	class __declspec(dllexport) TextureFacade {
 	private:
 		SDL_Renderer* _renderer;
 		std::vector<Models::Texture*> _textures;

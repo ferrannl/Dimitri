@@ -6,24 +6,22 @@
 #include <vector>
 #include <filesystem>
 
-namespace Controllers 
+namespace Controllers
 {
-	class __declspec(dllexport) GraphicsController
-	{
+	class __declspec(dllexport) GraphicsController {
 	private:
 		Models::Window* _window;
+	public:
+		GraphicsController() {
+			_window = nullptr;
+		}
 
-		public: 
-			GraphicsController() {
-				_window = nullptr;
-			}
+		const char* concat_char(const char* char1, const char* char2);
+		void create_window(const char* title, const int xpos, const int ypos, const int height, const int width);
+		void add_sprites(std::vector<Models::Sprite*> sprites);
+		std::vector<Models::Sprite*> get_sprites();
 
-			const char* concat_char(const char* char1, const char* char2);
-			void create_window(const char* title, const int xpos, const int ypos, const int height, const int width);
-			void add_sprites(std::vector<Models::Sprite*> sprites);
-			std::vector<Models::Sprite*> get_sprites();
-
-			void update_window();
-			Models::Window* get_window();
+		void update_window();
+		Models::Window* get_window();
 	};
 }

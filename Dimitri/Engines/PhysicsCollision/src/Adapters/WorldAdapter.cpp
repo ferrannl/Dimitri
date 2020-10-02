@@ -1,11 +1,9 @@
 #include "WorldAdapter.h"
 #include <iostream>
 
-WorldAdapter::WorldAdapter()
-{
-}
+Adapters::WorldAdapter::WorldAdapter() {}
 
-WorldAdapter::WorldAdapter(float width, float height)
+Adapters::WorldAdapter::WorldAdapter(float width, float height)
 {
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = new b2World(gravity);
@@ -16,7 +14,7 @@ WorldAdapter::WorldAdapter(float width, float height)
 	create_ground_body(width, 0.0f, 1.0f, height); // right
 }
 
-void WorldAdapter::create_ground_body(float x, float y, float width, float height)
+void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, float height)
 {
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position.Set(x, y);
@@ -26,7 +24,7 @@ void WorldAdapter::create_ground_body(float x, float y, float width, float heigh
 	_groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
-void WorldAdapter::add_shape(Shape shape)
+void Adapters::WorldAdapter::add_shape(Models::Shape shape)
 {
 	b2BodyDef bodyDef;
 	if (shape.is_dynamic)
@@ -43,24 +41,10 @@ void WorldAdapter::add_shape(Shape shape)
 	shape.add_body(_body);
 }
 
-void WorldAdapter::simulate()
+void Adapters::WorldAdapter::simulate()
 {
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	_world->Step(timeStep, velocityIterations, positionIterations);
-	for (b2Body* BodyIterator = _world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext()) {
-		if (BodyIterator->GetType() == b2_dynamicBody)
-		{
-			b2Vec2 position = BodyIterator->GetPosition();
-			float angle = BodyIterator->GetAngle();
-			/*std::cout << i;
-			printf(" %4.2f %4.2f %4.2f\n", position.x, position.y, angle);*/
-		}
-	}
-
-	/*for (int32 i = 0; i < 60; ++i)
-	{
-		
-	}*/
 }

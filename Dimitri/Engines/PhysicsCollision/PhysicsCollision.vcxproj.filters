@@ -15,57 +15,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Polygon.cpp">
+    <ClCompile Include="src\Controllers\ShapeController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
+    <ClCompile Include="src\Controllers\WorldController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeAdapter.cpp">
+    <ClCompile Include="src\Factories\ShapeFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShapeController.cpp">
+    <ClCompile Include="src\Models\Polygon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="src\Models\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WorldAdapter.cpp">
+    <ClCompile Include="src\Models\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WorldController.cpp">
+    <ClCompile Include="src\Adapters\ShapeAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeFactory.cpp">
+    <ClCompile Include="src\Adapters\WorldAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Polygon.h">
+    <ClInclude Include="src\Controllers\ShapeController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
+    <ClInclude Include="src\Controllers\WorldController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeAdapter.h">
+    <ClInclude Include="src\Factories\ShapeFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeController.h">
+    <ClInclude Include="src\Models\Polygon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
+    <ClInclude Include="src\Models\Shape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldAdapter.h">
+    <ClInclude Include="src\Models\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldController.h">
+    <ClInclude Include="src\Adapters\ShapeAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShapeFactory.h">
+    <ClInclude Include="src\Adapters\WorldAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
