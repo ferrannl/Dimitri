@@ -24,14 +24,14 @@ void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, f
 	_groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
-void Adapters::WorldAdapter::add_shape(Models::Shape shape)
+void Adapters::WorldAdapter::add_shape(Models::Shape shape, float x, float y)
 {
 	b2BodyDef bodyDef;
 	if (shape.is_dynamic)
 	{
 		bodyDef.type = b2_dynamicBody;
 	}
-	bodyDef.position.Set(shape.x, shape.y);
+	bodyDef.position.Set(x, y);
 	b2Body* _body = _world->CreateBody(&bodyDef);
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &shape.shapeAdapter->get_shape();

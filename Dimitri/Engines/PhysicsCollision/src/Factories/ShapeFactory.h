@@ -7,6 +7,6 @@
 namespace Factories {
 	class __declspec(dllexport) ShapeFactory {
 	public:
-		Models::Shape create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		Models::Shape create_shape(std::string type, std::vector<std::pair<float, float>> positions, bool is_dynamic);
 	};
 }
