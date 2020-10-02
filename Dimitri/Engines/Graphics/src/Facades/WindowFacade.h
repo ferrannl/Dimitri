@@ -5,7 +5,8 @@
 #include <vector>
 
 namespace Facades{
-	class WindowFacade {
+	class __declspec(dllexport) WindowFacade
+	{
 	private:
 		SDL_Window* _window;
 		Facades::TextureFacade* _textureFacade;

@@ -29,7 +29,10 @@ void WorldAdapter::create_ground_body(float x, float y, float width, float heigh
 void WorldAdapter::add_shape(Shape shape)
 {
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
+	if (shape.is_dynamic)
+	{
+		bodyDef.type = b2_dynamicBody;
+	}
 	bodyDef.position.Set(shape.x, shape.y);
 	b2Body* _body = _world->CreateBody(&bodyDef);
 	b2FixtureDef fixtureDef;
@@ -37,7 +40,7 @@ void WorldAdapter::add_shape(Shape shape)
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	_body->CreateFixture(&fixtureDef);
-
+	shape.add_body(_body);
 }
 
 void WorldAdapter::simulate()
@@ -45,17 +48,19 @@ void WorldAdapter::simulate()
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
-	for (int32 i = 0; i < 60; ++i)
-	{
-		_world->Step(timeStep, velocityIterations, positionIterations);
-		for (b2Body* BodyIterator = _world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext()) {
-			if (BodyIterator->GetType() == b2_dynamicBody)
-			{
-				b2Vec2 position = BodyIterator->GetPosition();
-				float angle = BodyIterator->GetAngle();
-				std::cout << i;
-				printf(" %4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-			}
+	_world->Step(timeStep, velocityIterations, positionIterations);
+	for (b2Body* BodyIterator = _world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext()) {
+		if (BodyIterator->GetType() == b2_dynamicBody)
+		{
+			b2Vec2 position = BodyIterator->GetPosition();
+			float angle = BodyIterator->GetAngle();
+			/*std::cout << i;
+			printf(" %4.2f %4.2f %4.2f\n", position.x, position.y, angle);*/
 		}
 	}
+
+	/*for (int32 i = 0; i < 60; ++i)
+	{
+		
+	}*/
 }

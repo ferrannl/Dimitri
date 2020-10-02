@@ -3,7 +3,8 @@
 #include "WorldAdapter.h"
 #include "Shape.h"
 
-class World {
+class __declspec(dllexport) World
+{
 private:
 	WorldAdapter _worldAdapter;
 public:

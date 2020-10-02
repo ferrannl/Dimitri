@@ -8,7 +8,7 @@
 
 namespace Controllers 
 {
-	class GraphicsController
+	class __declspec(dllexport) GraphicsController
 	{
 	private:
 		Models::Window* _window;

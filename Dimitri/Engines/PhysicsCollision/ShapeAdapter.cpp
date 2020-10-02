@@ -27,7 +27,25 @@ ShapeAdapter::ShapeAdapter(std::string type, std::vector<std::pair<float, float>
 	}
 }
 
+void ShapeAdapter::add_body(b2Body* body)
+{
+	_body = body;
+
+}
+
 b2Shape& ShapeAdapter::get_shape() const
 {
 	return *_shape;
 }
+
+float ShapeAdapter::get_x()
+{
+	return _body->GetPosition().x;
+}
+
+float ShapeAdapter::get_y()
+{
+	return _body->GetPosition().y;
+}
+
+

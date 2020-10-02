@@ -9,7 +9,7 @@
 
 namespace Facades
 {
-	class TextureFacade
+	class __declspec(dllexport) TextureFacade
 	{
 	private:
 		SDL_Renderer* _renderer;

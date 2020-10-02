@@ -4,7 +4,8 @@
 
 namespace Models 
 {
-	class Sprite {
+	class __declspec(dllexport) Sprite
+	{
 	private:
 		int _x;
 		int _y;
