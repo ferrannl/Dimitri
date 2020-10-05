@@ -145,9 +145,9 @@
   <ItemGroup>
     <ClCompile Include="src\Adapters\MusicAdapter.cpp" />
     <ClCompile Include="src\Adapters\SoundAdapter.cpp" />
+    <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Handlers\MusicPlayer.cpp" />
     <ClCompile Include="src\Handlers\SoundPlayer.cpp" />
-    <ClCompile Include="src\Interfaces\IAudioAdapter.cpp" />
     <ClCompile Include="src\Interfaces\IAudioPlayer.cpp" />
     <ClCompile Include="src\Models\Audio.cpp" />
     <ClCompile Include="src\Models\Audio.h" />
@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="src\Adapters\MusicAdapter.h" />
     <ClInclude Include="src\Adapters\SoundAdapter.h" />
+    <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Handlers\MusicPlayer.h" />
     <ClInclude Include="src\Handlers\SoundPlayer.h" />
     <ClInclude Include="src\Interfaces\IAudioAdapter.h" />

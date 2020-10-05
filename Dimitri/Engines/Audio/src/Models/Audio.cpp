@@ -5,7 +5,7 @@ std::string* Models::Audio::get_name()
 	return _name;
 }
 
-const char* Models::Audio::get_path()
+Interfaces::IAudioAdapter* Models::Audio::get_audio_adapter()
 {
-	return _path;
+	return _audio_adapter;
 }

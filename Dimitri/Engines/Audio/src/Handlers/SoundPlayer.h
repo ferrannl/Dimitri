@@ -3,13 +3,13 @@
 #include <SDL_mixer.h>
 #include <stdio.h>
 #include <string>
+#include "../Interfaces/IAudioPlayer.h"
+#include "../Adapters/SoundAdapter.h"
+
 namespace Handlers {
-	class __declspec(dllexport) SoundPlayer {
+	class __declspec(dllexport) SoundPlayer : public Interfaces::IAudioPlayer {
 	public:
-		void init();
-		void play_music();
-		void play_sound();
-		void close();
+		//SoundPlayer() { _audio_adapter = new Adapters::SoundAdapter(); }
 	};
 
 }
