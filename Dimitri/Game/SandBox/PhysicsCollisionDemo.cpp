@@ -4,6 +4,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
+	inputEvent = InputEvent::Instance();
 	sprites = std::vector<Models::Sprite*>{};
 	shapes = std::vector<Models::Shape>{};
 }
@@ -39,16 +40,43 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	for (int i = 0; i < 800; i++) {
-		graphicsController.update_window();
-		worldController.simulate();
-		for (int i = 0; i < shapes.size(); i++)
+	SDL_Event event;
+	while (true)
+	{
+		if (SDL_PollEvent(&event) == 1)
 		{
-			sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
-			sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
+			if (event.type == SDL_KEYDOWN)
+			{
+				switch (event.key.keysym.sym)
+				{
+				case SDLK_w:
+					sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 100));
+					break;
+				case SDLK_s:
+					sprites[0]->set_x(static_cast<int>(shapes[0].get_x() - 50));
+				default:
+					//sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 50));
+					break;
+				}
+			}
+			//worldController.simulate();
 		}
+		graphicsController.update_window();
+		/*for (int i = 0; i < 3000; i++) {
+			graphicsController.update_window();
+			worldController.simulate();
+			SDL_Event event;
+			/
 
-		SDL_Delay(5);
+			for (int i = 0; i < shapes.size(); i++)
+			{
+				sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
+				sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
+			}
+
+
+			SDL_Delay(5);
+		}*/
 	}
 
 	graphicsController.get_window()->destroy();
