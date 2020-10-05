@@ -6,7 +6,7 @@
 namespace Adapters {
 	class __declspec(dllexport) SoundAdapter : public Interfaces::IAudioAdapter{
 	private:
-        
+        Mix_Chunk* _sound = NULL;
 	public:
         SoundAdapter(const char* path) : Interfaces::IAudioAdapter(path) {
             //Initialize SDL
@@ -19,6 +19,11 @@ namespace Adapters {
             if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
             {
                 //printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+            }
+            _sound = Mix_LoadWAV(path);
+            if (_sound == NULL)
+            {
+                //printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
             }
 		}
         void play();
