@@ -1,4 +1,5 @@
 #include "ShapeAdapter.h"
+#include <iostream>
 
 Adapters::ShapeAdapter::ShapeAdapter()
 {
@@ -39,6 +40,30 @@ float Adapters::ShapeAdapter::get_x()
 float Adapters::ShapeAdapter::get_y()
 {
 	return _body->GetPosition().y;
+}
+
+void Adapters::ShapeAdapter::set_x(int value, std::string key)
+{
+	//_body->SetTransform(b2Vec2(value, _body->GetPosition().y), _body->GetAngle());
+	b2Vec2 vel = _body->GetLinearVelocity();
+	if (key == "left") {
+		vel.x = vel.x - value;
+	}
+	else {
+		vel.x = vel.x + value;
+	}
+	_body->SetLinearVelocity(vel);
+	//std::cout << _body->GetPosition().x;
+}
+
+void Adapters::ShapeAdapter::set_y(int value)
+{
+	//_body->SetTransform(b2Vec2(_body->GetPosition().x, value), _body->GetAngle());
+	b2Vec2 vel = _body->GetLinearVelocity();
+	vel.y = vel.y + value;
+	_body->SetLinearVelocity(vel);
+	std::cout << _body->GetPosition().y;
+	std::cout << " ";
 }
 
 

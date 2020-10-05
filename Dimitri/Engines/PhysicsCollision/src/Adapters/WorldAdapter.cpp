@@ -43,6 +43,14 @@ void Adapters::WorldAdapter::add_shape(Models::Shape shape, float x, float y)
 
 void Adapters::WorldAdapter::simulate()
 {
+	//for (b2Body* BodyIterator = _world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext()) {
+	//	if (BodyIterator->GetType() != b2_dynamicBody)
+	//	{
+	//		b2Vec2 position = BodyIterator->GetPosition();
+	//		float angle = BodyIterator->GetAngle();
+	//		//printf(" %4.2f %4.2f %4.2f\n", position.x, position.y, angle); 
+	//	}
+	//}
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;

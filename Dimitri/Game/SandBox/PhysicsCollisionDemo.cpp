@@ -13,11 +13,11 @@ void PhysicsCollisionDemo::start_demo()
 {
 	create_window(1080, 720);
 	std::string path = (SDL_GetBasePath() + std::string{ "resources/images/img.png" });
-	create_sprite(350, 600, 1, 100, 100, path.c_str());
-	create_sprite(300, 200, 1, 300, 100, path.c_str());
+	create_sprite(350, 600, 1, 100, 50, path.c_str());
+	create_sprite(300, 200, 1, 300, 50, path.c_str());
 	graphicsController.add_sprites(sprites);
-	create_shape(350, 600, 100, 100, true);
-	create_shape(300, 200, 300, 100, false);
+	create_shape(350, 600, 100, 50, true);
+	create_shape(300, 200, 300, 50, false);
 	run();
 }
 
@@ -49,34 +49,40 @@ void PhysicsCollisionDemo::run()
 			{
 				switch (event.key.keysym.sym)
 				{
-				case SDLK_w:
-					sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 100));
+				case SDLK_RIGHT:
+					//std::cout << shapes[0].get_x() + 50;
+					shapes[0].set_x(5, "right");
+					std::cout << shapes[0].get_x();
+					sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
 					break;
-				case SDLK_s:
-					sprites[0]->set_x(static_cast<int>(shapes[0].get_x() - 50));
+				case SDLK_LEFT:
+					/*shapes[0].set_x(shapes[0].get_x() - 1);*/
+					shapes[0].set_x(5, "left");
+					std::cout << shapes[0].get_x();
+					sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
+				case SDLK_UP:
+					//shapes[0].set_y(shapes[0].get_y() + 1);
+					shapes[0].set_y(5);
+					std::cout << shapes[0].get_y();
+					sprites[0]->set_y(static_cast<int>(shapes[0].get_y()));
 				default:
 					//sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 50));
 					break;
 				}
 			}
-			//worldController.simulate();
 		}
 		graphicsController.update_window();
-		/*for (int i = 0; i < 3000; i++) {
-			graphicsController.update_window();
-			worldController.simulate();
-			SDL_Event event;
-			/
-
-			for (int i = 0; i < shapes.size(); i++)
-			{
-				sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
-				sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
-			}
+		worldController.simulate();
 
 
-			SDL_Delay(5);
-		}*/
+		for (int i = 0; i < shapes.size(); i++)
+		{
+			sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
+			sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
+		}
+
+		SDL_Delay(5);
+
 	}
 
 	graphicsController.get_window()->destroy();
