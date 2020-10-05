@@ -1,15 +1,13 @@
 #pragma once
-#include <SDL.h>
-#include <SDL_mixer.h>
 #include <stdio.h>
 #include <string>
+#include "../Interfaces/IAudioPlayer.h"
+#include "../Adapters/MusicAdapter.h"
+
 namespace Handlers {
-	class __declspec(dllexport) MusicPlayer{
+	class __declspec(dllexport) MusicPlayer: public Interfaces::IAudioPlayer{
 	public:
-		void init();
-		void play_music();
-		void play_sound();
-		void close();
+		//MusicPlayer() { _audio_adapter = new Adapters::MusicAdapter(); }
 	};
 
 }

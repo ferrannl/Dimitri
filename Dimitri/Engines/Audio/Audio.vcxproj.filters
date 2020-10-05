@@ -33,7 +33,7 @@
     <ClCompile Include="src\Handlers\MusicPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Interfaces\IAudioAdapter.cpp">
+    <ClCompile Include="src\Controllers\AudioController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Interfaces\IAudioPlayer.cpp">
@@ -57,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Interfaces\IAudioPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controllers\AudioController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
