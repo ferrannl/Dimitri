@@ -12,7 +12,6 @@ Models::Audio* Controllers::AudioController::get_audio_by_name(std::string* name
 	return nullptr;
 }
 
-
 void Controllers::AudioController::add_sound(std::string* name, const char* path)
 {
 	_audios->push_back(new Models::Audio(name, new Adapters::SoundAdapter(path)));
