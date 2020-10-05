@@ -5,8 +5,7 @@
 #include <vector>
 
 namespace Models {
-	class __declspec(dllexport) Window
-	{
+	class __declspec(dllexport) Window {
 	private:
 		int _x;
 		int _y;
