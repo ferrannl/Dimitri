@@ -163,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\adapters\KeyCodeAdapter.h" />
-    <ClInclude Include="src\enums\KeyEnum.h" />
     <ClInclude Include="src\events\InputEvent.h" />
     <ClInclude Include="src\events\KeyPress.h" />
     <ClInclude Include="src\events\MousePress.h" />

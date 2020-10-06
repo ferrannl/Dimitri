@@ -1,4 +1,5 @@
 #include "PhysicsCollisionDemo.h"
+#include "../../Engines/Input/src/adapters/KeyCodeAdapter.h"
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
@@ -45,31 +46,34 @@ void PhysicsCollisionDemo::run()
 	{
 		if (SDL_PollEvent(&event) == 1)
 		{
+			KeyCodeAdapter adapter = {};
 			if (event.type == SDL_KEYDOWN)
 			{
-				switch (event.key.keysym.sym)
-				{
-				case SDLK_RIGHT:
-					//std::cout << shapes[0].get_x() + 50;
-					shapes[0].set_x(5, "right");
-					std::cout << shapes[0].get_x();
-					sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
-					break;
-				case SDLK_LEFT:
-					/*shapes[0].set_x(shapes[0].get_x() - 1);*/
-					shapes[0].set_x(5, "left");
-					std::cout << shapes[0].get_x();
-					sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
-				case SDLK_UP:
-					//shapes[0].set_y(shapes[0].get_y() + 1);
-					shapes[0].set_y(5);
-					std::cout << shapes[0].get_y();
-					sprites[0]->set_y(static_cast<int>(shapes[0].get_y()));
-				default:
-					//sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 50));
-					break;
-				}
+				adapter.handleEvent(adapter.translateToEnum(event), sprites[0], shapes[0]);
 			}
+			//	switch (event.key.keysym.sym)
+			//	{
+			//	case SDLK_RIGHT:
+			//		//std::cout << shapes[0].get_x() + 50;
+			//		shapes[0].set_x(5, "right");
+			//		std::cout << shapes[0].get_x();
+			//		sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
+			//		break;
+			//	case SDLK_LEFT:
+			//		/*shapes[0].set_x(shapes[0].get_x() - 1);*/
+			//		shapes[0].set_x(5, "left");
+			//		std::cout << shapes[0].get_x();
+			//		sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
+			//	case SDLK_UP:
+			//		//shapes[0].set_y(shapes[0].get_y() + 1);
+			//		shapes[0].set_y(5);
+			//		std::cout << shapes[0].get_y();
+			//		sprites[0]->set_y(static_cast<int>(shapes[0].get_y()));
+			//	default:
+			//		//sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 50));
+			//		break;
+			//	}
+			//}
 		}
 		graphicsController.update_window();
 		worldController.simulate();

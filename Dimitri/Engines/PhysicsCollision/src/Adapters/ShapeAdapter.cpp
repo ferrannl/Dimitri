@@ -42,7 +42,7 @@ float Adapters::ShapeAdapter::get_y()
 	return _body->GetPosition().y;
 }
 
-void Adapters::ShapeAdapter::set_x(int value, std::string key)
+void Adapters::ShapeAdapter::set_x(std::string key)
 {
 	//_body->SetTransform(b2Vec2(value, _body->GetPosition().y), _body->GetAngle());
 	b2Vec2 vel = _body->GetLinearVelocity();

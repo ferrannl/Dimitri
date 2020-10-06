@@ -1,4 +1,5 @@
-enum keyEnum
+#pragma once
+enum class KeyEnum
 {
 	KEY_PRESS_DOWN,
 	KEY_PRESS_UP,
