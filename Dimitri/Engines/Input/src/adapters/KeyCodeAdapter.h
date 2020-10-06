@@ -5,7 +5,7 @@
 #include "../../../PhysicsCollision/src/Models/Shape.h"
 #include "../../../Graphics/src/Models/Sprite.h"
 #include "../handlers/KeyBoardHandler.h"
-class KeyCodeAdapter
+class __declspec(dllexport) KeyCodeAdapter
 {
 private:
 	KeyBoardHandler _handler;

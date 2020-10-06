@@ -46,10 +46,11 @@ void PhysicsCollisionDemo::run()
 	{
 		if (SDL_PollEvent(&event) == 1)
 		{
-			KeyCodeAdapter adapter = {};
+			KeyCodeAdapter adapter = KeyCodeAdapter();
 			if (event.type == SDL_KEYDOWN)
 			{
-				adapter.handleEvent(adapter.translateToEnum(event), sprites[0], shapes[0]);
+				KeyEnum keyEnum = adapter.translateToEnum(event);
+				adapter.handleEvent(keyEnum, sprites[0], shapes[0]);
 			}
 			//	switch (event.key.keysym.sym)
 			//	{
