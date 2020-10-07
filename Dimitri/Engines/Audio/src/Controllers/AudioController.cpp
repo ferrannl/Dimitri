@@ -14,7 +14,8 @@ Models::Audio* Controllers::AudioController::get_audio_by_name(std::string* name
 
 void Controllers::AudioController::add_sound(std::string* name, const char* path)
 {
-	_audios->push_back(new Models::Audio(name, new Adapters::SoundAdapter(path)));
+	_audios->push_back(new Models::Audio(name, new Adapters::SoundAdapter(path, _channel_counter)));
+	_channel_counter++;
 }
 
 void Controllers::AudioController::add_music(std::string* name, const char* path)
