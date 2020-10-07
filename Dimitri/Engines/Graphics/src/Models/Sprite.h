@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-#include "Texture.h"
+#include "../Facades/TextureFacade.h"
 
 namespace Models {
 	class __declspec(dllexport) Sprite {
@@ -11,11 +11,12 @@ namespace Models {
 		int _width;
 		int _height;
 		const char* _path;
-		Models::Texture* _texture;
+		Facades::TextureFacade* _facade;
+
 	public:
 		Sprite(const int x, const int y, const int z, const int height, const int width, const char* path)
 			: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path } {
-			_texture = nullptr;
+			_facade = { nullptr };
 		}
 
 		const int get_converted_y(int height);
@@ -24,7 +25,7 @@ namespace Models {
 		const int get_y();
 		const int get_width();
 		const int get_height();
-		Models::Texture* get_texture();
+		Facades::TextureFacade* get_texture_facade();
 
 		const char* get_path();
 		void set_x(const int x);
@@ -32,6 +33,7 @@ namespace Models {
 		void set_y(const int y);
 		void set_width(const int width);
 		void set_height(const int height);
-		void set_texture(Models::Texture* texture);
+		void set_facade(Facades::TextureFacade* facade);
+		void create_texture_facade();
 	};
 }

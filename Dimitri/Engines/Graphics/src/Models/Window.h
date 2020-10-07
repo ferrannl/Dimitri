@@ -21,7 +21,6 @@ namespace Models {
 			_facade = new Facades::WindowFacade();
 		}
 
-		void create_sprites();
 		void create();
 		void update();
 		void destroy();

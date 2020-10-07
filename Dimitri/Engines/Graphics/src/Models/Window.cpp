@@ -7,12 +7,13 @@ const std::vector<Models::Sprite*> Models::Window::get_sprites()
 
 void Models::Window::create()
 {
-	_facade->create(_title, _x, _y, _height, _width);
+	_facade->create_window(_title, _x, _y, _height, _width);
+	_facade->create_renderer();
 }
 
 void Models::Window::update()
 {
-	_facade->update_sprites(_sprites);
+	_facade->update_window(_sprites);
 }
 
 void Models::Window::destroy()
@@ -45,12 +46,8 @@ const char* Models::Window::get_title()
 	return _title;
 }
 
-void Models::Window::create_sprites()
-{
-	_facade->create_sprites(_sprites);
-}
-
 void Models::Window::set_sprites(std::vector<Models::Sprite*> sprites)
 {
 	_sprites = sprites;
+	_facade->create_sprites(_sprites);
 }

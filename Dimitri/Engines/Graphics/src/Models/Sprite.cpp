@@ -1,5 +1,6 @@
 #include "Sprite.h"
 
+
 const int Models::Sprite::get_converted_y(const int height)
 {
 	return height - (_y + _height);
@@ -30,9 +31,9 @@ const int Models::Sprite::get_height()
 	return _height;
 }
 
-Models::Texture* Models::Sprite::get_texture()
+Facades::TextureFacade* Models::Sprite::get_texture_facade()
 {
-	return _texture;
+	return _facade;
 }
 
 const char* Models::Sprite::get_path()
@@ -65,7 +66,12 @@ void Models::Sprite::set_height(const int height)
 	_height = height;
 }
 
-void Models::Sprite::set_texture(Models::Texture* texture)
+void Models::Sprite::set_facade(Facades::TextureFacade* facade)
 {
-	_texture = texture;
+	_facade = facade;
+}
+
+void Models::Sprite::create_texture_facade()
+{
+	_facade = { new Facades::TextureFacade };
 }
