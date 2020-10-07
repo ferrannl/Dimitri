@@ -13,11 +13,19 @@ void PhysicsCollisionDemo::start_demo()
 {
 	create_window(1080, 720);
 	std::string path = (SDL_GetBasePath() + std::string{ "resources/images/img.png" });
-	create_sprite(350, 600, 1, 100, 50, path.c_str());
+	create_sprite(350, 600, 1, 50, 50, path.c_str());
 	create_sprite(300, 200, 1, 300, 50, path.c_str());
+	create_sprite(0, 720, 1, 1080, 1, path.c_str());
+	create_sprite(0, -1,1, 1080, 1, path.c_str());
+	create_sprite(-1, 0,1, 1, 720, path.c_str());
+	create_sprite(1080, 0,1, 1, 720, path.c_str());
 	graphicsController.add_sprites(sprites);
-	create_shape(350, 600, 100, 50, true);
+	create_shape(350, 600, 50, 50, true);
 	create_shape(300, 200, 300, 50, false);
+	create_shape(0, 720, 1080, 1, false); // top	
+	create_shape(0, -1, 1080, 1, false); // bottom	
+	create_shape(-1, 0, 1, 720, false); // left
+	create_shape(1080, 0, 1, 720, false); // right
 	run();
 }
 
@@ -51,29 +59,6 @@ void PhysicsCollisionDemo::run()
 				KeyEnum keyEnum = adapter.translateToEnum(event);
 				adapter.handleEvent(keyEnum, sprites[0], shapes[0]);
 			}
-			//	switch (event.key.keysym.sym)
-			//	{
-			//	case SDLK_RIGHT:
-			//		//std::cout << shapes[0].get_x() + 50;
-			//		shapes[0].set_x(5, "right");
-			//		std::cout << shapes[0].get_x();
-			//		sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
-			//		break;
-			//	case SDLK_LEFT:
-			//		/*shapes[0].set_x(shapes[0].get_x() - 1);*/
-			//		shapes[0].set_x(5, "left");
-			//		std::cout << shapes[0].get_x();
-			//		sprites[0]->set_x(static_cast<int>(shapes[0].get_x()));
-			//	case SDLK_UP:
-			//		//shapes[0].set_y(shapes[0].get_y() + 1);
-			//		shapes[0].set_y(5);
-			//		std::cout << shapes[0].get_y();
-			//		sprites[0]->set_y(static_cast<int>(shapes[0].get_y()));
-			//	default:
-			//		//sprites[0]->set_x(static_cast<int>(shapes[0].get_x() + 50));
-			//		break;
-			//	}
-			//}
 		}
 		graphicsController.update_window();
 		worldController.simulate();

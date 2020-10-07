@@ -7,11 +7,13 @@ Adapters::WorldAdapter::WorldAdapter(float width, float height)
 {
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = new b2World(gravity);
+	height = 720.0f;
+	width = 1080.0f;
 
-	create_ground_body(0.0f, height, width, 1.0f); // top	
-	create_ground_body(0.0f, -1.0f, width, 1.0f); // bottom	
-	create_ground_body(-1.0f, 0.0f, 1.0f, height); // left
-	create_ground_body(width, 0.0f, 1.0f, height); // right
+	//create_ground_body(0.0f, height, width, 1.0f); // top	
+	//create_ground_body(0.0f, -20.0f, width, 1.0f); // bottom	
+	//create_ground_body(-1.0f, 0.0f, 1.0f, height); // left
+	//create_ground_body(width, 0.0f, 1.0f, height); // right
 }
 
 void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, float height)
@@ -27,18 +29,27 @@ void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, f
 void Adapters::WorldAdapter::add_shape(Models::Shape shape, float x, float y)
 {
 	b2BodyDef bodyDef;
+	b2FixtureDef fixtureDef;
 	if (shape.is_dynamic)
 	{
+		fixtureDef.density = 1.0f;
 		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(x, y);
+		b2Body* _body = _world->CreateBody(&bodyDef);
+		fixtureDef.shape = &shape.shapeAdapter->get_shape();
+		_body->CreateFixture(&fixtureDef);
+		shape.add_body(_body);
 	}
-	bodyDef.position.Set(x, y);
-	b2Body* _body = _world->CreateBody(&bodyDef);
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &shape.shapeAdapter->get_shape();
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
-	_body->CreateFixture(&fixtureDef);
-	shape.add_body(_body);
+	else {
+		b2BodyDef groundBodyDef;
+		groundBodyDef.position.Set(x, y);
+		b2Body* _groundBody = _world->CreateBody(&groundBodyDef);
+		b2Shape* groundBox = &shape.shapeAdapter->get_shape();
+		//groundBox.SetAsBox(300, 50);
+		_groundBody->CreateFixture(groundBox, 0.0f);
+		shape.add_body(_groundBody);
+	}
+	
 }
 
 void Adapters::WorldAdapter::simulate()

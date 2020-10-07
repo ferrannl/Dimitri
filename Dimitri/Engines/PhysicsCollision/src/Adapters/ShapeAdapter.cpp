@@ -47,19 +47,23 @@ void Adapters::ShapeAdapter::set_x(int value)
 	b2Vec2 vel = _body->GetLinearVelocity();
 	if (value == -1) {
 		vel.x = vel.x - 30.0f;
-		_body->SetLinearVelocity(vel);
+		vel.y = 0;
 	}
 	else {
 		vel.x = vel.x + 30.0f;
-		_body->SetLinearVelocity(vel);
+		vel.y = 0;
 	}
+	_body->SetTransform(_body->GetPosition(), 0);
+	_body->SetLinearVelocity(vel);
 }
 
 void Adapters::ShapeAdapter::set_y()
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = 30;//upwards - don't change x velocity
+	_body->SetTransform(_body->GetPosition(), 0);
 	_body->SetLinearVelocity(vel);
+
 	//_body->SetTransform(b2Vec2(_body->GetPosition().x, value), _body->GetAngle());
 	/*b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = vel.y + value;

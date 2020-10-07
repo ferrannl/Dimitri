@@ -20,6 +20,7 @@ float Models::Shape::get_y()
 	return shapeAdapter->get_y();
 }
 
+
 void Models::Shape::set_x(int value)
 {
 	shapeAdapter->set_x(value);
