@@ -1,13 +1,12 @@
 #include "PhysicsCollisionDemo.h"
-#include "../../Engines/Audio/src/Controllers/AudioController.h"
-#include <SDL.h>
+#include "AudioDemo.h"
+
 
 int main(int argc, char** argv) 
 {
-    Controllers::AudioController audio = {};
-    std::string* name = new std::string{ "test" };
-    audio.add_music(name, (SDL_GetBasePath() + std::string{ "resources/audio/beat.wav" }).c_str());
-    audio.play_audio(name);
+    AudioDemo audio_demo = {};
+    audio_demo.play_music();
+    audio_demo.play_sound();
 
     PhysicsCollisionDemo demo = {};
     demo.start_demo();

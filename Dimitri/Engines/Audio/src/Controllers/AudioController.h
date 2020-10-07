@@ -9,10 +9,11 @@ namespace Controllers {
 	private:
 		std::vector<Models::Audio*>* _audios;
 		Models::Audio* get_audio_by_name(std::string* name);
-
+		int _channel_counter;
 	public:
 		AudioController() {
 			_audios = new std::vector<Models::Audio*>();
+			_channel_counter = 0;
 		}
 
 		void add_sound(std::string* name, const char* path);
