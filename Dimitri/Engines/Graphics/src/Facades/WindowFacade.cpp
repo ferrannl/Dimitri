@@ -117,8 +117,7 @@ void Facades::WindowFacade::create_renderer()
 
 void Facades::WindowFacade::destroy()
 {
-	//Deallocate surfaces
-
+	// we might want to deallocate surfaces in the future
 	//Destroy window
 	SDL_DestroyWindow(_window);
 	_window = NULL;

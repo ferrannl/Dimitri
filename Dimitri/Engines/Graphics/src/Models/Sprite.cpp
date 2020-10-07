@@ -1,6 +1,5 @@
 #include "Sprite.h"
 
-
 const int Models::Sprite::get_converted_y(const int height)
 {
 	return height - (_y + _height);
