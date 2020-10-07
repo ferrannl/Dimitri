@@ -12,8 +12,8 @@ void PhysicsCollisionDemo::start_demo()
 {
 	create_window(1080, 720);
 	std::string path = (SDL_GetBasePath() + std::string{ "resources/images/img.png" });
-	create_sprite(350, 600, 1, 100, 100, path.c_str());
-	create_sprite(300, 200, 1, 300, 100, path.c_str());
+	create_sprite(350, 600, 1, 100, 100, path.c_str(), 45, Enums::FlipEnum::VERTICAL);
+	create_sprite(300, 200, 1, 300, 100, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 100, 100, true);
 	create_shape(300, 200, 300, 100, false);
@@ -26,9 +26,9 @@ void PhysicsCollisionDemo::create_window(int width, int height)
 	worldController.setup_world(width, height);
 }
 
-void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, const char* path)
+void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, const char* path, const float angle, Enums::FlipEnum flipstatus)
 {
-	sprites.push_back(new Models::Sprite{ x, y, z, height, width, path });
+	sprites.push_back(new Models::Sprite{ x, y, z, height, width, path, angle, flipstatus });
 }
 
 void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, bool is_dynamic)

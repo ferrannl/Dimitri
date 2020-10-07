@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enums\FlipEnum.h" />
     <ClCompile Include="src\Facades\TextureFacade.cpp" />
     <ClCompile Include="src\Facades\WindowFacade.cpp" />
     <ClCompile Include="src\Controllers\GraphicsController.cpp" />

@@ -30,6 +30,9 @@
     <ClCompile Include="src\Facades\WindowFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enums\FlipEnum.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Sprite.h">

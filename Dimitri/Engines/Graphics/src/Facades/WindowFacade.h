@@ -13,6 +13,7 @@ namespace Facades {
 
 		bool Init();
 		Facades::TextureFacade* get_if_exists(std::vector<Models::Sprite*> sprites, const char* path);
+		SDL_RendererFlip get_sdl_flip(Enums::FlipEnum flipstatus);
 	public:
 		WindowFacade() {
 			_window = { nullptr };
