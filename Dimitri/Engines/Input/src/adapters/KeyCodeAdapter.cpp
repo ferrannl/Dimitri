@@ -1,11 +1,5 @@
 #include "KeyCodeAdapter.h"
 
-
-
-KeyCodeAdapter::~KeyCodeAdapter()
-{
-}
-
 KeyCodeAdapter::KeyCodeAdapter()
 {
 	_handler = KeyBoardHandler();
@@ -14,19 +8,6 @@ KeyCodeAdapter::KeyCodeAdapter()
 void KeyCodeAdapter::handleEvent(KeyEnum type, Models::Sprite* sprite, Models::Shape shape)
 {
 	_handler.handleEvent(type, sprite, shape);
-	/*switch (type)
-	{
-	case KEY_PRESS_LEFT:
-		break;
-	case KEY_PRESS_RIGHT:
-		break;
-	case KEY_PRESS_DOWN:
-		break;
-	case KEY_PRESS_UP:
-		break;
-	case KEY_PRESS_JUMP:
-		break;
-	}*/
 
 }
 KeyEnum KeyCodeAdapter::translateToEnum(SDL_Event event)

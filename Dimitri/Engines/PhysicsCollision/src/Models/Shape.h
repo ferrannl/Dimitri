@@ -1,5 +1,6 @@
 #pragma once
 #include "../Adapters/ShapeAdapter.h"
+#include <string>
 
 namespace Models {
 	class __declspec(dllexport) Shape {
@@ -11,7 +12,7 @@ namespace Models {
 		void add_body(b2Body* body);
 		float get_x();
 		float get_y();
-		void set_x(std::string key);
-		void set_y(int value);
+		void set_x(int value);
+		void set_y();
 	};
 }

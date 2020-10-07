@@ -20,12 +20,12 @@ float Models::Shape::get_y()
 	return shapeAdapter->get_y();
 }
 
-void Models::Shape::set_x(std::string key)
+void Models::Shape::set_x(int value)
 {
-	shapeAdapter->set_x(key);
+	shapeAdapter->set_x(value);
 }
 
-void Models::Shape::set_y(int value)
+void Models::Shape::set_y()
 {
-	shapeAdapter->set_y(value);
+	shapeAdapter->set_y();
 }

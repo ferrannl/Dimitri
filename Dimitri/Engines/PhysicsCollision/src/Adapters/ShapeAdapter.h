@@ -17,7 +17,7 @@ namespace Adapters {
 		void add_body(b2Body* body);
 		float get_x();
 		float get_y();
-		void set_x(std::string key);
-		void set_y(int value);
+		void set_x(int value);
+		void set_y();
 	};
 }

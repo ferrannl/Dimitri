@@ -5,7 +5,6 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
-	inputEvent = InputEvent::Instance();
 	sprites = std::vector<Models::Sprite*>{};
 	shapes = std::vector<Models::Shape>{};
 }

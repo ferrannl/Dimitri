@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "../enums/KeyEnum.cpp"
+#include <string>
 #include <vector>
 #include "../../../PhysicsCollision/src/Models/Shape.h"
 #include "../../../Graphics/src/Models/Sprite.h"
@@ -12,7 +13,6 @@ private:
 
 public:
 	KeyCodeAdapter();
-	~KeyCodeAdapter();
 	KeyEnum translateToEnum(SDL_Event event);
 	void handleEvent(KeyEnum type, Models::Sprite* sprite, Models::Shape shape);
 };

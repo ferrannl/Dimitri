@@ -42,23 +42,24 @@ float Adapters::ShapeAdapter::get_y()
 	return _body->GetPosition().y;
 }
 
-void Adapters::ShapeAdapter::set_x(std::string key)
+void Adapters::ShapeAdapter::set_x(int value)
 {
-	//_body->SetTransform(b2Vec2(value, _body->GetPosition().y), _body->GetAngle());
 	b2Vec2 vel = _body->GetLinearVelocity();
-	if (key == "left") {
+	if (value == -1) {
 		vel.x = vel.x - 30.0f;
-		vel.y = 0;
+		_body->SetLinearVelocity(vel);
 	}
 	else {
 		vel.x = vel.x + 30.0f;
+		_body->SetLinearVelocity(vel);
 	}
-	_body->SetLinearVelocity(vel);
-	//std::cout << _body->GetPosition().x;
 }
 
-void Adapters::ShapeAdapter::set_y(int value)
+void Adapters::ShapeAdapter::set_y()
 {
+	b2Vec2 vel = _body->GetLinearVelocity();
+	vel.y = 30;//upwards - don't change x velocity
+	_body->SetLinearVelocity(vel);
 	//_body->SetTransform(b2Vec2(_body->GetPosition().x, value), _body->GetAngle());
 	/*b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = vel.y + value;
