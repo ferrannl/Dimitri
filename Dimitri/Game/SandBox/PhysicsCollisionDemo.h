@@ -6,7 +6,7 @@ class PhysicsCollisionDemo {
 public: 
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
-	std::vector<Models::Sprite*> sprites;
+	std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites;
 	std::vector<Models::Shape> shapes;
 	PhysicsCollisionDemo();
 	void start_demo();

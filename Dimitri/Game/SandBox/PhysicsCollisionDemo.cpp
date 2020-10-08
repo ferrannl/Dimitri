@@ -4,7 +4,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
-	sprites = std::vector<Models::Sprite*>{};
+	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
 	shapes = std::vector<Models::Shape>{};
 }
 
@@ -22,13 +22,13 @@ void PhysicsCollisionDemo::start_demo()
 
 void PhysicsCollisionDemo::create_window(int width, int height)
 {
-	graphicsController.create_window("Test", 0, 0, height, width);
+	graphicsController.create_window("Test", height, width);
 	worldController.setup_world(width, height);
 }
 
 void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, const char* path, const float angle, Enums::FlipEnum flipstatus)
 {
-	sprites.push_back(new Models::Sprite{ x, y, z, height, width, path, angle, flipstatus });
+	sprites->push_back(std::make_unique<Models::Sprite>( x, y, z, height, width, path, angle, flipstatus ));
 }
 
 void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, bool is_dynamic)
@@ -44,9 +44,9 @@ void PhysicsCollisionDemo::run()
 		worldController.simulate();
 		for (int i = 0; i < shapes.size(); i++)
 		{
-			sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
-			sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
-			sprites[i]->set_angle(static_cast<int>(shapes[i].get_angle()));
+			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
+			sprites->at(i)->set_y(static_cast<int>(shapes[i].get_y()));
+			sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
 		}
 
 		SDL_Delay(5);

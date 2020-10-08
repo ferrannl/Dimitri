@@ -1,6 +1,5 @@
 #include "TextureFacade.h"
 
-// constructor
 Facades::TextureFacade::TextureFacade() {
     _texture = { nullptr };
 }
@@ -40,10 +39,10 @@ Facades::TextureFacade& Facades::TextureFacade::operator=(Facades::TextureFacade
 	return *this;
 }
 
-void Facades::TextureFacade::create_texture(SDL_Renderer* renderer, const char* path)
+void Facades::TextureFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer, const std::string path)
 {
 	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path);
+	SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 
 	if (loadedSurface == NULL)
 	{
@@ -52,7 +51,7 @@ void Facades::TextureFacade::create_texture(SDL_Renderer* renderer, const char* 
 	else
 	{
 		//Create texture from surface pixels
-		_texture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+		_texture = std::make_shared<SDL_Texture>(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface), SDL_DestroyTexture);
 
 		if (_texture == NULL)
 		{
@@ -66,11 +65,11 @@ void Facades::TextureFacade::create_texture(SDL_Renderer* renderer, const char* 
 	loadedSurface = NULL;
 }
 
-SDL_Texture* Facades::TextureFacade::get_texture()
+std::shared_ptr<SDL_Texture> Facades::TextureFacade::get_texture()
 {
 	return _texture;
 }
 
 Facades::TextureFacade::~TextureFacade() {
-	delete _texture;
+	_texture = { nullptr };
 }

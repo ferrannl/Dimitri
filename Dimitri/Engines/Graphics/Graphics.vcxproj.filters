@@ -33,7 +33,7 @@
     <ClCompile Include="src\Enums\FlipEnum.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RAIIs\SpriteRAII.cpp">
+    <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="src\Controllers\GraphicsController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RAIIs\SpriteRAII.h">
+    <ClInclude Include="src\Adapters\FlipEnumAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

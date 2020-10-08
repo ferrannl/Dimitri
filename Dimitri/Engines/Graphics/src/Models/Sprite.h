@@ -7,7 +7,6 @@
 namespace Models {
 	class __declspec(dllexport) Sprite {
 	
-
 	private:
 		int _x;
 		int _y;
@@ -15,15 +14,12 @@ namespace Models {
 		int _width;
 		int _height;
 		float _angle;
-		const char* _path;
+		std::string _path;
 		std::shared_ptr<Facades::TextureFacade> _facade;
 		Enums::FlipEnum _flipstatus;
 
 	public:
-		Sprite(const int x, const int y, const int z, const int height, const int width, const char* path, const float angle, const Enums::FlipEnum flipstatus)
-			: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus } {
-			_facade = { nullptr };
-		}
+		Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus);
 
 		const int get_converted_y(int height);
 		const int get_x();
@@ -34,8 +30,8 @@ namespace Models {
 		const float get_angle();
 		std::shared_ptr<Facades::TextureFacade> get_texture_facade();
 		Enums::FlipEnum get_flip_status();
+		const std::string get_path();
 
-		const char* get_path();
 		void set_x(const int x);
 		void set_z(const int z);
 		void set_y(const int y);
@@ -45,13 +41,5 @@ namespace Models {
 		void set_flip_status(Enums::FlipEnum flipstatus);
 		void set_facade(std::shared_ptr<Facades::TextureFacade> facade);
 		void create_texture_facade();
-
-		// forbid copying
-		Sprite(const Models::Sprite& sprite) = delete;
-		Sprite& operator=(const Models::Sprite& sprite) = delete;
-
-		// allow move
-		Sprite(Models::Sprite&& sprite);
-		Sprite& operator=(Models::Sprite&& sprite);
 	};
 }

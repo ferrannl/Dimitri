@@ -9,7 +9,7 @@
 namespace Facades {
 	class __declspec(dllexport) TextureFacade {
 	private:
-		SDL_Texture* _texture;
+		std::shared_ptr<SDL_Texture> _texture;
 
 	public:
 		TextureFacade();
@@ -22,8 +22,8 @@ namespace Facades {
 		TextureFacade(Facades::TextureFacade&& facade);
 		TextureFacade& operator=(Facades::TextureFacade&& facade);
 
-		void create_texture(SDL_Renderer* renderer, const char* path);
-		SDL_Texture* get_texture();
+		void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer, const std::string path);
+		std::shared_ptr<SDL_Texture> get_texture();
 
 		~TextureFacade();
 	};
