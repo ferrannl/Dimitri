@@ -2,9 +2,12 @@
 #include <SDL.h>
 #include "../Facades/TextureFacade.h"
 #include "../Enums/FlipEnum.h"
+#include <memory>
 
 namespace Models {
 	class __declspec(dllexport) Sprite {
+	
+
 	private:
 		int _x;
 		int _y;
@@ -13,7 +16,7 @@ namespace Models {
 		int _height;
 		float _angle;
 		const char* _path;
-		Facades::TextureFacade* _facade;
+		std::shared_ptr<Facades::TextureFacade> _facade;
 		Enums::FlipEnum _flipstatus;
 
 	public:
@@ -29,7 +32,7 @@ namespace Models {
 		const int get_width();
 		const int get_height();
 		const float get_angle();
-		Facades::TextureFacade* get_texture_facade();
+		std::shared_ptr<Facades::TextureFacade> get_texture_facade();
 		Enums::FlipEnum get_flip_status();
 
 		const char* get_path();
@@ -40,7 +43,15 @@ namespace Models {
 		void set_height(const int height);
 		void set_angle(const float angle);
 		void set_flip_status(Enums::FlipEnum flipstatus);
-		void set_facade(Facades::TextureFacade* facade);
+		void set_facade(std::shared_ptr<Facades::TextureFacade> facade);
 		void create_texture_facade();
+
+		// forbid copying
+		Sprite(const Models::Sprite& sprite) = delete;
+		Sprite& operator=(const Models::Sprite& sprite) = delete;
+
+		// allow move
+		Sprite(Models::Sprite&& sprite);
+		Sprite& operator=(Models::Sprite&& sprite);
 	};
 }
