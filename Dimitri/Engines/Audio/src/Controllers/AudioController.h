@@ -11,10 +11,7 @@ namespace Controllers {
 		Models::Audio* get_audio_by_name(std::string* name);
 		int _channel_counter;
 	public:
-		AudioController() {
-			_audios = new std::vector<Models::Audio*>();
-			_channel_counter = 0;
-		}
+		AudioController();
 
 		void add_sound(std::string* name, const char* path);
 		void add_music(std::string* name, const char* path);

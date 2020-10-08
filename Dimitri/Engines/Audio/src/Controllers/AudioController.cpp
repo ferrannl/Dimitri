@@ -12,6 +12,12 @@ Models::Audio* Controllers::AudioController::get_audio_by_name(std::string* name
 	return nullptr;
 }
 
+Controllers::AudioController::AudioController()
+{
+	_audios = new std::vector<Models::Audio*>();
+	_channel_counter = 0;
+}
+
 void Controllers::AudioController::add_sound(std::string* name, const char* path)
 {
 	_audios->push_back(new Models::Audio(name, new Facades::SoundFacade(path, _channel_counter)));

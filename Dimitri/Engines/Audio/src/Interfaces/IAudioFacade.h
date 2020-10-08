@@ -5,7 +5,7 @@ namespace Interfaces {
 	protected:
 		const char* _path;
 	public:
-		IAudioFacade(const char* path) : _path{ path } {}
+		IAudioFacade(const char* path);
 		virtual void play() = 0;
 		virtual void resume() = 0;
 		virtual void pause() = 0;

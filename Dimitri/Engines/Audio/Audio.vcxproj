@@ -146,6 +146,7 @@
     <ClCompile Include="src\Facades\MusicFacade.cpp" />
     <ClCompile Include="src\Facades\SoundFacade.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Interfaces\IAudioFacade.cpp" />
     <ClCompile Include="src\Models\Audio.cpp" />
     <ClCompile Include="src\Models\Audio.h" />
   </ItemGroup>

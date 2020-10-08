@@ -9,7 +9,7 @@ namespace Models {
 		Interfaces::IAudioFacade* _audio_facade;
 	public:
 		std::string* get_name();
-		Audio(std::string* name, Interfaces::IAudioFacade* audio_facade) : _name{ name }, _audio_facade { audio_facade } {};
+		Audio(std::string* name, Interfaces::IAudioFacade* audio_facade);
 		Interfaces::IAudioFacade* get_audio_facade();
 	};
 }
