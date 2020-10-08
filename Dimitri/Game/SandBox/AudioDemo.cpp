@@ -17,13 +17,13 @@ void AudioDemo::play_music()
 
 void AudioDemo::play_sound()
 {
-    std::string* name2 = new std::string{ "sound" };
-    _audio_controller.add_sound(name2, (SDL_GetBasePath() + std::string{ "assets/audio/beat.wav" }).c_str());
-    _audio_controller.play_audio(name2);
+    std::string* name = new std::string{ "sound" };
+    _audio_controller.add_sound(name, (SDL_GetBasePath() + std::string{ "assets/audio/beat.wav" }).c_str());
+    _audio_controller.play_audio(name);
     SDL_Delay(250);
-    _audio_controller.pause_audio(name2);
+    _audio_controller.pause_audio(name);
     SDL_Delay(250);
-    _audio_controller.resume_audio(name2);
+    _audio_controller.resume_audio(name);
     SDL_Delay(250);
-    _audio_controller.stop_audio(name2);
+    _audio_controller.stop_audio(name);
 }
