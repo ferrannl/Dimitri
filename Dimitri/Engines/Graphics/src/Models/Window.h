@@ -16,11 +16,8 @@ namespace Models {
 		std::vector<Sprite*> _sprites;
 
 	public:
-		Window(const char* title, const int x, const int y, const int height, const int width)
-			: _x{ x }, _y{ y }, _height{ height }, _width{ width }, _title{ title } {
-			_facade = new Facades::WindowFacade();
-		}
-
+		Window(const char* title, const int x, const int y, const int height, const int width);
+			
 		void create();
 		void update();
 		void destroy();

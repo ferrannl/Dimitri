@@ -5,6 +5,10 @@ const std::vector<Models::Sprite*> Models::Window::get_sprites()
 	return _sprites;
 }
 
+Models::Window::Window(const char* title, const int x, const int y, const int height, const int width) : _x{ x }, _y{ y }, _height{ height }, _width{ width }, _title{ title } {
+	_facade = new Facades::WindowFacade();
+}
+
 void Models::Window::create()
 {
 	_facade->create_window(_title, _x, _y, _height, _width);
