@@ -21,42 +21,27 @@
     <ClCompile Include="src\Models\Audio.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\MusicAdapter.cpp">
+    <ClCompile Include="src\Controllers\AudioController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\SoundAdapter.cpp">
+    <ClCompile Include="src\Facades\SoundFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Handlers\SoundPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Handlers\MusicPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Interfaces\IAudioAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Interfaces\IAudioPlayer.cpp">
+    <ClCompile Include="src\Facades\MusicFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Adapters\SoundAdapter.h">
+    <ClInclude Include="src\Controllers\AudioController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Adapters\MusicAdapter.h">
+    <ClInclude Include="src\Interfaces\IAudioFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Handlers\SoundPlayer.h">
+    <ClInclude Include="src\Facades\SoundFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Handlers\MusicPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Interfaces\IAudioAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Interfaces\IAudioPlayer.h">
+    <ClInclude Include="src\Facades\MusicFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
