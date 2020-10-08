@@ -1,11 +1,9 @@
 #pragma once
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-#include "../../Engines/Input/src/events/InputEvent.h"
 
 class PhysicsCollisionDemo {
 public: 
-	InputEvent* inputEvent;
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
 	std::vector<Models::Sprite*> sprites;

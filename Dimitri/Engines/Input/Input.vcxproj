@@ -150,18 +150,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="adapters\MouseFacade.cpp" />
     <ClCompile Include="src\adapters\EventFacade.cpp" />
+    <ClCompile Include="src\adapters\KeyBoardAdapter.cpp" />
+    <ClCompile Include="src\adapters\MouseAdapter.cpp" />
     <ClCompile Include="src\enums\EventEnum.cpp" />
     <ClCompile Include="src\handlers\MouseHandler.cpp" />
     <ClCompile Include="src\handlers\KeyBoardHandler.cpp" />
-    <ClCompile Include="src\interfaces\IInputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="adapters\MouseFacade.h" />
     <ClInclude Include="src\adapters\EventFacade.h" />
+    <ClInclude Include="src\adapters\KeyBoardAdapter.h" />
+    <ClInclude Include="src\adapters\MouseAdapter.h" />
     <ClInclude Include="src\handlers\MouseHandler.h" />
     <ClInclude Include="src\handlers\KeyBoardHandler.h" />
+    <ClInclude Include="src\interfaces\IInputAdapter.h" />
     <ClInclude Include="src\interfaces\IInputHandler.h" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,5 @@
 class __declspec(dllexport) IInputHandler
 {
 public:
-	IInputHandler();
 	virtual void handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape)const = 0 ;
 };

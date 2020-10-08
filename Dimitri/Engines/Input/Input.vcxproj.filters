@@ -18,9 +18,6 @@
     <ClCompile Include="src\handlers\MouseHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\interfaces\IInputHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\enums\EventEnum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,7 +27,10 @@
     <ClCompile Include="src\adapters\EventFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="adapters\MouseFacade.cpp">
+    <ClCompile Include="src\adapters\KeyBoardAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\adapters\MouseAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,13 @@
     <ClInclude Include="src\adapters\EventFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="adapters\MouseFacade.h">
+    <ClInclude Include="src\adapters\KeyBoardAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\adapters\MouseAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interfaces\IInputAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

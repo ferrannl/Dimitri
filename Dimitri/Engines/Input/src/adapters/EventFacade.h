@@ -8,10 +8,15 @@
 #include "../handlers/KeyBoardHandler.h"
 #include <tuple>
 #include "../handlers/MouseHandler.h"
+#include "../interfaces/IInputAdapter.h"
+#include "KeyBoardAdapter.h"
+
 class __declspec(dllexport) EventFacade
 {
 private:
-	std::unique_ptr<IInputHandler> _handler;
+	std::shared_ptr<IInputHandler> _handler;
+	std::shared_ptr<IInputAdapter> _adapter;
+
 public:
 	EventFacade();
 	EventEnum translate_to_enum(const SDL_Event event);
