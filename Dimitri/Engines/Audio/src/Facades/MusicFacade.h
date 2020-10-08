@@ -13,5 +13,13 @@ namespace Facades {
 		void resume();
 		void pause();
 		void stop();
+
+		// forbid copying and moving
+		MusicFacade(const MusicFacade& music_facade) = delete;
+		MusicFacade& operator=(const MusicFacade& music_facade) = delete;
+		MusicFacade(MusicFacade&& music_facade) = delete;
+		MusicFacade& operator=(MusicFacade&& music_facade) = delete;
+
+		~MusicFacade();
 	};
 }

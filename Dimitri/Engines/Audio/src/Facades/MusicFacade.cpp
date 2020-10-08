@@ -42,3 +42,8 @@ void Facades::MusicFacade::stop()
 {
 	Mix_HaltMusic();
 }
+
+Facades::MusicFacade::~MusicFacade()
+{
+	delete _music;
+}

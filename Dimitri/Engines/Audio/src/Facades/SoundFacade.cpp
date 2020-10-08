@@ -42,3 +42,8 @@ void Facades::SoundFacade::stop()
 {
 	Mix_HaltChannel(_channel);
 }
+
+Facades::SoundFacade::~SoundFacade()
+{
+	delete _sound;
+}

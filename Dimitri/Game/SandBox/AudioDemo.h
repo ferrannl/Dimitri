@@ -3,10 +3,10 @@
 
 class AudioDemo {
 private:
-	Controllers::AudioController _audio_controller;
+	Controllers::AudioController* _audio_controller;
 public:
 	AudioDemo() {
-		_audio_controller = {};
+		_audio_controller = new Controllers::AudioController();
 	}
 	void play_music();
 	void play_sound();

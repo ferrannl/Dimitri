@@ -7,12 +7,20 @@ namespace Facades {
 	class __declspec(dllexport) SoundFacade : public Interfaces::IAudioFacade {
 	private:
 		Mix_Chunk* _sound = NULL;
-		int _channel;
+		const int _channel;
 	public:
 		SoundFacade(const char* path, int channel);
 		void play();
 		void resume();
 		void pause();
 		void stop();
+
+		// forbid copying and moving
+		SoundFacade(const SoundFacade& sound_facade) = delete;
+		SoundFacade& operator=(const SoundFacade& sound_facade) = delete;
+		SoundFacade(SoundFacade&& sound_facade) = delete;
+		SoundFacade& operator=(SoundFacade&& sound_facade) = delete;
+
+		~SoundFacade();
 	};
 }
