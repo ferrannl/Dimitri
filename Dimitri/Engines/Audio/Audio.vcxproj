@@ -156,6 +156,9 @@
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Interfaces\IAudioFacade.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramAudioEngine.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
