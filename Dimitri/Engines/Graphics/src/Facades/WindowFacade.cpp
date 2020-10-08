@@ -66,7 +66,7 @@ void Facades::WindowFacade::update_window(std::vector<Models::Sprite*> sprites)
 				//Render texture to screen
 				if (sprite->get_texture_facade()->get_texture()) {
 					SDL_Point center = { 0,0 };
-					SDL_RenderCopyEx(_renderer, sprite->get_texture_facade()->get_texture(), NULL, &rect, sprite->get_angle(), &center, get_sdl_flip(sprite->get_flip_status()));
+					SDL_RenderCopyEx(_renderer, sprite->get_texture_facade()->get_texture(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
 				}
 				objectcounter++;
 			}
@@ -87,18 +87,6 @@ Facades::TextureFacade* Facades::WindowFacade::get_if_exists(std::vector<Models:
 	}
 
 	return nullptr;
-}
-
-SDL_RendererFlip Facades::WindowFacade::get_sdl_flip(Enums::FlipEnum flipstatus)
-{
-	switch (flipstatus) {
-	case Enums::FlipEnum::HORIZONTAL:
-		return SDL_FLIP_HORIZONTAL;
-	case Enums::FlipEnum::VERTICAL:
-		return SDL_FLIP_VERTICAL;
-	default:
-		return SDL_FLIP_NONE;
-	}
 }
 
 void Facades::WindowFacade::create_renderer()

@@ -4,20 +4,21 @@
 #include <iostream>
 #include "TextureFacade.h"
 #include <vector>
+#include "../Adapters/FlipEnumAdapter.h"
 
 namespace Facades {
 	class __declspec(dllexport) WindowFacade {
 	private:
 		SDL_Window* _window;
 		SDL_Renderer* _renderer;
-
+		Adapters::FlipEnumAdapter _flip_enum_adapter;
 		bool Init();
 		Facades::TextureFacade* get_if_exists(std::vector<Models::Sprite*> sprites, const char* path);
-		SDL_RendererFlip get_sdl_flip(Enums::FlipEnum flipstatus);
 	public:
 		WindowFacade() {
 			_window = { nullptr };
 			_renderer = { nullptr };
+			_flip_enum_adapter = {};
 		}
 
 		void create_renderer();
