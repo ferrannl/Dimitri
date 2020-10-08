@@ -8,5 +8,5 @@
 class __declspec(dllexport) KeyBoardHandler : public IInputHandler {
 public:
 	KeyBoardHandler();
-	void handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape);
+	void handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const;
 };

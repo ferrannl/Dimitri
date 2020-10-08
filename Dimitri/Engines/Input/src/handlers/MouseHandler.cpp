@@ -6,16 +6,15 @@ MouseHandler::MouseHandler()
 	_facade = new MouseFacade();
 }
 
-void MouseHandler::handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape)
+void MouseHandler::handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const
 {
+	int x, y;
 	switch (num)
 	{
 	case EventEnum::MOUSE_PRESSED:
-		int x, y;
 		std::tie(x,y) = _facade->get_mouse_position();
 		break;
 	case EventEnum::MOUSE_MOTION:
-		int x, y;
 		std::tie(x, y) = _facade->get_mouse_position();
 		break;
 	default:

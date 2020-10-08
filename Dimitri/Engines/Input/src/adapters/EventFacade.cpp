@@ -26,7 +26,7 @@ EventEnum EventFacade::translateToEnum(SDL_Event event)
 		}
 }
 
-void EventFacade::handle_input(SDL_Event event, Models::Sprite* sprite, Models::Shape shape)
+void EventFacade::handle_input(const SDL_Event event,  Models::Sprite* sprite, Models::Shape shape) 
 {
 	EventEnum eventEnum = translateToEnum(event);
 

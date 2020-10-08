@@ -164,6 +164,9 @@
     <ClInclude Include="src\handlers\KeyBoardHandler.h" />
     <ClInclude Include="src\interfaces\IInputHandler.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="adapters\ClassDiagram.cd" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -2,4 +2,4 @@
 
 IInputHandler::IInputHandler() {}
 
-void IInputHandler::handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape) {}
+void IInputHandler::handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape)const {}

@@ -4,7 +4,7 @@ KeyBoardHandler::KeyBoardHandler()
 {
 }
 
-void KeyBoardHandler::handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape)
+void KeyBoardHandler::handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const
 {
 	switch (num)
 	{

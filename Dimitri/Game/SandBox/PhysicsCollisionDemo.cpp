@@ -52,12 +52,9 @@ void PhysicsCollisionDemo::run()
 	while (true)
 	{
 		if (SDL_PollEvent(&event) != 1)
-		{	
-			if (event.type == SDL_MOUSEBUTTONDOWN)
-			{
-				EventFacade adapter = EventFacade();
-				adapter.handle_input(event, sprites[0], shapes[0]);
-			}
+		{			
+			EventFacade adapter = EventFacade();
+			adapter.handle_input(event, sprites[0], shapes[0]);	
 		}
 		for (int i = 0; i < shapes.size(); i++)
 		{

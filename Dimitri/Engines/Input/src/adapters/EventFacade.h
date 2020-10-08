@@ -14,6 +14,6 @@ private:
 	IInputHandler* _handler;
 public:
 	EventFacade();
-	EventEnum translateToEnum(SDL_Event event);
-	void handle_input(SDL_Event event, Models::Sprite* sprite, Models::Shape shape);
+	EventEnum translate_to_enum( SDL_Event event);
+	void handle_input(const SDL_Event event , Models::Sprite* sprite, Models::Shape shape);
 };

@@ -7,5 +7,5 @@ private:
 	MouseFacade* _facade;
 public:
 	MouseHandler();
-	void handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape);
+	void handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const;
 };
