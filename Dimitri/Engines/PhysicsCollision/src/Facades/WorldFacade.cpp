@@ -1,9 +1,9 @@
-#include "WorldAdapter.h"
+#include "WorldFacade.h"
 #include <iostream>
 
-Adapters::WorldAdapter::WorldAdapter() {}
+Facades::WorldFacade::WorldFacade() {}
 
-Adapters::WorldAdapter::WorldAdapter(float width, float height)
+Facades::WorldFacade::WorldFacade(float width, float height)
 {
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = new b2World(gravity);
@@ -14,7 +14,7 @@ Adapters::WorldAdapter::WorldAdapter(float width, float height)
 	create_ground_body(width, 0.0f, 1.0f, height); // right
 }
 
-void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, float height)
+void Facades::WorldFacade::create_ground_body(float x, float y, float width, float height)
 {
 	b2BodyDef groundBodyDef;
 	groundBodyDef.position.Set(x, y);
@@ -24,24 +24,24 @@ void Adapters::WorldAdapter::create_ground_body(float x, float y, float width, f
 	_groundBody->CreateFixture(&groundBox, 0.0f);
 }
 
-void Adapters::WorldAdapter::add_shape(Models::Shape shape, float x, float y)
+void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
 {
 	b2BodyDef bodyDef;
-	if (shape.is_dynamic)
+	if (shape->is_dynamic)
 	{
 		bodyDef.type = b2_dynamicBody;
 	}
 	bodyDef.position.Set(x, y);
 	b2Body* _body = _world->CreateBody(&bodyDef);
 	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &shape.shapeAdapter->get_shape();
+	fixtureDef.shape = shape->get_shape_facade()->get_shape();
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	_body->CreateFixture(&fixtureDef);
-	shape.add_body(_body);
+	shape->add_body(new Models::Body(new Facades::BodyFacade(_body)));
 }
 
-void Adapters::WorldAdapter::simulate()
+void Facades::WorldFacade::simulate()
 {
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;

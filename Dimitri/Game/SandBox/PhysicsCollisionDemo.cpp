@@ -11,8 +11,8 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 void PhysicsCollisionDemo::start_demo()
 {
 	create_window(1080, 720);
-	std::string path = (SDL_GetBasePath() + std::string{ "resources/images/img.png" });
-	create_sprite(350, 600, 1, 100, 100, path.c_str(), 45, Enums::FlipEnum::VERTICAL);
+	std::string path = (SDL_GetBasePath() + std::string{ "assets/images/img.png" });
+	create_sprite(350, 600, 1, 100, 100, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
 	create_sprite(300, 200, 1, 300, 100, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 100, 100, true);
@@ -46,6 +46,7 @@ void PhysicsCollisionDemo::run()
 		{
 			sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
 			sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
+			sprites[i]->set_angle(static_cast<int>(shapes[i].get_angle()));
 		}
 
 		SDL_Delay(5);

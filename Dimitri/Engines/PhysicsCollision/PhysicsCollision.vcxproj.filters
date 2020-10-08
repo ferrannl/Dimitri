@@ -33,10 +33,16 @@
     <ClCompile Include="src\Models\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\ShapeAdapter.cpp">
+    <ClCompile Include="src\Facades\ShapeFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\WorldAdapter.cpp">
+    <ClCompile Include="src\Facades\WorldFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Body.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Facades\BodyFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,10 +65,16 @@
     <ClInclude Include="src\Models\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Adapters\ShapeAdapter.h">
+    <ClInclude Include="src\Facades\ShapeFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Adapters\WorldAdapter.h">
+    <ClInclude Include="src\Facades\WorldFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Facades\BodyFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
