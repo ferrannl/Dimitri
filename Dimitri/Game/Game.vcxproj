@@ -18,59 +18,35 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Facades\BodyFacade.cpp" />
-    <ClCompile Include="src\Models\Body.cpp" />
-    <ClCompile Include="src\Models\Polygon.cpp" />
-    <ClCompile Include="src\Models\Shape.cpp" />
-    <ClCompile Include="src\Facades\ShapeFacade.cpp" />
-    <ClCompile Include="src\Controllers\ShapeController.cpp" />
-    <ClCompile Include="src\Factories\ShapeFactory.cpp" />
-    <ClCompile Include="src\Models\World.cpp" />
-    <ClCompile Include="src\Facades\WorldFacade.cpp" />
-    <ClCompile Include="src\Controllers\WorldController.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Facades\BodyFacade.h" />
-    <ClInclude Include="src\Models\Body.h" />
-    <ClInclude Include="src\Models\Polygon.h" />
-    <ClInclude Include="src\Models\Shape.h" />
-    <ClInclude Include="src\Facades\ShapeFacade.h" />
-    <ClInclude Include="src\Controllers\ShapeController.h" />
-    <ClInclude Include="src\Factories\ShapeFactory.h" />
-    <ClInclude Include="src\Models\World.h" />
-    <ClInclude Include="src\Facades\WorldFacade.h" />
-    <ClInclude Include="src\Controllers\WorldController.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{115c5cee-bb6e-455d-8c76-b0b373c6f8bc}</ProjectGuid>
-    <RootNamespace>PhysicsCollision</RootNamespace>
+    <ProjectGuid>{538a7dba-273b-4c35-bb1e-e60c866663c9}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -99,7 +75,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Ferran\Documents\Git_repos\dimitri\Dimitri\Engines\libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -163,6 +138,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="resources\images\img.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
