@@ -167,7 +167,7 @@
     <ClInclude Include="src\interfaces\IInputHandler.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="adapters\ClassDiagram.cd" />
+    <None Include="src\InputEngineClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -58,6 +58,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="adapters\ClassDiagram.cd" />
+    <None Include="src\InputEngineClassDiagram.cd" />
   </ItemGroup>
 </Project>

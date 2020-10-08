@@ -1,2 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EventFacade">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <AssociationLine Name="_adapter" Type="std::shared_ptr&lt;_Ty&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.023" Y="0.1" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAABAAAAAARA=</HashCode>
+      <FileName>src\adapters\EventFacade.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_adapter" />
+      <Field Name="_handler" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IInputAdapter">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\interfaces\IInputAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IInputHandler">
+    <Position X="7.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\interfaces\IInputHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyBoardAdapter">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\adapters\KeyBoardAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KeyBoardHandler">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>src\handlers\KeyBoardHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MouseAdapter">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <InheritanceLine Type="IInputAdapter" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="5.603" />
+        <Point X="8" Y="6.483" />
+        <Point X="7.109" Y="6.483" />
+        <Point X="7.109" Y="6.5" />
+        <Point X="7.25" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>src\adapters\MouseAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MouseHandler">
+    <Position X="6" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAA=</HashCode>
+      <FileName>src\handlers\MouseHandler.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_facade" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="std::shared_ptr&lt;_Ty&gt;" Collapsed="true">
+    <Position X="14.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAEAAAIAgAAEAEAAICgAQAgAAAAAAA=</HashCode>
+      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\memory</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="std::unique_ptr&lt;_Ty, _Dx&gt;" Collapsed="true">
+    <Position X="3" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAEAAAAAAgEAEAAQgAAAAAAAAAAAQAgAAAAAIg=</HashCode>
+      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\memory</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EventEnum">
+    <Position X="10.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIQAAAEAAAEAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>src\enums\EventEnum.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
