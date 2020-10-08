@@ -5,7 +5,7 @@ std::string* Models::Audio::get_name()
 	return _name;
 }
 
-Interfaces::IAudioAdapter* Models::Audio::get_audio_adapter()
+Interfaces::IAudioFacade* Models::Audio::get_audio_facade()
 {
-	return _audio_adapter;
+	return _audio_facade;
 }

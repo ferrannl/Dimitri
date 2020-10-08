@@ -5,7 +5,7 @@ namespace Models {
 	class __declspec(dllexport) Shape {
 	public:
 		bool is_dynamic;
-		Adapters::ShapeAdapter* shapeAdapter;
+		Facades::ShapeAdapter* shapeAdapter;
 		Shape();
 		Shape(std::vector<std::pair<float, float>> positions);
 		void add_body(b2Body* body);

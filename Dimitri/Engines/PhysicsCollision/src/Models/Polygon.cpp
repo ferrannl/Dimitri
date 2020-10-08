@@ -8,7 +8,7 @@ Models::Polygon::Polygon()
 Models::Polygon::Polygon(std::vector<std::pair<float, float>> positions, bool is_dynamic)
 {
 	this->is_dynamic = is_dynamic;
-	shapeAdapter = new Adapters::ShapeAdapter{ "polygon" , positions };
+	shapeAdapter = new Facades::ShapeAdapter{ "polygon" , positions };
 }
 
 void Models::Polygon::add_body(b2Body* body)
