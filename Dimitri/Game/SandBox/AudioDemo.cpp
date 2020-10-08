@@ -2,7 +2,7 @@
 
 void AudioDemo::play_music()
 {
-    std::string* name = new std::string{ "music" };
+    std::shared_ptr <std::string> name = std::make_shared< std::string >("music");
     _audio_controller->add_music(name, (SDL_GetBasePath() + std::string{ "assets/audio/beat.wav" }).c_str());
     _audio_controller->play_audio(name);
     SDL_Delay(1000);
@@ -17,7 +17,7 @@ void AudioDemo::play_music()
 
 void AudioDemo::play_sound()
 {
-    std::string* name = new std::string{ "sound" };
+    std::shared_ptr <std::string> name = std::make_shared< std::string >( "sound" );
     _audio_controller->add_sound(name, (SDL_GetBasePath() + std::string{ "assets/audio/beat.wav" }).c_str());
     _audio_controller->play_audio(name);
     SDL_Delay(250);

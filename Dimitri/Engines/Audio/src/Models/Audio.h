@@ -9,7 +9,7 @@ namespace Models {
 		std::shared_ptr<std::string> _name;
 		std::shared_ptr<Interfaces::IAudioFacade> _audio_facade;
 	public:
-		Audio(std::string* name, Interfaces::IAudioFacade* audio_facade);
+		Audio(std::shared_ptr <std::string> name, std::shared_ptr < Interfaces::IAudioFacade> audio_facade);
 
 		std::shared_ptr<std::string> get_name();
 		std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade();
