@@ -1,11 +1,12 @@
 #pragma once
-#include "../enums/KeyEnum.cpp"
+#include "../enums/EventEnum.cpp"
 #include "../../../PhysicsCollision/src/Models/Shape.h"
 #include "../../../Graphics/src/Models/Sprite.h"
+#include "../interfaces/IInputHandler.h"
 #include <string>
 
-class KeyBoardHandler {
+class __declspec(dllexport) KeyBoardHandler : public IInputHandler {
 public:
 	KeyBoardHandler();
-	void handleEvent(KeyEnum num, Models::Sprite* sprite, Models::Shape shape);
+	void handle_event(EventEnum num, Models::Sprite* sprite, Models::Shape shape);
 };

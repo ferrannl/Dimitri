@@ -150,27 +150,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\adapters\KeyCodeAdapter.cpp" />
-    <ClCompile Include="src\enums\KeyEnum.cpp" />
-    <ClCompile Include="src\events\InputEvent.cpp" />
-    <ClCompile Include="src\events\KeyPress.cpp" />
-    <ClCompile Include="src\events\MousePress.cpp" />
+    <ClCompile Include="adapters\MouseFacade.cpp" />
+    <ClCompile Include="src\adapters\EventFacade.cpp" />
+    <ClCompile Include="src\enums\EventEnum.cpp" />
     <ClCompile Include="src\handlers\MouseHandler.cpp" />
     <ClCompile Include="src\handlers\KeyBoardHandler.cpp" />
-    <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\interfaces\IInputHandler.cpp" />
-    <ClCompile Include="src\interfaces\IPress.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\adapters\KeyCodeAdapter.h" />
-    <ClInclude Include="src\events\InputEvent.h" />
-    <ClInclude Include="src\events\KeyPress.h" />
-    <ClInclude Include="src\events\MousePress.h" />
+    <ClInclude Include="adapters\MouseFacade.h" />
+    <ClInclude Include="src\adapters\EventFacade.h" />
     <ClInclude Include="src\handlers\MouseHandler.h" />
     <ClInclude Include="src\handlers\KeyBoardHandler.h" />
-    <ClInclude Include="src\input.h" />
     <ClInclude Include="src\interfaces\IInputHandler.h" />
-    <ClInclude Include="src\interfaces\IPress.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

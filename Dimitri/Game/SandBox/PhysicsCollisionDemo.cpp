@@ -1,5 +1,5 @@
 #include "PhysicsCollisionDemo.h"
-#include "../../Engines/Input/src/adapters/KeyCodeAdapter.h"
+#include "../../Engines/Input/src/adapters/EventFacade.h"
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
@@ -51,27 +51,23 @@ void PhysicsCollisionDemo::run()
 	SDL_Event event;
 	while (true)
 	{
-		if (SDL_PollEvent(&event) == 1)
-		{
-			KeyCodeAdapter adapter = KeyCodeAdapter();
-			if (event.type == SDL_KEYDOWN)
+		if (SDL_PollEvent(&event) != 1)
+		{	
+			if (event.type == SDL_MOUSEBUTTONDOWN)
 			{
-				KeyEnum keyEnum = adapter.translateToEnum(event);
-				adapter.handleEvent(keyEnum, sprites[0], shapes[0]);
+				EventFacade adapter = EventFacade();
+				adapter.handle_input(event, sprites[0], shapes[0]);
 			}
 		}
-		graphicsController.update_window();
-		worldController.simulate();
-
-
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites[i]->set_x(static_cast<int>(shapes[i].get_x()));
 			sprites[i]->set_y(static_cast<int>(shapes[i].get_y()));
 		}
+		graphicsController.update_window();
+		worldController.simulate();
 
 		SDL_Delay(5);
-
 	}
 
 	graphicsController.get_window()->destroy();

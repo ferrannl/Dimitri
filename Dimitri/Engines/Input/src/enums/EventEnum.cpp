@@ -1,9 +1,9 @@
 #pragma once
-enum class KeyEnum
+enum class EventEnum
 {
-	KEY_PRESS_DOWN,
 	KEY_PRESS_UP,
 	KEY_PRESS_RIGHT,
 	KEY_PRESS_LEFT,
-	KEY_PRESS_JUMP
+	MOUSE_PRESSED,
+	MOUSE_MOTION
 };
