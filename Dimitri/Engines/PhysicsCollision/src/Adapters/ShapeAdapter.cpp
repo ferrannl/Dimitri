@@ -1,11 +1,11 @@
 #include "ShapeAdapter.h"
 
-Adapters::ShapeAdapter::ShapeAdapter()
+Facades::ShapeAdapter::ShapeAdapter()
 {
 	_shape = nullptr;
 }
 
-Adapters::ShapeAdapter::ShapeAdapter(std::string type, std::vector<std::pair<float, float>> positions)
+Facades::ShapeAdapter::ShapeAdapter(std::string type, std::vector<std::pair<float, float>> positions)
 {
 	int size = positions.size();
 	b2Vec2* vertices = new b2Vec2[size];
@@ -21,22 +21,22 @@ Adapters::ShapeAdapter::ShapeAdapter(std::string type, std::vector<std::pair<flo
 	}
 }
 
-void Adapters::ShapeAdapter::add_body(b2Body* body)
+void Facades::ShapeAdapter::add_body(b2Body* body)
 {
 	_body = body;
 }
 
-b2Shape& Adapters::ShapeAdapter::get_shape() const
+b2Shape& Facades::ShapeAdapter::get_shape() const
 {
 	return *_shape;
 }
 
-float Adapters::ShapeAdapter::get_x()
+float Facades::ShapeAdapter::get_x()
 {
 	return _body->GetPosition().x;
 }
 
-float Adapters::ShapeAdapter::get_y()
+float Facades::ShapeAdapter::get_y()
 {
 	return _body->GetPosition().y;
 }

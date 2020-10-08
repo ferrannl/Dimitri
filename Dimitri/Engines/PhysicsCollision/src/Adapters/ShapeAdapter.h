@@ -5,7 +5,7 @@
 #include <vector>
 #include <box2d\b2_body.h>
 
-namespace Adapters {
+namespace Facades {
 	class __declspec(dllexport) ShapeAdapter {
 	private:
 		b2Shape* _shape;

@@ -5,7 +5,7 @@
 #include <box2d/b2_fixture.h>
 #include "../Models/Shape.h"
 
-namespace Adapters {
+namespace Facades {
 	class __declspec(dllexport) WorldAdapter {
 	private:
 		b2World* _world;

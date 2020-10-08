@@ -1,15 +1,15 @@
 #pragma once
 #include <string>
-#include "../Interfaces/IAudioAdapter.h"
+#include "../Interfaces/IAudioFacade.h"
 
 namespace Models {
 	class __declspec(dllexport) Audio {
 	private:
 		std::string* _name;
-		Interfaces::IAudioAdapter* _audio_adapter;
+		Interfaces::IAudioFacade* _audio_facade;
 	public:
 		std::string* get_name();
-		Audio(std::string* name, Interfaces::IAudioAdapter* audio_adapter) : _name{ name }, _audio_adapter { audio_adapter } {};
-		Interfaces::IAudioAdapter* get_audio_adapter();
+		Audio(std::string* name, Interfaces::IAudioFacade* audio_facade) : _name{ name }, _audio_facade { audio_facade } {};
+		Interfaces::IAudioFacade* get_audio_facade();
 	};
 }

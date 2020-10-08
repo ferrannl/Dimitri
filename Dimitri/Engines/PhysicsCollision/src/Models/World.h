@@ -5,7 +5,7 @@
 namespace Models {
 	class __declspec(dllexport) World {
 	private:
-		Adapters::WorldAdapter _worldAdapter;
+		Facades::WorldAdapter _worldAdapter;
 	public:
 		World();
 		World(float width, float height);

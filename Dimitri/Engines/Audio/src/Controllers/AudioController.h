@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Audio.h"
-#include "../Adapters/SoundAdapter.h"
-#include "../Adapters/MusicAdapter.h"
+#include "../Facades/SoundFacade.h"
+#include "../Facades/MusicFacade.h"
 #include <vector>
 
 namespace Controllers {

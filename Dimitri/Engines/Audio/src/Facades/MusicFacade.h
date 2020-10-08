@@ -1,14 +1,14 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_mixer.h>
-#include "../Interfaces/IAudioAdapter.h"
+#include "../Interfaces/IAudioFacade.h"
 
-namespace Adapters {
-	class __declspec(dllexport) MusicAdapter : public Interfaces::IAudioAdapter {
+namespace Facades {
+	class __declspec(dllexport) MusicFacade : public Interfaces::IAudioFacade {
 	private:
 		Mix_Music* _music = NULL;
 	public:
-		MusicAdapter(const char* path) : Interfaces::IAudioAdapter(path) {
+		MusicFacade(const char* path) : Interfaces::IAudioFacade(path) {
 			//Initialize SDL
 			if (SDL_Init(SDL_INIT_AUDIO) < 0)
 			{

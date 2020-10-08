@@ -4,7 +4,7 @@ Models::World::World() {}
 
 Models::World::World(float width, float height)
 {
-	_worldAdapter = Adapters::WorldAdapter{ width, height };
+	_worldAdapter = Facades::WorldAdapter{ width, height };
 }
 
 void Models::World::add_shape(Shape shape, float x, float y)
