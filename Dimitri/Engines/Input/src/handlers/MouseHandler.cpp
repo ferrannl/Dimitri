@@ -1,9 +1,8 @@
 #include "MouseHandler.h"
-#include <iostream>
 
 MouseHandler::MouseHandler()
 {
-	_facade = new MouseFacade();
+	_facade = std::make_unique<MouseFacade>();
 }
 
 void MouseHandler::handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const

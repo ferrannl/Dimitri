@@ -11,9 +11,9 @@
 class __declspec(dllexport) EventFacade
 {
 private:
-	IInputHandler* _handler;
+	std::unique_ptr<IInputHandler> _handler;
 public:
 	EventFacade();
-	EventEnum translate_to_enum( SDL_Event event);
+	EventEnum translate_to_enum(const SDL_Event event);
 	void handle_input(const SDL_Event event , Models::Sprite* sprite, Models::Shape shape);
 };

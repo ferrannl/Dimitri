@@ -4,9 +4,8 @@ EventFacade::EventFacade()
 {
 }
 
-EventEnum EventFacade::translateToEnum(SDL_Event event)
+EventEnum EventFacade::translate_to_enum(const SDL_Event event)
 {
-
 		switch (event.key.keysym.sym)
 		{
 		case SDLK_LEFT:
@@ -28,14 +27,14 @@ EventEnum EventFacade::translateToEnum(SDL_Event event)
 
 void EventFacade::handle_input(const SDL_Event event,  Models::Sprite* sprite, Models::Shape shape) 
 {
-	EventEnum eventEnum = translateToEnum(event);
+	EventEnum eventEnum = translate_to_enum(event);
 
 	if (event.type == SDL_KEYDOWN)
 	{
-		_handler = new KeyBoardHandler();
+		_handler = std::make_unique<KeyBoardHandler>();
 	} else if (event.type == SDL_MOUSEBUTTONDOWN)
 	{
-		_handler = new MouseHandler();
+		_handler = std::make_unique<MouseHandler>();
 	}
 	else {
 		return;
