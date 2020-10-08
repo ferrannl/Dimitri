@@ -19,26 +19,26 @@ Facades::MusicFacade::MusicFacade(const char* path) : Interfaces::IAudioFacade(p
 	}
 }
 
-void Facades::MusicFacade::play()
+void Facades::MusicFacade::play() const
 {
 	Mix_PlayMusic(_music, -1);
 }
 
-void Facades::MusicFacade::resume()
+void Facades::MusicFacade::resume() const
 {
 	if (Mix_PausedMusic) {
 		Mix_ResumeMusic();
 	}
 }
 
-void Facades::MusicFacade::pause()
+void Facades::MusicFacade::pause() const
 {
 	if (Mix_PlayingMusic) {
 		Mix_PauseMusic();
 	}
 }
 
-void Facades::MusicFacade::stop()
+void Facades::MusicFacade::stop() const
 {
 	Mix_HaltMusic();
 }

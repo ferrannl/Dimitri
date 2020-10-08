@@ -10,10 +10,10 @@ namespace Facades {
 		const int _channel;
 	public:
 		SoundFacade(const char* path, int channel);
-		void play();
-		void resume();
-		void pause();
-		void stop();
+		void play() const;
+		void resume() const;
+		void pause() const;
+		void stop() const;
 
 		// forbid copying and moving
 		SoundFacade(const SoundFacade& sound_facade) = delete;

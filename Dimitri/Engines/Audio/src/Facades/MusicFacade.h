@@ -9,10 +9,10 @@ namespace Facades {
 		Mix_Music* _music = NULL;
 	public:
 		MusicFacade(const char* path);
-		void play();
-		void resume();
-		void pause();
-		void stop();
+		void play() const;
+		void resume() const;
+		void pause() const;
+		void stop() const;
 
 		// forbid copying and moving
 		MusicFacade(const MusicFacade& music_facade) = delete;

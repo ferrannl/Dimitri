@@ -1,9 +1,9 @@
 #include "AudioController.h"
 
-std::shared_ptr<Models::Audio> Controllers::AudioController::get_audio_by_name(std::shared_ptr <std::string> name)
+std::shared_ptr<Models::Audio> Controllers::AudioController::get_audio_by_name(const std::string name) const
 {
 	for (std::shared_ptr<Models::Audio> audio : *_audios) {
-		if (name->compare(*audio->get_name()) == 0) {
+		if (name.compare(audio->get_name()) == 0) {
 			return (audio);
 		}
 	}
@@ -16,33 +16,33 @@ Controllers::AudioController::AudioController()
 	_channel_counter = 0;
 }
 
-void Controllers::AudioController::add_sound(std::shared_ptr <std::string> name, const char* path)
+void Controllers::AudioController::add_sound(const std::string name, const char* path)
 {
 	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
 	_channel_counter++;
 }
 
-void Controllers::AudioController::add_music(std::shared_ptr <std::string> name, const char* path)
+void Controllers::AudioController::add_music(const std::string name, const char* path)
 {
 	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
 }
 
-void Controllers::AudioController::play_audio(std::shared_ptr <std::string> name)
+void Controllers::AudioController::play_audio(const std::string name) const
 {
 	get_audio_by_name(name)->get_audio_facade()->play();
 }
 
-void Controllers::AudioController::resume_audio(std::shared_ptr <std::string> name)
+void Controllers::AudioController::resume_audio(const std::string name) const
 {
 	get_audio_by_name(name)->get_audio_facade()->resume();
 }
 
-void Controllers::AudioController::pause_audio(std::shared_ptr <std::string> name)
+void Controllers::AudioController::pause_audio(const std::string name) const
 {
 	get_audio_by_name(name)->get_audio_facade()->pause();
 }
 
-void Controllers::AudioController::stop_audio(std::shared_ptr <std::string> name)
+void Controllers::AudioController::stop_audio(const std::string name) const
 {
 	get_audio_by_name(name)->get_audio_facade()->stop();
 }

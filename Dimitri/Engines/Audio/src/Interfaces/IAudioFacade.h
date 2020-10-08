@@ -6,10 +6,10 @@ namespace Interfaces {
 		const char* _path;
 	public:
 		IAudioFacade(const char* path);
-		virtual void play() = 0;
-		virtual void resume() = 0;
-		virtual void pause() = 0;
-		virtual void stop() = 0;
+		virtual void play() const = 0;
+		virtual void resume() const = 0;
+		virtual void pause() const = 0;
+		virtual void stop() const = 0;
 
 		// forbid copying and moving
 		IAudioFacade(const IAudioFacade& i_audio_facade) = delete;

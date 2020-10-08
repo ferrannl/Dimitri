@@ -19,26 +19,26 @@ Facades::SoundFacade::SoundFacade(const char* path, int channel) : Interfaces::I
 	}
 }
 
-void Facades::SoundFacade::play()
+void Facades::SoundFacade::play() const
 {
 	Mix_PlayChannel(_channel, _sound, 0);
 }
 
-void Facades::SoundFacade::resume()
+void Facades::SoundFacade::resume() const
 {
 	if (Mix_Paused(_channel)) {
 		Mix_Resume(_channel);
 	}
 }
 
-void Facades::SoundFacade::pause()
+void Facades::SoundFacade::pause() const
 {
 	if (Mix_Playing(_channel)) {
 		Mix_Pause(_channel);
 	}
 }
 
-void Facades::SoundFacade::stop()
+void Facades::SoundFacade::stop() const
 {
 	Mix_HaltChannel(_channel);
 }
