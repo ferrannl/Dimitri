@@ -3,10 +3,10 @@
 #include <memory>
 class AudioDemo {
 private:
-	Controllers::AudioController* _audio_controller;
+	std::unique_ptr<Controllers::AudioController> _audio_controller;
 public:
 	AudioDemo() {
-		_audio_controller = new Controllers::AudioController();
+		_audio_controller = std::make_unique<Controllers::AudioController>();
 	}
 	void play_music();
 	void play_sound();
