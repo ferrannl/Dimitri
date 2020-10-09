@@ -4,8 +4,6 @@
 #include <box2d/b2_body.h>
 #include <box2d/b2_fixture.h>
 #include "../Models/Shape.h"
-#include "../Models/Body.h"
-#include "../Facades/BodyFacade.h"
 
 namespace Facades {
 	class __declspec(dllexport) WorldFacade {
