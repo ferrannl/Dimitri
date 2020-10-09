@@ -12,8 +12,8 @@ namespace Models {
 		Facades::ShapeFacade* get_shape_facade();
 		float get_x();
 		float get_y();
-		void set_x(int value);
-		void set_y();
+		void move_x(int value);
+		void move_y();
 		float get_angle();
 	};
 }

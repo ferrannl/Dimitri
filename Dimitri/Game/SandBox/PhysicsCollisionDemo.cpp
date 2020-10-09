@@ -1,5 +1,4 @@
 #include "PhysicsCollisionDemo.h"
-#include "../../Engines/Input/src/adapters/EventFacade.h"
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {

@@ -2,7 +2,7 @@
 
 MouseHandler::MouseHandler()
 {
-	_facade = std::make_unique<MouseAdapter>();
+	_facade = std::make_unique<MouseFacade>();
 }
 
 void MouseHandler::handle_event(const EventEnum num, Models::Sprite* sprite, Models::Shape shape) const

@@ -12,8 +12,8 @@
       <FileName>src\adapters\EventFacade.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_adapter" />
       <Field Name="_handler" />
+      <Field Name="_adapter" />
     </ShowAsAssociation>
   </Class>
   <Class Name="IInputAdapter">
@@ -51,12 +51,12 @@
         <Point X="8" Y="5.603" />
         <Point X="8" Y="6.483" />
         <Point X="7.109" Y="6.483" />
-        <Point X="7.109" Y="6.5" />
-        <Point X="7.25" Y="6.5" />
+        <Point X="7.109" Y="6.411" />
+        <Point X="7.25" Y="6.411" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>src\adapters\MouseAdapter.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -84,12 +84,5 @@
       <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\memory</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="EventEnum">
-    <Position X="10.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIQAAAEAAAEAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>src\enums\EventEnum.cpp</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

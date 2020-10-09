@@ -25,12 +25,12 @@ float Models::Shape::get_angle()
 	return _shape_facade->get_angle();
 }
 
-void Models::Shape::set_x(int value)
+void Models::Shape::move_x(int value)
 {
-	_shape_facade->set_x(value);
+	_shape_facade->move_x(value);
 }
 
-void Models::Shape::set_y()
+void Models::Shape::move_y()
 {
-	_shape_facade->set_y();
+	_shape_facade->move_y();
 }

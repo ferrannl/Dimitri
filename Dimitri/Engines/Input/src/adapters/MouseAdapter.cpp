@@ -2,12 +2,6 @@
 MouseAdapter::MouseAdapter()
 {
 }
-std::tuple<int, int> MouseAdapter::get_mouse_position() const
-{
-	int x, y;
-	SDL_GetGlobalMouseState(&x, &y);
-	return std::tuple<int, int>{x, y};
-}
 
 EventEnum MouseAdapter::translate_to_enum(const SDL_Event event)const
 {

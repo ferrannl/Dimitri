@@ -40,7 +40,7 @@ float Facades::ShapeFacade::get_y()
 	return  _body->GetPosition().y;
 }
 
-void Facades::ShapeFacade::set_x(int value)
+void Facades::ShapeFacade::move_x(int value)
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	if (value == -1) {
@@ -55,7 +55,7 @@ void Facades::ShapeFacade::set_x(int value)
 	_body->SetLinearVelocity(vel);
 }
 
-void Facades::ShapeFacade::set_y()
+void Facades::ShapeFacade::move_y()
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = 30;//upwards - don't change x velocity

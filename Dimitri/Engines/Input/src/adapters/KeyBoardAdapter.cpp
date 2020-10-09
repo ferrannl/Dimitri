@@ -1,7 +1,6 @@
 #include "KeyBoardAdapter.h"
 KeyBoardAdapter::KeyBoardAdapter()
 {
-
 }
 
 EventEnum KeyBoardAdapter::translate_to_enum(const SDL_Event event)const
