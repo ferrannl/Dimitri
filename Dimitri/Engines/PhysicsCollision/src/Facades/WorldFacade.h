@@ -8,11 +8,11 @@
 namespace Facades {
 	class __declspec(dllexport) WorldFacade {
 	private:
-		b2World* _world;
+		std::shared_ptr<b2World> _world;
 	public:
 		WorldFacade();
-		WorldFacade(float width, float height);
-		void simulate();
-		void add_shape(Models::Shape* shape, float x, float y);
+		WorldFacade(const float width, const float height);
+		void simulate()const ;
+		void add_shape(std::shared_ptr<Models::Shape>, const float x, const float y)const;
 	};
 }

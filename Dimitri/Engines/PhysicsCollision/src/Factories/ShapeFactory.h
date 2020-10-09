@@ -3,10 +3,11 @@
 #include <vector>
 #include "../Models/Shape.h"
 #include "../Models/Polygon.h"
+#include <iostream>
 
 namespace Factories {
 	class __declspec(dllexport) ShapeFactory {
 	public:
-		Models::Shape* create_shape(std::string type, std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		std::shared_ptr<Models::Shape> create_shape(const std::string type, const std::vector<std::pair<float, float>> positions, const bool is_dynamic)const;
 	};
 }

@@ -6,10 +6,10 @@ Facades::WorldFacade::WorldFacade() {}
 Facades::WorldFacade::WorldFacade(float width, float height)
 {
 	b2Vec2 gravity(0.0f, -10.0f);   
-	_world = new b2World(gravity);
+	_world = std::make_shared<b2World>(gravity);
 }
 
-void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
+void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const float x, const float y)const
 {
     b2BodyDef bodyDef;
     b2FixtureDef fixtureDef;
@@ -19,7 +19,7 @@ void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
         bodyDef.type = b2_dynamicBody;
         bodyDef.position.Set(x, y);
         b2Body* _body = _world->CreateBody(&bodyDef);
-        fixtureDef.shape = shape->get_shape_facade()->get_shape();
+        fixtureDef.shape = shape->get_shape_facade()->get_shape().get();
         _body->CreateFixture(&fixtureDef);
         shape->get_shape_facade()->add_body(_body);
     }
@@ -27,13 +27,13 @@ void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(x, y);
         b2Body* _groundBody = _world->CreateBody(&groundBodyDef);
-        b2Shape* groundBox = shape->get_shape_facade()->get_shape();
-        _groundBody->CreateFixture(groundBox, 0.0f);
+        std::shared_ptr<b2Shape> groundBox= shape->get_shape_facade()->get_shape();
+        _groundBody->CreateFixture(groundBox.get(), 0.0f);
         shape->get_shape_facade()->add_body(_groundBody);
     }
 }
 
-void Facades::WorldFacade::simulate()
+void Facades::WorldFacade::simulate()const
 {
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;

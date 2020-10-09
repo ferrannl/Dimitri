@@ -8,8 +8,8 @@ namespace Models {
 		Facades::WorldFacade _world_facade;
 	public:
 		World();
-		World(float width, float height);
-		void add_shape(Shape* shape, float x, float y);
+		World(const float width, const float height);
+		void add_shape(std::shared_ptr<Shape> shape, const float x, const float y);
 		void simulate();
 	};
 }

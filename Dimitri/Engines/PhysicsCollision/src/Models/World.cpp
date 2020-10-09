@@ -2,12 +2,12 @@
 
 Models::World::World() {}
 
-Models::World::World(float width, float height)
+Models::World::World(const float width, const float height)
 {
 	_world_facade = Facades::WorldFacade{ width, height };
 }
 
-void Models::World::add_shape(Shape* shape, float x, float y)
+void Models::World::add_shape(std::shared_ptr<Shape> shape, const float x, const float y)
 {
 	_world_facade.add_shape(shape, x, y);
 }
