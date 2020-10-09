@@ -1,11 +1,14 @@
 #include "PhysicsCollisionDemo.h"
 
+
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
+	inputController = std::make_unique<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
 	shapes = std::vector<Models::Shape>{};
+	inputController->subscribe(std::make_shared<Interfaces::IObserver>(this));
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -55,13 +58,14 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 void PhysicsCollisionDemo::run()
 {
 	SDL_Event event;
+	std::thread([this] { inputController->poll_events(); });
 	while (true)
 	{
-		if (SDL_PollEvent(&event) != 1)
+		/*if (SDL_PollEvent(&event) != 1)
 		{
 			EventFacade adapter = EventFacade();
 			adapter.handle_input(event, sprites[0], shapes[0]);
-		}
+		}*/
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
@@ -76,3 +80,13 @@ void PhysicsCollisionDemo::run()
 
 	graphicsController.get_window()->destroy();
 }
+
+void PhysicsCollisionDemo::update(Enums::EventEnum event)
+{
+	switch (event) {
+		
+	}
+}
+
+
+
