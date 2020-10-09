@@ -1,29 +1,22 @@
 #pragma once
-#include <sdl.h> 
 #include "../Models/Sprite.h"
-#include <iostream>
-#include "TextureFacade.h"
-#include <vector>
+#include "../Adapters/FlipEnumAdapter.h"
 
 namespace Facades {
 	class __declspec(dllexport) WindowFacade {
 	private:
-		SDL_Window* _window;
-		SDL_Renderer* _renderer;
+		std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
+		std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
+		Adapters::FlipEnumAdapter _flip_enum_adapter;
 
-		bool Init();
-		Facades::TextureFacade* get_if_exists(std::vector<Models::Sprite*> sprites, const char* path);
-		SDL_RendererFlip get_sdl_flip(Enums::FlipEnum flipstatus);
+		std::shared_ptr<Facades::TextureFacade> get_if_exists(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path);
 	public:
-		WindowFacade() {
-			_window = { nullptr };
-			_renderer = { nullptr };
-		}
+		WindowFacade();
 
-		void create_renderer();
-		void create_window(const char* title, const int xpos, const int ypos, const int height, const int width);
-		void create_sprites(std::vector<Models::Sprite*> sprites);
+		int create_renderer();
+		int create_window(const std::string title, const int height, const int width);
+		void create_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
 		void destroy();
-		void update_window(std::vector<Models::Sprite*> sprites);
+		void update_window(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
 	};
 }

@@ -1,39 +1,40 @@
 #include "WindowFacade.h"
 
-bool Facades::WindowFacade::Init()
+int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
-	{
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-		return false;
+	try {
+		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
+			throw Exceptions::SDLInitFailed();
+		}
+
+		_window.reset(SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN));
+
+		if (_window == NULL) {
+			throw Exceptions::CannotCreateWindow();
+		}
+
+		return 1;
 	}
-	else
-	{
-		return true;
+	catch (Exceptions::SDLInitFailed& e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
+	}
+	catch (Exceptions::CannotCreateWindow& e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
 	}
 }
 
-void Facades::WindowFacade::create_window(const char* title, const int xpos, const int ypos, const int height, const int width)
-{
-	//Start up SDL and create window
-	if (!Facades::WindowFacade::Init())
-	{
-		printf("Failed to initialize!\n");
-	}
-	else {
-		_window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-	}
-}
-
-void Facades::WindowFacade::create_sprites(std::vector<Models::Sprite*> sprites)
+void Facades::WindowFacade::create_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
 {
 	if (!_renderer) {
 		std::cout << "Create a renderer first" << std::endl;
 		return;
 	}
 
-	for (Models::Sprite* sprite : sprites) {
-		Facades::TextureFacade* facade = get_if_exists(sprites, sprite->get_path());
+
+	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
+		std::shared_ptr<Facades::TextureFacade> facade = get_if_exists(sprites, sprite->get_path());
 
 		if (facade) {
 			sprite->set_facade(facade);
@@ -45,29 +46,37 @@ void Facades::WindowFacade::create_sprites(std::vector<Models::Sprite*> sprites)
 	}
 }
 
-void Facades::WindowFacade::update_window(std::vector<Models::Sprite*> sprites)
+void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
 {
 	//Clear screen
-	SDL_RenderClear(_renderer);
+	SDL_RenderClear(_renderer.get());
 
 	int depth = 0;
 	int objectcounter = 0;
 
-	while (objectcounter < sprites.size()) {
-		for (Models::Sprite* sprite : sprites) {
+	while (objectcounter < sprites->size()) {
+		for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
 			if (sprite->get_z() == depth) {
 				SDL_Rect rect;
 
 				rect.x = sprite->get_x();
-				rect.y = sprite->get_converted_y(SDL_GetWindowSurface(_window)->h);
+				rect.y = sprite->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
 				rect.w = sprite->get_width();
 				rect.h = sprite->get_height();
 
 				//Render texture to screen
-				if (sprite->get_texture_facade()->get_texture()) {
+				try {
 					SDL_Point center = { 0,0 };
-					SDL_RenderCopyEx(_renderer, sprite->get_texture_facade()->get_texture(), NULL, &rect, sprite->get_angle(), &center, get_sdl_flip(sprite->get_flip_status()));
+					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
+					
+					if (retVal < NULL) {
+						throw Exceptions::CannotRenderSpriteTexture();
+					}
 				}
+				catch (Exceptions::CannotRenderSpriteTexture& e) {
+					std::cout << e.get() << std::endl;
+				}
+				
 				objectcounter++;
 			}
 		}
@@ -75,12 +84,12 @@ void Facades::WindowFacade::update_window(std::vector<Models::Sprite*> sprites)
 	}
 
 	//Update screen
-	SDL_RenderPresent(_renderer);
+	SDL_RenderPresent(_renderer.get());
 }
 
-Facades::TextureFacade* Facades::WindowFacade::get_if_exists(std::vector<Models::Sprite*> sprites, const char* path)
+std::shared_ptr<Facades::TextureFacade> Facades::WindowFacade::get_if_exists(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path)
 {
-	for (Models::Sprite* sprite : sprites) {
+	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
 		if (sprite->get_path() == path) {
 			return sprite->get_texture_facade();
 		}
@@ -89,29 +98,25 @@ Facades::TextureFacade* Facades::WindowFacade::get_if_exists(std::vector<Models:
 	return nullptr;
 }
 
-SDL_RendererFlip Facades::WindowFacade::get_sdl_flip(Enums::FlipEnum flipstatus)
-{
-	switch (flipstatus) {
-	case Enums::FlipEnum::HORIZONTAL:
-		return SDL_FLIP_HORIZONTAL;
-	case Enums::FlipEnum::VERTICAL:
-		return SDL_FLIP_VERTICAL;
-	default:
-		return SDL_FLIP_NONE;
-	}
-}
+Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}
 
-void Facades::WindowFacade::create_renderer()
+int Facades::WindowFacade::create_renderer()
 {
-	//Create renderer for window
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
-	if (_renderer == NULL)
-	{
-		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+	try {
+		_renderer.reset(SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED));
+
+		if (_renderer == NULL)
+		{
+			throw Exceptions::CannotCreateRenderer();
+		}
+
+		SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
+
+		return 1;
 	}
-	else
-	{
-		SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
+	catch (Exceptions::CannotCreateRenderer e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
 	}
 }
 
@@ -119,7 +124,7 @@ void Facades::WindowFacade::destroy()
 {
 	// we might want to deallocate surfaces in the future
 	//Destroy window
-	SDL_DestroyWindow(_window);
+	SDL_DestroyWindow(_window.get());
 	_window = NULL;
 
 	//Quit SDL subsystems

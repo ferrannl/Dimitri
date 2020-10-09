@@ -1,51 +1,54 @@
 #include "Sprite.h"
 
-const int Models::Sprite::get_converted_y(const int height)
+Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
+	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus }, _facade{ nullptr } {}
+
+int Models::Sprite::get_converted_y(const int height) const
 {
 	return height - (_y + _height);
 }
 
-const int Models::Sprite::get_x()
+int Models::Sprite::get_x() const
 {
 	return _x;
 }
 
-const int Models::Sprite::get_z()
+int Models::Sprite::get_z() const
 {
 	return _z;
 }
 
-const int Models::Sprite::get_y()
+int Models::Sprite::get_y() const
 {
 	return _y;
 }
 
-const int Models::Sprite::get_width()
+int Models::Sprite::get_width() const
 {
 	return _width;
 }
 
-const int Models::Sprite::get_height()
+int Models::Sprite::get_height() const
 {
 	return _height;
 }
 
-const float Models::Sprite::get_angle()
+float Models::Sprite::get_angle() const 
 {
 	return _angle;
 }
 
-Facades::TextureFacade* Models::Sprite::get_texture_facade()
+std::shared_ptr<Facades::TextureFacade> Models::Sprite::get_texture_facade() const
 {
 	return _facade;
 }
 
-Enums::FlipEnum Models::Sprite::get_flip_status()
+Enums::FlipEnum Models::Sprite::get_flip_status() const
 {
 	return _flipstatus;
 }
 
-const char* Models::Sprite::get_path()
+const std::string Models::Sprite::get_path() const
 {
 	return _path;
 }
@@ -80,17 +83,17 @@ void Models::Sprite::set_angle(const float angle)
 	_angle = angle;
 }
 
-void Models::Sprite::set_flip_status(Enums::FlipEnum flipstatus)
+void Models::Sprite::set_flip_status(const Enums::FlipEnum flipstatus)
 {
 	_flipstatus = flipstatus;
 }
 
-void Models::Sprite::set_facade(Facades::TextureFacade* facade)
+void Models::Sprite::set_facade(const std::shared_ptr<Facades::TextureFacade> facade)
 {
 	_facade = facade;
 }
 
 void Models::Sprite::create_texture_facade()
 {
-	_facade = { new Facades::TextureFacade };
+	_facade = std::make_shared<Facades::TextureFacade>();
 }
