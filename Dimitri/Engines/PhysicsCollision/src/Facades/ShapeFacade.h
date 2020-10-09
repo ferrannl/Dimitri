@@ -18,6 +18,8 @@ namespace Facades {
 		void add_body(b2Body* body);
 		float get_x();
 		float get_y();
+		void move_x(const int value);
+		void move_y();
 		float get_angle();
 	};
 }
