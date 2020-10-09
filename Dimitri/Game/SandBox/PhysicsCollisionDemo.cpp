@@ -13,13 +13,17 @@ void PhysicsCollisionDemo::start_demo()
 {
 	create_window(1080, 720);
 	std::string path = (SDL_GetBasePath() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 600, 1, 100, 100, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(300, 200, 1, 300, 100, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(350, 600, 1, 50, 50, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
+	create_sprite(300, 200, 1, 300, 50, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, 720, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, -1, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(-1, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(1080, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 50, 50, true);
 	create_shape(300, 200, 300, 50, false);
-	create_shape(0, 720, 1080, 1, false); // top
-	create_shape(0, -1, 1080, 1, false); // bottom
+	create_shape(0, 720, 1080, 1, false); // top    
+	create_shape(0, -1, 1080, 1, false); // bottom    
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
 	run();

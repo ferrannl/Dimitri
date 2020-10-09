@@ -40,6 +40,29 @@ float Facades::ShapeFacade::get_y()
 	return  _body->GetPosition().y;
 }
 
+void Facades::ShapeFacade::set_x(int value)
+{
+	b2Vec2 vel = _body->GetLinearVelocity();
+	if (value == -1) {
+		vel.x = vel.x - 30.0f;
+		vel.y = 0;
+	}
+	else {
+		vel.x = vel.x + 30.0f;
+		vel.y = 0;
+	}
+	_body->SetTransform(_body->GetPosition(), 0);
+	_body->SetLinearVelocity(vel);
+}
+
+void Facades::ShapeFacade::set_y()
+{
+	b2Vec2 vel = _body->GetLinearVelocity();
+	vel.y = 30;//upwards - don't change x velocity
+	_body->SetTransform(_body->GetPosition(), 0);
+	_body->SetLinearVelocity(vel);
+}
+
 float Facades::ShapeFacade::get_angle()
 {
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;

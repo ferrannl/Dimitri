@@ -25,13 +25,12 @@ float Models::Shape::get_angle()
 	return _shape_facade->get_angle();
 }
 
-
 void Models::Shape::set_x(int value)
 {
-	shapeAdapter->set_x(value);
+	_shape_facade->set_x(value);
 }
 
 void Models::Shape::set_y()
 {
-	shapeAdapter->set_y();
+	_shape_facade->set_y();
 }
