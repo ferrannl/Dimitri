@@ -38,7 +38,7 @@ void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	_body->CreateFixture(&fixtureDef);
-	shape->add_body(new Models::Body(new Facades::BodyFacade(_body)));
+	shape->get_shape_facade()->add_body(_body);
 }
 
 void Facades::WorldFacade::simulate()

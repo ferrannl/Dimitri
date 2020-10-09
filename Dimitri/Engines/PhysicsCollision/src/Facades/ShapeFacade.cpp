@@ -26,4 +26,23 @@ b2Shape* Facades::ShapeFacade::get_shape() const
 	return _shape;
 }
 
+void Facades::ShapeFacade::add_body(b2Body* body) {
+	_body = body;
+}
+
+float Facades::ShapeFacade::get_x()
+{
+	return _body->GetPosition().x;
+}
+
+float Facades::ShapeFacade::get_y()
+{
+	return  _body->GetPosition().y;
+}
+
+float Facades::ShapeFacade::get_angle()
+{
+	return  _body->GetAngle() * RADIAN_IN_DEGREES;
+}
+
 
