@@ -10,9 +10,7 @@ void AudioDemo::play_music()
     SDL_Delay(1000);
     _audio_controller.resume_audio(name);
     SDL_Delay(1000);
-    _audio_controller.stop_audio(name);
-
-    
+    _audio_controller.stop_audio(name);    
 }
 
 void AudioDemo::play_sound()
