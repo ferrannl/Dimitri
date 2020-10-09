@@ -3,6 +3,8 @@
 #include <memory>
 #include <SDL.h>
 #include <SDL_mixer.h>
+#include "../Exceptions/AudioExceptions.h"
+#include <iostream>
 
 namespace Interfaces {
 	class __declspec(dllexport) IAudioFacade {

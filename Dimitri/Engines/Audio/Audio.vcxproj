@@ -151,6 +151,7 @@
     <ClCompile Include="src\Models\Audio.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Exceptions\AudioExceptions.h" />
     <ClInclude Include="src\Facades\MusicFacade.h" />
     <ClInclude Include="src\Facades\SoundFacade.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />

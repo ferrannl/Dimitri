@@ -1,5 +1,6 @@
 #pragma once
 #include "../Interfaces/IAudioFacade.h"
+#include "../Exceptions/AudioExceptions.h"
 
 namespace Facades {
 	class __declspec(dllexport) MusicFacade : public Interfaces::IAudioFacade {

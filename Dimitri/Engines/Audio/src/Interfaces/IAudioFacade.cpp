@@ -1,3 +1,23 @@
 #include "IAudioFacade.h"
 
-Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {}
+Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
+	try {
+		//Initialize SDL
+		if (SDL_Init(SDL_INIT_AUDIO) < 0)
+		{
+			throw Exceptions::SDLInitFailed();
+		}
+
+		//Initialize SDL_mixer
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		{
+			throw Exceptions::SDLMixerInitFailed();
+		}
+	}
+	catch (Exceptions::SDLInitFailed e) {
+		std::cout << e.get() << std::endl;
+	}
+	catch (Exceptions::SDLMixerInitFailed e) {
+		std::cout << e.get() << std::endl;
+	}
+}

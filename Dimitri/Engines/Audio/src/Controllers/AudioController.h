@@ -2,6 +2,8 @@
 #include "../Models/Audio.h"
 #include "../Facades/SoundFacade.h"
 #include "../Facades/MusicFacade.h"
+#include "../Exceptions/AudioExceptions.h"
+#include <iostream>
 #include <vector>
 #include <memory>
 

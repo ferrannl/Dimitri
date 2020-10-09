@@ -1,5 +1,11 @@
 #include "AudioController.h"
 
+Controllers::AudioController::AudioController()
+{
+	_audios = std::make_unique<std::vector<std::shared_ptr<Models::Audio>>>();
+	_channel_counter = 0;
+}
+
 std::shared_ptr<Models::Audio> Controllers::AudioController::get_audio_by_name(const std::string name) const
 {
 	for (std::shared_ptr<Models::Audio> audio : *_audios) {
@@ -7,32 +13,47 @@ std::shared_ptr<Models::Audio> Controllers::AudioController::get_audio_by_name(c
 			return (audio);
 		}
 	}
-	return nullptr;
-}
-
-Controllers::AudioController::AudioController()
-{
-	_audios = std::make_unique<std::vector<std::shared_ptr<Models::Audio>>>();
-	_channel_counter = 0;
+	throw Exceptions::AudioNotFound();
 }
 
 void Controllers::AudioController::add_sound(const std::string name, const std::string path)
 {
-	if (!name_exists(name)) {
-		_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
-		_channel_counter++;
+	try {
+		if (!name_exists(name)) {
+			try {
+				_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
+				_channel_counter++;
+			}
+			catch (Exceptions::LoadAudioFailed e) {
+				std::cout << e.get() << ": " << name << std::endl;
+			}
+		}
+		else {
+			throw Exceptions::AudioNameNotUnique();
+		}
 	}
-	else {
-		//Er wordt niks toegevoegd. Exceptie gooien?
+	catch (Exceptions::AudioNameNotUnique e) {
+		std::cout << e.get() << std::endl;
 	}
 }
 
 void Controllers::AudioController::add_music(const std::string name, const std::string path)
 {
-	if (!name_exists(name)) {
-		_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
-	}else{
-		//Er wordt niks toegevoegd. Exceptie gooien?
+	try {
+		if (!name_exists(name)) {
+			try {
+				_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
+			}
+			catch (Exceptions::LoadAudioFailed e) {
+				std::cout << e.get() << ": " << name << std::endl;
+			}
+		}
+		else {
+			throw Exceptions::AudioNameNotUnique();
+		}
+	}
+	catch (Exceptions::AudioNameNotUnique e) {
+		std::cout << e.get() << std::endl;
 	}
 }
 
@@ -48,20 +69,40 @@ bool Controllers::AudioController::name_exists(const std::string name)
 
 void Controllers::AudioController::play_audio(const std::string name) const
 {
-	get_audio_by_name(name)->get_audio_facade()->play();
+	try {
+		get_audio_by_name(name)->get_audio_facade()->play();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
 }
 
 void Controllers::AudioController::resume_audio(const std::string name) const
 {
-	get_audio_by_name(name)->get_audio_facade()->resume();
+	try {
+		get_audio_by_name(name)->get_audio_facade()->resume();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
 }
 
 void Controllers::AudioController::pause_audio(const std::string name) const
 {
-	get_audio_by_name(name)->get_audio_facade()->pause();
+	try {
+		get_audio_by_name(name)->get_audio_facade()->pause();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
 }
 
 void Controllers::AudioController::stop_audio(const std::string name) const
 {
-	get_audio_by_name(name)->get_audio_facade()->stop();
+	try {
+		get_audio_by_name(name)->get_audio_facade()->stop();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
 }

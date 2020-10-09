@@ -47,6 +47,9 @@
     <ClInclude Include="src\Facades\MusicFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Exceptions\AudioExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagramAudioEngine.cd" />
