@@ -28,7 +28,6 @@ void Facades::WorldFacade::add_shape(Models::Shape* shape, float x, float y)
         groundBodyDef.position.Set(x, y);
         b2Body* _groundBody = _world->CreateBody(&groundBodyDef);
         b2Shape* groundBox = shape->get_shape_facade()->get_shape();
-        //groundBox.SetAsBox(300, 50);
         _groundBody->CreateFixture(groundBox, 0.0f);
         shape->get_shape_facade()->add_body(_groundBody);
     }

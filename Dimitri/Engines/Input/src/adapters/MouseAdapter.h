@@ -5,8 +5,7 @@
 #include "../interfaces/IInputAdapter.h"
 
 
-class __declspec(dllexport) MouseAdapter : public IInputAdapter
-{
+class __declspec(dllexport) MouseAdapter : public IInputAdapter {
 public:
 	MouseAdapter();
 	std::tuple<int, int> get_mouse_position() const;

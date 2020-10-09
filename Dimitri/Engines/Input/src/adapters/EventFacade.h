@@ -11,8 +11,7 @@
 #include "../interfaces/IInputAdapter.h"
 #include "KeyBoardAdapter.h"
 
-class __declspec(dllexport) EventFacade
-{
+class __declspec(dllexport) EventFacade {
 private:
 	std::shared_ptr<IInputHandler> _handler;
 	std::shared_ptr<IInputAdapter> _adapter;
