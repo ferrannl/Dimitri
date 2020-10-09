@@ -18,13 +18,32 @@ Controllers::AudioController::AudioController()
 
 void Controllers::AudioController::add_sound(const std::string name, const std::string path)
 {
-	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
-	_channel_counter++;
+	if (!name_exists(name)) {
+		_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
+		_channel_counter++;
+	}
+	else {
+		//Er wordt niks toegevoegd. Exceptie gooien?
+	}
 }
 
 void Controllers::AudioController::add_music(const std::string name, const std::string path)
 {
-	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
+	if (!name_exists(name)) {
+		_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
+	}else{
+		//Er wordt niks toegevoegd. Exceptie gooien?
+	}
+}
+
+bool Controllers::AudioController::name_exists(const std::string name)
+{
+	for (std::shared_ptr<Models::Audio> audio : *_audios) {
+		if (name.compare(audio->get_name()) == 0) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void Controllers::AudioController::play_audio(const std::string name) const

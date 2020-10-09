@@ -3,41 +3,35 @@
   <Class Name="Controllers::AudioController">
     <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAQAACAAAAABABAAAACAQAQAAAAkAAIAACA=</HashCode>
+      <HashCode>AAAAAAAAAAQAACAAAAABABAAAACAQAQCAAAEAAIAACA=</HashCode>
       <FileName>src\Controllers\AudioController.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Facades::MusicFacade">
     <Position X="16" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAACCgAAAAAEAgAAAgIAA=</HashCode>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAEAAAAAgIAA=</HashCode>
       <FileName>src\Facades\MusicFacade.h</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_music" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Facades::SoundFacade">
     <Position X="18.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CEAAAAAAAABAAAAAAAAAAAAAAAigAAAAAAAgAgAAIAA=</HashCode>
+      <HashCode>CEAAAAAAAAAAAAAAAAAAAAAAAAigAAAAAAAAAgAAIAA=</HashCode>
       <FileName>src\Facades\SoundFacade.h</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_sound" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Interfaces::IAudioFacade">
     <Position X="17.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAAAAgAACAAAAAAAAAAAAAACgAAAAAAAgAABAIAA=</HashCode>
+      <HashCode>CAAAAAAAgAACAAAAAAAAAAAAAACgAAAAAAAAAAAAIAA=</HashCode>
       <FileName>src\Interfaces\IAudioFacade.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Models::Audio">
     <Position X="14.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAACAAAAAEAAAEAAAAAAAAAAAAgAIAAAAI=</HashCode>
+      <HashCode>AAAAIAAAAAAACAAAAAEAAAAAAAAAAAAAAAAAAIAAAAI=</HashCode>
       <FileName>src\Models\Audio.h</FileName>
     </TypeIdentifier>
   </Class>
