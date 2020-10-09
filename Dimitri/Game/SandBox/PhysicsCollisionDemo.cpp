@@ -16,7 +16,7 @@ void PhysicsCollisionDemo::start_demo()
 
 	std::string path = (SDL_GetBasePath() + std::string{ "assets/images/img.png" });
 	create_sprite(350, 600, 1, 100, 100, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(300, 200, 1, 300, 100, "POO", 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(300, 200, 1, 300, 100, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 100, 100, true);
 	create_shape(300, 200, 300, 100, false);

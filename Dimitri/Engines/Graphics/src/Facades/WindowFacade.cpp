@@ -1,5 +1,4 @@
 #include "WindowFacade.h"
-#include "../Exceptions/GraphicsExceptions.h"
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
