@@ -19,7 +19,7 @@ void Facades::WindowFacade::create_sprites(std::shared_ptr<std::vector<std::uniq
 	}
 
 	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
-		std::shared_ptr<Facades::TextureFacade> facade = std::make_shared<Facades::TextureFacade>(get_if_exists(sprites, sprite->get_path()));
+		std::shared_ptr<Facades::TextureFacade> facade = get_if_exists(sprites, sprite->get_path());
 
 		if (facade) {
 			sprite->set_facade(facade);
@@ -75,11 +75,7 @@ std::shared_ptr<Facades::TextureFacade> Facades::WindowFacade::get_if_exists(std
 	return nullptr;
 }
 
-Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer) {
-	_window = { nullptr };
-	_renderer = { nullptr };
-	_flip_enum_adapter = {};
-}
+Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}
 
 void Facades::WindowFacade::create_renderer()
 {

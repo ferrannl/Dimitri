@@ -1,6 +1,6 @@
 #include "Window.h"
 
-const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> Models::Window::get_sprites()
+std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> Models::Window::get_sprites() const
 {
 	return _sprites;
 }
@@ -25,22 +25,22 @@ void Models::Window::destroy()
 	_facade->destroy();
 }
 
-const int Models::Window::get_height()
+int Models::Window::get_height() const
 {
 	return _height;
 }
 
-const int Models::Window::get_width()
+int Models::Window::get_width() const
 {
 	return _width;
 }
 
-const std::string Models::Window::get_title()
+const std::string Models::Window::get_title() const
 {
 	return _title;
 }
 
-void Models::Window::set_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
+void Models::Window::set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
 {
 	_sprites = sprites;
 	_facade->create_sprites(_sprites);

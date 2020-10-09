@@ -1,9 +1,5 @@
 #pragma once
-#include <string> using namespace std
-#include <SDL.h>
-#include <stdio.h>
 #include "../Models/Window.h"
-#include <vector>
 #include <filesystem>
 
 namespace Controllers

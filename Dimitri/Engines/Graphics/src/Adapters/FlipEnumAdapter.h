@@ -5,6 +5,6 @@
 namespace Adapters {
 	class __declspec(dllexport) FlipEnumAdapter {
 	public:
-		SDL_RendererFlip get_sdl_flip(Enums::FlipEnum flipstatus);
+		SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
 	};
 }

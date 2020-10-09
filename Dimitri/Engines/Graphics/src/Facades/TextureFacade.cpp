@@ -1,43 +1,6 @@
 #include "TextureFacade.h"
 
-Facades::TextureFacade::TextureFacade() {
-    _texture = { nullptr };
-}
-
-// copy constructor
-Facades::TextureFacade::TextureFacade(const Facades::TextureFacade& facade) {
-    _texture = facade._texture;
-}
-
-// copy operator
-Facades::TextureFacade& Facades::TextureFacade::operator=(const Facades::TextureFacade& facade)
-{
-    if (this != &facade) {
-        _texture = facade._texture;
-    }
-
-    return *this;
-}
-
-// move constructor
-Facades::TextureFacade::TextureFacade(Facades::TextureFacade&& facade) {
-    _texture = facade._texture;
-
-    _texture = { nullptr };
-}
-
-// move operator
-Facades::TextureFacade& Facades::TextureFacade::operator=(Facades::TextureFacade&& facade)
-{
-	if (this != &facade) {
-
-		_texture = facade._texture;
-
-		facade._texture = { nullptr };
-	}
-
-	return *this;
-}
+Facades::TextureFacade::TextureFacade() : _texture(nullptr, SDL_DestroyTexture) {}
 
 void Facades::TextureFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer, const std::string path)
 {
@@ -46,16 +9,16 @@ void Facades::TextureFacade::create_texture(std::unique_ptr<SDL_Renderer, declty
 
 	if (loadedSurface == NULL)
 	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError());
+		printf("Unable to load image %s! SDL_image Error: %s\n", path.c_str(), IMG_GetError());
 	}
 	else
 	{
 		//Create texture from surface pixels
-		_texture = std::make_shared<SDL_Texture>(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface), SDL_DestroyTexture);
+		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface), SDL_DestroyTexture);
 
 		if (_texture == NULL)
 		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
+			printf("Unable to create texture from %s! SDL Error: %s\n", path.c_str(), SDL_GetError());
 		}
 
 		//Get rid of old loaded surface
@@ -68,8 +31,4 @@ void Facades::TextureFacade::create_texture(std::unique_ptr<SDL_Renderer, declty
 std::shared_ptr<SDL_Texture> Facades::TextureFacade::get_texture()
 {
 	return _texture;
-}
-
-Facades::TextureFacade::~TextureFacade() {
-	_texture = { nullptr };
 }

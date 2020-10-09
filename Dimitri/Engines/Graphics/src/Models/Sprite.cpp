@@ -1,98 +1,54 @@
 #include "Sprite.h"
 
-//// move constructor
-//Models::Sprite::Sprite(Models::Sprite&& sprite)
-//	: _x{ sprite.get_x() }, _y{ sprite.get_y() }, _z{ sprite.get_z() }, _height{ sprite.get_height() }, _width{ sprite.get_width() }, _path{ sprite.get_path() }, _angle{ sprite.get_angle() }, _flipstatus{ sprite.get_flip_status() }
-//{
-//	_facade = sprite.get_texture_facade();
-//
-//	sprite._path = { nullptr };
-//	sprite._facade = { nullptr };
-//}
-//
-//Models::Sprite& Models::Sprite::operator=(Models::Sprite&& sprite)
-//{
-//	// check if other is not equal to this
-//	if (this != &sprite) {
-//
-//		// steal resources
-//		_x = sprite._x;
-//		_y = sprite._y;
-//		_z = sprite._z;
-//		_width = sprite._width;
-//		_height = sprite._height;
-//		_angle = sprite._angle;
-//		_path = sprite._path;
-//		_facade = sprite._facade;
-//		_flipstatus = sprite._flipstatus;
-//
-//		//reset other instance
-//		sprite._path = { nullptr };
-//		sprite._facade = { nullptr };
-//	}
-//
-//	// to support chaining ie 1 = 2 = 3
-//	return *this;
-//}
-//
-//Models::Sprite::~Sprite()
-//{
-//	delete _path;
-//	_facade = { nullptr };
-//}
-
-
 Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
-	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus } {
-	_facade = { nullptr };
-}
+	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus }, _facade{ nullptr } {}
 
-const int Models::Sprite::get_converted_y(const int height)
+int Models::Sprite::get_converted_y(const int height) const
 {
 	return height - (_y + _height);
 }
 
-const int Models::Sprite::get_x()
+int Models::Sprite::get_x() const
 {
 	return _x;
 }
 
-const int Models::Sprite::get_z()
+int Models::Sprite::get_z() const
 {
 	return _z;
 }
 
-const int Models::Sprite::get_y()
+int Models::Sprite::get_y() const
 {
 	return _y;
 }
 
-const int Models::Sprite::get_width()
+int Models::Sprite::get_width() const
 {
 	return _width;
 }
 
-const int Models::Sprite::get_height()
+int Models::Sprite::get_height() const
 {
 	return _height;
 }
 
-const float Models::Sprite::get_angle()
+float Models::Sprite::get_angle() const 
 {
 	return _angle;
 }
 
-std::shared_ptr<Facades::TextureFacade> Models::Sprite::get_texture_facade()
+std::shared_ptr<Facades::TextureFacade> Models::Sprite::get_texture_facade() const
 {
 	return _facade;
 }
 
-Enums::FlipEnum Models::Sprite::get_flip_status()
+Enums::FlipEnum Models::Sprite::get_flip_status() const
 {
 	return _flipstatus;
 }
 
-const std::string Models::Sprite::get_path()
+const std::string Models::Sprite::get_path() const
 {
 	return _path;
 }
@@ -127,12 +83,12 @@ void Models::Sprite::set_angle(const float angle)
 	_angle = angle;
 }
 
-void Models::Sprite::set_flip_status(Enums::FlipEnum flipstatus)
+void Models::Sprite::set_flip_status(const Enums::FlipEnum flipstatus)
 {
 	_flipstatus = flipstatus;
 }
 
-void Models::Sprite::set_facade(std::shared_ptr<Facades::TextureFacade> facade)
+void Models::Sprite::set_facade(const std::shared_ptr<Facades::TextureFacade> facade)
 {
 	_facade = facade;
 }
