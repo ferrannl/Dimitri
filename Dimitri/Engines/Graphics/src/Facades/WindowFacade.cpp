@@ -103,7 +103,7 @@ Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _re
 int Facades::WindowFacade::create_renderer()
 {
 	try {
-		_renderer.reset(SDL_CreateRenderer(_window.get(), -1, 123213123));
+		_renderer.reset(SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED));
 
 		if (_renderer == NULL)
 		{
