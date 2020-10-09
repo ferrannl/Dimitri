@@ -39,12 +39,6 @@
     <ClCompile Include="src\Facades\WorldFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\Body.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Facades\BodyFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\ShapeController.h">
@@ -71,11 +65,8 @@
     <ClInclude Include="src\Facades\WorldFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models\Body.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Facades\BodyFacade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
