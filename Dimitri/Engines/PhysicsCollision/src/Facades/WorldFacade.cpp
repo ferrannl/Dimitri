@@ -5,7 +5,7 @@ Facades::WorldFacade::WorldFacade() {}
 
 Facades::WorldFacade::WorldFacade(float width, float height)
 {
-	b2Vec2 gravity(0.0f, -10.0f);
+	b2Vec2 gravity(0.0f, -10.0f);   
 	_world = new b2World(gravity);
 }
 

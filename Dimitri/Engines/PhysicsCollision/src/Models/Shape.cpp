@@ -25,7 +25,7 @@ float Models::Shape::get_angle()
 	return _shape_facade->get_angle();
 }
 
-void Models::Shape::move_x(int value)
+void Models::Shape::move_x(const int value)
 {
 	_shape_facade->move_x(value);
 }

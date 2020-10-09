@@ -10,15 +10,15 @@ void KeyBoardHandler::handle_event(const EventEnum num, Models::Sprite* sprite, 
 	{
 	case EventEnum::KEY_PRESS_RIGHT:
 		shape.move_x(1);
-		sprite->set_x(static_cast<int>(shape.get_x()));
+		sprite->set_x(shape.get_x());
 		break;
 	case EventEnum::KEY_PRESS_LEFT:
 		shape.move_x(-1);
-		sprite->set_x(static_cast<int>(shape.get_x()));
+		sprite->set_x(shape.get_x());
 		break;
 	case EventEnum::KEY_PRESS_UP:
 		shape.move_y();
-		sprite->set_y(static_cast<int>(shape.get_y()));
+		sprite->set_y(shape.get_y());
 		break;
 	default:
 		break;

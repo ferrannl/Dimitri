@@ -40,7 +40,7 @@ float Facades::ShapeFacade::get_y()
 	return  _body->GetPosition().y;
 }
 
-void Facades::ShapeFacade::move_x(int value)
+void Facades::ShapeFacade::move_x(const int value)
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	if (value == -1) {
