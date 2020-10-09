@@ -8,6 +8,7 @@ int main(int argc, char** argv)
     //audio_demo.play_sound();
 
     PhysicsCollisionDemo demo = {};
+
     demo.start_demo();
 
     return 0;

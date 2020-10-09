@@ -9,10 +9,14 @@ Models::Window::Window(const std::string title, const int height, const int widt
 	_facade = std::make_unique<Facades::WindowFacade>();
 }
 
-void Models::Window::create()
+int Models::Window::create()
 {
-	_facade->create_window(_title, _height, _width);
-	_facade->create_renderer();
+	int retVal = NULL;
+
+	retVal = _facade->create_window(_title, _height, _width);
+	retVal = _facade->create_renderer();
+
+	return retVal;
 }
 
 void Models::Window::update()

@@ -1,13 +1,28 @@
 #include "WindowFacade.h"
+#include "../Exceptions/GraphicsExceptions.h"
 
-void Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
+int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
 	try {
-		SDL_Init(SDL_INIT_VIDEO);
+		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
+			throw Exceptions::SDLInitFailed();
+		}
 
 		_window.reset(SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN));
-	} catch (SDL_errorcode err) {
-		std::cout << "An error occured during initialization: " << err << std::endl;
+
+		if (_window == NULL) {
+			throw Exceptions::CannotCreateWindow();
+		}
+
+		return 1;
+	}
+	catch (Exceptions::SDLInitFailed& e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
+	}
+	catch (Exceptions::CannotCreateWindow& e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
 	}
 }
 
@@ -17,6 +32,7 @@ void Facades::WindowFacade::create_sprites(std::shared_ptr<std::vector<std::uniq
 		std::cout << "Create a renderer first" << std::endl;
 		return;
 	}
+
 
 	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
 		std::shared_ptr<Facades::TextureFacade> facade = get_if_exists(sprites, sprite->get_path());
@@ -50,10 +66,18 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 				rect.h = sprite->get_height();
 
 				//Render texture to screen
-				if (sprite->get_texture_facade()->get_texture()) {
+				try {
 					SDL_Point center = { 0,0 };
-					SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
+					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
+					
+					if (retVal < NULL) {
+						throw Exceptions::CannotRenderSpriteTexture();
+					}
 				}
+				catch (Exceptions::CannotRenderSpriteTexture& e) {
+					std::cout << e.get() << std::endl;
+				}
+				
 				objectcounter++;
 			}
 		}
@@ -77,18 +101,23 @@ std::shared_ptr<Facades::TextureFacade> Facades::WindowFacade::get_if_exists(std
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}
 
-void Facades::WindowFacade::create_renderer()
+int Facades::WindowFacade::create_renderer()
 {
-	//Create renderer for window
-	_renderer.reset(SDL_CreateRenderer(_window.get(), -1, SDL_RENDERER_ACCELERATED));
+	try {
+		_renderer.reset(SDL_CreateRenderer(_window.get(), -1, 123213123));
 
-	if (_renderer == NULL)
-	{
-		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
-	}
-	else
-	{
+		if (_renderer == NULL)
+		{
+			throw Exceptions::CannotCreateRenderer();
+		}
+
 		SDL_SetRenderDrawColor(_renderer.get(), 0, 0, 0, 255);
+
+		return 1;
+	}
+	catch (Exceptions::CannotCreateRenderer e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
 	}
 }
 

@@ -13,7 +13,7 @@ namespace Controllers
 			_window = nullptr;
 		}
 
-		void create_window(const std::string title, const int height, const int width);
+		int create_window(const std::string title, const int height, const int width);
 		void add_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
 		std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> get_sprites() const;
 

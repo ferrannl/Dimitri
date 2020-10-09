@@ -1,6 +1,5 @@
 #pragma once
 #include "../Models/Sprite.h"
-#include <iostream>
 #include "../Adapters/FlipEnumAdapter.h"
 
 namespace Facades {
@@ -14,8 +13,8 @@ namespace Facades {
 	public:
 		WindowFacade();
 
-		void create_renderer();
-		void create_window(const std::string title, const int height, const int width);
+		int create_renderer();
+		int create_window(const std::string title, const int height, const int width);
 		void create_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
 		void destroy();
 		void update_window(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);

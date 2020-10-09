@@ -13,7 +13,7 @@ namespace Models {
 	public:
 		Window(const std::string title, const int height, const int width);
 			
-		void create();
+		int create();
 		void update();
 		void destroy();
 		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);

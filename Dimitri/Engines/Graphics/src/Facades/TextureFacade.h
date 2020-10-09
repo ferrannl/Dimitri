@@ -5,6 +5,8 @@
 #include <vector>
 #include <SDL_image.h>
 #include <memory>
+#include "../Exceptions/GraphicsExceptions.h"
+#include <iostream>
 
 namespace Facades {
 	class __declspec(dllexport) TextureFacade {

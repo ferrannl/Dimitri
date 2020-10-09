@@ -56,5 +56,11 @@
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Exceptions\GraphicsExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Enums\ClassDiagram.cd" />
   </ItemGroup>
 </Project>

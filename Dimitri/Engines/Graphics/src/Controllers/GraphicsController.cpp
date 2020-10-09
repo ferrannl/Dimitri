@@ -1,9 +1,9 @@
 #include "GraphicsController.h"
 
-void Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
+int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
 {
 	_window = std::make_shared<Models::Window>(title, height, width);
-	_window->create();
+	return _window->create();
 }
 
 void Controllers::GraphicsController::add_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
