@@ -5,7 +5,7 @@ Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
 		//Initialize SDL
 		if (SDL_Init(SDL_INIT_AUDIO) < 0)
 		{
-			throw Exceptions::SDLInitFailed();
+			throw Exceptions::SDLAudioInitFailed();
 		}
 
 		//Initialize SDL_mixer
@@ -14,7 +14,7 @@ Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
 			throw Exceptions::SDLMixerInitFailed();
 		}
 	}
-	catch (Exceptions::SDLInitFailed e) {
+	catch (Exceptions::SDLAudioInitFailed e) {
 		std::cout << e.get() << std::endl;
 	}
 	catch (Exceptions::SDLMixerInitFailed e) {

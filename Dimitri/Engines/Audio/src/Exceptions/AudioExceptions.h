@@ -15,7 +15,7 @@ namespace Exceptions {
 		}
 	};
 
-	struct SDLInitFailed : public std::exception {
+	struct SDLAudioInitFailed : public std::exception {
 		const char* get() const throw () {
 			return "Cannot initialize SDL";
 		}
