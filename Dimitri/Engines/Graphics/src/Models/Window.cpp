@@ -1,14 +1,22 @@
 #include "Window.h"
 
-const std::vector<Models::Sprite*> Models::Window::get_sprites()
+std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> Models::Window::get_sprites() const
 {
 	return _sprites;
 }
 
-void Models::Window::create()
+Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height { height }, _width{ width } {
+	_facade = std::make_unique<Facades::WindowFacade>();
+}
+
+int Models::Window::create()
 {
-	_facade->create_window(_title, _x, _y, _height, _width);
-	_facade->create_renderer();
+	int retVal = NULL;
+
+	retVal = _facade->create_window(_title, _height, _width);
+	retVal = _facade->create_renderer();
+
+	return retVal;
 }
 
 void Models::Window::update()
@@ -21,32 +29,22 @@ void Models::Window::destroy()
 	_facade->destroy();
 }
 
-const int Models::Window::get_x()
-{
-	return _x;
-}
-
-const int Models::Window::get_y()
-{
-	return _x;
-}
-
-const int Models::Window::get_height()
+int Models::Window::get_height() const
 {
 	return _height;
 }
 
-const int Models::Window::get_width()
+int Models::Window::get_width() const
 {
 	return _width;
 }
 
-const char* Models::Window::get_title()
+const std::string Models::Window::get_title() const
 {
 	return _title;
 }
 
-void Models::Window::set_sprites(std::vector<Models::Sprite*> sprites)
+void Models::Window::set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
 {
 	_sprites = sprites;
 	_facade->create_sprites(_sprites);

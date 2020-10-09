@@ -1,31 +1,37 @@
 #include "TextureFacade.h"
 
-void Facades::TextureFacade::create_texture(SDL_Renderer* renderer, const char* path)
-{
-	//Load image at specified path
-	SDL_Surface* loadedSurface = IMG_Load(path);
+Facades::TextureFacade::TextureFacade() : _texture(nullptr, SDL_DestroyTexture) {}
 
-	if (loadedSurface == NULL)
-	{
-		printf("Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError());
-	}
-	else
-	{
+void Facades::TextureFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer, const std::string path)
+{
+	try {
+		//Load image at specified path
+		SDL_Surface* loadedSurface = IMG_Load(path.c_str());
+
+		if (loadedSurface == NULL) {
+			SDL_FreeSurface(loadedSurface);
+			throw Exceptions::CannotLoadImage();
+		}
+
 		//Create texture from surface pixels
-		_texture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
-		if (_texture == NULL)
-		{
-			printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());
+		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface), SDL_DestroyTexture);
+
+		if (_texture == NULL) {
+			throw Exceptions::CannotCreateTexture();
 		}
 
 		//Get rid of old loaded surface
 		SDL_FreeSurface(loadedSurface);
 	}
-
-	loadedSurface = NULL;
+	catch (Exceptions::CannotLoadImage& e) {
+		std::cout << e.get() << ": " << path << std::endl;
+	}
+	catch (Exceptions::CannotCreateTexture& e) {
+		std::cout << e.get();
+	}
 }
 
-SDL_Texture* Facades::TextureFacade::get_texture()
+std::shared_ptr<SDL_Texture> Facades::TextureFacade::get_texture()
 {
 	return _texture;
 }
