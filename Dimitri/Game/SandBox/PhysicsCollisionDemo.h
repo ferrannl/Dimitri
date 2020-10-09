@@ -2,6 +2,7 @@
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
 #include "../../Engines/Input/src/adapters/EventFacade.h"
+#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
 
 class PhysicsCollisionDemo {
 public: 

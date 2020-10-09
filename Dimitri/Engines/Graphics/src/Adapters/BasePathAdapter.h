@@ -4,6 +4,6 @@
 namespace Adapters {
 	static class __declspec(dllexport) BasePathAdapter {
 	public:
-		static const char* get_resource_path();
+		static const char* get_assets_path();
 	};
 }
