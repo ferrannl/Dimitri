@@ -16,13 +16,13 @@ Controllers::AudioController::AudioController()
 	_channel_counter = 0;
 }
 
-void Controllers::AudioController::add_sound(const std::string name, const char* path)
+void Controllers::AudioController::add_sound(const std::string name, const std::string path)
 {
 	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
 	_channel_counter++;
 }
 
-void Controllers::AudioController::add_music(const std::string name, const char* path)
+void Controllers::AudioController::add_music(const std::string name, const std::string path)
 {
 	_audios->push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
 }
@@ -45,12 +45,4 @@ void Controllers::AudioController::pause_audio(const std::string name) const
 void Controllers::AudioController::stop_audio(const std::string name) const
 {
 	get_audio_by_name(name)->get_audio_facade()->stop();
-}
-
-Controllers::AudioController::~AudioController()
-{
-	for (std::shared_ptr<Models::Audio> audio : *_audios) {
-		audio = nullptr;
-	}
-	_audios = nullptr;
 }

@@ -13,13 +13,5 @@ namespace Models {
 
 		std::string get_name() const;
 		std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade() const;
-
-		// forbid copying and moving
-		Audio(const Audio& audio) = delete;
-		Audio& operator=(const Audio& audio) = delete;
-		Audio(Audio&& audio) = delete;
-		Audio& operator=(Audio&& audio) = delete;
-
-		~Audio();
 	};
 }

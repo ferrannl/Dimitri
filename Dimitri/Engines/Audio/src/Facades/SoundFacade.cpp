@@ -1,6 +1,6 @@
 #include "SoundFacade.h"
 
-Facades::SoundFacade::SoundFacade(const char* path, int channel) : Interfaces::IAudioFacade(path), _channel{ channel }  {
+Facades::SoundFacade::SoundFacade(const std::string path, int channel) : Interfaces::IAudioFacade(path), _channel{ channel }, _sound(nullptr, Mix_FreeChunk) {
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 	{
@@ -12,7 +12,7 @@ Facades::SoundFacade::SoundFacade(const char* path, int channel) : Interfaces::I
 	{
 		//printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 	}
-	_sound = Mix_LoadWAV(path);
+	_sound.reset( Mix_LoadWAV(_path.c_str()));
 	if (_sound == NULL)
 	{
 		//printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
@@ -21,7 +21,7 @@ Facades::SoundFacade::SoundFacade(const char* path, int channel) : Interfaces::I
 
 void Facades::SoundFacade::play() const
 {
-	Mix_PlayChannel(_channel, _sound, 0);
+	Mix_PlayChannel(_channel, _sound.get(), 0);
 }
 
 void Facades::SoundFacade::resume() const
@@ -41,9 +41,4 @@ void Facades::SoundFacade::pause() const
 void Facades::SoundFacade::stop() const
 {
 	Mix_HaltChannel(_channel);
-}
-
-Facades::SoundFacade::~SoundFacade()
-{
-	delete _sound;
 }

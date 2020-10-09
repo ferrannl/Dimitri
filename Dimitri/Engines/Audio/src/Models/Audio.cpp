@@ -11,5 +11,3 @@ std::shared_ptr <Interfaces::IAudioFacade> Models::Audio::get_audio_facade() con
 {
 	return _audio_facade;
 }
-
-Models::Audio::~Audio() {}
