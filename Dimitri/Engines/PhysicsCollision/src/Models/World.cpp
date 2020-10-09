@@ -4,15 +4,15 @@ Models::World::World() {}
 
 Models::World::World(float width, float height)
 {
-	_worldAdapter = Adapters::WorldAdapter{ width, height };
+	_world_facade = Facades::WorldFacade{ width, height };
 }
 
-void Models::World::add_shape(Shape shape, float x, float y)
+void Models::World::add_shape(Shape* shape, float x, float y)
 {
-	_worldAdapter.add_shape(shape, x, y);
+	_world_facade.add_shape(shape, x, y);
 }
 
 void Models::World::simulate()
 {
-	_worldAdapter.simulate();
+	_world_facade.simulate();
 }

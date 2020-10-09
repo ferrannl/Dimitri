@@ -1,6 +1,4 @@
 #pragma once
-#include "../Models/Sprite.h"
-#include "../Models/Texture.h"
 #include <SDL.h>
 #include <stdio.h>
 #include <string>
@@ -10,20 +8,14 @@
 namespace Facades {
 	class __declspec(dllexport) TextureFacade {
 	private:
-		SDL_Renderer* _renderer;
-		std::vector<Models::Texture*> _textures;
-		void create_renderer(SDL_Window* window);
+		SDL_Texture* _texture;
 
-		Models::Texture* get_if_exists(const char* path);
-		Models::Texture* create_texture_model(const char* path, SDL_Texture* texture);
 	public:
-		TextureFacade(SDL_Window* window) {
-			create_renderer(window);
-			_textures = {};
+		TextureFacade() {
+			_texture = { nullptr };
 		}
 
-		SDL_Texture* create_texture(std::string path);
-		bool load_sprite(Models::Sprite* sprite);
-		void update_screen(SDL_Window* window, std::vector<Models::Sprite*> sprites);
+		void create_texture(SDL_Renderer* renderer, const char* path);
+		SDL_Texture* get_texture();
 	};
 }

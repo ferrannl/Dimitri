@@ -2,22 +2,27 @@
 
 Models::Shape::Shape()
 {
-	shapeAdapter = nullptr;
+	_shape_facade = nullptr;
 }
 
-void Models::Shape::add_body(b2Body* body)
+Facades::ShapeFacade* Models::Shape::get_shape_facade()
 {
-	shapeAdapter->add_body(body);
+	return _shape_facade;
 }
 
 float Models::Shape::get_x()
 {
-	return shapeAdapter->get_x();
+	return _shape_facade->get_x();
 }
 
 float Models::Shape::get_y()
 {
-	return shapeAdapter->get_y();
+	return _shape_facade->get_y();
+}
+
+float Models::Shape::get_angle()
+{
+	return _shape_facade->get_angle();
 }
 
 

@@ -9,7 +9,6 @@ void Controllers::GraphicsController::create_window(const char* title, int xpos,
 void Controllers::GraphicsController::add_sprites(std::vector<Models::Sprite*> sprites)
 {
 	_window->set_sprites(sprites);
-	_window->create_sprites();
 }
 
 std::vector<Models::Sprite*> Controllers::GraphicsController::get_sprites()

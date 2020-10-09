@@ -6,9 +6,9 @@
 namespace Controllers {
 	class __declspec(dllexport) ShapeController {
 	private:
-		Factories::ShapeFactory* _shapeFactory;
+		Factories::ShapeFactory* _shape_factory;
 	public:
 		ShapeController();
-		Models::Shape create_shape(std::string type, std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		Models::Shape* create_shape(std::string type, std::vector<std::pair<float, float>> positions, bool is_dynamic);
 	};
 }

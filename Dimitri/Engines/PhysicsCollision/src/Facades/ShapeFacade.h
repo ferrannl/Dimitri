@@ -5,19 +5,21 @@
 #include <vector>
 #include <box2d\b2_body.h>
 
-namespace Adapters {
-	class __declspec(dllexport) ShapeAdapter {
+namespace Facades {
+	float static RADIAN_IN_DEGREES = 57.3f;
+	class __declspec(dllexport) ShapeFacade {
 	private:
 		b2Shape* _shape;
 		b2Body* _body;
 	public:
-		ShapeAdapter();
-		ShapeAdapter(std::string type, std::vector<std::pair<float, float>> positions);
-		b2Shape& get_shape() const;
+		ShapeFacade();
+		ShapeFacade(std::string type, std::vector<std::pair<float, float>> positions);
+		b2Shape* get_shape() const;
 		void add_body(b2Body* body);
 		float get_x();
 		float get_y();
 		void set_x(int value);
 		void set_y();
+		float get_angle();
 	};
 }

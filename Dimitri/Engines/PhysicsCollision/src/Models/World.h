@@ -1,15 +1,15 @@
 #pragma once
 #include "Shape.h"
-#include "../Adapters/WorldAdapter.h"
+#include "../Facades/WorldFacade.h"
 
 namespace Models {
 	class __declspec(dllexport) World {
 	private:
-		Adapters::WorldAdapter _worldAdapter;
+		Facades::WorldFacade _world_facade;
 	public:
 		World();
 		World(float width, float height);
-		void add_shape(Shape shape, float x, float y);
+		void add_shape(Shape* shape, float x, float y);
 		void simulate();
 	};
 }

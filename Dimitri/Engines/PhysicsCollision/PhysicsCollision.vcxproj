@@ -21,22 +21,25 @@
   <ItemGroup>
     <ClCompile Include="src\Models\Polygon.cpp" />
     <ClCompile Include="src\Models\Shape.cpp" />
-    <ClCompile Include="src\Adapters\ShapeAdapter.cpp" />
+    <ClCompile Include="src\Facades\ShapeFacade.cpp" />
     <ClCompile Include="src\Controllers\ShapeController.cpp" />
     <ClCompile Include="src\Factories\ShapeFactory.cpp" />
     <ClCompile Include="src\Models\World.cpp" />
-    <ClCompile Include="src\Adapters\WorldAdapter.cpp" />
+    <ClCompile Include="src\Facades\WorldFacade.cpp" />
     <ClCompile Include="src\Controllers\WorldController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Polygon.h" />
     <ClInclude Include="src\Models\Shape.h" />
-    <ClInclude Include="src\Adapters\ShapeAdapter.h" />
+    <ClInclude Include="src\Facades\ShapeFacade.h" />
     <ClInclude Include="src\Controllers\ShapeController.h" />
     <ClInclude Include="src\Factories\ShapeFactory.h" />
     <ClInclude Include="src\Models\World.h" />
-    <ClInclude Include="src\Adapters\WorldAdapter.h" />
+    <ClInclude Include="src\Facades\WorldFacade.h" />
     <ClInclude Include="src\Controllers\WorldController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

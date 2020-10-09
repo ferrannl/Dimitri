@@ -30,9 +30,19 @@ const int Models::Sprite::get_height()
 	return _height;
 }
 
-Models::Texture* Models::Sprite::get_texture()
+const float Models::Sprite::get_angle()
 {
-	return _texture;
+	return _angle;
+}
+
+Facades::TextureFacade* Models::Sprite::get_texture_facade()
+{
+	return _facade;
+}
+
+Enums::FlipEnum Models::Sprite::get_flip_status()
+{
+	return _flipstatus;
 }
 
 const char* Models::Sprite::get_path()
@@ -65,7 +75,22 @@ void Models::Sprite::set_height(const int height)
 	_height = height;
 }
 
-void Models::Sprite::set_texture(Models::Texture* texture)
+void Models::Sprite::set_angle(const float angle)
 {
-	_texture = texture;
+	_angle = angle;
+}
+
+void Models::Sprite::set_flip_status(Enums::FlipEnum flipstatus)
+{
+	_flipstatus = flipstatus;
+}
+
+void Models::Sprite::set_facade(Facades::TextureFacade* facade)
+{
+	_facade = facade;
+}
+
+void Models::Sprite::create_texture_facade()
+{
+	_facade = { new Facades::TextureFacade };
 }

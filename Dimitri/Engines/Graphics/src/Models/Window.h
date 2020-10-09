@@ -5,8 +5,7 @@
 #include <vector>
 
 namespace Models {
-	class __declspec(dllexport) Window
-	{
+	class __declspec(dllexport) Window {
 	private:
 		int _x;
 		int _y;
@@ -22,7 +21,6 @@ namespace Models {
 			_facade = new Facades::WindowFacade();
 		}
 
-		void create_sprites();
 		void create();
 		void update();
 		void destroy();

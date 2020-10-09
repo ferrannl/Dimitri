@@ -1,18 +1,19 @@
 #pragma once
-#include "../Adapters/ShapeAdapter.h"
-#include <string>
+#include "../Facades/ShapeFacade.h"
 
 namespace Models {
 	class __declspec(dllexport) Shape {
+	protected:
+		Facades::ShapeFacade* _shape_facade;
 	public:
 		bool is_dynamic;
-		Adapters::ShapeAdapter* shapeAdapter;
 		Shape();
 		Shape(std::vector<std::pair<float, float>> positions);
-		void add_body(b2Body* body);
+		Facades::ShapeFacade* get_shape_facade();
 		float get_x();
 		float get_y();
 		void set_x(int value);
 		void set_y();
+		float get_angle();
 	};
 }
