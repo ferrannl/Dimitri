@@ -20,5 +20,6 @@ Enums::EventEnum Facades::EventFacade::poll_event()
         default:
             return Enums::EventEnum::NOT_SUPPORTED;
         }
+        return Enums::EventEnum::NOT_SUPPORTED;
 	}
 }
