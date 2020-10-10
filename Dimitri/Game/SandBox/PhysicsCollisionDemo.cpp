@@ -54,7 +54,6 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	
 	while (true)
 	{
 		for (int i = 0; i < shapes.size(); i++)
@@ -66,7 +65,7 @@ void PhysicsCollisionDemo::run()
 		graphicsController.update_window();
 		worldController.simulate();
 
-		SDL_Delay(5);
+		sleep_for(5ms);
 	}
 
 	graphicsController.get_window()->destroy();
