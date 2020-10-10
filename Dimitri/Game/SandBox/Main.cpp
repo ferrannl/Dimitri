@@ -4,21 +4,20 @@
 
 int main(int argc, char** argv) 
 {
-   /* AudioDemo audio_demo = {};
-    audio_demo.play_music();
-    audio_demo.play_sound();*/
+    AudioDemo audio_demo = {};
   
+    std::thread audio_thread(&AudioDemo::play_music, audio_demo);
+
     std::shared_ptr<PhysicsCollisionDemo> demo = std::make_shared<PhysicsCollisionDemo>();
 
     InputDemo inputdemo = {};
     inputdemo.get_input_controller()->subscribe(demo);
-
-    //std::thread input_thread(&Controllers::InputController::poll_events, inputdemo.get_input_controller());
 
     demo->start_demo();
     std::thread demo_thread(&PhysicsCollisionDemo::run, demo);
     inputdemo.get_input_controller()->poll_events();
     
     demo_thread.join();
+    audio_thread.join();
     return 0;
 }
