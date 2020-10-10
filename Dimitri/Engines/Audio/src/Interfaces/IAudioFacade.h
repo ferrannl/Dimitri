@@ -1,14 +1,20 @@
 #pragma once
+#include <string>
+#include <memory>
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include "../Exceptions/AudioExceptions.h"
+#include <iostream>
 
 namespace Interfaces {
 	class __declspec(dllexport) IAudioFacade {
 	protected:
-		const char* _path;
+		const std::string _path;
 	public:
-		IAudioFacade(const char* path) : _path{ path } {}
-		virtual void play() = 0;
-		virtual void resume() = 0;
-		virtual void pause() = 0;
-		virtual void stop() = 0;
+		IAudioFacade(const std::string path);
+		virtual void play() const = 0;
+		virtual void resume() const = 0;
+		virtual void pause() const = 0;
+		virtual void stop() const = 0;
 	};
 }

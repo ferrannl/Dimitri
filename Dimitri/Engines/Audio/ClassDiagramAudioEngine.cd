@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Controllers::AudioController">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAACAAAAABABAAAACAQAQCAAAEAAIAACA=</HashCode>
+      <FileName>src\Controllers\AudioController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Facades::MusicFacade">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAACgAAAAAEAAAAAgIAA=</HashCode>
+      <FileName>src\Facades\MusicFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Facades::SoundFacade">
+    <Position X="18.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAAAAAAAAAAAAAAAAAAAAAAigAAAAAAAAAgAAIAA=</HashCode>
+      <FileName>src\Facades\SoundFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interfaces::IAudioFacade">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAgAACAAAAAAAAAAAAAACgAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>src\Interfaces\IAudioFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models::Audio">
+    <Position X="15" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAACAAAAAEAAAAAAAAAAAAAAAAAAIAAAAI=</HashCode>
+      <FileName>src\Models\Audio.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Mix_Chunk" Collapsed="true">
+    <Position X="18.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAACAAAgAAAAAAAAAAACAAA=</HashCode>
+      <FileName>C:\vclib\SDL2_mixer-2.0.4\include\SDL_mixer.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="Mix_Music" Collapsed="true">
+    <Position X="16.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\vclib\SDL2_mixer-2.0.4\include\SDL_mixer.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
