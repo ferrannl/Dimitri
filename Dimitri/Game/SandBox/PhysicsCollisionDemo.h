@@ -1,7 +1,6 @@
 #pragma once
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-#include "../../Engines/Input/src/interfaces/IObserver.h"
 //#include "../../Engines/Input/src/adapters/EventFacade.h"
 #include <thread>
 #include <iostream>

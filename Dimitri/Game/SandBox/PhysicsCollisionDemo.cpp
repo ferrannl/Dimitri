@@ -1,6 +1,5 @@
 #include "PhysicsCollisionDemo.h"
 
-
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
@@ -57,7 +56,7 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	SDL_Event event;
+	//SDL_Event event;
 	std::thread([this] { inputController->poll_events(); });
 	while (true)
 	{
