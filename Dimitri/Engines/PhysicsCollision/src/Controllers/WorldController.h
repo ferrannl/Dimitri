@@ -13,6 +13,7 @@ namespace Controllers {
 		void setup_world(const float width, const float height);
 		void clean_up()const;
 		Models::Shape create_shape(const std::string type, const float x, const float y, const std::vector<std::pair<float, float>> positions, const bool is_dynamic);
+		void destroy();
 		void simulate();
 	};
 }

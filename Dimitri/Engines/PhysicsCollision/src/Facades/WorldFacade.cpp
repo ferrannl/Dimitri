@@ -1,15 +1,19 @@
 #include "WorldFacade.h"
 #include <iostream>
 
-Facades::WorldFacade::WorldFacade() {}
-
-Facades::WorldFacade::WorldFacade(float width, float height)
+Facades::WorldFacade::WorldFacade()
 {
 	b2Vec2 gravity(0.0f, -10.0f);   
 	_world = std::make_shared<b2World>(gravity);
 }
 
-void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const float x, const float y)const
+void Facades::WorldFacade::destroy()
+{
+    _world->DestroyBody(_body);
+    _world->DestroyBody(_groundBody);
+}
+
+void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const float x, const float y)
 {
     b2BodyDef bodyDef;
     b2FixtureDef fixtureDef;
@@ -18,7 +22,7 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const
         fixtureDef.density = 1.0f;
         bodyDef.type = b2_dynamicBody;
         bodyDef.position.Set(x, y);
-        b2Body* _body = _world->CreateBody(&bodyDef);
+        _body = _world->CreateBody(&bodyDef);
         fixtureDef.shape = shape->get_shape_facade()->get_shape().get();
         _body->CreateFixture(&fixtureDef);
         shape->get_shape_facade()->add_body(_body);
@@ -26,7 +30,7 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const
     else {
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(x, y);
-        b2Body* _groundBody = _world->CreateBody(&groundBodyDef);
+        _groundBody = _world->CreateBody(&groundBodyDef);
         std::shared_ptr<b2Shape> groundBox= shape->get_shape_facade()->get_shape();
         _groundBody->CreateFixture(groundBox.get(), 0.0f);
         shape->get_shape_facade()->add_body(_groundBody);

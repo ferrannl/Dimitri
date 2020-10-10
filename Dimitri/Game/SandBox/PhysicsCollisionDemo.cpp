@@ -66,6 +66,6 @@ void PhysicsCollisionDemo::run()
 
 		SDL_Delay(5);
 	}
-
+	worldController.destroy();
 	graphicsController.get_window()->destroy();
 }
