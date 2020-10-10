@@ -1,5 +1,6 @@
 #pragma once
 #include <box2d/b2_world.h>
+#include <vector>
 #include <box2d/b2_math.h>
 #include <box2d/b2_body.h>
 #include <box2d/b2_fixture.h>
@@ -11,6 +12,7 @@ namespace Facades {
 		std::shared_ptr<b2World> _world;
 		b2Body* _body;
 		b2Body* _groundBody;
+		std::vector<b2Body*> _bodies;
 	public:
 		WorldFacade();
 		void destroy();
