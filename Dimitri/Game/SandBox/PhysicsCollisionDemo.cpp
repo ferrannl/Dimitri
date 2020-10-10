@@ -54,13 +54,8 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	SDL_Event event;
 	while (true)
 	{
-		if (SDL_PollEvent(&event) != 1)
-		{
-			EventFacade adapter = EventFacade();
-		}
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
@@ -70,7 +65,7 @@ void PhysicsCollisionDemo::run()
 		graphicsController.update_window();
 		worldController.simulate();
 
-		SDL_Delay(5);
+		sleep_for(5ms);
 	}
 
 	graphicsController.get_window()->destroy();
