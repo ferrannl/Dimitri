@@ -3,7 +3,6 @@
 AudioDemo::AudioDemo()
 {
     _audio_controller = std::make_unique<Controllers::AudioController>();
-    std::string* name = new std::string{ "music" }; 
 }
 
 void AudioDemo::play_music() const
