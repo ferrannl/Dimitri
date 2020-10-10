@@ -14,13 +14,13 @@ void PhysicsCollisionDemo::start_demo()
 		return;
 	}
 
-	std::string path = (Adapters::BasePathAdapter::get_assets_path() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 600, 1, 50, 50, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(300, 200, 1, 300, 50, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, 720, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, -1, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(-1, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(1080, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	std::filesystem::path asset = std::filesystem::current_path() / "assets" / "images" / "img.png";
+	create_sprite(350, 600, 1, 50, 50, asset.string().c_str(), 0, Enums::FlipEnum::VERTICAL);
+	create_sprite(300, 200, 1, 300, 50, asset.string().c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, 720, 1, 1080, 1, asset.string().c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, -1, 1, 1080, 1, asset.string().c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(-1, 0, 1, 1, 720, asset.string().c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(1080, 0, 1, 1, 720, asset.string().c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 50, 50, true);
 	create_shape(300, 200, 300, 50, false);
@@ -60,7 +60,7 @@ void PhysicsCollisionDemo::run()
 		if (SDL_PollEvent(&event) != 1)
 		{
 			EventFacade adapter = EventFacade();
-			adapter.handle_input(event, sprites[0], shapes[0]);
+			//adapter.handle_input(event, sprites[0], shapes[0]);
 		}
 		for (int i = 0; i < shapes.size(); i++)
 		{

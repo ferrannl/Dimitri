@@ -120,6 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,7 +145,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Adapters\BasePathAdapter.cpp" />
     <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp" />
     <ClCompile Include="src\Enums\FlipEnum.h" />
     <ClCompile Include="src\Facades\TextureFacade.cpp" />
@@ -154,7 +154,6 @@
     <ClCompile Include="src\Models\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Adapters\BasePathAdapter.h" />
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h" />
     <ClInclude Include="src\Exceptions\GraphicsExceptions.h" />
     <ClInclude Include="src\Facades\TextureFacade.h" />

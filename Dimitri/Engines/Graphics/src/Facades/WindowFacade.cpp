@@ -34,6 +34,7 @@ void Facades::WindowFacade::create_sprites(std::shared_ptr<std::vector<std::uniq
 
 
 	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
+		// check if the texuture already exists
 		std::shared_ptr<Facades::TextureFacade> facade = get_if_exists(sprites, sprite->get_path());
 
 		if (facade) {
