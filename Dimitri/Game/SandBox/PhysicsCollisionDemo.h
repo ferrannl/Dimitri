@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
+#include "../../Engines/Input/src/Controllers/InputController.h"
 
 #include "../../Engines/Input/src/Enums/EventEnum.cpp"
 #include "../../Engines/Input/src/Interfaces/IObserver.h"
@@ -11,6 +12,7 @@ class PhysicsCollisionDemo : public Interfaces::IObserver {
 public: 
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
+	std::shared_ptr<Controllers::InputController> _inputController;
 	std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites;
 	std::vector<Models::Shape> shapes;
 	PhysicsCollisionDemo();
@@ -20,4 +22,5 @@ public:
 	void create_shape(int x, int y, int height, int width, bool is_dynamic);
 	void run();
 	void update(Enums::EventEnum event);
+	void subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo);
 };
