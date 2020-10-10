@@ -1,13 +1,15 @@
 #pragma once
 #include "../../Engines/Audio/src/Controllers/AudioController.h"
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
 
 class AudioDemo {
 private:
-	Controllers::AudioController _audio_controller;
+	std::unique_ptr<Controllers::AudioController> _audio_controller;
 public:
-	AudioDemo() {
-		_audio_controller = {};
-	}
-	void play_music();
-	void play_sound();
+	AudioDemo();
+	void play_music() const;
+	void play_sound() const;
 };

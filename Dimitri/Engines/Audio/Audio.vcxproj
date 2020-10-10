@@ -146,14 +146,19 @@
     <ClCompile Include="src\Facades\MusicFacade.cpp" />
     <ClCompile Include="src\Facades\SoundFacade.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Interfaces\IAudioFacade.cpp" />
     <ClCompile Include="src\Models\Audio.cpp" />
     <ClCompile Include="src\Models\Audio.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Exceptions\AudioExceptions.h" />
     <ClInclude Include="src\Facades\MusicFacade.h" />
     <ClInclude Include="src\Facades\SoundFacade.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Interfaces\IAudioFacade.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramAudioEngine.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
