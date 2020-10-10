@@ -1,6 +1,5 @@
 #pragma once
 #include <tuple>
-#include "../enums/EventEnum.cpp"
 #include "../interfaces/IInputAdapter.h"
 namespace Adapters {
 	class __declspec(dllexport) MouseAdapter : public Interfaces::IInputAdapter {

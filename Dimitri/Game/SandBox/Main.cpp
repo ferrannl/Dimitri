@@ -1,5 +1,6 @@
 #include "PhysicsCollisionDemo.h"
 #include "AudioDemo.h"
+#include "InputDemo.h"
 
 int main(int argc, char** argv) 
 {
@@ -7,9 +8,14 @@ int main(int argc, char** argv)
     audio_demo.play_music();
     audio_demo.play_sound();*/
   
-    PhysicsCollisionDemo demo = {};
+    std::shared_ptr<PhysicsCollisionDemo> demo = std::make_shared<PhysicsCollisionDemo>();
 
-    demo.start_demo();
+    InputDemo inputdemo = {};
+    inputdemo.get_input_controller()->subscribe(demo);
+
+    std::thread input_thread(&Controllers::InputController::poll_events, inputdemo.get_input_controller());
+    demo->start_demo();
+   
 
     return 0;
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "../enums/EventEnum.cpp"
 #include "../interfaces/IObserver.h"
 
 namespace Interfaces {

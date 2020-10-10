@@ -24,12 +24,18 @@
     <ClCompile Include="AudioDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputDemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PhysicsCollisionDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AudioDemo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

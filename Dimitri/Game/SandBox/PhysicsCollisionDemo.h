@@ -1,16 +1,16 @@
 #pragma once
-#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
-#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-//#include "../../Engines/Input/src/adapters/EventFacade.h"
 #include <thread>
 #include <iostream>
-#include "../../Engines/Input/src/Controllers/InputController.h"
+#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
+#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
+
+#include "../../Engines/Input/src/Enums/EventEnum.cpp"
+#include "../../Engines/Input/src/Interfaces/IObserver.h"
 
 class PhysicsCollisionDemo : public Interfaces::IObserver {
 public: 
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
-	std::unique_ptr<Controllers::InputController> inputController;
 	std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites;
 	std::vector<Models::Shape> shapes;
 	PhysicsCollisionDemo();

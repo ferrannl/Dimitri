@@ -1,6 +1,7 @@
 #pragma once
 #include <tuple>
-#include <SDL.h>
+#include <SDL_mouse.h>
+
 namespace Facades{
 	class __declspec(dllexport) MouseFacade {
 	public:

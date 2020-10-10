@@ -1,6 +1,4 @@
 #pragma once
-#include <SDL_events.h>
-#include "../enums/EventEnum.cpp"
 #include <memory>
 #include "MouseAdapter.h"
 #include "KeyBoardAdapter.h"

@@ -1,10 +1,4 @@
 #pragma once
-#include <SDL.h>
-#include "../enums/EventEnum.cpp"
-#include <string>
-#include <vector>
-#include <tuple>
-#include "../interfaces/IInputAdapter.h"
 #include "../Adapters/EventAdapter.h"
 
 namespace Facades {

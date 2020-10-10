@@ -144,11 +144,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioDemo.cpp" />
+    <ClCompile Include="InputDemo.cpp" />
     <ClCompile Include="PhysicsCollisionDemo.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioDemo.h" />
+    <ClInclude Include="InputDemo.h" />
     <ClInclude Include="PhysicsCollisionDemo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
