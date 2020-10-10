@@ -6,6 +6,9 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAQg=</HashCode>
       <FileName>src\Facades\EventFacade.h</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_event" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Interfaces::IInputAdapter">
     <Position X="13" Y="3.25" Width="1.5" />
