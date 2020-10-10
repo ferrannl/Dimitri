@@ -5,6 +5,12 @@
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
 #include "../../Engines/Input/src/Controllers/InputController.h"
 
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
+
+
 #include "../../Engines/Input/src/Enums/EventEnum.cpp"
 #include "../../Engines/Input/src/Interfaces/IObserver.h"
 

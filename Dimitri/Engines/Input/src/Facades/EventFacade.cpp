@@ -17,11 +17,8 @@ Enums::EventEnum Facades::EventFacade::poll_event()
         case SDL_MOUSEBUTTONDOWN:
             _input_adapter = std::make_shared<Adapters::MouseAdapter>();
             return _input_adapter->translate_to_enum(_event);
-        case SDL_MOUSEMOTION:
-            return Enums::EventEnum::NOT_SUPPORTED;
         default:
             return Enums::EventEnum::NOT_SUPPORTED;
         }
 	}
-	return Enums::EventEnum::NOT_SUPPORTED;
 }

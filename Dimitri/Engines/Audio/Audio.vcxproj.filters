@@ -30,6 +30,9 @@
     <ClCompile Include="src\Facades\MusicFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Interfaces\IAudioFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">
@@ -44,5 +47,11 @@
     <ClInclude Include="src\Facades\MusicFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Exceptions\AudioExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramAudioEngine.cd" />
   </ItemGroup>
 </Project>
