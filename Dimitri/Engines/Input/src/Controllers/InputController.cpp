@@ -4,7 +4,6 @@ Controllers::InputController::InputController()
 {
 	_event_facade = std::make_unique<Facades::EventFacade>();
 	_mouse_facade = std::make_unique<Facades::MouseFacade>();
-	_observers = std::shared_ptr<Interfaces::IObserver>();
 }
 
 std::tuple<int, int> Controllers::InputController::get_mouse_position()
@@ -14,14 +13,12 @@ std::tuple<int, int> Controllers::InputController::get_mouse_position()
 
 void Controllers::InputController::notify(Enums::EventEnum event)
 {
-	//for (std::shared_ptr<Interfaces::IObserver> observer : _observers) {
-	_observers->update(event);
-	//}
+	_observer->update(event);
 }
 
 void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserver> observer)
 {
-	_observers = observer;
+	_observer = observer;
 }
 
 
