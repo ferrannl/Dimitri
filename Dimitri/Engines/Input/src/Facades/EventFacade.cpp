@@ -8,7 +8,7 @@ Facades::EventFacade::EventFacade()
 Enums::EventEnum Facades::EventFacade::poll_event()
 {
 	SDL_Event event;
-	if (SDL_PollEvent(&event) != 1)
+	if (SDL_PollEvent(&event) == 1)
 	{
 		return _event_adapter->translate_to_enum(event);
 	}

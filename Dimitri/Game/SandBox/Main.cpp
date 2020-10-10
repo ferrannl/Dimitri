@@ -15,7 +15,7 @@ int main(int argc, char** argv)
 
     std::thread input_thread(&Controllers::InputController::poll_events, inputdemo.get_input_controller());
     demo->start_demo();
-   
-
+    /*std::thread input_thread(&PhysicsCollisionDemo::start_demo, demo);
+    inputdemo.get_input_controller()->poll_events();*/
     return 0;
 }
