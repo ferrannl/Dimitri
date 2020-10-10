@@ -1,10 +1,13 @@
 #pragma once
-#include "../Adapters/EventAdapter.h"
+#include "../Adapters/KeyBoardAdapter.h"
+#include "../Adapters/MouseAdapter.h"
+#include <memory>
 
 namespace Facades {
 	class __declspec(dllexport) EventFacade {
 	private:
-		std::unique_ptr<Adapters::EventAdapter> _event_adapter;
+		SDL_Event _event;
+		std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
 	public:
 
 		EventFacade();

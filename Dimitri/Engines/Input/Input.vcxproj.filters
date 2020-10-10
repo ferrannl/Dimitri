@@ -18,9 +18,6 @@
     <ClCompile Include="src\Controllers\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Adapters\EventAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\InputController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Adapters\EventAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Adapters\KeyBoardAdapter.h">

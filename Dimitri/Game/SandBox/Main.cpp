@@ -13,9 +13,12 @@ int main(int argc, char** argv)
     InputDemo inputdemo = {};
     inputdemo.get_input_controller()->subscribe(demo);
 
-    std::thread input_thread(&Controllers::InputController::poll_events, inputdemo.get_input_controller());
+    //std::thread input_thread(&Controllers::InputController::poll_events, inputdemo.get_input_controller());
+
     demo->start_demo();
-    /*std::thread input_thread(&PhysicsCollisionDemo::start_demo, demo);
-    inputdemo.get_input_controller()->poll_events();*/
+    std::thread demo_thread(&PhysicsCollisionDemo::run, demo);
+    inputdemo.get_input_controller()->poll_events();
+    
+    demo_thread.join();
     return 0;
 }

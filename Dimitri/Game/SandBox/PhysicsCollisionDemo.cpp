@@ -28,7 +28,7 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(0, -1, 1080, 1, false); // bottom    
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
-	run();
+	
 }
 
 int PhysicsCollisionDemo::create_window(int width, int height)
@@ -54,7 +54,6 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	//SDL_Event event;
 	
 	while (true)
 	{
@@ -85,7 +84,7 @@ void PhysicsCollisionDemo::update(Enums::EventEnum event)
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
 	default: 
-		std::cout << "ez pz";
+		std::cout << "geen reactie";
 	}
 }
 

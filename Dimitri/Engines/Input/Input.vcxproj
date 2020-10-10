@@ -152,7 +152,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Adapters\EventAdapter.cpp" />
     <ClCompile Include="src\Facades\EventFacade.cpp" />
     <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp" />
     <ClCompile Include="src\Adapters\MouseAdapter.cpp" />
@@ -161,7 +160,6 @@
     <ClCompile Include="src\Enums\EventEnum.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Adapters\EventAdapter.h" />
     <ClInclude Include="src\Facades\EventFacade.h" />
     <ClInclude Include="src\Adapters\KeyBoardAdapter.h" />
     <ClInclude Include="src\Adapters\MouseAdapter.h" />
