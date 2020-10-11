@@ -4,6 +4,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
+	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
 	shapes = std::vector<Models::Shape>{};
 }
@@ -28,7 +29,10 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(0, -1, 1080, 1, false); // bottom    
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
-	run();
+
+	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
+	_inputController->poll_events();
+	demo_thread.join();
 }
 
 int PhysicsCollisionDemo::create_window(int width, int height)
@@ -70,3 +74,27 @@ void PhysicsCollisionDemo::run()
 
 	graphicsController.get_window()->destroy();
 }
+
+void PhysicsCollisionDemo::update(Enums::EventEnum event)
+{
+	switch (event) {
+	case Enums::EventEnum::KEY_PRESS_LEFT:
+		shapes[0].move_x(-1);
+		sprites->at(0)->set_x(shapes[0].get_x());
+		break;
+	case Enums::EventEnum::KEY_PRESS_RIGHT:
+		shapes[0].move_x(1);
+		sprites->at(0)->set_x(shapes[0].get_x());
+		break;
+	default: 
+		std::cout << "geen reactie";
+	}
+}
+
+void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo)
+{
+	_inputController->subscribe(demo);
+}
+
+
+

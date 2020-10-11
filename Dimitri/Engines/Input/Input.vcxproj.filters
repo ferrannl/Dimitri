@@ -15,51 +15,48 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\handlers\MouseHandler.cpp">
+    <ClCompile Include="src\Controllers\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\enums\EventEnum.cpp">
+    <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\handlers\KeyBoardHandler.cpp">
+    <ClCompile Include="src\Adapters\MouseAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\adapters\EventFacade.cpp">
+    <ClCompile Include="src\Facades\MouseFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\adapters\KeyBoardAdapter.cpp">
+    <ClCompile Include="src\Facades\EventFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\adapters\MouseAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\adapters\MouseFacade.cpp">
+    <ClCompile Include="src\Enums\EventEnum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\handlers\MouseHandler.h">
+    <ClInclude Include="src\Controllers\InputController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\interfaces\IInputHandler.h">
+    <ClInclude Include="src\Adapters\KeyBoardAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\handlers\KeyBoardHandler.h">
+    <ClInclude Include="src\Adapters\MouseAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\adapters\EventFacade.h">
+    <ClInclude Include="src\Facades\MouseFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\adapters\KeyBoardAdapter.h">
+    <ClInclude Include="src\Facades\EventFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\adapters\MouseAdapter.h">
+    <ClInclude Include="src\Interfaces\IInputAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\interfaces\IInputAdapter.h">
+    <ClInclude Include="src\Interfaces\IObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\adapters\MouseFacade.h">
+    <ClInclude Include="src\Interfaces\IObservable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

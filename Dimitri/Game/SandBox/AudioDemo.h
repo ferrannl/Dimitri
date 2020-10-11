@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Engines/Audio/src/Controllers/AudioController.h"
+#include <memory>
 #include <chrono>
 #include <thread>
 #include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
