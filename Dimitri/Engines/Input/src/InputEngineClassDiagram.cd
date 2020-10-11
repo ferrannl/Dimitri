@@ -1,94 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="EventFacade">
-    <Position X="11.25" Y="2.25" Width="1.5" />
+  <Class Name="Facades::EventFacade">
+    <Position X="13" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAABAAAAAARA=</HashCode>
-      <FileName>src\adapters\EventFacade.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAQg=</HashCode>
+      <FileName>src\Facades\EventFacade.h</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_adapter" />
-      <Field Name="_handler" />
+      <Field Name="_event" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="IInputAdapter">
-    <Position X="7.75" Y="5.25" Width="1.5" />
+  <Class Name="Interfaces::IInputAdapter">
+    <Position X="13" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\interfaces\IInputAdapter.h</FileName>
+      <FileName>src\Interfaces\IInputAdapter.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IInputHandler">
-    <Position X="7.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\interfaces\IInputHandler.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KeyBoardAdapter">
-    <Position X="9.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\adapters\KeyBoardAdapter.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="KeyBoardHandler">
-    <Position X="9" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
-      <FileName>src\handlers\KeyBoardHandler.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MouseAdapter">
-    <Position X="5.5" Y="6.5" Width="1.5" />
-    <InheritanceLine Type="IInputAdapter" FixedToPoint="true">
-      <Path>
-        <Point X="8.5" Y="6.353" />
-        <Point X="8.5" Y="7.25" />
-        <Point X="7" Y="7.25" />
-      </Path>
+  <Class Name="Adapters::KeyBoardAdapter">
+    <Position X="14.5" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Interfaces::IInputAdapter">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-0.544" Y="0.256" />
+      </InheritanceModifierLabel>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAAA=</HashCode>
-      <FileName>src\adapters\MouseAdapter.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Adapters\KeyBoardAdapter.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MouseFacade">
-    <Position X="4.5" Y="3.75" Width="1.5" />
+  <Class Name="Adapters::MouseAdapter">
+    <Position X="11.5" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Interfaces::IInputAdapter">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="0.1" Y="0.216" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Adapters\MouseAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Facades::MouseFacade">
+    <Position X="10.75" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\adapters\MouseFacade.h</FileName>
+      <FileName>src\Facades\MouseFacade.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MouseHandler">
-    <Position X="6.5" Y="3.5" Width="1.5" />
+  <Class Name="Controllers::InputController">
+    <Position X="8.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAA=</HashCode>
-      <FileName>src\handlers\MouseHandler.h</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_facade" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="std::shared_ptr&lt;_Ty&gt;" Collapsed="true">
-    <Position X="14.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAEAAAAAAAEAAAIAgAAEAEAAICgAQAgAAAAAAA=</HashCode>
-      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\memory</FileName>
+      <HashCode>AAAAAAAAIAAAAAAAAAAIAAIAAAAAAAIAAAAAQAAEAEA=</HashCode>
+      <FileName>src\Controllers\InputController.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="std::unique_ptr&lt;_Ty, _Dx&gt;" Collapsed="true">
-    <Position X="4.5" Y="2.25" Width="1.5" />
+  <Class Name="Interfaces::IObserver" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAEAAAAAAgEAEAAQgAAAAAAAAAAAQAgAAAAAIg=</HashCode>
-      <FileName>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\memory</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>src\Interfaces\IObserver.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="EventEnum">
-    <Position X="11.25" Y="4.25" Width="1.5" />
+  <Class Name="Interfaces::IObservable" Collapsed="true">
+    <Position X="8.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIQAAAEAAAEAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>src\enums\EventEnum.cpp</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>src\Interfaces\IObservable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="SDL_Event" Collapsed="true">
+    <Position X="15" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\vclib\SDL2-2.0.12\include\SDL_events.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="Enums::EventEnum" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QADAwAgABACAYCAAAEJxYDAEAkEkMDIIgSAQCIHBQQA=</HashCode>
+      <FileName>src\Enums\EventEnum.cpp</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

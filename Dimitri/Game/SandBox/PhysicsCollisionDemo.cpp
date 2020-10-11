@@ -4,6 +4,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
+	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
 	shapes = std::vector<Models::Shape>{};
 }
@@ -14,13 +15,13 @@ void PhysicsCollisionDemo::start_demo()
 		return;
 	}
 
-	std::string path = (SDL_GetBasePath() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 600, 1, 50, 50, path.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(300, 200, 1, 300, 50, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, 720, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, -1, 1, 1080, 1, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(-1, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(1080, 0, 1, 1, 720, path.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
+	create_sprite(350, 600, 1, 50, 50, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
+	create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 600, 50, 50, true);
 	create_shape(300, 200, 300, 50, false);
@@ -28,7 +29,10 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(0, -1, 1080, 1, false); // bottom    
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
-	run();
+
+	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
+	_inputController->poll_events();
+	demo_thread.join();
 }
 
 int PhysicsCollisionDemo::create_window(int width, int height)
@@ -54,14 +58,8 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	//SDL_Event event;
 	while (true)
 	{
-		/*if (SDL_PollEvent(&event) != 1)
-		{
-			EventFacade adapter = EventFacade();
-			adapter.handle_input(event, sprites[0], shapes[0]);
-		}*/
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
@@ -76,3 +74,27 @@ void PhysicsCollisionDemo::run()
 	worldController.destroy_bodies();
 	graphicsController.get_window()->destroy();
 }
+
+void PhysicsCollisionDemo::update(Enums::EventEnum event)
+{
+	switch (event) {
+	case Enums::EventEnum::KEY_PRESS_LEFT:
+		shapes[0].move_x(-1);
+		sprites->at(0)->set_x(shapes[0].get_x());
+		break;
+	case Enums::EventEnum::KEY_PRESS_RIGHT:
+		shapes[0].move_x(1);
+		sprites->at(0)->set_x(shapes[0].get_x());
+		break;
+	default: 
+		std::cout << "geen reactie";
+	}
+}
+
+void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo)
+{
+	_inputController->subscribe(demo);
+}
+
+
+
