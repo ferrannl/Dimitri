@@ -10,9 +10,9 @@ namespace Controllers {
 		ShapeController _shapeController;
 	public:
 		WorldController();
-		void setup_world(float width, float height);
-		void clean_up();
-		Models::Shape create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		void setup_world(const float width, const float height);
+		Models::Shape create_shape(const std::string type, const float x, const float y, const std::vector<std::pair<float, float>> positions, const bool is_dynamic);
+		void destroy_bodies();
 		void simulate();
 	};
 }

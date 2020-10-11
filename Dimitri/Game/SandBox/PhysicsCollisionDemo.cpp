@@ -71,7 +71,7 @@ void PhysicsCollisionDemo::run()
 
 		sleep_for(5ms);
 	}
-
+	worldController.destroy_bodies();
 	graphicsController.get_window()->destroy();
 }
 

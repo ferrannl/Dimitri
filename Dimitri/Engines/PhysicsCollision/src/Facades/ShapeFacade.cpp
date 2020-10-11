@@ -5,7 +5,7 @@ Facades::ShapeFacade::ShapeFacade()
 	_shape = nullptr;
 }
 
-Facades::ShapeFacade::ShapeFacade(std::string type, std::vector<std::pair<float, float>> positions)
+Facades::ShapeFacade::ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions)
 {
 	int size = positions.size();
 	b2Vec2* vertices = new b2Vec2[size];
@@ -16,12 +16,12 @@ Facades::ShapeFacade::ShapeFacade(std::string type, std::vector<std::pair<float,
 		counter++;
 	}
 	if (type == "polygon") {
-		_shape = new b2PolygonShape{};
-		((b2PolygonShape*)_shape)->Set(vertices, size);
+		_shape = std::make_shared<b2PolygonShape>();
+		_shape->Set(vertices, size);
 	}
 }
 
-b2Shape* Facades::ShapeFacade::get_shape() const
+std::shared_ptr<b2Shape> Facades::ShapeFacade::get_shape() const
 {
 	return _shape;
 }
@@ -30,17 +30,17 @@ void Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
 }
 
-float Facades::ShapeFacade::get_x()
+float Facades::ShapeFacade::get_x()const
 {
 	return _body->GetPosition().x;
 }
 
-float Facades::ShapeFacade::get_y()
+float Facades::ShapeFacade::get_y()const
 {
 	return  _body->GetPosition().y;
 }
 
-void Facades::ShapeFacade::move_x(const int value)
+void Facades::ShapeFacade::move_x(const int value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	if (value == -1) {
@@ -55,7 +55,7 @@ void Facades::ShapeFacade::move_x(const int value)
 	_body->SetLinearVelocity(vel);
 }
 
-void Facades::ShapeFacade::move_y()
+void Facades::ShapeFacade::move_y()const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = 30;//upwards - don't change x velocity
@@ -63,7 +63,7 @@ void Facades::ShapeFacade::move_y()
 	_body->SetLinearVelocity(vel);
 }
 
-float Facades::ShapeFacade::get_angle()
+float Facades::ShapeFacade::get_angle()const
 {
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
