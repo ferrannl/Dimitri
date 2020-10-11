@@ -14,7 +14,7 @@ void Models::World::add_shape(std::shared_ptr<Shape> shape, const float x, const
 
 void Models::World::destroy_bodies()
 {
-	_world_facade.destroy();
+	_world_facade.destroy_bodies();
 }
 
 void Models::World::simulate()

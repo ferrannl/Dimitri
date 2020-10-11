@@ -5,13 +5,12 @@ Facades::WorldFacade::WorldFacade()
 {
 	b2Vec2 gravity(0.0f, -10.0f);   
 	_world = std::make_shared<b2World>(gravity);
-    _bodies = {};
+    _ground_bodies = {};
 }
 
-void Facades::WorldFacade::destroy()
+void Facades::WorldFacade::destroy_bodies()
 {
-    _world->DestroyBody(_body);
-    for (b2Body* _groundBody : _bodies)
+    for (b2Body* _groundBody : _ground_bodies)
     {
         _world->DestroyBody(_groundBody);
     }
@@ -19,6 +18,8 @@ void Facades::WorldFacade::destroy()
 
 void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const float x, const float y)
 {
+    b2Body* _body = {};
+    b2Body* _groundBody = {};
     b2BodyDef bodyDef;
     b2FixtureDef fixtureDef;
     if (shape->is_dynamic)
@@ -35,7 +36,7 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const
         b2BodyDef groundBodyDef;
         groundBodyDef.position.Set(x, y);
         _groundBody = _world->CreateBody(&groundBodyDef);
-        _bodies.push_back(_groundBody);
+        _ground_bodies.push_back(_groundBody);
         std::shared_ptr<b2Shape> groundBox= shape->get_shape_facade()->get_shape();
         _groundBody->CreateFixture(groundBox.get(), 0.0f);
         shape->get_shape_facade()->add_body(_groundBody);
