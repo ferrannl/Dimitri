@@ -2,6 +2,8 @@
 #include "../../Engines/Audio/src/Controllers/AudioController.h"
 #include <chrono>
 #include <thread>
+#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
+
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 

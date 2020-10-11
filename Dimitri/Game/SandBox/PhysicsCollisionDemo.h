@@ -2,6 +2,7 @@
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
 //#include "../../Engines/Input/src/adapters/EventFacade.h"
+#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
 #include <chrono>
 #include <thread>
 using namespace std::this_thread;
