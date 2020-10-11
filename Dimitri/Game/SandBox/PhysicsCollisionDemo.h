@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
+#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
 #include "../../Engines/Input/src/Controllers/InputController.h"
 
 #include <chrono>
