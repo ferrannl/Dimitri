@@ -4,12 +4,12 @@ Facades::WorldFacade::WorldFacade()
 {
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
-	_ground_bodies = {};
+	_bodies = {};
 }
 
 void Facades::WorldFacade::destroy_bodies()
 {
-	for (b2Body* _groundBody : _ground_bodies)
+	for (b2Body* _groundBody : _bodies)
 	{
 		_world->DestroyBody(_groundBody);
 	}
@@ -32,10 +32,10 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape, const
 	else {
 		bodyDef.position.Set(x, y);
 		body = _world->CreateBody(&bodyDef);
-		_ground_bodies.push_back(body);
 		std::shared_ptr<b2Shape> groundBox = shape->get_shape_facade()->get_shape();
 		body->CreateFixture(groundBox.get(), 0.0f);
 	}
+	_bodies.push_back(body);
 	shape->get_shape_facade()->add_body(body);
 }
 

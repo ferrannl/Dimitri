@@ -10,7 +10,7 @@ namespace Facades {
 	class __declspec(dllexport) WorldFacade {
 	private:
 		std::shared_ptr<b2World> _world;
-		std::vector<b2Body*> _ground_bodies;
+		std::vector<b2Body*> _bodies;;
 	public:
 		WorldFacade();
 		void destroy_bodies();
