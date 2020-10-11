@@ -15,7 +15,7 @@ Models::Shape Controllers::WorldController::create_shape(std::string type, float
 	return *shape;
 }
 
-void Controllers::WorldController::destroy()
+void Controllers::WorldController::destroy_bodies()
 {
 	_world.destroy_bodies();
 }
