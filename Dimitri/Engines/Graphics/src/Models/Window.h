@@ -1,25 +1,27 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 
+// Contains the models of a project
 namespace Models {
 	class __declspec(dllexport) Window {
 	private:
-		int _height;
-		int _width;
-		const std::string _title;
-		std::unique_ptr<Facades::WindowFacade> _facade;
-		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites;
+		int _height; ///< Height of the window
+		int _width; ///< Height of the window
+		const std::string _title; ///< Title of the window
+		std::unique_ptr<Facades::WindowFacade> _facade; ///< Facade containing references to SDL
+		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites; ///< List containing all the sprites of the window
 
 	public:
+		// Constructor
 		Window(const std::string title, const int height, const int width);
 			
-		int create();
-		void update();
-		void destroy();
-		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);
-		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;
-		int get_height() const;
-		int get_width() const;
-		const std::string get_title() const;
+		int create(); //< Creates a window
+		void update(); //< Updates a window
+		void destroy();  //< Destroys a window
+		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);  //< Set the sprites of a window
+		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;  //< Get the sprites of a window
+		int get_height() const;  //< Get the height of the window
+		int get_width() const;  //< Get the width of a window
+		const std::string get_title() const;  //< Get the title of a window
 	};
 }
