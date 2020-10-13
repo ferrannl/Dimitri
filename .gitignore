@@ -389,4 +389,9 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+./Dimitri/Doxygen/html
+./Dimitri/Doxygen/latex
+
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio
+/Dimitri/Doxygen/html
+/Dimitri/Doxygen/latex
