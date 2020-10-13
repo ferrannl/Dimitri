@@ -1,5 +1,11 @@
 #include "PhysicsCollisionDemo.h"
 
+void PhysicsCollisionDemo::move_x(Models::Shape shape, int value)
+{
+	std::lock_guard<std::mutex> lock(shapes_lock);
+	shape.move_x(value);
+}
+
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
@@ -30,9 +36,10 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
 
-	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
-	_inputController->poll_events();
-	demo_thread.join();
+	//std::thread demo_thread(&PhysicsCollisionDemo::run, this);
+	run();
+	
+	//demo_thread.join();
 }
 
 int PhysicsCollisionDemo::create_window(int width, int height)
@@ -58,32 +65,51 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	while (true)
+	std::thread update_thread(&PhysicsCollisionDemo::update_vars, this);
+	poll_events();
+	update_thread.join();
+	
+	worldController.destroy_bodies();
+	graphicsController.get_window()->destroy();
+}
+
+void PhysicsCollisionDemo::poll_events() {
+	while (true) 
 	{
+		sleep_for(5ms);
+		_inputController->poll_events(); 
+	}
+}
+
+void PhysicsCollisionDemo::update_vars()
+{
+	while (true) {
+		shapes_lock.lock();
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
 			sprites->at(i)->set_y(static_cast<int>(shapes[i].get_y()));
 			sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
+
 		}
 		graphicsController.update_window();
 		worldController.simulate();
-
+		shapes_lock.unlock();
 		sleep_for(5ms);
 	}
-	worldController.destroy_bodies();
-	graphicsController.get_window()->destroy();
 }
+
+
 
 void PhysicsCollisionDemo::update(Enums::EventEnum event)
 {
 	switch (event) {
 	case Enums::EventEnum::KEY_PRESS_LEFT:
-		shapes[0].move_x(-1);
+		move_x(shapes[0], -1);
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
 	case Enums::EventEnum::KEY_PRESS_RIGHT:
-		shapes[0].move_x(1);
+		move_x(shapes[0], 1);
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
 	default: 
