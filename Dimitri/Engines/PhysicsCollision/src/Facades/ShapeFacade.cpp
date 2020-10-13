@@ -43,16 +43,20 @@ float Facades::ShapeFacade::get_y()const
 void Facades::ShapeFacade::move_x(const int value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
+	float velChange;
 	if (value == -1) {
-		vel.x = vel.x - 30.0f;
-		vel.y = 0;
+		velChange = -50 - vel.x;
+		/*vel.x = vel.x - 30.0f;
+		vel.y = 0;*/
 	}
 	else {
-		vel.x = vel.x + 30.0f;
-		vel.y = 0;
+		velChange = 50 - vel.x;
+		/*vel.x = vel.x + 30.0f;
+		vel.y = 0;*/
 	}
 	_body->SetTransform(_body->GetPosition(), 0);
-	_body->SetLinearVelocity(vel);
+	float impulse = _body->GetMass() * velChange; //disregard time factor
+	_body->ApplyLinearImpulse(b2Vec2(impulse, 0), _body->GetWorldCenter(), true);
 }
 
 void Facades::ShapeFacade::move_y()const
