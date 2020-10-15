@@ -5,6 +5,10 @@ Models::Shape::Shape()
 	_shape_facade = nullptr;
 }
 
+Models::Shape::~Shape()
+{
+}
+
 std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
 {
 	return _shape_facade;
@@ -34,3 +38,4 @@ void Models::Shape::move_y()const
 {
 	_shape_facade->move_y();
 }
+

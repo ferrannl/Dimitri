@@ -3,10 +3,12 @@
 Facades::ShapeFacade::ShapeFacade()
 {
 	_shape = nullptr;
+	_body = nullptr;
 }
 
 Facades::ShapeFacade::ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions)
 {
+	_body = nullptr;
 	int size = positions.size();
 	b2Vec2* vertices = new b2Vec2[size];
 	int counter = 0;
@@ -68,4 +70,8 @@ float Facades::ShapeFacade::get_angle()const
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
+b2Body* Facades::ShapeFacade::get_body()
+{
+	return _body;
+}
 

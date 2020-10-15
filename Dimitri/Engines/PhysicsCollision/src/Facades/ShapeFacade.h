@@ -22,5 +22,6 @@ namespace Facades {
 		void move_x(const int value)const;
 		void move_y()const;
 		float get_angle()const;
+		b2Body* get_body();
 	};
 }
