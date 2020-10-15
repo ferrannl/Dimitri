@@ -7,12 +7,10 @@ namespace Models {
 	private:
 		Facades::WorldFacade _world_facade;
 	public:
-		std::shared_ptr<std::vector<std::shared_ptr<Shape>>> _shapes;
 		World();
 		World(const float width, const float height);
-		//void add_shape_to_shapes(std::shared_ptr<Shape> shape);
 		void add_shape(std::shared_ptr<Shape> shape, const float x, const float y);
-		void destroy_shapes();
+		void destroy_bodies();
 		void simulate();
 	};
 }

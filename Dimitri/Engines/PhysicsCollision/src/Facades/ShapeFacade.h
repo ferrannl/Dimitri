@@ -11,12 +11,12 @@ namespace Facades {
 	class __declspec(dllexport) ShapeFacade {
 	private:
 		std::shared_ptr<b2PolygonShape> _shape;
-		std::shared_ptr<b2Body> _body;
+		b2Body* _body;
 	public:
 		ShapeFacade();
 		ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions);
 		std::shared_ptr<b2Shape> get_shape() const;
-		void add_body(std::shared_ptr<b2Body> body);
+		void add_body(b2Body* body);
 		float get_x()const;
 		float get_y()const;
 		void move_x(const int value)const;

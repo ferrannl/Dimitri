@@ -11,15 +11,14 @@ void Controllers::WorldController::setup_world(const float width, const float he
 Models::Shape Controllers::WorldController::create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> positions, bool is_dynamic)
 {
 	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type, positions, is_dynamic);
-	//_world.add_shape_to_shapes(shape);
 	_world.add_shape(shape, x, y);
 	return *shape;
 }
 
-//void Controllers::WorldController::destroy_bodies()
-//{
-//	_world.destroy_bodies();
-//}
+void Controllers::WorldController::destroy_bodies()
+{
+	_world.destroy_bodies();
+}
 
 void Controllers::WorldController::simulate()
 {
