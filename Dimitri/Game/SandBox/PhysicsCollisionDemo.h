@@ -1,18 +1,19 @@
 #pragma once
 #include <iostream>
-#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
-#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
-#include "../../Engines/Input/src/Controllers/InputController.h"
-
+#include <memory>
 #include <chrono>
 #include <thread>
+#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
+#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
+#include "../../Engines/Input/src/Controllers/InputController.h"
+#include "../../Utility/src/Interfaces/IObserver.h"
+#include "../../Utility/src/Helpers/BasePathHelper.h"
+
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
-
-class PhysicsCollisionDemo : public Interfaces::IObserver {
-public: 
+class PhysicsCollisionDemo : public Interfaces::IObserver<Enums::EventEnum> {
+public:
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
 	std::shared_ptr<Controllers::InputController> _inputController;
@@ -24,6 +25,6 @@ public:
 	void create_sprite(int x, int y, int z, int height, int width, const char* path, const float angle, Enums::FlipEnum flipstatus);
 	void create_shape(int x, int y, int height, int width, bool is_dynamic);
 	void run();
-	void update(Enums::EventEnum event);
+	void update(const Enums::EventEnum& object);
 	void subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo);
 };
