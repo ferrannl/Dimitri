@@ -1,7 +1,7 @@
 #include "PhysicsCollisionDemo.h"
 #include "AudioDemo.h"
 
-int main(int argc, char** argv) 
+int wmain() 
 {
 
    /* AudioDemo audio_demo = {};

@@ -1,12 +1,18 @@
 #pragma once
 #include "../Facades/EventFacade.h"
 #include "../Facades/MouseFacade.h"
-#include "../Interfaces/IObservable.h"
+#include "../../../../Utility/src/Interfaces/IObservable.h"
+#include "../../../../Utility/src/Interfaces/IObserver.h"
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
+
 namespace Controllers {
-	class __declspec(dllexport) InputController : public Interfaces::IObservable{
+	class __declspec(dllexport) InputController : public Interfaces::IObservable<Enums::EventEnum>{
 	private:
 		//shared press events
-		std::shared_ptr<Interfaces::IObserver> _observer;
+		std::shared_ptr<Interfaces::IObserver<Enums::EventEnum>> _observer;
 
 		//Facades
 		std::unique_ptr<Facades::MouseFacade> _mouse_facade;
@@ -16,8 +22,8 @@ namespace Controllers {
 		InputController();
 		std::tuple<int, int> get_mouse_position();
 
-		void notify(Enums::EventEnum event);
-		void subscribe(std::shared_ptr<Interfaces::IObserver> observer);
+		void notify(const Enums::EventEnum& object);
+		void subscribe(std::shared_ptr<Interfaces::IObserver<Enums::EventEnum>> observer);
 		void poll_events();
 	};
 }

@@ -2,8 +2,7 @@
 #include "../Models/Window.h"
 #include <filesystem>
 
-namespace Controllers
-{
+namespace Controllers {
 	class __declspec(dllexport) GraphicsController {
 	private:
 		std::shared_ptr<Models::Window> _window;

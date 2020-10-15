@@ -11,12 +11,12 @@ std::tuple<int, int> Controllers::InputController::get_mouse_position()
 	return _mouse_facade->get_mouse_position();
 }
 
-void Controllers::InputController::notify(Enums::EventEnum event)
+void Controllers::InputController::notify(const Enums::EventEnum& object)
 {
-	_observer->update(event);
+	_observer->update(object);
 }
 
-void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserver> observer)
+void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserver<Enums::EventEnum>> observer)
 {
 	_observer = observer;
 }
@@ -25,7 +25,7 @@ void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserv
 void Controllers::InputController::poll_events()
 {
 	while (true) {
-		SDL_Delay(5);
+		sleep_for(5ms);
 		Enums::EventEnum event = _event_facade->poll_event();
 		if (event != Enums::EventEnum::NOT_SUPPORTED) {
 			notify(event);

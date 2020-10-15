@@ -2,7 +2,7 @@
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
-	graphicsController = Controllers::GraphicsController{};
+	PhysicsCollisionDemo::graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
 	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
@@ -15,7 +15,7 @@ void PhysicsCollisionDemo::start_demo()
 		return;
 	}
 
-	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
+	std::string image = std::string{ "C:/Users/Xia/Documents/avans/blok13/SWAPJ13/dimitri/Dimitri/x64/Debug/assets/images/img.png" };
 	create_sprite(350, 600, 1, 50, 50, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
 	create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
@@ -75,7 +75,7 @@ void PhysicsCollisionDemo::run()
 	graphicsController.get_window()->destroy();
 }
 
-void PhysicsCollisionDemo::update(Enums::EventEnum event)
+void PhysicsCollisionDemo::update(const Enums::EventEnum& event)
 {
 	switch (event) {
 	case Enums::EventEnum::KEY_PRESS_LEFT:
