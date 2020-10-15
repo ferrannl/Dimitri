@@ -9,10 +9,6 @@ Facades::WorldFacade::WorldFacade()
 
 void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
 {
-	/*for (b2Body* _groundBody : _bodies)
-	{
-		_world->DestroyBody(_groundBody);
-	}*/
 	_world->DestroyBody(shape_facade->get_body());
 }
 
@@ -36,7 +32,6 @@ void Facades::WorldFacade::add_shape(std::unique_ptr<Models::Shape> &shape, cons
 		std::shared_ptr<b2Shape> groundBox = shape->get_shape_facade()->get_shape();
 		body->CreateFixture(groundBox.get(), 0.0f);
 	}
-	//_bodies.push_back(body);
 	shape->get_shape_facade()->add_body(body);
 }
 
