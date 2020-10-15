@@ -26,7 +26,7 @@ std::shared_ptr<b2Shape> Facades::ShapeFacade::get_shape() const
 	return _shape;
 }
 
-void Facades::ShapeFacade::add_body(b2Body* body) {
+void Facades::ShapeFacade::add_body(std::shared_ptr<b2Body> body) {
 	_body = body;
 }
 
