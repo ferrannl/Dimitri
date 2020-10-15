@@ -14,8 +14,8 @@ void PhysicsCollisionDemo::start_demo()
 	if (create_window(1080, 720) == NULL) {
 		return;
 	}
-
-	std::string image = std::string{ "C:/Users/Xia/Documents/avans/blok13/SWAPJ13/dimitri/Dimitri/x64/Debug/assets/images/img.png" };
+	
+	std::string image = Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
 	create_sprite(350, 600, 1, 50, 50, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
 	create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);

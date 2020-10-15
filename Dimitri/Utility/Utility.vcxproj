@@ -143,12 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\BasePathAdapter.h" />
+    <ClInclude Include="src\Helpers\BasePathHelper.h" />
     <ClInclude Include="src\Interfaces\IObservable.h" />
     <ClInclude Include="src\Interfaces\IObserver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\BasePathAdapter.cpp" />
+    <ClCompile Include="src\Helpers\BasePathHelper.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
