@@ -1,27 +1,83 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 
-// Contains the models of a project
+/**
+* Namespace for all the models in the project
+*/
 namespace Models {
-	class __declspec(dllexport) Window {
+	/**
+	* Holds the data the window needs to be generated.
+	*/
+	class Window {
 	private:
-		int _height; ///< Height of the window
-		int _width; ///< Height of the window
-		const std::string _title; ///< Title of the window
-		std::unique_ptr<Facades::WindowFacade> _facade; ///< Facade containing references to SDL
-		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites; ///< List containing all the sprites of the window
+		/**
+		* 
+		* Height of the window
+		*/
+		int _height;
+
+		/**
+		* Width of the window
+		*/
+		int _width; 
+
+		/**
+		* Title of the window, displayed in the frame
+		*/
+		const std::string _title;
+
+		/**
+		* Holds all functions and references to sdl which can be used to create/destroy/update windows and render sprites
+		*/
+		std::unique_ptr<Facades::WindowFacade> _facade;
+
+		/**
+		* Holds all the sprites displayed in the window
+		*/
+		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites;
 
 	public:
-		// Constructor
 		Window(const std::string title, const int height, const int width);
-			
-		int create(); //< Creates a window
-		void update(); //< Updates a window
-		void destroy();  //< Destroys a window
-		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);  //< Set the sprites of a window
-		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;  //< Get the sprites of a window
-		int get_height() const;  //< Get the height of the window
-		int get_width() const;  //< Get the width of a window
-		const std::string get_title() const;  //< Get the title of a window
+		
+		/**
+		* Return int is used to check if sdl is initialized.
+		* if int is < 0, the initialization failed
+		*/
+		int create();
+
+		/**
+		* Updates a window
+		*/
+		void update();
+
+		/**
+		* Destroys a window
+		*/
+		void destroy();
+
+		/**
+		* Sets the _sprites vector of this model
+		*/
+		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);
+
+		/**
+		* Returns the sprites list of this model
+		*/
+		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;
+
+		/**
+		* Returns the height of this window
+		*/
+		int get_height() const;
+
+		/**
+		* Returns the width of this window
+		*/
+		int get_width() const;
+
+		/**
+		* Returns the width of this window
+		*/
+		const std::string get_title() const;
 	};
 }
