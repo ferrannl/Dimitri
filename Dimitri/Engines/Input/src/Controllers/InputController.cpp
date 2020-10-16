@@ -25,7 +25,7 @@ void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserv
 void Controllers::InputController::poll_events()
 {
 	while (true) {
-		SDL_Delay(5);
+		SDL_Delay(5);	
 		Enums::EventEnum event = _event_facade->poll_event();
 		if (event != Enums::EventEnum::NOT_SUPPORTED) {
 			notify(event);

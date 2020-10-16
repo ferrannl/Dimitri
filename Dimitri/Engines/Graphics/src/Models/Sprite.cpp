@@ -1,34 +1,34 @@
 #include "Sprite.h"
 
-Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
+Models::Sprite::Sprite(const float x, const float y, const float z, const float height, const float width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
 	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus }, _facade{ nullptr } {}
 
-int Models::Sprite::get_converted_y(const int height) const
+float Models::Sprite::get_converted_y(const float height) const
 {
 	return height - (_y + _height);
 }
 
-int Models::Sprite::get_x() const
+float Models::Sprite::get_x() const
 {
 	return _x;
 }
 
-int Models::Sprite::get_z() const
+float Models::Sprite::get_z() const
 {
 	return _z;
 }
 
-int Models::Sprite::get_y() const
+float Models::Sprite::get_y() const
 {
 	return _y;
 }
 
-int Models::Sprite::get_width() const
+float Models::Sprite::get_width() const
 {
 	return _width;
 }
 
-int Models::Sprite::get_height() const
+float Models::Sprite::get_height() const
 {
 	return _height;
 }
@@ -53,27 +53,27 @@ const std::string Models::Sprite::get_path() const
 	return _path;
 }
 
-void Models::Sprite::set_x(const int x)
+void Models::Sprite::set_x(const float x)
 {
 	_x = x;
 }
 
-void Models::Sprite::set_z(const int z)
+void Models::Sprite::set_z(const float z)
 {
 	_z = z;
 }
 
-void Models::Sprite::set_y(const int y)
+void Models::Sprite::set_y(const float y)
 {
 	_y = y;
 }
 
-void Models::Sprite::set_width(const int width)
+void Models::Sprite::set_width(const float width)
 {
 	_width = width;
 }
 
-void Models::Sprite::set_height(const int height)
+void Models::Sprite::set_height(const float height)
 {
 	_height = height;
 }

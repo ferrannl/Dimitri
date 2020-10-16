@@ -9,7 +9,7 @@ namespace Models {
 	public:
 		World();
 		World(const float width, const float height);
-		void add_shape(std::shared_ptr<Shape> shape, const float x, const float y);
+		void add_shape(std::shared_ptr<Shape> shape);
 		void destroy_bodies();
 		void simulate();
 	};

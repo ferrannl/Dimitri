@@ -8,10 +8,10 @@ void Controllers::WorldController::setup_world(const float width, const float he
 	_world = Models::World{ width, height };
 }
 
-Models::Shape Controllers::WorldController::create_shape(std::string type, float x, float y, std::vector<std::pair<float, float>> positions, bool is_dynamic)
+Models::Shape Controllers::WorldController::create_shape(std::string type, float x, float y, float width, float height, bool is_dynamic)
 {
-	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type, positions, is_dynamic);
-	_world.add_shape(shape, x, y);
+	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type,x,y, width, height, is_dynamic);
+	_world.add_shape(shape);
 	return *shape;
 }
 

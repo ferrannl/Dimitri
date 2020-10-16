@@ -8,6 +8,6 @@
 namespace Factories {
 	class __declspec(dllexport) ShapeFactory {
 	public:
-		std::shared_ptr<Models::Shape> create_shape(const std::string type, const std::vector<std::pair<float, float>> positions, const bool is_dynamic)const;
+		std::shared_ptr<Models::Shape> create_shape(const std::string type,float x, float y, float width, float height, const bool is_dynamic)const;
 	};
 }

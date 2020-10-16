@@ -14,8 +14,8 @@ namespace Facades {
 		b2Body* _body;
 	public:
 		ShapeFacade();
-		ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions);
-		std::shared_ptr<b2Shape> get_shape() const;
+		ShapeFacade(const std::string type, float width, float height);
+		std::shared_ptr<b2PolygonShape> get_shape() const;
 		void add_body(b2Body* body);
 		float get_x()const;
 		float get_y()const;

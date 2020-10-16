@@ -8,6 +8,6 @@ namespace Models {
 	class __declspec(dllexport) Polygon : public Shape {
 	public:
 		Polygon();
-		Polygon(const std::vector<std::pair<float, float>> positions, bool is_dynamic);
+		Polygon(bool is_dynamic);
 	};
 }
