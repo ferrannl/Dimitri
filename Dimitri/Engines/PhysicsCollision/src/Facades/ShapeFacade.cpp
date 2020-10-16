@@ -70,7 +70,7 @@ float Facades::ShapeFacade::get_angle()const
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
-b2Body* Facades::ShapeFacade::get_body()
+b2Body* Facades::ShapeFacade::get_body()const
 {
 	return _body;
 }

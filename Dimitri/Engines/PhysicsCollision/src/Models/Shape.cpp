@@ -5,8 +5,10 @@ Models::Shape::Shape()
 	_shape_facade = nullptr;
 }
 
-Models::Shape::~Shape()
+Models::Shape::Shape(const std::vector<std::pair<float, float>> positions, bool is_dynamic)
 {
+	this->is_dynamic = is_dynamic;
+	_shape_facade = std::make_shared<Facades::ShapeFacade>("shape", positions);
 }
 
 std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const

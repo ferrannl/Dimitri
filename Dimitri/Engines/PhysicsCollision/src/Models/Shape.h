@@ -9,7 +9,7 @@ namespace Models {
 	public:
 		bool is_dynamic;
 		Shape();
-		~Shape();
+		Shape(const std::vector<std::pair<float, float>> positions, bool is_dynamic);
 		std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
 		float get_x()const;
 		float get_y()const;
