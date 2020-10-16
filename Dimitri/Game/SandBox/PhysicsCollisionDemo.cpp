@@ -10,7 +10,6 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
 	worldController = Controllers::WorldController{};
-	audioController = Controllers::AudioController{};
 	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
 	shapes = std::vector<Models::Shape>{};
@@ -66,25 +65,12 @@ void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, boo
 
 void PhysicsCollisionDemo::run()
 {
-	std::thread audio_thread(&PhysicsCollisionDemo::play_music, this);
 	std::thread update_thread(&PhysicsCollisionDemo::update_vars, this);
 	poll_events();
 	update_thread.join();
-	audio_thread.join();
+	
 	worldController.destroy_bodies();
 	graphicsController.get_window()->destroy();
-}
-
-void PhysicsCollisionDemo::play_music() {
-	const std::string name = std::string("music");
-	audioController.add_music(name, (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/audio/beat.wav" }).c_str());
-	audioController.play_audio(name);
-	sleep_for(5000ms);
-	audioController.pause_audio(name);
-	sleep_for(1000ms);
-	audioController.resume_audio(name);
-	sleep_for(5000ms);
-	audioController.stop_audio(name);
 }
 
 void PhysicsCollisionDemo::poll_events() {

@@ -4,9 +4,7 @@
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
 #include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
 #include "../../Engines/Input/src/Controllers/InputController.h"
-#include "../../Engines/Audio/src/Controllers/AudioController.h"
-#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
-#include "AudioDemo.h"
+
 #include <chrono>
 #include <thread>
 #include <mutex>
@@ -21,7 +19,6 @@ private:
 public: 
 	Controllers::GraphicsController graphicsController;
 	Controllers::WorldController worldController;
-	Controllers::AudioController audioController;
 	std::shared_ptr<Controllers::InputController> _inputController;
 	std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites;
 	std::vector<Models::Shape> shapes;
@@ -32,7 +29,6 @@ public:
 	void create_sprite(int x, int y, int z, int height, int width, const char* path, const float angle, Enums::FlipEnum flipstatus);
 	void create_shape(int x, int y, int height, int width, bool is_dynamic);
 	void run();
-	void play_music();
 	void poll_events();
 	void update_vars();
 	void update(Enums::EventEnum event);
