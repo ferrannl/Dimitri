@@ -84,7 +84,7 @@ void PhysicsCollisionDemo::poll_events() {
 void PhysicsCollisionDemo::update_vars()
 {
 	while (true) {
-		shapes_lock.lock();
+		
 		for (int i = 0; i < shapes.size(); i++)
 		{
 			sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
@@ -93,6 +93,7 @@ void PhysicsCollisionDemo::update_vars()
 
 		}
 		graphicsController.update_window();
+		shapes_lock.lock();
 		worldController.simulate();
 		shapes_lock.unlock();
 		sleep_for(5ms);
