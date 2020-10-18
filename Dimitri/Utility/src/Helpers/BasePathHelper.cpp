@@ -1,4 +1,5 @@
 #include "BasePathHelper.h"
+using namespace Utility;
 
 std::string Helpers::get_base_path() {
 	char path[MAX_PATH] = "";

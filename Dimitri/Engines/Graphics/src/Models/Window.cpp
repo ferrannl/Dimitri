@@ -1,4 +1,5 @@
 #include "Window.h"
+using namespace Graphics;
 
 std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> Models::Window::get_sprites() const
 {

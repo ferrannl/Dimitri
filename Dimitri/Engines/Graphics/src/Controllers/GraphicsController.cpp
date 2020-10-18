@@ -1,4 +1,5 @@
 #include "GraphicsController.h"
+using namespace Graphics;
 
 int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
 {

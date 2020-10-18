@@ -1,4 +1,5 @@
 #include "InputController.h"
+using namespace Input;
 
 Controllers::InputController::InputController()
 {
@@ -16,7 +17,7 @@ void Controllers::InputController::notify(const Enums::EventEnum& object)
 	_observer->update(object);
 }
 
-void Controllers::InputController::subscribe(std::shared_ptr<Interfaces::IObserver<Enums::EventEnum>> observer)
+void Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
 {
 	_observer = observer;
 }
