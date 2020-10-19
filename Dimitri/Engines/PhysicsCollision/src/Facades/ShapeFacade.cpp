@@ -36,6 +36,11 @@ float Facades::ShapeFacade::get_x()const
 	return _body->GetPosition().x;
 }
 
+b2Body* Facades::ShapeFacade::get_body()
+{
+	return _body;
+}
+
 float Facades::ShapeFacade::get_y()const
 {
 	return  _body->GetPosition().y;

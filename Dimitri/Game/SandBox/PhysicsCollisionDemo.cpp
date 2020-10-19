@@ -64,22 +64,13 @@ void PhysicsCollisionDemo::run()
 	{
 		for (int i = 0; i < shapes.size(); i++)
 		{
-			if (shapes[i].is_dynamic)
-			{
 				sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
 				sprites->at(i)->set_y(static_cast<int>(shapes[i].get_y()));
 				sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
-			}
-			else
-			{
-				sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
-				sprites->at(i)->set_y(static_cast<int>(shapes[i].get_y()));
-				sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
-			}
 		}
 
-		graphicsController.update_window();
 		worldController.simulate();
+		graphicsController.update_window();
 		sleep_for(5ms);
 	}
 	worldController.destroy_bodies();
