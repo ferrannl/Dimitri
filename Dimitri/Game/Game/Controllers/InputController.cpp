@@ -14,17 +14,22 @@ void Game::Controllers::InputController::update(const Input::Enums::EventEnum& o
 {
 	switch (object) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		std::cout << "links";
+		std::cout << "links" << std::endl;
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		std::cout << "rechts";
+		std::cout << "rechts" << std::endl;
 		break;
-	case Input::Enums::EventEnum::MOUSE_PRESSED: {
+	case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT: {
 		std::tuple<int, int> pos = _input_controller->get_mouse_position();
-		std::cout << "Position: " << std::get<0>(pos) << ", " << std::get<1>(pos);
+		std::cout << "left click position: " << std::get<0>(pos) << ", " << std::get<1>(pos) << std::endl;
+		break;
+	}
+	case Input::Enums::EventEnum::MOUSE_PRESSED_RIGHT: {
+		std::tuple<int, int> pos = _input_controller->get_mouse_position();
+		std::cout << "right click position: " << std::get<0>(pos) << ", " << std::get<1>(pos) << std::endl;
 		break;
 	}
 	default:
-		std::cout << "geen reactie";
+		std::cout << "geen reactie" << std::endl;
 	}
 }
