@@ -10,7 +10,7 @@ using namespace std::chrono_literals;
 
 class AudioDemo {
 private:
-	std::unique_ptr<Controllers::AudioController> _audio_controller;
+	std::unique_ptr<Audio::Controllers::AudioController> _audio_controller;
 public:
 	AudioDemo();
 	void play_music() const;

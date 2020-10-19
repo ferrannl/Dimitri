@@ -1,4 +1,5 @@
-#include "EventFacade.h"
+#include "EventFacade.h" 
+using namespace Input;
 
 Facades::EventFacade::EventFacade()
 {
@@ -20,6 +21,5 @@ Enums::EventEnum Facades::EventFacade::poll_event()
         default:
             return Enums::EventEnum::NOT_SUPPORTED;
         }
-        return Enums::EventEnum::NOT_SUPPORTED;
 	}
 }

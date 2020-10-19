@@ -1,4 +1,5 @@
 #include "WindowFacade.h"
+using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
