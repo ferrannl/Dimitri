@@ -14,5 +14,6 @@ namespace Controllers {
 		Models::Shape create_shape(const std::string type, const float x, const float y, float width, float height, const bool is_dynamic);
 		void destroy_bodies();
 		void simulate();
+		std::map<std::shared_ptr<Models::Shape>, b2Body*> get_world_bodies();
 	};
 }

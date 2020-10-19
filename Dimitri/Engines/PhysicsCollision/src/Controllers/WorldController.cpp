@@ -24,3 +24,8 @@ void Controllers::WorldController::simulate()
 {
 	_world.simulate();
 }
+
+std::map<std::shared_ptr<Models::Shape>, b2Body*> Controllers::WorldController::get_world_bodies()
+{
+	return _world.get_world_bodies();
+}

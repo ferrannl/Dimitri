@@ -6,7 +6,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 	worldController = Controllers::WorldController{};
 	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
-	shapes = std::vector<Models::Shape>{};
+	shapes = std::vector<Models::Shape>();
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -17,20 +17,20 @@ void PhysicsCollisionDemo::start_demo()
 
 	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
 	create_sprite(350, 400, 1, 300, 300, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	//create_sprite(700, 50, 1, 350, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	//create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	////create_sprite(700, 50, 1, 350, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	//create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	//create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	//create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	//create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 400, 300, 300, true);
-	create_shape(300, 50, 300, 50, false);
-	//create_shape(700, 50, 350, 50, false);
-	create_shape(0, 720, 1080, 1, false); // top    
-	create_shape(0, -1, 1080, 1, false); // bottom    
-	create_shape(-1, 0, 1, 720, false); // left
-	create_shape(1080, 0, 1, 720, false); // right
+	//create_shape(300, 50, 300, 50, false);
+	////create_shape(700, 50, 350, 50, false);
+	//create_shape(0, 720, 1080, 1, false); // top    
+	//create_shape(0, -1, 1080, 1, false); // bottom    
+	//create_shape(-1, 0, 1, 720, false); // left
+	//create_shape(1080, 0, 1, 720, false); // right
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	_inputController->poll_events();
@@ -62,15 +62,26 @@ void PhysicsCollisionDemo::run()
 {
 	while (true)
 	{
-		for (int i = 0; i < shapes.size(); i++)
+		std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies = worldController.get_world_bodies();
+		for (auto const& it : _world_bodies)
 		{
-				sprites->at(i)->set_x(static_cast<int>(shapes[i].get_x()));
-				sprites->at(i)->set_y(static_cast<int>(shapes[i].get_y()));
-				sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
+			//std::shared_ptr<Models::Shape> shape = std::make_shared<Models::Shape>(_polygon);
+			b2Body* body = it.second;
+			std::shared_ptr<Models::Shape> shape = it.first;
+			sprites->at(0)->set_x(shape->get_x());
+			sprites->at(0)->set_y(shape->get_y());
+			//sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
 		}
+			
+			/*for (int i = 0; i < shapes.size(); i++)
+		{
+				sprites->at(i)->set_x(shapes[i].get_x());
+				sprites->at(i)->set_y(shapes[i].get_y());
+				sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
+		}*/
 
-		worldController.simulate();
 		graphicsController.update_window();
+		worldController.simulate();
 		sleep_for(5ms);
 	}
 	worldController.destroy_bodies();

@@ -21,3 +21,8 @@ void Models::World::simulate()
 {
 	_world_facade.simulate();
 }
+
+std::map<std::shared_ptr<Models::Shape>, b2Body*> Models::World::get_world_bodies()
+{
+	return _world_facade.get_world_bodies();
+}
