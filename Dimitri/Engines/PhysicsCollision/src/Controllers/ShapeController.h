@@ -10,6 +10,6 @@ namespace Controllers {
 		std::shared_ptr<Factories::ShapeFactory> _shape_factory;
 	public:
 		ShapeController();
-		std::shared_ptr<Models::Shape> create_shape(const std::string type, const std::vector<std::pair<float, float>> positions, const bool is_dynamic)const;
+		Models::Shape create_shape(const std::string type, const std::vector<std::pair<float, float>> positions, const bool is_dynamic)const;
 	};
 }
