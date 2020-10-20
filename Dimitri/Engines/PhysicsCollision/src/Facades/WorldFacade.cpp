@@ -41,13 +41,21 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		fixtureDef.shape = _polygon.get();
 		body = _world->CreateBody(&bodyDef);
 		body->CreateFixture(&fixtureDef);
-		shape->get_shape_facade()->add_body(body);
 		//std::shared_ptr<Models::Shape> _shape = std::make_shared<Models::Shape>(polygonShape.get());
 	}
 	else {
-		std::shared_ptr<b2Shape> groundBox = shape->get_shape_facade()->get_shape();
+		/*float halfH = shape->get_height() / 2;
+
+		float halfW = shape->get_width() / 2;
+
+		float posY = shape->get_y() - shape->get_height() / 2;
+
+		float posX = shape->get_x() + shape->get_width() / 2;*/
+
+		_polygon->SetAsBox(shape->get_width(), shape->get_height());
+		//std::shared_ptr<b2Shape> groundBox = shape->get_shape_facade()->get_shape();
 		body = _world->CreateBody(&bodyDef);
-		body->CreateFixture(groundBox.get(), 0.0f);
+		body->CreateFixture(_polygon.get(), 0.0f);
 	}
 	_bodies.push_back(body);
 	_world_bodies[shape] = body;
@@ -97,8 +105,12 @@ void Facades::WorldFacade::simulate() const
 
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
-		shape->set_x(body->GetPosition().x - shape->get_width() / 2);
-		shape->set_y(body->GetPosition().y + shape->get_height() / 2);
-		printf("%4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), angle);
+		if (shape->get_is_dynamic())
+		{
+			shape->set_x(body->GetPosition().x - shape->get_width() / 2);
+			shape->set_y(body->GetPosition().y + shape->get_height() / 2);
+			printf("%4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), angle);
+		}
+		
 	}
 }

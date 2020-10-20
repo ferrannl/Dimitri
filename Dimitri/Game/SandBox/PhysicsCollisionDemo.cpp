@@ -16,19 +16,19 @@ void PhysicsCollisionDemo::start_demo()
 	}
 
 	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 400, 1, 300, 300, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	//create_sprite(300, 200, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(350, 200, 1, 300, 300, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
+	//create_sprite(350, 100, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	////create_sprite(700, 50, 1, 350, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	//create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	//create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	//create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
-	//create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	/*create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);*/
 	graphicsController.add_sprites(sprites);
-	create_shape(350, 400, 300, 300, true);
-	//create_shape(300, 50, 300, 50, false);
+	create_shape(350, 200, 300, 300, true);
+	//create_shape(350, 100, 300, 50, false);
 	////create_shape(700, 50, 350, 50, false);
 	//create_shape(0, 720, 1080, 1, false); // top    
-	//create_shape(0, -1, 1080, 1, false); // bottom    
+	create_shape(0, -1, 1080, 1, false); // bottom    
 	//create_shape(-1, 0, 1, 720, false); // left
 	//create_shape(1080, 0, 1, 720, false); // right
 
@@ -68,8 +68,12 @@ void PhysicsCollisionDemo::run()
 			//std::shared_ptr<Models::Shape> shape = std::make_shared<Models::Shape>(_polygon);
 			b2Body* body = it.second;
 			std::shared_ptr<Models::Shape> shape = it.first;
-			sprites->at(0)->set_x(shape->get_x());
-			sprites->at(0)->set_y(shape->get_y());
+			if (shape->get_is_dynamic())
+			{
+				sprites->at(0)->set_x(shape->get_x());
+				sprites->at(0)->set_y(shape->get_y());
+			}
+			
 			//sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
 		}
 			
