@@ -11,13 +11,14 @@ namespace Models {
 		float _width;
 		float _height;
 	protected:
-		const std::string type;
+		std::string _type;
 		std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 	public:
 		bool is_dynamic;
 		Shape();
 		std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
 		std::string get_type();
+		void set_type(std::string type);
 		void set_x(float x);
 		void set_y(float y);
 		void set_width(float width);

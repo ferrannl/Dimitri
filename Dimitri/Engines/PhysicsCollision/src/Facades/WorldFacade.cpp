@@ -22,47 +22,22 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 {
 	b2Body* body;
 	b2BodyDef bodyDef;
+	bodyDef.position.Set(shape->get_x(),shape->get_y());
 	_polygon = std::make_shared<b2PolygonShape>();
 	if (shape->is_dynamic)
 	{
 		b2FixtureDef fixtureDef;
 		fixtureDef.density = 1.0f;
 		bodyDef.type = b2_dynamicBody;
-		float halfH = shape->get_height() / 2;
-
-		float halfW = shape->get_width() / 2;
-
-		float posY = shape->get_y() - shape->get_height() / 2;
-
-		float posX = shape->get_x() + shape->get_width() / 2;
-		bodyDef.position.Set(shape->get_x(), shape->get_y());
-
-		_polygon->SetAsBox(halfW, halfH, b2Vec2(posX, posY), shape->get_angle());
-		fixtureDef.shape = _polygon.get();
+		b2PolygonShape _shape = create_shape(shape);
+		fixtureDef.shape = &_shape;
 		body = _world->CreateBody(&bodyDef);
 		body->CreateFixture(&fixtureDef);
-		//std::shared_ptr<Models::Shape> _shape = std::make_shared<Models::Shape>(polygonShape.get());
 	}
 	else {
-		/*float halfH = shape->get_height() / 2;
 
-		float halfW = shape->get_width() / 2;
-
-		float posY = shape->get_y() - shape->get_height() / 2;
-
-		float posX = shape->get_x() + shape->get_width() / 2;*/
-		bodyDef.position.Set(350,100);
 		bodyDef.type = b2_staticBody;
-		float halfH = shape->get_height() / 2;
-
-		float halfW = shape->get_width() / 2;
-
-		/*float posY = shape->get_y() - shape->get_height() / 2;
-
-		float posX = shape->get_x() + shape->get_width() / 2;*/
-		b2PolygonShape _shape;
-		_shape.SetAsBox(150, 175);		
-		//std::shared_ptr<b2Shape> groundBox = _polygon;
+		b2PolygonShape _shape = create_shape(shape);
 		body = _world->CreateBody(&bodyDef);
 		body->CreateFixture(&_shape, 0.0f);
 	}
@@ -73,24 +48,24 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 
 b2PolygonShape Facades::WorldFacade::create_shape(std::shared_ptr<Models::Shape> shape)
 {
-//	/*if (shape->get_type() == "polygon")
-//	{*/
-//		b2PolygonShape  polygonShape;
-//		float halfH = shape->get_height() / 2;
-//
-//		float halfW = shape->get_width() / 2;
-//
-//		float posY = shape->get_y() - shape->get_height() / 2;
-//
-//		float posX = shape->get_x() + shape->get_width() / 2;
-//
-//		polygonShape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), shape->get_angle());
-//		return polygonShape;
-//	/*}
-//	else {
+	if (shape->get_type() == "polygon")
+	{
+		b2PolygonShape  polygonShape;
+		float halfH = shape->get_height() / 2;
+
+		float halfW = shape->get_width() / 2;
+
+		float posY = shape->get_y() - shape->get_height() / 2;
+
+		float posX = shape->get_x() + shape->get_width() / 2;
+
+		polygonShape.SetAsBox(halfW, halfH, b2Vec2(posX, posY), shape->get_angle());
+		return polygonShape;
+	}
+	else {
 		b2PolygonShape polygonShape;
 		return polygonShape;
-//	}*/
+	}
 }
 
 std::map<std::shared_ptr<Models::Shape>, b2Body*> Facades::WorldFacade::get_world_bodies()

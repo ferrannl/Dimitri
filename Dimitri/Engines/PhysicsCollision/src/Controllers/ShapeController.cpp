@@ -13,6 +13,7 @@ std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const 
 		polygon->set_width(width);
 		polygon->set_x(x);
 		polygon->set_y(y);
+		polygon->set_type(type);
 		polygon->set_is_dynamic(is_dynamic);
 		return polygon;
 	}

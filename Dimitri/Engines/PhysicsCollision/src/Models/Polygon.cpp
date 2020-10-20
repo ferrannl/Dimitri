@@ -3,11 +3,11 @@
 Models::Polygon::Polygon()
 {
 	//_shape_facade = nullptr;
-	type == "polygon";
+	_type == "polygon";
 }
 
 Models::Polygon::Polygon( bool is_dynamic)
 {
 	this->is_dynamic = is_dynamic;
-	type == "polygon";
+	_type == "polygon";
 }

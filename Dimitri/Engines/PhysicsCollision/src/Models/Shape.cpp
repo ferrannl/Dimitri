@@ -12,7 +12,12 @@ std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
 
 std::string Models::Shape::get_type()
 {
-	return type;
+	return _type;
+}
+
+void Models::Shape::set_type(std::string type)
+{
+	_type = type;
 }
 
 void Models::Shape::set_x(float x)
