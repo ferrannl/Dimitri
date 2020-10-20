@@ -2,7 +2,7 @@
 #include "../Facades/WindowFacade.h"
 
 namespace Models {
-	class __declspec(dllexport) Window {
+	class Window {
 	private:
 		int _height;
 		int _width;

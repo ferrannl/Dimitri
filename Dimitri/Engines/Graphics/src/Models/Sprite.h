@@ -1,9 +1,19 @@
 #pragma once
+
+#ifdef WIN32
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else GRAPHICS_API __declspec(import)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 #include "../Facades/TextureFacade.h"
 #include "../Enums/FlipEnum.h"
 
 namespace Models {
-	class __declspec(dllexport) Sprite {
+	class Sprite {
 	
 	private:
 		int _x;
@@ -17,7 +27,7 @@ namespace Models {
 		const std::string _path;
 
 	public:
-		Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus);
+		GRAPHICS_API Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus);
 
 		int get_converted_y(int height) const;
 		int get_x() const;

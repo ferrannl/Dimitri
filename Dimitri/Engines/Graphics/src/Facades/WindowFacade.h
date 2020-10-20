@@ -3,7 +3,7 @@
 #include "../Adapters/FlipEnumAdapter.h"
 
 namespace Facades {
-	class __declspec(dllexport) WindowFacade {
+	class WindowFacade {
 	private:
 		std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
 		std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;

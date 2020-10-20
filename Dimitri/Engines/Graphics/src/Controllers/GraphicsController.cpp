@@ -1,4 +1,10 @@
+
 #include "GraphicsController.h"
+
+Controllers::GraphicsController::GraphicsController()
+{
+		_window = nullptr;
+}
 
 int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
 {

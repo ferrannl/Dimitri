@@ -2,7 +2,7 @@
 #pragma warning( disable : 26812 )
 
 namespace Enums {
-	enum class __declspec(dllexport) FlipEnum {
+	enum class FlipEnum {
 		NONE, HORIZONTAL, VERTICAL
 	};
 }
