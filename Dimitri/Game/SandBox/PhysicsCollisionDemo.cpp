@@ -16,7 +16,7 @@ void PhysicsCollisionDemo::start_demo()
 	}
 
 	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 200, 1, 300, 300, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
+	create_sprite(350, 100, 1, 100, 100, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
 	create_sprite(350, 100, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	/*create_sprite(700, 50, 1, 350, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
@@ -24,13 +24,13 @@ void PhysicsCollisionDemo::start_demo()
 	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);*/
 	graphicsController.add_sprites(sprites);
-	create_shape(350, 200, 300, 300, true);
+	create_shape(350, 100, 100, 100, true);
 	create_shape(350, 100, 300, 50, false);
 	//create_shape(700, 50, 350, 50, false);
-	//create_shape(0, 720, 1080, 1, false); // top    
-	//create_shape(0, -1, 1080, 1, false); // bottom    
-	//create_shape(-1, 0, 1, 720, false); // left
-	//create_shape(1080, 0, 1, 720, false); // right
+	create_shape(0, 720, 1080, 1, false); // top    
+	create_shape(0, -1, 1080, 1, false); // bottom    
+	create_shape(-1, 0, 1, 720, false); // left
+	create_shape(1080, 0, 1, 720, false); // right
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	_inputController->poll_events();
@@ -66,17 +66,17 @@ void PhysicsCollisionDemo::run()
 		for (auto const& it : _world_bodies)
 		{
 			//std::shared_ptr<Models::Shape> shape = std::make_shared<Models::Shape>(_polygon);
-			b2Body* body = it.second;
 			std::shared_ptr<Models::Shape> shape = it.first;
+			b2Body* body = shape->get_shape_facade()->get_body();
 			if (shape->get_is_dynamic())
 			{
 				sprites->at(0)->set_x(shape->get_x());
 				sprites->at(0)->set_y(shape->get_y());
-				//printf("%4.2f %4.2f \n", shape->get_x(), shape->get_y());
+				printf("%4.2f %4.2f \n", shape->get_x(), shape->get_y());
 
 			}
 			else {
-				//printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
+				printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
 
 			}
 			

@@ -51,12 +51,12 @@ void Facades::ShapeFacade::move_x(const int value)const
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
 	if (value == -1) {
-		velChange = -30 - vel.x;
+		velChange = -50 - vel.x;
 		/*vel.x = vel.x - 30.0f;
 		vel.y = 0;*/
 	}
 	else {
-		velChange = 30 - vel.x;
+		velChange = 50 - vel.x;
 		/*vel.x = vel.x + 30.0f;
 		vel.y = 0;*/
 	}
