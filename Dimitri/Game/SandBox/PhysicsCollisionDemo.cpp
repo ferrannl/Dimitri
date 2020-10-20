@@ -17,7 +17,7 @@ void PhysicsCollisionDemo::start_demo()
 
 	std::string image = (Adapters::BasePathAdapter::get_base_path() + std::string{ "assets/images/img.png" });
 	create_sprite(350, 100, 1, 100, 100, image.c_str(), 0, Enums::FlipEnum::VERTICAL);
-	create_sprite(350, 100, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
+	create_sprite(250, 275, 1, 300, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	/*create_sprite(700, 50, 1, 350, 50, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 720, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, -1, 1, 1080, 1, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);
@@ -25,12 +25,12 @@ void PhysicsCollisionDemo::start_demo()
 	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Enums::FlipEnum::HORIZONTAL);*/
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 100, 100, 100, true);
-	create_shape(350, 100, 300, 50, false);
+	create_shape(400, 200, 300, 100, false);
 	//create_shape(700, 50, 350, 50, false);
-	create_shape(0, 720, 1080, 1, false); // top    
-	create_shape(0, -1, 1080, 1, false); // bottom    
-	create_shape(-1, 0, 1, 720, false); // left
-	create_shape(1080, 0, 1, 720, false); // right
+	//create_shape(0, 720, 1080, 1, false); // top    
+	//create_shape(0, -1, 1080, 1, false); // bottom    
+	//create_shape(-1, 0, 1, 720, false); // left
+	//create_shape(1080, 0, 1, 720, false); // right
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	_inputController->poll_events();
@@ -79,19 +79,9 @@ void PhysicsCollisionDemo::run()
 				printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
 
 			}
-			
-			//sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
 		}
-			
-			/*for (int i = 0; i < shapes.size(); i++)
-		{
-				sprites->at(i)->set_x(shapes[i].get_x());
-				sprites->at(i)->set_y(shapes[i].get_y());
-				sprites->at(i)->set_angle(static_cast<int>(shapes[i].get_angle()));
-		}*/
-
-		graphicsController.update_window();
 		worldController.simulate();
+		graphicsController.update_window();
 		sleep_for(5ms);
 	}
 	worldController.destroy_bodies();

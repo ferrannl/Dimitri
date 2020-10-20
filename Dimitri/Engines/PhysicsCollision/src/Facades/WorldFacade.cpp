@@ -34,8 +34,9 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		body = _world->CreateBody(&bodyDef);
 		body->CreateFixture(&fixtureDef);
 	}else {
-		b2PolygonShape _shape = create_shape(shape);
-		bodyDef.type = b2_staticBody;
+		b2PolygonShape _shape;
+		_shape.SetAsBox(150,25);
+		/*b2PolygonShape _shape = create_shape(shape);*/
 		body = _world->CreateBody(&bodyDef);
 		body->SetType(b2_staticBody);
 		body->CreateFixture(&_shape, 0.0f);
