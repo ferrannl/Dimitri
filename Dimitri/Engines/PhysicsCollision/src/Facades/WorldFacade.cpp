@@ -27,7 +27,8 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	if (shape->get_is_dynamic())
 	{
 		b2FixtureDef fixtureDef;
-		fixtureDef.density = 1.0f;
+		fixtureDef.density = 0.3f;
+		fixtureDef.friction = 0.3f;
 		bodyDef.type = b2_dynamicBody;
 		b2PolygonShape _shape = create_shape(shape);
 		fixtureDef.shape = &_shape;
@@ -35,7 +36,7 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		body->CreateFixture(&fixtureDef);
 	}else {
 		b2PolygonShape _shape;
-		_shape.SetAsBox(150,25);
+		_shape.SetAsBox(shape->get_width() / 2 ,shape->get_height() /2);
 		/*b2PolygonShape _shape = create_shape(shape);*/
 		body = _world->CreateBody(&bodyDef);
 		body->SetType(b2_staticBody);
