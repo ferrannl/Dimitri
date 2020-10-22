@@ -23,10 +23,10 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(350, 100, 100, 100, true);
 	//create_shape(600, 400, 300, 100, false);
 	create_shape(400, 200, 300, 100, false);
-	//create_shape(0, 720, 1080, 100, false); // top    
-	//create_shape(0, -1, 1080, 100, false); // bottom    
-	//create_shape(-1, 0, 1, 720, false); // left
-	//create_shape(1080, 0, 1, 720, false); // right
+	create_shape(0, 620, 1080, 100, false); // top    
+	create_shape(0, -200, 1080, 100, false); // bottom    
+	create_shape(-1, 0, 1, 720, false); // left
+	create_shape(1080, 0, 1, 720, false); // right
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	_inputController->poll_events();
