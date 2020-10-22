@@ -15,11 +15,16 @@ Facades::ShapeFacade::ShapeFacade(const std::string type, float width, float hei
 		vertices[counter].Set(it->first, it->second);
 		counter++;
 	}*/
-	if (type == "polygon") {
-		_shape = std::make_shared<b2PolygonShape>();
-		
-		//_shape->Set(vertices, size);
-	}
+	//if (type == "polygon") {
+	//	_shape = std::make_shared<b2PolygonShape>();
+	//	
+	//	//_shape->Set(vertices, size);
+	//}
+}
+
+void Facades::ShapeFacade::set_shape(std::shared_ptr<b2PolygonShape> shape)
+{
+	_shape = shape;
 }
 
 std::shared_ptr<b2PolygonShape> Facades::ShapeFacade::get_shape() const
