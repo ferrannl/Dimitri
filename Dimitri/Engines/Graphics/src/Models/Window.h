@@ -1,7 +1,7 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 
-#ifdef WIN32
+#ifdef WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
 #else GRAPHICS_API __declspec(import)
@@ -11,7 +11,7 @@
 #endif
 
 namespace Models {
-	class Window {
+	class GRAPHICS_API Window {
 	private:
 		int _height;
 		int _width;
@@ -24,7 +24,7 @@ namespace Models {
 			
 		int create();
 		void update();
-		GRAPHICS_API void destroy();
+		void destroy();
 		void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);
 		std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;
 		int get_height() const;

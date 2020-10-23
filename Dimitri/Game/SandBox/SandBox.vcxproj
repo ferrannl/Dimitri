@@ -80,9 +80,13 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\vclib\SDL2-2.0.12\include;C:\vclib\SDL2_mixer-2.0.4\include;C:\vclib\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\vclib\SDL2_mixer-2.0.4\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Game\SandBox\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Game\SandBox\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,11 +94,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\Engines\Graphics\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\Engines\Graphics\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Message>xcopy /y /d "..\..\Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "..\Sandbox\bin\intermediates\$(Platform)\$(Configuration)\"</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -104,13 +114,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\Engines\Graphics\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\..\Engines\Graphics\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Message>xcopy /y /d "..\..\Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "..\Sandbox\bin\intermediates\$(Platform)\$(Configuration)\"</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -118,17 +134,22 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\Engines\Graphics</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Message>xcopy \y \d "..\..\Engines\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
+      <Message>
+      </Message>
+      <Command>xcopy /y /d "$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "$(SolutionDir)Game\Sandbox\bin\$(Platform)\$(Configuration)\"
+xcopy /y /d "$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\Input.dll" "$(SolutionDir)Game\Sandbox\bin\$(Platform)\$(Configuration)\"
+xcopy /y /d "$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\Audio.dll" "$(SolutionDir)Game\Sandbox\bin\$(Platform)\$(Configuration)\"
+xcopy /y /d "$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\PhysicsCollision.dll" "$(SolutionDir)Game\Sandbox\bin\$(Platform)\$(Configuration)\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,18 +160,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\Engines\Graphics</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engines\Graphics</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Message>xcopy \y \d "..\..\Engines\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
+      <Message>xcopy /y /d "$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "$(SolutionDir)Game\Sandbox\bin\intermediates\$(Platform)\$(Configuration)\"</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

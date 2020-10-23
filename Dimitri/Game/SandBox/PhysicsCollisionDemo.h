@@ -1,11 +1,9 @@
 #pragma once
 #include <iostream>
-#include "GraphicsController.h"
-#include "BasePathAdapter.h"
-//#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
-#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-//#include "../../Engines/Graphics/src/Adapters/BasePathAdapter.h"
-#include "../../Engines/Input/src/Controllers/InputController.h"
+#include "./src/Controllers/GraphicsController.h"
+#include "./src/Adapters/BasePathAdapter.h"
+#include "./src/Controllers/WorldController.h"
+#include "./src/Controllers/InputController.h"
 
 #include <chrono>
 #include <thread>

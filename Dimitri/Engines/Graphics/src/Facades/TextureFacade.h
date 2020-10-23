@@ -8,8 +8,17 @@
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
 
+#ifdef WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else GRAPHICS_API __declspec(import)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Facades {
-	class TextureFacade {
+	class GRAPHICS_API TextureFacade {
 	private:
 		std::shared_ptr<SDL_Texture> _texture;
 
