@@ -6,7 +6,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 	worldController = Controllers::WorldController{};
 	_inputController = std::make_shared<Input::Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Graphics::Models::Sprite>>>();
-	shapes = std::vector<Models::Shape>{};
+	shapes = {};
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -61,11 +61,11 @@ void PhysicsCollisionDemo::run()
 {
 	while (true)
 	{
-		for (int i = 0; i < shapes->size(); i++)
-		{
-			sprites->at(i)->set_x(static_cast<int>(shapes->at(i)->get_x()));
-			sprites->at(i)->set_y(static_cast<int>(shapes->at(i)->get_y()));
-			sprites->at(i)->set_angle(static_cast<int>(shapes->at(i)->get_angle()));
+		for (int i = 0; i < shapes.get()->size(); i++)
+		{		
+			sprites->at(i)->set_x(static_cast<int>(shapes.get()->at(i)->get_x()));
+			sprites->at(i)->set_y(static_cast<int>(shapes.get()->at(i)->get_y()));
+			sprites->at(i)->set_angle(static_cast<int>(shapes.get()->at(i)->get_angle()));
 		}
 		graphicsController.update_window();
 		worldController.simulate();
@@ -80,12 +80,12 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 {
 	switch (event) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		shapes[0].move_x(-1);
-		sprites->at(0)->set_x(shapes[0].get_x());
+		shapes.get()->at(0)->move_x(-1);
+		sprites->at(0)->set_x(shapes.get()->at(0)->get_x());
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		shapes[0].move_x(1);
-		sprites->at(0)->set_x(shapes[0].get_x());
+		shapes.get()->at(0)->move_x(1);
+		sprites->at(0)->set_x(shapes.get()->at(0)->get_x());
 		break;
 	default: 
 		std::cout << "geen reactie";

@@ -18,7 +18,7 @@ public:
 	Controllers::WorldController worldController;
 	std::shared_ptr<Input::Controllers::InputController> _inputController;
 	std::shared_ptr<std::vector<std::unique_ptr<Graphics::Models::Sprite>>> sprites;
-	std::vector<Models::Shape> shapes;
+	std::shared_ptr<std::vector<std::unique_ptr<Models::Shape>>> shapes;
 	PhysicsCollisionDemo();
 	void start_demo();
 	int create_window(int width, int height);
