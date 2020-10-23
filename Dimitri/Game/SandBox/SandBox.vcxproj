@@ -124,11 +124,11 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Message>xcopy \y \d "..\..\Engines\Graphics\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
+      <Message>xcopy \y \d "..\..\Engines\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,11 +146,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib;$(OutDir)PhysicsCollision.lib;$(OutDir)Audio.lib;$(OutDir)Input.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Engines\Graphics\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Message>xcopy \y \d "..\..\Engines\Graphics\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
+      <Message>xcopy \y \d "..\..\Engines\$(IntDir)Graphics.dll" "../SandBox/$(IntDir)"</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

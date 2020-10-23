@@ -1,4 +1,3 @@
-
 #include "GraphicsController.h"
 
 Controllers::GraphicsController::GraphicsController()

@@ -14,9 +14,9 @@
 
 namespace Controllers
 {
-	GRAPHICS_API class GraphicsController {
+	class GraphicsController {
 	private:
-		GRAPHICS_API std::shared_ptr<Models::Window> _window;
+		std::shared_ptr<Models::Window> _window;
 
 	public:
 		GRAPHICS_API GraphicsController();

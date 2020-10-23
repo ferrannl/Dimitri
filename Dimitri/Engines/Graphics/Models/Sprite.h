@@ -13,7 +13,7 @@
 #include "../Enums/FlipEnum.h"
 
 namespace Models {
-	class Sprite {
+class Sprite {
 	
 	private:
 		int _x;
@@ -29,24 +29,24 @@ namespace Models {
 	public:
 		GRAPHICS_API Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus);
 
-		int get_converted_y(int height) const;
-		int get_x() const;
-		int get_z() const;
-		int get_y() const;
-		int get_width() const;
-		int get_height() const;
-		float get_angle() const;
+		GRAPHICS_API  int get_converted_y(int height) const;
+		GRAPHICS_API  int get_x() const;
+		GRAPHICS_API  int get_z() const;
+		GRAPHICS_API  int get_y() const;
+		GRAPHICS_API  int get_width() const;
+		GRAPHICS_API  int get_height() const;
+		GRAPHICS_API  float get_angle() const;
 		std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
-		Enums::FlipEnum get_flip_status() const;
-		const std::string get_path() const;
+		GRAPHICS_API  Enums::FlipEnum get_flip_status() const;
+		GRAPHICS_API  const std::string get_path() const;
 
-		void set_x(const int x);
-		void set_z(const int z);
-		void set_y(const int y);
-		void set_width(const int width);
-		void set_height(const int height);
-		void set_angle(const float angle);
-		void set_flip_status(const Enums::FlipEnum flipstatus);
+		GRAPHICS_API void set_x(const int x);
+		GRAPHICS_API void set_z(const int z);
+		GRAPHICS_API void set_y(const int y);
+		GRAPHICS_API void set_width(const int width);
+		GRAPHICS_API void set_height(const int height);
+		GRAPHICS_API void set_angle(const float angle);
+		GRAPHICS_API void set_flip_status(const Enums::FlipEnum flipstatus);
 		void set_facade(const std::shared_ptr<Facades::TextureFacade> facade);
 		void create_texture_facade();
 	};
