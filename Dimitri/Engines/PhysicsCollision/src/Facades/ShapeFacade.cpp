@@ -3,6 +3,7 @@
 PhysicsCollision::Facades::ShapeFacade::ShapeFacade()
 {
 	_shape = nullptr;
+	_body = nullptr;
 }
 
 void PhysicsCollision::Facades::ShapeFacade::set_shape(std::shared_ptr<b2PolygonShape> shape)
@@ -62,4 +63,7 @@ float PhysicsCollision::Facades::ShapeFacade::get_angle()const
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
-
+b2Body* Facades::ShapeFacade::get_body()const
+{
+	return _body;
+}

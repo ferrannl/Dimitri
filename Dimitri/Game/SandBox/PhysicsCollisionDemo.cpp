@@ -2,11 +2,11 @@
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
-	graphicsController = Controllers::GraphicsController{};
+	PhysicsCollisionDemo::graphicsController = Graphics::Controllers::GraphicsController{};
 	worldController = PhysicsCollision::Controllers::WorldController{};
-	_inputController = std::make_shared<Controllers::InputController>();
-	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
-	shapes = std::vector<PhysicsCollision::Models::Shape>();
+	_inputController = std::make_shared<Input::Controllers::InputController>();
+	sprites = std::make_shared<std::vector<std::unique_ptr<Graphics::Models::Sprite>>>();
+	shapes = std::vector<Models::Shape>{};
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -22,10 +22,11 @@ void PhysicsCollisionDemo::start_demo()
 	graphicsController.add_sprites(sprites);
 	create_shape(350, 100, 100, 100, true);
 	create_shape(400, 200, 300, 100, false);
-	create_shape(0, 620, 1080, 100, false); // top    
-	create_shape(0, -200, 1080, 100, false); // bottom    
+	create_shape(0, 620, 1080, 100, false); // top
+	create_shape(0, -200, 1080, 100, false); // bottom
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
+	shapes = worldController.get_shapes();
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	_inputController->poll_events();
@@ -70,7 +71,7 @@ void PhysicsCollisionDemo::run()
 					sprites->at(0)->set_y(shape->get_y());
 					//printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
 
-				}		
+				}
 				worldController.simulate();
 		}
 		graphicsController.update_window();
@@ -80,14 +81,14 @@ void PhysicsCollisionDemo::run()
 	graphicsController.get_window()->destroy();
 }
 
-void PhysicsCollisionDemo::update(Enums::EventEnum event)
+void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 {
 	switch (event) {
-	case Enums::EventEnum::KEY_PRESS_LEFT:
+	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
 		shapes[0].move_x(-1);
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
-	case Enums::EventEnum::KEY_PRESS_RIGHT:
+	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
 		shapes[0].move_x(1);
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
@@ -105,6 +106,3 @@ void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDe
 {
 	_inputController->subscribe(demo);
 }
-
-
-

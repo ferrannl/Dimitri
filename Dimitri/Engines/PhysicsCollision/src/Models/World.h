@@ -10,8 +10,8 @@ namespace PhysicsCollision {
 		public:
 			World();
 			World(const float width, const float height);
-			void add_shape(std::shared_ptr<Shape> shape);
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes();
+			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
+			std::vector<std::unique_ptr<PhysicsCollision::Models::Shape>> get_shapes();
 			void destroy_bodies();
 			void simulate();
 		};

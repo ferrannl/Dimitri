@@ -11,15 +11,12 @@ PhysicsCollision::Facades::WorldFacade::WorldFacade()
 	_bodies = {};
 }
 
-void PhysicsCollision::Facades::WorldFacade::destroy_bodies()
+void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
 {
-	for (b2Body* _groundBody : _bodies)
-	{
-		_world->DestroyBody(_groundBody);
-	}
+	_world->DestroyBody(shape_facade->get_body());
 }
 
-void PhysicsCollision::Facades::WorldFacade::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
+void PhysicsCollision::Facades::WorldFacade::add_shape(std::unique_ptr<PhysicsCollision::Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
 	b2Body* body;
@@ -68,7 +65,7 @@ void PhysicsCollision::Facades::WorldFacade::simulate() const
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		shape->set_x(body->GetWorldCenter().x - shape->get_width() / 2);
-		shape->set_y(body->GetWorldCenter().y + shape->get_height() / 2);	
-		
+		shape->set_y(body->GetWorldCenter().y + shape->get_height() / 2);
+
 	}
 }

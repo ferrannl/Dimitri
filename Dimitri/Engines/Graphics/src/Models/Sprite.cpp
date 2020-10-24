@@ -1,4 +1,5 @@
 #include "Sprite.h"
+using namespace Graphics;
 
 Models::Sprite::Sprite(const float x, const float y, const float z, const float height, const float width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
 	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus }, _facade{ nullptr } {}

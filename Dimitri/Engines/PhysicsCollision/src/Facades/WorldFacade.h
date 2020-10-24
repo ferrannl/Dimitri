@@ -21,9 +21,9 @@ namespace PhysicsCollision {
 			std::shared_ptr<b2PolygonShape> _polygon;
 		public:
 			WorldFacade();
-			void destroy_bodies();
+			void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
 			void simulate()const;
-			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape>);
+			void add_shape(std::unique_ptr<PhysicsCollision::Models::Shape> &shape, const float x, const float y);
 			b2PolygonShape create_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> get_shapes();
 		};

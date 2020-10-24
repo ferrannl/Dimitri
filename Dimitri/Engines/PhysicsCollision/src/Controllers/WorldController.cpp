@@ -25,7 +25,6 @@ void PhysicsCollision::Controllers::WorldController::simulate()
 	_world.simulate();
 }
 
-std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> PhysicsCollision::Controllers::WorldController::get_shapes()
-{
+std::shared_ptr<std::vector<std::unique_ptr<PhysicsCollision::Models::Shape>>> PhysicsCollision::Controllers::WorldController::get_shapes()const {
 	return _world.get_shapes();
 }
