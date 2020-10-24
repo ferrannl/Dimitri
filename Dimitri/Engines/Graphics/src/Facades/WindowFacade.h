@@ -2,7 +2,7 @@
 #include "../Models/Sprite.h"
 #include "../Adapters/FlipEnumAdapter.h"
 
-#ifdef WIN64
+#ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
 #else GRAPHICS_API __declspec(import)

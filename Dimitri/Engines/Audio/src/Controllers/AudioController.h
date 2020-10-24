@@ -7,8 +7,17 @@
 #include <vector>
 #include <memory>
 
+#ifdef _WIN64
+#ifdef AUDIO_EXPORTS
+#define AUDIO_API __declspec(dllexport)
+#else AUDIO_API __declspec(import)
+#endif
+#else
+#define AUDIO_API
+#endif
+
 namespace Controllers {
-	class __declspec(dllexport) AudioController {
+	class AUDIO_API AudioController {
 	private:
 		std::unique_ptr<std::vector<std::shared_ptr<Models::Audio>>> _audios;
 		std::shared_ptr<Models::Audio> get_audio_by_name(const std::string name) const;

@@ -4,11 +4,19 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <box2d\b2_body.h>
+
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else PHYSICSCOLLISION_API __declspec(import)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
 
 namespace Facades {
 	float static RADIAN_IN_DEGREES = 57.3f;
-	class __declspec(dllexport) ShapeFacade {
+	class PHYSICSCOLLISION_API ShapeFacade {
 	private:
 		std::shared_ptr<b2PolygonShape> _shape;
 		b2Body* _body;

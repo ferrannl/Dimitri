@@ -1,4 +1,6 @@
 #include "MusicFacade.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 Facades::MusicFacade::MusicFacade(const std::string path) : Interfaces::IAudioFacade(path), _music(nullptr, Mix_FreeMusic) {
 	_music.reset(Mix_LoadMUS(_path.c_str()));

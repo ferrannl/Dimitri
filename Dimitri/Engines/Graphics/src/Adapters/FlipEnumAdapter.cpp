@@ -1,4 +1,5 @@
 #include "FlipEnumAdapter.h"
+#include <SDL.h>
 
 SDL_RendererFlip Adapters::FlipEnumAdapter::get_sdl_flip(const Enums::FlipEnum flipstatus)
 {

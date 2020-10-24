@@ -4,8 +4,17 @@
 #include "../Models/Shape.h"
 #include <iostream>
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else PHYSICSCOLLISION_API __declspec(import)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 namespace Controllers {
-	class __declspec(dllexport) ShapeController {
+	class PHYSICSCOLLISION_API ShapeController {
 	private:
 		std::shared_ptr<Factories::ShapeFactory> _shape_factory;
 	public:

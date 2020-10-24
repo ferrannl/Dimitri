@@ -1,13 +1,20 @@
 #pragma once
 #include <string>
 #include <memory>
-#include <SDL.h>
-#include <SDL_mixer.h>
 #include "../Exceptions/AudioExceptions.h"
 #include <iostream>
 
+#ifdef _WIN64
+#ifdef AUDIO_EXPORTS
+#define AUDIO_API __declspec(dllexport)
+#else AUDIO_API __declspec(import)
+#endif
+#else
+#define AUDIO_API
+#endif
+
 namespace Interfaces {
-	class __declspec(dllexport) IAudioFacade {
+	class AUDIO_API IAudioFacade {
 	protected:
 		const std::string _path;
 	public:

@@ -2,8 +2,18 @@
 #include "../Facades/EventFacade.h"
 #include "../Facades/MouseFacade.h"
 #include "../Interfaces/IObservable.h"
+
+#ifdef _WIN64
+#ifdef INPUT_EXPORTS
+#define INPUT_API __declspec(dllexport)
+#else INPUT_API __declspec(import)
+#endif
+#else
+#define INPUT_API
+#endif
+
 namespace Controllers {
-	class __declspec(dllexport) InputController : public Interfaces::IObservable{
+	class INPUT_API InputController : public Interfaces::IObservable{
 	private:
 		//shared press events
 		std::shared_ptr<Interfaces::IObserver> _observer;

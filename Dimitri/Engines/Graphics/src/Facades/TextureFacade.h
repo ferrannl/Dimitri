@@ -1,6 +1,4 @@
 #pragma once
-#include <SDL.h>
-#include <SDL_image.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
@@ -8,7 +6,7 @@
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
 
-#ifdef WIN64
+#ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
 #else GRAPHICS_API __declspec(import)

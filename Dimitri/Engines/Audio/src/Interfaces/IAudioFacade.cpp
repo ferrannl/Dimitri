@@ -1,4 +1,6 @@
 #include "IAudioFacade.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
 	try {

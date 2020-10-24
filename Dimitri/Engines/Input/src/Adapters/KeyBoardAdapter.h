@@ -1,7 +1,17 @@
 #pragma once
 #include "../interfaces/IInputAdapter.h"
+
+#ifdef _WIN64
+#ifdef INPUT_EXPORTS
+#define INPUT_API __declspec(dllexport)
+#else INPUT_API __declspec(import)
+#endif
+#else
+#define INPUT_API
+#endif
+
 namespace Adapters {
-	class __declspec(dllexport) KeyBoardAdapter : public Interfaces::IInputAdapter {
+	class INPUT_API KeyBoardAdapter : public Interfaces::IInputAdapter {
 	public:
 		Enums::EventEnum translate_to_enum(const SDL_Event event) const;
 	};

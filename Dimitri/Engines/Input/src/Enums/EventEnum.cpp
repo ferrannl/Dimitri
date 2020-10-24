@@ -1,6 +1,17 @@
 #pragma once
+
+#ifdef _WIN64
+#ifdef INPUT_EXPORTS
+#define INPUT_API __declspec(dllexport)
+#else INPUT_API __declspec(import)
+#endif
+#else
+#define INPUT_API
+#endif
+
+
 namespace Enums {
-	enum class __declspec(dllexport) EventEnum
+	enum class INPUT_API EventEnum
 	{
 		NOT_SUPPORTED,
 		KEY_PRESS_UP,

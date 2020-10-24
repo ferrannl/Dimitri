@@ -1,12 +1,11 @@
 #pragma once
 #include <iostream>
-#include "./src/Controllers/GraphicsController.h"
-#include "./src/Adapters/BasePathAdapter.h"
-#include "./src/Controllers/WorldController.h"
-#include "./src/Controllers/InputController.h"
-
 #include <chrono>
 #include <thread>
+#include <src\Controllers\GraphicsController.h>
+#include <src\Controllers\InputController.h>
+#include <src\Interfaces\IObserver.h>
+
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
