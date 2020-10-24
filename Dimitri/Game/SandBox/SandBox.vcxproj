@@ -80,10 +80,8 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Game\SandBox\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>
-    </IncludePath>
-    <LibraryPath>
-    </LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

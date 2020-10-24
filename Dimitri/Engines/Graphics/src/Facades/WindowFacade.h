@@ -12,7 +12,7 @@
 #endif
 
 namespace Facades {
-	class GRAPHICS_API  WindowFacade {
+	class WindowFacade {
 	private:
 		std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
 		std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;

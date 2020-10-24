@@ -13,7 +13,7 @@
 #include "../Enums/FlipEnum.h"
 
 namespace Models {
-	class GRAPHICS_API  Sprite {
+	class GRAPHICS_API Sprite {
 	
 	private:
 		int _x;

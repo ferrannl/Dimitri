@@ -11,7 +11,7 @@
 #endif
 
 namespace Adapters {
-	class GRAPHICS_API FlipEnumAdapter {
+	class FlipEnumAdapter {
 	public:
 		SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
 	};

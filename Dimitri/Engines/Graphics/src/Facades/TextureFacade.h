@@ -16,7 +16,7 @@
 #endif
 
 namespace Facades {
-	class GRAPHICS_API TextureFacade {
+	class TextureFacade {
 	private:
 		std::shared_ptr<SDL_Texture> _texture;
 
