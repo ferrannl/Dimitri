@@ -2,6 +2,7 @@
 #include "../Facades/EventFacade.h"
 #include "../Facades/MouseFacade.h"
 #include "../Interfaces/IObservable.h"
+#include <SDL.h>
 
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS

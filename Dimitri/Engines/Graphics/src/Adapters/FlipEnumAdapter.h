@@ -1,5 +1,6 @@
 #pragma once
 #include "../Enums/FlipEnum.h"
+#include <SDL.h>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS

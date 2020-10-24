@@ -1,6 +1,10 @@
 #pragma once
 #include <vector>
 #include "../Models/Shape.h"
+#include <box2d/b2_world.h>
+#include <box2d/b2_math.h>
+#include <box2d/b2_body.h>
+#include <box2d/b2_fixture.h>
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS

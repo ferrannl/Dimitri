@@ -1,5 +1,7 @@
 #pragma once
 #include "../enums/EventEnum.cpp"
+#include <SDL.h>
+#include <SDL_mouse.h>
 
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS

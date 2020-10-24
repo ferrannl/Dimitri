@@ -2,6 +2,7 @@
 #include "../Adapters/KeyBoardAdapter.h"
 #include "../Adapters/MouseAdapter.h"
 #include <memory>
+#include <SDL.h>
 
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS

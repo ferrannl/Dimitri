@@ -1,5 +1,4 @@
 #include "EventFacade.h"
-#include <SDL.h>
 
 Facades::EventFacade::EventFacade()
 {

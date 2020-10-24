@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <SDL.h>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS

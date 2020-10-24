@@ -1,8 +1,4 @@
 #include "WorldFacade.h"
-#include <box2d/b2_world.h>
-#include <box2d/b2_math.h>
-#include <box2d/b2_body.h>
-#include <box2d/b2_fixture.h>
 
 Facades::WorldFacade::WorldFacade()
 {

@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <box2d\b2_body.h>
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS

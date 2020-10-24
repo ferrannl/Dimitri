@@ -1,5 +1,4 @@
 #include "MouseAdapter.h"
-#include <SDL.h>
 
 Enums::EventEnum Adapters::MouseAdapter::translate_to_enum(const SDL_Event event) const {
 	switch (event.type)

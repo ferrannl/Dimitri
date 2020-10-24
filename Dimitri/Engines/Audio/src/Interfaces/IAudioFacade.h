@@ -3,6 +3,8 @@
 #include <memory>
 #include "../Exceptions/AudioExceptions.h"
 #include <iostream>
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 #ifdef _WIN64
 #ifdef AUDIO_EXPORTS

@@ -1,5 +1,4 @@
 #include "InputController.h"
-#include <SDL.h>
 
 Controllers::InputController::InputController()
 {

@@ -1,6 +1,4 @@
 #include "WindowFacade.h"
-#include <SDL.h>
-#include <SDL_image.h>
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {

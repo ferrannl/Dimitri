@@ -5,6 +5,8 @@
 #include <memory>
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
+#include <SDL.h>
+#include <SDL_image.h>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS

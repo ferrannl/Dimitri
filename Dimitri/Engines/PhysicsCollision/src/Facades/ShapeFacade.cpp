@@ -1,5 +1,4 @@
 #include "ShapeFacade.h"
-#include <box2d\b2_body.h>
 
 Facades::ShapeFacade::ShapeFacade()
 {
