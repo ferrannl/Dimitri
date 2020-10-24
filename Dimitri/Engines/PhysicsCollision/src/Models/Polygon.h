@@ -4,10 +4,12 @@
 #include <vector>
 #include "../Facades/ShapeFacade.h"
 
-namespace Models {
-	class __declspec(dllexport) Polygon : public Shape {
-	public:
-		Polygon();
-		Polygon(bool is_dynamic);
-	};
+namespace PhysicsCollision {
+	namespace Models {
+		class __declspec(dllexport) Polygon : public Shape {
+		public:
+			Polygon();
+			Polygon(bool is_dynamic);
+		};
+	}
 }

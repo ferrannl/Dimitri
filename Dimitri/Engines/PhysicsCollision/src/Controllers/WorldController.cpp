@@ -1,31 +1,31 @@
 #include "WorldController.h"
 
-Controllers::WorldController::WorldController() {
+PhysicsCollision::Controllers::WorldController::WorldController() {
 	_shapeController = ShapeController{};
 }
 
-void Controllers::WorldController::setup_world(const float width, const float height) {
+void PhysicsCollision::Controllers::WorldController::setup_world(const float width, const float height) {
 	_world = Models::World{ width, height };
 }
 
-Models::Shape Controllers::WorldController::create_shape(std::string type, float x, float y, float width, float height, bool is_dynamic)
+PhysicsCollision::Models::Shape PhysicsCollision::Controllers::WorldController::create_shape(std::string type, float x, float y, float width, float height, bool is_dynamic)
 {
 	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type,x,y, width, height, is_dynamic);
 	_world.add_shape(shape);
 	return *shape;
 }
 
-void Controllers::WorldController::destroy_bodies()
+void PhysicsCollision::Controllers::WorldController::destroy_bodies()
 {
 	_world.destroy_bodies();
 }
 
-void Controllers::WorldController::simulate()
+void PhysicsCollision::Controllers::WorldController::simulate()
 {
 	_world.simulate();
 }
 
-std::map<std::shared_ptr<Models::Shape>, b2Body*> Controllers::WorldController::get_world_bodies()
+std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> PhysicsCollision::Controllers::WorldController::get_world_bodies()
 {
 	return _world.get_world_bodies();
 }

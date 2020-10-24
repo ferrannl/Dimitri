@@ -1,16 +1,16 @@
 #include "WorldFacade.h"
 
-Facades::WorldFacade::WorldFacade()
+PhysicsCollision::Facades::WorldFacade::WorldFacade()
 {
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
-	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
+	_world_bodies = std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*>();
 	_body = {};
 	_polygon = {};
 	_bodies = {};
 }
 
-void Facades::WorldFacade::destroy_bodies()
+void PhysicsCollision::Facades::WorldFacade::destroy_bodies()
 {
 	for (b2Body* _groundBody : _bodies)
 	{
@@ -18,7 +18,7 @@ void Facades::WorldFacade::destroy_bodies()
 	}
 }
 
-void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
+void PhysicsCollision::Facades::WorldFacade::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
 	b2Body* body;
@@ -44,13 +44,13 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	shape->get_shape_facade()->add_body(body);
 }
 
-std::map<std::shared_ptr<Models::Shape>, b2Body*> Facades::WorldFacade::get_world_bodies()
+std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> PhysicsCollision::Facades::WorldFacade::get_world_bodies()
 {
 	return _world_bodies;
 }
 
 
-void Facades::WorldFacade::simulate() const	
+void PhysicsCollision::Facades::WorldFacade::simulate() const
 {
 	float timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;

@@ -1,57 +1,40 @@
 #include "ShapeFacade.h"
 
-Facades::ShapeFacade::ShapeFacade()
+PhysicsCollision::Facades::ShapeFacade::ShapeFacade()
 {
 	_shape = nullptr;
 }
 
-Facades::ShapeFacade::ShapeFacade(const std::string type, float width, float height)
-{
-	//int size = positions.size();
-	/*b2Vec2* vertices = new b2Vec2[size];
-	int counter = 0;
-	for (std::vector<std::pair<float, float>>::iterator it = positions.begin(); it != positions.end(); ++it)
-	{
-		vertices[counter].Set(it->first, it->second);
-		counter++;
-	}*/
-	//if (type == "polygon") {
-	//	_shape = std::make_shared<b2PolygonShape>();
-	//	
-	//	//_shape->Set(vertices, size);
-	//}
-}
-
-void Facades::ShapeFacade::set_shape(std::shared_ptr<b2PolygonShape> shape)
+void PhysicsCollision::Facades::ShapeFacade::set_shape(std::shared_ptr<b2PolygonShape> shape)
 {
 	_shape = shape;
 }
 
-std::shared_ptr<b2PolygonShape> Facades::ShapeFacade::get_shape() const
+std::shared_ptr<b2PolygonShape> PhysicsCollision::Facades::ShapeFacade::get_shape() const
 {
 	return _shape;
 }
 
-void Facades::ShapeFacade::add_body(b2Body* body) {
+void PhysicsCollision::Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
 }
 
-float Facades::ShapeFacade::get_x()const
+float PhysicsCollision::Facades::ShapeFacade::get_x()const
 {
 	return _body->GetPosition().x;
 }
 
-b2Body* Facades::ShapeFacade::get_body()
+b2Body* PhysicsCollision::Facades::ShapeFacade::get_body()
 {
 	return _body;
 }
 
-float Facades::ShapeFacade::get_y()const
+float PhysicsCollision::Facades::ShapeFacade::get_y()const
 {
 	return  _body->GetPosition().y;
 }
 
-void Facades::ShapeFacade::move_x(const int value)const
+void PhysicsCollision::Facades::ShapeFacade::move_x(const int value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
@@ -65,7 +48,7 @@ void Facades::ShapeFacade::move_x(const int value)const
 	_body->ApplyLinearImpulse(b2Vec2(impulse, 0), _body->GetWorldCenter(), true);
 }
 
-void Facades::ShapeFacade::move_y()const
+void PhysicsCollision::Facades::ShapeFacade::move_y()const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
@@ -74,7 +57,7 @@ void Facades::ShapeFacade::move_y()const
 	_body->ApplyLinearImpulse(b2Vec2(0, impulse), _body->GetWorldCenter(), true);
 }
 
-float Facades::ShapeFacade::get_angle()const
+float PhysicsCollision::Facades::ShapeFacade::get_angle()const
 {
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }

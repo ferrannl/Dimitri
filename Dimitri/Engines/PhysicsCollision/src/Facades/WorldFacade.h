@@ -9,20 +9,22 @@
 #include <sstream>
 #include <map>
 
-namespace Facades {
-	class __declspec(dllexport) WorldFacade {
-	private:
-		std::shared_ptr<b2World> _world;
-		std::vector<b2Body*> _bodies;;
-		std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
-		b2Body* _body;
-		std::shared_ptr<b2PolygonShape> _polygon;
-	public:
-		WorldFacade();
-		void destroy_bodies();
-		void simulate()const ;
-		void add_shape(std::shared_ptr<Models::Shape>);
-		b2PolygonShape create_shape(std::shared_ptr<Models::Shape> shape);
-		std::map<std::shared_ptr<Models::Shape>, b2Body*> get_world_bodies();
-	};
+namespace PhysicsCollision {
+	namespace Facades {
+		class __declspec(dllexport) WorldFacade {
+		private:
+			std::shared_ptr<b2World> _world;
+			std::vector<b2Body*> _bodies;;
+			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
+			b2Body* _body;
+			std::shared_ptr<b2PolygonShape> _polygon;
+		public:
+			WorldFacade();
+			void destroy_bodies();
+			void simulate()const;
+			void add_shape(std::shared_ptr<Models::Shape>);
+			b2PolygonShape create_shape(std::shared_ptr<Models::Shape> shape);
+			std::map<std::shared_ptr<Models::Shape>, b2Body*> get_world_bodies();
+		};
+	}
 }

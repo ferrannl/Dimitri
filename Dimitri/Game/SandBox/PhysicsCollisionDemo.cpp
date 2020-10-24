@@ -3,10 +3,10 @@
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	graphicsController = Controllers::GraphicsController{};
-	worldController = Controllers::WorldController{};
+	worldController = PhysicsCollision::Controllers::WorldController{};
 	_inputController = std::make_shared<Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Models::Sprite>>>();
-	shapes = std::vector<Models::Shape>();
+	shapes = std::vector<PhysicsCollision::Models::Shape>();
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -63,10 +63,10 @@ void PhysicsCollisionDemo::run()
 {
 	while (true)
 	{
-		std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies = worldController.get_world_bodies();
+		std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> _world_bodies = worldController.get_world_bodies();
 		for (auto const& it : _world_bodies)
 		{
-			std::shared_ptr<Models::Shape> shape = it.first;
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = it.first;
 			b2Body* body = shape->get_shape_facade()->get_body();
 				if (shape->get_is_dynamic())
 				{
