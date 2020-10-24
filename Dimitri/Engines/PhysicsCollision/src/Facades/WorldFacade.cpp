@@ -5,6 +5,7 @@ PhysicsCollision::Facades::WorldFacade::WorldFacade()
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
 	_world_bodies = std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*>();
+	_shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>();
 	_body = {};
 	_polygon = {};
 	_bodies = {};
@@ -40,13 +41,15 @@ void PhysicsCollision::Facades::WorldFacade::add_shape(std::shared_ptr<PhysicsCo
 		body->CreateFixture(&_shape, 0.0f);
 	}
 	_bodies.push_back(body);
+	_shapes.push_back(shape);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
 
-std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> PhysicsCollision::Facades::WorldFacade::get_world_bodies()
+
+std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> PhysicsCollision::Facades::WorldFacade::get_shapes()
 {
-	return _world_bodies;
+	return _shapes;
 }
 
 

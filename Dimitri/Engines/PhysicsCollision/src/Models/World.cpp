@@ -22,7 +22,7 @@ void PhysicsCollision::Models::World::simulate()
 	_world_facade.simulate();
 }
 
-std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> PhysicsCollision::Models::World::get_world_bodies()
+std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> PhysicsCollision::Models::World::get_shapes()
 {
-	return _world_facade.get_world_bodies();
+	return _world_facade.get_shapes();
 }

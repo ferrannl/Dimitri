@@ -53,9 +53,6 @@ void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
 {
-	//std::vector<std::pair<float, float>> positions{ {0 ,0 }, {0,height / 2},{width / 2, height / 2}, {width / 2, 0} };
-	/*x = x - width / 2;
-	y = y + height / 2;*/
 	shapes.push_back(worldController.create_shape("polygon", x, y, width, height, is_dynamic));
 }
 
@@ -63,16 +60,15 @@ void PhysicsCollisionDemo::run()
 {
 	while (true)
 	{
-		std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> _world_bodies = worldController.get_world_bodies();
-		for (auto const& it : _world_bodies)
+		std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes = worldController.get_shapes();
+		for (auto const& it : _shapes)
 		{
-			std::shared_ptr<PhysicsCollision::Models::Shape> shape = it.first;
-			b2Body* body = shape->get_shape_facade()->get_body();
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = it;
 				if (shape->get_is_dynamic())
 				{
 					sprites->at(0)->set_x(shape->get_x());
 					sprites->at(0)->set_y(shape->get_y());
-					printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
+					//printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
 
 				}		
 				worldController.simulate();

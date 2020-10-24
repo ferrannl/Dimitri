@@ -25,7 +25,7 @@ void PhysicsCollision::Controllers::WorldController::simulate()
 	_world.simulate();
 }
 
-std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*> PhysicsCollision::Controllers::WorldController::get_world_bodies()
+std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> PhysicsCollision::Controllers::WorldController::get_shapes()
 {
-	return _world.get_world_bodies();
+	return _world.get_shapes();
 }
