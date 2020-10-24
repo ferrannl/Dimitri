@@ -12,9 +12,18 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for all the Adapters in the project
+*/
 namespace Adapters {
+	/**
+	* Adapter for converting the FlipEnum to SDL_Rendererflip
+	*/
 	class GRAPHICS_API FlipEnumAdapter {
 	public:
+		/**
+		* Converts the FlipEnum to SDL_Rendererflip
+		*/
 		SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
 	};
 }

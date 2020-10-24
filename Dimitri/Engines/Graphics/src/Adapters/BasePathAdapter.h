@@ -12,9 +12,19 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for all the Adapters in the project
+*/
 namespace Adapters {
+	/**
+	* Adapter for returning the basepath of the project
+	*/
 	static class GRAPHICS_API BasePathAdapter {
 	public:
+
+		/**
+		* returns the basepath of the project
+		*/
 		static const char* get_base_path();
 	};
 }

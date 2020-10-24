@@ -18,7 +18,7 @@ namespace Models {
 	/**
 	* Holds the data the window needs to be generated.
 	*/
-	class Window {
+	class GRAPHICS_API Window {
 	private:
 		/**
 		* 
