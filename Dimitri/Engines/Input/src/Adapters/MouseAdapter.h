@@ -5,7 +5,8 @@
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS
 #define INPUT_API __declspec(dllexport)
-#else INPUT_API __declspec(import)
+#else 
+#define INPUT_API __declspec(dllimport)
 #endif
 #else
 #define INPUT_API

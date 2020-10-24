@@ -1,7 +1,8 @@
 #include "PhysicsCollisionDemo.h"
 #include "AudioDemo.h"
+#include <windows.h>
 
-int main(int argc, char** argv)
+int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
 {
     /* AudioDemo audio_demo = {};
 

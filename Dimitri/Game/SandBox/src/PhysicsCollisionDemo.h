@@ -5,6 +5,7 @@
 #include <src\Controllers\GraphicsController.h>
 #include <src\Controllers\InputController.h>
 #include <src\Interfaces\IObserver.h>
+#include <src\Controllers\WorldController.h>
 
 using namespace std::this_thread;
 using namespace std::chrono_literals;

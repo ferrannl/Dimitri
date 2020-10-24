@@ -6,7 +6,8 @@
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
 #define PHYSICSCOLLISION_API __declspec(dllexport)
-#else PHYSICSCOLLISION_API __declspec(import)
+#else 
+#define PHYSICSCOLLISION_API __declspec(dllimport)
 #endif
 #else
 #define PHYSICSCOLLISION_API
