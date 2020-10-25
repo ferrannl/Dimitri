@@ -5,18 +5,17 @@ PhysicsCollision::Facades::WorldFacade::WorldFacade()
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
 	_world_bodies = std::map<std::shared_ptr<PhysicsCollision::Models::Shape>, b2Body*>();
-	_shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>();
 	_body = {};
 	_polygon = {};
 	_bodies = {};
 }
 
-void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
+void PhysicsCollision::Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
 {
 	_world->DestroyBody(shape_facade->get_body());
 }
 
-void PhysicsCollision::Facades::WorldFacade::add_shape(std::unique_ptr<PhysicsCollision::Models::Shape> shape)
+void PhysicsCollision::Facades::WorldFacade::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
 	b2Body* body;
@@ -38,17 +37,9 @@ void PhysicsCollision::Facades::WorldFacade::add_shape(std::unique_ptr<PhysicsCo
 		body->CreateFixture(&_shape, 0.0f);
 	}
 	_bodies.push_back(body);
-	_shapes.push_back(shape);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
-
-
-std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> PhysicsCollision::Facades::WorldFacade::get_shapes()
-{
-	return _shapes;
-}
-
 
 void PhysicsCollision::Facades::WorldFacade::simulate() const
 {

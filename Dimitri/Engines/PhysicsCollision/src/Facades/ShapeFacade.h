@@ -19,7 +19,7 @@ namespace PhysicsCollision {
 			std::shared_ptr<b2PolygonShape> get_shape() const;
 			void add_body(b2Body* body);
 			float get_x()const;
-			b2Body* get_body();
+			b2Body* get_body()const;
 			float get_y()const;
 			void move_x(const int value)const;
 			void move_y()const;

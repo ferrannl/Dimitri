@@ -25,11 +25,6 @@ float PhysicsCollision::Facades::ShapeFacade::get_x()const
 	return _body->GetPosition().x;
 }
 
-b2Body* PhysicsCollision::Facades::ShapeFacade::get_body()
-{
-	return _body;
-}
-
 float PhysicsCollision::Facades::ShapeFacade::get_y()const
 {
 	return  _body->GetPosition().y;
@@ -63,7 +58,7 @@ float PhysicsCollision::Facades::ShapeFacade::get_angle()const
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
-b2Body* Facades::ShapeFacade::get_body()const
+b2Body* PhysicsCollision::Facades::ShapeFacade::get_body()const
 {
 	return _body;
 }

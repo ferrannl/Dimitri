@@ -2,7 +2,6 @@
 
 PhysicsCollision::Models::Polygon::Polygon()
 {
-	//_shape_facade = nullptr;
 	_type == "polygon";
 }
 
