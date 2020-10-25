@@ -2,32 +2,11 @@
 
 PhysicsCollision::Facades::ShapeFacade::ShapeFacade()
 {
-	_shape = nullptr;
 	_body = nullptr;
-}
-
-void PhysicsCollision::Facades::ShapeFacade::set_shape(std::shared_ptr<b2PolygonShape> shape)
-{
-	_shape = shape;
-}
-
-std::shared_ptr<b2PolygonShape> PhysicsCollision::Facades::ShapeFacade::get_shape() const
-{
-	return _shape;
 }
 
 void PhysicsCollision::Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
-}
-
-float PhysicsCollision::Facades::ShapeFacade::get_x()const
-{
-	return _body->GetPosition().x;
-}
-
-float PhysicsCollision::Facades::ShapeFacade::get_y()const
-{
-	return  _body->GetPosition().y;
 }
 
 void PhysicsCollision::Facades::ShapeFacade::move_x(const int value)const

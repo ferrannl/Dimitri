@@ -4,7 +4,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
 	PhysicsCollisionDemo::graphicsController = Graphics::Controllers::GraphicsController{};
 	worldController = PhysicsCollision::Controllers::WorldController{};
-	_inputController = std::make_shared<Input::Controllers::InputController>();
+	inputController = std::make_shared<Input::Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Graphics::Models::Sprite>>>();
 	shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>();
 }
@@ -15,13 +15,22 @@ void PhysicsCollisionDemo::start_demo()
 		return;
 	}
 
-	std::string image = (Utility::Helpers::get_base_path() + std::string{ "assets/images/img.png" });
-	create_sprite(350, 100, 1, 100, 100, image.c_str(), 0, Graphics::Enums::FlipEnum::VERTICAL);
-	create_sprite(400, 200, 1, 300, 100, image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
+	//std::string image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
+	std::string bg_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" };
+	std::string ground_end_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" };
+	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" };
+	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
+	create_sprite(350, 300, 1, 50, 100, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
+	create_sprite(300, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL, false);
+	create_sprite(350, 200, 1, 50, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
+	create_sprite(400, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
 
 	graphicsController.add_sprites(sprites);
-	create_shape(350, 100, 100, 100, true);
-	create_shape(400, 200, 300, 100, false);
+	//create_shape(350, 100, 100, 100, true);
+	create_shape(350, 300, 50, 100, true);
+	create_shape(300, 200, 50, 50, false);
+	create_shape(350, 200, 50, 50, false);
+	create_shape(400, 200, 50, 50, false);	
 	create_shape(0, 620, 1080, 100, false); // top
 	create_shape(0, -200, 1080, 100, false); // bottom
 	create_shape(-1, 0, 1, 720, false); // left
@@ -29,7 +38,7 @@ void PhysicsCollisionDemo::start_demo()
 	shapes = worldController.get_shapes();
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
-	_inputController->poll_events();
+	inputController->poll_events();
 	demo_thread.join();
 }
 
@@ -43,9 +52,9 @@ int PhysicsCollisionDemo::create_window(int width, int height)
 	}
 }
 
-void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width, float height, const char* path, const float angle, Graphics::Enums::FlipEnum flipstatus)
+void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width, float height, const char* path, const float angle, Graphics::Enums::FlipEnum flipstatus, bool is_dynamic)
 {
-	if (flipstatus == Graphics::Enums::FlipEnum::HORIZONTAL)
+	if (!is_dynamic)
 	{
 		y = y + height;
 	}
@@ -69,7 +78,6 @@ void PhysicsCollisionDemo::run()
 				{
 					sprites->at(0)->set_x(shape->get_x());
 					sprites->at(0)->set_y(shape->get_y());
-					//printf("%4.2f %4.2f %4.2f %4.2f \n", shape->get_x(), shape->get_y(), shape->get_width(), shape->get_height());
 
 				}
 				worldController.simulate();
@@ -85,16 +93,16 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 {
 	switch (event) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		shapes[0].move_x(-1);
-		sprites->at(0)->set_x(shapes[0].get_x());
+		shapes[0]->get_shape_facade()->move_x(-1);
+		sprites->at(0)->set_x(shapes[0]->get_x());
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		shapes[0].move_x(1);
-		sprites->at(0)->set_x(shapes[0].get_x());
+		shapes[0]->get_shape_facade()->move_x(1);
+		sprites->at(0)->set_x(shapes[0]->get_x());
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
-		shapes[0].move_y();
-		sprites->at(0)->set_y(shapes[0].get_y());
+		shapes[0]->get_shape_facade()->move_y();
+		sprites->at(0)->set_y(shapes[0]->get_y());
 		break;
 	default:
 		std::cout << "geen reactie";
@@ -104,5 +112,5 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 
 void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo)
 {
-	_inputController->subscribe(demo);
+	inputController->subscribe(demo);
 }
