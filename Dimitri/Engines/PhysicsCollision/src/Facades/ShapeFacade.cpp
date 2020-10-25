@@ -53,7 +53,6 @@ void Facades::ShapeFacade::move_x(const int value)const
 		vel.x = vel.x + 30.0f;
 		vel.y = 0;
 	}
-	//_body->SetTransform(_body->GetPosition(), 0);
 	_body->SetLinearVelocity(vel);
 }
 
@@ -61,7 +60,6 @@ void Facades::ShapeFacade::move_y()const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = 30;//upwards - don't change x velocity
-	//_body->SetTransform(_body->GetPosition(), 0);
 	_body->SetLinearVelocity(vel);
 }
 
