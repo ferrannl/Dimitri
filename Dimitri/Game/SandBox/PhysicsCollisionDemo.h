@@ -14,9 +14,9 @@ using namespace std::chrono_literals;
 
 class PhysicsCollisionDemo : public Utility::Interfaces::IObserver<Input::Enums::EventEnum> {
 public:
-	Graphics::Controllers::GraphicsController graphicsController;
-	Controllers::WorldController worldController;
-	std::shared_ptr<Input::Controllers::InputController> _inputController;
+	Graphics::Controllers::GraphicsController graphics_controller;
+	Controllers::WorldController world_controller;
+	std::shared_ptr<Input::Controllers::InputController> input_controller;
 	std::shared_ptr<std::vector<std::unique_ptr<Graphics::Models::Sprite>>> sprites;
 	std::shared_ptr<std::vector<std::unique_ptr<Models::Shape>>> shapes;
 	PhysicsCollisionDemo();
