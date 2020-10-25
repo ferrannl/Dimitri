@@ -10,8 +10,9 @@ PhysicsCollision::Models::World::World(const float width, const float height)
 
 void PhysicsCollision::Models::World::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
 {
-	_shapes.push_back(std::make_shared<Shape>(shape));
-	_world_facade.add_shape(_shapes.back());
+	std::shared_ptr<PhysicsCollision::Models::Shape>_shape = std::make_unique<PhysicsCollision::Models::Shape>(shape);
+	_shapes.push_back(_shape);
+	_world_facade.add_shape(_shape);
 }
 
 void PhysicsCollision::Models::World::destroy_bodies()

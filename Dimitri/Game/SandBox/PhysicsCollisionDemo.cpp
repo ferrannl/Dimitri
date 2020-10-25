@@ -6,7 +6,7 @@ PhysicsCollisionDemo::PhysicsCollisionDemo()
 	worldController = PhysicsCollision::Controllers::WorldController{};
 	_inputController = std::make_shared<Input::Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Graphics::Models::Sprite>>>();
-	shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>{};
+	shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>();
 }
 
 void PhysicsCollisionDemo::start_demo()
@@ -54,7 +54,6 @@ void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
 {
-	std::vector<std::pair<float, float>> positions{ {0.0f,0.0f}, {0.0f,height},{width, height}, {width, 0.0f} };
 	shapes.push_back(worldController.create_shape("polygon", x, y, width, height, is_dynamic));
 }
 
@@ -93,7 +92,7 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 		shapes[0].move_x(1);
 		sprites->at(0)->set_x(shapes[0].get_x());
 		break;
-	case Enums::EventEnum::KEY_PRESS_UP:
+	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		shapes[0].move_y();
 		sprites->at(0)->set_y(shapes[0].get_y());
 		break;
