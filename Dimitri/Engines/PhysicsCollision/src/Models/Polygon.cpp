@@ -1,11 +1,12 @@
 #include "Polygon.h"
+using namespace PhysicsCollision;
 
-PhysicsCollision::Models::Polygon::Polygon()
+Models::Polygon::Polygon()
 {
 	_type == "polygon";
 }
 
-PhysicsCollision::Models::Polygon::Polygon( bool is_dynamic)
+Models::Polygon::Polygon( bool is_dynamic)
 {
 	this->is_dynamic = is_dynamic;
 	_type == "polygon";

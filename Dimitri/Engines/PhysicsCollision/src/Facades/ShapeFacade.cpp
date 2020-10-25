@@ -1,15 +1,16 @@
 #include "ShapeFacade.h"
+using namespace PhysicsCollision;
 
-PhysicsCollision::Facades::ShapeFacade::ShapeFacade()
+Facades::ShapeFacade::ShapeFacade()
 {
 	_body = nullptr;
 }
 
-void PhysicsCollision::Facades::ShapeFacade::add_body(b2Body* body) {
+void Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
 }
 
-void PhysicsCollision::Facades::ShapeFacade::move_x(const int value)const
+void Facades::ShapeFacade::move_x(const int value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
@@ -23,7 +24,7 @@ void PhysicsCollision::Facades::ShapeFacade::move_x(const int value)const
 	_body->ApplyLinearImpulse(b2Vec2(impulse, 0), _body->GetWorldCenter(), true);
 }
 
-void PhysicsCollision::Facades::ShapeFacade::move_y()const
+void Facades::ShapeFacade::move_y()const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
@@ -32,12 +33,12 @@ void PhysicsCollision::Facades::ShapeFacade::move_y()const
 	_body->ApplyLinearImpulse(b2Vec2(0, impulse), _body->GetWorldCenter(), true);
 }
 
-float PhysicsCollision::Facades::ShapeFacade::get_angle()const
+float Facades::ShapeFacade::get_angle()const
 {
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
-b2Body* PhysicsCollision::Facades::ShapeFacade::get_body()const
+b2Body* Facades::ShapeFacade::get_body()const
 {
 	return _body;
 }
