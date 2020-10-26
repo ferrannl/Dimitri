@@ -17,22 +17,23 @@ void PhysicsCollisionDemo::start_demo()
 
 	//std::string image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
 	std::string bg_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" };
-	std::string ground_end_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" };
-	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" };
-	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
-	create_sprite(350, 300, 1, 50, 100, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
-	create_sprite(300, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL, false);
-	create_sprite(350, 200, 1, 50, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
-	create_sprite(400, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
+	//std::string ground_end_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" };
+	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/wall.png" };
+	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
+	create_sprite(350, 300, 1, 50, 50, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
+	//create_sprite(300, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL, false);
+	create_sprite(300, 200, 1, 300, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
+	//create_sprite(400, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
+	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
 
 	graphicsController.add_sprites(sprites);
 	//create_shape(350, 100, 100, 100, true);
-	create_shape(350, 300, 50, 100, true);
-	create_shape(300, 200, 50, 50, false);
-	create_shape(350, 200, 50, 50, false);
-	create_shape(400, 200, 50, 50, false);	
-	create_shape(0, 620, 1080, 100, false); // top
-	create_shape(0, -200, 1080, 100, false); // bottom
+	create_shape(350, 300, 50, 50, true);
+	/*create_shape(300, 200, 50, 50, false);
+	create_shape(350, 200, 50, 50, false);*/
+	create_shape(300, 200, 300, 50, false);	
+	create_shape(0, 670, 1080, 100, false); // top
+	create_shape(0, -150, 1080, 100, false); // bottom
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
 	shapes = worldController.get_shapes();
@@ -95,10 +96,12 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
 		shapes[0]->get_shape_facade()->move_x(-1);
 		sprites->at(0)->set_x(shapes[0]->get_x());
+		sprites->at(0)->set_flip_status(Graphics::Enums::FlipEnum::HORIZONTAL);
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
 		shapes[0]->get_shape_facade()->move_x(1);
 		sprites->at(0)->set_x(shapes[0]->get_x());
+		sprites->at(0)->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		shapes[0]->get_shape_facade()->move_y();
