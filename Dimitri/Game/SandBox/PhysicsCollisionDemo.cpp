@@ -19,8 +19,8 @@ void PhysicsCollisionDemo::start_demo()
 	std::string bg_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" };
 	//std::string ground_end_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" };
 	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/wall.png" };
-	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
-	create_sprite(350, 300, 1, 50, 50, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
+	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
+	create_sprite(350, 300, 1, 75, 75, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
 	//create_sprite(300, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL, false);
 	create_sprite(300, 200, 1, 300, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
 	//create_sprite(400, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
@@ -28,12 +28,12 @@ void PhysicsCollisionDemo::start_demo()
 
 	graphicsController.add_sprites(sprites);
 	//create_shape(350, 100, 100, 100, true);
-	create_shape(350, 300, 50, 50, true);
+	create_shape(350, 300, 75, 75, true);
 	/*create_shape(300, 200, 50, 50, false);
 	create_shape(350, 200, 50, 50, false);*/
-	create_shape(300, 200, 300, 50, false);	
-	create_shape(0, 670, 1080, 100, false); // top
-	create_shape(0, -150, 1080, 100, false); // bottom
+	create_shape(300, 175, 300, 50, false);	
+	create_shape(0, 645, 1080, 100, false); // top
+	create_shape(0, -175, 1080, 100, false); // bottom
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
 	shapes = worldController.get_shapes();
