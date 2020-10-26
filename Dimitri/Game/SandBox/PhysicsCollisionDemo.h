@@ -17,7 +17,7 @@ public:
 	Graphics::Controllers::GraphicsController graphics_controller;
 	Controllers::WorldController world_controller;
 	std::shared_ptr<Input::Controllers::InputController> input_controller;
-	std::shared_ptr<std::vector<std::unique_ptr<Graphics::Models::Sprite>>> sprites;
+	std::vector<std::shared_ptr<Graphics::Models::Texture>> textures;
 	std::shared_ptr<std::vector<std::unique_ptr<Models::Shape>>> shapes;
 	PhysicsCollisionDemo();
 	void start_demo();

@@ -1,4 +1,5 @@
 #include "WindowFacade.h"
+#include <map>
 using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
@@ -26,78 +27,61 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 	}
 }
 
-void Facades::WindowFacade::create_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
+void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& texture_equal_path)
 {
 	if (!_renderer) {
 		std::cout << "Create a renderer first" << std::endl;
 		return;
 	}
 
+	// check if the texture already exists
+	std::shared_ptr<Facades::TextureFacade> facade = texture_equal_path != nullptr ? texture_equal_path->get_texture_facade() : nullptr;
 
-	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
-		// check if the texuture already exists
-		std::shared_ptr<Facades::TextureFacade> facade = get_if_exists(sprites, sprite->get_path());
-
-		if (facade) {
-			sprite->set_facade(facade);
-		}
-		else {
-			sprite->create_texture_facade();
-			sprite->get_texture_facade()->create_texture(_renderer, sprite->get_path());
-		}
+	if (facade) {
+		texture->set_facade(facade);
+	}
+	else {
+		texture->create_texture_facade();
+		texture->get_texture_facade()->create_texture(_renderer, texture->get_path());
 	}
 }
 
-void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
+void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Texture>> textures)
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
 
-	int depth = 0;
-	int objectcounter = 0;
+	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
+	for (std::shared_ptr<Models::Texture>& texture : textures) {
+		ordered_textures[texture.get()->get_z()].push_back(texture);
+	}
 
-	while (objectcounter < sprites->size()) {
-		for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
-			if (sprite->get_z() == depth) {
-				SDL_Rect rect;
+	for (const auto& kv : ordered_textures) {
+		for (const auto& texture : kv.second) {
+			SDL_Rect rect;
 
-				rect.x = sprite->get_x();
-				rect.y = sprite->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
-				rect.w = sprite->get_width();
-				rect.h = sprite->get_height();
+			rect.x = texture->get_x();
+			rect.y = texture->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
+			rect.w = texture->get_width();
+			rect.h = texture->get_height();
 
-				//Render texture to screen
-				try {
-					SDL_Point center = { 0,0 };
-					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
-					
-					if (retVal < NULL) {
-						throw Exceptions::CannotRenderSpriteTexture();
-					}
+			//Render texture to screen
+			try {
+				SDL_Point center = { 0,0 };
+				int retVal = SDL_RenderCopyEx(_renderer.get(), texture->get_texture_facade()->get_texture().get(), NULL, &rect, texture->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(texture->get_flip_status()));
+
+				if (retVal < NULL) {
+					throw Exceptions::CannotRenderSpriteTexture();
 				}
-				catch (Exceptions::CannotRenderSpriteTexture& e) {
-					std::cout << e.get() << std::endl;
-				}
-				
-				objectcounter++;
+			}
+			catch (Exceptions::CannotRenderSpriteTexture& e) {
+				std::cout << e.get() << std::endl;
 			}
 		}
-		depth++;
 	}
 
 	//Update screen
 	SDL_RenderPresent(_renderer.get());
-}
-
-std::shared_ptr<Facades::TextureFacade> Facades::WindowFacade::get_if_exists(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path)
-{
-	for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
-		if (sprite->get_path() == path) {
-			return sprite->get_texture_facade();
-		}
-	}
-
-	return nullptr;
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

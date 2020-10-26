@@ -1,5 +1,6 @@
 #pragma once
 #include "../Models/Sprite.h"
+#include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
 namespace Graphics {
 	namespace Facades {
@@ -8,16 +9,14 @@ namespace Graphics {
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
 			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
-
-			std::shared_ptr<Facades::TextureFacade> get_if_exists(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path);
 		public:
 			WindowFacade();
 
 			int create_renderer();
 			int create_window(const std::string title, const int height, const int width);
-			void create_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
+			void create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& texture_equal_path);
 			void destroy();
-			void update_window(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
+			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 		};
 	}
 }

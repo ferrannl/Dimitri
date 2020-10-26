@@ -1,4 +1,6 @@
 #include "TextureFacade.h"
+#include <SDL_ttf.h>
+
 using namespace Graphics;
 
 Facades::TextureFacade::TextureFacade() : _texture(nullptr, SDL_DestroyTexture) {}
