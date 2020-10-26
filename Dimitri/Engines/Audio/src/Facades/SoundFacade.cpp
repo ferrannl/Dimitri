@@ -1,4 +1,5 @@
 #include "SoundFacade.h"
+using namespace Audio;
 
 Facades::SoundFacade::SoundFacade(const std::string path, int channel) : Interfaces::IAudioFacade(path), _channel{ channel }, _sound(nullptr, Mix_FreeChunk) {
 	_sound.reset( Mix_LoadWAV(_path.c_str()));

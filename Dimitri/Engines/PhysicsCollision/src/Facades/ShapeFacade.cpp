@@ -3,10 +3,12 @@
 Facades::ShapeFacade::ShapeFacade()
 {
 	_shape = nullptr;
+	_body = nullptr;
 }
 
 Facades::ShapeFacade::ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions)
 {
+	_body = nullptr;
 	int size = positions.size();
 	b2Vec2* vertices = new b2Vec2[size];
 	int counter = 0;
@@ -51,7 +53,6 @@ void Facades::ShapeFacade::move_x(const int value)const
 		vel.x = vel.x + 30.0f;
 		vel.y = 0;
 	}
-	_body->SetTransform(_body->GetPosition(), 0);
 	_body->SetLinearVelocity(vel);
 }
 
@@ -59,7 +60,6 @@ void Facades::ShapeFacade::move_y()const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	vel.y = 30;//upwards - don't change x velocity
-	_body->SetTransform(_body->GetPosition(), 0);
 	_body->SetLinearVelocity(vel);
 }
 
@@ -68,4 +68,8 @@ float Facades::ShapeFacade::get_angle()const
 	return  _body->GetAngle() * RADIAN_IN_DEGREES;
 }
 
+b2Body* Facades::ShapeFacade::get_body()const
+{
+	return _body;
+}
 

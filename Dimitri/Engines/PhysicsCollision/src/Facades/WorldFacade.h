@@ -20,11 +20,11 @@ namespace Facades {
 	class PHYSICSCOLLISION_API WorldFacade {
 	private:
 		std::shared_ptr<b2World> _world;
-		std::vector<b2Body*> _bodies;;
+		std::vector<b2Body*> _bodies;
 	public:
 		WorldFacade();
-		void destroy_bodies();
+		void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
 		void simulate()const ;
-		void add_shape(std::shared_ptr<Models::Shape>, const float x, const float y);
+		void add_shape(std::unique_ptr<Models::Shape> &shape, const float x, const float y);
 	};
 }

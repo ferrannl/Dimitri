@@ -1,4 +1,5 @@
 #include "GraphicsController.h"
+using namespace Graphics;
 
 Controllers::GraphicsController::GraphicsController()
 {

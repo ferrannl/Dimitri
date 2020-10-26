@@ -22,8 +22,8 @@ namespace Facades {
 		std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
 	public:
 
-		EventFacade();
-		Enums::EventEnum poll_event();
-	};
+			EventFacade();
+			Enums::EventEnum poll_event();
+		};
+	}
 }
-

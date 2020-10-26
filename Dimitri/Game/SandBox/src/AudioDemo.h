@@ -1,4 +1,6 @@
 #pragma once
+#include "../../Engines/Audio/src/Controllers/AudioController.h"
+#include "../../Utility/src/Helpers/BasePathHelper.h"
 #include <memory>
 #include <chrono>
 #include <thread>
@@ -9,7 +11,7 @@ using namespace std::chrono_literals;
 
 class AudioDemo {
 private:
-	std::unique_ptr<Controllers::AudioController> _audio_controller;
+	std::unique_ptr<Audio::Controllers::AudioController> _audio_controller;
 public:
 	AudioDemo();
 	void play_music() const;

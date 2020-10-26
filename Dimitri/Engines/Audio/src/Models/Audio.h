@@ -21,7 +21,8 @@ namespace Models {
 	public:
 		Audio(const std::string name, std::shared_ptr < Interfaces::IAudioFacade> audio_facade);
 
-		std::string get_name() const;
-		std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade() const;
-	};
+			std::string get_name() const;
+			std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade() const;
+		};
+	}
 }
