@@ -36,9 +36,6 @@
     <ClInclude Include="src\Controllers\GraphicsController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Adapters\BasePathAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Controllers\GraphicsController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Adapters\BasePathAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp">

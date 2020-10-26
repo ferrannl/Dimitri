@@ -163,7 +163,6 @@
   <ItemGroup>
     <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\Adapters\BasePathAdapter.h" />
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h" />
     <ClInclude Include="src\Controllers\GraphicsController.h" />
     <ClInclude Include="src\Enums\FlipEnum.h" />
@@ -176,7 +175,6 @@
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\Adapters\BasePathAdapter.cpp" />
     <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp" />
     <ClCompile Include="src\Controllers\GraphicsController.cpp" />
     <ClCompile Include="src\Facades\TextureFacade.cpp" />
