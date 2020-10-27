@@ -22,7 +22,8 @@ public:
 	PhysicsCollisionDemo();
 	void start_demo();
 	int create_window(int width, int height);
-	void create_sprite(int x, int y, int z, int height, int width, const char* path, const float angle, Graphics::Enums::FlipEnum flipstatus);
+	void create_sprite(int x, int y, int z, int height, int width, std::string path, const float angle, Graphics::Enums::FlipEnum flipstatus);
+	void create_text(std::string text, int x, int y, int z, int width, int height, std::string path, const float angle);
 	void create_shape(int x, int y, int height, int width, bool is_dynamic);
 	void run();
 	void update(const Input::Enums::EventEnum& object);

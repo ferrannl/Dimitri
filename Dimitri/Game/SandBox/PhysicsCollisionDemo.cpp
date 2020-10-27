@@ -31,8 +31,8 @@ void PhysicsCollisionDemo::start_demo()
 	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
 	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
-	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>("Dimitri", 255, 255, 255, 450, 550, 2, 100, 200, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }));
-	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>("het stealth spel van 2020", 255, 255, 255, 450, 540, 2, 30, 200, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }));
+	create_text("Dimitri", 450, 550, 2, 200, 100, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }, 0);
+	create_text("het stealth spel van 2020", 450, 540, 2, 200, 30, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }, 0);
 	textures = graphics_controller.get_textures();
 	create_shape(350, 300, 50, 100, true);
 	create_shape(300, 200, 50, 50, false);
@@ -60,9 +60,14 @@ int PhysicsCollisionDemo::create_window(int width, int height)
 	}
 }
 
-void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, const char* path, const float angle, Graphics::Enums::FlipEnum flipstatus)
+void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, std::string path, const float angle, Graphics::Enums::FlipEnum flipstatus)
 {
 	graphics_controller.add_texture(std::make_shared<Graphics::Models::Sprite>(x, y, z, height, width, angle, path, flipstatus));
+}
+
+void PhysicsCollisionDemo::create_text(std::string text, int x, int y, int z, int width, int height, std::string path, const float angle)
+{
+	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>(text, 255, 255, 255, x, y, z, height, width, angle, path));
 }
 
 void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, bool is_dynamic)
@@ -76,7 +81,7 @@ void PhysicsCollisionDemo::run()
 	while (true)
 	{
 		for (int i = 0; i < shapes.get()->size(); i++)
-		{		
+		{
 			textures.at(i)->set_x(static_cast<int>(shapes.get()->at(i)->get_x()));
 			textures.at(i)->set_y(static_cast<int>(shapes.get()->at(i)->get_y()));
 			textures.at(i)->set_angle(static_cast<int>(shapes.get()->at(i)->get_angle()));
@@ -103,7 +108,7 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 		textures.at(0)->set_x(shapes.get()->at(0)->get_x());
 		textures.at(0)->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 		break;
-	default: 
+	default:
 		std::cout << "geen reactie";
 	}
 }

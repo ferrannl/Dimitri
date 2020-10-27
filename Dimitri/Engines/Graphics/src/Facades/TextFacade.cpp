@@ -20,7 +20,7 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 		SDL_Surface* textSurface = TTF_RenderText_Solid(gFont, _text.c_str(), _color);
 		if (textSurface == NULL)
 		{
-			SDL_FreeSurface(loadedSurface);
+			SDL_FreeSurface(textSurface);
 			throw Exceptions::CannotLoadImage();
 		}
 
@@ -36,7 +36,6 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 	}
 	catch (Exceptions::TTFInitFailed& e) {
 		std::cout << e.get() << std::endl;
-		return NULL;
 	}
 	catch (Exceptions::CannotLoadImage& e) {
 		std::cout << e.get() << ": " << _path << std::endl;
