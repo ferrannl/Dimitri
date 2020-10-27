@@ -24,7 +24,7 @@ void PhysicsCollisionDemo::start_demo()
 
 	graphics_controller.add_sprites(sprites);
 	create_shape(350, 300, 75, 75, true);
-	create_shape(300, 175, 300, 50, false);	
+	create_shape(300, 175, 300, 50, false);
 	create_shape(0, 645, 1080, 100, false); // top
 	create_shape(0, -175, 1080, 100, false); // bottom
 
