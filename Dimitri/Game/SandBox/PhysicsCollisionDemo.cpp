@@ -2,9 +2,9 @@
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {
-	PhysicsCollisionDemo::graphicsController = Graphics::Controllers::GraphicsController{};
-	worldController = PhysicsCollision::Controllers::WorldController{};
-	inputController = std::make_shared<Input::Controllers::InputController>();
+	PhysicsCollisionDemo::graphics_controller = Graphics::Controllers::GraphicsController{};
+	world_controller = PhysicsCollision::Controllers::WorldController{};
+	input_controller = std::make_shared<Input::Controllers::InputController>();
 	sprites = std::make_shared<std::vector<std::unique_ptr<Graphics::Models::Sprite>>>();
 	shapes = std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>();
 }
@@ -22,25 +22,26 @@ void PhysicsCollisionDemo::start_demo()
 	create_sprite(300, 200, 1, 300, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, false);
 	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);
 
-	graphicsController.add_sprites(sprites);
+	graphics_controller.add_sprites(sprites);
 	create_shape(350, 300, 75, 75, true);
 	create_shape(300, 175, 300, 50, false);	
 	create_shape(0, 645, 1080, 100, false); // top
 	create_shape(0, -175, 1080, 100, false); // bottom
+
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
-	shapes = worldController.get_shapes();
+	shapes = world_controller.get_shapes();
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
-	inputController->poll_events();
+	input_controller->poll_events();
 	demo_thread.join();
 }
 
 int PhysicsCollisionDemo::create_window(int width, int height)
 {
-	if (graphicsController.create_window("Test", height, width) != NULL) {
-		worldController.setup_world(width, height);
-	}	
+	if (graphics_controller.create_window("Test", height, width) != NULL) {
+		world_controller.setup_world(width, height);
+	}
 	else {
 		return NULL;
 	}
@@ -57,14 +58,14 @@ void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
 {
-	shapes.push_back(worldController.create_shape("polygon", x, y, width, height, is_dynamic));
+	shapes.push_back(world_controller.create_shape("polygon", x, y, width, height, is_dynamic));
 }
 
 void PhysicsCollisionDemo::run()
 {
 	while (true)
 	{
-		std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes = worldController.get_shapes();
+		std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes = world_controller.get_shapes();
 		for (auto const& it : _shapes)
 		{
 			std::shared_ptr<PhysicsCollision::Models::Shape> shape = it;
@@ -74,13 +75,13 @@ void PhysicsCollisionDemo::run()
 					sprites->at(0)->set_y(shape->get_y());
 
 				}
-				worldController.simulate();
+				world_controller.simulate();
 		}
-		graphicsController.update_window();
+		graphics_controller.update_window();
 		sleep_for(5ms);
 	}
-	worldController.destroy_bodies();
-	graphicsController.get_window()->destroy();
+	world_controller.destroy_bodies();
+	graphics_controller.get_window()->destroy();
 }
 
 void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
@@ -108,5 +109,5 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 
 void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDemo> demo)
 {
-	inputController->subscribe(demo);
+	input_controller->subscribe(demo);
 }
