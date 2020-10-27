@@ -1,6 +1,8 @@
 #pragma once
-#include "../Facades/TextureFacade.h"
+#include <string>
+#include <memory>
 #include "../Enums/FlipEnum.h"
+#include "../Facades/TextureFacade.h"
 
 namespace Graphics {
 	namespace Models {
@@ -13,9 +15,9 @@ namespace Graphics {
 			int _height;
 			float _angle;
 			std::string _path;
-			std::shared_ptr<Facades::TextureFacade> _facade;
 		protected:
 			Enums::FlipEnum _flipstatus;
+			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
 			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path);
 
@@ -37,8 +39,9 @@ namespace Graphics {
 			void set_height(const int height);
 			void set_angle(const float angle);
 			void set_flip_status(const Enums::FlipEnum flipstatus);
-			void set_facade(const std::shared_ptr<Facades::TextureFacade> facade);
-			void create_texture_facade();
+			void set_facade(const std::shared_ptr<Facades::TextureFacade>& facade);
+			virtual void create_texture_facade() = 0;
+			virtual bool matches(const std::shared_ptr<Models::Texture>& texture) const = 0;
 		};
 	}
 }

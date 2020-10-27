@@ -10,7 +10,7 @@ namespace Graphics {
 			const std::string _title;
 			std::unique_ptr<Facades::WindowFacade> _facade;
 			std::vector<std::shared_ptr<Texture>> _textures; 
-			std::shared_ptr<Graphics::Models::Texture> get_texture_by_path(const std::string& path) const;
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string title, const int height, const int width);
 

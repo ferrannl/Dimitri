@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Graphics::Adapters::FlipEnumAdapter" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Adapters\FlipEnumAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Facades::SpriteFacade" Collapsed="true">
+    <Position X="6.5" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Facades\SpriteFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Facades::TextFacade" Collapsed="true">
+    <Position X="8.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAEAAAAAAAAAAAAAAEIAAAAAAIAAAA=</HashCode>
+      <FileName>src\Facades\TextFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Facades::TextureFacade" Collapsed="true">
+    <Position X="7.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAEAAQACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Facades\TextureFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Facades::WindowFacade">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAggAAAAAAAAAAAEAAEAAAgAEAAIAQAAAAAAA=</HashCode>
+      <FileName>src\Facades\WindowFacade.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Controllers::GraphicsController">
+    <Position X="0.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAgAAAAAICAAQAAABAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Controllers\GraphicsController.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Models::Sprite" Collapsed="true">
+    <Position X="6.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>src\Models\Sprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Models::Text" Collapsed="true">
+    <Position X="9" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAHQAEgAAAAAAAAAAAAAEAAYAAAIAAAACAIAAAA=</HashCode>
+      <FileName>src\Models\Text.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Models::Texture" Collapsed="true">
+    <Position X="7.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAECAZAITCAAAIAgAAAABAABBQAAEAQIIgDAAAIAA=</HashCode>
+      <FileName>src\Models\Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Graphics::Models::Window">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAABAYCCAAAIAAAQAEAABBAAAAAAAABADAAEIAA=</HashCode>
+      <FileName>src\Models\Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Graphics::Exceptions::CannotLoadImage" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Graphics::Exceptions::CannotCreateTexture" Collapsed="true">
+    <Position X="7" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Graphics::Exceptions::CannotCreateRenderer" Collapsed="true">
+    <Position X="5.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Graphics::Exceptions::SDLInitFailed" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Graphics::Exceptions::CannotCreateWindow" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Graphics::Exceptions::CannotRenderSpriteTexture" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Exceptions\GraphicsExceptions.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Graphics::Enums::FlipEnum" Collapsed="true">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>src\Enums\FlipEnum.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,18 +1,18 @@
 #include "Window.h"
 using namespace Graphics;
 
-std::shared_ptr<Graphics::Models::Texture> Graphics::Models::Window::get_texture_by_path(const std::string& path) const
+Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
+	_facade = std::make_unique<Facades::WindowFacade>();
+}
+
+std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {
-		if (t->get_path() == path) {
+		if (t.get()->matches(texture)) {
 			return t;
 		}
 	}
 	return nullptr;
-}
-
-Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
-	_facade = std::make_unique<Facades::WindowFacade>();
 }
 
 int Models::Window::create()
@@ -38,7 +38,7 @@ void Models::Window::destroy()
 void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture>& texture)
 {
 	_textures.push_back(texture);
-	_facade->create_texture(texture, get_texture_by_path(texture->get_path()));
+	_facade->create_texture(texture, get_matching_texture(texture));
 }
 
 void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& texture)

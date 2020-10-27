@@ -42,6 +42,12 @@
     <ClCompile Include="src\Enums\FlipEnum.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Facades\SpriteFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Facades\TextFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Sprite.h">
@@ -71,8 +77,15 @@
     <ClInclude Include="src\Models\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Facades\SpriteFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Facades\TextFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Enums\ClassDiagram.cd" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

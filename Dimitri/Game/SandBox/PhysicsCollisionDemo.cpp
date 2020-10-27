@@ -21,8 +21,6 @@ void PhysicsCollisionDemo::start_demo()
 	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" };
 	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
 
-	//graphics_controller.add_text(std::make_shared<Graphics::Models::Text>("Dimitri"));
-
 	create_sprite(350, 300, 1, 50, 100, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
 	create_sprite(300, 200, 1, 50, 50, ground_end_image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
 	create_sprite(350, 200, 1, 50, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
@@ -33,6 +31,8 @@ void PhysicsCollisionDemo::start_demo()
 	create_sprite(-1, 0, 1, 1, 720, image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
 	create_sprite(1080, 0, 1, 1, 720, image.c_str(), 0, Graphics::Enums::FlipEnum::HORIZONTAL);
 	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
+	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>("Dimitri", 255, 255, 255, 450, 550, 2, 100, 200, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }));
+	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>("het stealth spel van 2020", 255, 255, 255, 450, 540, 2, 30, 200, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }));
 	textures = graphics_controller.get_textures();
 	create_shape(350, 300, 50, 100, true);
 	create_shape(300, 200, 50, 50, false);

@@ -1,5 +1,6 @@
 #include "WindowFacade.h"
 #include <map>
+#include <SDL_ttf.h>
 using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
@@ -7,6 +8,12 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 	try {
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
+		}
+
+		//Initialize SDL_ttf
+		if (TTF_Init() == -1)
+		{
+			throw Exceptions::TTFInitFailed();
 		}
 
 		_window.reset(SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN));
@@ -21,29 +28,34 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 		std::cout << e.get() << std::endl;
 		return NULL;
 	}
+	catch (Exceptions::TTFInitFailed& e) {
+		std::cout << e.get() << std::endl;
+		return NULL;
+	}
 	catch (Exceptions::CannotCreateWindow& e) {
 		std::cout << e.get() << std::endl;
 		return NULL;
 	}
 }
 
-void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& texture_equal_path)
+void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture)
 {
 	if (!_renderer) {
 		std::cout << "Create a renderer first" << std::endl;
 		return;
 	}
 
-	// check if the texture already exists
-	std::shared_ptr<Facades::TextureFacade> facade = texture_equal_path != nullptr ? texture_equal_path->get_texture_facade() : nullptr;
+	std::shared_ptr<Facades::TextureFacade> facade = matching_texture != nullptr ? matching_texture->get_texture_facade() : nullptr;
 
+	// check if the texture already exists
 	if (facade) {
 		texture->set_facade(facade);
 	}
 	else {
 		texture->create_texture_facade();
-		texture->get_texture_facade()->create_texture(_renderer, texture->get_path());
+		texture->get_texture_facade()->create_texture(_renderer);
 	}
+
 }
 
 void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Texture>> textures)

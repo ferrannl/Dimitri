@@ -150,6 +150,8 @@
   <ItemGroup>
     <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp" />
     <ClCompile Include="src\Enums\FlipEnum.h" />
+    <ClCompile Include="src\Facades\SpriteFacade.cpp" />
+    <ClCompile Include="src\Facades\TextFacade.cpp" />
     <ClCompile Include="src\Facades\TextureFacade.cpp" />
     <ClCompile Include="src\Facades\WindowFacade.cpp" />
     <ClCompile Include="src\Controllers\GraphicsController.cpp" />
@@ -161,6 +163,8 @@
   <ItemGroup>
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h" />
     <ClInclude Include="src\Exceptions\GraphicsExceptions.h" />
+    <ClInclude Include="src\Facades\SpriteFacade.h" />
+    <ClInclude Include="src\Facades\TextFacade.h" />
     <ClInclude Include="src\Facades\TextureFacade.h" />
     <ClInclude Include="src\Facades\WindowFacade.h" />
     <ClInclude Include="src\Controllers\GraphicsController.h" />
@@ -170,6 +174,7 @@
     <ClInclude Include="src\Models\Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="src\Enums\ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

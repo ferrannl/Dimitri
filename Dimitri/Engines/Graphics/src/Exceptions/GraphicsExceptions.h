@@ -27,6 +27,12 @@ namespace Graphics {
 			}
 		};
 
+		struct TTFInitFailed : public std::exception {
+			const char* get() const throw () {
+				return "Cannot initialize sdl ttf";
+			}
+		};
+
 		struct CannotCreateWindow : public std::exception {
 			const char* get() const throw () {
 				return "Cannot create the window with the given parameters";
@@ -36,6 +42,12 @@ namespace Graphics {
 		struct CannotRenderSpriteTexture : public std::exception {
 			const char* get() const throw () {
 				return "Cannot render the sprite texture";
+			}
+		};
+
+		struct CannotLoadFont : public std::exception {
+			const char* get() const throw () {
+				return "Cannot load font";
 			}
 		};
 	}
