@@ -27,9 +27,10 @@ void PhysicsCollisionDemo::start_demo()
 	create_shape(300, 175, 300, 50, false);	
 	create_shape(0, 645, 1080, 100, false); // top
 	create_shape(0, -175, 1080, 100, false); // bottom
+
 	create_shape(-1, 0, 1, 720, false); // left
 	create_shape(1080, 0, 1, 720, false); // right
-	shapes = worldController.get_shapes();
+	shapes = world_controller.get_shapes();
 
 	std::thread demo_thread(&PhysicsCollisionDemo::run, this);
 	inputController->poll_events();
@@ -79,8 +80,8 @@ void PhysicsCollisionDemo::run()
 		graphicsController.update_window();
 		sleep_for(5ms);
 	}
-	worldController.destroy_bodies();
-	graphicsController.get_window()->destroy();
+	world_controller.destroy_bodies();
+	graphics_controller.get_window()->destroy();
 }
 
 void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
@@ -99,6 +100,7 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		shapes[0]->get_shape_facade()->move_y();
 		sprites->at(0)->set_y(shapes[0]->get_y());
+
 		break;
 	default:
 		std::cout << "geen reactie";
