@@ -12,9 +12,11 @@
 #define GRAPHICS_API
 #endif
 
-namespace Adapters {
-	class GRAPHICS_API FlipEnumAdapter {
-	public:
-		SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
-	};
+namespace Graphics {
+	namespace Adapters {
+		class GRAPHICS_API FlipEnumAdapter {
+		public:
+			SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
+		};
+	}
 }

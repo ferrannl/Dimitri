@@ -13,6 +13,7 @@
 #define AUDIO_API
 #endif
 
+namespace Audio {
 namespace Models {
 	class AUDIO_API Audio {
 	private:

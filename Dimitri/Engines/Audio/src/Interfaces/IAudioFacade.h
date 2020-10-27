@@ -16,15 +16,17 @@
 #define AUDIO_API
 #endif
 
-namespace Interfaces {
-	class AUDIO_API IAudioFacade {
-	protected:
-		const std::string _path;
-	public:
-		IAudioFacade(const std::string path);
-		virtual void play() const = 0;
-		virtual void resume() const = 0;
-		virtual void pause() const = 0;
-		virtual void stop() const = 0;
-	};
+namespace Audio {
+	namespace Interfaces {
+		class AUDIO_API IAudioFacade {
+		protected:
+			const std::string _path;
+		public:
+			IAudioFacade(const std::string path);
+			virtual void play() const = 0;
+			virtual void resume() const = 0;
+			virtual void pause() const = 0;
+			virtual void stop() const = 0;
+		};
+	}
 }

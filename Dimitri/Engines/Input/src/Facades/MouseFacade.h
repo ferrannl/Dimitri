@@ -12,10 +12,11 @@
 #else
 #define INPUT_API
 #endif
-
-namespace Facades{
-	class INPUT_API MouseFacade {
-	public:
-		std::tuple<int, int> get_mouse_position() const;
-	};
+namespace Input {
+	namespace Facades {
+		class INPUT_API MouseFacade {
+		public:
+			std::tuple<int, int> get_mouse_position() const;
+		};
+	}
 }

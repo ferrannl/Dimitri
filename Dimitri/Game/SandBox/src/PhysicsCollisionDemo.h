@@ -3,18 +3,10 @@
 #include <memory>
 #include <chrono>
 #include <thread>
-#include "../../Engines/Graphics/src/Controllers/GraphicsController.h"
-#include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
-#include "../../Engines/Input/src/Controllers/InputController.h"
-#include "../../Utility/src/Interfaces/IObserver.h"
-#include "../../Utility/src/Helpers/BasePathHelper.h"
-
-#include <chrono>
-#include <thread>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Controllers\InputController.h>
-#include <src\Interfaces\IObserver.h>
 #include <src\Controllers\WorldController.h>
+#include <src\Helpers\BasePathHelper.h>
 
 using namespace std::this_thread;
 using namespace std::chrono_literals;

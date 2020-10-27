@@ -12,6 +12,7 @@
 #define GRAPHICS_API
 #endif
 
+namespace Graphics {
 namespace Facades {
 	class GRAPHICS_API WindowFacade {
 	private:

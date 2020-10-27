@@ -155,8 +155,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\framework.h" />
-    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Controllers\ShapeController.h" />
     <ClInclude Include="src\Controllers\WorldController.h" />
     <ClInclude Include="src\Facades\ShapeFacade.h" />
@@ -167,13 +165,6 @@
     <ClInclude Include="src\Models\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\Controllers\ShapeController.cpp" />
     <ClCompile Include="src\Controllers\WorldController.cpp" />
     <ClCompile Include="src\Facades\ShapeFacade.cpp" />

@@ -12,10 +12,11 @@
 #define INPUT_API
 #endif
 
-namespace Adapters {
-	class INPUT_API MouseAdapter : public Interfaces::IInputAdapter {
-	public:
-		Enums::EventEnum translate_to_enum(const SDL_Event event) const;
-	};
+namespace Input {
+	namespace Adapters {
+		class INPUT_API MouseAdapter : public Input::Interfaces::IInputAdapter {
+		public:
+			Enums::EventEnum translate_to_enum(const SDL_Event event) const;
+		};
+	}
 }
-

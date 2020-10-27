@@ -14,7 +14,7 @@
 #define INPUT_API
 #endif
 
-
+namespace Input {
 namespace Facades {
 	class INPUT_API EventFacade {
 	private:

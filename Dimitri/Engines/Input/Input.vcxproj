@@ -165,25 +165,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\framework.h" />
-    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Adapters\KeyBoardAdapter.h" />
     <ClInclude Include="src\Adapters\MouseAdapter.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Facades\EventFacade.h" />
     <ClInclude Include="src\Facades\MouseFacade.h" />
     <ClInclude Include="src\Interfaces\IInputAdapter.h" />
-    <ClInclude Include="src\Interfaces\IObservable.h" />
-    <ClInclude Include="src\Interfaces\IObserver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp" />
     <ClCompile Include="src\Adapters\MouseAdapter.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />

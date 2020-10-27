@@ -12,7 +12,7 @@
 
 #include "../Facades/TextureFacade.h"
 #include "../Enums/FlipEnum.h"
-
+namespace Graphics {
 namespace Models {
 	class GRAPHICS_API Sprite {
 	

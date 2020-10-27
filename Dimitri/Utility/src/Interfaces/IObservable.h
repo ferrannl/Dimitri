@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "IObserver.h"
+
 namespace Utility {
 	namespace Interfaces {
 		template <class T>

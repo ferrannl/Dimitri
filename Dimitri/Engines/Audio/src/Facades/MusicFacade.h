@@ -12,15 +12,17 @@
 #define AUDIO_API
 #endif
 
-namespace Facades {
-	class AUDIO_API MusicFacade : public Interfaces::IAudioFacade {
-	private:
-		std::unique_ptr<Mix_Music, decltype (&Mix_FreeMusic)> _music;
-	public:
-		MusicFacade(const std::string path);
-		void play() const;
-		void resume() const;
-		void pause() const;
-		void stop() const;
-	};
+namespace Audio {
+	namespace Facades {
+		class AUDIO_API MusicFacade : public Interfaces::IAudioFacade {
+		private:
+			std::unique_ptr<Mix_Music, decltype (&Mix_FreeMusic)> _music;
+		public:
+			MusicFacade(const std::string path);
+			void play() const;
+			void resume() const;
+			void pause() const;
+			void stop() const;
+		};
+	}
 }

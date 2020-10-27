@@ -1,5 +1,4 @@
 #include "AudioDemo.h"
-#include <src\Adapters\BasePathAdapter.h>
 
 AudioDemo::AudioDemo()
 {

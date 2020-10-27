@@ -1,5 +1,4 @@
 #include "PhysicsCollisionDemo.h"
-#include <src/Adapters/BasePathAdapter.h>
 
 PhysicsCollisionDemo::PhysicsCollisionDemo()
 {

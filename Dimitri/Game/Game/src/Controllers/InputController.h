@@ -1,8 +1,7 @@
 #pragma once
-#include "../../../Engines/Input/src/Enums/EventEnum.cpp"
-#include "../../../Utility/src/Interfaces/IObserver.h"
-#include "../../../Engines/Input/src/Controllers/InputController.h"
 #include <iostream>
+#include <src\Controllers\InputController.h>
+
 namespace Game {
 	namespace Controllers {
 		class InputController : public Utility::Interfaces::IObserver<Input::Enums::EventEnum>, public std::enable_shared_from_this<InputController> {

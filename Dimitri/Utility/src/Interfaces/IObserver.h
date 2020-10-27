@@ -1,4 +1,5 @@
 #pragma once
+
 namespace Utility {
 	namespace Interfaces {
 		template <class T>

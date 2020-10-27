@@ -161,8 +161,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\framework.h" />
-    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h" />
     <ClInclude Include="src\Controllers\GraphicsController.h" />
     <ClInclude Include="src\Enums\FlipEnum.h" />
@@ -173,17 +171,12 @@
     <ClInclude Include="src\Models\Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp" />
     <ClCompile Include="src\Controllers\GraphicsController.cpp" />
     <ClCompile Include="src\Facades\TextureFacade.cpp" />
     <ClCompile Include="src\Facades\WindowFacade.cpp" />
     <ClCompile Include="src\Models\Sprite.cpp" />
     <ClCompile Include="src\Models\Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Enums\ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

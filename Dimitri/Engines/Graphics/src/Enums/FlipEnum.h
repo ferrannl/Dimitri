@@ -11,8 +11,10 @@
 #define GRAPHICS_API
 #endif
 
-namespace Enums {
-	enum class GRAPHICS_API FlipEnum {
-		NONE, HORIZONTAL, VERTICAL
-	};
+namespace Graphics {
+	namespace Enums {
+		enum class GRAPHICS_API FlipEnum {
+			NONE, HORIZONTAL, VERTICAL
+		};
+	}
 }
