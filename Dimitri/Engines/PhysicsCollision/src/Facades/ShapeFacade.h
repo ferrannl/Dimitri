@@ -14,8 +14,6 @@ namespace PhysicsCollision {
 			b2Body* _body;
 		public:
 			ShapeFacade();
-			void set_shape(std::shared_ptr<b2PolygonShape> shape);
-			std::shared_ptr<b2PolygonShape> get_shape() const;
 			void add_body(b2Body* body);
 			b2Body* get_body()const;
 			void move_x(const int value)const;

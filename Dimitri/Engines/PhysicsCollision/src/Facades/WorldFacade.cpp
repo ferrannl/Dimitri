@@ -6,8 +6,6 @@ Facades::WorldFacade::WorldFacade()
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
-	_body = {};
-	_polygon = {};
 	_bodies = {};
 }
 

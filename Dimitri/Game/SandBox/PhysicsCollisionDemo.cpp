@@ -15,9 +15,7 @@ void PhysicsCollisionDemo::start_demo()
 		return;
 	}
 
-	//std::string image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/img.png" };
 	std::string bg_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" };
-	//std::string ground_end_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" };
 	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/wall.png" };
 	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
 	create_sprite(350, 300, 1, 75, 75, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE, true);

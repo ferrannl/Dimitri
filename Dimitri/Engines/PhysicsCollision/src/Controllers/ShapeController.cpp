@@ -3,7 +3,6 @@ using namespace PhysicsCollision;
 
 Controllers::ShapeController::ShapeController()
 {
-	_shape_factory = std::make_shared<Factories::ShapeFactory>();
 }
 
 std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const std::string type,float x, float y, float width, float height, const bool is_dynamic) const
