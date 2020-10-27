@@ -36,6 +36,9 @@
     <ClCompile Include="src\Facades\WorldFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enums\ShapeEnum.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\ShapeController.h">

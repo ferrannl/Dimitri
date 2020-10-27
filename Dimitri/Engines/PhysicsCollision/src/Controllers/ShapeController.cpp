@@ -1,13 +1,14 @@
 #include "ShapeController.h"
+#include "../Enums/ShapeEnum.h"
 using namespace PhysicsCollision;
 
 Controllers::ShapeController::ShapeController()
 {
 }
 
-std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const std::string type,float x, float y, float width, float height, const bool is_dynamic) const
+std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const PhysicsCollision::Enums::ShapeEnum type ,float x, float y, float width, float height, const bool is_dynamic) const
 {
-	if (type == "polygon") {
+	if (type == Enums::ShapeEnum::Polygon) {
 		std::shared_ptr<Models::Polygon> polygon = std::make_shared<Models::Polygon>();
 		polygon->set_height(height);
 		polygon->set_width(width);

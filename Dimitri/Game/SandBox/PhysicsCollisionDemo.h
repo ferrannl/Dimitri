@@ -7,6 +7,7 @@
 #include "../../Engines/PhysicsCollision/src/Controllers/WorldController.h"
 #include "../../Engines/Input/src/Controllers/InputController.h"
 #include "../../Utility/src/Interfaces/IObserver.h"
+#include "../../Engines/PhysicsCollision/src/Enums/ShapeEnum.h"
 #include "../../Utility/src/Helpers/BasePathHelper.h"
 
 using namespace std::this_thread;

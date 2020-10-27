@@ -58,7 +58,7 @@ void PhysicsCollisionDemo::create_sprite(float x, float y, float z, float  width
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
 {
-	shapes.push_back(world_controller.create_shape("polygon", x, y, width, height, is_dynamic));
+	shapes.push_back(world_controller.create_shape(PhysicsCollision::Enums::ShapeEnum::Polygon, x, y, width, height, is_dynamic));
 }
 
 void PhysicsCollisionDemo::run()

@@ -1,6 +1,7 @@
 #pragma once
 #include "../Facades/ShapeFacade.h"
 #include <iostream>
+#include "../Enums/ShapeEnum.h"
 
 namespace PhysicsCollision {
 	namespace Models {
@@ -12,14 +13,14 @@ namespace PhysicsCollision {
 			float _width;
 			float _height;
 		protected:
-			std::string _type;
+			Enums::ShapeEnum _type;
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
 			bool is_dynamic;
 			Shape();
 			std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
-			std::string get_type();
-			void set_type(std::string type);
+			Enums::ShapeEnum get_type();
+			void set_type(Enums::ShapeEnum type);
 			void set_x(float x);
 			void set_y(float y);
 			void set_width(float width);

@@ -10,7 +10,7 @@ namespace PhysicsCollision {
 		private:
 		public:
 			ShapeController();
-			std::shared_ptr<Models::Shape> create_shape(const std::string type, float x, float y, float width, float height, const bool is_dynamic)const;
+			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic)const;
 		};
 	}
 }

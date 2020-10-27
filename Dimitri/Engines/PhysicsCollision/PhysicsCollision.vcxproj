@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enums\ShapeEnum.h" />
     <ClCompile Include="src\Models\Polygon.cpp" />
     <ClCompile Include="src\Models\Shape.cpp" />
     <ClCompile Include="src\Facades\ShapeFacade.cpp" />

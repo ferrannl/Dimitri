@@ -11,12 +11,12 @@ std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
 	return _shape_facade;
 }
 
-std::string Models::Shape::get_type()
+Enums::ShapeEnum Models::Shape::get_type()
 {
 	return _type;
 }
 
-void Models::Shape::set_type(std::string type)
+void Models::Shape::set_type(Enums::ShapeEnum type)
 {
 	_type = type;
 }
