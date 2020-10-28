@@ -124,7 +124,7 @@ void Facades::WindowFacade::destroy()
 	//Destroy window
 	SDL_DestroyWindow(_window.get());
 	_window = NULL;
-
+	TTF_Quit();
 	//Quit SDL subsystems
 	SDL_Quit();
 }
