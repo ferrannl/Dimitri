@@ -11,7 +11,7 @@ std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
 	return _shape_facade;
 }
 
-Enums::ShapeEnum Models::Shape::get_type()
+Enums::ShapeEnum Models::Shape::get_type()const
 {
 	return _type;
 }

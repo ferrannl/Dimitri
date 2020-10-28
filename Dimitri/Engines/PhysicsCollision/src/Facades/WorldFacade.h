@@ -14,11 +14,11 @@ namespace PhysicsCollision {
 		class __declspec(dllexport) WorldFacade {
 		private:
 			std::shared_ptr<b2World> _world;
-			std::vector<b2Body*> _bodies;
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
 		public:
 			WorldFacade();
 			void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
+			void create_body(b2PolygonShape _shape, b2BodyDef bodyDef, b2FixtureDef fixtureDef, b2Body* body, std::shared_ptr<Models::Shape> shape);
 			void simulate()const;
 			void add_shape(std::shared_ptr<Models::Shape> shape);
 		};

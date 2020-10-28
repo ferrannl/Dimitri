@@ -3,7 +3,9 @@
 namespace PhysicsCollision {
 	namespace Enums {
 		enum class __declspec(dllexport) ShapeEnum {
-			Polygon
+			Polygon,
+			Circle,
+			Edge
 		};
 	}
 }

@@ -6,7 +6,6 @@ Facades::WorldFacade::WorldFacade()
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
-	_bodies = {};
 }
 
 void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
@@ -17,10 +16,39 @@ void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> sh
 void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
-	b2Body* body;
+	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
-	b2PolygonShape _shape;
-	_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
+	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
+		b2PolygonShape _shape;
+		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
+		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+		if (shape->get_is_dynamic())
+		{
+			bodyDef.type = b2_dynamicBody;
+			bodyDef.angle = 0;
+			body = _world->CreateBody(&bodyDef);
+			fixtureDef.shape = &_shape;
+			fixtureDef.density = 1.0f;
+			body->CreateFixture(&fixtureDef);
+		}
+		else {
+			body = _world->CreateBody(&bodyDef);
+			body->SetType(b2_staticBody);
+			body->CreateFixture(&_shape, 0.0f);
+		}
+		_world_bodies[shape] = body;
+		shape->get_shape_facade()->add_body(body);
+		//create_body(_shape, bodyDef, fixtureDef, body, shape);
+	}
+	else if(shape->get_type() == Enums::ShapeEnum::Circle) {
+		//b2CircleShape _shape;
+	} 
+	else if (shape->get_type() == Enums::ShapeEnum::Edge) {
+		//b2EdgeShape _shape;
+	}
+}
+
+void Facades::WorldFacade::create_body(b2PolygonShape _shape, b2BodyDef bodyDef, b2FixtureDef fixtureDef, b2Body* body, std::shared_ptr<Models::Shape> shape) {
 	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
 	if (shape->get_is_dynamic())
 	{
@@ -30,12 +58,12 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		fixtureDef.shape = &_shape;
 		fixtureDef.density = 1.0f;
 		body->CreateFixture(&fixtureDef);
-	}else {
+	}
+	else {
 		body = _world->CreateBody(&bodyDef);
 		body->SetType(b2_staticBody);
 		body->CreateFixture(&_shape, 0.0f);
 	}
-	_bodies.push_back(body);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }

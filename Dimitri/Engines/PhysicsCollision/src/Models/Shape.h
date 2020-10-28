@@ -19,7 +19,7 @@ namespace PhysicsCollision {
 			bool is_dynamic;
 			Shape();
 			std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
-			Enums::ShapeEnum get_type();
+			Enums::ShapeEnum get_type()const;
 			void set_type(Enums::ShapeEnum type);
 			void set_x(float x);
 			void set_y(float y);
