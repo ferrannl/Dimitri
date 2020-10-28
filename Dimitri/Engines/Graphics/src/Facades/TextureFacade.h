@@ -5,8 +5,6 @@
 #include <memory>
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
-#include <SDL.h>
-#include <SDL_image.h>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -18,16 +16,19 @@
 #define GRAPHICS_API
 #endif
 
+typedef struct SDL_Texture SDL_Texture;
+typedef struct SDL_Renderer SDL_Renderer;
+
 namespace Graphics {
-namespace Facades {
-	class GRAPHICS_API TextureFacade {
-	private:
-		std::shared_ptr<SDL_Texture> _texture;
+	namespace Facades {
+		class GRAPHICS_API TextureFacade {
+		private:
+			std::shared_ptr<SDL_Texture> _texture;
 
 		public:
 			TextureFacade();
 
-			void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer, const std::string path);
+			void create_texture(std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>& renderer, const std::string path);
 			std::shared_ptr<SDL_Texture> get_texture();
 		};
 	}
