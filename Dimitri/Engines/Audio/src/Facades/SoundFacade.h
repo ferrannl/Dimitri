@@ -1,6 +1,8 @@
 #pragma once
 #include "../Interfaces/IAudioFacade.h"
 #include "../Exceptions/AudioExceptions.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
 
 #ifdef _WIN64
 #ifdef AUDIO_EXPORTS
@@ -11,6 +13,9 @@
 #else
 #define AUDIO_API
 #endif
+
+//void Mix_FreeChunk(Mix_Chunk* chunk);
+struct Mix_Chunk;
 
 namespace Audio {
 	namespace Facades {

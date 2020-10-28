@@ -1,4 +1,7 @@
 #include "IAudioFacade.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+
 using namespace Audio;
 
 Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
