@@ -48,25 +48,25 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	}
 }
 
-void Facades::WorldFacade::create_body(b2PolygonShape _shape, b2BodyDef bodyDef, b2FixtureDef fixtureDef, b2Body* body, std::shared_ptr<Models::Shape> shape) {
-	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-	if (shape->get_is_dynamic())
-	{
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.angle = 0;
-		body = _world->CreateBody(&bodyDef);
-		fixtureDef.shape = &_shape;
-		fixtureDef.density = 1.0f;
-		body->CreateFixture(&fixtureDef);
-	}
-	else {
-		body = _world->CreateBody(&bodyDef);
-		body->SetType(b2_staticBody);
-		body->CreateFixture(&_shape, 0.0f);
-	}
-	_world_bodies[shape] = body;
-	shape->get_shape_facade()->add_body(body);
-}
+//void Facades::WorldFacade::create_body(b2PolygonShape _shape, b2BodyDef bodyDef, b2FixtureDef fixtureDef, b2Body* body, std::shared_ptr<Models::Shape> shape) {
+//	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+//	if (shape->get_is_dynamic())
+//	{
+//		bodyDef.type = b2_dynamicBody;
+//		bodyDef.angle = 0;
+//		body = _world->CreateBody(&bodyDef);
+//		fixtureDef.shape = &_shape;
+//		fixtureDef.density = 1.0f;
+//		body->CreateFixture(&fixtureDef);
+//	}
+//	else {
+//		body = _world->CreateBody(&bodyDef);
+//		body->SetType(b2_staticBody);
+//		body->CreateFixture(&_shape, 0.0f);
+//	}
+//	_world_bodies[shape] = body;
+//	shape->get_shape_facade()->add_body(body);
+//}
 
 void Facades::WorldFacade::simulate() const
 {
