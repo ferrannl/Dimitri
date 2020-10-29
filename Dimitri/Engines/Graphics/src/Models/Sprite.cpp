@@ -14,8 +14,8 @@ void Graphics::Models::Sprite::create_texture_facade()
 
 bool Graphics::Models::Sprite::matches(const std::shared_ptr<Models::Texture>& texture) const
 {
-	auto sprite = std::dynamic_pointer_cast<Graphics::Models::Sprite>(texture);
-	if (sprite) {
+	std::shared_ptr<Graphics::Models::Sprite> sprite = std::dynamic_pointer_cast<Graphics::Models::Sprite>(texture);
+	if (sprite.get()) {
 		return sprite.get()->get_path() == get_path();
 	}
 	return false;

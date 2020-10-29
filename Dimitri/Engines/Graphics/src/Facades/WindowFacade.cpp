@@ -68,8 +68,8 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 		ordered_textures[texture.get()->get_z()].push_back(texture);
 	}
 
-	for (const auto& kv : ordered_textures) {
-		for (const auto& texture : kv.second) {
+	for (const std::pair<int, std::vector<std::shared_ptr<Graphics::Models::Texture>>>& kv : ordered_textures) {
+		for (const std::shared_ptr<Graphics::Models::Texture>& texture : kv.second) {
 			SDL_Rect rect;
 
 			rect.x = texture->get_x();

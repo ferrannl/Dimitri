@@ -43,7 +43,7 @@ void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture>& textu
 
 void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& texture)
 {
-	auto it = std::find(_textures.begin(), _textures.end(), texture);
+	std::vector<std::shared_ptr<Texture>>::iterator it = std::find(_textures.begin(), _textures.end(), texture);
 
 	// If element was found 
 	if (it != _textures.end()) {

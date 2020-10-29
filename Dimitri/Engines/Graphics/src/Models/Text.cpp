@@ -31,8 +31,8 @@ void Graphics::Models::Text::create_texture_facade()
 
 bool Graphics::Models::Text::matches(const std::shared_ptr<Models::Texture>& texture) const
 {
-	auto text = std::dynamic_pointer_cast<Graphics::Models::Text>(texture);
-	if (text) {
+	std::shared_ptr<Graphics::Models::Text> text = std::dynamic_pointer_cast<Graphics::Models::Text>(texture);
+	if (text.get()) {
 		return text.get()->get_path() == get_path() &&
 			text.get()->get_color_red() == get_color_red() &&
 			text.get()->get_color_green() == get_color_green() &&
