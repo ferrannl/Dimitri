@@ -1,3 +1,6 @@
+#include "..\..\..\..\Game\Game\Controllers\AudioController.h"
+#include "..\..\..\..\Game\Game\Controllers\AudioController.h"
+#include "..\..\..\..\Game\Game\Controllers\AudioController.h"
 #include "AudioController.h"
 using namespace Audio;
 Controllers::AudioController::AudioController()
@@ -35,6 +38,18 @@ void Controllers::AudioController::add_sound(const std::string name, const std::
 	catch (Exceptions::AudioNameNotUnique e) {
 		std::cout << e.get() << std::endl;
 	}
+}
+
+void Game::Controllers::AudioController::pause_audio(const std::string name)
+{
+}
+
+void Game::Controllers::AudioController::resume_audio(const std::string name)
+{
+}
+
+void Game::Controllers::AudioController::stop_audio(const std::string name)
+{
 }
 
 void Controllers::AudioController::add_music(const std::string name, const std::string path)
