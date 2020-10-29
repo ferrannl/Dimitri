@@ -9,13 +9,13 @@
 #define UTILITY_API __declspec(dllimport)
 #endif
 #else
-#define GRAPHICS_API
+#define UTILITY_APIs
 #endif
 
 namespace Utility {
 	namespace Interfaces {
 		template <class T>
-		class  UTILITY_API IObservable {
+		class IObservable {
 		public:
 			virtual void notify(const T& object) = 0;
 			virtual void subscribe(std::shared_ptr<Interfaces::IObserver<T>> observer) = 0;

@@ -9,7 +9,7 @@
 #define UTILITY_API __declspec(dllimport)
 #endif
 #else
-#define GRAPHICS_API
+#define UTILITY_API
 #endif
 
 namespace Utility {

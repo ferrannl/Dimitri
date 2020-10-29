@@ -7,13 +7,13 @@
 #define UTILITY_API __declspec(dllimport)
 #endif
 #else
-#define GRAPHICS_API
+#define UTILITY_API
 #endif
 
 namespace Utility {
 	namespace Interfaces {
 		template <class T>
-		class  UTILITY_API IObserver {
+		class IObserver {
 		public:
 			virtual void update(const T& object) = 0;
 		};

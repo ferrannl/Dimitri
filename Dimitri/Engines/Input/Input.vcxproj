@@ -170,15 +170,19 @@
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Facades\EventFacade.h" />
     <ClInclude Include="src\Facades\MouseFacade.h" />
+    <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\Interfaces\IInputAdapter.h" />
+    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp" />
     <ClCompile Include="src\Adapters\MouseAdapter.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\Enums\EventEnum.cpp" />
     <ClCompile Include="src\Facades\EventFacade.cpp" />
     <ClCompile Include="src\Facades\MouseFacade.cpp" />
+    <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
