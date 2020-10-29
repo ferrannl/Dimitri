@@ -2,16 +2,6 @@
 #include <memory>
 #include "IObserver.h"
 
-#ifdef _WIN64
-#ifdef UTILITY_EXPORTS
-#define UTILITY_API __declspec(dllexport)
-#else 
-#define UTILITY_API __declspec(dllimport)
-#endif
-#else
-#define UTILITY_APIs
-#endif
-
 namespace Utility {
 	namespace Interfaces {
 		template <class T>
