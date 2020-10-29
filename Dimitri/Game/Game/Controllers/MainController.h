@@ -12,7 +12,7 @@ namespace Game {
 			std::unique_ptr<Controllers::WindowController> _window_controller;
 		public:
 			MainController();
-			void loadLevel(const std::string audio_name, const std::string path);
+			void load_music_for_level(const std::string audio_name, const std::string path);
 		};
 	}
 }

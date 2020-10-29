@@ -40,18 +40,6 @@ void Controllers::AudioController::add_sound(const std::string name, const std::
 	}
 }
 
-void Game::Controllers::AudioController::pause_audio(const std::string name)
-{
-}
-
-void Game::Controllers::AudioController::resume_audio(const std::string name)
-{
-}
-
-void Game::Controllers::AudioController::stop_audio(const std::string name)
-{
-}
-
 void Controllers::AudioController::add_music(const std::string name, const std::string path)
 {
 	try {
