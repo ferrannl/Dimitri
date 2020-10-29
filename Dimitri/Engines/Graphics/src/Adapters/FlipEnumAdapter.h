@@ -12,6 +12,10 @@
 #define GRAPHICS_API
 #endif
 
+//typedef struct SDL_Renderer SDL_Renderer;
+//typedef struct SDL_RendererFlip SDL_RendererFlip;
+
+
 namespace Graphics {
 	namespace Adapters {
 		class GRAPHICS_API FlipEnumAdapter {

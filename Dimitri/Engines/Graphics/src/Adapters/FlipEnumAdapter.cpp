@@ -1,4 +1,7 @@
 #include "FlipEnumAdapter.h"
+#include <SDL.h>
+#include <SDL_mouse.h>
+
 using namespace Graphics;
 
 SDL_RendererFlip Adapters::FlipEnumAdapter::get_sdl_flip(const Enums::FlipEnum flipstatus)

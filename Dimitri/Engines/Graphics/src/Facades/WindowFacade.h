@@ -12,13 +12,16 @@
 #define GRAPHICS_API
 #endif
 
+typedef struct SDL_Window SDL_Window;
+typedef struct SDL_Renderer SDL_Renderer;
+
 namespace Graphics {
-namespace Facades {
-	class GRAPHICS_API WindowFacade {
-	private:
-		std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
-		std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
-		Adapters::FlipEnumAdapter _flip_enum_adapter;
+	namespace Facades {
+		class GRAPHICS_API WindowFacade {
+		private:
+			std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> _window;
+			std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> _renderer;
+			Adapters::FlipEnumAdapter _flip_enum_adapter;
 
 			std::shared_ptr<Facades::TextureFacade> get_if_exists(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path);
 		public:

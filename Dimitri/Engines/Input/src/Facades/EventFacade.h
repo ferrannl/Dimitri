@@ -2,7 +2,6 @@
 #include "../Adapters/KeyBoardAdapter.h"
 #include "../Adapters/MouseAdapter.h"
 #include <memory>
-#include <SDL.h>
 
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS
@@ -15,12 +14,12 @@
 #endif
 
 namespace Input {
-namespace Facades {
-	class INPUT_API EventFacade {
-	private:
-		SDL_Event _event;
-		std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
-	public:
+	namespace Facades {
+		class INPUT_API EventFacade {
+		private:
+			SDL_Event _event;
+			std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
+		public:
 
 			EventFacade();
 			Enums::EventEnum poll_event();

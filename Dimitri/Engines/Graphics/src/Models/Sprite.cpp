@@ -34,7 +34,7 @@ int Models::Sprite::get_height() const
 	return _height;
 }
 
-float Models::Sprite::get_angle() const 
+float Models::Sprite::get_angle() const
 {
 	return _angle;
 }

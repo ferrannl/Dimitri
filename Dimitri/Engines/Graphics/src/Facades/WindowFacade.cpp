@@ -1,4 +1,6 @@
 #include "WindowFacade.h"
+#include <SDL.h>
+
 using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
@@ -70,7 +72,7 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 				try {
 					SDL_Point center = { 0,0 };
 					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
-					
+
 					if (retVal < NULL) {
 						throw Exceptions::CannotRenderSpriteTexture();
 					}
@@ -78,7 +80,7 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 				catch (Exceptions::CannotRenderSpriteTexture& e) {
 					std::cout << e.get() << std::endl;
 				}
-				
+
 				objectcounter++;
 			}
 		}
