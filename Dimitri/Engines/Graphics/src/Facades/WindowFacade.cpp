@@ -54,7 +54,7 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
 	fps.update();
-	SDL_SetWindowTitle(_window.get(), std::to_string(fps.get()).c_str());
+	SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
 	int depth = 0;
 	int objectcounter = 0;
 
