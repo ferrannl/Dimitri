@@ -12,7 +12,13 @@
 #endif
 
 namespace Graphics {
+	/**
+	* Namespace for all the Enums in the project
+	*/
 	namespace Enums {
+		/**
+		* Enum for the flip direction of the sprites
+		*/
 		enum class GRAPHICS_API FlipEnum {
 			NONE, HORIZONTAL, VERTICAL
 		};
