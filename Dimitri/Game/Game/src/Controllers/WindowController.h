@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Engines/Graphics/src/Controllers/GraphicsController.h"
+#include <src\Controllers\GraphicsController.h>
 
 namespace Game {
 	namespace Controllers {

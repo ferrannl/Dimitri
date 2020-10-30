@@ -1,16 +1,26 @@
 #pragma once
 #include "../Models/Window.h"
 #include <filesystem>
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Graphics {
-	namespace Controllers {
-		class __declspec(dllexport) GraphicsController {
+	namespace Controllers
+	{
+		class GRAPHICS_API GraphicsController {
 		private:
 			std::shared_ptr<Models::Window> _window;
 
 		public:
-			GraphicsController() {
-				_window = nullptr;
-			}
+			GraphicsController();
 
 			int create_window(const std::string title, const int height, const int width);
 			void add_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);

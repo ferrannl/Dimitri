@@ -1,9 +1,9 @@
 #pragma once
-#include "../../Engines/Audio/src/Controllers/AudioController.h"
-#include "../../Utility/src/Helpers/BasePathHelper.h"
 #include <memory>
 #include <chrono>
 #include <thread>
+#include <src\Controllers\AudioController.h>
+#include <src\Helpers\BasePathHelper.h>
 
 using namespace std::this_thread;
 using namespace std::chrono_literals;

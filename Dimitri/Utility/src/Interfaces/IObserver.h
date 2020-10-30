@@ -1,8 +1,9 @@
 #pragma once
+
 namespace Utility {
 	namespace Interfaces {
 		template <class T>
-		class  __declspec(dllexport) IObserver {
+		class IObserver {
 		public:
 			virtual void update(const T& object) = 0;
 		};

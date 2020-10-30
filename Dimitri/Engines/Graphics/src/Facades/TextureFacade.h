@@ -1,17 +1,28 @@
 #pragma once
-#include <SDL.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include <SDL_image.h>
 #include <memory>
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
+#include <SDL.h>
+#include <SDL_image.h>
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Graphics {
-	namespace Facades {
-		class __declspec(dllexport) TextureFacade {
-		private:
-			std::shared_ptr<SDL_Texture> _texture;
+namespace Facades {
+	class GRAPHICS_API TextureFacade {
+	private:
+		std::shared_ptr<SDL_Texture> _texture;
 
 		public:
 			TextureFacade();

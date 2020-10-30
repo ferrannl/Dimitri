@@ -1,20 +1,31 @@
 #pragma once
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 #include "../Facades/TextureFacade.h"
 #include "../Enums/FlipEnum.h"
 namespace Graphics {
-	namespace Models {
-		class __declspec(dllexport) Sprite {
-
-		private:
-			int _x;
-			int _y;
-			int _z;
-			int _width;
-			int _height;
-			float _angle;
-			std::shared_ptr<Facades::TextureFacade> _facade;
-			Enums::FlipEnum _flipstatus;
-			const std::string _path;
+namespace Models {
+	class GRAPHICS_API Sprite {
+	
+	private:
+		int _x;
+		int _y;
+		int _z;
+		int _width;
+		int _height;
+		float _angle;
+		std::shared_ptr<Facades::TextureFacade> _facade;
+		Enums::FlipEnum _flipstatus;
+		const std::string _path;
 
 		public:
 			Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus);

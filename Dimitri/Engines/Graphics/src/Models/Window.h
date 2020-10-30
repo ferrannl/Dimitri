@@ -1,14 +1,24 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
 namespace Graphics {
-	namespace Models {
-		class __declspec(dllexport) Window {
-		private:
-			int _height;
-			int _width;
-			const std::string _title;
-			std::unique_ptr<Facades::WindowFacade> _facade;
-			std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites;
+namespace Models {
+	class GRAPHICS_API Window {
+	private:
+		int _height;
+		int _width;
+		const std::string _title;
+		std::unique_ptr<Facades::WindowFacade> _facade;
+		std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> _sprites;
 
 		public:
 			Window(const std::string title, const int height, const int width);

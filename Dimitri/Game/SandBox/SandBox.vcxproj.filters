@@ -15,21 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="src\AudioDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsCollisionDemo.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AudioDemo.cpp">
+    <ClCompile Include="src\PhysicsCollisionDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PhysicsCollisionDemo.h">
+    <ClInclude Include="src\AudioDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AudioDemo.h">
+    <ClInclude Include="src\PhysicsCollisionDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

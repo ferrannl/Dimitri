@@ -2,8 +2,18 @@
 #include "../Facades/ShapeFacade.h"
 #include <iostream>
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else 
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 namespace Models {
-	class __declspec(dllexport) Shape {
+	class PHYSICSCOLLISION_API Shape {
 	protected:
 		std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 	public:
