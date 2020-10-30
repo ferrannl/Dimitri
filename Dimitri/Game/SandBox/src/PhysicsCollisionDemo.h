@@ -7,12 +7,14 @@
 #include <src\Controllers\InputController.h>
 #include <src\Controllers\WorldController.h>
 #include <src\Helpers\BasePathHelper.h>
+#include <src\Time\Fps.h>
 
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
 class PhysicsCollisionDemo : public Utility::Interfaces::IObserver<Input::Enums::EventEnum> {
 public:
+	Fps fps;
 	Graphics::Controllers::GraphicsController graphics_controller;
 	Controllers::WorldController world_controller;
 	std::shared_ptr<Input::Controllers::InputController> input_controller;

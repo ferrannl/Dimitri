@@ -22,6 +22,7 @@
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\Helpers\BasePathHelper.cpp" />
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\Time\Fps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\framework.h" />
@@ -29,6 +30,8 @@
     <ClInclude Include="src\Interfaces\IObservable.h" />
     <ClInclude Include="src\Interfaces\IObserver.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Time\Fps.h" />
+    <ClInclude Include="src\Time\Interval.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

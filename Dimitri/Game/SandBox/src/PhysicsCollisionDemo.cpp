@@ -60,7 +60,7 @@ int PhysicsCollisionDemo::create_window(int width, int height)
 
 void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, const char* path, const float angle, Graphics::Enums::FlipEnum flipstatus)
 {
-	sprites->push_back(std::make_unique<Graphics::Models::Sprite>( x, y, z, height, width, path, angle, flipstatus ));
+	sprites->push_back(std::make_unique<Graphics::Models::Sprite>(x, y, z, height, width, path, angle, flipstatus));
 }
 
 void PhysicsCollisionDemo::create_shape(int x, int y, int width, int height, bool is_dynamic)
@@ -74,14 +74,16 @@ void PhysicsCollisionDemo::run()
 	while (true)
 	{
 		for (int i = 0; i < shapes.get()->size(); i++)
-		{		
+		{
 			sprites->at(i)->set_x(static_cast<int>(shapes.get()->at(i)->get_x()));
 			sprites->at(i)->set_y(static_cast<int>(shapes.get()->at(i)->get_y()));
 			sprites->at(i)->set_angle(static_cast<int>(shapes.get()->at(i)->get_angle()));
 		}
 		graphics_controller.update_window();
 		world_controller.simulate();
-
+		fps.update();
+		//printf("Fps: " + fps.get() + '\n');
+		//TODO: In title
 		sleep_for(5ms);
 	}
 	world_controller.destroy_bodies();
@@ -101,7 +103,7 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 		sprites->at(0)->set_x(shapes.get()->at(0)->get_x());
 		sprites->at(0)->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 		break;
-	default: 
+	default:
 		std::cout << "geen reactie";
 	}
 }
