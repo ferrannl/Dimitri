@@ -3,8 +3,8 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-Graphics::Facades::TextFacade::TextFacade(const std::string path, const std::string text, const uint8_t color_red, uint8_t color_green, const uint8_t color_blue, const int height) :
-	TextureFacade(path), _text{ text }, _color{ color_red, color_blue, color_green }, _height{ height } {}
+Graphics::Facades::TextFacade::TextFacade(const std::string path, const std::string text, const Color color, const int height) :
+	TextureFacade(path), _text{ text }, _color{ color.red, color.green, color.blue }, _height{ height } {}
 
 void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer)
 {

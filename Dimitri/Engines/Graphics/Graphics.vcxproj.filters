@@ -83,5 +83,8 @@
     <ClInclude Include="src\Facades\TextFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Models\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

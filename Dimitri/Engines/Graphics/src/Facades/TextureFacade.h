@@ -20,7 +20,7 @@ namespace Graphics {
 		public:
 			TextureFacade(const std::string path);
 			virtual void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer) = 0;
-			std::shared_ptr<SDL_Texture> get_texture();
+			std::shared_ptr<SDL_Texture> get_texture() const;
 		};
 	}
 }
