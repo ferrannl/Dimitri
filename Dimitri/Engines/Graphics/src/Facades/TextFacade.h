@@ -10,9 +10,19 @@
 #include "TextureFacade.h"
 #include "../Models/Color.h"
 
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Graphics {
 	namespace Facades {
-		class __declspec(dllexport) TextFacade : public TextureFacade {
+		class GRAPHICS_API TextFacade : public TextureFacade {
 		private:
 			std::string _text;
 			SDL_Color _color;

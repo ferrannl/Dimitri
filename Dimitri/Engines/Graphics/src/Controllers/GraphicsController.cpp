@@ -1,6 +1,11 @@
 #include "GraphicsController.h"
 using namespace Graphics;
 
+Controllers::GraphicsController::GraphicsController()
+{
+		_window = nullptr;
+}
+
 int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
 {
 	_window = std::make_shared<Models::Window>(title, height, width);

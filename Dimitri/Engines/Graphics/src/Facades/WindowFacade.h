@@ -2,9 +2,20 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Graphics {
 	namespace Facades {
-		class __declspec(dllexport) WindowFacade {
+		class GRAPHICS_API WindowFacade {
 		private:
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
 			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;

@@ -1,13 +1,23 @@
 #pragma once
-#include <box2d/b2_world.h>
 #include <vector>
+#include "../Models/Shape.h"
+#include <box2d/b2_world.h>
 #include <box2d/b2_math.h>
 #include <box2d/b2_body.h>
 #include <box2d/b2_fixture.h>
-#include "../Models/Shape.h"
+
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else 
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
 
 namespace Facades {
-	class __declspec(dllexport) WorldFacade {
+	class PHYSICSCOLLISION_API WorldFacade {
 	private:
 		std::shared_ptr<b2World> _world;
 		std::vector<b2Body*> _bodies;

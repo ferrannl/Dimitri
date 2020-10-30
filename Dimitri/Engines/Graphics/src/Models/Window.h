@@ -1,16 +1,28 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 #include "Text.h"
+
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
+
 namespace Graphics {
 	namespace Models {
-		class __declspec(dllexport) Window {
+		class GRAPHICS_API Window {
 		private:
 			int _height;
 			int _width;
 			const std::string _title;
 			std::unique_ptr<Facades::WindowFacade> _facade;
-			std::vector<std::shared_ptr<Texture>> _textures; 
+			std::vector<std::shared_ptr<Texture>> _textures;
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
+
 		public:
 			Window(const std::string title, const int height, const int width);
 

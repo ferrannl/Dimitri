@@ -1,19 +1,26 @@
 #pragma once
-#include <SDL.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include <SDL_image.h>
 #include <memory>
 #include<stdarg.h>
-#include <iostream>
-#include "../Exceptions/GraphicsExceptions.h"
+#include <iostream>"
+#include <SDL.h>
+#include <SDL_image.h>
 
-struct SDL_Color;
+#ifdef _WIN64
+#ifdef GRAPHICS_EXPORTS
+#define GRAPHICS_API __declspec(dllexport)
+#else 
+#define GRAPHICS_API __declspec(dllimport)
+#endif
+#else
+#define GRAPHICS_API
+#endif
 
 namespace Graphics {
 	namespace Facades {
-		class __declspec(dllexport) TextureFacade {
+		class GRAPHICS_API TextureFacade {
 		protected:
 			std::string _path;
 			std::shared_ptr<SDL_Texture> _texture;
