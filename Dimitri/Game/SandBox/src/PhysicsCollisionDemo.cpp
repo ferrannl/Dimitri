@@ -81,9 +81,6 @@ void PhysicsCollisionDemo::run()
 		}
 		graphics_controller.update_window();
 		world_controller.simulate();
-		fps.update();
-		//printf("Fps: " + fps.get() + '\n');
-		//TODO: In title
 		sleep_for(5ms);
 	}
 	world_controller.destroy_bodies();

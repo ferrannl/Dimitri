@@ -4,6 +4,7 @@ using namespace Graphics;
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
 	try {
+
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
 		}
@@ -13,7 +14,7 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 		if (_window == NULL) {
 			throw Exceptions::CannotCreateWindow();
 		}
-
+		fps = Fps();
 		return 1;
 	}
 	catch (Exceptions::SDLInitFailed& e) {
@@ -52,7 +53,8 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
-
+	fps.update();
+	SDL_SetWindowTitle(_window.get(), std::to_string(fps.get()).c_str());
 	int depth = 0;
 	int objectcounter = 0;
 
@@ -70,7 +72,7 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 				try {
 					SDL_Point center = { 0,0 };
 					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
-					
+
 					if (retVal < NULL) {
 						throw Exceptions::CannotRenderSpriteTexture();
 					}
@@ -78,7 +80,7 @@ void Facades::WindowFacade::update_window(std::shared_ptr<std::vector<std::uniqu
 				catch (Exceptions::CannotRenderSpriteTexture& e) {
 					std::cout << e.get() << std::endl;
 				}
-				
+
 				objectcounter++;
 			}
 		}
