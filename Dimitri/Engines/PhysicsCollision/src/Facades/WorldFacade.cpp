@@ -18,8 +18,8 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2FixtureDef fixtureDef;
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
-	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
-		//create_body(_shape, bodyDef, fixtureDef, body, shape);
+	if (shape->get_type() == Enums::ShapeEnum::Triangle) {
+		//Triangle tekenen dmv vertices
 	}
 	else if(shape->get_type() == Enums::ShapeEnum::Circle) {
 		//b2CircleShape _shape;
