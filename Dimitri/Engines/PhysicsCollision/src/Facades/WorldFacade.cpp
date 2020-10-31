@@ -19,6 +19,12 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
 	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
+		//create_body(_shape, bodyDef, fixtureDef, body, shape);
+	}
+	else if(shape->get_type() == Enums::ShapeEnum::Circle) {
+		//b2CircleShape _shape;
+	} 
+	else if (shape->get_type() == Enums::ShapeEnum::Square) {
 		b2PolygonShape _shape;
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
 		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
@@ -38,13 +44,6 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		}
 		_world_bodies[shape] = body;
 		shape->get_shape_facade()->add_body(body);
-		//create_body(_shape, bodyDef, fixtureDef, body, shape);
-	}
-	else if(shape->get_type() == Enums::ShapeEnum::Circle) {
-		//b2CircleShape _shape;
-	} 
-	else if (shape->get_type() == Enums::ShapeEnum::Edge) {
-		//b2EdgeShape _shape;
 	}
 }
 

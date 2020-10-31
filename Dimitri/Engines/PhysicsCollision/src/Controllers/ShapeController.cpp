@@ -8,7 +8,7 @@ Controllers::ShapeController::ShapeController()
 
 std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const PhysicsCollision::Enums::ShapeEnum type ,float x, float y, float width, float height, const bool is_dynamic) const
 {
-	if (type == Enums::ShapeEnum::Polygon) {
+	if (type == Enums::ShapeEnum::Square) {
 		std::shared_ptr<Models::Polygon> polygon = std::make_shared<Models::Polygon>();
 		polygon->set_height(height);
 		polygon->set_width(width);

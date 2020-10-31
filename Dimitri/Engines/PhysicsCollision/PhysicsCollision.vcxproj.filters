@@ -39,6 +39,9 @@
     <ClCompile Include="src\Enums\ShapeEnum.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Models\Square.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\ShapeController.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Facades\WorldFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Square.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
