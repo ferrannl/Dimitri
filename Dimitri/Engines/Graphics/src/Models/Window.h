@@ -22,12 +22,12 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API Window {
 		private:
-      /**
+			/**
 			* Height of the window
 			*/
 			int _height;
       
-      /**
+			/**
 			* Width of the window
 			*/
 			int _width;
@@ -47,9 +47,9 @@ namespace Graphics {
 			*/
 			std::vector<std::shared_ptr<Texture>> _textures;
       
-      /**
-      * Returns a Texture if a matching Texture already exists
-      */
+			/**
+			* Returns a Texture if a matching Texture already exists
+			*/
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string title, const int height, const int width);
@@ -70,17 +70,17 @@ namespace Graphics {
 			*/
 			void destroy();
   
-      /**
+			/**
 			* Adds the Texture to _textures
 			*/
 			void add_texture(const std::shared_ptr<Texture>& texture);
       
-      /**
+			/**
 			* Removes the Texture from _textures
 			*/
 			void remove_texture(const std::shared_ptr<Texture>& texture);
       
-      /**
+			/**
 			* Returns the textures list of this model
 			*/
 			std::vector<std::shared_ptr<Texture>> get_textures() const;

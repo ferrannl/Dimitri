@@ -11,6 +11,10 @@
 #define GRAPHICS_API
 #endif
 
+
+/**
+* Holds the RGB values of a color
+*/
 struct GRAPHICS_API Color {
 public:
 	uint8_t red;

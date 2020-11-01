@@ -43,7 +43,7 @@ namespace Graphics {
 			}
 		};
     
-    /**
+		/**
 		* Thrown when SDL_ttf cannot be initialized
 		*/
 		struct TTFInitFailed : public std::exception {

@@ -13,8 +13,6 @@
 #define GRAPHICS_API
 #endif
 
-#include "../Models/Window.h"
-#include <filesystem>
 namespace Graphics {
 	/**
 	* Namespace for all the Controllers in the project
@@ -30,7 +28,6 @@ namespace Graphics {
 			* The window model containing all data for the window
 			*/
 			std::shared_ptr<Models::Window> _window;
-
 		public:
 			GraphicsController();
 
@@ -38,17 +35,18 @@ namespace Graphics {
 			* Creates the window with the given parameters
 			*/
 			int create_window(const std::string title, const int height, const int width);
-      /**
+
+			/**
 			* Adds the texture to the window
 			*/
 			void add_texture(const std::shared_ptr<Models::Texture>& texture);
       
-      /**
+			/**
 			* Removes the texture to the window
 			*/
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
       
-      /**
+			/**
 			* Returns the textures from the window
 			*/
 			std::vector<std::shared_ptr<Models::Texture>> get_textures() const;

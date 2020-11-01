@@ -21,14 +21,32 @@
 #endif
 
 namespace Graphics {
+	/**
+	* Contains all the references needed for the SDL_Texture
+	*/
 	namespace Facades {
 		class GRAPHICS_API TextFacade : public TextureFacade {
 		private:
+			/**
+			* Text of the TextFacade
+			*/
 			std::string _text;
+
+			/**
+			* Color of the TextFacade
+			*/
 			SDL_Color _color;
+
+			/**
+			* Height of the TextFacade
+			*/
 			int _height;
 		public:
 			TextFacade(const std::string path, const std::string text, const Color color, const int height);
+
+			/**
+			* Creates an SDL_Texture for a given path
+			*/
 			void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer);
 		};
 	}
