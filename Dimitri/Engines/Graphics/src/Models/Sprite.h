@@ -14,11 +14,14 @@
 #define GRAPHICS_API
 #endif
 
-namespace Graphics {
+namespace Graphics {  
+	/**
+	* Namespace for all the models in the project
+	*/
 	namespace Models {
 		class GRAPHICS_API Sprite : public Texture {
 		public:
-			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path, const Enums::FlipEnum flipstatus);	
+			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path, const Enums::FlipEnum flipstatus);
 			void create_texture_facade();
 			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
 		};

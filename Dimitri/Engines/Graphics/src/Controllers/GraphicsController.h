@@ -13,22 +13,54 @@
 #define GRAPHICS_API
 #endif
 
+#include "../Models/Window.h"
+#include <filesystem>
 namespace Graphics {
+	/**
+	* Namespace for all the Controllers in the project
+	*/
 	namespace Controllers
 	{
+		/**
+		* Containing all the methods needed to display an window and create and show sprites
+		*/
 		class GRAPHICS_API GraphicsController {
 		private:
+			/**
+			* The window model containing all data for the window
+			*/
 			std::shared_ptr<Models::Window> _window;
 
 		public:
 			GraphicsController();
 
+			/**
+			* Creates the window with the given parameters
+			*/
 			int create_window(const std::string title, const int height, const int width);
+      /**
+			* Adds the texture to the window
+			*/
 			void add_texture(const std::shared_ptr<Models::Texture>& texture);
+      
+      /**
+			* Removes the texture to the window
+			*/
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
+      
+      /**
+			* Returns the textures from the window
+			*/
 			std::vector<std::shared_ptr<Models::Texture>> get_textures() const;
 
+			/**
+			* Updates the window
+			*/
 			void update_window();
+
+			/**
+			* Returns the window
+			*/
 			std::shared_ptr<Models::Window> get_window() const;
 		};
 	}
