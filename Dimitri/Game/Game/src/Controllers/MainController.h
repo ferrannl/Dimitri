@@ -7,7 +7,7 @@ namespace Game {
 		class MainController {
 		private:
 			std::shared_ptr<Controllers::InputController> _input_controller;
-			std::unique_ptr<Controllers::WindowController> _window_controller;
+			std::shared_ptr<Controllers::WindowController> _window_controller;
 		public:
 			MainController();
 		};
