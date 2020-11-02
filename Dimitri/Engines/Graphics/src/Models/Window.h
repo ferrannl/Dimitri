@@ -1,5 +1,6 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
+#include "Text.h"
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -10,26 +11,93 @@
 #else
 #define GRAPHICS_API
 #endif
-namespace Graphics {
-namespace Models {
-	class GRAPHICS_API Window {
-	private:
-		int _height;
-		int _width;
-		const std::string _title;
-		std::unique_ptr<Facades::WindowFacade> _facade;
-		std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> _sprites;
 
+namespace Graphics {
+  /**
+	* Namespace for all the models in the project
+	*/
+	namespace Models {
+		/**
+		* Holds the data the window needs to be generated.
+		*/
+		class GRAPHICS_API Window {
+		private:
+			/**
+			* Height of the window
+			*/
+			int _height;
+      
+			/**
+			* Width of the window
+			*/
+			int _width;
+
+			/**
+			* Title of the window, displayed in the frame
+			*/
+			const std::string _title;
+
+			/**
+			* Holds all functions and references to sdl which can be used to create/destroy/update windows and render sprites
+			*/
+			std::unique_ptr<Facades::WindowFacade> _facade;
+
+			/**
+			* Holds all the textures displayed in the window
+			*/
+			std::vector<std::shared_ptr<Texture>> _textures;
+      
+			/**
+			* Returns a Texture if a matching Texture already exists
+			*/
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string title, const int height, const int width);
 
+			/**
+			* Return int is used to check if sdl is initialized.
+			* if int is < 0, the initialization failed
+			*/
 			int create();
+
+			/**
+			* Updates a window
+			*/
 			void update();
+
+			/**
+			* Destroys a window
+			*/
 			void destroy();
-			void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);
-			std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;
+  
+			/**
+			* Adds the Texture to _textures
+			*/
+			void add_texture(const std::shared_ptr<Texture>& texture);
+      
+			/**
+			* Removes the Texture from _textures
+			*/
+			void remove_texture(const std::shared_ptr<Texture>& texture);
+      
+			/**
+			* Returns the textures list of this model
+			*/
+			std::vector<std::shared_ptr<Texture>> get_textures() const;
+
+			/**
+			* Returns the height of this window
+			*/
 			int get_height() const;
+
+			/**
+			* Returns the width of this window
+			*/
 			int get_width() const;
+
+			/**
+			* Returns the title of this window
+			*/
 			const std::string get_title() const;
 		};
 	}
