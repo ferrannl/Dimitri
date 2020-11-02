@@ -1,5 +1,4 @@
 #include "Level.h"
-using namespace std::this_thread;
 using namespace Game;
 
 Models::Level::Level()

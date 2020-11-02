@@ -1,7 +1,7 @@
 #pragma once
+#include <src\Controllers\AudioController.h>
 #include <iostream>
-#include "../../../Engines/Audio/src/Controllers/AudioController.h"
-#include "../../../Utility/src/Helpers/BasePathHelper.h"
+#include <src\Helpers\BasePathHelper.h>
 
 namespace Game {
 	namespace Controllers {
