@@ -1,4 +1,7 @@
 #pragma once
+#include "../Models/Window.h"
+#include "../Models/Text.h"
+#include <filesystem>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -10,8 +13,6 @@
 #define GRAPHICS_API
 #endif
 
-#include "../Models/Window.h"
-#include <filesystem>
 namespace Graphics {
 	/**
 	* Namespace for all the Controllers in the project
@@ -27,7 +28,6 @@ namespace Graphics {
 			* The window model containing all data for the window
 			*/
 			std::shared_ptr<Models::Window> _window;
-
 		public:
 			GraphicsController();
 
@@ -37,14 +37,19 @@ namespace Graphics {
 			int create_window(const std::string title, const int height, const int width);
 
 			/**
-			* Adds the sprites to the window
+			* Adds the texture to the window
 			*/
-			void add_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
-
+			void add_texture(const std::shared_ptr<Models::Texture>& texture);
+      
 			/**
-			* Returns the sprites from the window
+			* Removes the texture to the window
 			*/
-			std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> get_sprites() const;
+			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
+      
+			/**
+			* Returns the textures from the window
+			*/
+			std::vector<std::shared_ptr<Models::Texture>> get_textures() const;
 
 			/**
 			* Updates the window

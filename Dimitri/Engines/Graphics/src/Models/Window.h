@@ -1,5 +1,6 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
+#include "Text.h"
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -12,8 +13,7 @@
 #endif
 
 namespace Graphics {
-
-	/**
+  /**
 	* Namespace for all the models in the project
 	*/
 	namespace Models {
@@ -23,11 +23,10 @@ namespace Graphics {
 		class GRAPHICS_API Window {
 		private:
 			/**
-			*
 			* Height of the window
 			*/
 			int _height;
-
+      
 			/**
 			* Width of the window
 			*/
@@ -44,10 +43,14 @@ namespace Graphics {
 			std::unique_ptr<Facades::WindowFacade> _facade;
 
 			/**
-			* Holds all the sprites displayed in the window
+			* Holds all the textures displayed in the window
 			*/
-			std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> _sprites;
-
+			std::vector<std::shared_ptr<Texture>> _textures;
+      
+			/**
+			* Returns a Texture if a matching Texture already exists
+			*/
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string title, const int height, const int width);
 
@@ -66,16 +69,21 @@ namespace Graphics {
 			* Destroys a window
 			*/
 			void destroy();
-
+  
 			/**
-			* Sets the _sprites vector of this model
+			* Adds the Texture to _textures
 			*/
-			void set_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> sprites);
-
+			void add_texture(const std::shared_ptr<Texture>& texture);
+      
 			/**
-			* Returns the sprites list of this model
+			* Removes the Texture from _textures
 			*/
-			std::shared_ptr<std::vector<std::unique_ptr<Sprite>>> get_sprites() const;
+			void remove_texture(const std::shared_ptr<Texture>& texture);
+      
+			/**
+			* Returns the textures list of this model
+			*/
+			std::vector<std::shared_ptr<Texture>> get_textures() const;
 
 			/**
 			* Returns the height of this window
@@ -88,7 +96,7 @@ namespace Graphics {
 			int get_width() const;
 
 			/**
-			* Returns the width of this window
+			* Returns the title of this window
 			*/
 			const std::string get_title() const;
 		};

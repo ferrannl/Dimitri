@@ -42,6 +42,16 @@ namespace Graphics {
 				return "Cannot initialize sdl";
 			}
 		};
+    
+		/**
+		* Thrown when SDL_ttf cannot be initialized
+		*/
+		struct TTFInitFailed : public std::exception {
+			const char* get() const throw () {
+				return "Cannot initialize sdl ttf";
+			}
+		};
+
 
 		/**
 		* Thrown when an window cannot be created
@@ -58,6 +68,12 @@ namespace Graphics {
 		struct CannotRenderSpriteTexture : public std::exception {
 			const char* get() const throw () {
 				return "Cannot render the sprite texture";
+			}
+		};
+
+		struct CannotLoadFont : public std::exception {
+			const char* get() const throw () {
+				return "Cannot load font";
 			}
 		};
 	}

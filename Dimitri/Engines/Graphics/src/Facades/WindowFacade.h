@@ -1,5 +1,6 @@
 #pragma once
 #include "../Models/Sprite.h"
+#include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
 
 #ifdef _WIN64
@@ -13,7 +14,7 @@
 #endif
 
 namespace Graphics {
-	/**
+  /**
 	* Namespace for all the facades in the project
 	*/
 	namespace Facades {
@@ -22,25 +23,20 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API WindowFacade {
 		private:
-			/**
+			 /**
 			* An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
 			*/
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
-
+      
 			/**
 			* An instance of SDL_Renderer. The SDL_DestroyRenderer has to be passed by reference becuase SDL_Renderer has a custom destructor.
 			*/
 			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
-
+      
 			/**
 			* The adapter that converts the SDL_Flipenum to FlipEnum
 			*/
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
-
-			/**
-			* Checks if the texturefacade already exists for a other sprite. If this is the case a pointer to this Texturefacade will be returned. This way memory will be saved.
-			*/
-			std::shared_ptr<Facades::TextureFacade> get_if_exists(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path);
 		public:
 			WindowFacade();
 
@@ -53,11 +49,11 @@ namespace Graphics {
 			* Creates the instance of SDL_Window
 			*/
 			int create_window(const std::string title, const int height, const int width);
-
+      
 			/**
-			* Creates all the sprites in the given list
+			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
 			*/
-			void create_sprites(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
+			void create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture);
 
 			/**
 			* Destroys the SDL_Window
@@ -67,7 +63,7 @@ namespace Graphics {
 			/**
 			* Updates the window with all the sprites in the given list
 			*/
-			void update_window(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites);
+			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 		};
 	}
 }
