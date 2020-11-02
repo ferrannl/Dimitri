@@ -6,7 +6,7 @@ Views::CreditsView::CreditsView(const std::shared_ptr<Graphics::Controllers::Gra
 	init_textures();
 }
 
-void Game::Views::CreditsView::init_textures()
+void Views::CreditsView::init_textures()
 {
 	// TODO: for now hardcoded: maybe add static const to Window or add properties if values are variable
 	int window_width = 1080;
@@ -25,7 +25,7 @@ void Game::Views::CreditsView::init_textures()
 	}
 }
 
-void Game::Views::CreditsView::open()
+void Views::CreditsView::open()
 {	
 	for (auto texture : _textures) {
 		_graphics_controller.get()->add_texture(texture);
@@ -34,9 +34,7 @@ void Game::Views::CreditsView::open()
 	is_open = true;
 }
 
-
-
-void Game::Views::CreditsView::close()
+void Views::CreditsView::close()
 {
 	for (auto texture : _textures) {
 		_graphics_controller.get()->remove_texture(texture);
