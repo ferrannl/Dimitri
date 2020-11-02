@@ -147,12 +147,14 @@
     <ClCompile Include="Controllers\MainController.cpp" />
     <ClCompile Include="Controllers\WindowController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Models\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controllers\AudioController.h" />
     <ClInclude Include="Controllers\InputController.h" />
     <ClInclude Include="Controllers\MainController.h" />
     <ClInclude Include="Controllers\WindowController.h" />
+    <ClInclude Include="Models\Level.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

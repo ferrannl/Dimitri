@@ -29,3 +29,8 @@ void Controllers::AudioController::stop_audio(const std::string name)
 {
 	_audio_controller->stop_audio(name);
 }
+
+void Controllers::AudioController::resume_audio(const std::string name)
+{
+	_audio_controller->resume_audio(name);
+}
