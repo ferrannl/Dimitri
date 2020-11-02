@@ -131,12 +131,8 @@
       <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib;Utility.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\"
-xcopy /y /d "$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\Input.dll" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\"
-xcopy /y /d "$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\Audio.dll" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\"
-xcopy /y /d "$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\PhysicsCollision.dll" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\"
-xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\"
-xcopy /y /d /E /I "$(SolutionDir)$(Platform)\$(Configuration)\assets" "$(SolutionDir)Game\SandBox\bin\$(Platform)\$(Configuration)\assets"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

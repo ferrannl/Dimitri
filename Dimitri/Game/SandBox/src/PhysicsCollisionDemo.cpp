@@ -62,7 +62,6 @@ int PhysicsCollisionDemo::create_window(int width, int height)
 
 void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, std::string path, const float angle, Graphics::Enums::FlipEnum flipstatus)
 {
-	sprites->push_back(std::make_unique<Graphics::Models::Sprite>(x, y, z, height, width, path, angle, flipstatus));
 	graphics_controller.add_texture(std::make_shared<Graphics::Models::Sprite>(x, y, z, height, width, angle, path, flipstatus));
 }
 
@@ -84,15 +83,13 @@ void PhysicsCollisionDemo::run()
 	{
 		for (int i = 0; i < shapes.get()->size(); i++)
 		{
-			sprites->at(i)->set_x(static_cast<int>(shapes.get()->at(i)->get_x()));
-			sprites->at(i)->set_y(static_cast<int>(shapes.get()->at(i)->get_y()));
-			sprites->at(i)->set_angle(static_cast<int>(shapes.get()->at(i)->get_angle()));
 			textures.at(i)->set_x(static_cast<int>(shapes.get()->at(i)->get_x()));
 			textures.at(i)->set_y(static_cast<int>(shapes.get()->at(i)->get_y()));
 			textures.at(i)->set_angle(static_cast<int>(shapes.get()->at(i)->get_angle()));
 		}
 		graphics_controller.update_window();
 		world_controller.simulate();
+
 		sleep_for(5ms);
 	}
 	world_controller.destroy_bodies();
@@ -121,6 +118,3 @@ void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDe
 {
 	input_controller->subscribe(demo);
 }
-
-
-

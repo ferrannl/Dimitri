@@ -3,8 +3,8 @@
 
 Fps::Fps()
 {
-	m_fps = { 0 };
-	m_fpscount = { 0 };
+	_fps = { 0 };
+	_fpscount = { 0 };
 }
 
 void Fps::update()
@@ -12,27 +12,27 @@ void Fps::update()
 	/**
 	* increase the counter by one
 	*/
-	m_fpscount++;
+	_fpscount++;
 
 	/*
 	* one second elapsed? (= 1000 milliseconds)
 	*/
-	if (m_fpsinterval.value() > 1000)
+	if (_fpsinterval.value() > 1000)
 	{
 		/*
 		* save the current counter value to m_fps
 		*/
-		m_fps = m_fpscount;
+		_fps = _fpscount;
 
 		/*
 		*reset the counter and the interval
 		*/
-		m_fpscount = 0;
-		m_fpsinterval = Interval();
+		_fpscount = 0;
+		_fpsinterval = Interval();
 	}
 }
 
 unsigned int Fps::get() const
 {
-	return m_fps;
+	return _fps;
 }

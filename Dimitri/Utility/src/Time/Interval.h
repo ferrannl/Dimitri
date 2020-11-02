@@ -15,13 +15,6 @@ public:
 	{
 	}
 
-	/*
-	*Dtor
-	*/
-	virtual ~Interval()
-	{
-	}
-
 	inline unsigned int value() const
 	{
 		return GetTickCount() - initial_;

@@ -2,7 +2,7 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
-#include <src\Time\Fps.h>
+#include "src/Time/Fps.h"
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -15,34 +15,29 @@
 #endif
 
 namespace Graphics {
-	namespace Facades {
-		class GRAPHICS_API WindowFacade {
-		private:
-			Fps fps = {};
-			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
-			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
-			Adapters::FlipEnumAdapter _flip_enum_adapter;
-
-			std::shared_ptr<Facades::TextureFacade> get_if_exists(const std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites, const std::string path);
-  /**
-	* Namespace for all the facades in the project
-	*/
+	/**
+	  * Namespace for all the facades in the project
+	  */
 	namespace Facades {
 		/**
 		* Contains all the references needed for the SDL_Window
 		*/
 		class GRAPHICS_API WindowFacade {
 		private:
-			 /**
-			* An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
+			/**
+			* An instance of FPS.
 			*/
+			Fps fps = {};
+			/**
+		   * An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
+		   */
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
-      
+
 			/**
 			* An instance of SDL_Renderer. The SDL_DestroyRenderer has to be passed by reference becuase SDL_Renderer has a custom destructor.
 			*/
 			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
-      
+
 			/**
 			* The adapter that converts the SDL_Flipenum to FlipEnum
 			*/
@@ -59,7 +54,7 @@ namespace Graphics {
 			* Creates the instance of SDL_Window
 			*/
 			int create_window(const std::string title, const int height, const int width);
-      
+
 			/**
 			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
 			*/

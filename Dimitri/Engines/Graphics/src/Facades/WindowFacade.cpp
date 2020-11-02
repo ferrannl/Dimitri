@@ -6,7 +6,6 @@ using namespace Graphics;
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
 	try {
-
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
 		}
@@ -63,36 +62,11 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
+	/**
+	Update and draw FPS
+	*/
 	fps.update();
 	SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
-	int depth = 0;
-	int objectcounter = 0;
-
-	while (objectcounter < sprites->size()) {
-		for (std::unique_ptr<Models::Sprite>& sprite : *sprites) {
-			if (sprite->get_z() == depth) {
-				SDL_Rect rect;
-
-				rect.x = sprite->get_x();
-				rect.y = sprite->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
-				rect.w = sprite->get_width();
-				rect.h = sprite->get_height();
-
-				//Render texture to screen
-				try {
-					SDL_Point center = { 0,0 };
-					int retVal = SDL_RenderCopyEx(_renderer.get(), sprite->get_texture_facade()->get_texture().get(), NULL, &rect, sprite->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(sprite->get_flip_status()));
-
-					if (retVal < NULL) {
-						throw Exceptions::CannotRenderSpriteTexture();
-					}
-				}
-				catch (Exceptions::CannotRenderSpriteTexture& e) {
-					std::cout << e.get() << std::endl;
-				}
-
-				objectcounter++;
-
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
 		ordered_textures[texture.get()->get_z()].push_back(texture);
