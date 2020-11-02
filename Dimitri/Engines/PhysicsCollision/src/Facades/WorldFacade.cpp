@@ -21,51 +21,32 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	if (shape->get_type() == Enums::ShapeEnum::Triangle) {
 		//Triangle tekenen dmv vertices
 	}
-	else if(shape->get_type() == Enums::ShapeEnum::Circle) {
-		//b2CircleShape _shape;
-	} 
 	else if (shape->get_type() == Enums::ShapeEnum::Square) {
 		b2PolygonShape _shape;
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
 		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		if (shape->get_is_dynamic())
-		{
-			bodyDef.type = b2_dynamicBody;
-			bodyDef.angle = 0;
-			body = _world->CreateBody(&bodyDef);
-			fixtureDef.shape = &_shape;
-			fixtureDef.density = 1.0f;
-			body->CreateFixture(&fixtureDef);
-		}
-		else {
-			body = _world->CreateBody(&bodyDef);
-			body->SetType(b2_staticBody);
-			body->CreateFixture(&_shape, 0.0f);
-		}
-		_world_bodies[shape] = body;
-		shape->get_shape_facade()->add_body(body);
+		create_square_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
+	_world_bodies[shape] = body;
+	shape->get_shape_facade()->add_body(body);
 }
 
-//void Facades::WorldFacade::create_body(b2PolygonShape _shape, b2BodyDef bodyDef, b2FixtureDef fixtureDef, b2Body* body, std::shared_ptr<Models::Shape> shape) {
-//	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-//	if (shape->get_is_dynamic())
-//	{
-//		bodyDef.type = b2_dynamicBody;
-//		bodyDef.angle = 0;
-//		body = _world->CreateBody(&bodyDef);
-//		fixtureDef.shape = &_shape;
-//		fixtureDef.density = 1.0f;
-//		body->CreateFixture(&fixtureDef);
-//	}
-//	else {
-//		body = _world->CreateBody(&bodyDef);
-//		body->SetType(b2_staticBody);
-//		body->CreateFixture(&_shape, 0.0f);
-//	}
-//	_world_bodies[shape] = body;
-//	shape->get_shape_facade()->add_body(body);
-//}
+void Facades::WorldFacade::create_square_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape) {
+	if (shape->get_is_dynamic())
+	{
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.angle = 0;
+		body = _world->CreateBody(&bodyDef);
+		fixtureDef.shape = &_shape;
+		fixtureDef.density = 1.0f;
+		body->CreateFixture(&fixtureDef);
+	}
+	else {
+		body = _world->CreateBody(&bodyDef);
+		body->SetType(b2_staticBody);
+		body->CreateFixture(&_shape, 0.0f);
+	}
+}
 
 void Facades::WorldFacade::simulate() const
 {

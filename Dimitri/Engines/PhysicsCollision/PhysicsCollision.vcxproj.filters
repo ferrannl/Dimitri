@@ -36,11 +36,11 @@
     <ClCompile Include="src\Facades\WorldFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Enums\ShapeEnum.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Models\Square.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enums\ShapeEnum.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
