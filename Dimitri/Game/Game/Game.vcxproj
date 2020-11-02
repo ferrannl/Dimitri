@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -156,17 +156,21 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   <ItemGroup>
     <ClCompile Include="src\Models\InputEvent.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
+    <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
     <ClCompile Include="src\Controllers\MainController.cpp" />
     <ClCompile Include="src\Controllers\WindowController.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Models\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\InputEvent.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
+    <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
+    <ClInclude Include="src\Models\Level.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

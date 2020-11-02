@@ -31,6 +31,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Models\InputEvent.cpp">
+    <ClCompile Include="src\Models\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controllers\AudioController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -48,6 +52,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\InputEvent.h">
+    <ClInclude Include="src\Models\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controllers\AudioController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
