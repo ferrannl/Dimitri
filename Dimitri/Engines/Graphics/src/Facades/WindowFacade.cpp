@@ -65,7 +65,9 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
-		ordered_textures[texture.get()->get_z()].push_back(texture);
+		if (texture.get()->get_visible()) {
+			ordered_textures[texture.get()->get_z()].push_back(texture);
+		}
 	}
 
 	for (const std::pair<int, std::vector<std::shared_ptr<Graphics::Models::Texture>>>& kv : ordered_textures) {

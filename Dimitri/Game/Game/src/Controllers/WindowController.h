@@ -14,6 +14,12 @@ namespace Game {
 		public:
 			WindowController();
 			void update(const Game::Models::InputEvent& object);
+
+			void create_window(int height, int width);
+			void add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
+			void remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
+			void update_window();
+			void destroy_window();
 		};
 	}
 }

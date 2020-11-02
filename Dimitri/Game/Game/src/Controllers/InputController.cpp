@@ -17,9 +17,11 @@ void Game::Controllers::InputController::update(const Input::Enums::EventEnum& o
 }
 
 void Game::Controllers::InputController::notify(const Game::Models::InputEvent& object) {
-	_observer->update(object);
+	for (auto observer : _observers) {
+		observer->update(object);
+	}
 }
 
 void Game::Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Models::InputEvent>> observer) {
-	_observer = observer;
+	_observers.push_back(observer);
 }

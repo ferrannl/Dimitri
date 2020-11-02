@@ -3,8 +3,13 @@ using namespace Game;
 
 Controllers::WindowController::WindowController()
 {
-	_graphics_controller = std::make_shared<Graphics::Controllers::GraphicsController>();
-	if (_graphics_controller->create_window("Test", 720, 1080) == NULL) {
+	_graphics_controller = std::make_unique<Graphics::Controllers::GraphicsController>();
+	create_window(1080, 720);
+}
+
+void Game::Controllers::WindowController::create_window(int height, int width)
+{
+	if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
 		return;
 	}
 
@@ -23,4 +28,24 @@ void Game::Controllers::WindowController::update(const Game::Models::InputEvent&
 		}
 		break;
 	}
+}
+
+void Game::Controllers::WindowController::add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture)
+{
+	_graphics_controller->add_texture(texture);
+}
+
+void Game::Controllers::WindowController::remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture)
+{
+	_graphics_controller->remove_texture(texture);
+}
+
+void Game::Controllers::WindowController::update_window()
+{
+	_graphics_controller->update_window();
+}
+
+void Game::Controllers::WindowController::destroy_window()
+{
+	_graphics_controller->get_window()->destroy();
 }
