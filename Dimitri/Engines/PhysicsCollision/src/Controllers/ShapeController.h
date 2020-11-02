@@ -2,6 +2,7 @@
 #include <vector>
 #include "../Models/Shape.h"
 #include "../Models/Polygon.h"
+#include "../Models/Square.h"
 #include <iostream>
 
 namespace PhysicsCollision {

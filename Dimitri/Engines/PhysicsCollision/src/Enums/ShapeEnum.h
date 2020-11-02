@@ -6,7 +6,6 @@ namespace PhysicsCollision {
 			Polygon,
 			Circle,
 			Square,
-			Triangle
 		};
 	}
 }
