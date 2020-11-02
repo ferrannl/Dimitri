@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <exception>
+
 namespace Audio {
 	namespace Exceptions {
 		struct AudioNameNotUnique : public std::exception {

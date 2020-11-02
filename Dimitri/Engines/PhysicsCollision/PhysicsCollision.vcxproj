@@ -18,33 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Models\Polygon.cpp" />
-    <ClCompile Include="src\Models\Shape.cpp" />
-    <ClCompile Include="src\Facades\ShapeFacade.cpp" />
-    <ClCompile Include="src\Controllers\ShapeController.cpp" />
-    <ClCompile Include="src\Factories\ShapeFactory.cpp" />
-    <ClCompile Include="src\Models\World.cpp" />
-    <ClCompile Include="src\Facades\WorldFacade.cpp" />
-    <ClCompile Include="src\Controllers\WorldController.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Models\Polygon.h" />
-    <ClInclude Include="src\Models\Shape.h" />
-    <ClInclude Include="src\Facades\ShapeFacade.h" />
-    <ClInclude Include="src\Controllers\ShapeController.h" />
-    <ClInclude Include="src\Factories\ShapeFactory.h" />
-    <ClInclude Include="src\Models\World.h" />
-    <ClInclude Include="src\Facades\WorldFacade.h" />
-    <ClInclude Include="src\Controllers\WorldController.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{115c5cee-bb6e-455d-8c76-b0b373c6f8bc}</ProjectGuid>
+    <ProjectGuid>{cb98692a-3702-4df7-9a6e-b2cbb922b37e}</ProjectGuid>
     <RootNamespace>PhysicsCollision</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -98,24 +75,30 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Ferran\Documents\Git_repos\dimitri\Dimitri\Engines\libs;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Engines\PhysicsCollision\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Engines\PhysicsCollision\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;PHYSICSCOLLISION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,27 +107,32 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;PHYSICSCOLLISION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;PHYSICSCOLLISION_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,16 +141,43 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN64</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Controllers\ShapeController.h" />
+    <ClInclude Include="src\Controllers\WorldController.h" />
+    <ClInclude Include="src\Facades\ShapeFacade.h" />
+    <ClInclude Include="src\Facades\WorldFacade.h" />
+    <ClInclude Include="src\Factories\ShapeFactory.h" />
+    <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\Models\Polygon.h" />
+    <ClInclude Include="src\Models\Shape.h" />
+    <ClInclude Include="src\Models\World.h" />
+    <ClInclude Include="src\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Controllers\ShapeController.cpp" />
+    <ClCompile Include="src\Controllers\WorldController.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Facades\ShapeFacade.cpp" />
+    <ClCompile Include="src\Facades\WorldFacade.cpp" />
+    <ClCompile Include="src\Factories\ShapeFactory.cpp" />
+    <ClCompile Include="src\Models\Polygon.cpp" />
+    <ClCompile Include="src\Models\Shape.cpp" />
+    <ClCompile Include="src\Models\World.cpp" />
+    <ClCompile Include="src\pch.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

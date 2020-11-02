@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d76545de-95ca-4027-a5e1-2d3c531c9565}</ProjectGuid>
+    <ProjectGuid>{d6e2cec6-26c2-4190-8b18-d6a1f1cb11f1}</ProjectGuid>
     <RootNamespace>Input</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -75,17 +75,18 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\Ferran\Documents\Git_repos\dimitri\Dimitri\Engines\SDL2-2.0.12;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\vclib\SDL2-2.0.12\include;C:\vclib\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2-2.0.12\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Engines\Input\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath>C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Engines\Input\bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -93,14 +94,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;INPUT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Utility.lib;SDL2.lib</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -109,31 +111,35 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;INPUT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Utility.lib;SDL2.lib</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;INPUT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Utility.lib;SDL2.lib</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,36 +148,41 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;INPUT_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(OutDir)Utility.lib;SDL2.lib</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Facades\EventFacade.cpp" />
-    <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp" />
-    <ClCompile Include="src\Adapters\MouseAdapter.cpp" />
-    <ClCompile Include="src\Facades\MouseFacade.cpp" />
-    <ClCompile Include="src\Controllers\InputController.cpp" />
-    <ClCompile Include="src\Enums\EventEnum.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Facades\EventFacade.h" />
     <ClInclude Include="src\Adapters\KeyBoardAdapter.h" />
     <ClInclude Include="src\Adapters\MouseAdapter.h" />
-    <ClInclude Include="src\Facades\MouseFacade.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
+    <ClInclude Include="src\Facades\EventFacade.h" />
+    <ClInclude Include="src\Facades\MouseFacade.h" />
+    <ClInclude Include="src\framework.h" />
     <ClInclude Include="src\Interfaces\IInputAdapter.h" />
+    <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\InputEngineClassDiagram.cd" />
+    <ClCompile Include="src\Adapters\KeyBoardAdapter.cpp" />
+    <ClCompile Include="src\Adapters\MouseAdapter.cpp" />
+    <ClCompile Include="src\Controllers\InputController.cpp" />
+    <ClCompile Include="src\dllmain.cpp" />
+    <ClCompile Include="src\Enums\EventEnum.cpp" />
+    <ClCompile Include="src\Facades\EventFacade.cpp" />
+    <ClCompile Include="src\Facades\MouseFacade.cpp" />
+    <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controllers\MainController.cpp">
+    <ClCompile Include="src\Controllers\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controllers\InputController.cpp">
+    <ClCompile Include="src\Controllers\MainController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Controllers\WindowController.cpp">
+    <ClCompile Include="src\Controllers\WindowController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Controllers\AudioController.cpp">
@@ -35,13 +35,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controllers\MainController.h">
+    <ClInclude Include="src\Controllers\InputController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Controllers\InputController.h">
+    <ClInclude Include="src\Controllers\MainController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Controllers\WindowController.h">
+    <ClInclude Include="src\Controllers\WindowController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Controllers\AudioController.h">
