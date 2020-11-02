@@ -8,12 +8,16 @@ private:
 	unsigned int initial_;
 
 public:
-	// Ctor
+	/*
+	*Ctor
+	*/
 	inline Interval() : initial_(GetTickCount())
 	{
 	}
 
-	// Dtor
+	/*
+	*Dtor
+	*/
 	virtual ~Interval()
 	{
 	}
