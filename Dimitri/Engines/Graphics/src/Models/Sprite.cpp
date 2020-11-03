@@ -20,5 +20,3 @@ bool Graphics::Models::Sprite::matches(const std::shared_ptr<Models::Texture>& t
 	}
 	return false;
 }
-
-

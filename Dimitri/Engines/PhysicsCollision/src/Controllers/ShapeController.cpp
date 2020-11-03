@@ -1,11 +1,26 @@
 #include "ShapeController.h"
+#include "../Enums/ShapeEnum.h"
+using namespace PhysicsCollision;
 
 Controllers::ShapeController::ShapeController()
 {
-	_shape_factory = std::make_shared<Factories::ShapeFactory>();
 }
 
-Models::Shape Controllers::ShapeController::create_shape(const std::string type, const std::vector<std::pair<float, float>> positions, const bool is_dynamic) const
+std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic) const
 {
-	return _shape_factory->create_shape(type, positions, is_dynamic);
+	std::shared_ptr<Models::Shape> shape;
+	switch (type) {
+	case Enums::ShapeEnum::Square:
+		shape = std::make_shared<Models::Square>();
+		break;
+	case Enums::ShapeEnum::Polygon:
+		shape = std::make_shared<Models::Polygon>();
+	}
+	shape->set_height(height);
+	shape->set_width(width);
+	shape->set_x(x);
+	shape->set_y(y);
+	shape->set_type(type);
+	shape->set_is_dynamic(is_dynamic);
+	return shape;
 }

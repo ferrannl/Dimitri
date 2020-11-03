@@ -6,24 +6,26 @@
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
 #define PHYSICSCOLLISION_API __declspec(dllexport)
-#else 
+#else
 #define PHYSICSCOLLISION_API __declspec(dllimport)
 #endif
 #else
 #define PHYSICSCOLLISION_API
 #endif
-
-namespace Controllers {
-	class PHYSICSCOLLISION_API WorldController {
-	private:
-		Models::World _world;
-		ShapeController _shapeController;
-	public:
-		WorldController();
-		void setup_world(const float width, const float height);
-		void create_shape(const std::string type, const float x, const float y, const std::vector<std::pair<float, float>> positions, const bool is_dynamic);
-		void destroy_bodies();
-		void simulate();
-		std::shared_ptr<std::vector<std::unique_ptr<Models::Shape>>> get_shapes()const;
-	};
+namespace PhysicsCollision {
+	namespace Controllers {
+		class PHYSICSCOLLISION_API WorldController {
+		private:
+			Models::World _world;
+			ShapeController _shapeController;
+		public:
+			WorldController();
+			void setup_world(const float width, const float height);
+			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
+			bool check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2);
+			void destroy_bodies();
+			void simulate();
+			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+		};
+	}
 }
