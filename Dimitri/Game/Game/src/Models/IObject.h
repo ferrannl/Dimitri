@@ -6,6 +6,7 @@
 #include <map>
 #include <src\Helpers\BasePathHelper.h>
 #include <src/Models/Sprite.h>
+#include <src\Models\Shape.h>
 
 namespace Game {
 	namespace Models {
@@ -35,9 +36,9 @@ namespace Game {
 			std::map<std::string, std::shared_ptr<Graphics::Models::Texture>> _textures;
 
 			/**
-			*	TODO: SHAPE
+			*	Shape of object
 			*/
-			//PhysicsCollision::Models::Shape _shape;
+			std::shared_ptr<PhysicsCollision::Models::Shape> _shape;
 
 			/**
 			*	Initializes textures specific to object
@@ -93,9 +94,34 @@ namespace Game {
 			void set_state(std::string value);
 
 			/**
+			*	Returns shape
+			*/
+			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape();
+
+			/**
+			*	Sets shape
+			*/
+			void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
+
+			/**
 			*	Adds texture
 			*/
 			void add_texture(std::string state, std::shared_ptr<Graphics::Models::Texture> texture);
+
+			/**
+			*	Returns height
+			*/
+			int get_height();
+
+			/**
+			*	Returns width
+			*/
+			int get_width();
+
+			/**
+			*	Updates x/y values using shape
+			*/
+			void update();
 		};
 	}
 }

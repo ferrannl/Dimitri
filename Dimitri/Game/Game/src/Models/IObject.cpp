@@ -65,7 +65,33 @@ void Game::Models::IObject::set_state(std::string value)
 	this->get_texture()->set_visible(true);
 }
 
+std::shared_ptr<PhysicsCollision::Models::Shape> Game::Models::IObject::get_shape()
+{
+	return _shape;
+}
+
+void Game::Models::IObject::set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
+{
+	_shape = shape;
+}
+
 void Game::Models::IObject::add_texture(std::string state, std::shared_ptr<Graphics::Models::Texture> texture)
 {
 	this->_textures.insert(std::pair<std::string, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
+}
+
+int Game::Models::IObject::get_height()
+{
+	return _height;
+}
+
+int Game::Models::IObject::get_width()
+{
+	return _width;
+}
+
+void Game::Models::IObject::update()
+{
+	set_x(_shape->get_x());
+	set_y(_shape->get_y());
 }

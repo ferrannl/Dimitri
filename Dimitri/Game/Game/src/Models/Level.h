@@ -8,6 +8,7 @@
 #include <src/Models/Sprite.h>
 #include "Wall.h"
 #include "Player.h"
+#include "../Controllers/PhysicsCollisionController.h"
 
 namespace Game
 {
@@ -20,7 +21,10 @@ namespace Game
 
 			std::shared_ptr<Game::Models::IObject> _player;
 			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _borders;
 			std::shared_ptr<Graphics::Models::Texture> _background;
+
+			std::unique_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 		public:
 			Level();
 			void add_music(std::string audio_name, std::string path);
@@ -44,6 +48,11 @@ namespace Game
 			*	Returns player
 			*/
 			std::shared_ptr<Game::Models::IObject> get_player();
+			
+			/**
+			*	Calls physics simulation
+			*/
+			void simulate();
 		};
 	}
 

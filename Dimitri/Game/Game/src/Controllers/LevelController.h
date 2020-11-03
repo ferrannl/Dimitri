@@ -3,11 +3,18 @@
 #include "../Models/Level.h"
 #include "../Events/InputEvent.h"
 #include <src\Models\Texture.h>
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
+
 namespace Game {
 	namespace Controllers {
 		class LevelController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
 		private:
 			std::shared_ptr<Game::Models::Level> _level;
+			std::thread _simulation_thread;
+			bool _running;
 		public:
 			LevelController();
 
@@ -21,7 +28,19 @@ namespace Game {
 			*/
 			void update(const Game::Events::InputEvent& object);
 
+			/**
+			*	Returns level
+			*/
 			std::shared_ptr<Game::Models::Level> get_level();
+
+			void start();
+
+			void stop();
+
+			/**
+			*	Simulate thread start
+			*/
+			void simulate();
 		};
 	}
 }
