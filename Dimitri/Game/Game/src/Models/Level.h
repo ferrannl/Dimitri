@@ -9,6 +9,7 @@
 #include "Wall.h"
 #include "Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
+#include "Switch.h"
 
 namespace Game
 {
@@ -21,10 +22,11 @@ namespace Game
 
 			std::shared_ptr<Game::Models::IObject> _player;
 			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _borders;
 			std::shared_ptr<Graphics::Models::Texture> _background;
 
-			std::unique_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
+			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 		public:
 			Level();
 			void add_music(std::string audio_name, std::string path);
@@ -49,6 +51,16 @@ namespace Game
 			*/
 			std::shared_ptr<Game::Models::IObject> get_player();
 			
+			/**
+			*	Returns interactables
+			*/
+			std::vector<std::shared_ptr<Game::Models::IInteractable>> get_interactables();
+			
+			/**
+			*	Returns physics collision controller
+			*/
+			std::shared_ptr<Game::Controllers::PhysicsCollisionController> get_physics_collision_controller();
+
 			/**
 			*	Calls physics simulation
 			*/

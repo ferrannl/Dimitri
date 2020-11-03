@@ -1,5 +1,7 @@
 #include "LevelController.h"
+using namespace Game::Models;
 using namespace Game;
+
 Game::Controllers::LevelController::LevelController()
 {
 	_level = std::make_shared<Game::Models::Level>();
@@ -25,6 +27,15 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		_level->get_player()->get_shape()->move_y();
+		break;
+	case Input::Enums::EventEnum::KEY_PRESS_E:
+		for (std::shared_ptr<IInteractable> interactable : _level->get_interactables())
+		{
+			if (_level->get_physics_collision_controller()->check_collision(_level->get_player()->get_shape(), interactable->get_shape()))
+			{
+				interactable->interact();
+			}
+		}
 		break;
 	}
 }

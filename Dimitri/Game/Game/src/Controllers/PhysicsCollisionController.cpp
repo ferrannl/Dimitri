@@ -19,3 +19,8 @@ std::shared_ptr<PhysicsCollision::Models::Shape> Game::Controllers::PhysicsColli
 {
 	return _world_controller->create_shape(PhysicsCollision::Enums::ShapeEnum::Square, x, y, width, height, is_dynamic);
 }
+
+bool Game::Controllers::PhysicsCollisionController::check_collision(std::shared_ptr<PhysicsCollision::Models::Shape> shape1, std::shared_ptr<PhysicsCollision::Models::Shape> shape2)
+{
+	return _world_controller->check_collision(shape1, shape2);
+}

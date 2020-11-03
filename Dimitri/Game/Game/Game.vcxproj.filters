@@ -15,6 +15,8 @@
     <ClCompile Include="src\Models\Wall.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Models\Switch.cpp" />
+    <ClCompile Include="src\Models\IInteractable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
@@ -30,5 +32,7 @@
     <ClInclude Include="src\Models\Wall.h" />
     <ClInclude Include="src\Views\LevelView.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
+    <ClInclude Include="src\Models\Switch.h" />
+    <ClInclude Include="src\Models\IInteractable.h" />
   </ItemGroup>
 </Project>
