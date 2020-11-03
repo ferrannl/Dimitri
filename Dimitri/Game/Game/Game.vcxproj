@@ -154,6 +154,8 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Models\InputEvent.cpp" />
+    <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
     <ClCompile Include="src\Controllers\MainController.cpp" />
@@ -162,6 +164,8 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Models\Level.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Models\InputEvent.h" />
+    <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Controllers\MainController.h" />
