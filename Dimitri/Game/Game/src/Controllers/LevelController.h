@@ -12,8 +12,17 @@ namespace Game {
 	namespace Controllers {
 		class LevelController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
 		private:
+			/**
+			*	Level model
+			*/
 			std::shared_ptr<Game::Models::Level> _level;
+			/**
+			*	Simulation thread
+			*/
 			std::thread _simulation_thread;
+			/**
+			*	Keeps track of simulation thread state
+			*/
 			bool _running;
 		public:
 			LevelController();
@@ -33,8 +42,14 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::Level> get_level();
 
+			/**
+			*	Start simulation
+			*/
 			void start();
 
+			/**
+			*	Stop simulation
+			*/
 			void stop();
 
 			/**
