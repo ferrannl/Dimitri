@@ -19,18 +19,13 @@ protected:
 	Interval _fpsinterval;
 
 public:
-	/*
-	* Constructor
-	*/
+
 	Fps();
 
-	/*
-	*	Update
+	/**
+	*	Update the fps
 	*/
 	void update();
 
-	/*
-	* Get fps
-	*/
 	unsigned int get() const;
 };
