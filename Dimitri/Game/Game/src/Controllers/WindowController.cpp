@@ -3,6 +3,7 @@ using namespace Game;
 
 Controllers::WindowController::WindowController()
 {
+	_open_window = false;
 	_graphics_controller = std::make_unique<Graphics::Controllers::GraphicsController>();
 	create_window(1080, 720);
 }
@@ -22,18 +23,26 @@ void Game::Controllers::WindowController::update(const Game::Events::InputEvent&
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_C:
 		if (!_credits_view.get()->is_open) {
-			_credits_view.get()->open();
+			if (!_open_window) {
+				_open_window = true;
+				_credits_view.get()->open();
+			}
 		}
 		else {
+			_open_window = false;
 			_credits_view.get()->close();
 		}
 		break;
 	
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_level_view.get()->is_open) {
-			_level_view.get()->open();
+			if (!_open_window) {
+				_open_window = true;
+				_level_view.get()->open();
+			}
 		}
 		else {
+			_open_window = false;
 			_level_view.get()->close();
 		}
 		break;

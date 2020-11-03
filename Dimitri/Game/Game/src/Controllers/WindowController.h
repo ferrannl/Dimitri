@@ -13,6 +13,7 @@ namespace Game {
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
 			std::unique_ptr<Views::CreditsView> _credits_view;
 			std::unique_ptr<Views::LevelView> _level_view;
+			bool _open_window;
 		public:
 			WindowController();
 			void update(const Game::Events::InputEvent& object);
