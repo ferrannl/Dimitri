@@ -7,9 +7,8 @@
 namespace PhysicsCollision {
 	namespace Models {
 		class __declspec(dllexport) Square : public Shape {
-		public: 
+		public:
 			Square();
-			Square(bool is_dynamic);
 		};
 	}
 }

@@ -7,16 +7,15 @@ namespace PhysicsCollision {
 	namespace Models {
 		class __declspec(dllexport) Shape {
 		private:
-			float _is_dynamic;
 			float _x;
 			float _y;
 			float _width;
 			float _height;
+			bool _is_dynamic;
 		protected:
 			Enums::ShapeEnum _type;
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			bool is_dynamic;
 			Shape();
 			std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
 			Enums::ShapeEnum get_type()const;

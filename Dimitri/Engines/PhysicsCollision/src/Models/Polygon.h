@@ -9,7 +9,6 @@ namespace PhysicsCollision {
 		class __declspec(dllexport) Polygon : public Shape {
 		public:
 			Polygon();
-			Polygon(bool is_dynamic);
 		};
 	}
 }
