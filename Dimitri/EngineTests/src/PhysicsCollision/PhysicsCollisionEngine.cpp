@@ -90,7 +90,15 @@ namespace EngineTests
 				ctr.simulate();
 			}
 
-			Assert::AreEqual((int)(shapes[1]->get_y() + shapes[1]->get_height()), (int)shapes[0]->get_y());
+			Assert::AreEqual(true, ctr.check_collision(shapes[0], shapes[1]));
+		}
+		TEST_METHOD(Body_Exists)
+		{
+			PhysicsCollision::Controllers::WorldController ctr = create_world_setup();
+
+			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
+
+			Assert::IsNotNull(shapes[0]->get_shape_facade()->get_body());
 		}
 	};
 }
