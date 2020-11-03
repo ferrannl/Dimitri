@@ -22,6 +22,7 @@ namespace PhysicsCollision {
 			WorldController();
 			void setup_world(const float width, const float height);
 			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
+			bool check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2);
 			void destroy_bodies();
 			void simulate();
 			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;

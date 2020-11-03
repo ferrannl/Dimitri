@@ -63,7 +63,6 @@ void Facades::WorldFacade::simulate() const
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
 		shape->set_x(body->GetWorldCenter().x - shape->get_width() / 2);
-		shape->set_y(body->GetWorldCenter().y + shape->get_height() / 2);
-
+		shape->set_y(body->GetWorldCenter().y - shape->get_height() / 2);
 	}
 }

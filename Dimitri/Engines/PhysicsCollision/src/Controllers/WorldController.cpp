@@ -17,6 +17,17 @@ std::shared_ptr<Models::Shape> Controllers::WorldController::create_shape(Physic
 	return shape;
 }
 
+bool Controllers::WorldController::check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2)
+{
+	if (shape1->get_x() - 1 <= shape2->get_x() + shape2->get_width() &&
+		shape1->get_x() + shape1->get_width() + 1 >= shape2->get_x() &&
+		shape1->get_y() - 1 <= shape2->get_y() + shape2->get_height() &&
+		shape1->get_y() + shape1->get_height() + 1 >= shape2->get_y()) {
+		return true;
+	}
+	return false;
+}
+
 void Controllers::WorldController::destroy_bodies()
 {
 	_world.destroy_bodies();
