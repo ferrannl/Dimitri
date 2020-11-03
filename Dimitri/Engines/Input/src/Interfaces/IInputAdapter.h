@@ -17,7 +17,7 @@ namespace Input {
 	namespace Interfaces {
 		class INPUT_API IInputAdapter {
 		public:
-			virtual Enums::EventEnum translate_to_enum(const SDL_Event event)const = 0;
+			virtual Enums::EventEnum translate_to_enum(const SDL_Event event) const = 0;
 		};
 	}
 }

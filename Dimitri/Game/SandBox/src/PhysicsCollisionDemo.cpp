@@ -107,6 +107,8 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 		textures.at(0)->set_y(shapes.at(0)->get_y());
 		textures.at(0)->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
+		exit(0);
 	default:
 		std::cout << "geen reactie";
 		break;

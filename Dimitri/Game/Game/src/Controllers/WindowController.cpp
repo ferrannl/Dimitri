@@ -22,6 +22,8 @@ void Game::Controllers::WindowController::update(const Game::Models::InputEvent&
 			_credits_view.get()->close();
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
+		exit(0);
 	case Input::Enums::EventEnum::KEY_PRESS_F:
 		_graphics_controller->switch_fps();
 		break;
