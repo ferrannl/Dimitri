@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="src\Controllers\ShapeController.h" />
     <ClInclude Include="src\Controllers\WorldController.h" />
+    <ClInclude Include="src\Enums\ShapeEnum.h" />
     <ClInclude Include="src\Facades\ShapeFacade.h" />
     <ClInclude Include="src\Facades\WorldFacade.h" />
     <ClInclude Include="src\framework.h" />
