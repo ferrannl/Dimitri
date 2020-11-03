@@ -69,6 +69,8 @@ namespace Graphics {
 			* Updates the window with all the sprites in the given list
 			*/
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
+
+			void switch_fps();
 		};
 	}
 }

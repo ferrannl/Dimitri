@@ -64,7 +64,12 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	SDL_RenderClear(_renderer.get());
 	//Update and draw FPS
 	fps.update();
-	SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
+	if (fps.getShown()) {
+		SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
+	}
+	else {
+		SDL_SetWindowTitle(_window.get(), "");
+	}
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
 		ordered_textures[texture.get()->get_z()].push_back(texture);
@@ -96,6 +101,16 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 
 	//Update screen
 	SDL_RenderPresent(_renderer.get());
+}
+
+void Graphics::Facades::WindowFacade::switch_fps()
+{
+	if (fps.getShown()) {
+		fps.setShown(false);
+	}
+	else {
+		fps.setShown(true);
+	}
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

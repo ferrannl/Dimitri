@@ -28,4 +28,10 @@ public:
 	void update();
 
 	unsigned int get() const;
+	void setShown(bool shown);
+	bool getShown();
+
+private:
+	bool shown;
+
 };

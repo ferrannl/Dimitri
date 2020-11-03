@@ -2,7 +2,7 @@
 using namespace Graphics;
 
 Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
-	_facade = std::make_unique<Facades::WindowFacade>();
+	_facade = std::make_shared<Facades::WindowFacade>();
 }
 
 std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
@@ -70,4 +70,9 @@ int Models::Window::get_width() const
 const std::string Models::Window::get_title() const
 {
 	return _title;
+}
+
+std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() const
+{
+	return _facade;
 }

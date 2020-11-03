@@ -3,7 +3,7 @@ using namespace Graphics;
 
 Controllers::GraphicsController::GraphicsController()
 {
-		_window = nullptr;
+	_window = nullptr;
 }
 
 int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
@@ -35,4 +35,9 @@ void Controllers::GraphicsController::update_window()
 std::shared_ptr<Models::Window> Controllers::GraphicsController::get_window() const
 {
 	return _window;
+}
+
+void Graphics::Controllers::GraphicsController::switch_fps()
+{
+	_window->get_facade()->switch_fps();
 }

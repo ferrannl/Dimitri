@@ -5,6 +5,7 @@ Fps::Fps()
 {
 	_fps = { 0 };
 	_fpscount = { 0 };
+	setShown(true);
 }
 
 void Fps::update()
@@ -28,3 +29,14 @@ unsigned int Fps::get() const
 {
 	return _fps;
 }
+
+void Fps::setShown(bool shown)
+{
+	this->shown = shown;
+}
+
+bool Fps::getShown()
+{
+	return shown;
+}
+
