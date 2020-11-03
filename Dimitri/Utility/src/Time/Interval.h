@@ -8,13 +8,15 @@ private:
 	unsigned int initial_;
 
 public:
-	/*
-	*Ctor
+	/**
+	* Constructor
 	*/
 	inline Interval() : initial_(GetTickCount())
 	{
 	}
-
+	/**
+	* Return tick count - initial
+	*/
 	inline unsigned int value() const
 	{
 		return GetTickCount() - initial_;

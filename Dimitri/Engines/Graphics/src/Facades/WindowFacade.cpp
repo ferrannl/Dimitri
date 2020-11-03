@@ -62,9 +62,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
-	/**
-	Update and draw FPS
-	*/
+	//Update and draw FPS
 	fps.update();
 	SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};

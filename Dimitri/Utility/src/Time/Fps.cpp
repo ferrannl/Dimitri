@@ -9,24 +9,16 @@ Fps::Fps()
 
 void Fps::update()
 {
-	/**
-	* increase the counter by one
-	*/
+	// increase the counter by one
 	_fpscount++;
 
-	/*
-	* one second elapsed? (= 1000 milliseconds)
-	*/
+	// one second elapsed? (= 1000 milliseconds)
 	if (_fpsinterval.value() > 1000)
 	{
-		/*
-		* save the current counter value to m_fps
-		*/
+		// save the current counter value to m_fps
 		_fps = _fpscount;
 
-		/*
-		*reset the counter and the interval
-		*/
+		// reset the counter and the interval
 		_fpscount = 0;
 		_fpsinterval = Interval();
 	}
