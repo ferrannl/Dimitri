@@ -40,7 +40,7 @@ namespace Game {
 			//PhysicsCollision::Models::Shape _shape;
 
 			/**
-			*	Initializes textures
+			*	Initializes textures specific to object
 			*/
 			virtual void initialize_textures() = 0;
 
