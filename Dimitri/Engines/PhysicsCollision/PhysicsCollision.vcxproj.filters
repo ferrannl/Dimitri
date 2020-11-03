@@ -45,6 +45,9 @@
     <ClInclude Include="src\Models\Square.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enums\ShapeEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Models\Polygon.cpp">
