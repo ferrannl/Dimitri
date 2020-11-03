@@ -12,9 +12,12 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
 	/**
-	* Namespace for all the Adapters in the project
+	* Namespace for the adapters
 	*/
 	namespace Adapters {
 		/**

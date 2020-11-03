@@ -13,9 +13,12 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
 	/**
-	* Namespace for all the Controllers in the project
+	* Namespace for the controllers
 	*/
 	namespace Controllers
 	{

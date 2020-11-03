@@ -2,9 +2,12 @@
 #include <string>
 #include <exception>
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
 	/**
-	* Namespace for all the Exceptions in the project
+	* Namespace for the exceptions
 	*/
 	namespace Exceptions {
 		/**

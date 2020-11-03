@@ -20,11 +20,17 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
 	/**
-	* Contains all the references needed for the SDL_Texture
+	* Namespace for the facades
 	*/
 	namespace Facades {
+		/**
+		* Containing all methods and references to draw text with SDL_ttf
+		*/
 		class GRAPHICS_API TextFacade : public TextureFacade {
 		private:
 			/**

@@ -19,23 +19,55 @@ using namespace std::chrono_literals;
 #define INPUT_API
 #endif
 
+/**
+* Namespace for the input engine
+*/
 namespace Input {
+	/**
+	* Namespace for the controllers
+	*/
 	namespace Controllers {
-	class INPUT_API InputController : public Utility::Interfaces::IObservable<Enums::EventEnum> {
-	private:
-		//shared press events
-		std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> _observer;
+		/**
+		* Is being used as an observable and contains the method to get fired events
+		*/
+		class INPUT_API InputController : public Utility::Interfaces::IObservable<Enums::EventEnum> {
+		private:
+			/**
+			* The observer that observes key and mouse events
+			*/
+			std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> _observer;
 
-			//Facades
+			/**
+			* The facade that contains the method from SDL which are needed for mouse events
+			*/
 			std::unique_ptr<Facades::MouseFacade> _mouse_facade;
+
+			/**
+			* The facade that contains the method from SDL which are needed for keyboard events
+			*/
 			std::unique_ptr<Facades::EventFacade> _event_facade;
 
 		public:
 			InputController();
+
+			/**
+			* Returns the X and Y of where the mouse clicked on the screen
+			*/
 			std::tuple<int, int> get_mouse_position();
 
+			/**
+			* notifies the observers
+			*/
 			void notify(const Enums::EventEnum& object);
+
+			/**
+			* Subscribes on this observable
+			*/
 			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
+			
+			/**
+			* Polls if events are fired
+			*/
 			void poll_events();
 		};
 	}

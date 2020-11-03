@@ -10,8 +10,17 @@
 #define INPUT_API
 #endif
 
+/**
+* Namespace for the input engine
+*/
 namespace Input {
+	/**
+	* Namespace for the enums
+	*/
 	namespace Enums {
+		/**
+		* All key and mouse events that can be fired
+		*/
 		enum class INPUT_API EventEnum
 		{
 			NOT_SUPPORTED,
