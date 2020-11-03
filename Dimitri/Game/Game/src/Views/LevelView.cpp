@@ -22,10 +22,11 @@ void Views::LevelView::open()
 void Views::LevelView::close()
 {
 	is_open = false;
+	draw_thread.join();
 	for (auto texture : _textures) {
 		_graphics_controller.get()->remove_texture(texture);
 	}
-	draw_thread.join();
+	_graphics_controller.get()->update_window();
 }
 
 void Game::Views::LevelView::draw()

@@ -155,6 +155,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />

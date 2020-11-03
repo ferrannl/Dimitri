@@ -7,9 +7,9 @@ Game::Models::Wall::Wall(int x, int y, int z, int height, int width) : Game::Mod
 
 void Game::Models::Wall::initialize_textures()
 {
-	_state = "horizontal";
-	add_texture("horizontal", std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::NONE));
-	add_texture("vertical", std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::VERTICAL));
-	add_texture("right", std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::NONE));
-	add_texture("left", std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::HORIZONTAL));
+	_state = Game::Enums::StateEnum::HORIZONTAL;
+	add_texture(Game::Enums::StateEnum::HORIZONTAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::NONE));
+	add_texture(Game::Enums::StateEnum::VERTICAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::VERTICAL));
+	add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::NONE));
+	add_texture(Game::Enums::StateEnum::LEFT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::HORIZONTAL));
 }

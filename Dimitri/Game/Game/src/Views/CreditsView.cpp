@@ -41,10 +41,11 @@ void Views::CreditsView::open()
 void Views::CreditsView::close()
 {
 	is_open = false;
+	draw_thread.join();
 	for (auto texture : _textures) {
 		_graphics_controller.get()->remove_texture(texture);
 	}
-	draw_thread.join();
+	_graphics_controller.get()->update_window();
 }
 
 void Game::Views::CreditsView::draw()

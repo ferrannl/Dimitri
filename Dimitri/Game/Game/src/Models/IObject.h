@@ -7,6 +7,7 @@
 #include <src\Helpers\BasePathHelper.h>
 #include <src/Models/Sprite.h>
 #include <src\Models\Shape.h>
+#include "../Enums/StateEnum.cpp"
 
 namespace Game {
 	namespace Models {
@@ -28,12 +29,12 @@ namespace Game {
 			/**
 			*	Object state ex: Walking, Climbing, Crouching, Jumping, Standing still. You could also specify a certain walking texture and change it every frame.
 			*/
-			std::string _state;
+			Game::Enums::StateEnum _state;
 
 			/**
 			*	Textures saved by state for easy access
 			*/
-			std::map<std::string, std::shared_ptr<Graphics::Models::Texture>> _textures;
+			std::map<Game::Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
 
 			/**
 			*	Shape of object
@@ -91,7 +92,7 @@ namespace Game {
 			/**
 			*	Sets state
 			*/
-			void set_state(const std::string& value);
+			void set_state(const Game::Enums::StateEnum& state);
 
 			/**
 			*	Returns shape
@@ -106,7 +107,7 @@ namespace Game {
 			/**
 			*	Adds texture
 			*/
-			void add_texture(std::string state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			*	Returns height

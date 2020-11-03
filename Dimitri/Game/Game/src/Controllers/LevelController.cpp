@@ -17,11 +17,11 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		_level->get_player()->set_state("left");
+		_level->get_player()->set_state(Game::Enums::StateEnum::LEFT);
 		_level->get_player()->get_shape()->move_x(-1);
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		_level->get_player()->set_state("right");
+		_level->get_player()->set_state(Game::Enums::StateEnum::RIGHT);
 		_level->get_player()->get_shape()->move_x(1);
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:

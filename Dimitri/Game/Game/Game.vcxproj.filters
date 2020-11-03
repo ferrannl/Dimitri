@@ -17,6 +17,7 @@
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
+    <ClCompile Include="src\Enums\StateEnum.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
