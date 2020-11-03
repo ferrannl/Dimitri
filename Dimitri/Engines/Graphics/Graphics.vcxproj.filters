@@ -15,39 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Models\Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Facades\TextureFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\GraphicsController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Facades\WindowFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enums\FlipEnum.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="src\Models\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Facades\TextureFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Facades\WindowFacade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Facades\TextureFacade.h">
+    <ClInclude Include="src\Exceptions\GraphicsExceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enums\FlipEnum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Controllers\GraphicsController.h">
@@ -56,11 +39,50 @@
     <ClInclude Include="src\Adapters\FlipEnumAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Exceptions\GraphicsExceptions.h">
+    <ClInclude Include="src\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\Enums\ClassDiagram.cd" />
+    <ClInclude Include="src\framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Facades\SpriteFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Facades\TextFacade.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="src\Models\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Facades\TextureFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Facades\WindowFacade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controllers\GraphicsController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Adapters\FlipEnumAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,9 +3,19 @@
 #include <iostream>
 #include "../Enums/ShapeEnum.h"
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 namespace PhysicsCollision {
 	namespace Models {
-		class __declspec(dllexport) Shape {
+		class PHYSICSCOLLISION_API Shape {
 		private:
 			float _x;
 			float _y;

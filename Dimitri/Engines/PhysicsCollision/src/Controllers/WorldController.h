@@ -3,12 +3,21 @@
 #include "ShapeController.h"
 #include <string>
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
 namespace PhysicsCollision {
 	namespace Controllers {
-		class __declspec(dllexport) WorldController {
+		class PHYSICSCOLLISION_API WorldController {
 		private:
 			Models::World _world;
-			Controllers::ShapeController _shapeController;
+			ShapeController _shapeController;
 		public:
 			WorldController();
 			void setup_world(const float width, const float height);

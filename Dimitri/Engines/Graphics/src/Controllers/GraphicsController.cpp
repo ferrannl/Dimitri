@@ -1,20 +1,30 @@
 #include "GraphicsController.h"
 using namespace Graphics;
 
+Controllers::GraphicsController::GraphicsController()
+{
+		_window = nullptr;
+}
+
 int Controllers::GraphicsController::create_window(const std::string title, const int height, const int width)
 {
 	_window = std::make_shared<Models::Window>(title, height, width);
 	return _window->create();
 }
 
-void Controllers::GraphicsController::add_sprites(std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> sprites)
+void Graphics::Controllers::GraphicsController::add_texture(const std::shared_ptr<Models::Texture>& texture)
 {
-	_window->set_sprites(sprites);
+	_window->add_texture(texture);
 }
 
-std::shared_ptr<std::vector<std::unique_ptr<Models::Sprite>>> Controllers::GraphicsController::get_sprites() const
+void Graphics::Controllers::GraphicsController::remove_texture(const std::shared_ptr<Models::Texture>& texture)
 {
-	return _window->get_sprites();
+	_window->remove_texture(texture);
+}
+
+std::vector<std::shared_ptr<Models::Texture>> Graphics::Controllers::GraphicsController::get_textures() const
+{
+	return _window->get_textures();
 }
 
 void Controllers::GraphicsController::update_window()

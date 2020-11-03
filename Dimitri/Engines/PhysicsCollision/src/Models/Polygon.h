@@ -4,11 +4,21 @@
 #include <vector>
 #include "../Facades/ShapeFacade.h"
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 namespace PhysicsCollision {
 	namespace Models {
-		class __declspec(dllexport) Polygon : public Shape {
+		class PHYSICSCOLLISION_API Polygon : public Shape {
 		public:
 			Polygon();
 		};
-	}
+		}
 }
