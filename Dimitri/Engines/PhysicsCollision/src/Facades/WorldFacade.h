@@ -20,7 +20,7 @@ namespace PhysicsCollision {
 			void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
 			void simulate()const;
 			void add_shape(std::shared_ptr<Models::Shape> shape);
-			void create_square_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape);
+			void create_polygon_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

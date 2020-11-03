@@ -25,13 +25,13 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 		b2PolygonShape _shape;
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
 		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		create_square_body(_shape, bodyDef, fixtureDef, body, shape);
+		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
 
-void Facades::WorldFacade::create_square_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape) {
+void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape) {
 	if (shape->get_is_dynamic())
 	{
 		bodyDef.type = b2_dynamicBody;
