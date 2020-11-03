@@ -7,7 +7,6 @@
 #include <src\Controllers\InputController.h>
 #include <src\Controllers\WorldController.h>
 #include <src\Helpers\BasePathHelper.h>
-
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 

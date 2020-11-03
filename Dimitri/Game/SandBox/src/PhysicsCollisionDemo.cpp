@@ -118,6 +118,3 @@ void PhysicsCollisionDemo::subscribe_to_input(std::shared_ptr<PhysicsCollisionDe
 {
 	input_controller->subscribe(demo);
 }
-
-
-
