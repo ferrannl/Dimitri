@@ -125,7 +125,7 @@ void Game::Models::Level::load_objects()
 	_borders.push_back(_physics_collision_controller->create_shape(1081, 0, 1, 720, false));//rig
 }
 
-std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures()
+std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> textures = {};
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> temp = _player->get_all_textures();
@@ -144,17 +144,17 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	return textures;
 }
 
-std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player()
+std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player() const
 {
 	return _player;
 }
 
-std::vector<std::shared_ptr<Game::Models::IInteractable>> Game::Models::Level::get_interactables()
+std::vector<std::shared_ptr<Game::Models::IInteractable>> Game::Models::Level::get_interactables() const
 {
 	return _interactables;
 }
 
-std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Level::get_physics_collision_controller()
+std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Level::get_physics_collision_controller() const
 {
 	return _physics_collision_controller;
 }

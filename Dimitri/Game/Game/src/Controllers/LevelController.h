@@ -30,7 +30,7 @@ namespace Game {
 			/**
 			*	List of all textures in level
 			*/
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures();
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 
 			/**
 			*	Update received from input controller
@@ -40,7 +40,7 @@ namespace Game {
 			/**
 			*	Returns level
 			*/
-			std::shared_ptr<Game::Models::Level> get_level();
+			std::shared_ptr<Game::Models::Level> get_level() const;
 
 			/**
 			*	Start simulation

@@ -8,7 +8,7 @@ Controllers::WindowController::WindowController()
 	create_window(1080, 720);
 }
 
-void Game::Controllers::WindowController::create_window(int height, int width)
+void Game::Controllers::WindowController::create_window(const int& height, const int& width)
 {
 	if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
 		return;

@@ -36,7 +36,7 @@ namespace Game {
 			/**
 			*	Creates window
 			*/
-			void create_window(int height, int width);
+			void create_window(const int& height, const int& width);
 
 			/**
 			*	Adds Texture to window

@@ -61,42 +61,42 @@ namespace Game {
 			/**
 			*	Returns x
 			*/
-			int get_x();
+			int get_x() const;
 
 			/**
 			*	Sets x
 			*/
-			void set_x(int value);
+			void set_x(const int& value);
 
 			/**
 			*	Returns y
 			*/
-			int get_y();
+			int get_y() const;
 
 			/**
 			*	Sets x
 			*/
-			void set_y(int value);
+			void set_y(const int& value);
 
 			/**
 			*	Returns z
 			*/
-			int get_z();
+			int get_z() const;
 
 			/**
 			*	Sets x
 			*/
-			void set_z(int value);
+			void set_z(const int& value);
 
 			/**
 			*	Sets state
 			*/
-			void set_state(std::string value);
+			void set_state(const std::string& value);
 
 			/**
 			*	Returns shape
 			*/
-			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape();
+			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
 
 			/**
 			*	Sets shape
@@ -111,12 +111,12 @@ namespace Game {
 			/**
 			*	Returns height
 			*/
-			int get_height();
+			int get_height() const;
 
 			/**
 			*	Returns width
 			*/
-			int get_width();
+			int get_width() const;
 
 			/**
 			*	Updates x/y values using shape

@@ -25,47 +25,47 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::IObject::g
 	return value;
 }
 
-int Game::Models::IObject::get_x()
+int Game::Models::IObject::get_x() const
 {
 	return _x;
 }
 
-void Game::Models::IObject::set_x(int value)
+void Game::Models::IObject::set_x(const int& value)
 {
 	this->_x = value;
 	_textures[_state]->set_x(_x);
 }
 
-int Game::Models::IObject::get_y()
+int Game::Models::IObject::get_y() const
 {
 	return _y;
 }
 
-void Game::Models::IObject::set_y(int value)
+void Game::Models::IObject::set_y(const int& value)
 {
 	this->_y = value;
 	_textures[_state]->set_y(_y);
 }
 
-int Game::Models::IObject::get_z()
+int Game::Models::IObject::get_z() const
 {
 	return _z;
 }
 
-void Game::Models::IObject::set_z(int value)
+void Game::Models::IObject::set_z(const int& value)
 {
 	this->_z = value;
 	_textures[_state]->set_z(_z);
 }
 
-void Game::Models::IObject::set_state(std::string value)
+void Game::Models::IObject::set_state(const std::string& value)
 {
 	this->get_texture()->set_visible(false);
 	this->_state = value;
 	this->get_texture()->set_visible(true);
 }
 
-std::shared_ptr<PhysicsCollision::Models::Shape> Game::Models::IObject::get_shape()
+std::shared_ptr<PhysicsCollision::Models::Shape> Game::Models::IObject::get_shape() const
 {
 	return _shape;
 }
@@ -80,12 +80,12 @@ void Game::Models::IObject::add_texture(std::string state, std::shared_ptr<Graph
 	this->_textures.insert(std::pair<std::string, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
 }
 
-int Game::Models::IObject::get_height()
+int Game::Models::IObject::get_height() const
 {
 	return _height;
 }
 
-int Game::Models::IObject::get_width()
+int Game::Models::IObject::get_width() const
 {
 	return _width;
 }

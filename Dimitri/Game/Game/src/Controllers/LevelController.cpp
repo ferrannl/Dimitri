@@ -1,5 +1,4 @@
 #include "LevelController.h"
-using namespace Game::Models;
 using namespace Game;
 
 Game::Controllers::LevelController::LevelController()
@@ -9,7 +8,7 @@ Game::Controllers::LevelController::LevelController()
 	start();
 }
 
-std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures()
+std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
 {
 	return _level->get_textures();
 }
@@ -29,7 +28,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		_level->get_player()->get_shape()->move_y();
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_E:
-		for (std::shared_ptr<IInteractable> interactable : _level->get_interactables())
+		for (std::shared_ptr<Models::IInteractable> interactable : _level->get_interactables())
 		{
 			if (_level->get_physics_collision_controller()->check_collision(_level->get_player()->get_shape(), interactable->get_shape()))
 			{
@@ -40,7 +39,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	}
 }
 
-std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level()
+std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
 {
 	return _level;
 }
