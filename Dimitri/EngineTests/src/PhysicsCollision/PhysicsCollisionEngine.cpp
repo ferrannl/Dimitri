@@ -20,7 +20,8 @@ namespace EngineTests
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
 
 			ctr.setup_world(1080, 720);
-			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 20.0f, 20.0f, true);
+			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 1.0f, 1.0f, true);
+			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 9.0f, 1.0f, 1.0f, false);
 
 
 			return ctr;
@@ -76,6 +77,20 @@ namespace EngineTests
 			ctr.simulate();
 
 			Assert::AreNotEqual(10.0f, shapes[0]->get_y());
+		}
+
+		TEST_METHOD(Collision)
+		{
+			PhysicsCollision::Controllers::WorldController ctr = create_world_setup();
+
+			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
+
+			for (int i = 0; i < 10; i++)
+			{
+				ctr.simulate();
+			}
+
+			Assert::AreEqual((int)(shapes[1]->get_y() + shapes[1]->get_height()), (int)shapes[0]->get_y());
 		}
 	};
 }
