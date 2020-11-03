@@ -1,92 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\Views\CreditsView.cpp" />
+    <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Controllers\InputController.cpp" />
+    <ClCompile Include="src\Controllers\LevelController.cpp" />
+    <ClCompile Include="src\Controllers\MainController.cpp" />
+    <ClCompile Include="src\Controllers\WindowController.cpp" />
+    <ClCompile Include="src\Events\InputEvent.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Models\IObject.cpp" />
+    <ClCompile Include="src\Models\Level.cpp" />
+    <ClCompile Include="src\Models\Player.cpp" />
+    <ClCompile Include="src\Models\Wall.cpp" />
+    <ClCompile Include="src\Views\LevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\InputController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\MainController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\WindowController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\CreditsView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\InputEvent.cpp">
-    <ClCompile Include="src\Models\Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\AudioController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\LevelController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\IObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Events\InputEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Wall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Controllers\InputController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\MainController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\WindowController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\CreditsView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\InputEvent.h">
-    <ClInclude Include="src\Models\Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\AudioController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\LevelController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\IObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\InputEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Wall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Views\CreditsView.h" />
+    <ClInclude Include="src\Controllers\AudioController.h" />
+    <ClInclude Include="src\Controllers\InputController.h" />
+    <ClInclude Include="src\Controllers\LevelController.h" />
+    <ClInclude Include="src\Controllers\MainController.h" />
+    <ClInclude Include="src\Controllers\WindowController.h" />
+    <ClInclude Include="src\Events\InputEvent.h" />
+    <ClInclude Include="src\Models\IObject.h" />
+    <ClInclude Include="src\Models\Level.h" />
+    <ClInclude Include="src\Models\Player.h" />
+    <ClInclude Include="src\Models\Wall.h" />
+    <ClInclude Include="src\Views\LevelView.h" />
   </ItemGroup>
 </Project>

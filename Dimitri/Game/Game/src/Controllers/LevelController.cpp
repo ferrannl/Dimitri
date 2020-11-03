@@ -11,7 +11,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 	return _level->get_textures();
 }
 
-void Game::Controllers::LevelController::update(const Game::Models::InputEvent& object)
+void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:

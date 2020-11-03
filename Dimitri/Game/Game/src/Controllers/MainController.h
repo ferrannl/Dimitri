@@ -16,7 +16,6 @@ namespace Game {
 			MainController();
 
 			void run();
-			void draw();
 		};
 	}
 }

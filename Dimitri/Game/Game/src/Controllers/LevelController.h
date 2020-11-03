@@ -5,7 +5,7 @@
 #include <src\Models\Texture.h>
 namespace Game {
 	namespace Controllers {
-		class LevelController : public Utility::Interfaces::IObserver<Game::Models::InputEvent> {
+		class LevelController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
 		private:
 			std::shared_ptr<Game::Models::Level> _level;
 		public:
@@ -19,7 +19,7 @@ namespace Game {
 			/**
 			*	Update received from input controller
 			*/
-			void update(const Game::Models::InputEvent& object);
+			void update(const Game::Events::InputEvent& object);
 
 			std::shared_ptr<Game::Models::Level> get_level();
 		};

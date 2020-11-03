@@ -14,9 +14,10 @@ void Game::Controllers::WindowController::create_window(int height, int width)
 	}
 
 	_credits_view = std::make_unique<Views::CreditsView>(_graphics_controller);
+	_level_view = std::make_unique<Views::LevelView>(_graphics_controller);
 }
 
-void Game::Controllers::WindowController::update(const Game::Models::InputEvent& object)
+void Game::Controllers::WindowController::update(const Game::Events::InputEvent& object)
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_C:
@@ -27,8 +28,18 @@ void Game::Controllers::WindowController::update(const Game::Models::InputEvent&
 			_credits_view.get()->close();
 		}
 		break;
+	
+	case Input::Enums::EventEnum::KEY_PRESS_L:
+		if (!_level_view.get()->is_open) {
+			_level_view.get()->open();
+		}
+		else {
+			_level_view.get()->close();
+		}
+		break;
 	}
 }
+
 
 void Game::Controllers::WindowController::add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture)
 {
@@ -48,4 +59,9 @@ void Game::Controllers::WindowController::update_window()
 void Game::Controllers::WindowController::destroy_window()
 {
 	_graphics_controller->get_window()->destroy();
+}
+
+void Game::Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
+{
+	_level_view->init_textures(textures);
 }

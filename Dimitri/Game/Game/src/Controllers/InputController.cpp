@@ -13,15 +13,15 @@ void Game::Controllers::InputController::poll_events() {
 void Game::Controllers::InputController::update(const Input::Enums::EventEnum& object)
 {
 	std::tuple<int, int> pos = _input_controller->get_mouse_position();
-	notify(Game::Models::InputEvent(object, pos));
+	notify(Game::Events::InputEvent(object, pos));
 }
 
-void Game::Controllers::InputController::notify(const Game::Models::InputEvent& object) {
+void Game::Controllers::InputController::notify(const Game::Events::InputEvent& object) {
 	for (auto observer : _observers) {
 		observer->update(object);
 	}
 }
 
-void Game::Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Models::InputEvent>> observer) {
+void Game::Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>> observer) {
 	_observers.push_back(observer);
 }

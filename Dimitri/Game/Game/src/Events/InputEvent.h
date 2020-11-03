@@ -2,7 +2,7 @@
 #include <src\Enums\EventEnum.cpp>
 #include <tuple>
 namespace Game {
-	namespace Models {
+	namespace Events {
 		class InputEvent {
 		public:
 			Input::Enums::EventEnum event_enum;

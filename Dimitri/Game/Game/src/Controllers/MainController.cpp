@@ -15,20 +15,6 @@ Controllers::MainController::MainController()
 
 void Game::Controllers::MainController::run()
 {
-	for (auto texture : _level_controller->get_textures()) {
-
-		_window_controller->add_texture(texture);
-	}
-	std::thread draw_thread(&MainController::draw, this);
+	_window_controller->set_level_textures(_level_controller->get_textures());
 	_input_controller->poll_events();
-	draw_thread.join();
-}
-
-void Game::Controllers::MainController::draw()
-{
-	while (true) {
-		sleep_for(5ms);
-		_window_controller->update_window();
-	}
-	_window_controller->destroy_window();
 }

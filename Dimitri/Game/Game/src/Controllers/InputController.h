@@ -6,16 +6,16 @@
 
 namespace Game {
 	namespace Controllers {
-		class InputController : public Utility::Interfaces::IObserver<Input::Enums::EventEnum>, public std::enable_shared_from_this<InputController>, public Utility::Interfaces::IObservable<Game::Models::InputEvent> {
+		class InputController : public Utility::Interfaces::IObserver<Input::Enums::EventEnum>, public std::enable_shared_from_this<InputController>, public Utility::Interfaces::IObservable<Game::Events::InputEvent> {
 		private:
 			std::unique_ptr<Input::Controllers::InputController> _input_controller;
-			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Game::Models::InputEvent>>> _observers;
+			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>> _observers;
 		public:
 			InputController();
 			void poll_events();
 			void update(const Input::Enums::EventEnum& object);
-			void notify(const Game::Models::InputEvent& object);
-			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Models::InputEvent>> observer);
+			void notify(const Game::Events::InputEvent& object);
+			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>> observer);
 		};
 	}
 }
