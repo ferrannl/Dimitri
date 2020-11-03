@@ -1,4 +1,5 @@
 #include "EventFacade.h" 
+#include <SDL_events.h>
 using namespace Input;
 
 Facades::EventFacade::EventFacade()

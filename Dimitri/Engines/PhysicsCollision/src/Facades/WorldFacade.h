@@ -1,10 +1,7 @@
 #pragma once
 #include <vector>
 #include "../Models/Shape.h"
-#include <box2d/b2_world.h>
-#include <box2d/b2_math.h>
-#include <box2d/b2_body.h>
-#include <box2d/b2_fixture.h>
+
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
@@ -24,7 +21,7 @@ namespace Facades {
 	public:
 		WorldFacade();
 		void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
-		void simulate()const ;
-		void add_shape(std::unique_ptr<Models::Shape> &shape, const float x, const float y);
+		void simulate()const;
+		void add_shape(std::unique_ptr<Models::Shape>& shape, const float x, const float y);
 	};
 }

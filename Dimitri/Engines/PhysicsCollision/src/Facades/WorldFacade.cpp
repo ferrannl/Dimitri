@@ -1,4 +1,8 @@
 #include "WorldFacade.h"
+#include <box2d/b2_world.h>
+#include <box2d/b2_math.h>
+#include <box2d/b2_body.h>
+#include <box2d/b2_fixture.h>
 
 Facades::WorldFacade::WorldFacade()
 {
@@ -12,7 +16,7 @@ void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> sh
 	_world->DestroyBody(shape_facade->get_body());
 }
 
-void Facades::WorldFacade::add_shape(std::unique_ptr<Models::Shape> &shape, const float x, const float y)
+void Facades::WorldFacade::add_shape(std::unique_ptr<Models::Shape>& shape, const float x, const float y)
 {
 	b2Body* body;
 	b2BodyDef bodyDef;

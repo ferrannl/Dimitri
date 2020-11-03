@@ -1,4 +1,6 @@
 #include "MouseFacade.h"
+#include <SDL.h>
+#include <SDL_mouse.h>
 using namespace Input;
 
 std::tuple<int, int> Facades::MouseFacade::get_mouse_position() const
