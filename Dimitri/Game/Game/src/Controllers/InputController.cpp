@@ -12,24 +12,14 @@ void Game::Controllers::InputController::poll_events() {
 
 void Game::Controllers::InputController::update(const Input::Enums::EventEnum& object)
 {
-	switch (object) {
-	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		std::cout << "links" << std::endl;
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		std::cout << "rechts" << std::endl;
-		break;
-	case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT: {
-		std::tuple<int, int> pos = _input_controller->get_mouse_position();
-		std::cout << "left click position: " << std::get<0>(pos) << ", " << std::get<1>(pos) << std::endl;
-		break;
-	}
-	case Input::Enums::EventEnum::MOUSE_PRESSED_RIGHT: {
-		std::tuple<int, int> pos = _input_controller->get_mouse_position();
-		std::cout << "right click position: " << std::get<0>(pos) << ", " << std::get<1>(pos) << std::endl;
-		break;
-	}
-	default:
-		std::cout << "geen reactie" << std::endl;
-	}
+	std::tuple<int, int> pos = _input_controller->get_mouse_position();
+	notify(Game::Models::InputEvent(object, pos));
+}
+
+void Game::Controllers::InputController::notify(const Game::Models::InputEvent& object) {
+	_observer->update(object);
+}
+
+void Game::Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Models::InputEvent>> observer) {
+	_observer = observer;
 }

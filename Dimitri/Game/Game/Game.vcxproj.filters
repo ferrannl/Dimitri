@@ -27,6 +27,10 @@
     <ClCompile Include="src\Controllers\WindowController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Views\CreditsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\InputEvent.cpp">
     <ClCompile Include="src\Models\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,6 +48,10 @@
     <ClInclude Include="src\Controllers\WindowController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Views\CreditsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\InputEvent.h">
     <ClInclude Include="src\Models\Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
