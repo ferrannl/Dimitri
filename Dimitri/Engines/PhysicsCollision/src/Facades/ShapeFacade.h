@@ -9,29 +9,26 @@
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
 #define PHYSICSCOLLISION_API __declspec(dllexport)
-#else 
+#else
 #define PHYSICSCOLLISION_API __declspec(dllimport)
 #endif
 #else
 #define PHYSICSCOLLISION_API
 #endif
 
-namespace Facades {
-	float static RADIAN_IN_DEGREES = 57.3f;
-	class PHYSICSCOLLISION_API ShapeFacade {
-	private:
-		std::shared_ptr<b2PolygonShape> _shape;
-		b2Body* _body;
-	public:
-		ShapeFacade();
-		ShapeFacade(const std::string type, std::vector<std::pair<float, float>> positions);
-		std::shared_ptr<b2Shape> get_shape() const;
-		void add_body(b2Body* body);
-		float get_x()const;
-		float get_y()const;
-		void move_x(const int value)const;
-		void move_y()const;
-		float get_angle()const;
-		b2Body* get_body()const;
-	};
+namespace PhysicsCollision {
+	namespace Facades {
+		float static RADIAN_IN_DEGREES = 57.3f;
+		class PHYSICSCOLLISION_API ShapeFacade {
+		private:
+			b2Body* _body;
+		public:
+			ShapeFacade();
+			void add_body(b2Body* body);
+			b2Body* get_body()const;
+			void move_x(const int value)const;
+			void move_y()const;
+			float get_angle()const;
+		};
+		}
 }
