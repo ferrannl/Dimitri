@@ -13,9 +13,17 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
-
+/**
+* Namespace for the PhysicsCollision
+*/
 namespace PhysicsCollision {
+	/**
+	* Namespace for the models
+	*/
 	namespace Models {
+		/**
+		* Polygon Model
+		*/
 		class PHYSICSCOLLISION_API Polygon : public Shape {
 		public:
 			Polygon();
