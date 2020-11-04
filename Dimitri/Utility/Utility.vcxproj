@@ -23,6 +23,7 @@
     <ClCompile Include="src\Helpers\BasePathHelper.cpp" />
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\Time\Fps.cpp" />
+    <ClCompile Include="src\Time\Interval.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\framework.h" />

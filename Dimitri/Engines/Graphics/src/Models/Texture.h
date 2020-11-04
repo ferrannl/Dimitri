@@ -60,6 +60,11 @@ namespace Graphics {
 			float _angle;
 
 			/**
+			* Visibility of texture
+			*/
+			bool _visible;
+
+			/**
 			* The path of the texture
 			*/
 			std::string _path;
@@ -122,6 +127,11 @@ namespace Graphics {
 			Enums::FlipEnum get_flip_status() const;
 
 			/**
+			* returns the visibility
+			*/
+			bool get_visible() const;
+
+			/**
 			* returns the facade of the texture for the sprite
 			*/
 			std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
@@ -160,6 +170,11 @@ namespace Graphics {
 			* sets the flip direction
 			*/
 			void set_flip_status(const Enums::FlipEnum flipstatus);
+
+			/**
+			* sets the visibility
+			*/
+			void set_visible(const bool visibility);
 
 			/**
 			* sets the facade containing the references to sdl

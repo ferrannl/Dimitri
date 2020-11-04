@@ -21,7 +21,7 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 		if (_window == NULL) {
 			throw Exceptions::CannotCreateWindow();
 		}
-		fps = Fps();
+		fps = Utility::Time::Fps();
 		return 1;
 	}
 	catch (Exceptions::SDLInitFailed& e) {
@@ -62,17 +62,12 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
-	//Update and draw FPS
-	fps.update();
-	if (fps.getShown()) {
-		SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
-	}
-	else {
-		SDL_SetWindowTitle(_window.get(), "");
-	}
+
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
-		ordered_textures[texture.get()->get_z()].push_back(texture);
+		if (texture.get()->get_visible()) {
+			ordered_textures[texture.get()->get_z()].push_back(texture);
+		}
 	}
 
 	for (const std::pair<int, std::vector<std::shared_ptr<Graphics::Models::Texture>>>& kv : ordered_textures) {
@@ -101,6 +96,12 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 
 	//Update screen
 	SDL_RenderPresent(_renderer.get());
+
+	fps.update();
+
+	if (fps.getShown()) {
+		std::cout << fps.get() << std::endl;
+	}
 }
 
 void Graphics::Facades::WindowFacade::switch_fps()

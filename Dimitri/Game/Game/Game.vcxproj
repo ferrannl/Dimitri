@@ -154,23 +154,40 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Models\InputEvent.cpp" />
+    <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Enums\StateEnum.cpp" />
+    <ClCompile Include="src\Models\IInteractable.cpp" />
+    <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
+    <ClCompile Include="src\Controllers\LevelController.cpp" />
     <ClCompile Include="src\Controllers\MainController.cpp" />
     <ClCompile Include="src\Controllers\WindowController.cpp" />
+    <ClCompile Include="src\Events\InputEvent.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Models\IObject.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
+    <ClCompile Include="src\Models\Player.cpp" />
+    <ClCompile Include="src\Models\Wall.cpp" />
+    <ClCompile Include="src\Views\LevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Models\InputEvent.h" />
+    <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
+    <ClInclude Include="src\Models\IInteractable.h" />
+    <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
+    <ClInclude Include="src\Controllers\LevelController.h" />
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
+    <ClInclude Include="src\Events\InputEvent.h" />
+    <ClInclude Include="src\Models\IObject.h" />
     <ClInclude Include="src\Models\Level.h" />
+    <ClInclude Include="src\Models\Player.h" />
+    <ClInclude Include="src\Models\Wall.h" />
+    <ClInclude Include="src\Views\LevelView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

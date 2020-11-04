@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
@@ -6,7 +7,6 @@
 #include <thread>
 using namespace std::this_thread;
 using namespace std::chrono_literals;
-
 /**
 *	Namespace for the game
 */
@@ -18,7 +18,7 @@ namespace Game {
 		/**
 		*	Containing all the code to draw the level using the graphics controller
 		*/
-		class CreditsView {
+		class LevelView {
 		private:
 			/**
 			*	Graphics controller to update window
@@ -33,7 +33,8 @@ namespace Game {
 			*/
 			std::thread draw_thread;
 		public:
-			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+
 			/**
 			*	If view is currently being used or not
 			*/
@@ -42,7 +43,7 @@ namespace Game {
 			/**
 			*	Initializes textures
 			*/
-			void init_textures();
+			void init_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
 			/**
 			*	Open window loads textures into graphics
 			*/
