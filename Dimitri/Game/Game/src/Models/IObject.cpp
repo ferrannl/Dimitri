@@ -30,7 +30,7 @@ int Game::Models::IObject::get_x() const
 	return _x;
 }
 
-void Game::Models::IObject::set_x(const int& value)
+void Game::Models::IObject::set_x(int value)
 {
 	this->_x = value;
 	_textures[_state]->set_x(_x);
@@ -41,7 +41,7 @@ int Game::Models::IObject::get_y() const
 	return _y;
 }
 
-void Game::Models::IObject::set_y(const int& value)
+void Game::Models::IObject::set_y(int value)
 {
 	this->_y = value;
 	_textures[_state]->set_y(_y);
@@ -52,13 +52,13 @@ int Game::Models::IObject::get_z() const
 	return _z;
 }
 
-void Game::Models::IObject::set_z(const int& value)
+void Game::Models::IObject::set_z(int value)
 {
 	this->_z = value;
 	_textures[_state]->set_z(_z);
 }
 
-void Game::Models::IObject::set_state(const Game::Enums::StateEnum& value)
+void Game::Models::IObject::set_state(Game::Enums::StateEnum value)
 {
 	this->get_texture()->set_visible(false);
 	this->_state = value;
@@ -75,7 +75,7 @@ void Game::Models::IObject::set_shape(std::shared_ptr<PhysicsCollision::Models::
 	_shape = shape;
 }
 
-void Game::Models::IObject::add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture)
+void Game::Models::IObject::add_texture(Game::Enums::StateEnum state, std::shared_ptr<Graphics::Models::Texture> texture)
 {
 	this->_textures.insert(std::pair<Game::Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
 }

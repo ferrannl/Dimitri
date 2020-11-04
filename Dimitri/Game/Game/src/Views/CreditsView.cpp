@@ -1,7 +1,7 @@
 #include "CreditsView.h"
 using namespace Game;
 
-Views::CreditsView::CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : _graphics_controller{ graphics_controller }
+Views::CreditsView::CreditsView(std::shared_ptr<Graphics::Controllers::GraphicsController> graphics_controller) : _graphics_controller{ graphics_controller }
 {
 	init_textures();
 }

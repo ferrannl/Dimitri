@@ -45,16 +45,16 @@ namespace Game {
 			/**
 			*	Creates window
 			*/
-			void create_window(const int& height, const int& width);
+			void create_window(int height, int width);
 
 			/**
 			*	Adds Texture to window
 			*/
-			void add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
+			void add_texture(std::shared_ptr<Graphics::Models::Texture> texture);
 			/**
 			*	Removes texture from window
 			*/
-			void remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
+			void remove_texture(std::shared_ptr<Graphics::Models::Texture> texture);
 			/**
 			*	Refreshes window
 			*/

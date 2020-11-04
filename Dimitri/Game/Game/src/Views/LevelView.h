@@ -33,7 +33,7 @@ namespace Game {
 			*/
 			std::thread draw_thread;
 		public:
-			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			LevelView(std::shared_ptr<Graphics::Controllers::GraphicsController> graphics_controller);
 
 			/**
 			*	If view is currently being used or not

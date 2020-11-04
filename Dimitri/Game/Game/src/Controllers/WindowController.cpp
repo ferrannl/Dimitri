@@ -8,7 +8,7 @@ Controllers::WindowController::WindowController()
 	create_window(1080, 720);
 }
 
-void Game::Controllers::WindowController::create_window(const int& height, const int& width)
+void Game::Controllers::WindowController::create_window(int height, int width)
 {
 	if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
 		return;
@@ -50,12 +50,12 @@ void Game::Controllers::WindowController::update(const Game::Events::InputEvent&
 }
 
 
-void Game::Controllers::WindowController::add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture)
+void Game::Controllers::WindowController::add_texture(std::shared_ptr<Graphics::Models::Texture> texture)
 {
 	_graphics_controller->add_texture(texture);
 }
 
-void Game::Controllers::WindowController::remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture)
+void Game::Controllers::WindowController::remove_texture(std::shared_ptr<Graphics::Models::Texture> texture)
 {
 	_graphics_controller->remove_texture(texture);
 }
