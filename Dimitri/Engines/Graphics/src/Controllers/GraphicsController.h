@@ -43,12 +43,12 @@ namespace Graphics {
 			* Adds the texture to the window
 			*/
 			void add_texture(const std::shared_ptr<Models::Texture>& texture);
-      
+
 			/**
 			* Removes the texture to the window
 			*/
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
-      
+
 			/**
 			* Returns the textures from the window
 			*/
@@ -63,6 +63,8 @@ namespace Graphics {
 			* Returns the window
 			*/
 			std::shared_ptr<Models::Window> get_window() const;
+
+			void switch_fps();
 		};
 	}
 }

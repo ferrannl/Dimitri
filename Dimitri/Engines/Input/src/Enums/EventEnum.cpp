@@ -72,7 +72,8 @@ namespace Input {
 			KEY_PRESS_6,
 			KEY_PRESS_7,
 			KEY_PRESS_8,
-			KEY_PRESS_9
+			KEY_PRESS_9,
+			KEY_PRESS_QUIT
 		};
 	}
 }
