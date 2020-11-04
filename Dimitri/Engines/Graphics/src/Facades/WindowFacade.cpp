@@ -21,7 +21,7 @@ int Facades::WindowFacade::create_window(const std::string title, const int heig
 		if (_window == NULL) {
 			throw Exceptions::CannotCreateWindow();
 		}
-		fps = Fps();
+		fps = Utility::Time::Fps();
 		return 1;
 	}
 	catch (Exceptions::SDLInitFailed& e) {

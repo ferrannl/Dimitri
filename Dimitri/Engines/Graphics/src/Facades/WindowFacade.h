@@ -30,7 +30,7 @@ namespace Graphics {
 			/**
 			* An instance of FPS.
 			*/
-			Fps fps = {};
+			Utility::Time::Fps fps = {};
 			/**
 		   * An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
 		   */
