@@ -14,10 +14,13 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
 	/**
-	  * Namespace for all the facades in the project
-	  */
+	* Namespace for the facades
+	*/
 	namespace Facades {
 		/**
 		* Contains all the references needed for the SDL_Window

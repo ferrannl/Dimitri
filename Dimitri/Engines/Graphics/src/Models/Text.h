@@ -16,15 +16,25 @@
 #define GRAPHICS_API
 #endif
 
+
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
+	/**
+	* Namespace for the models
+	*/
 	namespace Models {
+		/**
+		* Containing all methods and attributes to draw text
+		*/
 		class GRAPHICS_API Text : public Texture {
 		private:
 			/**
 			* The text of the Text
 			*/
-
 			std::string _text;
+
 			/**
 			* The color of the Text
 			*/
