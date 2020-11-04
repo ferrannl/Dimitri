@@ -13,7 +13,7 @@ namespace Game {
 		*/
 		class Player : public Game::Models::IObject{
 		public:
-			Player(int x, int y, int z, int height, int width);
+			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
 		};
 	}

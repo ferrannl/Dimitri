@@ -56,7 +56,7 @@ namespace Game {
 			virtual void initialize_textures() = 0;
 
 		public:
-			IObject(int x, int y, int z, int height, int width);
+			IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 
 			/**
 			*	Returns texture based on state
@@ -76,7 +76,7 @@ namespace Game {
 			/**
 			*	Sets x
 			*/
-			void set_x(const int& value);
+			void set_x(int value);
 
 			/**
 			*	Returns y
@@ -86,7 +86,7 @@ namespace Game {
 			/**
 			*	Sets x
 			*/
-			void set_y(const int& value);
+			void set_y(int value);
 
 			/**
 			*	Returns z
@@ -96,12 +96,12 @@ namespace Game {
 			/**
 			*	Sets x
 			*/
-			void set_z(const int& value);
+			void set_z(int value);
 
 			/**
 			*	Sets state
 			*/
-			void set_state(const Game::Enums::StateEnum& state);
+			void set_state(Game::Enums::StateEnum state);
 
 			/**
 			*	Returns shape
@@ -116,7 +116,7 @@ namespace Game {
 			/**
 			*	Adds texture
 			*/
-			void add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(Game::Enums::StateEnum state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			*	Returns height

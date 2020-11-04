@@ -13,7 +13,7 @@ namespace Game {
 		*/
 		class Switch : public Game::Models::IInteractable {
 		public:
-			Switch(int x, int y, int z, int height, int width);
+			Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
 			void interact();
 		};

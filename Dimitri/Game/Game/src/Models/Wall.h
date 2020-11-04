@@ -13,7 +13,7 @@ namespace Game {
 		*/
 		class Wall : public Game::Models::IObject {
 		public:
-			Wall(int x, int y, int z, int height, int width);
+			Wall(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
 		};
 	}

@@ -1,6 +1,6 @@
 #include "IObject.h"
 
-Game::Models::IObject::IObject(int x, int y, int z, int height, int width) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }
+Game::Models::IObject::IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _state { state }
 {
 	
 }

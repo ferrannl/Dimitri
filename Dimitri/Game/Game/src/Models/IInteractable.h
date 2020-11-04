@@ -13,7 +13,7 @@ namespace Game {
 		*/
 		class IInteractable : public Game::Models::IObject{
 		public:
-			IInteractable(int x, int y, int z, int height, int width);
+			IInteractable(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			
 			/**
 			*	Virtual method to for example change object state
