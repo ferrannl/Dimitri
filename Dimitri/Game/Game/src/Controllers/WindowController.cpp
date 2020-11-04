@@ -33,7 +33,6 @@ void Game::Controllers::WindowController::update(const Game::Events::InputEvent&
 			_credits_view.get()->close();
 		}
 		break;
-	
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_level_view.get()->is_open) {
 			if (!_open_window) {
@@ -45,6 +44,10 @@ void Game::Controllers::WindowController::update(const Game::Events::InputEvent&
 			_open_window = false;
 			_level_view.get()->close();
 		}
+	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
+		exit(0);
+	case Input::Enums::EventEnum::KEY_PRESS_F:
+		_graphics_controller->switch_fps();
 		break;
 	}
 }

@@ -12,9 +12,12 @@
 #define GRAPHICS_API
 #endif
 
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {
-  /**
-	* Namespace for all the models in the project
+	/**
+	* Namespace for the models
 	*/
 	namespace Models {
 		/**
@@ -26,7 +29,7 @@ namespace Graphics {
 			* Height of the window
 			*/
 			int _height;
-      
+
 			/**
 			* Width of the window
 			*/
@@ -40,13 +43,13 @@ namespace Graphics {
 			/**
 			* Holds all functions and references to sdl which can be used to create/destroy/update windows and render sprites
 			*/
-			std::unique_ptr<Facades::WindowFacade> _facade;
+			std::shared_ptr<Facades::WindowFacade> _facade;
 
 			/**
 			* Holds all the textures displayed in the window
 			*/
 			std::vector<std::shared_ptr<Texture>> _textures;
-      
+
 			/**
 			* Returns a Texture if a matching Texture already exists
 			*/
@@ -69,17 +72,17 @@ namespace Graphics {
 			* Destroys a window
 			*/
 			void destroy();
-  
+
 			/**
 			* Adds the Texture to _textures
 			*/
 			void add_texture(const std::shared_ptr<Texture>& texture);
-      
+
 			/**
 			* Removes the Texture from _textures
 			*/
 			void remove_texture(const std::shared_ptr<Texture>& texture);
-      
+
 			/**
 			* Returns the textures list of this model
 			*/
@@ -99,6 +102,8 @@ namespace Graphics {
 			* Returns the title of this window
 			*/
 			const std::string get_title() const;
+
+			std::shared_ptr<Facades::WindowFacade> get_facade() const;
 		};
 	}
 }

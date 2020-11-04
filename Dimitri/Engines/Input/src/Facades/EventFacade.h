@@ -14,15 +14,34 @@
 #define INPUT_API
 #endif
 
+/**
+* Namespace for the input engine
+*/
 namespace Input {
-namespace Facades {
-	class INPUT_API EventFacade {
-	private:
-		SDL_Event _event;
-		std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
-	public:
+	/**
+	* Namespace for the facades
+	*/
+	namespace Facades {
+		/**
+		* Containing all methods and references used to get fired events from SDL
+		*/
+		class INPUT_API EventFacade {
+		private:
+			/**
+			* The event model made by SDL
+			*/
+			SDL_Event _event;
 
+			/**
+			* Adapter used to translate the SDL events to the EvenEnum
+			*/
+			std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
+		public:
 			EventFacade();
+
+			/**
+			* returns events which are fired
+			*/
 			Enums::EventEnum poll_event();
 		};
 	}

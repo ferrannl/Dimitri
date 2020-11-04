@@ -14,9 +14,13 @@
 #define GRAPHICS_API
 #endif
 
+
+/**
+* Namespace for the graphics engine
+*/
 namespace Graphics {  
 	/**
-	* Namespace for all the models in the project
+	* Namespace for the models
 	*/
 	namespace Models {
 		class GRAPHICS_API Sprite : public Texture {

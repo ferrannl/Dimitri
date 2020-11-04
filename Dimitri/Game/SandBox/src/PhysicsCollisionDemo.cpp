@@ -18,7 +18,7 @@ void PhysicsCollisionDemo::start_demo()
 	std::string bg_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" };
 	std::string ground_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/wall.png" };
 	std::string player_image = Utility::Helpers::get_base_path() + std::string{ "/assets/images/player.png" };
-	create_sprite(350, 300, 1, 75, 75, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
+	create_sprite(350, 300, 1, 50, 100, player_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
 	create_sprite(300, 200, 1, 300, 50, ground_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
 	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
 	create_sprite(0, 0, 0, 1080, 720, bg_image.c_str(), 0, Graphics::Enums::FlipEnum::NONE);
@@ -26,7 +26,7 @@ void PhysicsCollisionDemo::start_demo()
 	create_text("Dimitri", 450, 550, 2, 200, 100, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }, 0);
 	create_text("het stealth spel van 2020", 450, 540, 2, 200, 30, Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" }, 0);
 	textures = graphics_controller.get_textures();
-	create_shape(350, 300, 75, 75, true);
+	create_shape(350, 300, 50, 100, true);
 	create_shape(300, 200, 300, 50, false);
 
 	// create walls around screen
@@ -107,6 +107,8 @@ void PhysicsCollisionDemo::update(const Input::Enums::EventEnum& event)
 		textures.at(0)->set_y(shapes.at(0)->get_y());
 		textures.at(0)->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
+		exit(0);
 	default:
 		std::cout << "geen reactie";
 		break;
