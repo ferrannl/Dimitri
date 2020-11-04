@@ -18,7 +18,7 @@
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the models
+	* Namespace for the Models
 	*/
 	namespace Models {
 		/**

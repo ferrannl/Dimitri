@@ -34,15 +34,15 @@ namespace PhysicsCollision {
 			*/
 			float _y;
 			/**
-			* Width position of a shape
+			* Width of a shape
 			*/
 			float _width;
 			/**
-			* Height position of a shape
+			* Height of a shape
 			*/
 			float _height;
 			/**
-			* Is dynamic position of a shape
+			* Is dynamic boolean of a shape
 			*/
 			bool _is_dynamic;
 		protected:

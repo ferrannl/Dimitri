@@ -21,7 +21,7 @@
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the facades
+	* Namespace for the Facades
 	*/
 	namespace Facades {
 		/**
@@ -34,7 +34,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<b2World> _world;
 			/**
-			* World bodies of the WorldFacade
+			* World bodies KeyValuePair of Shape and b2Body 
 			*/
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
 		public:

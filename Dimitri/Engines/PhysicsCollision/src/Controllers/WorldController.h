@@ -17,11 +17,11 @@
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the PhysicsCollision Engine
+	* Namespace for the controllers
 	*/
 	namespace Controllers {
 		/**
-		* Contains methods to setup the world and check colliding shapes. Also contains the simulate which lets the objects move
+		* Contains methods to setup the world and check colliding shapes. Also contains the simulate which updates the position of the shape of the Box2D body
 		*/
 		class PHYSICSCOLLISION_API WorldController {
 		private:
@@ -40,7 +40,7 @@ namespace PhysicsCollision {
 			*/
 			void setup_world(const float width, const float height);
 			/**
-			* Sets up the world with shapes
+			* Creates the shape based on given parameters
 			*/
 			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
 			/**
