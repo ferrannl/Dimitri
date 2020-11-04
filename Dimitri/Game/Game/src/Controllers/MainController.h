@@ -8,10 +8,7 @@ namespace Game {
 	namespace Controllers {
 		class MainController {
 		private:
-			/**
-			*	Level model
-			*/
-			std::shared_ptr<Models::Level> _level;
+			
 			/**
 			*	Input Controller
 			*/

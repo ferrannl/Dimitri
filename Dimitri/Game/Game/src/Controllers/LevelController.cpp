@@ -5,7 +5,8 @@ Game::Controllers::LevelController::LevelController()
 {
 	_level = std::make_shared<Game::Models::Level>();
 	_level->load_objects();
-	start();
+	_level->add_music("level1", "/assets/audio/billy.wav");
+	_running = false;
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
@@ -36,6 +37,14 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			}
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_L:
+		if (_running) {
+			stop();
+		}
+		else {
+			start();
+		}
+		break;
 	}
 }
 
@@ -48,12 +57,14 @@ void Game::Controllers::LevelController::start()
 {
 	_running = true;
 	_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
+	_level->play_music("level1");
 }
 
 void Game::Controllers::LevelController::stop()
 {
 	_running = false;
 	_simulation_thread.join();
+	_level->stop_music("level1");
 }
 
 void  Game::Controllers::LevelController::simulate() {
