@@ -65,10 +65,10 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	//Update and draw FPS
 	fps.update();
 	if (fps.getShown()) {
-		SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
+		//SDL_SetWindowTitle(_window.get(), ("Fps: " + std::to_string(fps.get())).c_str());
 	}
 	else {
-		SDL_SetWindowTitle(_window.get(), "");
+		//SDL_SetWindowTitle(_window.get(), "");
 	}
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {

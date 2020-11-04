@@ -8,9 +8,6 @@ private:
 	unsigned int initial_;
 
 public:
-	/**
-	* Constructor
-	*/
 	inline Interval() : initial_(GetTickCount())
 	{
 	}
@@ -21,4 +18,6 @@ public:
 	{
 		return GetTickCount() - initial_;
 	}
+
+	void reset();
 };

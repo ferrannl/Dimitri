@@ -1,5 +1,6 @@
 #pragma once
 #include "Interval.h"
+#include <memory>
 
 #ifdef _WIN64
 #ifdef UTILITY_EXPORTS
@@ -16,7 +17,7 @@ class UTILITY_API Fps
 protected:
 	unsigned int _fps;
 	unsigned int _fpscount;
-	Interval _fpsinterval;
+	std::unique_ptr<Interval> _fpsinterval;
 
 public:
 
