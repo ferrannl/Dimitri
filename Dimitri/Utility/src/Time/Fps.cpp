@@ -1,15 +1,16 @@
 #pragma once
 #include "Fps.h"
+using namespace Utility;
 
-Fps::Fps()
+Time::Fps::Fps()
 {
 	_fps = { 0 };
 	_fpscount = { 0 };
 	setShown(true);
-	_fpsinterval = std::make_unique<Interval>();
+	_fpsinterval = std::make_unique<Time::Interval>();
 }
 
-void Fps::update()
+void Time::Fps::update()
 {
 	// increase the counter by one
 	_fpscount++;
@@ -26,17 +27,17 @@ void Fps::update()
 	}
 }
 
-unsigned int Fps::get() const
+unsigned int Time::Fps::get() const
 {
 	return _fps;
 }
 
-void Fps::setShown(bool shown)
+void Time::Fps::setShown(bool shown)
 {
 	this->shown = shown;
 }
 
-bool Fps::getShown()
+bool Time::Fps::getShown() const
 {
 	return shown;
 }

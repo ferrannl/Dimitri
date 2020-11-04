@@ -1,6 +1,12 @@
 #include "Interval.h"
+using namespace Utility;
 
-void Interval::reset()
+unsigned int Time::Interval::value() const
+{
+	return GetTickCount() - initial_;
+}
+
+void Time::Interval::reset()
 {
 	initial_ = GetTickCount();
 }

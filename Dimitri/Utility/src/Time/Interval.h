@@ -2,22 +2,20 @@
 #include <Windows.h>
 #include <sysinfoapi.h>
 
-class Interval
-{
-private:
-	unsigned int initial_;
+namespace Utility {
+	namespace Time {
+		class Interval {
+		private:
+			unsigned int initial_;
+		public:
+			inline Interval() : initial_(GetTickCount()) {}
+			/**
+			* Return amount ticks from initial ticks
+			*/
+			unsigned int value() const;
 
-public:
-	inline Interval() : initial_(GetTickCount())
-	{
-	}
-	/**
-	* Return tick count - initial
-	*/
-	inline unsigned int value() const
-	{
-		return GetTickCount() - initial_;
-	}
+			void reset();
+		};
 
-	void reset();
-};
+	}
+}
