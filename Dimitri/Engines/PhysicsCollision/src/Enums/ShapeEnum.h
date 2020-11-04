@@ -12,7 +12,7 @@
 #endif
 
 /**
-* Namespace for the PhysicsCollision Engine
+* Namespace for the PhysicsCollision engine
 */
 namespace PhysicsCollision {
 	/**

@@ -14,11 +14,11 @@
 #define PHYSICSCOLLISION_API
 #endif
 /**
-* Namespace for the PhysicsCollision
+* Namespace for the PhysicsCollision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the models
+	* Namespace for the Models
 	*/
 	namespace Models {
 		/**
