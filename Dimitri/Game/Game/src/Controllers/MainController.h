@@ -4,8 +4,17 @@
 #include "LevelController.h"
 #include "../Models/Level.h"
 #include <memory>
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains code to connect input, window and level controllers and start the application
+		*/
 		class MainController {
 		private:
 			

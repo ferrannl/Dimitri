@@ -1,7 +1,16 @@
 #pragma once
 #include "IObject.h"
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the Models
+	*/
 	namespace Models {
+		/**
+		*	Contains all code necessary for the player object
+		*/
 		class Player : public Game::Models::IObject{
 		public:
 			Player(int x, int y, int z, int height, int width);

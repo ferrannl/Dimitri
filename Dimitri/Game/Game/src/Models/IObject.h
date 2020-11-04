@@ -9,8 +9,17 @@
 #include <src\Models\Shape.h>
 #include "../Enums/StateEnum.cpp"
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the Models
+	*/
 	namespace Models {
+		/**
+		*	Interface for all  objects used in game
+		*/
 		class IObject {
 		protected:
 			/**

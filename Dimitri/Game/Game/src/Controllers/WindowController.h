@@ -6,8 +6,17 @@
 #include "../Views/CreditsView.h"
 #include "../Views/LevelView.h"
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains all code to interact with window engine and show images on screen
+		*/
 		class WindowController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
 		private:
 			/**

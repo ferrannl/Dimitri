@@ -8,8 +8,17 @@
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains the code to controle the level model
+		*/
 		class LevelController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
 		private:
 			/**

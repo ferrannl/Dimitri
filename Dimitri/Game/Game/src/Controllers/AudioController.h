@@ -3,8 +3,17 @@
 #include <iostream>
 #include <src\Helpers\BasePathHelper.h>
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains code to controller audio engine
+		*/
 		class AudioController {
 		private:
 			/**

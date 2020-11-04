@@ -11,10 +11,17 @@
 #include "../Controllers/PhysicsCollisionController.h"
 #include "Switch.h"
 
-namespace Game
-{
-	namespace Models
-	{
+/**
+*	Namespace for the game
+*/
+namespace Game {
+	/**
+	*	Namespace for the Models
+	*/
+	namespace Models {
+		/**
+		*	Contains all code necessary for the level object
+		*/
 		class Level
 		{
 		private:

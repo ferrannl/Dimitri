@@ -7,9 +7,17 @@
 #include <thread>
 using namespace std::this_thread;
 using namespace std::chrono_literals;
-
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the views
+	*/
 	namespace Views {
+		/**
+		*	Containing all the code to draw the level using the graphics controller
+		*/
 		class LevelView {
 		private:
 			/**

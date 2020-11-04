@@ -4,8 +4,17 @@
 #include "../Events/InputEvent.h"
 #include <vector>
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains code to get update events from input engine and send these updates to the observers
+		*/
 		class InputController : public Utility::Interfaces::IObserver<Input::Enums::EventEnum>, public std::enable_shared_from_this<InputController>, public Utility::Interfaces::IObservable<Game::Events::InputEvent> {
 		private:
 			/**

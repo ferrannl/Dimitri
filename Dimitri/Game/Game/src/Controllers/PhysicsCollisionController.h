@@ -2,8 +2,17 @@
 #include <memory>
 #include <src\Controllers\WorldController.h>
 
+/**
+*	Namespace for the game
+*/
 namespace Game {
+	/**
+	*	Namespace for the controllers
+	*/
 	namespace Controllers {
+		/**
+		*	Contains all code to interact with physics collision engine to simulate gravity and collision
+		*/
 		class PhysicsCollisionController {
 		private:
 			std::unique_ptr<PhysicsCollision::Controllers::WorldController> _world_controller;
