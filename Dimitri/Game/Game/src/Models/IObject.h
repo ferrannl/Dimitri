@@ -101,7 +101,7 @@ namespace Game {
 			/**
 			*	Sets state
 			*/
-			void set_state(Game::Enums::StateEnum state);
+			void set_state(const Game::Enums::StateEnum& state);
 
 			/**
 			*	Returns shape
@@ -116,7 +116,7 @@ namespace Game {
 			/**
 			*	Adds texture
 			*/
-			void add_texture(Game::Enums::StateEnum state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			*	Returns height

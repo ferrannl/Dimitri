@@ -1,7 +1,7 @@
 #include "LevelView.h"
 using namespace Game;
 
-Views::LevelView::LevelView(std::shared_ptr<Graphics::Controllers::GraphicsController> graphics_controller) : _graphics_controller{ graphics_controller }
+Views::LevelView::LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : _graphics_controller{ graphics_controller }
 {
 }
 

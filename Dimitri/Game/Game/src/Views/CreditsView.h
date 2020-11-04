@@ -33,7 +33,7 @@ namespace Game {
 			*/
 			std::thread draw_thread;
 		public:
-			CreditsView(std::shared_ptr<Graphics::Controllers::GraphicsController> graphics_controller);
+			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 			/**
 			*	If view is currently being used or not
 			*/
