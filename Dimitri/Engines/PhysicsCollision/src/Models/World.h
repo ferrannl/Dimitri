@@ -2,15 +2,58 @@
 #include "Shape.h"
 #include "../Facades/WorldFacade.h"
 
-namespace Models {
-	class __declspec(dllexport) World {
-	private:
-		Facades::WorldFacade _world_facade;
-	public:
-		World();
-		World(const float width, const float height);
-		void add_shape(std::shared_ptr<Shape> shape, const float x, const float y);
-		void destroy_bodies();
-		void simulate();
-	};
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+/**
+* Namespace for the PhysicsCollision engines
+*/
+namespace PhysicsCollision {
+	/**
+	* Namespace for the Models
+	*/
+	namespace Models {
+		/**
+		* Contains all the methods for shape usage in World
+		*/
+		class PHYSICSCOLLISION_API World {
+		private:
+			/**
+			* World Facade of the World
+			*/
+			Facades::WorldFacade _world_facade;
+			/**
+			* Shapes list of the world
+			*/
+			std::vector<std::shared_ptr<Models::Shape>> _shapes;
+		public:
+			World();
+			/**
+			* World Constructor for initializing variables
+			*/
+			World(const float width, const float height);
+			/**
+			* Method that adds the shape to a world
+			*/
+			void add_shape(std::shared_ptr<Models::Shape> shape);
+			/**
+			* Returns the shapes from a world
+			*/
+			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			/**
+			* Destroys the body from this world
+			*/
+			void destroy_bodies();
+			/**
+			* Calls the simulate from the World Facade
+			*/
+			void simulate();
+		};
+	}
 }

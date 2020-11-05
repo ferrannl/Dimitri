@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/c++,visualstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=c++,visualstudio
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,c++
 
 ### C++ ###
 # Prerequisites
@@ -35,6 +35,19 @@
 *.exe
 *.out
 *.app
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -389,4 +402,4 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# End of https://www.toptal.com/developers/gitignore/api/c++,visualstudio
+# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++

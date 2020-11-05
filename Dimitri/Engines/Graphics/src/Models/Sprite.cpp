@@ -1,99 +1,22 @@
 #include "Sprite.h"
+using namespace Graphics;
 
-Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const std::string path, const float angle, const Enums::FlipEnum flipstatus)
-	: _x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _path{ path }, _angle{ angle }, _flipstatus{ flipstatus }, _facade{ nullptr } {}
-
-int Models::Sprite::get_converted_y(const int height) const
-{
-	return height - (_y + _height);
-}
-
-int Models::Sprite::get_x() const
-{
-	return _x;
-}
-
-int Models::Sprite::get_z() const
-{
-	return _z;
-}
-
-int Models::Sprite::get_y() const
-{
-	return _y;
-}
-
-int Models::Sprite::get_width() const
-{
-	return _width;
-}
-
-int Models::Sprite::get_height() const
-{
-	return _height;
-}
-
-float Models::Sprite::get_angle() const 
-{
-	return _angle;
-}
-
-std::shared_ptr<Facades::TextureFacade> Models::Sprite::get_texture_facade() const
-{
-	return _facade;
-}
-
-Enums::FlipEnum Models::Sprite::get_flip_status() const
-{
-	return _flipstatus;
-}
-
-const std::string Models::Sprite::get_path() const
-{
-	return _path;
-}
-
-void Models::Sprite::set_x(const int x)
-{
-	_x = x;
-}
-
-void Models::Sprite::set_z(const int z)
-{
-	_z = z;
-}
-
-void Models::Sprite::set_y(const int y)
-{
-	_y = y;
-}
-
-void Models::Sprite::set_width(const int width)
-{
-	_width = width;
-}
-
-void Models::Sprite::set_height(const int height)
-{
-	_height = height;
-}
-
-void Models::Sprite::set_angle(const float angle)
-{
-	_angle = angle;
-}
-
-void Models::Sprite::set_flip_status(const Enums::FlipEnum flipstatus)
+Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path, const Enums::FlipEnum flipstatus) :
+	Models::Texture(x, y, x, height, width, angle, path)
 {
 	_flipstatus = flipstatus;
 }
 
-void Models::Sprite::set_facade(const std::shared_ptr<Facades::TextureFacade> facade)
+void Graphics::Models::Sprite::create_texture_facade()
 {
-	_facade = facade;
+	_facade = std::make_shared<Facades::SpriteFacade>(get_path());
 }
 
-void Models::Sprite::create_texture_facade()
+bool Graphics::Models::Sprite::matches(const std::shared_ptr<Models::Texture>& texture) const
 {
-	_facade = std::make_shared<Facades::TextureFacade>();
+	std::shared_ptr<Graphics::Models::Sprite> sprite = std::dynamic_pointer_cast<Graphics::Models::Sprite>(texture);
+	if (sprite.get()) {
+		return sprite.get()->get_path() == get_path();
+	}
+	return false;
 }

@@ -1,4 +1,5 @@
 #include "IAudioFacade.h"
+using namespace Audio;
 
 Interfaces::IAudioFacade::IAudioFacade(const std::string path) : _path{ path } {
 	try {

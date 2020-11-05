@@ -4,10 +4,29 @@
 #include <vector>
 #include "../Facades/ShapeFacade.h"
 
-namespace Models {
-	class __declspec(dllexport) Polygon : public Shape {
-	public:
-		Polygon();
-		Polygon(const std::vector<std::pair<float, float>> positions, bool is_dynamic);
-	};
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+/**
+* Namespace for the PhysicsCollision engine
+*/
+namespace PhysicsCollision {
+	/**
+	* Namespace for the Models
+	*/
+	namespace Models {
+		/**
+		* Polygon Model
+		*/
+		class PHYSICSCOLLISION_API Polygon : public Shape {
+		public:
+			Polygon();
+		};
+		}
 }

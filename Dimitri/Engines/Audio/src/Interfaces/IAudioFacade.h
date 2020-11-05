@@ -1,20 +1,60 @@
 #pragma once
 #include <string>
 #include <memory>
-#include <SDL.h>
-#include <SDL_mixer.h>
 #include "../Exceptions/AudioExceptions.h"
 #include <iostream>
+#include <SDL.h>
+#include <SDL_mixer.h>
 
-namespace Interfaces {
-	class __declspec(dllexport) IAudioFacade {
-	protected:
-		const std::string _path;
-	public:
-		IAudioFacade(const std::string path);
-		virtual void play() const = 0;
-		virtual void resume() const = 0;
-		virtual void pause() const = 0;
-		virtual void stop() const = 0;
-	};
+#ifdef _WIN64
+#ifdef AUDIO_EXPORTS
+#define AUDIO_API __declspec(dllexport)
+#else 
+#define AUDIO_API __declspec(dllimport)
+#endif
+#else
+#define AUDIO_API
+#endif
+
+/**
+* Namespace for the audio engine
+*/
+namespace Audio {
+	/**
+	* Namespace for interfaces
+	*/
+	namespace Interfaces {
+		/**
+		* Containing all the necesary methods an attributes that every sound/music facade should have
+		*/
+		class AUDIO_API IAudioFacade {
+		protected:
+			/**
+			* Path for locating the sound file
+			*/
+			const std::string _path;
+		public:
+			IAudioFacade(const std::string path);
+
+			/**
+			* Plays audio
+			*/
+			virtual void play() const = 0;
+
+			/**
+			* Resumes audio
+			*/
+			virtual void resume() const = 0;
+
+			/**
+			* Pauses audio
+			*/
+			virtual void pause() const = 0;
+
+			/**
+			* Stops audio
+			*/
+			virtual void stop() const = 0;
+		};
+	}
 }

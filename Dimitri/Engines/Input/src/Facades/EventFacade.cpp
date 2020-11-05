@@ -1,4 +1,5 @@
-#include "EventFacade.h"
+#include "EventFacade.h" 
+using namespace Input;
 
 Facades::EventFacade::EventFacade()
 {
@@ -17,9 +18,10 @@ Enums::EventEnum Facades::EventFacade::poll_event()
         case SDL_MOUSEBUTTONDOWN:
             _input_adapter = std::make_shared<Adapters::MouseAdapter>();
             return _input_adapter->translate_to_enum(_event);
+        case SDL_QUIT:
+            return Enums::EventEnum::KEY_PRESS_QUIT;
         default:
             return Enums::EventEnum::NOT_SUPPORTED;
         }
-        return Enums::EventEnum::NOT_SUPPORTED;
 	}
 }

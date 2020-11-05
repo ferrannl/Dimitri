@@ -1,17 +1,21 @@
 #include "PhysicsCollisionDemo.h"
 #include "AudioDemo.h"
+void play_music();
 
-int main(int argc, char** argv) 
+int wmain()
 {
+	std::thread audio_thread(play_music);
 
-   /* AudioDemo audio_demo = {};
-  
-    std::thread audio_thread(&AudioDemo::play_music, audio_demo);*/
+	std::shared_ptr<PhysicsCollisionDemo> demo = std::make_shared<PhysicsCollisionDemo>();
+	demo->subscribe_to_input(demo);
+	demo->start_demo();
 
-    std::shared_ptr<PhysicsCollisionDemo> demo = std::make_shared<PhysicsCollisionDemo>();
-    demo->subscribe_to_input(demo);
-    demo->start_demo();
-    
-    //audio_thread.join();
-    return 0;
+	audio_thread.join();
+	return 0;
+}
+
+void play_music()
+{
+	AudioDemo audio_demo = {};
+	audio_demo.play_music();
 }
