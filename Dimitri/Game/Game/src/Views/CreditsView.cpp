@@ -1,7 +1,8 @@
 #include "CreditsView.h"
+
 using namespace Game;
 
-Views::CreditsView::CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : _graphics_controller{ graphics_controller }
+Views::CreditsView::CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : Views::IView(graphics_controller)
 {
 	init_textures();
 }
@@ -28,32 +29,3 @@ void Views::CreditsView::init_textures()
 		_textures.push_back(texture);
 	}
 }
-
-void Views::CreditsView::open()
-{	
-	is_open = true;
-	for (auto texture : _textures) {
-		_graphics_controller.get()->add_texture(texture);
-	}
-	draw_thread = std::thread(&Views::CreditsView::draw, this);
-}
-
-void Views::CreditsView::close()
-{
-	is_open = false;
-	draw_thread.join();
-	for (auto texture : _textures) {
-		_graphics_controller.get()->remove_texture(texture);
-	}
-	_graphics_controller.get()->update_window();
-}
-
-void Game::Views::CreditsView::draw()
-{
-	while (is_open) {
-		sleep_for(5ms);
-		_graphics_controller.get()->update_window();
-	}
-}
-
-

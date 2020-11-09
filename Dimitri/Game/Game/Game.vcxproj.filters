@@ -19,6 +19,7 @@
     <ClCompile Include="src\Models\IInteractable.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\IView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
@@ -37,5 +38,6 @@
     <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Models\IInteractable.h" />
     <ClInclude Include="src\Views\HelpView.h" />
+    <ClInclude Include="src\Views\IView.h" />
   </ItemGroup>
 </Project>
