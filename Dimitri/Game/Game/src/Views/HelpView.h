@@ -16,9 +16,9 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to create and show the credits view
+		*	Containing all the code to create and open the help view
 		*/
-		class CreditsView {
+		class HelpView {
 		private:
 			/**
 			*	Graphics controller to update window
@@ -33,7 +33,8 @@ namespace Game {
 			*/
 			std::thread draw_thread;
 		public:
-			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			HelpView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+
 			/**
 			*	If view is currently being used or not
 			*/

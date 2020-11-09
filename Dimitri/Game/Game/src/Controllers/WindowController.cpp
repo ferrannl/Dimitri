@@ -14,6 +14,7 @@ void Game::Controllers::WindowController::create_window(int height, int width)
 		return;
 	}
 
+	_help_view = std::make_unique<Views::HelpView>(_graphics_controller);
 	_credits_view = std::make_unique<Views::CreditsView>(_graphics_controller);
 	_level_view = std::make_unique<Views::LevelView>(_graphics_controller);
 }
@@ -45,6 +46,17 @@ void Game::Controllers::WindowController::update(const Game::Events::InputEvent&
 			_level_view.get()->close();
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_H:
+		if (!_help_view.get()->is_open) {
+			if (!_open_window) {
+				_open_window = true;
+				_help_view.get()->open();
+			}
+		}
+		else {
+			_open_window = false;
+			_help_view.get()->close();
+		}
 	
 	case Input::Enums::EventEnum::KEY_PRESS_F:
 		_graphics_controller->switch_fps();

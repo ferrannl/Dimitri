@@ -5,6 +5,7 @@
 #include "../Events/InputEvent.h"
 #include "../Views/CreditsView.h"
 #include "../Views/LevelView.h"
+#include "../Views/HelpView.h"
 
 /**
 *	Namespace for the game
@@ -23,6 +24,8 @@ namespace Game {
 			*	Graphics Controller to interact with engine
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+
+			std::unique_ptr<Views::HelpView> _help_view;
 			/**
 			*	Credits view to show credits
 			*/
