@@ -42,7 +42,7 @@ namespace PhysicsCollision {
 			/**
 			* Creates the shape based on given parameters
 			*/
-			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
+			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic, bool is_interactable);
 			/**
 			* Returns true when there is collision between two shapes. Else returns false
 			*/

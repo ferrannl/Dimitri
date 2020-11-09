@@ -71,6 +71,7 @@ void  Game::Controllers::LevelController::simulate() {
 	while (_running) {
 		sleep_for(1ms);
 		_level->simulate();
+		_level->get_interactables().at(0)->update(); //TODO Weghalen 
 		_level->get_player()->update();
 	}
 }

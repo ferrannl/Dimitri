@@ -6,7 +6,7 @@ Controllers::ShapeController::ShapeController()
 {
 }
 
-std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic) const
+std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic, const bool is_interactable) const
 {
 	std::shared_ptr<Models::Shape> shape;
 	switch (type) {
@@ -22,5 +22,6 @@ std::shared_ptr<Models::Shape> Controllers::ShapeController::create_shape(const 
 	shape->set_y(y);
 	shape->set_type(type);
 	shape->set_is_dynamic(is_dynamic);
+	shape->set_is_interactable(is_interactable);
 	return shape;
 }
