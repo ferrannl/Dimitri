@@ -43,6 +43,9 @@ void Game::Models::Level::resume_music(std::string audio_name)
 void Game::Models::Level::load_objects()
 {
 	//Here a file is loaded/parsed and turned into a level
+	_height = 1080;
+	_width = 1920;
+
 	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
 	_player->set_shape(_physics_collision_controller->create_shape(_player->get_x(), _player->get_y(), _player->get_width(), _player->get_height(), true));
 
@@ -148,4 +151,14 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 void Game::Models::Level::simulate()
 {
 	_physics_collision_controller->simulate();
+}
+
+int Game::Models::Level::get_level_height() const
+{
+	return _height;
+}
+
+int Game::Models::Level::get_level_width() const
+{
+	return _width;
 }

@@ -5,6 +5,9 @@ using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
 {
+	_window_height = height;
+	_window_width = width;
+	set_level_size(height, width);
 	try {
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
@@ -62,7 +65,6 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
-
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
 		if (texture.get()->get_visible()) {
@@ -74,8 +76,8 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 		for (const std::shared_ptr<Graphics::Models::Texture>& texture : kv.second) {
 			SDL_Rect rect;
 
-			rect.x = texture->get_x();
-			rect.y = texture->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
+			rect.x = texture->get_x() - _camera_x;
+			rect.y = texture->get_converted_y(SDL_GetWindowSurface(_window.get())->h) - _camera_y;
 			rect.w = texture->get_width();
 			rect.h = texture->get_height();
 
@@ -112,6 +114,22 @@ void Graphics::Facades::WindowFacade::switch_fps()
 	else {
 		fps.setShown(true);
 	}
+}
+
+void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
+{
+	if (x + _window_width < _level_width && x>=0) {
+		_camera_x = x;
+	}
+	if (x + _window_height < _level_height && y >= 0) {
+		_camera_y = y;
+	}
+}
+
+void Graphics::Facades::WindowFacade::set_level_size(const int height, const int width)
+{
+	_level_height = height;
+	_level_width = width;
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

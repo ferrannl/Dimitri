@@ -41,3 +41,13 @@ void Graphics::Controllers::GraphicsController::switch_fps()
 {
 	_window->get_facade()->switch_fps();
 }
+
+void Graphics::Controllers::GraphicsController::set_camera_pos(const int x, const int y)
+{
+	_window->set_camera_pos(x, y);
+}
+
+void Graphics::Controllers::GraphicsController::set_level_size(const int height, const int width)
+{
+	_window-> set_level_size(height, width);
+}

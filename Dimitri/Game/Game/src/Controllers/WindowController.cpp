@@ -5,7 +5,7 @@ Controllers::WindowController::WindowController()
 {
 	_open_window = false;
 	_graphics_controller = std::make_unique<Graphics::Controllers::GraphicsController>();
-	create_window(1080, 720);
+	create_window(_width, _height);
 }
 
 void Game::Controllers::WindowController::create_window(int height, int width)
@@ -78,4 +78,24 @@ void Game::Controllers::WindowController::destroy_window()
 void Game::Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
 {
 	_level_view->init_textures(textures);
+}
+
+void Game::Controllers::WindowController::set_camera_pos(const int x, const int y)
+{
+	_graphics_controller->set_camera_pos(x, y);
+}
+
+void Game::Controllers::WindowController::set_level_size(const int height, const int width)
+{
+	_graphics_controller->set_level_size(height, width);
+}
+
+int Game::Controllers::WindowController::get_window_height() const
+{
+	return _height;
+}
+
+int Game::Controllers::WindowController::get_window_width() const
+{
+	return _width;
 }

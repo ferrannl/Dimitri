@@ -45,6 +45,27 @@ namespace Graphics {
 			* The adapter that converts the SDL_Flipenum to FlipEnum
 			*/
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
+
+			/**
+			*	Everything beneath this is for sidescrolling managment
+			*/
+
+			/**
+			*	Height and width of the window
+			*/
+			int _window_height;
+			int _window_width;
+			/**
+			*	x and y pos of camera standard 0,0
+			*/
+			int _camera_x = 0;
+			int _camera_y = 0;
+			/**
+			*	Height and width of level standard equal to window height and width but can be increased for large levels
+			*/
+			int _level_height;
+			int _level_width;
+
 		public:
 			WindowFacade();
 
@@ -74,6 +95,16 @@ namespace Graphics {
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 
 			void switch_fps();
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(const int x, const int y);
+
+			/**
+			* Sets level size
+			*/
+			void set_level_size(const int height, const int width);
 		};
 	}
 }
