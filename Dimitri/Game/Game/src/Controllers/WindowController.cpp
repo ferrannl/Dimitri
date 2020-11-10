@@ -21,27 +21,6 @@ namespace Game {
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
-	void Controllers::WindowController::update(const Events::InputEvent& object)
-	{
-		switch (object.event_enum) {
-		case Input::Enums::EventEnum::KEY_PRESS_C:
-			clear_views();
-			open_view("credits");
-			open_view("fps");
-			break;
-		case Input::Enums::EventEnum::KEY_PRESS_L:
-			clear_views();
-			open_view("level");
-			open_view("fps");
-			break;
-		case Input::Enums::EventEnum::KEY_PRESS_F:
-			toggle_view_visibility("fps");
-			break;
-		case Input::Enums::EventEnum::KEY_PRESS_QUIT:
-			exit(0);
-		}
-	}
-
 	void Controllers::WindowController::draw()
 	{
 		while (true) {

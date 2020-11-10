@@ -23,7 +23,7 @@ namespace Game {
 		/**
 		*	Contains all code to interact with window engine and show images on screen
 		*/
-		class WindowController : public Utility::Interfaces::IObserver<Events::InputEvent> {
+		class WindowController {
 		private:
 			/**
 			*	Graphics Controller to interact with engine
@@ -39,6 +39,13 @@ namespace Game {
 			*	Draw thread for updating window in background thread
 			*/
 			std::thread draw_thread;
+		public:
+			WindowController();
+
+			/**
+			*	Creates window
+			*/
+			void create_window(int height, int width);
 
 			/**
 			*	Sets the views active property to true
@@ -54,17 +61,6 @@ namespace Game {
 			*	Toggles the visible property of view
 			*/
 			void toggle_view_visibility(const std::string& view_name);
-		public:
-			WindowController();
-			/**
-			*	Update from Game::Controllers::InputController
-			*/
-			void update(const Events::InputEvent& object);
-
-			/**
-			*	Creates window
-			*/
-			void create_window(int height, int width);
 
 			/**
 			* returns _width

@@ -1,6 +1,7 @@
 #include "Controllers/MainController.h"
 
 int wmain() {
-	Game::Controllers::MainController controller = {};
+	auto controller = std::make_shared<Game::Controllers::MainController>();
+	controller.get()->run();
 	return 0;
 }

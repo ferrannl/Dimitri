@@ -19,7 +19,7 @@ namespace Game {
 		/**
 		*	Contains the code to controle the level model
 		*/
-		class LevelController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
+		class LevelController {
 		private:
 			/**
 			*	Level model
@@ -42,11 +42,6 @@ namespace Game {
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 
 			/**
-			*	Update received from input controller
-			*/
-			void update(const Game::Events::InputEvent& object);
-
-			/**
 			*	Returns level
 			*/
 			std::shared_ptr<Game::Models::Level> get_level() const;
@@ -65,6 +60,7 @@ namespace Game {
 			*	Simulate thread start
 			*/
 			void simulate();
+
 		};
 	}
 }
