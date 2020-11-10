@@ -15,6 +15,7 @@ namespace Game {
 		public:
 			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
+			void create_shape(int x, int y, int height, int width, bool is_dynamic);
 		};
 	}
 }

@@ -44,10 +44,6 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
 			/**
-			* Returns true when there is collision between two shapes. Else returns false
-			*/
-			bool check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2);
-			/**
 			* Destroys the bodies from Box2D
 			*/
 			void destroy_bodies();

@@ -56,6 +56,7 @@ namespace PhysicsCollision {
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
 			Shape();
+			Shape(int x, int y, int height, int width, bool is_dynamic);
 			/**
 			* Returns the ShapeFacade from a shape
 			*/
@@ -120,6 +121,10 @@ namespace PhysicsCollision {
 			* Sets the dynamic property of a shape
 			*/
 			void set_is_dynamic(bool is_dynamic);
+			/**
+			* Returns true when there is collision between two shapes. Else returns false
+			*/
+			bool check_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

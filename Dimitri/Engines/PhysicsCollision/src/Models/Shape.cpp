@@ -1,8 +1,13 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape()
+Models::Shape::Shape(int x, int y, int height, int width, bool is_dynamic)
 {
+	set_height(height);
+	set_width(width);
+	set_x(x);
+	set_y(y);
+	set_is_dynamic(is_dynamic);
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
 
@@ -84,4 +89,15 @@ void Models::Shape::move_x(const int value)const
 void Models::Shape::move_y()const
 {
 	_shape_facade->move_y();
+}
+
+bool Models::Shape::check_collision(std::shared_ptr<Models::Shape> shape)
+{
+	if (get_x() - 1 <= shape->get_x() + shape->get_width() &&
+		get_x() + get_width() + 1 >= shape->get_x() &&
+		get_y() - 1 <= shape->get_y() + shape->get_height() &&
+		get_y() + get_height() + 1 >= shape->get_y()) {
+		return true;
+	}
+	return false;
 }
