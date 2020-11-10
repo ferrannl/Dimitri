@@ -74,7 +74,7 @@ void  Game::Controllers::LevelController::simulate() {
 		_level->simulate();
 		_level->get_player()->update();
 		int x = (_level->get_player()->get_x() + _level->get_player()->get_width() / 2) - _window_controller->get_window_width() / 2;
-		int y = (_level->get_player()->get_texture()->get_converted_y(_window_controller->get_window_height()) + _level->get_player()->get_height() / 2) - _window_controller->get_window_height() / 2;
+		int y = (_level->get_player()->get_texture()->get_converted_y(_level->get_level_height()) + _level->get_player()->get_height() / 2) - _window_controller->get_window_height() / 2;
 		_window_controller->set_camera_pos(x , y);
 	}
 }

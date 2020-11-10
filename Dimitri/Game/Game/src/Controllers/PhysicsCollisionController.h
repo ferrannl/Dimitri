@@ -38,6 +38,12 @@ namespace Game {
 			*	Check collision
 			*/
 			bool check_collision(std::shared_ptr<PhysicsCollision::Models::Shape> shape1, std::shared_ptr<PhysicsCollision::Models::Shape> shape2);
+
+			/**
+			*	Setup world
+			*/
+			void setup_world(const int height,const int width);
+
 		};
 	}
 }

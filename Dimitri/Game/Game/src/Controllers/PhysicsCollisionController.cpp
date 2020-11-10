@@ -24,3 +24,8 @@ bool Game::Controllers::PhysicsCollisionController::check_collision(std::shared_
 {
 	return _world_controller->check_collision(shape1, shape2);
 }
+
+void Game::Controllers::PhysicsCollisionController::setup_world(const int height, const int width)
+{
+	_world_controller->setup_world(width, height);
+}

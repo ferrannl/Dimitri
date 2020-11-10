@@ -46,6 +46,8 @@ void Game::Models::Level::load_objects()
 	_height = 1080;
 	_width = 1920;
 
+	_physics_collision_controller->setup_world(_height, _width);
+
 	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
 	_player->set_shape(_physics_collision_controller->create_shape(_player->get_x(), _player->get_y(), _player->get_width(), _player->get_height(), true));
 
@@ -108,10 +110,10 @@ void Game::Models::Level::load_objects()
 	_interactables.push_back(interactable);
 
 	//border 
-	_borders.push_back(_physics_collision_controller->create_shape(0, 721, 1080, 1, false));//top
-	_borders.push_back(_physics_collision_controller->create_shape(0, -1, 1080, 1, false));//bot
-	_borders.push_back(_physics_collision_controller->create_shape(-1, 0, 1, 720, false));//lef
-	_borders.push_back(_physics_collision_controller->create_shape(1081, 0, 1, 720, false));//rig
+	_borders.push_back(_physics_collision_controller->create_shape(0, 1080, 1920, 1, false));//top
+	_borders.push_back(_physics_collision_controller->create_shape(0, 0, 1920, 1, false));//bot
+	_borders.push_back(_physics_collision_controller->create_shape(-1, 0, 1, 1080, false));//lef
+	_borders.push_back(_physics_collision_controller->create_shape(1921, 0, 1, 1080, false));//rig
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
