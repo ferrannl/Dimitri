@@ -34,6 +34,10 @@ namespace Game {
 		}
 	}
 
+	bool Views::CreditsView::is_visible() const
+	{
+		return true;
+	}
 
 }
 

@@ -19,7 +19,11 @@ namespace Game {
 			/**
 			*	If view is currently being used or not
 			*/
-			bool _open;
+			bool _active;
+			/**
+			*	If view is currently visible
+			*/
+			bool _visible;
 		protected:
 			/**
 			*	Graphics Controller to interact with engine
@@ -43,14 +47,24 @@ namespace Game {
 			void set_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
 
 			/**
-			*	Returns if view is open
+			*	Returns if view is active
 			*/
-			bool is_open() const;
+			bool is_active() const;
 
 			/**
-			*	Sets _open
+			*	Sets _active
 			*/
-			void set_open(bool open);
+			void set_active(bool open);
+
+			/**
+			*	Returns if view is visible
+			*/
+			virtual bool is_visible() const;
+
+			/**
+			*	Sets _visible
+			*/
+			void set_visible(bool visible);
 		};
 	}
 }

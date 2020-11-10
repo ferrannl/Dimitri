@@ -16,14 +16,21 @@ namespace Game {
 		class CreditsView : public View {
 		public:
 			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+
 			/**
 			*	Initializes textures
 			*/
 			void init_textures();
+
 			/**
 			* Add the textures to the _graphics_controller
 			*/
 			void draw();
+
+			/**
+			*	Returns if view is visible
+			*/
+			bool is_visible() const override;
 		};
 	}
 }

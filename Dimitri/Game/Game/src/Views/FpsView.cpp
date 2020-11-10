@@ -1,10 +1,7 @@
 #include "FpsView.h"
 
 namespace Game {
-	Views::FpsView::FpsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller)
-	{
-		set_open(true);
-	}
+	Views::FpsView::FpsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {}
 
 	void Views::FpsView::draw()
 	{

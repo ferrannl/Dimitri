@@ -34,20 +34,26 @@ namespace Game {
 			*	Contains all views
 			*/
 			std::map<std::string, std::unique_ptr<Views::View>> _views;
+
 			/**
 			*	Draw thread for updating window in background thread
 			*/
 			std::thread draw_thread;
 
 			/**
-			*	Opens a view by name
+			*	Sets the views active property to true
 			*/
 			void open_view(const std::string& view_name);
 
 			/**
-			*	Closes all views
+			*	Sets all the views active property to false
 			*/
 			void clear_views();
+
+			/**
+			*	Toggles the visible property of view
+			*/
+			void toggle_view_visibility(const std::string& view_name);
 		public:
 			WindowController();
 			/**

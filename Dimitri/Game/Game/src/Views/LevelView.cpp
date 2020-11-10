@@ -9,4 +9,9 @@ namespace Game {
 			_graphics_controller.get()->add_texture(t);
 		}
 	}
+
+	bool Views::LevelView::is_visible() const
+	{
+		return true;
+	}
 }
