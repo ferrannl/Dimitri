@@ -1,10 +1,16 @@
 #pragma once
+#include <vector>
+#include <memory>
+#include <map>
+#include <string>
+#include <thread>
 #include <src\Controllers\GraphicsController.h>
-#include "../Views/CreditsView.h"
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
 #include "../Views/CreditsView.h"
 #include "../Views/LevelView.h"
+#include "../Views/FpsView.h"
+#include "../Views/View.h"
 
 /**
 *	Namespace for the game
@@ -17,52 +23,47 @@ namespace Game {
 		/**
 		*	Contains all code to interact with window engine and show images on screen
 		*/
-		class WindowController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
+		class WindowController : public Utility::Interfaces::IObserver<Events::InputEvent> {
 		private:
 			/**
 			*	Graphics Controller to interact with engine
 			*/
-			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+			std::unique_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+
 			/**
-			*	Credits view to show credits
+			*	Contains all views
 			*/
-			std::unique_ptr<Views::CreditsView> _credits_view;
+			std::map<std::string, std::unique_ptr<Views::View>> _views;
 			/**
-			*	Level view to show level
+			*	Draw thread for updating window in background thread
 			*/
-			std::unique_ptr<Views::LevelView> _level_view;
+			std::thread draw_thread;
+
 			/**
-			*	Checks if there is already a rendered view
+			*	Opens a view by name
 			*/
-			bool _open_window;
+			void open_view(const std::string& view_name);
+
+			/**
+			*	Closes all views
+			*/
+			void clear_views();
 		public:
 			WindowController();
 			/**
 			*	Update from Game::Controllers::InputController
 			*/
-			void update(const Game::Events::InputEvent& object);
-			
+			void update(const Events::InputEvent& object);
+
 			/**
 			*	Creates window
 			*/
 			void create_window(int height, int width);
 
 			/**
-			*	Adds Texture to window
+			* returns _width
 			*/
-			void add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
-			/**
-			*	Removes texture from window
-			*/
-			void remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
-			/**
-			*	Refreshes window
-			*/
-			void update_window();
-			/**
-			*	Destroys window
-			*/
-			void destroy_window();
+			void draw();
 
 			/**
 			*	Sets the textures for the level view

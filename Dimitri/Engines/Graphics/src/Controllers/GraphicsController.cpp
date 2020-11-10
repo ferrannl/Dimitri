@@ -22,6 +22,11 @@ void Graphics::Controllers::GraphicsController::remove_texture(const std::shared
 	_window->remove_texture(texture);
 }
 
+void Graphics::Controllers::GraphicsController::clear_textures()
+{
+	_window->clear_textures();
+}
+
 std::vector<std::shared_ptr<Models::Texture>> Graphics::Controllers::GraphicsController::get_textures() const
 {
 	return _window->get_textures();

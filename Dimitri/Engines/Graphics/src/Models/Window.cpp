@@ -52,6 +52,11 @@ void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& te
 	}
 }
 
+void Graphics::Models::Window::clear_textures()
+{
+	_textures.clear();
+}
+
 std::vector<std::shared_ptr<Models::Texture>> Graphics::Models::Window::get_textures() const
 {
 	return _textures;

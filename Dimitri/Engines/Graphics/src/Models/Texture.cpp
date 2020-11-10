@@ -39,7 +39,7 @@ float Models::Texture::get_angle() const
 	return _angle;
 }
 
-bool Models::Texture::get_visible() const
+bool Models::Texture::is_visible() const
 {
 	return _visible;
 }

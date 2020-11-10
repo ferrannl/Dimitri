@@ -50,6 +50,11 @@ namespace Graphics {
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
 
 			/**
+			* Clears all textures from the window
+			*/
+			void clear_textures();
+
+			/**
 			* Returns the textures from the window
 			*/
 			std::vector<std::shared_ptr<Models::Texture>> get_textures() const;

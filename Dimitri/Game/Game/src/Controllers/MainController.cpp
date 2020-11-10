@@ -13,6 +13,7 @@ Controllers::MainController::MainController()
 
 void Game::Controllers::MainController::run()
 {
+	_window_controller->create_window(1080, 720);
 	_window_controller->set_level_textures(_level_controller->get_textures());
 	_input_controller->poll_events();
 }

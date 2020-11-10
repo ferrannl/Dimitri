@@ -129,7 +129,7 @@ namespace Graphics {
 			/**
 			* returns the visibility
 			*/
-			bool get_visible() const;
+			bool is_visible() const;
 
 			/**
 			* returns the facade of the texture for the sprite

@@ -1,10 +1,12 @@
 #pragma once
-#include <vector>
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
-#include <chrono>
 #include "View.h"
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
 
 /**
 *	Namespace for the game
@@ -15,11 +17,9 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the level using the graphics controller
+		*	Containing all the code to draw the fps using the graphics controller
 		*/
-		class LevelView : public View {
-		public:
-			LevelView(float width, float height);
+		class FpsView : public View {
 		};
 	}
 }
