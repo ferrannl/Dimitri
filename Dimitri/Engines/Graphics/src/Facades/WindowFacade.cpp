@@ -77,7 +77,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 			SDL_Rect rect;
 
 			rect.x = texture->get_x() - _camera_x;
-			rect.y = texture->get_converted_y(SDL_GetWindowSurface(_window.get())->h) - _camera_y;
+			rect.y = texture->get_converted_y(_level_height) - _camera_y;
 			rect.w = texture->get_width();
 			rect.h = texture->get_height();
 
@@ -109,10 +109,11 @@ int Graphics::Facades::WindowFacade::get_fps()
 
 void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
 {
-	if (x + _window_width < _level_width && x>=0) {
+	if (x + _window_width < _level_width && x >= 0) {
 		_camera_x = x;
 	}
-	if (x + _window_height < _level_height && y >= 0) {
+
+	if (y + _window_height < _level_height && y >= 0) {
 		_camera_y = y;
 	}
 }
@@ -121,6 +122,9 @@ void Graphics::Facades::WindowFacade::set_level_size(const int height, const int
 {
 	_level_height = height;
 	_level_width = width;
+
+	_camera_x = 0;
+	_camera_y = _level_height - _window_height;
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

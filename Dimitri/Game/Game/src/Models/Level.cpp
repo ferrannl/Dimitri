@@ -48,6 +48,8 @@ void Game::Models::Level::load_objects()
 	_height = 1080;
 	_width = 1920;
 
+	_physics_collision_controller->setup_world(_height, _width);
+
 	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
 	_players.push_back(_player);
 
