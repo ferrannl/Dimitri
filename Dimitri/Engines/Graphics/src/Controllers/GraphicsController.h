@@ -69,7 +69,10 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Models::Window> get_window() const;
 
-			void switch_fps();
+			/**
+			* Returns the current fps
+			*/
+			int get_fps();
 		};
 	}
 }

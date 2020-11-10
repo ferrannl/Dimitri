@@ -31,8 +31,6 @@ namespace Utility {
 			void update();
 
 			unsigned int get() const;
-			void setShown(bool shown);
-			bool getShown() const;
 		};
 	}
 }

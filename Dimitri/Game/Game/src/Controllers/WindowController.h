@@ -28,7 +28,7 @@ namespace Game {
 			/**
 			*	Graphics Controller to interact with engine
 			*/
-			std::unique_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
 
 			/**
 			*	Contains all views

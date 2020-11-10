@@ -30,7 +30,7 @@ namespace Graphics {
 			/**
 			* An instance of FPS.
 			*/
-			Utility::Time::Fps fps = {};
+			std::unique_ptr<Utility::Time::Fps> _fps;
 			/**
 		   * An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
 		   */
@@ -73,7 +73,7 @@ namespace Graphics {
 			*/
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 
-			void switch_fps();
+			int get_fps();
 		};
 	}
 }

@@ -15,11 +15,15 @@ namespace Game {
 		*/
 		class CreditsView : public View {
 		public:
-			CreditsView(float widht, float height);
+			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 			/**
 			*	Initializes textures
 			*/
 			void init_textures();
+			/**
+			* Add the textures to the _graphics_controller
+			*/
+			void draw();
 		};
 	}
 }

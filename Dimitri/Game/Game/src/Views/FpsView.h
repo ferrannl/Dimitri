@@ -20,6 +20,12 @@ namespace Game {
 		*	Containing all the code to draw the fps using the graphics controller
 		*/
 		class FpsView : public View {
+		public:
+			FpsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			/**
+			* Add the textures to the _graphics_controller
+			*/
+			void draw();
 		};
 	}
 }

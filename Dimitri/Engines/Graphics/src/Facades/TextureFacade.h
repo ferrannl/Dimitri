@@ -26,6 +26,7 @@ namespace Graphics {
 	* Namespace for the facades
 	*/
 	namespace Facades {
+		using TextureDestroyer = void (*)(SDL_Texture*);
 		/**
 		* Contains all the references needed for the SDL_Texture
 		*/
@@ -39,19 +40,19 @@ namespace Graphics {
 			/**
 			* An instance of SDL_Texture
 			*/
-			std::shared_ptr<SDL_Texture> _texture;
+			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
 		public:
 			TextureFacade(const std::string path);
-      
+
 			/**
 			* Creates an SDL_Texture for a given path
 			*/
 			virtual void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer) = 0;
-      
+
 			/**
 			* Returns the SDL_Texture
 			*/
-			std::shared_ptr<SDL_Texture> get_texture() const;
+			SDL_Texture* get_texture() const;
 		};
 	}
 }

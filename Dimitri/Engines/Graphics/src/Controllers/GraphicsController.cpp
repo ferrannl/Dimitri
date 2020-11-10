@@ -42,7 +42,7 @@ std::shared_ptr<Models::Window> Controllers::GraphicsController::get_window() co
 	return _window;
 }
 
-void Graphics::Controllers::GraphicsController::switch_fps()
+int Graphics::Controllers::GraphicsController::get_fps()
 {
-	_window->get_facade()->switch_fps();
+	return _window->get_facade()->get_fps();
 }

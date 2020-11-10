@@ -1,7 +1,12 @@
 #include "LevelView.h"
 
 namespace Game {
+	Views::LevelView::LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {}
 
-	Views::LevelView::LevelView(float width, float height) : View(width, height) {}
-
+	void Views::LevelView::draw()
+	{
+		for (auto& t : _textures) {
+			_graphics_controller.get()->add_texture(t);
+		}
+	}
 }

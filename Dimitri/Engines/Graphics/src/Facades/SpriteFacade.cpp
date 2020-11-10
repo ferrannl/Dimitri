@@ -15,7 +15,7 @@ void Facades::SpriteFacade::create_texture(std::unique_ptr<SDL_Renderer, decltyp
 		}
 
 		//Create texture from surface pixels
-		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface), SDL_DestroyTexture);
+		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface));
 
 		if (_texture == NULL) {
 			throw Exceptions::CannotCreateTexture();

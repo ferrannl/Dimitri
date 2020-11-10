@@ -3,9 +3,10 @@
 
 using namespace Graphics;
 
-Facades::TextureFacade::TextureFacade(const std::string path) : _path{ path }, _texture(nullptr, SDL_DestroyTexture) {}
+Facades::TextureFacade::TextureFacade(const std::string path) :
+	_path{ path }, _texture{ std::unique_ptr<SDL_Texture, TextureDestroyer>(nullptr, SDL_DestroyTexture) } {}
 
-std::shared_ptr<SDL_Texture> Facades::TextureFacade::get_texture() const
+SDL_Texture* Facades::TextureFacade::get_texture() const
 {
-	return _texture;
+	return _texture.get();
 }

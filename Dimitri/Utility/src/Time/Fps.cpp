@@ -6,7 +6,6 @@ Time::Fps::Fps()
 {
 	_fps = { 0 };
 	_fpscount = { 0 };
-	setShown(true);
 	_fpsinterval = std::make_unique<Time::Interval>();
 }
 
@@ -30,15 +29,5 @@ void Time::Fps::update()
 unsigned int Time::Fps::get() const
 {
 	return _fps;
-}
-
-void Time::Fps::setShown(bool shown)
-{
-	this->shown = shown;
-}
-
-bool Time::Fps::getShown() const
-{
-	return shown;
 }
 

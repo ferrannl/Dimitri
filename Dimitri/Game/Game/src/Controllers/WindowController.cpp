@@ -3,7 +3,7 @@
 namespace Game {
 	Controllers::WindowController::WindowController()
 	{
-		_graphics_controller = std::make_unique<Graphics::Controllers::GraphicsController>();
+		_graphics_controller = std::make_shared<Graphics::Controllers::GraphicsController>();
 	}
 
 	void Controllers::WindowController::create_window(int height, int width)
@@ -12,24 +12,30 @@ namespace Game {
 			return;
 		}
 
-		_views.insert({ "credits", std::make_unique<Views::CreditsView>(_graphics_controller.get()->get_window().get()->get_width(),_graphics_controller.get()->get_window().get()->get_height()) });
-		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller.get()->get_window().get()->get_width(),_graphics_controller.get()->get_window().get()->get_height()) });
+		_views.insert({ "credits", std::make_unique<Views::CreditsView>(_graphics_controller) });
+		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
+		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
 	void Controllers::WindowController::update(const Events::InputEvent& object)
 	{
+		bool fps_open = _views["fps"].get()->is_open();
 		switch (object.event_enum) {
 		case Input::Enums::EventEnum::KEY_PRESS_C:
 			clear_views();
 			open_view("credits");
-			open_view("fps");
+			if (fps_open) {
+				open_view("fps");
+			}
 			break;
 		case Input::Enums::EventEnum::KEY_PRESS_L:
 			clear_views();
 			open_view("level");
-			open_view("fps");
+			if (fps_open) {
+				open_view("fps");
+			}
 			break;
 		case Input::Enums::EventEnum::KEY_PRESS_QUIT:
 			exit(0);
@@ -39,15 +45,11 @@ namespace Game {
 	void Controllers::WindowController::draw()
 	{
 		while (true) {
+			sleep_for(5ms);
 			_graphics_controller.get()->clear_textures();
 			for (auto& v : _views) {
-				sleep_for(5ms);
 				if (v.second.get()->is_open()) {
-					for (auto& t : v.second.get()->get_textures()) {
-						if (t.get()->is_visible()) {
-							_graphics_controller.get()->add_texture(t);
-						}
-					}
+					v.second.get()->draw();
 				}
 			}
 			_graphics_controller.get()->update_window();
