@@ -3,7 +3,7 @@ using namespace Game;
 Controllers::MainController::MainController()
 {
 	_window_controller = std::make_shared<WindowController>();
-	_level_controller = std::make_shared<Controllers::LevelController>();
+	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller);
 	_input_controller = std::make_shared<Controllers::InputController>();
 }
 

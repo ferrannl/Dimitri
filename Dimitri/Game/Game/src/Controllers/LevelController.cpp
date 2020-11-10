@@ -1,7 +1,7 @@
 #include "LevelController.h"
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController()
+Game::Controllers::LevelController::LevelController(std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{window_controller}
 {
 	_level = std::make_shared<Game::Models::Level>();
 	_level->load_objects();
@@ -37,6 +37,15 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			}
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_L:
+		if (_running) {
+			stop();
+		}
+		else {
+			_window_controller->set_level_size(_level->get_level_height(), _level->get_level_width());
+			start();
+		}
+		break;
 	}
 }
 
@@ -68,5 +77,8 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
+		int x = (_level->get_player()->get_x() + _level->get_player()->get_width() / 2) - _window_controller->get_window_width() / 2;
+		int y = (_level->get_player()->get_texture()->get_converted_y(_window_controller->get_window_height()) + _level->get_player()->get_height() / 2) - _window_controller->get_window_height() / 2;
+		_window_controller->set_camera_pos(x , y);
 	}
 }

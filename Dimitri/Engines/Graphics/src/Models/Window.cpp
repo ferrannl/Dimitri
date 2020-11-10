@@ -81,3 +81,13 @@ std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() co
 {
 	return _facade;
 }
+
+void Graphics::Models::Window::set_camera_pos(const int x, const int y)
+{
+	_facade->set_camera_pos(x,y);
+}
+
+void Graphics::Models::Window::set_level_size(const int height, const int width)
+{
+	_facade->set_level_size(height, width);
+}

@@ -73,6 +73,16 @@ namespace Graphics {
 			* Returns the current fps
 			*/
 			int get_fps();
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(const int x, const int y);
+
+			/**
+			* Sets level size
+			*/
+			void set_level_size(const int height, const int width);
 		};
 	}
 }

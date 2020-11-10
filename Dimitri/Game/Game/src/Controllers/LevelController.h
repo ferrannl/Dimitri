@@ -2,6 +2,7 @@
 #include <src\Interfaces\IObserver.h>
 #include "../Models/Level.h"
 #include "../Events/InputEvent.h"
+#include "../Controllers/WindowController.h"
 #include <src\Models\Texture.h>
 #include <chrono>
 #include <thread>
@@ -33,8 +34,12 @@ namespace Game {
 			*	Keeps track of simulation thread state
 			*/
 			bool _running;
+			/**
+			*	WindowController to update camera potision
+			\*/
+			std::shared_ptr<Controllers::WindowController> _window_controller;
 		public:
-			LevelController();
+			LevelController(std::shared_ptr<Controllers::WindowController> window_controller);
 
 			/**
 			*	List of all textures in level

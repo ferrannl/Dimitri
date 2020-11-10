@@ -46,3 +46,13 @@ int Graphics::Controllers::GraphicsController::get_fps()
 {
 	return _window->get_facade()->get_fps();
 }
+
+void Graphics::Controllers::GraphicsController::set_camera_pos(const int x, const int y)
+{
+	_window->set_camera_pos(x, y);
+}
+
+void Graphics::Controllers::GraphicsController::set_level_size(const int height, const int width)
+{
+	_window-> set_level_size(height, width);
+}

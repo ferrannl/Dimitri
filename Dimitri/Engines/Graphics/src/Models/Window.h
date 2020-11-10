@@ -109,6 +109,16 @@ namespace Graphics {
 			const std::string get_title() const;
 
 			std::shared_ptr<Facades::WindowFacade> get_facade() const;
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(const int x, const int y);
+
+			/**
+			* Sets level size
+			*/
+			void set_level_size(const int height, const int width);
 		};
 	}
 }

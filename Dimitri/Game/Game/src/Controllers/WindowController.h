@@ -39,6 +39,14 @@ namespace Game {
 			*	Draw thread for updating window in background thread
 			*/
 			std::thread draw_thread;
+			bool _open_window;
+
+			/**
+			*	Height and width of window
+			*/
+			int _height = 720;
+			int _width = 1280;
+
 		public:
 			WindowController();
 
@@ -76,6 +84,23 @@ namespace Game {
 			*	Sets the textures for the level view
 			*/
 			void set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(const int x, const int y);
+
+			/**
+			* Sets level size
+			*/
+			void set_level_size(const int height, const int width);
+
+			/**
+			*	Getters window height and widht
+			*/
+			int get_window_height() const;
+
+			int get_window_width() const;
 		};
 	}
 }
