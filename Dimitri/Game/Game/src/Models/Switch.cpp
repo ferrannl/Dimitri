@@ -3,6 +3,7 @@
 Game::Models::Switch::Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IInteractable(x, y, z, height, width, state)
 {
 	initialize_textures();
+	create_shape(x, y, height, width, false, true, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
 void Game::Models::Switch::initialize_textures()

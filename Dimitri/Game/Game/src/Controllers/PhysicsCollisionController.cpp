@@ -15,7 +15,7 @@ void Game::Controllers::PhysicsCollisionController::destroy_shapes()
 	_world_controller->destroy_bodies();
 }
 
-std::shared_ptr<PhysicsCollision::Models::Shape> Game::Controllers::PhysicsCollisionController::create_shape(float x, float y, float width, float height, bool is_dynamic)
+void Game::Controllers::PhysicsCollisionController::load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes)
 {
-	/*return _world_controller->create_shape(PhysicsCollision::Enums::ShapeEnum::Square, x, y, width, height, is_dynamic);*/
+	_world_controller->load_shapes(_shapes);
 }

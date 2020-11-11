@@ -109,6 +109,11 @@ namespace Game {
 			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
 
 			/**
+			*	Creates the shape for an object
+			*/
+			void create_shape(int x, int y, int height, int width, bool is_dynamic, bool is_interactable, PhysicsCollision::Enums::ShapeEnum type);
+
+			/**
 			*	Sets shape
 			*/
 			void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);

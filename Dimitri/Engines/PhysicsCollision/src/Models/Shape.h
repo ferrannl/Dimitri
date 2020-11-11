@@ -45,6 +45,8 @@ namespace PhysicsCollision {
 			* Is dynamic boolean of a shape
 			*/
 			bool _is_dynamic;
+
+			bool _is_interactable;
 		protected:
 			/**
 			* Shape type
@@ -55,8 +57,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape();
-			Shape(int x, int y, int height, int width, bool is_dynamic);
+			Shape(int x, int y, int height, int width, bool is_dynamic, bool is_interactable, Enums::ShapeEnum type);
 			/**
 			* Returns the ShapeFacade from a shape
 			*/
@@ -69,6 +70,10 @@ namespace PhysicsCollision {
 			* Sets the type of a shape
 			*/
 			void set_type(Enums::ShapeEnum type);
+			/**
+			*	Sets if a shape is interactable
+			*/
+			void set_is_interactable(bool is_interactable);
 			/**
 			* Sets the x position of a shape
 			*/
@@ -117,6 +122,10 @@ namespace PhysicsCollision {
 			* Returns if a shape is dynamic
 			*/
 			bool get_is_dynamic() const;
+			/**
+			* Returns if a shape is interactable
+			*/
+			bool get_is_interactable() const;
 			/**
 			* Sets the dynamic property of a shape
 			*/

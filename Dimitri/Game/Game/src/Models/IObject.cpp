@@ -2,7 +2,6 @@
 
 Game::Models::IObject::IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _state { state }
 {
-	
 }
 
 std::shared_ptr<Graphics::Models::Texture> Game::Models::IObject::get_texture()
@@ -68,6 +67,11 @@ void Game::Models::IObject::set_state(const Game::Enums::StateEnum& value)
 std::shared_ptr<PhysicsCollision::Models::Shape> Game::Models::IObject::get_shape() const
 {
 	return _shape;
+}
+
+void Game::Models::IObject::create_shape(int x, int y, int height, int width, bool is_dynamic,bool is_interactable, PhysicsCollision::Enums::ShapeEnum type)
+{
+	set_shape(std::make_shared<PhysicsCollision::Models::Shape>(x, y, height, width, is_dynamic,is_interactable, type));
 }
 
 void Game::Models::IObject::set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)

@@ -3,18 +3,18 @@
 using namespace PhysicsCollision;
 
 Controllers::WorldController::WorldController() {
-	_shapeController = ShapeController{};
 }
 
 void Controllers::WorldController::setup_world(const float width, const float height) {
 	_world = Models::World{ width, height };
 }
 
-std::shared_ptr<Models::Shape> Controllers::WorldController::create_shape(PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, bool is_dynamic)
+void Controllers::WorldController::load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes)
 {
-	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type,x,y, width, height, is_dynamic);
-	_world.add_shape(shape);
-	return shape;
+	for(auto shape : shapes)
+	{
+		_world.add_shape(shape);
+	}
 }
 
 void Controllers::WorldController::destroy_bodies()

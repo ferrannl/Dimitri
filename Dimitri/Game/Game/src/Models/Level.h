@@ -34,7 +34,12 @@ namespace Game {
 			*	PhysicsCollision Contoller to interact with Physics Collision engine
 			*/
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
-			
+
+			/**
+			*	List of all the shapes in level
+			*/
+			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
+
 			/**
 			*	Player Object
 			*/
@@ -49,12 +54,7 @@ namespace Game {
 			*	List of interactables in level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
-			
-			/**
-			*	List of invisible borders in level
-			*/
-			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _borders;
-			
+
 			/**
 			*	Level background
 			*/
@@ -92,6 +92,8 @@ namespace Game {
 			*	Initializes objects
 			*/
 			void load_objects();
+
+			void add_shapes();
 
 			/**
 			*	Returns list of all textures in level
