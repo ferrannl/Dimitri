@@ -31,7 +31,7 @@ namespace PhysicsCollision {
 			/**
 			* Creates the shape based on given type
 			*/
-			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic)const;
+			std::shared_ptr<Models::Shape> create_shape(const PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, const bool is_dynamic, const bool is_interactable) const;
 		};
 	}
 }

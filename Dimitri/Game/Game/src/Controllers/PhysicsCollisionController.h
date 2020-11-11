@@ -32,7 +32,7 @@ namespace Game {
 			/**
 			*	Creates shape
 			*/
-			std::shared_ptr<PhysicsCollision::Models::Shape> create_shape(float x, float y, float width, float height, bool is_dynamic);
+			std::shared_ptr<PhysicsCollision::Models::Shape> create_shape(float x, float y, float width, float height, bool is_dynamic, bool is_interactable);
 
 			/**
 			*	Check collision

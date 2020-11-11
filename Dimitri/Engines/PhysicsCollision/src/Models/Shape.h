@@ -45,6 +45,7 @@ namespace PhysicsCollision {
 			* Is dynamic boolean of a shape
 			*/
 			bool _is_dynamic;
+			bool _is_interactable;
 		protected:
 			/**
 			* Shape type
@@ -116,10 +117,13 @@ namespace PhysicsCollision {
 			* Returns if a shape is dynamic
 			*/
 			bool get_is_dynamic() const;
+			bool get_is_interactable() const;
 			/**
 			* Sets the dynamic property of a shape
 			*/
 			void set_is_dynamic(bool is_dynamic);
+
+			void set_is_interactable(bool is_interactable);
 		};
 	}
 }

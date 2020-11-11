@@ -38,6 +38,17 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 		bodyDef.angle = 0;
 		body = _world->CreateBody(&bodyDef);
 		fixtureDef.shape = &_shape;
+		if (shape->get_is_interactable())
+		{
+			fixtureDef.filter.groupIndex = 1;
+			fixtureDef.filter.categoryBits = 0x0001;
+		}
+		else {
+			fixtureDef.filter.groupIndex = -1;
+			fixtureDef.filter.categoryBits = 0x0002;
+		}
+		fixtureDef.filter.maskBits = 1;
+		fixtureDef.friction = 1.0f;
 		fixtureDef.density = 1.0f;
 		body->CreateFixture(&fixtureDef);
 	}
