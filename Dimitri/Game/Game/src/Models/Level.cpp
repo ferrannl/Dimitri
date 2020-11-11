@@ -104,7 +104,7 @@ void Game::Models::Level::load_objects()
 	_shapes.push_back(interactable.get()->get_shape());
 	_interactables.push_back(interactable);
 
-	//border 
+	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, 1080, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, 720, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//lef

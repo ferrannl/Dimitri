@@ -37,6 +37,7 @@ namespace PhysicsCollision {
 			* World bodies KeyValuePair of Shape and b2Body 
 			*/
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
+
 		public:
 			WorldFacade();
 			/**
