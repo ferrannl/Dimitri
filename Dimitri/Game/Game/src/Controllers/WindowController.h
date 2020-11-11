@@ -53,6 +53,11 @@ namespace Game {
 			void open_view(const std::string& view_name);
 
 			/**
+			*	Checks if the view is active
+			*/
+			bool is_active(const std::string& view_name);
+
+			/**
 			*	Sets all the views active property to false
 			*/
 			void clear_views();

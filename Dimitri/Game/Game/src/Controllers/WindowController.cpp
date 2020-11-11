@@ -8,7 +8,7 @@ namespace Game {
 
 	void Controllers::WindowController::create_window(int height, int width)
 	{
-		if (_graphics_controller.get()->create_window("Dimitri", width, height) == NULL) {
+		if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
 			return;
 		}
 
@@ -25,25 +25,30 @@ namespace Game {
 	{
 		while (true) {
 			sleep_for(5ms);
-			_graphics_controller.get()->clear_textures();
+			_graphics_controller->clear_textures();
 			for (auto& v : _views) {
 				if (v.second->is_active() && v.second->is_visible()) {
 					v.second->draw();
 				}
 			}
-			_graphics_controller.get()->update_window();
+			_graphics_controller->update_window();
 		}
 	}
 
 	void Controllers::WindowController::open_view(const std::string& view_name)
 	{
-		_views[view_name].get()->set_active(true);
+		_views[view_name]->set_active(true);
+	}
+
+	bool Controllers::WindowController::is_active(const std::string& view_name)
+	{
+		return _views[view_name]->is_active();
 	}
 
 	void Controllers::WindowController::clear_views()
 	{
 		for (auto& v : _views) {
-			v.second.get()->set_active(false);
+			v.second->set_active(false);
 		}
 	}
 
@@ -55,6 +60,6 @@ namespace Game {
 
 	void Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
 	{
-		_views["level"].get()->set_textures(textures);
+		_views["level"]->set_textures(textures);
 	}
 }

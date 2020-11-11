@@ -19,21 +19,25 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_C:
-		_window_controller.get()->clear_views();
-		_window_controller.get()->open_view("credits");
-		_window_controller.get()->open_view("fps");
-		_level_controller.get()->stop();
-		_input_controller->unsubscribe(_level_controller);
+		if (!_window_controller->is_active("credits")) {
+			_window_controller->clear_views();
+			_window_controller->open_view("credits");
+			_window_controller->open_view("fps");
+			_level_controller->stop();
+			_input_controller->unsubscribe(_level_controller);
+		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_L:
-		_window_controller.get()->clear_views();
-		_window_controller.get()->open_view("level");
-		_window_controller.get()->open_view("fps");
-		_input_controller->subscribe(_level_controller);
-		_level_controller.get()->start();
+		if (!_window_controller->is_active("level")) {
+			_window_controller->clear_views();
+			_window_controller->open_view("level");
+			_window_controller->open_view("fps");
+			_input_controller->subscribe(_level_controller);
+			_level_controller->start();
+		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_F:
-		_window_controller.get()->toggle_view_visibility("fps");
+		_window_controller->toggle_view_visibility("fps");
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
 		exit(0);
