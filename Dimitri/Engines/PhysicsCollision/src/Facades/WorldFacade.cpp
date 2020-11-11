@@ -42,13 +42,12 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 		{
 			fixtureDef.filter.groupIndex = 1;
 			fixtureDef.filter.categoryBits = 0x0001;
-			fixtureDef.filter.maskBits = 1;
 		}
 		else {
 			fixtureDef.filter.groupIndex = -1;
 			fixtureDef.filter.categoryBits = 0x0002;
-			fixtureDef.filter.maskBits = 1;
 		}
+		fixtureDef.filter.maskBits = 1;
 		fixtureDef.friction = 1.0f;
 		fixtureDef.density = 1.0f;
 		body->CreateFixture(&fixtureDef);
