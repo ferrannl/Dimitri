@@ -17,7 +17,7 @@ void Time::Fps::update()
 	// one second elapsed? (= 1000 milliseconds)
 	if (_fpsinterval->value() > 1000)
 	{
-		// save the current counter value to m_fps
+		// save the current counter value to _fps
 		_fps = _fpscount;
 
 		// reset the counter and the interval

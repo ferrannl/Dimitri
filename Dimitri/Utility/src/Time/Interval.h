@@ -8,7 +8,7 @@ namespace Utility {
 		private:
 			unsigned int initial_;
 		public:
-			inline Interval() : initial_(GetTickCount()) {}
+			inline Interval() : initial_(GetTickCount64()) {}
 			/**
 			* Return amount ticks from initial ticks
 			*/
