@@ -3,7 +3,7 @@
 #include <SDL_ttf.h>
 using namespace Graphics;
 
-int Facades::WindowFacade::create_window(const std::string title, const int height, const int width)
+int Facades::WindowFacade::create_window(const std::string& title, const int height, const int width)
 {
 	try {
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {

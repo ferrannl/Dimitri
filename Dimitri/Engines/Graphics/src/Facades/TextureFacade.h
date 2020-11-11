@@ -42,7 +42,7 @@ namespace Graphics {
 			*/
 			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
 		public:
-			TextureFacade(const std::string path);
+			TextureFacade(const std::string& path);
 
 			/**
 			* Creates an SDL_Texture for a given path

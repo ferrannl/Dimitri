@@ -14,7 +14,12 @@ namespace Utility {
 			/**
 			* Subscribe to the observable
 			*/
-			virtual void subscribe(std::shared_ptr<Interfaces::IObserver<T>> observer) = 0;
+			virtual void subscribe(const std::shared_ptr<Interfaces::IObserver<T>>& observer) = 0;
+
+			/**
+			* Unsubscribe to the observable
+			*/
+			virtual void unsubscribe(const std::shared_ptr<IObserver<T>>& observer) = 0;
 		};
 	}
 }

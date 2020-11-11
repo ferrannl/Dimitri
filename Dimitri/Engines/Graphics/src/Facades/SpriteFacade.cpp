@@ -1,7 +1,7 @@
 #include "SpriteFacade.h"
 using namespace Graphics;
 
-Facades::SpriteFacade::SpriteFacade(const std::string path) : TextureFacade(path) {}
+Facades::SpriteFacade::SpriteFacade(const std::string& path) : TextureFacade(path) {}
 
 void Facades::SpriteFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer)
 {

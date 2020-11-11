@@ -55,7 +55,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
-			Window(const std::string title, const int height, const int width);
+			Window(const std::string& title, const int height, const int width);
 
 			/**
 			* Return int is used to check if sdl is initialized.

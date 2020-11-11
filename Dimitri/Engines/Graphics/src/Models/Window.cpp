@@ -1,7 +1,7 @@
 #include "Window.h"
 using namespace Graphics;
 
-Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
+Models::Window::Window(const std::string& title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
 	_facade = std::make_shared<Facades::WindowFacade>();
 }
 

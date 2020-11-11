@@ -48,7 +48,7 @@ namespace Graphics {
 			*/
 			int _height;
 		public:
-			TextFacade(const std::string path, const std::string text, const Color color, const int height);
+			TextFacade(const std::string& path, const std::string& text, const Color& color, const int height);
 
 			/**
 			* Creates an SDL_Texture for a given path

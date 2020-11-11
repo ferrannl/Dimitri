@@ -1,7 +1,7 @@
 #include "Text.h"
 using namespace Graphics;
 
-Models::Text::Text(const std::string text, const Color color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path) :
+Models::Text::Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path) :
 	Models::Texture(x, y, x, height, width, angle, path), _text{ text }, _color{ color} {}
 
 const std::string Graphics::Models::Text::get_text() const

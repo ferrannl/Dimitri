@@ -37,7 +37,7 @@ namespace Graphics {
 			/**
 			* Creates the window with the given parameters
 			*/
-			int create_window(const std::string title, const int height, const int width);
+			int create_window(const std::string& title, const int height, const int width);
 
 			/**
 			* Adds the texture to the window

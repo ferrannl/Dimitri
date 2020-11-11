@@ -56,7 +56,7 @@ namespace Graphics {
 			/**
 			* Creates the instance of SDL_Window
 			*/
-			int create_window(const std::string title, const int height, const int width);
+			int create_window(const std::string& title, const int height, const int width);
 
 			/**
 			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches

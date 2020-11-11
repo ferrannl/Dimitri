@@ -25,7 +25,7 @@ namespace Graphics {
 	namespace Models {
 		class GRAPHICS_API Sprite : public Texture {
 		public:
-			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path, const Enums::FlipEnum flipstatus);
+			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus);
 
 			/**
 			* creates the texture facade
