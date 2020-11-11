@@ -1,5 +1,5 @@
 #pragma once
-#include "View.h"
+#include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
 
 /**

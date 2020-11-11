@@ -2,7 +2,7 @@
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
-#include "View.h"
+#include <..\Game\Game\src\Views\View.h>
 #include <chrono>
 #include <thread>
 using namespace std::this_thread;

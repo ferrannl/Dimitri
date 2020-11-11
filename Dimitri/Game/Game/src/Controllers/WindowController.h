@@ -6,11 +6,11 @@
 #include <thread>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Interfaces\IObserver.h>
-#include "../Events/InputEvent.h"
-#include "../Views/CreditsView.h"
-#include "../Views/LevelView.h"
-#include "../Views/FpsView.h"
-#include "../Views/View.h"
+#include <..\Game\Game\src\Events\InputEvent.h>
+#include <..\Game\Game\src\Views/CreditsView.h>
+#include <..\Game\Game\src\Views\LevelView.h>
+#include <..\Game\Game\src\Views\FpsView.h>
+#include <..\Game\Game\src\Views\View.h>
 
 /**
 *	Namespace for the game
