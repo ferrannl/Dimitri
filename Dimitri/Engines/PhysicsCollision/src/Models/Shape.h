@@ -129,10 +129,6 @@ namespace PhysicsCollision {
 			*/
 			bool get_is_interactable() const;
 			/**
-			* Returns if a shape is interactable
-			*/
-			bool get_is_interactable() const;
-			/**
 			* Sets the dynamic property of a shape
 			*/
 			void set_is_dynamic(bool is_dynamic);

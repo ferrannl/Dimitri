@@ -93,11 +93,6 @@ void Models::Shape::set_is_dynamic(bool is_dynamic)
 	_is_dynamic = is_dynamic;
 }
 
-void PhysicsCollision::Models::Shape::set_is_interactable(bool is_interactable)
-{
-	_is_interactable = is_interactable;
-}
-
 void Models::Shape::move_x(const int value)const
 {
 	_shape_facade->move_x(value);
