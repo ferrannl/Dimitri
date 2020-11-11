@@ -63,7 +63,7 @@ namespace Game {
 			void toggle_view_visibility(const std::string& view_name);
 
 			/**
-			* returns _width
+			*	Calls all draw methods on _views
 			*/
 			void draw();
 
