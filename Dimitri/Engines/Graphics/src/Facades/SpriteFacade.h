@@ -32,7 +32,7 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API SpriteFacade : public TextureFacade {
 		public:
-			SpriteFacade(const std::string path);
+			SpriteFacade(const std::string& path);
 
 			/**
 			* Creates an SDL_Texture for a given path

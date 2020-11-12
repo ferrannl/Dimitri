@@ -42,7 +42,12 @@ namespace Game {
 			/**
 			*	Add observer to list of observables
 			*/
-			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>> observer);
+			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>& observer);
+
+			/**
+			* Removes observer from list of observables
+			*/
+			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>& observer);
 		};
 	}
 }

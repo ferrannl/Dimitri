@@ -3,10 +3,10 @@ using namespace Utility;
 
 unsigned int Time::Interval::value() const
 {
-	return GetTickCount() - initial_;
+	return GetTickCount64() - initial_;
 }
 
 void Time::Interval::reset()
 {
-	initial_ = GetTickCount();
+	initial_ = GetTickCount64();
 }

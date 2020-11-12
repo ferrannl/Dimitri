@@ -1,38 +1,17 @@
 #include "LevelView.h"
-using namespace Game;
 
-Views::LevelView::LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : _graphics_controller{ graphics_controller }
-{
-}
+namespace Game {
+	Views::LevelView::LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {}
 
-void Views::LevelView::init_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
-{
-	_textures = textures;
-}
-
-void Views::LevelView::open()
-{
-	is_open = true;
-	for (auto texture : _textures) {
-		_graphics_controller.get()->add_texture(texture);
+	void Views::LevelView::draw()
+	{
+		for (auto& t : _textures) {
+			_graphics_controller.get()->add_texture(t);
+		}
 	}
-	draw_thread = std::thread(&Views::LevelView::draw, this);
-}
 
-void Views::LevelView::close()
-{
-	is_open = false;
-	draw_thread.join();
-	for (auto texture : _textures) {
-		_graphics_controller.get()->remove_texture(texture);
-	}
-	_graphics_controller.get()->update_window();
-}
-
-void Game::Views::LevelView::draw()
-{
-	while (is_open) {
-		sleep_for(5ms);
-		_graphics_controller.get()->update_window();
+	bool Views::LevelView::is_visible() const
+	{
+		return true;
 	}
 }

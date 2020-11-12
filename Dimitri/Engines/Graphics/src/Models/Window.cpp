@@ -1,7 +1,7 @@
 #include "Window.h"
 using namespace Graphics;
 
-Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
+Models::Window::Window(const std::string& title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
 	_facade = std::make_shared<Facades::WindowFacade>();
 }
 
@@ -50,6 +50,11 @@ void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& te
 		int index = std::distance(_textures.begin(), it);
 		_textures.erase(_textures.begin() + index);
 	}
+}
+
+void Graphics::Models::Window::clear_textures()
+{
+	_textures.clear();
 }
 
 std::vector<std::shared_ptr<Models::Texture>> Graphics::Models::Window::get_textures() const

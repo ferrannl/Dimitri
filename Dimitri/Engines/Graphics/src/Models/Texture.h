@@ -79,7 +79,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path);
+			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path);
 
 			/**
 			* returns the y converted to be drawn from the perspective of bottom left
@@ -129,7 +129,7 @@ namespace Graphics {
 			/**
 			* returns the visibility
 			*/
-			bool get_visible() const;
+			bool is_visible() const;
 
 			/**
 			* returns the facade of the texture for the sprite

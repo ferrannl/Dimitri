@@ -6,7 +6,6 @@ Time::Fps::Fps()
 {
 	_fps = { 0 };
 	_fpscount = { 0 };
-	setShown(true);
 	_fpsinterval = std::make_unique<Time::Interval>();
 }
 
@@ -18,7 +17,7 @@ void Time::Fps::update()
 	// one second elapsed? (= 1000 milliseconds)
 	if (_fpsinterval->value() > 1000)
 	{
-		// save the current counter value to m_fps
+		// save the current counter value to _fps
 		_fps = _fpscount;
 
 		// reset the counter and the interval
@@ -30,15 +29,5 @@ void Time::Fps::update()
 unsigned int Time::Fps::get() const
 {
 	return _fps;
-}
-
-void Time::Fps::setShown(bool shown)
-{
-	this->shown = shown;
-}
-
-bool Time::Fps::getShown() const
-{
-	return shown;
 }
 

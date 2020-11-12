@@ -16,8 +16,6 @@ namespace Utility {
 	namespace Time {
 		class UTILITY_API Fps
 		{
-		private:
-			bool shown;
 		protected:
 			unsigned int _fps;
 			unsigned int _fpscount;
@@ -31,8 +29,6 @@ namespace Utility {
 			void update();
 
 			unsigned int get() const;
-			void setShown(bool shown);
-			bool getShown() const;
 		};
 	}
 }

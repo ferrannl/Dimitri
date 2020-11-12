@@ -37,7 +37,7 @@ namespace Graphics {
 			/**
 			* Creates the window with the given parameters
 			*/
-			int create_window(const std::string title, const int height, const int width);
+			int create_window(const std::string& title, const int height, const int width);
 
 			/**
 			* Adds the texture to the window
@@ -48,6 +48,11 @@ namespace Graphics {
 			* Removes the texture to the window
 			*/
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
+
+			/**
+			* Clears all textures from the window
+			*/
+			void clear_textures();
 
 			/**
 			* Returns the textures from the window
@@ -64,7 +69,10 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Models::Window> get_window() const;
 
-			void switch_fps();
+			/**
+			* Returns the current fps
+			*/
+			int get_fps();
 		};
 	}
 }

@@ -37,14 +37,6 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			}
 		}
 		break;
-	case Input::Enums::EventEnum::KEY_PRESS_L:
-		if (_running) {
-			stop();
-		}
-		else {
-			start();
-		}
-		break;
 	}
 }
 
@@ -55,16 +47,20 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::start()
 {
-	_running = true;
-	_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
-	_level->play_music("level1");
+	if (!_running) {
+		_running = true;
+		_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
+		_level->play_music("level1");
+	}
 }
 
 void Game::Controllers::LevelController::stop()
 {
-	_running = false;
-	_simulation_thread.join();
-	_level->stop_music("level1");
+	if (_running) {
+		_running = false;
+		_simulation_thread.join();
+		_level->stop_music("level1");
+	}
 }
 
 void  Game::Controllers::LevelController::simulate() {

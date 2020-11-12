@@ -1,7 +1,7 @@
 #include "Texture.h"
 using namespace Graphics;
 
-Models::Texture::Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path) :
+Models::Texture::Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path) :
 	_x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _angle{ angle }, _path{ path }, _facade{ nullptr }, _flipstatus{ Enums::FlipEnum::NONE }, _visible { false } {}
 
 int Models::Texture::get_converted_y(int height) const
@@ -39,7 +39,7 @@ float Models::Texture::get_angle() const
 	return _angle;
 }
 
-bool Models::Texture::get_visible() const
+bool Models::Texture::is_visible() const
 {
 	return _visible;
 }

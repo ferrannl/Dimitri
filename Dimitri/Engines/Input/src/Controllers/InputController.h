@@ -6,6 +6,7 @@
 #include "../../../../Utility/src/Interfaces/IObserver.h"
 #include <chrono>
 #include <thread>
+#include <vector>
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -33,9 +34,9 @@ namespace Input {
 		class INPUT_API InputController : public Utility::Interfaces::IObservable<Enums::EventEnum> {
 		private:
 			/**
-			* The observer that observes key and mouse events
+			* The observers that observes key and mouse events
 			*/
-			std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> _observer;
+			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>> _observers;
 
 			/**
 			* The facade that contains the method from SDL which are needed for mouse events
@@ -63,7 +64,12 @@ namespace Input {
 			/**
 			* Subscribes on this observable
 			*/
-			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
+			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer);
+
+			/**
+			* Unsubscribes on this observable
+			*/
+			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer);
 			
 			/**
 			* Polls if events are fired
