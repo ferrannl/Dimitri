@@ -19,6 +19,9 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
 	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
+		//x + width / 2 naar x + width, y + height
+		//x + width, y + height naar x, y+ height
+		//x, y+ height naar x + width / 2
 		//Polygon tekenen dmv vertices
 	}
 	else if (shape->get_type() == Enums::ShapeEnum::Square) {
