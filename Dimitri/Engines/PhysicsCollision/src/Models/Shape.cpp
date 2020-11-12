@@ -3,13 +3,13 @@ using namespace PhysicsCollision;
 
 Models::Shape::Shape(int x, int y, int height, int width, bool is_dynamic, bool is_interactable, Enums::ShapeEnum type)
 {
-	set_type(type);
-	set_height(height);
-	set_width(width);
-	set_x(x);
-	set_y(y);
-	set_is_dynamic(is_dynamic);
-	set_is_interactable(is_interactable);
+	_type = type;
+	_height = height;
+	_width = width;
+	_x = x;
+	_y = y;
+	_is_dynamic = is_dynamic;
+	_is_interactable = is_interactable;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
 
