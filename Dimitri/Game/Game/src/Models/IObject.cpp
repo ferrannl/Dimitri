@@ -69,7 +69,7 @@ std::shared_ptr<PhysicsCollision::Models::Shape> Game::Models::IObject::get_shap
 	return _shape;
 }
 
-void Game::Models::IObject::create_shape(int x, int y, int height, int width, bool is_dynamic,bool is_interactable, PhysicsCollision::Enums::ShapeEnum type)
+void Game::Models::IObject::create_shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type)
 {
 	set_shape(std::make_shared<PhysicsCollision::Models::Shape>(x, y, height, width, is_dynamic,is_interactable, type));
 }
