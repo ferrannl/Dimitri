@@ -8,6 +8,7 @@
 #include <src\Interfaces\IObserver.h>
 #include <..\Game\Game\src\Events\InputEvent.h>
 #include <..\Game\Game\src\Views/CreditsView.h>
+#include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\View.h>

@@ -171,6 +171,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Models\Player.cpp" />
     <ClCompile Include="src\Models\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
+    <ClCompile Include="src\Views\HelpView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
   </ItemGroup>
@@ -190,6 +191,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Models\Player.h" />
     <ClInclude Include="src\Models\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
+    <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\LevelView.h" />
   </ItemGroup>
