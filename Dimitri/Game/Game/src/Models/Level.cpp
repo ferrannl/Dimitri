@@ -59,7 +59,7 @@ void Game::Models::Level::load_objects()
 	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false, false));
 	_tiles.push_back(tile);
 
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
+	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
 	_background->set_visible(true);
 
 	//platform 1

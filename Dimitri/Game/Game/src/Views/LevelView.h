@@ -3,7 +3,6 @@
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
-#include <chrono>
 #include <..\Game\Game\src\Views\View.h>
 
 /**

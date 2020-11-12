@@ -1,6 +1,5 @@
 #pragma once
 #include <src\Controllers\GraphicsController.h>
-#include <thread>
 #include <memory>
 #include <vector>
 /**

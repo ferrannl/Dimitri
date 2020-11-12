@@ -15,13 +15,24 @@ namespace Game {
 		/**
 		*	Containing all the code to draw the fps using the graphics controller
 		*/
-		class FpsView : public View {
+		class WinLevelView : public View {
 		public:
-			FpsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			WinLevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+
+			/**
+			*	Initializes textures
+			*/
+			void init_textures();
+
 			/**
 			* Add the textures to the _graphics_controller
 			*/
 			void draw();
+
+			/**
+			*	Returns if view is visible
+			*/
+			bool is_visible() const override;
 		};
 	}
 }
