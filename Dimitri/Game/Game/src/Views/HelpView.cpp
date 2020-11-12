@@ -13,7 +13,7 @@ namespace Game {
 		std::vector <std::string> gameplay = { "Dimitri moet", "ongezien infiltreren", "in de geheime", "russische basis" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Color color = { 255, 255, 255 };
-		std::shared_ptr<Graphics::Models::Text> texture = std::make_shared<Graphics::Models::Text>("Helpscherm", color, 390, 600, 10, 70, 240, 0, path);
+		std::shared_ptr<Graphics::Models::Text> texture = std::make_shared<Graphics::Models::Text>("Helpscherm", color, (window_width / 2) - 120, 600, 10, 70, 240, 0, path);
 		std::shared_ptr<Graphics::Models::Text> controls_header = std::make_shared<Graphics::Models::Text>("Knoppen", color, window_width / 4 - 75, 500, 10, 60, 150, 0, path);
 		std::shared_ptr<Graphics::Models::Text> play_header = std::make_shared<Graphics::Models::Text>("Doel", color, (window_width / 4) * 3 - 45, 500, 10, 60, 90, 0, path);
 
