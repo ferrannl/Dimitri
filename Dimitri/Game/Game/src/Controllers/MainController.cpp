@@ -45,6 +45,15 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_level_controller->start();
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_ESC:
+		if (!_window_controller->is_active("home")) {
+			_window_controller->clear_views();
+			_window_controller->open_view("home");
+			_window_controller->open_view("fps");
+			_level_controller->stop();
+			_input_controller->unsubscribe(_level_controller);
+		}
+		break;
 	case Input::Enums::EventEnum::KEY_PRESS_F:
 		_window_controller->toggle_view_visibility("fps");
 		break;

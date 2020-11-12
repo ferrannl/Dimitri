@@ -21,6 +21,7 @@
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\HomeView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
@@ -41,5 +42,6 @@
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\HelpView.h" />
+    <ClInclude Include="src\Views\HomeView.h" />
   </ItemGroup>
 </Project>

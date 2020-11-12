@@ -14,6 +14,7 @@ namespace Game {
 
 		_views.insert({ "credits", std::make_unique<Views::CreditsView>(_graphics_controller) });
 		_views.insert({ "help", std::make_unique<Views::HelpView>(_graphics_controller) });
+		_views.insert({ "home", std::make_unique<Views::HomeView>(_graphics_controller) });
 		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
 		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
 		open_view("fps");
