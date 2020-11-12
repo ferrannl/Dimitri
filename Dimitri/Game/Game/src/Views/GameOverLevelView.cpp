@@ -24,13 +24,6 @@ namespace Game {
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("game over", color, window_width / 2 - win_text_width / 2, window_height / 2 - win_text_height / 2, 5000, win_text_height, win_text_width, 0, font_path, true));
 	}
 
-	void Views::GameOverLevelView::draw()
-	{
-		for (auto& t : _textures) {
-			_graphics_controller->add_texture(t);
-		}
-	}
-
 	bool Views::GameOverLevelView::is_visible() const
 	{
 		return true;

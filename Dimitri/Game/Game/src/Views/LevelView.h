@@ -19,10 +19,6 @@ namespace Game {
 		class LevelView : public View {
 		public:
 			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
-			/**
-			* Add the textures to the _graphics_controller
-			*/
-			void draw();
 
 			/**
 			*	Returns if view is visible

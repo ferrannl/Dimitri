@@ -21,7 +21,7 @@ namespace Game {
 			/**
 			* Add the textures to the _graphics_controller
 			*/
-			void draw();
+			void draw() override;
 		};
 	}
 }

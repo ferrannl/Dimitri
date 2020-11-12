@@ -23,13 +23,6 @@ namespace Game {
 		}
 	}
 
-	void Views::CreditsView::draw()
-	{
-		for (auto& t : _textures) {
-			_graphics_controller->add_texture(t);
-		}
-	}
-
 	bool Views::CreditsView::is_visible() const
 	{
 		return true;
