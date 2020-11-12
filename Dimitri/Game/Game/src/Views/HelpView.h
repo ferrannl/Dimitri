@@ -11,7 +11,7 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the credits using the graphics controller
+		*	Containing all the code to draw the helpview using the graphics controller
 		*/
 		class HelpView : public View {
 		public:
