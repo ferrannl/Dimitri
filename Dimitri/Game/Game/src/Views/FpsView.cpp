@@ -5,9 +5,9 @@ namespace Game {
 
 	void Views::FpsView::draw()
 	{
-		std::string fps = std::to_string(_graphics_controller.get()->get_fps());
-		int window_width = _graphics_controller.get()->get_window().get()->get_width();
-		int window_height = _graphics_controller.get()->get_window().get()->get_height();
+		std::string fps = std::to_string(_graphics_controller->get_fps());
+		int window_width = _graphics_controller->get_window()->get_width();
+		int window_height = _graphics_controller->get_window()->get_height();
 		int width = fps.size() * 15;
 		int height = 50;
 		_textures.clear();
@@ -15,7 +15,7 @@ namespace Game {
 		Color color = { 255, 255, 255 };
 		_textures.push_back(std::make_shared<Graphics::Models::Text>(fps, color, window_width - width - 5, window_height - height, 100, height, width, 0, path, true));
 		for (auto& t : _textures) {
-			_graphics_controller.get()->add_texture(t);
+			_graphics_controller->add_texture(t);
 		}
 	}
 }

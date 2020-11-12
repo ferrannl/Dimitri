@@ -16,7 +16,7 @@ bool Graphics::Models::Sprite::matches(const std::shared_ptr<Models::Texture>& t
 {
 	std::shared_ptr<Graphics::Models::Sprite> sprite = std::dynamic_pointer_cast<Graphics::Models::Sprite>(texture);
 	if (sprite.get()) {
-		return sprite.get()->get_path() == get_path();
+		return sprite->get_path() == get_path();
 	}
 	return false;
 }

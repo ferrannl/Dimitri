@@ -6,7 +6,7 @@ namespace Game {
 	void Views::LevelView::draw()
 	{
 		for (auto& t : _textures) {
-			_graphics_controller.get()->add_texture(t);
+			_graphics_controller->add_texture(t);
 		}
 	}
 

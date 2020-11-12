@@ -8,7 +8,7 @@ Models::Window::Window(const std::string& title, const int height, const int wid
 std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {
-		if (t.get()->matches(texture)) {
+		if (t->matches(texture)) {
 			return t;
 		}
 	}

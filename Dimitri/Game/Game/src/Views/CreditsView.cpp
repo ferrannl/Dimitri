@@ -7,8 +7,8 @@ namespace Game {
 
 	void Views::CreditsView::init_textures()
 	{
-		int window_width = _graphics_controller.get()->get_window().get()->get_width();
-		int window_height = _graphics_controller.get()->get_window().get()->get_height();
+		int window_width = _graphics_controller->get_window()->get_width();
+		int window_height = _graphics_controller->get_window()->get_height();
 		std::vector <std::string> names = { "Koen Baudewijns", "Olav Gerritsen", "Ferran Hendriks", "Billy Nooijens", "Max Peters", "Xia de Visser" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Color color = { 255, 255, 255 };
@@ -26,7 +26,7 @@ namespace Game {
 	void Views::CreditsView::draw()
 	{
 		for (auto& t : _textures) {
-			_graphics_controller.get()->add_texture(t);
+			_graphics_controller->add_texture(t);
 		}
 	}
 

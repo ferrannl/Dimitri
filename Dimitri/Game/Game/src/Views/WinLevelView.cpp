@@ -9,8 +9,8 @@ namespace Game {
 
 	void Views::WinLevelView::init_textures()
 	{
-		int window_width = _graphics_controller.get()->get_window().get()->get_width();
-		int window_height = _graphics_controller.get()->get_window().get()->get_height();
+		int window_width = _graphics_controller->get_window()->get_width();
+		int window_height = _graphics_controller->get_window()->get_height();
 
 		int bg_width = 500;
 		int bg_height = 300;
@@ -27,7 +27,7 @@ namespace Game {
 	void Views::WinLevelView::draw()
 	{
 		for (auto& t : _textures) {
-			_graphics_controller.get()->add_texture(t);
+			_graphics_controller->add_texture(t);
 		}
 	}
 
