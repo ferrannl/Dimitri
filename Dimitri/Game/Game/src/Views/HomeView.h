@@ -31,6 +31,11 @@ namespace Game {
 			*	Returns if view is visible
 			*/
 			bool is_visible() const override;
+
+			/**
+			*	Home background
+			*/
+			std::shared_ptr<Graphics::Models::Texture> _background;
 		};
 	}
 }

@@ -17,8 +17,8 @@ namespace Game {
 		_views.insert({ "home", std::make_unique<Views::HomeView>(_graphics_controller) });
 		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
 		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
-		open_view("fps");
-		toggle_view_visibility("fps");
+		open_view("home");
+		toggle_view_visibility("home");
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
