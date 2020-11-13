@@ -32,7 +32,7 @@ namespace Game {
 			/**
 			*	Loads the shape into the world
 			*/
-			void load_shape(std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
+			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape);
 		};
 	}
 }

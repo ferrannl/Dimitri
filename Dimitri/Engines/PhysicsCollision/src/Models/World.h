@@ -41,7 +41,7 @@ namespace PhysicsCollision {
 			/**
 			* Method that adds the shape to a world
 			*/
-			void add_shape(std::shared_ptr<Models::Shape> shape);
+			void add_shape(const std::shared_ptr<Models::Shape>& shape);
 			/**
 			* Returns the shapes from a world
 			*/

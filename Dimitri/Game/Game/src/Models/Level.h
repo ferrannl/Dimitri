@@ -40,8 +40,6 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
-			std::vector<std::shared_ptr<Game::Models::IObject>> _objects;
-
 			/**
 			*	Player Object
 			*/
@@ -52,6 +50,11 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
 			
+			/**
+			*	List of players in level
+			*/
+			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
+
 			/**
 			*	List of interactables in level
 			*/
