@@ -56,7 +56,7 @@ namespace Game {
 			virtual void initialize_textures() = 0;
 
 		public:
-			IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			IObject(const int x, const int y, const int z, const int height, const int width, const Game::Enums::StateEnum state);
 
 			/**
 			*	Returns texture based on state
@@ -107,6 +107,11 @@ namespace Game {
 			*	Returns shape
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
+
+			/**
+			*	Creates the shape for an object
+			*/
+			void create_shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
 
 			/**
 			*	Sets shape

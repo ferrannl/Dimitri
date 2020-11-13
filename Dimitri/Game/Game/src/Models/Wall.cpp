@@ -3,6 +3,7 @@
 Game::Models::Wall::Wall(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IObject(x, y, z, height, width , state)
 {
 	initialize_textures();
+	create_shape(x, y, height, width, false, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
 void Game::Models::Wall::initialize_textures()
