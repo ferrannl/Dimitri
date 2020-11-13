@@ -7,8 +7,8 @@ namespace Game {
 
 	void Views::HelpView::init_textures()
 	{
-		int window_width = 1080;
-		int window_height = 720;
+		int window_width = _graphics_controller.get()->get_window().get()->get_width();
+		int window_height = _graphics_controller.get()->get_window().get()->get_height();
 		std::vector <std::string> controls = { "Links: Beweeg naar links", "Rechts: Beweeg naar rechts", "Links: Beweeg naar links", "L: laad level", "C: Open credits scherm", "E: Interactie" };
 		std::vector <std::string> gameplay = { "Dimitri moet", "ongezien infiltreren", "in de geheime", "russische basis" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
