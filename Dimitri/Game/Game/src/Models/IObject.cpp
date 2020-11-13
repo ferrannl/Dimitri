@@ -1,8 +1,8 @@
 #include "IObject.h"
 
-Game::Models::IObject::IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _state { state }
+Game::Models::IObject::IObject(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _state{ state }
 {
-	
+
 }
 
 std::shared_ptr<Graphics::Models::Texture> Game::Models::IObject::get_texture()

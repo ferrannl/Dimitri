@@ -2,6 +2,7 @@
 #include "InputController.h"
 #include "WindowController.h"
 #include "LevelController.h"
+#include "HomeController.h"
 #include "../Models/Level.h"
 #include <memory>
 /**
@@ -16,7 +17,7 @@ namespace Game {
 		*	Contains code to connect input, window and level controllers and start the application
 		*/
 		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController> {
-		private:			
+		private:
 			/**
 			*	Input Controller
 			*/
@@ -29,6 +30,10 @@ namespace Game {
 			*	Level Controller
 			*/
 			std::shared_ptr<Controllers::LevelController> _level_controller;
+			/**
+			*	Home Controller
+			*/
+			std::shared_ptr<Controllers::HomeController> _home_controller;
 		public:
 			MainController();
 
@@ -36,7 +41,7 @@ namespace Game {
 			*	Starts polling input controller
 			*/
 			void run();
-			
+
 			/**
 			*	Update from Game::Controllers::InputController
 			*/

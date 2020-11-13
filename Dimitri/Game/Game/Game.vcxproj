@@ -154,6 +154,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controllers\HomeController.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
@@ -178,6 +179,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\IInteractable.h" />

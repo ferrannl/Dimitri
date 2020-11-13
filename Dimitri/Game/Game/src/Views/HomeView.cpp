@@ -1,4 +1,5 @@
 #include "HomeView.h"
+#include "../Models/Button.h"
 
 namespace Game {
 	Views::HomeView::HomeView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {
@@ -14,7 +15,12 @@ namespace Game {
 		std::shared_ptr<Graphics::Models::Text> title = std::make_shared<Graphics::Models::Text>("DIMITRI", color, window_width / 2 - 100, (window_height / 4 * 3), 10, 80, 200, 0, path);
 		std::vector <std::string> subtitle = { "De stealth game van 2020!" };
 		std::vector <std::string> play = { "new game" };
+		_buttonNewGame = std::make_shared<Game::Models::Button>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
+		//Game::Models::Button::Button(int x, int y, int z, int height, int width) : Game::Models::IObject(x, y, z, height, width)
+
 		std::vector <std::string> exit = { "exit" };
+		std::shared_ptr<Game::Models::Button> exitNewGame = std::make_shared<Game::Models::Button>();
+
 
 		_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
 		_background->set_visible(true);
@@ -49,7 +55,6 @@ namespace Game {
 			title->set_visible(true);
 			_textures.push_back(title);
 		}
-
 	}
 
 	void Views::HomeView::draw()

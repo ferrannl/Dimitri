@@ -1,11 +1,5 @@
 #pragma once
-#include "../Controllers/AudioController.h"
-#include <memory>
-#include <chrono>
-#include <thread>
-#include <src\Models\Texture.h>
-#include "../Models/IObject.h"
-#include "../Controllers/PhysicsCollisionController.h"
+#include "IObject.h"
 
 /**
 *	Namespace for the game
@@ -18,13 +12,10 @@ namespace Game {
 		/**
 		*	Contains all code necessary for the button object
 		*/
-		class Button
-		{
-		private:
-
+		class Button : public Game::Models::IObject {
 		public:
-			Button();
+			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			void initialize_textures();
 		};
 	}
-
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
+#include "../Models/IObject.h"
 
 /**
 *	Namespace for the game
@@ -36,6 +37,12 @@ namespace Game {
 			*	Home background
 			*/
 			std::shared_ptr<Graphics::Models::Texture> _background;
+
+			/**
+			*	Player Object
+			*/
+			std::shared_ptr<Game::Models::IObject> _buttonNewGame;
+
 		};
 	}
 }

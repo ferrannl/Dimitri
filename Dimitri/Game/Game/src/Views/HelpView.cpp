@@ -43,23 +43,6 @@ namespace Game {
 		}
 	}
 
-	void EventManager::update() {
-		SDL_Event e;
-		while (SDL_PollEvent(&e)) {
-			switch (e.type) {
-			case SDL_QUIT:
-				running = false;
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				//do whatever you want to do after a mouse button was pressed,
-				// e.g.:
-				mousePress(e.button);
-				break;
-
-			}
-		}
-	}
-
 	void Views::HelpView::draw()
 	{
 		for (auto& t : _textures) {
@@ -71,7 +54,5 @@ namespace Game {
 	{
 		return true;
 	}
-
 }
-
 

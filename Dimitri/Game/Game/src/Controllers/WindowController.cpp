@@ -20,6 +20,7 @@ namespace Game {
 		open_view("home");
 		toggle_view_visibility("home");
 
+
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
