@@ -9,7 +9,7 @@ Views::CreditsView::CreditsView(const std::shared_ptr<Graphics::Controllers::Gra
 void Views::CreditsView::init_textures()
 {
 	// TODO: for now hardcoded: maybe add static const to Window or add properties if values are variable
-	int window_width = 1080;
+	int window_width = 1280;
 	int window_height = 720;
 	std::vector <std::string> names = { "Koen Baudewijns", "Olav Gerritsen", "Ferran Hendriks", "Billy Nooijens", "Max Peters", "Xia de Visser" };
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
@@ -32,6 +32,8 @@ void Views::CreditsView::init_textures()
 void Views::CreditsView::open()
 {	
 	is_open = true;
+	_graphics_controller->set_level_size(720, 1280);
+	_graphics_controller->set_camera_pos(0, 0);
 	for (auto texture : _textures) {
 		_graphics_controller.get()->add_texture(texture);
 	}
