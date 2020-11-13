@@ -9,7 +9,7 @@ void Controllers::WorldController::setup_world(const float width, const float he
 	_world = Models::World{ width, height };
 }
 
-void Controllers::WorldController::load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes)
+void Controllers::WorldController::load_shapes(const std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>& shapes)
 {
 	for(auto shape : shapes)
 	{

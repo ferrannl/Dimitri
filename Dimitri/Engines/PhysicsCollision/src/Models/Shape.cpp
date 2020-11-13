@@ -1,15 +1,8 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type)
+Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
-	_type = type;
-	_height = height;
-	_width = width;
-	_x = x;
-	_y = y;
-	_is_dynamic = is_dynamic;
-	_is_interactable = is_interactable;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
 
@@ -105,11 +98,8 @@ void Models::Shape::move_y()const
 
 bool Models::Shape::check_collision(std::shared_ptr<Models::Shape> shape)
 {
-	if (get_x() - 1 <= shape->get_x() + shape->get_width() &&
+	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
 		get_x() + get_width() + 1 >= shape->get_x() &&
 		get_y() - 1 <= shape->get_y() + shape->get_height() &&
-		get_y() + get_height() + 1 >= shape->get_y()) {
-		return true;
-	}
-	return false;
+		get_y() + get_height() + 1 >= shape->get_y();
 }

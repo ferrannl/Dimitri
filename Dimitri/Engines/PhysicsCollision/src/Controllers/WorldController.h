@@ -37,7 +37,7 @@ namespace PhysicsCollision {
 			/**
 			*	Loads the created shapes into the world
 			*/
-			void load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes);
+			void load_shapes(const std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>& shapes);
 			/**
 			* Destroys the bodies from Box2D
 			*/
