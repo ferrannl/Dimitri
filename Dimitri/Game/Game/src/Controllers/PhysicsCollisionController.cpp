@@ -17,5 +17,5 @@ void Game::Controllers::PhysicsCollisionController::destroy_shapes()
 
 void Game::Controllers::PhysicsCollisionController::load_shape(std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
-	_world_controller->load_shapes(_shape);
+	_world_controller->load_shape(_shape);
 }
