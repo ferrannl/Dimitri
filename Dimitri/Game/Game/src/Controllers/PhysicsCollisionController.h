@@ -30,9 +30,9 @@ namespace Game {
 			void destroy_shapes();
 
 			/**
-			*	Loads the shapes into the world
+			*	Loads the shape into the world
 			*/
-			void load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes);
+			void load_shape(std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
 		};
 	}
 }

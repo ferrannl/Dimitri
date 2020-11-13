@@ -5,6 +5,7 @@ Models::Level::Level()
 {
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_audio_controller = std::make_shared<Controllers::AudioController>();
+	_objects = {};
 	_shapes = {};
 	_tiles = {};
 }
@@ -44,19 +45,19 @@ void Game::Models::Level::load_objects()
 {
 	//Here a file is loaded/parsed and turned into a level
 	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
-	_shapes.push_back(_player.get()->get_shape());
+	_objects.push_back(_player);
 
 	//floor
 	std::shared_ptr<IObject> tile = std::make_shared<Wall>(0, 0, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(25, 0, 1, 25, 1030, Game::Enums::StateEnum::HORIZONTAL);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(1055, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
@@ -64,44 +65,44 @@ void Game::Models::Level::load_objects()
 
 	//platform 1
 	tile = std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(225, 150, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(325, 150, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 	//platform 2
 	tile = std::make_shared<Wall>(400, 300, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(425, 300, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(525, 300, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 	//platform 3
 	tile = std::make_shared<Wall>(600, 450, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(625, 450, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	tile = std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_shapes.push_back(tile.get()->get_shape());
+	_objects.push_back(tile);
 	_tiles.push_back(tile);
 
 	//interactables
 	std::shared_ptr<IInteractable> interactable = std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_shapes.push_back(interactable.get()->get_shape());
+	_objects.push_back(tile);
 	_interactables.push_back(interactable);
 
 	//border
@@ -115,7 +116,14 @@ void Game::Models::Level::load_objects()
 
 void Game::Models::Level::add_shapes()
 {
-	_physics_collision_controller->load_shapes(_shapes);
+	for(std::shared_ptr<Game::Models::IObject> object : _objects)
+	{
+		_physics_collision_controller->load_shape(object.get()->get_shape());
+	}
+	for (std::shared_ptr<PhysicsCollision::Models::Shape> shape : _shapes)
+	{
+		_physics_collision_controller->load_shape(shape);
+	}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const

@@ -9,12 +9,9 @@ void Controllers::WorldController::setup_world(const float width, const float he
 	_world = Models::World{ width, height };
 }
 
-void Controllers::WorldController::load_shapes(const std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>>& shapes)
+void Controllers::WorldController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape)
 {
-	for(auto shape : shapes)
-	{
 		_world.add_shape(shape);
-	}
 }
 
 void Controllers::WorldController::destroy_bodies()

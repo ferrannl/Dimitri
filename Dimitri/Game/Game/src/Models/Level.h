@@ -40,6 +40,8 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
+			std::vector<std::shared_ptr<Game::Models::IObject>> _objects;
+
 			/**
 			*	Player Object
 			*/

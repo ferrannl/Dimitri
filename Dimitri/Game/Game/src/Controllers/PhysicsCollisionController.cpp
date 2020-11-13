@@ -15,7 +15,7 @@ void Game::Controllers::PhysicsCollisionController::destroy_shapes()
 	_world_controller->destroy_bodies();
 }
 
-void Game::Controllers::PhysicsCollisionController::load_shapes(std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes)
+void Game::Controllers::PhysicsCollisionController::load_shape(std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
-	_world_controller->load_shapes(_shapes);
+	_world_controller->load_shapes(_shape);
 }
