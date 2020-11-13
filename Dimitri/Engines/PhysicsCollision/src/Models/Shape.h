@@ -28,23 +28,26 @@ namespace PhysicsCollision {
 			/**
 			* X position of a shape
 			*/
-			float _x;
+			int _x;
 			/**
 			* Y position of a shape
 			*/
-			float _y;
+			int _y;
 			/**
 			* Width of a shape
 			*/
-			float _width;
+			int _width;
 			/**
 			* Height of a shape
 			*/
-			float _height;
+			int _height;
 			/**
 			* Is dynamic boolean of a shape
 			*/
 			bool _is_dynamic;
+			/**
+			* Is interactable boolean of a shape
+			*/
 			bool _is_interactable;
 		protected:
 			/**
@@ -56,7 +59,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape();
+			Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
 			/**
 			* Returns the ShapeFacade from a shape
 			*/
@@ -69,6 +72,10 @@ namespace PhysicsCollision {
 			* Sets the type of a shape
 			*/
 			void set_type(Enums::ShapeEnum type);
+			/**
+			*	Sets if a shape is interactable
+			*/
+			void set_is_interactable(bool is_interactable);
 			/**
 			* Sets the x position of a shape
 			*/
@@ -117,13 +124,18 @@ namespace PhysicsCollision {
 			* Returns if a shape is dynamic
 			*/
 			bool get_is_dynamic() const;
+			/**
+			* Returns if a shape is interactable
+			*/
 			bool get_is_interactable() const;
 			/**
 			* Sets the dynamic property of a shape
 			*/
 			void set_is_dynamic(bool is_dynamic);
-
-			void set_is_interactable(bool is_interactable);
+			/**
+			* Returns true when there is collision between two shapes. Else returns false
+			*/
+			bool check_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

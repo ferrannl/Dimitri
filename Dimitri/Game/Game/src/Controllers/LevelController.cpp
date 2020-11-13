@@ -31,7 +31,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	case Input::Enums::EventEnum::KEY_PRESS_E:
 		for (std::shared_ptr<Models::IInteractable> interactable : _level->get_interactables())
 		{
-			if (_level->get_physics_collision_controller()->check_collision(_level->get_player()->get_shape(), interactable->get_shape()))
+			if (_level->get_player()->get_shape()->check_collision(interactable->get_shape()))
 			{
 				interactable->interact();
 			}

@@ -1,7 +1,7 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape()
+Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
@@ -19,6 +19,11 @@ Enums::ShapeEnum Models::Shape::get_type()const
 void Models::Shape::set_type(Enums::ShapeEnum type)
 {
 	_type = type;
+}
+
+void Models::Shape::set_is_interactable(bool is_interactable)
+{
+	_is_interactable = is_interactable;
 }
 
 void Models::Shape::set_x(float x)
@@ -81,11 +86,6 @@ void Models::Shape::set_is_dynamic(bool is_dynamic)
 	_is_dynamic = is_dynamic;
 }
 
-void PhysicsCollision::Models::Shape::set_is_interactable(bool is_interactable)
-{
-	_is_interactable = is_interactable;
-}
-
 void Models::Shape::move_x(const int value)const
 {
 	_shape_facade->move_x(value);
@@ -94,4 +94,12 @@ void Models::Shape::move_x(const int value)const
 void Models::Shape::move_y()const
 {
 	_shape_facade->move_y();
+}
+
+bool Models::Shape::check_collision(std::shared_ptr<Models::Shape> shape)
+{
+	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
+		get_x() + get_width() + 1 >= shape->get_x() &&
+		get_y() - 1 <= shape->get_y() + shape->get_height() &&
+		get_y() + get_height() + 1 >= shape->get_y();
 }

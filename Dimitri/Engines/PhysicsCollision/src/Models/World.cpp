@@ -9,7 +9,7 @@ Models::World::World(const float width, const float height)
 	_shapes = std::vector<std::shared_ptr<Models::Shape>>();
 }
 
-void Models::World::add_shape(std::shared_ptr<Models::Shape> shape)
+void Models::World::add_shape(const std::shared_ptr<Models::Shape>& shape)
 {
 	_shapes.push_back(shape);
 	_world_facade.add_shape(shape);
