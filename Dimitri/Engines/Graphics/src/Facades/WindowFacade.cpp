@@ -112,10 +112,23 @@ void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
 	if (x + _window_width < _level_width && x >= 0) {
 		_camera_x = x;
 	}
+	else if (x + _window_width > _level_width) {
+		_camera_x = _level_width - _window_width;
+	}
+	else if (x < 0) {
+		_camera_x = 0;
+	}
 
 	if (y + _window_height < _level_height && y >= 0) {
 		_camera_y = y;
 	}
+	else if (y + _window_height > _level_height) {
+		_camera_y = _level_height - _window_height;
+	}
+	else if (y < 0) {
+		_camera_y = 0;
+	}
+
 }
 
 void Graphics::Facades::WindowFacade::set_level_size(const int height, const int width)
