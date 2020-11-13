@@ -49,49 +49,38 @@ void Game::Models::Level::load_objects()
 	_players.push_back(_player);
 
 	//floor
-	std::shared_ptr<IObject> tile = std::make_shared<Wall>(0, 0, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(0, 0, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	tile = std::make_shared<Wall>(25, 0, 1, 25, 1030, Game::Enums::StateEnum::HORIZONTAL);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(25, 0, 1, 25, 1030, Game::Enums::StateEnum::HORIZONTAL));
 
-	tile = std::make_shared<Wall>(1055, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(1055, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
 	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
 	_background->set_visible(true);
 
 	//platform 1
-	tile = std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	tile = std::make_shared<Wall>(225, 150, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(225, 150, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL));
 
-	tile = std::make_shared<Wall>(325, 150, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(325, 150, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
+
 	//platform 2
-	tile = std::make_shared<Wall>(400, 300, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(400, 300, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	tile = std::make_shared<Wall>(425, 300, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(425, 300, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL));
 
-	tile = std::make_shared<Wall>(525, 300, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(525, 300, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
+
 	//platform 3
-	tile = std::make_shared<Wall>(600, 450, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(600, 450, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	tile = std::make_shared<Wall>(625, 450, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(625, 450, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL));
 
-	tile = std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	_tiles.push_back(tile);
+	_tiles.push_back(std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
 	//interactables
-	std::shared_ptr<IInteractable> interactable = std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	_interactables.push_back(interactable);
+	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
