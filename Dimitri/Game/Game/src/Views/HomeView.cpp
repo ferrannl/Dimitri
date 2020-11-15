@@ -15,11 +15,7 @@ namespace Game {
 		std::shared_ptr<Graphics::Models::Text> title = std::make_shared<Graphics::Models::Text>("DIMITRI", color, window_width / 2 - 100, (window_height / 4 * 3), 10, 80, 200, 0, path);
 		std::vector <std::string> subtitle = { "De stealth game van 2020!" };
 		std::vector <std::string> play = { "new game" };
-		_buttonNewGame = std::make_shared<Game::Models::Button>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
-		for (auto texture : _buttonNewGame.get()->get_all_textures())
-		{
-			_textures.push_back(texture);
-		}
+
 		//Game::Models::Button::Button(int x, int y, int z, int height, int width) : Game::Models::IObject(x, y, z, height, width)
 
 		std::vector <std::string> exit = { "exit" };
@@ -50,6 +46,11 @@ namespace Game {
 			title = std::make_shared<Graphics::Models::Text>(play[i], color, x, start_y - step * i, 10, 50, width, 0, path);
 			title->set_visible(true);
 			_textures.push_back(title);
+			_buttonNewGame = std::make_shared<Game::Models::Button>(x - 10, start_y - step * i, 1, 50, width + 20, Game::Enums::StateEnum::RIGHT);
+			for (auto texture : _buttonNewGame.get()->get_all_textures())
+			{
+				_textures.push_back(texture);
+			}
 		}
 		start_y -= step * 2;
 		for (int i = 0; i < exit.size(); i++) {
@@ -58,7 +59,13 @@ namespace Game {
 			title = std::make_shared<Graphics::Models::Text>(exit[i], color, x, start_y - step * i, 10, 50, width, 0, path);
 			title->set_visible(true);
 			_textures.push_back(title);
+			_buttonNewGame = std::make_shared<Game::Models::Button>(x - 10, start_y - step * i, 1, 50, width + 20, Game::Enums::StateEnum::RIGHT);
+			for (auto texture : _buttonNewGame.get()->get_all_textures())
+			{
+				_textures.push_back(texture);
+			}
 		}
+
 	}
 
 	void Views::HomeView::draw()
