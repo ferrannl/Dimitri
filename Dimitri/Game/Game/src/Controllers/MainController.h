@@ -46,6 +46,10 @@ namespace Game {
 			*	Update from Game::Controllers::InputController
 			*/
 			void update(const Events::InputEvent& object);
+			/**
+			* Get Mouse Pos
+			*/
+			//void
 		};
 	}
 }

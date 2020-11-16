@@ -39,9 +39,14 @@ namespace Game {
 			std::shared_ptr<Graphics::Models::Texture> _background;
 
 			/**
-			*	Player Object
+			*	New Game Button
 			*/
-			std::shared_ptr<Game::Models::IObject> _buttonNewGame;
+			std::shared_ptr<Game::Models::IObject> _buttonPlayGame;
+
+			/**
+			*	Exit Game Button
+			*/
+			std::shared_ptr<Game::Models::IObject> _buttonExitGame;
 
 		};
 	}

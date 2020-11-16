@@ -5,8 +5,8 @@ void Game::Controllers::HomeController::update(const Game::Events::InputEvent& o
 {
 	//switch (object.event_enum) {
 	//case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-	//	if ()
-	//		std::cout << "clicked on: " + object.mouse_pos << std::endl;
+	//	if (object.mouse_pos == )
+	//		std::cout << "clicked on: " << std::endl;
 	//	break;
 	//}
 }
