@@ -43,6 +43,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_window_controller->is_active("level")) {			
 			_input_controller->subscribe(_level_controller);
+			_window_controller->set_scene_size(_level_controller->get_level()->get_level_height(), _level_controller->get_level()->get_level_width());
 			_level_controller->start();
 		}
 		break;

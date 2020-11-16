@@ -71,7 +71,6 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::start()
 {
-	_window_controller->set_scene_size(_level->get_level_height(), _level->get_level_width());
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
