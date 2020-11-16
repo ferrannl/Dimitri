@@ -3,6 +3,7 @@
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
 #include <..\Game\Game\src\Views\View.h>
+
 #include <chrono>
 #include <thread>
 #include <tuple>
@@ -27,7 +28,7 @@ namespace Game {
 			/**
 			* Add the textures to the _graphics_controller
 			*/
-			void draw();
+			void draw() override;
 		};
 	}
 }

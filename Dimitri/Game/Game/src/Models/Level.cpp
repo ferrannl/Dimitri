@@ -61,8 +61,7 @@ void Game::Models::Level::load_objects()
 	_tiles.push_back(std::make_shared<Wall>(1895, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
 	//background
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 1080, 1920, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
-	_background->set_visible(true);
+	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 1080, 1920, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
 
 	//platform 1
 	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));

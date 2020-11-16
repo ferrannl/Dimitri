@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
@@ -14,11 +13,16 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the level using the graphics controller
+		*	Containing all the code to draw the fps using the graphics controller
 		*/
-		class LevelView : public View {
+		class PauseLevelView : public View {
 		public:
-			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			PauseLevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+
+			/**
+			*	Initializes textures
+			*/
+			void init_textures();
 
 			/**
 			*	Returns if view is visible
