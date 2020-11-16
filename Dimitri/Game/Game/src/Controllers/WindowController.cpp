@@ -70,12 +70,19 @@ namespace Game {
 		_views["level"]->set_textures(textures);
 	}
 
-	void Game::Controllers::WindowController::set_camera_pos(const int x, const int y)
+	void Game::Controllers::WindowController::set_camera_pos(int x, int y)
 	{
 		_graphics_controller->set_camera_pos(x, y);
 	}
 
-	void Game::Controllers::WindowController::set_scene_size(const int height, const int width)
+	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object)
+	{
+		int x = (object->get_x() + object->get_width() / 2) - get_window_width() / 2;
+		int y = (object->get_texture()->get_converted_y(std::get<1>(_graphics_controller->get_scene_size())) + object->get_height() / 2) - get_window_height() / 2;
+		set_camera_pos(x, y);
+	}
+
+	void Game::Controllers::WindowController::set_scene_size(int height, int width)
 	{
 		_graphics_controller->set_scene_size(height, width);
 	}

@@ -17,6 +17,7 @@
 #include <..\Game\Game\src\Views\View.h>
 #include <chrono>
 #include <thread>
+#include "../Models/IObject.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -96,12 +97,17 @@ namespace Game {
 			/**
 			* Updates camera position
 			*/
-			void set_camera_pos(const int x, const int y);
+			void set_camera_pos(int x, int y);
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object);
 
 			/**
 			* Sets scene size
 			*/
-			void set_scene_size(const int height, const int width);
+			void set_scene_size(int height, int width);
 
 			/**
 			*	Getters window height and widht
