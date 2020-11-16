@@ -24,8 +24,3 @@ void Game::Controllers::PhysicsCollisionController::setup_world(const int height
 {
 	_world_controller->setup_world(width, height);
 }
-
-void Game::Controllers::PhysicsCollisionController::setup_world(const int height, const int width)
-{
-	_world_controller->setup_world(width, height);
-}

@@ -66,8 +66,3 @@ std::tuple<int, int> Graphics::Controllers::GraphicsController::get_level_size()
 {
 	return _window->get_level_size();
 }
-
-void Graphics::Controllers::GraphicsController::set_camera_pos(const int x, const int y)
-{
-	_window->set_camera_pos(x, y);
-}

@@ -84,23 +84,3 @@ namespace Game {
 	}
 
 }
-
-void Game::Controllers::WindowController::set_camera_pos(const int x, const int y)
-{
-	_graphics_controller->set_camera_pos(x, y);
-}
-
-void Game::Controllers::WindowController::set_level_size(const int height, const int width)
-{
-	_graphics_controller->set_level_size(height, width);
-}
-
-int Game::Controllers::WindowController::get_window_height() const
-{
-	return _height;
-}
-
-int Game::Controllers::WindowController::get_window_width() const
-{
-	return _width;
-}
