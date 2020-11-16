@@ -28,6 +28,11 @@ namespace Game {
 			*	Returns if view is visible
 			*/
 			bool is_visible() const override;
+
+			/**
+			* Add the textures to the _graphics_controller
+			*/
+			void draw() override;
 		};
 	}
 }
