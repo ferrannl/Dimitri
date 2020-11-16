@@ -33,13 +33,6 @@ namespace Game {
 			*	Loads the shape into the world
 			*/
 			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape);
-			
-			std::shared_ptr<PhysicsCollision::Models::Shape> create_shape(float x, float y, float width, float height, bool is_dynamic);
-
-			/**
-			*	Check collision
-			*/
-			bool check_collision(std::shared_ptr<PhysicsCollision::Models::Shape> shape1, std::shared_ptr<PhysicsCollision::Models::Shape> shape2);
 
 			/**
 			*	Setup world
