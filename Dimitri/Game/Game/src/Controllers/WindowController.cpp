@@ -1,4 +1,5 @@
 #include "WindowController.h"
+#include <algorithm>
 
 namespace Game {
 	Controllers::WindowController::WindowController()
@@ -61,8 +62,11 @@ namespace Game {
 		view->set_visible(!view->is_visible());
 	}
 
-	void Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
+	void Controllers::WindowController::set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
 	{
+		//if (std::find(_views.begin(), _views.end(), view_name) != _views.end())
+		//{
 		_views["level"]->set_textures(textures);
+		//}
 	}
 }

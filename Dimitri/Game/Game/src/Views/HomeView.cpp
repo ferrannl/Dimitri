@@ -15,18 +15,7 @@ namespace Game {
 		std::shared_ptr<Graphics::Models::Text> title = std::make_shared<Graphics::Models::Text>("DIMITRI", color, window_width / 2 - 100, (window_height / 4 * 3), 10, 80, 200, 0, path);
 		std::shared_ptr<Graphics::Models::Text> subTitle = std::make_shared<Graphics::Models::Text>("De stealth game van 2020!", color, window_width / 2 - 175, (window_height / 4 * 3) - 50, 1, 50, 350, 0, path);
 		std::shared_ptr<Graphics::Models::Text> play = std::make_shared<Graphics::Models::Text>("Play", color, window_width / 2 - 25, (window_height / 4 * 3) - 150, 1, 50, 50, 0, path);
-		_buttonPlayGame = std::make_shared<Game::Models::Button>(window_width / 2 - 35, (window_height / 4 * 3) - 150, 1, 50, 70, Game::Enums::StateEnum::RIGHT);
-		for (auto texture : _buttonPlayGame.get()->get_all_textures())
-		{
-			_textures.push_back(texture);
-		}
 		std::shared_ptr<Graphics::Models::Text> exit = std::make_shared<Graphics::Models::Text>("Exit", color, window_width / 2 - 25, (window_height / 4 * 3) - 225, 1, 50, 50, 0, path);
-		_buttonExitGame = std::make_shared<Game::Models::Button>(window_width / 2 - 35, (window_height / 4 * 3) - 225, 1, 50, 70, Game::Enums::StateEnum::RIGHT);
-		for (auto texture : _buttonExitGame.get()->get_all_textures())
-		{
-			_textures.push_back(texture);
-		}
-
 		_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
 		_background->set_visible(true);
 		_textures.push_back(_background);

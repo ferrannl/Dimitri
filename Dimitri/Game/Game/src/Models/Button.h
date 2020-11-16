@@ -1,5 +1,5 @@
 #pragma once
-#include "IObject.h"
+#include "IInteractable.h"
 
 /**
 *	Namespace for the game
@@ -12,7 +12,7 @@ namespace Game {
 		/**
 		*	Contains all code necessary for the button object
 		*/
-		class Button : public Game::Models::IObject {
+		class Button : public Game::Models::IInteractable {
 		public:
 			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();

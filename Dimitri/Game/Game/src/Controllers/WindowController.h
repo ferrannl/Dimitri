@@ -77,7 +77,7 @@ namespace Game {
 			/**
 			*	Sets the textures for the level view
 			*/
-			void set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
+			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
 		};
 	}
 }
