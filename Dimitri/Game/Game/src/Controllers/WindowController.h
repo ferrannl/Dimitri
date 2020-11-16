@@ -48,7 +48,6 @@ namespace Game {
 			*	Draw thread for updating window in background thread
 			*/
 			std::thread draw_thread;
-			bool _open_window;
 
 			/**
 			*	Height and width of window

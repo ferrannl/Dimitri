@@ -56,16 +56,16 @@ namespace Graphics {
 			*/
 			int _window_height;
 			int _window_width;
+
 			/**
-			*	x and y pos of camera standard 0,0
+			*	x and y pos of camera standard 0,0; 0 = x, 1 = y
 			*/
-			int _camera_x = 0;
-			int _camera_y = 0;
+			std::tuple<int, int> _camera_pos;
+
 			/**
-			*	Height and width of scene standard equal to window height and width but can be increased for large levels
+			*	Height and width of scene standard equal to window height and width but can be increased for large levels; 0 = width, 1 = height
 			*/
-			int _scene_height;
-			int _scene_width;
+			std::tuple<int, int> _scene_size;
 
 		public:
 			WindowFacade();
