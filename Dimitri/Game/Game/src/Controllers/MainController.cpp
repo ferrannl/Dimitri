@@ -29,6 +29,15 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;
+	case Input::Enums::EventEnum::KEY_PRESS_H:
+		if (!_window_controller->is_active("help")) {
+			_window_controller->clear_views();
+			_window_controller->open_view("help");
+			_window_controller->open_view("fps");
+			_level_controller->stop();
+			_input_controller->unsubscribe(_level_controller);
+		}
+		break;
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_window_controller->is_active("level")) {			
 			_input_controller->subscribe(_level_controller);
