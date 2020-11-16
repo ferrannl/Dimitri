@@ -1,4 +1,5 @@
 #include "Level.h"
+#include "Lamp.h"
 using namespace Game;
 
 Models::Level::Level()
@@ -79,12 +80,10 @@ void Game::Models::Level::load_objects()
 
 	_tiles.push_back(std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
-	tile = std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false, false));
-	_tiles.push_back(tile);
-
 	//interactables
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
+
+	_interactables.push_back(std::make_shared<Lamp>(300, 30, 2, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
 
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top

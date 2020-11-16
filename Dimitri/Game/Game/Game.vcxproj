@@ -157,6 +157,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
+    <ClCompile Include="src\Models\Lamp.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
@@ -177,6 +178,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   <ItemGroup>
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\IInteractable.h" />
+    <ClInclude Include="src\Models\Lamp.h" />
     <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />

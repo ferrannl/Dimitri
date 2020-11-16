@@ -20,24 +20,22 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2BodyDef bodyDef;
 	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
 		b2PolygonShape _shape;
-		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.angle = 0;
-		body = _world->CreateBody(&bodyDef);
 		const int32 count = 3;
 		b2Vec2 vertices[count];
+		int halfWidth = shape->get_width() / 2;
+		int halfHeight = shape->get_height() / 2;
 
-		vertices[0].Set(0, 0);
-		vertices[1].Set(10, 0);
-		vertices[2].Set(5, 5);
+		int x = shape->get_x() - halfWidth;
+		int y = shape->get_y() - halfHeight;
+
+
+		vertices[0].Set(shape->get_x() - shape->get_width() / 2, shape->get_y() - shape->get_height() / 2);
+		vertices[1].Set(shape->get_x() + shape->get_width() / 2, shape->get_y() - shape->get_height() /2) ;
+		vertices[2].Set(shape->get_x(), shape->get_y() + (shape->get_height() / 2));
 
 		_shape.Set(vertices, count);
-		fixtureDef.shape = &_shape;
-		body->CreateFixture(&fixtureDef);
-		//x + width / 2 naar x + width, y + height
-		//x + width, y + height naar x, y+ height
-		//x, y+ height naar x + width / 2
-		//Polygon tekenen dmv vertices
+		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
 	else if (shape->get_type() == Enums::ShapeEnum::Square) {
 		b2PolygonShape _shape;

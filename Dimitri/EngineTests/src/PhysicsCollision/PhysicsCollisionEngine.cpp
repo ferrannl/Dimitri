@@ -10,7 +10,7 @@ namespace EngineTests
 		std::shared_ptr<PhysicsCollision::Models::Shape> create_shape()
 		{
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
-			std::shared_ptr<PhysicsCollision::Models::Shape> shape = ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 20.0f, 20.0f, true);
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = std::make_shared<PhysicsCollision::Models::Shape>(8.0f, 10.0f, 20.0f, 20.0f, true,true, PhysicsCollision::Enums::ShapeEnum::Square);
 
 			return shape;
 		}
@@ -20,9 +20,8 @@ namespace EngineTests
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
 
 			ctr.setup_world(1080, 720);
-			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 1.0f, 1.0f, true);
-			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 9.0f, 1.0f, 1.0f, false);
-
+			//create_shape(8.0f, 10.0f, 20.0f, 20.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
+			//create_shape(8.0f, 10.0f, 20.0f, 20.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 
 			return ctr;
 		}
