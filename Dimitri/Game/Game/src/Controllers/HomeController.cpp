@@ -26,10 +26,16 @@ void Game::Controllers::HomeController::update(const Game::Events::InputEvent& o
 		for (auto& b : _buttons)
 			if (x >= b->get_x() && x <= b->get_x() + b->get_width() && y <= b->get_y() + b->get_height() && y >= b->get_y())
 			{
-
+				//_input_controller->unsubscribe(_home_controller);
+				//_window_controller->clear_views();
+				//_window_controller->open_view("level");
+				//_window_controller->open_view("fps");
+				//_input_controller->subscribe(_level_controller);
+				//_level_controller->start();
 			}
-		break;
 	}
+	break;
+}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::HomeController::get_textures() const

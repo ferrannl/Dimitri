@@ -4,8 +4,8 @@ Controllers::MainController::MainController()
 {
 	_window_controller = std::make_shared<WindowController>();
 	_level_controller = std::make_shared<Controllers::LevelController>();
-	_home_controller = std::make_shared<Controllers::HomeController>(720, 1080);
 	_input_controller = std::make_shared<Controllers::InputController>();
+	_home_controller = std::make_shared<Controllers::HomeController>(720, 1080);
 }
 
 void Game::Controllers::MainController::run()
