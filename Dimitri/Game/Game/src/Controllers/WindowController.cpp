@@ -75,9 +75,9 @@ namespace Game {
 		_graphics_controller->set_camera_pos(x, y);
 	}
 
-	void Game::Controllers::WindowController::set_level_size(const int height, const int width)
+	void Game::Controllers::WindowController::set_scene_size(const int height, const int width)
 	{
-		_graphics_controller->set_level_size(height, width);
+		_graphics_controller->set_scene_size(height, width);
 	}
 
 	int Game::Controllers::WindowController::get_window_height() const

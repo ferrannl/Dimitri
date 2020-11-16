@@ -57,12 +57,12 @@ std::tuple<int, int> Graphics::Controllers::GraphicsController::get_camera_pos()
 	return _window->get_camera_pos();
 }
 
-void Graphics::Controllers::GraphicsController::set_level_size(const int height, const int width)
+void Graphics::Controllers::GraphicsController::set_scene_size(const int height, const int width)
 {
-	_window->set_level_size(height, width);
+	_window->set_scene_size(height, width);
 }
 
-std::tuple<int, int> Graphics::Controllers::GraphicsController::get_level_size() const
+std::tuple<int, int> Graphics::Controllers::GraphicsController::get_scene_size() const
 {
-	return _window->get_level_size();
+	return _window->get_scene_size();
 }

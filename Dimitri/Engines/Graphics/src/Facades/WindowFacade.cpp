@@ -7,7 +7,7 @@ int Facades::WindowFacade::create_window(const std::string& title, const int hei
 {
 	_window_height = height;
 	_window_width = width;
-	set_level_size(height, width);
+	set_scene_size(height, width);
 	try {
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
@@ -77,7 +77,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 			SDL_Rect rect;
 
 			rect.x = texture->get_x() - _camera_x;
-			rect.y = texture->get_converted_y(_level_height) - _camera_y;
+			rect.y = texture->get_converted_y(_scene_height) - _camera_y;
 			rect.w = texture->get_width();
 			rect.h = texture->get_height();
 
@@ -109,21 +109,21 @@ int Graphics::Facades::WindowFacade::get_fps()
 
 void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
 {
-	if (x + _window_width < _level_width && x >= 0) {
+	if (x + _window_width < _scene_width && x >= 0) {
 		_camera_x = x;
 	}
-	else if (x + _window_width > _level_width) {
-		_camera_x = _level_width - _window_width;
+	else if (x + _window_width > _scene_width) {
+		_camera_x = _scene_width - _window_width;
 	}
 	else if (x < 0) {
 		_camera_x = 0;
 	}
 
-	if (y + _window_height < _level_height && y >= 0) {
+	if (y + _window_height < _scene_height && y >= 0) {
 		_camera_y = y;
 	}
-	else if (y + _window_height > _level_height) {
-		_camera_y = _level_height - _window_height;
+	else if (y + _window_height > _scene_height) {
+		_camera_y = _scene_height - _window_height;
 	}
 	else if (y < 0) {
 		_camera_y = 0;
@@ -136,18 +136,18 @@ std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
 	return std::make_tuple(_camera_x, _camera_y);
 }
 
-void Graphics::Facades::WindowFacade::set_level_size(const int height, const int width)
+void Graphics::Facades::WindowFacade::set_scene_size(const int height, const int width)
 {
-	_level_height = height;
-	_level_width = width;
+	_scene_height = height;
+	_scene_width = width;
 
 	_camera_x = 0;
-	_camera_y = _level_height - _window_height;
+	_camera_y = _scene_height - _window_height;
 }
 
-std::tuple<int, int> Graphics::Facades::WindowFacade::get_level_size() const
+std::tuple<int, int> Graphics::Facades::WindowFacade::get_scene_size() const
 {
-	return std::make_tuple(_level_width, _level_height);
+	return std::make_tuple(_scene_width, _scene_height);
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

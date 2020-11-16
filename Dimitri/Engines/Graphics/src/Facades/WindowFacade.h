@@ -62,10 +62,10 @@ namespace Graphics {
 			int _camera_x = 0;
 			int _camera_y = 0;
 			/**
-			*	Height and width of level standard equal to window height and width but can be increased for large levels
+			*	Height and width of scene standard equal to window height and width but can be increased for large levels
 			*/
-			int _level_height;
-			int _level_width;
+			int _scene_height;
+			int _scene_width;
 
 		public:
 			WindowFacade();
@@ -108,14 +108,14 @@ namespace Graphics {
 			std::tuple<int, int> get_camera_pos() const;
 
 			/**
-			* Sets level size
+			* Sets scene size
 			*/
-			void set_level_size(const int height, const int width);
+			void set_scene_size(const int height, const int width);
 
 			/**
-			* Returns level size
+			* Returns scene size
 			*/
-			std::tuple<int, int> get_level_size() const;
+			std::tuple<int, int> get_scene_size() const;
 		};
 	}
 }

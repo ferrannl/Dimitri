@@ -26,7 +26,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->open_view("credits");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
-			_window_controller->set_level_size(_window_controller->get_window_height(), _window_controller->get_window_width());
+			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;
@@ -36,7 +36,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->open_view("help");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
-			_window_controller->set_level_size(_window_controller->get_window_height(), _window_controller->get_window_width());
+			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;

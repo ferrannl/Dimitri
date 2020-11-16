@@ -122,14 +122,14 @@ namespace Graphics {
 			std::tuple<int, int> get_camera_pos() const;
 
 			/**
-			* Sets level size
+			* Sets scene size
 			*/
-			void set_level_size(const int height, const int width);
+			void set_scene_size(const int height, const int width);
 
 			/**
-			* Returns level size
+			* Returns scene size
 			*/
-			std::tuple<int, int> get_level_size() const;
+			std::tuple<int, int> get_scene_size() const;
 		};
 	}
 }

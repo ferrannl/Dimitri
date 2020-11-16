@@ -92,12 +92,12 @@ std::tuple<int, int> Graphics::Models::Window::get_camera_pos() const
 	return _facade->get_camera_pos();
 }
 
-void Graphics::Models::Window::set_level_size(const int height, const int width)
+void Graphics::Models::Window::set_scene_size(const int height, const int width)
 {
-	_facade->set_level_size(height, width);
+	_facade->set_scene_size(height, width);
 }
 
-std::tuple<int, int> Graphics::Models::Window::get_level_size() const
+std::tuple<int, int> Graphics::Models::Window::get_scene_size() const
 {
-	return _facade->get_level_size();
+	return _facade->get_scene_size();
 }
