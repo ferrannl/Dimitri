@@ -1,7 +1,6 @@
 #include "Polygon.h"
 using namespace PhysicsCollision;
 
-Models::Polygon::Polygon() : Shape()
+Models::Polygon::Polygon(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : Shape(x, y, height, width, is_dynamic, is_interactable, type)
 {
-	_type = Enums::ShapeEnum::Polygon;
 }
