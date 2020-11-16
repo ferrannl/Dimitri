@@ -10,7 +10,7 @@ Controllers::MainController::MainController()
 void Game::Controllers::MainController::run()
 {
 	_input_controller->subscribe(this->shared_from_this());
-	_window_controller->create_window(1080, 720);
+	_window_controller->create_window(1280, 720);
 	_window_controller->set_level_textures(_level_controller->get_textures());
 	_input_controller->poll_events();
 }
@@ -24,6 +24,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->open_view("credits");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
+			_window_controller->set_level_size(1280, 720);
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;

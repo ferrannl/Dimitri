@@ -52,7 +52,17 @@ void Graphics::Controllers::GraphicsController::set_camera_pos(const int x, cons
 	_window->set_camera_pos(x, y);
 }
 
+std::tuple<int, int> Graphics::Controllers::GraphicsController::get_camera_pos() const
+{
+	return _window->get_camera_pos();
+}
+
 void Graphics::Controllers::GraphicsController::set_level_size(const int height, const int width)
 {
-	_window-> set_level_size(height, width);
+	_window->set_level_size(height, width);
+}
+
+std::tuple<int, int> Graphics::Controllers::GraphicsController::get_level_size() const
+{
+	return _window->get_level_size();
 }

@@ -2,6 +2,7 @@
 #include "../Models/Window.h"
 #include "../Models/Text.h"
 #include <filesystem>
+#include <tuple>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -80,9 +81,19 @@ namespace Graphics {
 			void set_camera_pos(const int x, const int y);
 
 			/**
+			* Returns camera position
+			*/
+			std::tuple<int, int> get_camera_pos() const;
+
+			/**
 			* Sets level size
 			*/
 			void set_level_size(const int height, const int width);
+
+			/**
+			* Returns level size
+			*/
+			std::tuple<int, int> get_level_size() const;
 		};
 	}
 }

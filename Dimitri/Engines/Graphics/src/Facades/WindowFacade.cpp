@@ -131,6 +131,11 @@ void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
 
 }
 
+std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
+{
+	return std::make_tuple(_camera_x, _camera_y);
+}
+
 void Graphics::Facades::WindowFacade::set_level_size(const int height, const int width)
 {
 	_level_height = height;
@@ -138,6 +143,11 @@ void Graphics::Facades::WindowFacade::set_level_size(const int height, const int
 
 	_camera_x = 0;
 	_camera_y = _level_height - _window_height;
+}
+
+std::tuple<int, int> Graphics::Facades::WindowFacade::get_level_size() const
+{
+	return std::make_tuple(_level_width, _level_height);
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

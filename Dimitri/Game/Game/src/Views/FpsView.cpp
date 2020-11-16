@@ -6,8 +6,10 @@ namespace Game {
 	void Views::FpsView::draw()
 	{
 		std::string fps = std::to_string(_graphics_controller.get()->get_fps());
-		int window_width = _graphics_controller.get()->get_window().get()->get_width();
-		int window_height = _graphics_controller.get()->get_window().get()->get_height();
+		std::tuple<int, int> camera_pos = _graphics_controller.get()->get_camera_pos();
+		std::tuple<int, int> level_size = _graphics_controller.get()->get_level_size();
+		int window_width = _graphics_controller.get()->get_window().get()->get_width() + std::get<0>(camera_pos);
+		int window_height =  std::get<1>(level_size) - std::get<1>(camera_pos);
 		int width = fps.size() * 15;
 		int height = 50;
 		_textures.clear();

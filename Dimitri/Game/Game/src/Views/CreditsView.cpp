@@ -12,7 +12,7 @@ namespace Game {
 		std::vector <std::string> names = { "Koen Baudewijns", "Olav Gerritsen", "Ferran Hendriks", "Billy Nooijens", "Max Peters", "Xia de Visser" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Color color = { 255, 255, 255 };
-		std::shared_ptr<Graphics::Models::Text> texture = std::make_shared<Graphics::Models::Text>("Gemaakt door", color, 390, 500, 10, 70, 300, 0, path);
+		std::shared_ptr<Graphics::Models::Text> texture = std::make_shared<Graphics::Models::Text>("Gemaakt door", color, window_width/2 - 150, 500, 10, 70, 300, 0, path);
 		texture->set_visible(true);
 		_textures.push_back(texture);
 

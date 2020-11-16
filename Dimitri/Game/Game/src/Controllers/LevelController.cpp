@@ -41,10 +41,6 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		if (_running) {
 			stop();
 		}
-		else {
-			_window_controller->set_level_size(_level->get_level_height(), _level->get_level_width());
-			start();
-		}
 		break;
 	}
 }
@@ -56,6 +52,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::start()
 {
+	_window_controller->set_level_size(_level->get_level_height(), _level->get_level_width());
 	if (!_running) {
 		_running = true;
 		_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);

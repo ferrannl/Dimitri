@@ -87,7 +87,17 @@ void Graphics::Models::Window::set_camera_pos(const int x, const int y)
 	_facade->set_camera_pos(x,y);
 }
 
+std::tuple<int, int> Graphics::Models::Window::get_camera_pos() const
+{
+	return _facade->get_camera_pos();
+}
+
 void Graphics::Models::Window::set_level_size(const int height, const int width)
 {
 	_facade->set_level_size(height, width);
+}
+
+std::tuple<int, int> Graphics::Models::Window::get_level_size() const
+{
+	return _facade->get_level_size();
 }
