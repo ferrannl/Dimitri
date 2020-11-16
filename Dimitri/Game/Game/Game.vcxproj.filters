@@ -20,6 +20,7 @@
     <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
+    <ClCompile Include="src\Views\HelpView.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="src\Models\IInteractable.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\View.h" />
+    <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
