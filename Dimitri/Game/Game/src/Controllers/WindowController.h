@@ -52,8 +52,8 @@ namespace Game {
 			/**
 			*	Height and width of window
 			*/
-			int _height = 720;
-			int _width = 1280;
+			int _height;
+			int _width;
 
 		public:
 			WindowController();

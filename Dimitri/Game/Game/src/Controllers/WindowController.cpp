@@ -8,6 +8,9 @@ namespace Game {
 
 	void Controllers::WindowController::create_window(int height, int width)
 	{
+		_height = height;
+		_width = width;
+
 		if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
 			return;
 		}
