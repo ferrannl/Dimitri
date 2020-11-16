@@ -3,10 +3,6 @@
 #include <src\Controllers\GraphicsController.h>
 #include <src\Helpers\BasePathHelper.h>
 #include <..\Game\Game\src\Views\View.h>
-#include <chrono>
-#include <thread>
-using namespace std::this_thread;
-using namespace std::chrono_literals;
 
 /**
 *	Namespace for the game
@@ -25,7 +21,7 @@ namespace Game {
 			/**
 			* Add the textures to the _graphics_controller
 			*/
-			void draw();
+			void draw() override;
 		};
 	}
 }

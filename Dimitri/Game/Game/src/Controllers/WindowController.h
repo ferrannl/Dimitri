@@ -11,7 +11,14 @@
 #include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
+#include <..\Game\Game\src\Views\WinLevelView.h>
+#include <..\Game\Game\src\Views\GameOverLevelView.h>
+#include <..\Game\Game\src\Views\PauseLevelView.h>
 #include <..\Game\Game\src\Views\View.h>
+#include <chrono>
+#include <thread>
+using namespace std::this_thread;
+using namespace std::chrono_literals;
 
 /**
 *	Namespace for the game

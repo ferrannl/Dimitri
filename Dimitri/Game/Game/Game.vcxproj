@@ -155,6 +155,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
@@ -172,8 +173,11 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Models\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
+    <ClCompile Include="src\Views\PauseLevelView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
+    <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
@@ -192,8 +196,11 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Models\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
+    <ClInclude Include="src\Views\GameOverLevelView.h" />
+    <ClInclude Include="src\Views\PauseLevelView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\LevelView.h" />
+    <ClInclude Include="src\Views\WinLevelView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,8 @@
 #include "Sprite.h"
 using namespace Graphics;
 
-Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus) :
-	Models::Texture(x, y, x, height, width, angle, path)
+Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible) :
+	Models::Texture(x, y, x, height, width, angle, path, visible)
 {
 	_flipstatus = flipstatus;
 }
@@ -16,7 +16,7 @@ bool Graphics::Models::Sprite::matches(const std::shared_ptr<Models::Texture>& t
 {
 	std::shared_ptr<Graphics::Models::Sprite> sprite = std::dynamic_pointer_cast<Graphics::Models::Sprite>(texture);
 	if (sprite.get()) {
-		return sprite.get()->get_path() == get_path();
+		return sprite->get_path() == get_path();
 	}
 	return false;
 }
