@@ -5,6 +5,8 @@
 #include "..\Models\Button.h"
 #include <chrono>
 #include <thread>
+#include <iostream>
+#include <tuple>
 /**
 *	Namespace for the game
 */

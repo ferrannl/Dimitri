@@ -18,16 +18,16 @@ void Game::Controllers::HomeController::update(const Game::Events::InputEvent& o
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+
 		int x = std::get<0>(object.mouse_pos);
-		int y = std::get<1>(object.mouse_pos);
+		int y = _scene_height - std::get<1>(object.mouse_pos);
+		std::cout << "clicked on: (" + std::to_string(x) + "),(" + std::to_string(y) + ")" << std::endl;
+
 		for (auto& b : _buttons)
-			if (b->get_x() < x)
-				if (x < b->get_x() + b->get_width())
-					if (b->get_y() > y)
-						if (y < b->get_y() + b->get_height())
-						{
-							std::cout << "clicked on: " + x + y << std::endl;
-						}
+			if (x >= b->get_x() && x <= b->get_x() + b->get_width() && y <= b->get_y() + b->get_height() && y >= b->get_y())
+			{
+
+			}
 		break;
 	}
 }
