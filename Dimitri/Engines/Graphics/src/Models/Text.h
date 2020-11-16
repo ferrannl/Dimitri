@@ -40,7 +40,7 @@ namespace Graphics {
 			*/
 			Color _color;
 		public:
-			Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path);
+			Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible);
 
 			/**
 			* returns the text
