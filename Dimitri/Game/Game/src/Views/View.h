@@ -39,12 +39,17 @@ namespace Game {
 			/**
 			* Add the textures to the _graphics_controller
 			*/
-			virtual void draw() = 0;			
+			virtual void draw() = 0;
 
 			/**
 			*	Sets _textures
 			*/
 			void set_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
+
+			/**
+			*	Adds _textures
+			*/
+			void add_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
 
 			/**
 			*	Returns if view is active
@@ -65,6 +70,7 @@ namespace Game {
 			*	Sets _visible
 			*/
 			void set_visible(bool visible);
+
 		};
 	}
 }
