@@ -47,7 +47,6 @@ namespace Game {
 			*	Exit Game Button
 			*/
 			std::shared_ptr<Game::Models::IObject> _buttonExitGame;
-
 		};
 	}
 }

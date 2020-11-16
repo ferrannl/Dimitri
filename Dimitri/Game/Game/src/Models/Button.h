@@ -16,6 +16,8 @@ namespace Game {
 		public:
 			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
+			void interact();
+
 		};
 	}
 }

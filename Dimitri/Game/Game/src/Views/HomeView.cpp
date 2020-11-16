@@ -39,7 +39,6 @@ namespace Game {
 		_textures.push_back(play);
 		exit->set_visible(true);
 		_textures.push_back(exit);
-
 	}
 
 	void Views::HomeView::draw()
