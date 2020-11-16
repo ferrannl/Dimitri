@@ -99,6 +99,10 @@ void Game::Models::Level::load_objects()
 	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false, false));
 	_tiles.push_back(tile);
 
+	tile = std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
+	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false, false));
+	_tiles.push_back(tile);
+
 	//interactables
 	std::shared_ptr<IInteractable> interactable = std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT);
 	interactable->set_shape(_physics_collision_controller->create_shape(interactable->get_x(), interactable->get_y(), interactable->get_width(), interactable->get_height(), true, true));

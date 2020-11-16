@@ -19,6 +19,21 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
 	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
+		b2PolygonShape _shape;
+		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.angle = 0;
+		body = _world->CreateBody(&bodyDef);
+		const int32 count = 3;
+		b2Vec2 vertices[count];
+
+		vertices[0].Set(0, 0);
+		vertices[1].Set(10, 0);
+		vertices[2].Set(5, 5);
+
+		_shape.Set(vertices, count);
+		fixtureDef.shape = &_shape;
+		body->CreateFixture(&fixtureDef);
 		//x + width / 2 naar x + width, y + height
 		//x + width, y + height naar x, y+ height
 		//x, y+ height naar x + width / 2
