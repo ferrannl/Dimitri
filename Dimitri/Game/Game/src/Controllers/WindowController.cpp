@@ -11,7 +11,7 @@ namespace Game {
 		_height = height;
 		_width = width;
 
-		if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
+		if (_graphics_controller->create_window("Dimitri", height, width) == NULL) {
 			return;
 		}
 
