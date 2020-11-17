@@ -21,11 +21,13 @@ void Game::Controllers::HomeController::update(const Game::Events::InputEvent& o
 
 		int x = std::get<0>(object.mouse_pos);
 		int y = _scene_height - std::get<1>(object.mouse_pos);
-		std::cout << "clicked on: (" + std::to_string(x) + "),(" + std::to_string(y) + ")" << std::endl;
+		std::cout << "clicked on: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
 
 		for (auto& b : _buttons)
 			if (x >= b->get_x() && x <= b->get_x() + b->get_width() && y <= b->get_y() + b->get_height() && y >= b->get_y())
 			{
+				std::cout << "clicked within button: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
+
 				//_input_controller->unsubscribe(_home_controller);
 				//_window_controller->clear_views();
 				//_window_controller->open_view("level");
@@ -33,9 +35,8 @@ void Game::Controllers::HomeController::update(const Game::Events::InputEvent& o
 				//_input_controller->subscribe(_level_controller);
 				//_level_controller->start();
 			}
+		break;
 	}
-	break;
-}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::HomeController::get_textures() const
