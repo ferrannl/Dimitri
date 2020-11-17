@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "IObject.h"
 
 /**
@@ -13,9 +12,9 @@ namespace Game {
 		/**
 		*	Contains all code necessary for the wall object
 		*/
-		class Lamp : public Game::Models::IObject {
+		class LightBeam : public Game::Models::IObject {
 		public:
-			Lamp(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			LightBeam(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
 		};
 	}

@@ -18,8 +18,11 @@ namespace EngineTests
 		PhysicsCollision::Controllers::WorldController create_world_setup()
 		{
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = std::make_shared<PhysicsCollision::Models::Shape>(8.0f, 10.0f, 20.0f, 20.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 
 			ctr.setup_world(1080, 720);
+			ctr.load_shape(shape);
+			ctr.load_shape(shape);
 			//create_shape(8.0f, 10.0f, 20.0f, 20.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 			//create_shape(8.0f, 10.0f, 20.0f, 20.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 
@@ -89,7 +92,7 @@ namespace EngineTests
 				ctr.simulate();
 			}
 
-			Assert::AreEqual(true, ctr.check_collision(shapes[0], shapes[1]));
+			Assert::AreEqual(true, shapes[0]->check_collision(shapes[1]));
 		}
 		TEST_METHOD(Body_Exists)
 		{

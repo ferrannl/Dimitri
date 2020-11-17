@@ -10,6 +10,8 @@
 #include "Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
 #include "Switch.h"
+#include "LightBeam.h"
+#include "Lamp.h"
 
 /**
 *	Namespace for the game

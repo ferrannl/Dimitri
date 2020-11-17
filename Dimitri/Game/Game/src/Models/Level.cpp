@@ -1,5 +1,4 @@
 #include "Level.h"
-#include "Lamp.h"
 using namespace Game;
 
 Models::Level::Level()
@@ -59,6 +58,7 @@ void Game::Models::Level::load_objects()
 	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
 	_background->set_visible(true);
 
+
 	//platform 1
 	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
@@ -83,7 +83,10 @@ void Game::Models::Level::load_objects()
 	//interactables
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	_interactables.push_back(std::make_shared<Lamp>(200, 300, 1, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
+	//miscelanious
+	_tiles.push_back(std::make_shared<LightBeam>(700, 25, 0, 300, 300, Game::Enums::StateEnum::HORIZONTAL));
+
+	_tiles.push_back(std::make_shared<Lamp>(800, 300, 0, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
 
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
