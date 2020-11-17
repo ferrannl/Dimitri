@@ -98,9 +98,4 @@ void Game::Models::IObject::update()
 {
 	set_x(_shape->get_x());
 	set_y(_shape->get_y());
-	if (_shape->get_is_interactable())
-	{
-		std::cout << _shape->get_x();
-		std::cout << _shape->get_y();
-	}
 }

@@ -18,31 +18,23 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2FixtureDef fixtureDef;
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
+	b2PolygonShape _shape;
+
 	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
-		b2PolygonShape _shape;
-		const int32 count = 3;
-		b2Vec2 vertices[count];
-		int halfWidth = shape->get_width() / 2;
-		int halfHeight = shape->get_height() / 2;
+		b2Vec2 vertices[3];
 
-		int x = shape->get_x() - halfWidth;
-		int y = shape->get_y() - halfHeight;
+		vertices[0].Set(shape->get_x(), shape->get_y() + shape->get_height());
+		vertices[1].Set(shape->get_x() + shape->get_width(), shape->get_y() + shape->get_height());
+		vertices[2].Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() * 2);
 
-
-		vertices[0].Set(shape->get_x() - shape->get_width() / 2, shape->get_y() - shape->get_height() / 2);
-		vertices[1].Set(shape->get_x() + shape->get_width() / 2, shape->get_y() - shape->get_height() /2) ;
-		vertices[2].Set(shape->get_x(), shape->get_y() + (shape->get_height() / 2));
-
-		_shape.Set(vertices, count);
-		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
+		_shape.Set(vertices, 3);
 	}
 	else if (shape->get_type() == Enums::ShapeEnum::Square) {
-		b2PolygonShape _shape;
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
-		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
+
+	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+	create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
@@ -89,7 +81,8 @@ void Facades::WorldFacade::simulate() const
 
 		b2Vec2 position = body->GetPosition();
 		float angle = body->GetAngle();
-		shape->set_x(body->GetWorldCenter().x - shape->get_width() / 2);
-		shape->set_y(body->GetWorldCenter().y - shape->get_height() / 2);
+
+		shape->set_x(round(position.x - shape->get_width() / 2));
+		shape->set_y(round(position.y - shape->get_height() / 2));
 	}
 }

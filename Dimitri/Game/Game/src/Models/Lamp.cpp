@@ -14,10 +14,5 @@ void Game::Models::Lamp::initialize_textures()
 
 void Game::Models::Lamp::interact()
 {
-	if (_state == Game::Enums::StateEnum::LEFT) {
-		set_state(Game::Enums::StateEnum::RIGHT);
-	}
-	else {
-		set_state(Game::Enums::StateEnum::LEFT);
-	}
+	std::cout << "Interact";
 }

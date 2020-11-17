@@ -83,7 +83,7 @@ void Game::Models::Level::load_objects()
 	//interactables
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	_interactables.push_back(std::make_shared<Lamp>(300, 30, 2, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
+	_interactables.push_back(std::make_shared<Lamp>(200, 300, 1, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
 
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
