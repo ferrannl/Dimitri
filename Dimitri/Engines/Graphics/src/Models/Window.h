@@ -56,7 +56,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
-			Window(const std::string& title, const int height, const int width);
+			Window(const std::string& title, int height, int width);
 
 			/**
 			* Return int is used to check if sdl is initialized.
@@ -114,7 +114,7 @@ namespace Graphics {
 			/**
 			* Updates camera position
 			*/
-			void set_camera_pos(const int x, const int y);
+			void set_camera_pos(int x, int y);
 
 			/**
 			* Returns camera position
@@ -124,7 +124,7 @@ namespace Graphics {
 			/**
 			* Sets scene size
 			*/
-			void set_scene_size(const int height, const int width);
+			void set_scene_size(int height, int width);
 
 			/**
 			* Returns scene size

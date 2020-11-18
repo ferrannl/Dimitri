@@ -37,7 +37,7 @@ namespace Game {
 			/**
 			*	Setup world
 			*/
-			void setup_world(const int height,const int width);
+			void setup_world(int height, int width);
 
 		};
 	}

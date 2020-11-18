@@ -78,7 +78,7 @@ namespace Graphics {
 			/**
 			* Creates the instance of SDL_Window
 			*/
-			int create_window(const std::string& title, const int height, const int width);
+			int create_window(const std::string& title, int height, int width);
 
 			/**
 			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
@@ -100,7 +100,7 @@ namespace Graphics {
 			/**
 			* Updates camera position
 			*/
-			void set_camera_pos(const int x, const int y);
+			void set_camera_pos(int x, int y);
 
 			/**
 			* Returns camera position
@@ -110,7 +110,7 @@ namespace Graphics {
 			/**
 			* Sets scene size
 			*/
-			void set_scene_size(const int height, const int width);
+			void set_scene_size(int height, int width);
 
 			/**
 			* Returns scene size

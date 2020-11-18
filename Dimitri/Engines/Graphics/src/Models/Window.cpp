@@ -1,7 +1,7 @@
 #include "Window.h"
 using namespace Graphics;
 
-Models::Window::Window(const std::string& title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
+Models::Window::Window(const std::string& title, int height, int width) : _title{ title }, _height{ height }, _width{ width } {
 	_facade = std::make_shared<Facades::WindowFacade>();
 }
 
@@ -82,7 +82,7 @@ std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() co
 	return _facade;
 }
 
-void Graphics::Models::Window::set_camera_pos(const int x, const int y)
+void Graphics::Models::Window::set_camera_pos(int x, int y)
 {
 	_facade->set_camera_pos(x,y);
 }
@@ -92,7 +92,7 @@ std::tuple<int, int> Graphics::Models::Window::get_camera_pos() const
 	return _facade->get_camera_pos();
 }
 
-void Graphics::Models::Window::set_scene_size(const int height, const int width)
+void Graphics::Models::Window::set_scene_size(int height, int width)
 {
 	_facade->set_scene_size(height, width);
 }

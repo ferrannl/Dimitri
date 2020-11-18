@@ -3,7 +3,7 @@
 #include <SDL_ttf.h>
 using namespace Graphics;
 
-int Facades::WindowFacade::create_window(const std::string& title, const int height, const int width)
+int Facades::WindowFacade::create_window(const std::string& title, int height, int width)
 {
 	_window_height = height;
 	_window_width = width;
@@ -107,7 +107,7 @@ int Graphics::Facades::WindowFacade::get_fps()
 	return _fps->get();
 }
 
-void Graphics::Facades::WindowFacade::set_camera_pos(const int x, const int y)
+void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 {
 	int _scene_width = std::get<0>(_scene_size);
 	int _scene_height = std::get<1>(_scene_size);
@@ -139,7 +139,7 @@ std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
 	return _camera_pos;
 }
 
-void Graphics::Facades::WindowFacade::set_scene_size(const int height, const int width)
+void Graphics::Facades::WindowFacade::set_scene_size(int height, int width)
 {
 	std::get<1>(_scene_size) = height;
 	std::get<0>(_scene_size) = width;

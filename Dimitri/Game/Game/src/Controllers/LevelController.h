@@ -54,7 +54,7 @@ namespace Game {
 			void set_state(Enums::LevelStateEnum state);
 
 		public:
-			LevelController(std::shared_ptr<Controllers::WindowController> window_controller);
+			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller);
 
 			/**
 			*	List of all textures in level

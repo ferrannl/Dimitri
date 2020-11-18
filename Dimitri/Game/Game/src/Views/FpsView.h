@@ -4,13 +4,6 @@
 #include <src\Helpers\BasePathHelper.h>
 #include <..\Game\Game\src\Views\View.h>
 
-#include <chrono>
-#include <thread>
-#include <tuple>
-
-using namespace std::this_thread;
-using namespace std::chrono_literals;
-
 /**
 *	Namespace for the game
 */
