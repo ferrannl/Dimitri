@@ -121,14 +121,15 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 	else if (x < 0) {
 		std::get<0>(_camera_pos) = 0;
 	}
-
-	if (y + _window_height < _scene_height && y >= 0) {
-		std::get<1>(_camera_pos) = y;
+	
+	int converted_y = _window_height / 2 - y;
+	if (converted_y + _window_height < _scene_height && converted_y >= 0) {
+		std::get<1>(_camera_pos) = converted_y;
 	}
-	else if (y + _window_height > _scene_height) {
+	else if (converted_y + _window_height > _scene_height) {
 		std::get<1>(_camera_pos) = _scene_height - _window_height;
 	}
-	else if (y < 0) {
+	else if (converted_y < 0) {
 		std::get<1>(_camera_pos) = 0;
 	}
 
@@ -136,7 +137,9 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 
 std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
 {
-	return _camera_pos;
+	std::tuple<int, int> converted_camera_pos = _camera_pos;
+	std::get<1>(converted_camera_pos) = std::get<1>(_scene_size) - std::get<1>(converted_camera_pos) - _window_height;
+	return converted_camera_pos;
 }
 
 void Graphics::Facades::WindowFacade::set_scene_size(int height, int width)

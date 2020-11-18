@@ -35,7 +35,7 @@ namespace Game {
 
 		for (auto& t : _textures) {
 			t->set_x((window_width / 2 - t->get_width() / 2) + std::get<0>(camera_pos));
-			t->set_y(std::get<1>(_graphics_controller->get_scene_size()) - std::get<1>(camera_pos) - window_height + (window_height / 2 - t->get_height() / 2));
+			t->set_y((window_height / 2 - t->get_height() / 2) + std::get<1>(camera_pos));
 		}
 		View::draw();
 	}
