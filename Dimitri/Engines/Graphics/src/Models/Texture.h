@@ -79,7 +79,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path);
+			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible);
 
 			/**
 			* returns the y converted to be drawn from the perspective of bottom left

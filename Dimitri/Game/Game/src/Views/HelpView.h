@@ -11,11 +11,11 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the credits using the graphics controller
+		*	Containing all the code to draw the helpview using the graphics controller
 		*/
-		class CreditsView : public View {
+		class HelpView : public View {
 		public:
-			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			HelpView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
 			*	Initializes textures

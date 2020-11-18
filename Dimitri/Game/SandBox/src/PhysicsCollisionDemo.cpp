@@ -53,13 +53,13 @@ int PhysicsCollisionDemo::create_window(int width, int height)
 
 void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int height, std::string path, const float angle, Graphics::Enums::FlipEnum flipstatus)
 {
-	graphics_controller.add_texture(std::make_shared<Graphics::Models::Sprite>(x, y, z, height, width, angle, path, flipstatus));
+	graphics_controller.add_texture(std::make_shared<Graphics::Models::Sprite>(x, y, z, height, width, angle, path, flipstatus, true));
 }
 
 void PhysicsCollisionDemo::create_text(std::string text, int x, int y, int z, int width, int height, std::string path, const float angle)
 {
 	Color color = { 255, 255, 255 };
-	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>(text, color, x, y, z, height, width, angle, path));
+	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>(text, color, x, y, z, height, width, angle, path, true));
 }
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
