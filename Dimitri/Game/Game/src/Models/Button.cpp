@@ -1,10 +1,10 @@
 #include "Button.h"
 
-Game::Models::Button::Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IInteractable(x, y, z, height, width, state)
+Game::Models::Button::Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height) : Game::Models::IInteractable(x, y, z, height, width, state)
 {
+	_scene_height = scene_height;
 	initialize_textures();
 }
-
 
 void Game::Models::Button::initialize_textures()
 {
@@ -12,8 +12,19 @@ void Game::Models::Button::initialize_textures()
 	get_texture()->set_visible(true);
 }
 
-
-void Game::Models::Button::interact()
+void Game::Models::Button::update(const Game::Events::InputEvent& object)
 {
+	switch (object.event_enum) {
+	case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 
+		int x = std::get<0>(object.mouse_pos);
+		int y = _scene_height - std::get<1>(object.mouse_pos);
+		std::cout << "clicked on: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
+
+		if (x >= get_x() && x <= get_x() + get_width() && y <= get_y() + get_height() && y >= get_y())
+		{
+			std::cout << "clicked within button: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
+			interact();
+		}
+	}
 }
