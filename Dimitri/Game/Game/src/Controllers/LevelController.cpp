@@ -47,7 +47,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			{
 				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
 				{
-					std::cout << "Het werkt!";
+					set_state(Enums::LevelStateEnum::GAME_OVER);
 				}
 			}
 		}
