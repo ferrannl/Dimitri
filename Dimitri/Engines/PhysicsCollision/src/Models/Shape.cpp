@@ -106,17 +106,10 @@ bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)
 
 bool Models::Shape::check_polygon_collision(std::shared_ptr<Models::Shape> shape)
 {
-	if (get_x() < shape->get_x() + shape->get_width() / 2)
-	{
-		int x = 2 * (get_x() + get_width());
-		if (x > 0) {
-			std::cout << "Het werkt!";
-			return true;
-		}
-	}
-	if (get_x() > shape->get_x() + shape->get_width() / 2)
-	{
-		return false;
-		//Rechts van middelpunt
-	}
+	int x = shape->get_x() + (shape->get_width() / 5);
+
+	return get_x() - 1 <= x + shape->get_width() &&
+		get_x() + get_width() + 1 >= x &&
+		get_y() - 1 <= shape->get_y() + shape->get_height() &&
+		get_y() + get_height() + 1 >= shape->get_y();
 }
