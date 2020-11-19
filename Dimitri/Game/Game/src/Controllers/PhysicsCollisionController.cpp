@@ -19,3 +19,8 @@ void Game::Controllers::PhysicsCollisionController::load_shape(const std::shared
 {
 	_world_controller->load_shape(_shape);
 }
+
+void Game::Controllers::PhysicsCollisionController::setup_world(int height, int width)
+{
+	_world_controller->setup_world(width, height);
+}

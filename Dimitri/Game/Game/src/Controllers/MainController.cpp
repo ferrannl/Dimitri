@@ -3,15 +3,16 @@ using namespace Game;
 Controllers::MainController::MainController()
 {
 	_window_controller = std::make_shared<WindowController>();
-	_level_controller = std::make_shared<Controllers::LevelController>();
+	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller);
 	_input_controller = std::make_shared<Controllers::InputController>();
 }
 
 void Game::Controllers::MainController::run()
 {
+	_window_controller->create_window(720, 1280);
+
 	_input_controller->subscribe(this->shared_from_this());
 	_level_controller->subscribe(this->shared_from_this());
-	_window_controller->create_window(1080, 720);
 	_window_controller->set_level_textures(_level_controller->get_textures());
 	_input_controller->poll_events();
 }
@@ -25,6 +26,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->open_view("credits");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
+			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;
@@ -34,12 +36,14 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->open_view("help");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
+			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_window_controller->is_active("level")) {			
 			_input_controller->subscribe(_level_controller);
+			_window_controller->set_scene_size(_level_controller->get_level()->get_level_height(), _level_controller->get_level()->get_level_width());
 			_level_controller->start();
 		}
 		break;
