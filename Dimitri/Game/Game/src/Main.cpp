@@ -3,6 +3,6 @@
 #undef main
 int main() {
 	auto controller = std::make_shared<Game::Controllers::MainController>();
-	controller.get()->run();
+	controller->run();
 	return 0;
 }

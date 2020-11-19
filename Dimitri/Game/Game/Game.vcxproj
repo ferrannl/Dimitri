@@ -158,6 +158,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Managers\LevelManager.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
@@ -178,8 +179,11 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
     <ClCompile Include="src\Views\HomeView.cpp" />
+    <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
+    <ClCompile Include="src\Views\PauseLevelView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
+    <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
@@ -204,8 +208,11 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\HomeView.h" />
+    <ClInclude Include="src\Views\GameOverLevelView.h" />
+    <ClInclude Include="src\Views\PauseLevelView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\LevelView.h" />
+    <ClInclude Include="src\Views\WinLevelView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

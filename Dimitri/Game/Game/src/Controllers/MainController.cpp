@@ -44,9 +44,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 	case Input::Enums::EventEnum::KEY_PRESS_L:
 		if (!_window_controller->is_active("level")) {
 			_input_controller->unsubscribe(_home_controller);
-			_window_controller->clear_views();
-			_window_controller->open_view("level");
-			_window_controller->open_view("fps");
 			_input_controller->subscribe(_level_controller);
 			_level_controller->start();
 		}
@@ -67,5 +64,25 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_QUIT:
 		exit(0);
+	}
+}
+
+void Game::Controllers::MainController::update(const Enums::LevelStateEnum& object)
+{
+	switch (object) {
+	case Enums::LevelStateEnum::ACTIVE:
+		_window_controller->clear_views();
+		_window_controller->open_view("level");
+		_window_controller->open_view("fps");
+		break;
+	case Enums::LevelStateEnum::WIN:
+		_window_controller->open_view("win_level");
+		break;
+	case Enums::LevelStateEnum::GAME_OVER:
+		_window_controller->open_view("game_over_level");
+		break;
+	case Enums::LevelStateEnum::PAUSED:
+		_window_controller->open_view("pause_level");
+		break;
 	}
 }

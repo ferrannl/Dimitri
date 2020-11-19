@@ -1,6 +1,5 @@
 #pragma once
 #include "../Models/World.h"
-#include "ShapeController.h"
 #include <string>
 
 #ifdef _WIN64
@@ -29,10 +28,6 @@ namespace PhysicsCollision {
 			* World model that contains the shapes
 			*/
 			Models::World _world;
-			/**
-			* ShapeController that creates shapes
-			*/
-			ShapeController _shapeController;
 		public:
 			WorldController();
 			/**
@@ -40,13 +35,9 @@ namespace PhysicsCollision {
 			*/
 			void setup_world(const float width, const float height);
 			/**
-			* Creates the shape based on given parameters
+			*	Loads the created shape into the world
 			*/
-			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic, bool is_interactable);
-			/**
-			* Returns true when there is collision between two shapes. Else returns false
-			*/
-			bool check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2);
+			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape);
 			/**
 			* Destroys the bodies from Box2D
 			*/

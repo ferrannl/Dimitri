@@ -15,7 +15,7 @@ namespace Game {
 		/**
 		*	Contains code to connect input, window and level controllers and start the application
 		*/
-		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController> {
+		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Utility::Interfaces::IObserver<Enums::LevelStateEnum> {
 		private:
 			/**
 			*	Input Controller
@@ -49,6 +49,11 @@ namespace Game {
 			*	Update from Game::Controllers::InputController
 			*/
 			void update(const Events::InputEvent& object);
+
+			/**
+			*	Update from LevelController
+			*/
+			void update(const Enums::LevelStateEnum& object);
 		};
 	}
 }

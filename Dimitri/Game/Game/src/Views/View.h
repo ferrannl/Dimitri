@@ -1,6 +1,5 @@
 #pragma once
 #include <src\Controllers\GraphicsController.h>
-#include <thread>
 #include <memory>
 #include <vector>
 /**
@@ -39,7 +38,7 @@ namespace Game {
 			/**
 			* Add the textures to the _graphics_controller
 			*/
-			virtual void draw() = 0;
+			virtual void draw();
 
 			/**
 			*	Sets _textures
