@@ -24,7 +24,7 @@ namespace Game {
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
 			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
-			void init_buttons(std::shared_ptr<Game::Controllers::InputController> _input_controller, std::shared_ptr<Game::Controllers::LevelController> _level_controller, std::shared_ptr<Game::Controllers::WindowController> _window_controller);
+
 			int _scene_height;
 			int _scene_width;
 		public:
