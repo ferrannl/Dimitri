@@ -41,13 +41,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_input_controller->unsubscribe(_level_controller);
 		}
 		break;
-	case Input::Enums::EventEnum::KEY_PRESS_L:
-		if (!_window_controller->is_active("level")) {
-			_input_controller->unsubscribe(_home_controller);
-			_input_controller->subscribe(_level_controller);
-			_level_controller->start();
-		}
-		break;
 	case Input::Enums::EventEnum::KEY_PRESS_ESC:
 		if (!_window_controller->is_active("home")) {
 			_window_controller->clear_views();
@@ -56,7 +49,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_level_controller->stop();
 			_input_controller->unsubscribe(_level_controller);
 			_input_controller->subscribe(_home_controller);
-			//_input_controller->unsubscribe(_home_controller);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_F:
