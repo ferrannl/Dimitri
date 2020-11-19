@@ -4,7 +4,6 @@
 #include "LevelController.h"
 #include "HomeController.h"
 #include "../Models/Level.h"
-#include <memory>
 /**
 *	Namespace for the game
 */
@@ -22,6 +21,7 @@ namespace Game {
 			*	Input Controller
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
+			std::shared_ptr<Managers::LevelManager> _level_manager;
 			/**
 			*	Window Controller
 			*/

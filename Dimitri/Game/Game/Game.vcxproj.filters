@@ -26,6 +26,7 @@
     <ClCompile Include="src\Controllers\HomeController.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Managers\LevelManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
@@ -51,5 +52,6 @@
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Managers\LevelManager.h" />
   </ItemGroup>
 </Project>
