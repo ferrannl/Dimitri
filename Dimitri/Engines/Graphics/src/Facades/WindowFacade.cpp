@@ -122,7 +122,7 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 		std::get<0>(_camera_pos) = 0;
 	}
 	
-	int converted_y = _window_height / 2 - y;
+	int converted_y = _scene_height - (_window_height + y);
 	if (converted_y + _window_height < _scene_height && converted_y >= 0) {
 		std::get<1>(_camera_pos) = converted_y;
 	}

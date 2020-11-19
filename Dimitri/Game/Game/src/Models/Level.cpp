@@ -45,8 +45,8 @@ void Game::Models::Level::resume_music(std::string audio_name)
 void Game::Models::Level::load_objects()
 {
 	//Here a file is loaded/parsed and turned into a level
-	_height = 1080;
-	_width = 1920;
+	_height = 2000;
+	_width = 4000;
 
 	_physics_collision_controller->setup_world(_height, _width);
 
@@ -61,7 +61,7 @@ void Game::Models::Level::load_objects()
 	_tiles.push_back(std::make_shared<Wall>(1895, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
 	//background
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 1080, 1920, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
+	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _height, _width, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
 
 	//platform 1
 	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));
@@ -88,10 +88,10 @@ void Game::Models::Level::load_objects()
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 2, 25, 25, Game::Enums::StateEnum::LEFT));
 
 	//border
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 1080, 1, 1920, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, 1920, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, 1080, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//lef
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(1920, 0, 1080, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//rig
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, _height, 1, _width, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, _width, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, _height, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//lef
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(_width, 0, _height, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//rig
 
 	add_shapes();
 }
