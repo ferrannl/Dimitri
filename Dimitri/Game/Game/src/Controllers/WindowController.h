@@ -86,7 +86,7 @@ namespace Game {
 			/**
 			*	Calls all draw methods on _views
 			*/
-			void draw();
+			void update();
 
 			/**
 			*	Sets the textures for the level view

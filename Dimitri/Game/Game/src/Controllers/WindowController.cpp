@@ -25,17 +25,16 @@ namespace Game {
 		open_view("fps");
 		toggle_view_visibility("fps");
 
-		draw_thread = std::thread(&Controllers::WindowController::draw, this);
+		draw_thread = std::thread(&Controllers::WindowController::update, this);
 	}
 
-	void Controllers::WindowController::draw()
+	void Controllers::WindowController::update()
 	{
 		while (true) {
 			sleep_for(5ms);
-			_graphics_controller->clear_textures();
 			for (auto& v : _views) {
 				if (v.second->is_active() && v.second->is_visible()) {
-					v.second->draw();
+					v.second->update();
 				}
 			}
 			_graphics_controller->update_window();
@@ -44,18 +43,29 @@ namespace Game {
 
 	void Controllers::WindowController::open_view(const std::string& view_name)
 	{
-		_views[view_name]->set_active(true);
+		if (_views.find(view_name) != _views.end()) {
+			if (_views[view_name]->is_visible()) {
+				_views[view_name]->open();
+			}
+			_views[view_name]->set_active(true);
+		}
 	}
 
 	bool Controllers::WindowController::is_active(const std::string& view_name)
 	{
-		return _views[view_name]->is_active();
+		if (_views.find(view_name) != _views.end()) {
+			return _views[view_name]->is_active();
+		}
+		return false;
 	}
 
 	void Controllers::WindowController::clear_views()
 	{
 		for (auto& v : _views) {
-			v.second->set_active(false);
+			if (v.second->is_active()) {
+				v.second->close();
+				v.second->set_active(false);
+			}
 		}
 	}
 
