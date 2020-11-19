@@ -6,6 +6,7 @@ Models::Level::Level()
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_audio_controller = std::make_shared<Controllers::AudioController>();
 	_interactables = {};
+	_lights = {};
 	_players = {};
 	_shapes = {};
 	_tiles = {};
@@ -84,7 +85,7 @@ void Game::Models::Level::load_objects()
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
 	//miscelanious
-	_tiles.push_back(std::make_shared<LightBeam>(700, 25, 0, 300, 300, Game::Enums::StateEnum::HORIZONTAL));
+	_lights.push_back(std::make_shared<LightBeam>(700, 25, 0, 300, 300, Game::Enums::StateEnum::HORIZONTAL));
 
 	_tiles.push_back(std::make_shared<Lamp>(800, 300, 0, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
 
@@ -115,6 +116,10 @@ void Game::Models::Level::add_shapes()
 	{
 		_physics_collision_controller->load_shape(shape);
 	}
+	for (std::shared_ptr<Game::Models::IObject> light : _lights)
+	{
+		_physics_collision_controller->load_shape(light.get()->get_shape());
+	}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
@@ -128,12 +133,22 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	for (std::shared_ptr<IObject> light : _lights)
+	{
+		temp = light->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}
 	for (std::shared_ptr<IObject> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
 	return textures;
+}
+
+std::vector<std::shared_ptr<Game::Models::IObject>> Game::Models::Level::get_lights() const
+{
+	return _lights;
 }
 
 std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player() const

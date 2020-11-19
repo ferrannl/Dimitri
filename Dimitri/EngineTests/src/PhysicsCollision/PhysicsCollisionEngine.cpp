@@ -91,7 +91,7 @@ namespace EngineTests
 				ctr.simulate();
 			}
 
-			Assert::AreEqual(true, shapes[0]->check_collision(shapes[1]));
+			Assert::AreEqual(true, shapes[0]->check_square_collision(shapes[1]));
 		}
 		TEST_METHOD(Body_Exists)
 		{

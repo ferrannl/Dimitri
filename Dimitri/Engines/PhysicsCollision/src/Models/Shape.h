@@ -135,7 +135,8 @@ namespace PhysicsCollision {
 			/**
 			* Returns true when there is collision between two shapes. Else returns false
 			*/
-			bool check_collision(std::shared_ptr<Models::Shape> shape);
+			bool check_square_collision(std::shared_ptr<Models::Shape> shape);
+			bool check_polygon_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }
