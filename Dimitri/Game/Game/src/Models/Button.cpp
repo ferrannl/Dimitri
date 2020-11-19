@@ -19,11 +19,9 @@ void Game::Models::Button::update(const Game::Events::InputEvent& object)
 
 		int x = std::get<0>(object.mouse_pos);
 		int y = _scene_height - std::get<1>(object.mouse_pos);
-		std::cout << "clicked on: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
 
 		if (x >= get_x() && x <= get_x() + get_width() && y <= get_y() + get_height() && y >= get_y())
 		{
-			std::cout << "clicked within button: (" + std::to_string(x) + "," + std::to_string(y) + ")" << std::endl;
 			interact();
 		}
 	}

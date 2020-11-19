@@ -11,14 +11,20 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the button object
+		*	Namespace for the Buttons
 		*/
 		namespace Buttons {
 			class StartButton : public Game::Models::Button {
 			private:
+				/**
+				*	Level Manager
+				*/
 				std::shared_ptr<Game::Managers::LevelManager> _level_manager;
 			public:
 				StartButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager);
+				/**
+				*	Action when the button is pressed
+				*/
 				void interact();
 			};
 		}

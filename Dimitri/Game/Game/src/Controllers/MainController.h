@@ -21,6 +21,9 @@ namespace Game {
 			*	Input Controller
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
+			/**
+			*	Level Manager
+			*/
 			std::shared_ptr<Managers::LevelManager> _level_manager;
 			/**
 			*	Window Controller
