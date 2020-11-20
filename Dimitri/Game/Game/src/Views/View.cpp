@@ -32,4 +32,9 @@ namespace Game {
 	{
 		_visible = visible;
 	}
+	void Views::View::add_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures) {
+		for (const std::shared_ptr<Graphics::Models::Texture>& a : textures) {
+			_textures.push_back(a);
+		}
+	}
 }

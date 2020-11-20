@@ -21,6 +21,12 @@
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\HomeView.cpp" />
+    <ClCompile Include="src\Models\Button.cpp" />
+    <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Managers\LevelManager.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
@@ -45,6 +51,12 @@
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\HelpView.h" />
+    <ClInclude Include="src\Views\HomeView.h" />
+    <ClInclude Include="src\Models\Button.h" />
+    <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Models\Buttons\StartButton.h" />
+    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
