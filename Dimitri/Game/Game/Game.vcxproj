@@ -161,6 +161,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Enums\TypeEnum.cpp" />
     <ClCompile Include="src\Factory\InteractableFactory.cpp" />
     <ClCompile Include="src\Factory\ObjectFactory.cpp" />
+    <ClCompile Include="src\Models\Car.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
@@ -189,6 +190,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Factory\IFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
+    <ClInclude Include="src\Models\Car.h" />
     <ClInclude Include="src\Models\IInteractable.h" />
     <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />

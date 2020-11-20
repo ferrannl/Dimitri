@@ -29,6 +29,7 @@
     <ClCompile Include="src\Enums\TypeEnum.cpp" />
     <ClCompile Include="src\Factory\InteractableFactory.cpp" />
     <ClCompile Include="src\Factory\ObjectFactory.cpp" />
+    <ClCompile Include="src\Models\Car.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Views\CreditsView.h" />
@@ -56,5 +57,6 @@
     <ClInclude Include="src\Factory\IFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
+    <ClInclude Include="src\Models\Car.h" />
   </ItemGroup>
 </Project>

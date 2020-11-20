@@ -14,7 +14,8 @@ namespace Game {
 			LEVER,
 			FLOOR,
 			PLAYER,
-			LAMP
+			LAMP,
+			CAR
 		};
 	}
 }

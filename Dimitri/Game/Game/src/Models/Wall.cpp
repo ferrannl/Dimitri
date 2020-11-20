@@ -8,9 +8,20 @@ Game::Models::Wall::Wall(int x, int y, int z, int height, int width, Game::Enums
 
 void Game::Models::Wall::initialize_textures()
 {
-	add_texture(Game::Enums::StateEnum::HORIZONTAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::NONE, false));
-	add_texture(Game::Enums::StateEnum::VERTICAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::VERTICAL, false));
-	add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::NONE, false));
-	add_texture(Game::Enums::StateEnum::LEFT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, false));
+	switch (this->_state) {
+	case Game::Enums::StateEnum::HORIZONTAL:
+		add_texture(Game::Enums::StateEnum::HORIZONTAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::NONE, false));
+		break;
+	case Game::Enums::StateEnum::VERTICAL:
+		add_texture(Game::Enums::StateEnum::VERTICAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground.png" }, Graphics::Enums::FlipEnum::VERTICAL, false));
+		break;
+	case Game::Enums::StateEnum::RIGHT:
+		add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::NONE, false));
+		break;
+	case Game::Enums::StateEnum::LEFT:
+		add_texture(Game::Enums::StateEnum::LEFT, std::make_shared<Graphics::Models::Sprite>(0, 0, 1, 75, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/ground_end.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, false));
+		break;
+	}
+
 	get_texture()->set_visible(true);
 }

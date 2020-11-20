@@ -10,10 +10,10 @@ std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::Build(std::vector<st
     int max_height = (objects.at(0).size() - 1) * 40;
     int x = 0;
     int y = max_height;
+    int y_size = TILE_SIZE;
 
     for (std::vector<int> vector : objects) {
         for (int object : vector) {
-
             switch (object) {
             case 0:
                 level->add_object(_objectFactory.create(Game::Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
@@ -35,6 +35,9 @@ std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::Build(std::vector<st
                 break;
             case 6:
                 level->add_object(_objectFactory.create(Game::Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::VERTICAL));
+                break;
+            case 43:
+                level->add_object(_interactableFactory.create(Game::Enums::TypeEnum::CAR, x, y, 1, 80, 160));
                 break;
             }
             y -= TILE_SIZE;

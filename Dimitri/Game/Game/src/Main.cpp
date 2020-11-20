@@ -8,6 +8,7 @@ int main() {
 	}
 	catch (std::exception e) {
 		std::cout << std::endl << "Woops, something went wrong!" << std::endl;
+		std::cout << std::endl << e.what() << std::endl;
 	}
 
 	return 0;
