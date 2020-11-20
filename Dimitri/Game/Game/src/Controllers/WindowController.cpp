@@ -9,7 +9,10 @@ namespace Game {
 
 	void Controllers::WindowController::create_window(int height, int width)
 	{
-		if (_graphics_controller->create_window("Dimitri", width, height) == NULL) {
+		_height = height;
+		_width = width;
+
+		if (_graphics_controller->create_window("Dimitri", height, width) == NULL) {
 			return;
 		}
 
@@ -73,4 +76,32 @@ namespace Game {
 	{
 		_views[view_name]->add_textures(textures);
 	}
+
+	void Game::Controllers::WindowController::set_camera_pos(int x, int y)
+	{
+		_graphics_controller->set_camera_pos(x, y);
+	}
+
+	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object)
+	{
+		int x = (object->get_x() + object->get_width() / 2) - get_window_width() / 2;
+		int y = (object->get_y() + object->get_height() / 2) - get_window_height() / 2;
+		set_camera_pos(x, y);
+	}
+
+	void Game::Controllers::WindowController::set_scene_size(int height, int width)
+	{
+		_graphics_controller->set_scene_size(height, width);
+	}
+
+	int Game::Controllers::WindowController::get_window_height() const
+	{
+		return _height;
+	}
+
+	int Game::Controllers::WindowController::get_window_width() const
+	{
+		return _width;
+	}
+
 }

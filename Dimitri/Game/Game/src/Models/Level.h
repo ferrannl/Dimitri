@@ -64,6 +64,12 @@ namespace Game {
 			*	Level background
 			*/
 			std::shared_ptr<Graphics::Models::Texture> _background;
+
+			/**
+			*	Size of the level
+			*/
+			int _height;
+			int _width;
 			
 		public:
 			Level();
@@ -124,6 +130,13 @@ namespace Game {
 			*	Calls physics simulation
 			*/
 			void simulate();
+
+			/**
+			* Getters for level size
+			*/
+			int get_level_height() const;
+
+			int get_level_width() const;
 		};
 	}
 

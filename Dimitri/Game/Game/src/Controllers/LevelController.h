@@ -1,5 +1,7 @@
 #pragma once
-#include <src\Interfaces\IObserver.h>
+#include "../Models/Level.h"
+#include "../Events/InputEvent.h"
+#include "../Controllers/WindowController.h"
 #include <src\Interfaces\IObservable.h>
 #include <src\Models\Texture.h>
 #include <..\Game\Game\src\Models\Level.h>
@@ -34,7 +36,13 @@ namespace Game {
 			/**
 			*	Keeps track of simulation thread state
 			*/
-			Enums::LevelStateEnum _state;
+      Enums::LevelStateEnum _state;
+
+			/**
+			*	WindowController to update camera potision
+			\*/
+			std::shared_ptr<Controllers::WindowController> _window_controller;
+			
 			/**
 			*	List of observers
 			*/
@@ -44,8 +52,9 @@ namespace Game {
 			*	Set the level state and stops/starts the thread
 			*/
 			void set_state(Enums::LevelStateEnum state);
+
 		public:
-			LevelController();
+			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller);
 
 			/**
 			*	List of all textures in level

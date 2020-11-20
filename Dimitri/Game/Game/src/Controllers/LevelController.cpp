@@ -1,7 +1,7 @@
 #include "LevelController.h"
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController()
+Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{window_controller}
 {
 	_level = std::make_shared<Game::Models::Level>();
 	_level->load_objects();
@@ -60,6 +60,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	case Input::Enums::EventEnum::KEY_PRESS_G:
 		// this will obviously be triggered by an event in the future, for now a hardcoded key
 		set_state(Enums::LevelStateEnum::GAME_OVER);
+    break;
 	}
 }
 
@@ -103,6 +104,7 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
+		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
 
