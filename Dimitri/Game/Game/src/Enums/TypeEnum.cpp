@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 *	Namespace for the game
 */
@@ -15,7 +17,10 @@ namespace Game {
 			FLOOR,
 			PLAYER,
 			LAMP,
-			CAR
+			CAR,
+			BG,
+			BG_TOP1,
+			BG_TOP2
 		};
 	}
 }

@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 *	Namespace for the game
 */

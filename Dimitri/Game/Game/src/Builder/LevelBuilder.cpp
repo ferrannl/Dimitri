@@ -1,16 +1,24 @@
 #include "LevelBuilder.h"
+
 using namespace Game;
 
-Game::Builder::LevelBuilder::LevelBuilder(const int width, const int height) : _width{ width }, _height{ height } {}
+Game::Builder::LevelBuilder::LevelBuilder() {
+    _objectFactory = {};
+    _interactableFactory = {};
+    _backgroundFactory = {};
+}
 
-std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::Build(std::vector<std::vector<int>> objects)
+std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::build(std::vector<std::vector<int>> objects)
 {
     std::shared_ptr<Game::Models::Level> level{ new Game::Models::Level };
 
-    int max_height = (objects.at(0).size() - 1) * 40;
+    int level_height = (objects.at(0).size() - 1) * TILE_SIZE;
+    int level_width = (objects.size()) * TILE_SIZE;
+
     int x = 0;
-    int y = max_height;
-    int y_size = TILE_SIZE;
+    int y = level_height;
+
+    build_background(level, level_width, level_height);
 
     for (std::vector<int> vector : objects) {
         for (int object : vector) {
@@ -43,9 +51,36 @@ std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::Build(std::vector<st
             y -= TILE_SIZE;
         }
 
-        y = max_height;
+        y = level_height;
         x += TILE_SIZE;
     }
 
     return level;
+}
+
+void Builder::LevelBuilder::build_background(std::shared_ptr<Game::Models::Level>& level, const int width, const int height) {
+    int bg_height = 720;
+    int bg_width = 680;
+    int top_height = 80;
+    int top_width = bg_width;
+
+    int x = 0;
+    int y = 0;
+
+    while (x < width) {
+        level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG, x, y, bg_width, bg_height, 0, Enums::StateEnum::HORIZONTAL));
+
+        y += bg_height;
+
+        while (y <= height) {
+            level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG_TOP1, x, y, top_width, top_height, 0, Enums::StateEnum::HORIZONTAL));
+            y += top_height;
+
+            level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG_TOP2, x, y, top_width, top_height, 0, Enums::StateEnum::HORIZONTAL));
+            y += top_height;
+        }
+
+        y = 0;
+        x += bg_width;
+    }
 }

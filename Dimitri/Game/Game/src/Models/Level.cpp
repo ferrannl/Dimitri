@@ -9,6 +9,7 @@ Models::Level::Level()
 	_players = {};
 	_shapes = {};
 	_tiles = {};
+	_backgrounds = {};
 }
 
 void Models::Level::add_music(std::string audio_name, std::string path)
@@ -50,10 +51,6 @@ void Game::Models::Level::load_objects()
 
 	_physics_collision_controller->setup_world(_height, _width);
 
-
-	//background
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _height, _width, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
-
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, _height, 1, _width, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, _width, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
@@ -88,7 +85,10 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> textures = {};
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> temp = _player->get_all_textures();
 	textures.insert(textures.end(), temp.begin(), temp.end());
-	textures.push_back(_background);
+
+	for (std::shared_ptr<Graphics::Models::Texture> bg : _backgrounds) {
+		textures.push_back(bg);
+	}
 	for (std::shared_ptr<IObject> tile : _tiles)
 	{
 		temp = tile->get_all_textures();
@@ -136,6 +136,11 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::IObject> tile
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::IInteractable> tile)
 {
 	_interactables.push_back(tile);
+}
+
+void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprite> tile)
+{
+	_backgrounds.push_back(tile);
 }
 
 int Game::Models::Level::get_level_height() const

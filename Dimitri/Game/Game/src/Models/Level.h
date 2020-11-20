@@ -56,14 +56,14 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
 
 			/**
+			*	List of players in level
+			*/
+			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _backgrounds;
+
+			/**
 			*	List of interactables in level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
-
-			/**
-			*	Level background
-			*/
-			std::shared_ptr<Graphics::Models::Texture> _background;
 
 			/**
 			*	Size of the level
@@ -140,6 +140,8 @@ namespace Game {
 			*	Returns physics collision controller
 			*/
 			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
+
+			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
 			/**
 			*	Calls physics simulation

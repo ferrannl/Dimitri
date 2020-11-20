@@ -1,14 +1,9 @@
 #include "ObjectFactory.h"
 #include "../Models/Wall.h"
 #include "../Models/Player.h"
-#include "../Models/Switch.h"
+#include "../Models/Switch.h""
 
 using namespace Game;
-
-Game::Factories::ObjectFactory::ObjectFactory()
-{
-	_objects = {};
-}
 
 std::shared_ptr<Models::IObject> Factories::ObjectFactory::create(Game::Enums::TypeEnum type, int x, int y, int z, int height, int width, Game::Enums::StateEnum state)
 {

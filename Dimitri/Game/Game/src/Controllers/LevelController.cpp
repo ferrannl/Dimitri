@@ -9,8 +9,8 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	DocumentHandler::Controllers::DocumentController ctrl;
 
 	std::vector<std::vector<int>> ret = ctrl.Read(Utility::Helpers::get_base_path() + "/assets/levels/level1.csv");
-	Builder::LevelBuilder builder{ 1080, 720 };
-	_level = builder.Build(ret);
+	Builder::LevelBuilder builder{};
+	_level = builder.build(ret);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 
