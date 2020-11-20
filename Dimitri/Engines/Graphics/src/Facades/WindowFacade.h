@@ -3,6 +3,7 @@
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
 #include "src/Time/Fps.h"
+#include <tuple>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -45,6 +46,27 @@ namespace Graphics {
 			* The adapter that converts the SDL_Flipenum to FlipEnum
 			*/
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
+
+			/**
+			*	Everything beneath this is for sidescrolling managment
+			*/
+
+			/**
+			*	Height and width of the window
+			*/
+			int _window_height;
+			int _window_width;
+
+			/**
+			*	x and y pos of camera standard 0,0; 0 = x, 1 = y
+			*/
+			std::tuple<int, int> _camera_pos;
+
+			/**
+			*	Height and width of scene standard equal to window height and width but can be increased for large levels; 0 = width, 1 = height
+			*/
+			std::tuple<int, int> _scene_size;
+
 		public:
 			WindowFacade();
 
@@ -56,7 +78,7 @@ namespace Graphics {
 			/**
 			* Creates the instance of SDL_Window
 			*/
-			int create_window(const std::string& title, const int height, const int width);
+			int create_window(const std::string& title, int height, int width);
 
 			/**
 			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
@@ -74,6 +96,26 @@ namespace Graphics {
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 
 			int get_fps();
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(int x, int y);
+
+			/**
+			* Returns camera position
+			*/
+			std::tuple<int, int> get_camera_pos() const;
+
+			/**
+			* Sets scene size
+			*/
+			void set_scene_size(int height, int width);
+
+			/**
+			* Returns scene size
+			*/
+			std::tuple<int, int> get_scene_size() const;
 		};
 	}
 }

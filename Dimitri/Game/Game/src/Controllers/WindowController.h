@@ -18,6 +18,7 @@
 #include <..\Game\Game\src\Views\View.h>
 #include <chrono>
 #include <thread>
+#include "../Models/IObject.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -48,6 +49,13 @@ namespace Game {
 			*	Draw thread for updating window in background thread
 			*/
 			std::thread draw_thread;
+
+			/**
+			*	Height and width of window
+			*/
+			int _height;
+			int _width;
+
 		public:
 			WindowController();
 
@@ -87,6 +95,30 @@ namespace Game {
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+
+			void set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos(int x, int y);
+
+			/**
+			* Updates camera position
+			*/
+			void set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object);
+
+			/**
+			* Sets scene size
+			*/
+			void set_scene_size(int height, int width);
+
+			/**
+			*	Getters window height and widht
+			*/
+			int get_window_height() const;
+
+			int get_window_width() const;
 		};
 	}
 }

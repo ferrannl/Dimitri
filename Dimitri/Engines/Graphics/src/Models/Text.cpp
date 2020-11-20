@@ -2,7 +2,7 @@
 using namespace Graphics;
 
 Models::Text::Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible) :
-	Models::Texture(x, y, x, height, width, angle, path, visible), _text{ text }, _color{ color} {}
+	Models::Texture(x, y, z, height, width, angle, path, visible), _text{ text }, _color{ color} {}
 
 const std::string Graphics::Models::Text::get_text() const
 {
