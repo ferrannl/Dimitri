@@ -160,6 +160,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
+    <ClCompile Include="src\Models\Buttons\AdvertisementButton.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
@@ -190,6 +191,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
+    <ClInclude Include="src\Models\Buttons\AdvertisementButton.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\IInteractable.h" />

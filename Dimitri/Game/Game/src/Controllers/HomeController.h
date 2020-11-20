@@ -4,6 +4,7 @@
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
 #include "../Models/Buttons/ExitButton.h"
+#include "../Models/Buttons/AdvertisementButton.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
