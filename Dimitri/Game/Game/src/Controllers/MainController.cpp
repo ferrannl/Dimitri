@@ -13,7 +13,7 @@ Controllers::MainController::MainController()
 void Game::Controllers::MainController::run()
 {
 	_window_controller->create_window(720, 1280);
-
+	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
@@ -26,7 +26,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 {
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_C:
-		if (!_window_controller->is_active("credits")) {
+		if (!_window_controller->is_active("credits") && !_window_controller->is_active("home")) {
 			_window_controller->clear_views();
 			_window_controller->open_view("credits");
 			_window_controller->open_view("fps");
@@ -36,7 +36,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_H:
-		if (!_window_controller->is_active("help")) {
+		if (!_window_controller->is_active("help") && !_window_controller->is_active("home")) {
 			_window_controller->clear_views();
 			_window_controller->open_view("help");
 			_window_controller->open_view("fps");
