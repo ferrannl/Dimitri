@@ -2,6 +2,7 @@
 #include "../Models/Level.h"
 #include "../Events/InputEvent.h"
 #include "../Controllers/WindowController.h"
+#include "../Controllers/AudioController.h"
 #include <src\Interfaces\IObservable.h>
 #include <src\Models\Texture.h>
 #include <..\Game\Game\src\Models\Level.h>
@@ -54,7 +55,7 @@ namespace Game {
 			void set_state(Enums::LevelStateEnum state);
 
 		public:
-			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller);
+			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
 
 			/**
 			*	List of all textures in level
