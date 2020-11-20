@@ -29,4 +29,3 @@ void Game::Models::Player::reset_jump()
 {
 	_jumps = 1;
 }
-

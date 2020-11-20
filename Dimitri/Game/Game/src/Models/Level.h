@@ -10,6 +10,8 @@
 #include "Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
 #include "Switch.h"
+#include "LightBeam.h"
+#include "Lamp.h"
 
 /**
 *	Namespace for the game
@@ -49,6 +51,11 @@ namespace Game {
 			*	List of tiles in level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+
+			/**
+			*	List of lights in level
+			*/
+			std::vector<std::shared_ptr<Game::Models::IObject>> _lights;
 			
 			/**
 			*	List of players in level
@@ -110,6 +117,11 @@ namespace Game {
 			*	Returns list of all textures in level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
+			/**
+			*	Returns list of all lights in level
+			*/
+			std::vector<std::shared_ptr<Game::Models::IObject>> get_lights() const;
 			
 			/**
 			*	Returns player

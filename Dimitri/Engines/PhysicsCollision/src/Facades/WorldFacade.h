@@ -6,6 +6,7 @@
 #include <box2d/b2_body.h>
 #include <box2d/b2_fixture.h>
 #include <map>
+#include <math.h> 
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS

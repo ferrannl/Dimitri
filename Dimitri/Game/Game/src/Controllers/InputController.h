@@ -3,7 +3,7 @@
 #include <src\Controllers\InputController.h>
 #include "../Events/InputEvent.h"
 #include <vector>
-
+#include <tuple>
 /**
 *	Namespace for the game
 */

@@ -11,7 +11,7 @@ void Controllers::WorldController::setup_world(const float width, const float he
 
 void Controllers::WorldController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape)
 {
-		_world.add_shape(shape);
+	_world.add_shape(shape);
 }
 
 void Controllers::WorldController::destroy_bodies()
