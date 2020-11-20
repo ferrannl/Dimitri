@@ -12,9 +12,13 @@ namespace Game {
 		*	Contains all code necessary for the player object
 		*/
 		class Player : public Game::Models::IObject{
+		private: 
+			int _jumps;
 		public:
 			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
+			bool jump();
+			void reset_jump();
 		};
 	}
 }

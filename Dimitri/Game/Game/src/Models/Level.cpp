@@ -135,9 +135,14 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	return textures;
 }
 
-std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player() const
+std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
 {
 	return _player;
+}
+
+std::vector<std::shared_ptr<Game::Models::IObject>> Game::Models::Level::get_tiles() const
+{
+	return _tiles;
 }
 
 std::vector<std::shared_ptr<Game::Models::IInteractable>> Game::Models::Level::get_interactables() const

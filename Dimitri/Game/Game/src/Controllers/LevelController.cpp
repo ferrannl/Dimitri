@@ -31,7 +31,9 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->get_shape()->move_y();
+			if (_level->get_player()->jump()) {
+				_level->get_player()->get_shape()->move_y();
+			}
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_E:
@@ -104,6 +106,14 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
+		for (std::shared_ptr<Models::IObject> walls : _level->get_tiles())
+		{
+			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+			{
+				_level->get_player()->reset_jump();
+				break;
+			}
+		}
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
