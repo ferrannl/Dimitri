@@ -84,7 +84,7 @@ namespace Game {
 			int _width;
 			
 		public:
-			Level();
+			Level(const int width, const int height);
 			
 			/**
 			*	Add music
@@ -164,8 +164,10 @@ namespace Game {
 			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
 
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
+
 			void add_light(std::shared_ptr<Game::Models::IObject> tile);
 
+			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 			/**
 			*	Calls physics simulation
 			*/
@@ -174,9 +176,9 @@ namespace Game {
 			/**
 			* Getters for level size
 			*/
-			int get_level_height() const;
+			int get_height() const;
 
-			int get_level_width() const;
+			int get_width() const;
 		};
 	}
 

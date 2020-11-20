@@ -7,7 +7,7 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::IObject> Factories::ObjectFactory::create(Game::Enums::TypeEnum type, int x, int y, int z, int height, int width, Game::Enums::StateEnum state)
+std::shared_ptr<Models::IObject> Factories::ObjectFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
 {
 	std::shared_ptr<Models::IObject> instance;
 

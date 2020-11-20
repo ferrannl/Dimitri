@@ -1,12 +1,12 @@
 #pragma once
 #include "../Models/IInteractable.h"
-#include "../Enums/TypeEnum.cpp"
+#include "../interfaces/IFactory.h"
 
 namespace Game {
 	namespace Factories {
-		class InteractableFactory {
+		class InteractableFactory : public Interfaces::IFactory<Models::IInteractable> {
 		public:
-			std::shared_ptr<Models::IInteractable> create(Game::Enums::TypeEnum type, int x, int y, int z, int height, int width);
+			std::shared_ptr<Models::IInteractable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state);
 		};
 	}
 }

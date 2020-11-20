@@ -1,8 +1,10 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level()
+Models::Level::Level(const int width, const int height)
 {
+	_width = width;
+	_height = height;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_audio_controller = std::make_shared<Controllers::AudioController>();
 	_interactables = {};
@@ -47,10 +49,6 @@ void Game::Models::Level::resume_music(std::string audio_name)
 
 void Game::Models::Level::load_objects()
 {
-	//Here a file is loaded/parsed and turned into a level
-	_height = 1400;
-	_width = 4800;
-
 	_physics_collision_controller->setup_world(_height, _width);
 
 	//border
@@ -143,6 +141,11 @@ void Game::Models::Level::add_light(std::shared_ptr<Game::Models::IObject> tile)
 	_lights.push_back(tile);
 }
 
+void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
+{
+	_shapes.push_back(shape);
+}
+
 void Game::Models::Level::add_object(std::shared_ptr<Game::Models::IObject> tile)
 {
 	_tiles.push_back(tile);
@@ -170,12 +173,12 @@ void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprit
 	_backgrounds.push_back(tile);
 }
 
-int Game::Models::Level::get_level_height() const
+int Game::Models::Level::get_height() const
 {
 	return _height;
 }
 
-int Game::Models::Level::get_level_width() const
+int Game::Models::Level::get_width() const
 {
 	return _width;
 }

@@ -69,7 +69,6 @@ namespace Game {
 			*	Sets _visible
 			*/
 			void set_visible(bool visible);
-
 		};
 	}
 }

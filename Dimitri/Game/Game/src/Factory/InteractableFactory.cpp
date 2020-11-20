@@ -7,16 +7,16 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::IInteractable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width)
+std::shared_ptr<Models::IInteractable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
 {
 	std::shared_ptr<Models::IInteractable> instance;
 
 	switch (type) {
 	case Enums::TypeEnum::LEVER:
-		instance.reset(new Models::Switch{ x,y,z,height,width, Enums::StateEnum::RIGHT });
+		instance.reset(new Models::Switch{ x,y,z,height,width, state });
 		break;
 	case Enums::TypeEnum::CAR:
-		instance.reset(new Models::Car{ x,y,z,height,width, Enums::StateEnum::VERTICAL });
+		instance.reset(new Models::Car{ x,y,z,height,width, state });
 		break;
 	}
 
