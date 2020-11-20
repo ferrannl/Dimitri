@@ -2,7 +2,6 @@
 #include "../Models/Window.h"
 #include "../Models/Text.h"
 #include <filesystem>
-#include <tuple>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -38,7 +37,7 @@ namespace Graphics {
 			/**
 			* Creates the window with the given parameters
 			*/
-			int create_window(const std::string& title, int height, int width);
+			int create_window(const std::string& title, const int height, const int width);
 
 			/**
 			* Adds the texture to the window
@@ -74,26 +73,6 @@ namespace Graphics {
 			* Returns the current fps
 			*/
 			int get_fps();
-
-			/**
-			* Updates camera position
-			*/
-			void set_camera_pos(int x, int y);
-
-			/**
-			* Returns camera position
-			*/
-			std::tuple<int, int> get_camera_pos() const;
-
-			/**
-			* Sets scene size
-			*/
-			void set_scene_size(int height, int width);
-
-			/**
-			* Returns scene size
-			*/
-			std::tuple<int, int> get_scene_size() const;
 		};
 	}
 }

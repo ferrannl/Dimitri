@@ -3,11 +3,8 @@
 #include <SDL_ttf.h>
 using namespace Graphics;
 
-int Facades::WindowFacade::create_window(const std::string& title, int height, int width)
+int Facades::WindowFacade::create_window(const std::string& title, const int height, const int width)
 {
-	_window_height = height;
-	_window_width = width;
-	set_scene_size(height, width);
 	try {
 		if (SDL_Init(SDL_INIT_VIDEO) < NULL) {
 			throw Exceptions::SDLInitFailed();
@@ -65,6 +62,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 {
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
+
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
 		if (texture->is_visible()) {
@@ -76,8 +74,8 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 		for (const std::shared_ptr<Graphics::Models::Texture>& texture : kv.second) {
 			SDL_Rect rect;
 
-			rect.x = texture->get_x() - std::get<0>(_camera_pos);
-			rect.y = texture->get_converted_y(std::get<1>(_scene_size)) - std::get<1>(_camera_pos);
+			rect.x = texture->get_x();
+			rect.y = texture->get_converted_y(SDL_GetWindowSurface(_window.get())->h);
 			rect.w = texture->get_width();
 			rect.h = texture->get_height();
 
@@ -105,55 +103,6 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 int Graphics::Facades::WindowFacade::get_fps()
 {
 	return _fps->get();
-}
-
-void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
-{
-	int _scene_width = std::get<0>(_scene_size);
-	int _scene_height = std::get<1>(_scene_size);
-	if (x + _window_width < _scene_width && x >= 0) {
-		
-		std::get<0>(_camera_pos) = x;
-	}
-	else if (x + _window_width > _scene_width) {
-		std::get<0>(_camera_pos) = _scene_width - _window_width;
-	}
-	else if (x < 0) {
-		std::get<0>(_camera_pos) = 0;
-	}
-	
-	int converted_y = _scene_height - (_window_height + y);
-	if (converted_y + _window_height < _scene_height && converted_y >= 0) {
-		std::get<1>(_camera_pos) = converted_y;
-	}
-	else if (converted_y + _window_height > _scene_height) {
-		std::get<1>(_camera_pos) = _scene_height - _window_height;
-	}
-	else if (converted_y < 0) {
-		std::get<1>(_camera_pos) = 0;
-	}
-
-}
-
-std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
-{
-	std::tuple<int, int> converted_camera_pos = _camera_pos;
-	std::get<1>(converted_camera_pos) = std::get<1>(_scene_size) - std::get<1>(converted_camera_pos) - _window_height;
-	return converted_camera_pos;
-}
-
-void Graphics::Facades::WindowFacade::set_scene_size(int height, int width)
-{
-	std::get<1>(_scene_size) = height;
-	std::get<0>(_scene_size) = width;
-
-	std::get<0>(_camera_pos) = 0;
-	std::get<1>(_camera_pos) = height - _window_height;
-}
-
-std::tuple<int, int> Graphics::Facades::WindowFacade::get_scene_size() const
-{
-	return _scene_size;
 }
 
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}

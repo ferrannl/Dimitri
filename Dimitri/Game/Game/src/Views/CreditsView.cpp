@@ -12,7 +12,7 @@ namespace Game {
 		std::vector <std::string> names = { "Koen Baudewijns", "Olav Gerritsen", "Ferran Hendriks", "Billy Nooijens", "Max Peters", "Xia de Visser" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Color color = { 255, 255, 255 };
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("Gemaakt door", color, window_width/2 - 150, 500, 10, 70, 300, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("Gemaakt door", color, 390, 500, 10, 70, 300, 0, path, true));
 
 		int start_y = 450;
 		int step = 50;

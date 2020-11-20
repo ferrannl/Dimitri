@@ -45,23 +45,18 @@ void Game::Models::Level::resume_music(std::string audio_name)
 void Game::Models::Level::load_objects()
 {
 	//Here a file is loaded/parsed and turned into a level
-	_height = 2000;
-	_width = 4000;
-
-	_physics_collision_controller->setup_world(_height, _width);
-
 	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
 	_players.push_back(_player);
 
 	//floor
 	_tiles.push_back(std::make_shared<Wall>(0, 0, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
-	_tiles.push_back(std::make_shared<Wall>(25, 0, 1, 25, 1870, Game::Enums::StateEnum::HORIZONTAL));
+	_tiles.push_back(std::make_shared<Wall>(25, 0, 1, 25, 1030, Game::Enums::StateEnum::HORIZONTAL));
 
-	_tiles.push_back(std::make_shared<Wall>(1895, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
+	_tiles.push_back(std::make_shared<Wall>(1055, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
-	//background
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _height, _width, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
+	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
+	_background->set_visible(true);
 
 	//platform 1
 	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));
@@ -85,13 +80,13 @@ void Game::Models::Level::load_objects()
 	_tiles.push_back(std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT));
 
 	//interactables
-	_interactables.push_back(std::make_shared<Switch>(650, 475, 2, 25, 25, Game::Enums::StateEnum::LEFT));
+	_interactables.push_back(std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
 	//border
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, _height, 1, _width, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, _width, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, _height, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//lef
-	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(_width, 0, _height, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//rig
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, 721, 1, 1080, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, 1080, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//bot
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, 720, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//lef
+	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(1080, 0, 720, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//rig
 
 	add_shapes();
 }
@@ -153,14 +148,4 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 void Game::Models::Level::simulate()
 {
 	_physics_collision_controller->simulate();
-}
-
-int Game::Models::Level::get_level_height() const
-{
-	return _height;
-}
-
-int Game::Models::Level::get_level_width() const
-{
-	return _width;
 }

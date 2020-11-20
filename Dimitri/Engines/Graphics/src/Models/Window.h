@@ -1,7 +1,6 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 #include "Text.h"
-#include <tuple>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -56,7 +55,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
-			Window(const std::string& title, int height, int width);
+			Window(const std::string& title, const int height, const int width);
 
 			/**
 			* Return int is used to check if sdl is initialized.
@@ -110,26 +109,6 @@ namespace Graphics {
 			const std::string get_title() const;
 
 			std::shared_ptr<Facades::WindowFacade> get_facade() const;
-
-			/**
-			* Updates camera position
-			*/
-			void set_camera_pos(int x, int y);
-
-			/**
-			* Returns camera position
-			*/
-			std::tuple<int, int> get_camera_pos() const;
-
-			/**
-			* Sets scene size
-			*/
-			void set_scene_size(int height, int width);
-
-			/**
-			* Returns scene size
-			*/
-			std::tuple<int, int> get_scene_size() const;
 		};
 	}
 }

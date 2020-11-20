@@ -9,7 +9,7 @@ namespace Game {
 	{
 		int window_width = _graphics_controller.get()->get_window().get()->get_width();
 		int window_height = _graphics_controller.get()->get_window().get()->get_height();
-		std::vector <std::string> controls = { "Links: Beweeg naar links", "Rechts: Beweeg naar rechts", "Omhoog: Spring", "L: Laad level", "C: Open credits scherm", "E: Interactie", "F: FPS aan-/uitzetten", "P: Het level pauzeren" };
+		std::vector <std::string> controls = { "Links: Beweeg naar links", "Rechts: Beweeg naar rechts", "Omhoog: Spring", "L: laad level", "C: Open credits scherm", "E: Interactie", "F: FPS aan-/uitzetten" };
 		std::vector <std::string> gameplay = { "Dimitri moet", "ongezien infiltreren", "in de geheime", "russische basis" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Color color = { 255, 255, 255 };

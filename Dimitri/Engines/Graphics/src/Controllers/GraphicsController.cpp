@@ -6,7 +6,7 @@ Controllers::GraphicsController::GraphicsController()
 	_window = nullptr;
 }
 
-int Controllers::GraphicsController::create_window(const std::string& title, int height, int width)
+int Controllers::GraphicsController::create_window(const std::string& title, const int height, const int width)
 {
 	_window = std::make_shared<Models::Window>(title, height, width);
 	return _window->create();
@@ -45,24 +45,4 @@ std::shared_ptr<Models::Window> Controllers::GraphicsController::get_window() co
 int Graphics::Controllers::GraphicsController::get_fps()
 {
 	return _window->get_facade()->get_fps();
-}
-
-void Graphics::Controllers::GraphicsController::set_camera_pos(int x, int y)
-{
-	_window->set_camera_pos(x, y);
-}
-
-std::tuple<int, int> Graphics::Controllers::GraphicsController::get_camera_pos() const
-{
-	return _window->get_camera_pos();
-}
-
-void Graphics::Controllers::GraphicsController::set_scene_size(int height, int width)
-{
-	_window->set_scene_size(height, width);
-}
-
-std::tuple<int, int> Graphics::Controllers::GraphicsController::get_scene_size() const
-{
-	return _window->get_scene_size();
 }
