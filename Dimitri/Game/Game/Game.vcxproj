@@ -194,12 +194,17 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Builder\LevelBuilder.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Factory\BackgroundFactory.h" />
+    <ClInclude Include="src\Factory\InteractableFactory.h" />
+    <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
+    <ClInclude Include="src\Models\Car.h" />
     <ClInclude Include="src\Models\IInteractable.h" />
     <ClInclude Include="src\Models\Lamp.h" />
     <ClInclude Include="src\Models\LightBeam.h" />

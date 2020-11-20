@@ -19,5 +19,6 @@ std::shared_ptr<Models::IInteractable> Factories::InteractableFactory::create(En
 		instance.reset(new Models::Car{ x,y,z,height,width, Enums::StateEnum::VERTICAL });
 		break;
 	}
+
 	return instance;
 }

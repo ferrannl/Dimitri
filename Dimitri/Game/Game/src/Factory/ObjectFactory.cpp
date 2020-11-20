@@ -1,7 +1,9 @@
 #include "ObjectFactory.h"
 #include "../Models/Wall.h"
 #include "../Models/Player.h"
-#include "../Models/Switch.h""
+#include "../Models/Switch.h"
+#include "../Models/Lamp.h"
+#include "../Models/LightBeam.h"
 
 using namespace Game;
 
@@ -11,14 +13,21 @@ std::shared_ptr<Models::IObject> Factories::ObjectFactory::create(Game::Enums::T
 
 	switch (type) {
 	case Enums::TypeEnum::FLOOR:
-		instance.reset(new Models::Wall{x,y,z,height,width,state});
+		instance.reset(new Models::Wall{ x,y,z,height,width,state });
 		break;
 	case Enums::TypeEnum::LEVER:
 		instance.reset(new Models::Switch{ x,y,z,height,width,state });
 		break;
 	case Enums::TypeEnum::PLAYER:
-		instance = std::make_shared<Models::Player>(Models::Player{ x,y,z,height,width,state });
+		instance.reset(new Models::Player{ x, y, z, height, width, state });
+		break;
+	case Enums::TypeEnum::LAMP:
+		instance.reset(new Models::Lamp{x, y, z, height, width, state});
+		break;
+	case Enums::TypeEnum::BEAM:
+		instance.reset(new Models::LightBeam{ x,y,z,height,width,state });
 		break;
 	}
+
 	return instance;
  }

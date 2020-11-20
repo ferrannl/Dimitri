@@ -58,6 +58,11 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::IObject>> _lights;
 			
 			/**
+			*	List of lights in level
+			*/
+			std::vector<std::shared_ptr<Game::Models::IObject>> _lamps;
+
+			/**
 			*	List of players in level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
@@ -151,9 +156,15 @@ namespace Game {
 			/**
 			*	Returns physics collision controller
 			*/
+			void add_lamp(std::shared_ptr<Game::Models::IObject> tile);
+
+			/**
+			*	Returns physics collision controller
+			*/
 			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
 
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
+			void add_light(std::shared_ptr<Game::Models::IObject> tile);
 
 			/**
 			*	Calls physics simulation

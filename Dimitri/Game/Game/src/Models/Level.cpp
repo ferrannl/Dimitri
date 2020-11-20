@@ -10,6 +10,7 @@ Models::Level::Level()
 	_players = {};
 	_shapes = {};
 	_tiles = {};
+	_lamps = {};
 	_backgrounds = {};
 }
 
@@ -137,6 +138,11 @@ void Game::Models::Level::simulate()
 	_physics_collision_controller->simulate();
 }
 
+void Game::Models::Level::add_light(std::shared_ptr<Game::Models::IObject> tile)
+{
+	_lights.push_back(tile);
+}
+
 void Game::Models::Level::add_object(std::shared_ptr<Game::Models::IObject> tile)
 {
 	_tiles.push_back(tile);
@@ -146,6 +152,12 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::IObject> tile
 {
 	_player = tile;
 	_players.push_back(tile);
+}
+
+void Game::Models::Level::add_lamp(std::shared_ptr<Game::Models::IObject> tile)
+{
+	_tiles.push_back(tile);
+	_lamps.push_back(tile);
 }
 
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::IInteractable> tile)

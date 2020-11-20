@@ -8,6 +8,6 @@ Game::Models::Lamp::Lamp(int x, int y, int z, int height, int width, Game::Enums
 
 void Game::Models::Lamp::initialize_textures()
 {
-	add_texture(Game::Enums::StateEnum::HORIZONTAL, std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 50, 50, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/lamp.png" }, Graphics::Enums::FlipEnum::NONE, true));
+	add_texture(Game::Enums::StateEnum::HORIZONTAL, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _height, _width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/lamp.png" }, Graphics::Enums::FlipEnum::NONE, true));
 	get_texture()->set_visible(true);
 }

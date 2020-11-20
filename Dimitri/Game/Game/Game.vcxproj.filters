@@ -70,10 +70,10 @@
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
-    <ClInclude Include="src\Builder\LevelBuilder.h" />
-    <ClInclude Include="src\Factory\InteractableFactory.h" />
-    <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Models\Car.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
+    <ClInclude Include="src\Factory\InteractableFactory.h" />
+    <ClInclude Include="src\Factory\ObjectFactory.h" />
+    <ClInclude Include="src\Builder\LevelBuilder.h" />
   </ItemGroup>
 </Project>

@@ -17,6 +17,7 @@ namespace Game {
 			FLOOR,
 			PLAYER,
 			LAMP,
+			BEAM,
 			CAR,
 			BG,
 			BG_TOP1,

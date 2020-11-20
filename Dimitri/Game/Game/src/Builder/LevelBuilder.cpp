@@ -19,6 +19,7 @@ std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::build(std::vector<st
     int y = level_height;
 
     build_background(level, level_width, level_height);
+    std::vector<std::shared_ptr<Models::IObject>> lights = {};
 
     for (std::vector<int> vector : objects) {
         for (int object : vector) {
@@ -33,19 +34,23 @@ std::shared_ptr<Game::Models::Level> Builder::LevelBuilder::build(std::vector<st
                 level->add_object(_objectFactory.create(Game::Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::RIGHT));
                 break;
             case 3:
-                //level->add_object(_objectFactory.create(Game::Enums::TypeEnum::LAMP, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::RIGHT));
+                level->add_object(_objectFactory.create(Game::Enums::TypeEnum::LAMP, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
+                level->add_light(_objectFactory.create(Game::Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::StateEnum::HORIZONTAL));
                 break;
             case 4:
                 level->add_interactable(_interactableFactory.create(Game::Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE));
                 break;
             case 5:
-                level->add_player(_objectFactory.create(Game::Enums::TypeEnum::PLAYER, x, y, 1, 80, 80, Enums::StateEnum::RIGHT));
+                level->add_player(_objectFactory.create(Game::Enums::TypeEnum::PLAYER, x, y, 1, TILE_SIZE*2, TILE_SIZE * 2, Enums::StateEnum::RIGHT));
                 break;
             case 6:
                 level->add_object(_objectFactory.create(Game::Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::VERTICAL));
                 break;
             case 43:
-                level->add_object(_interactableFactory.create(Game::Enums::TypeEnum::CAR, x, y, 1, 80, 160));
+                level->add_interactable(_interactableFactory.create(Game::Enums::TypeEnum::CAR, x, y, 1, TILE_SIZE*2, TILE_SIZE*4));
+                break;
+            case 11:
+                lights.push_back(_objectFactory.create(Game::Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE*5, Enums::StateEnum::HORIZONTAL));
                 break;
             }
             y -= TILE_SIZE;
