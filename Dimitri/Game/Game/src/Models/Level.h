@@ -127,6 +127,21 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> get_physics_collision_controller() const;
 
 			/**
+			*	Returns physics collision controller
+			*/
+			void add_object(std::shared_ptr<Game::Models::IObject> tile);
+
+			/**
+			*	Returns physics collision controller
+			*/
+			void add_player(std::shared_ptr<Game::Models::IObject> tile);
+
+			/**
+			*	Returns physics collision controller
+			*/
+			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
+
+			/**
 			*	Calls physics simulation
 			*/
 			void simulate();

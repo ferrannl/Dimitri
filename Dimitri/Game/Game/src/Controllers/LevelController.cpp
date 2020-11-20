@@ -1,11 +1,19 @@
 #include "LevelController.h"
+#include <src/Controllers/DocumentController.h>
+#include "../Builder/LevelBuilder.h"
+
 using namespace Game;
 
 Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{window_controller}
 {
-	_level = std::make_shared<Game::Models::Level>();
+	DocumentHandler::Controllers::DocumentController ctrl;
+	std::vector<std::vector<int>> ret = ctrl.Read("C:/Users/maxtp/Desktop/Map/level1v3.csv");
+	Builder::LevelBuilder builder{ 1080, 720 };
+	_level = builder.Build(ret);
+	//_level = std::make_shared<Game::Models::Level>();
 	_level->load_objects();
-	_level->add_music("level1", "/assets/audio/billy.wav");
+	//_level->add_music("level1", "/assets/audio/billy.wav");
+
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
