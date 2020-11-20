@@ -96,10 +96,20 @@ void Models::Shape::move_y()const
 	_shape_facade->move_y();
 }
 
-bool Models::Shape::check_collision(std::shared_ptr<Models::Shape> shape)
+bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)
 {
 	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
 		get_x() + get_width() + 1 >= shape->get_x() &&
+		get_y() - 1 <= shape->get_y() + shape->get_height() &&
+		get_y() + get_height() + 1 >= shape->get_y();
+}
+
+bool Models::Shape::check_polygon_collision(std::shared_ptr<Models::Shape> shape)
+{
+	int x = shape->get_x() + (shape->get_width() / 5);
+
+	return get_x() - 1 <= x + shape->get_width() &&
+		get_x() + get_width() + 1 >= x &&
 		get_y() - 1 <= shape->get_y() + shape->get_height() &&
 		get_y() + get_height() + 1 >= shape->get_y();
 }
