@@ -1,4 +1,5 @@
 #include "WindowController.h"
+#include <algorithm>
 
 namespace Game {
 	Controllers::WindowController::WindowController()
@@ -17,13 +18,15 @@ namespace Game {
 
 		_views.insert({ "credits", std::make_unique<Views::CreditsView>(_graphics_controller) });
 		_views.insert({ "help", std::make_unique<Views::HelpView>(_graphics_controller) });
+		_views.insert({ "home", std::make_unique<Views::HomeView>(_graphics_controller) });
 		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
 		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
 		_views.insert({ "win_level", std::make_unique<Views::WinLevelView>(_graphics_controller) });
 		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
-		open_view("fps");
-		toggle_view_visibility("fps");
+		open_view("home");
+		toggle_view_visibility("home");
+
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
@@ -65,9 +68,13 @@ namespace Game {
 		view->set_visible(!view->is_visible());
 	}
 
-	void Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
+	void Controllers::WindowController::set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
 	{
-		_views["level"]->set_textures(textures);
+		_views[view_name]->set_textures(textures);
+	}
+	void Controllers::WindowController::add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
+	{
+		_views[view_name]->add_textures(textures);
 	}
 
 	void Game::Controllers::WindowController::set_camera_pos(int x, int y)

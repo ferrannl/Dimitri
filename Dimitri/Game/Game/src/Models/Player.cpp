@@ -12,4 +12,3 @@ void Game::Models::Player::initialize_textures()
 	add_texture(Game::Enums::StateEnum::LEFT, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/player_idle_000.png" },  Graphics::Enums::FlipEnum::HORIZONTAL, false));
 	get_texture()->set_visible(true);
 }
-

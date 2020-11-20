@@ -155,6 +155,9 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
+    <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Managers\LevelManager.cpp" />
+    <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
@@ -163,7 +166,11 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Factory\InteractableFactory.cpp" />
     <ClCompile Include="src\Factory\ObjectFactory.cpp" />
     <ClCompile Include="src\Models\Car.cpp" />
+    <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\IInteractable.cpp" />
+    <ClCompile Include="src\Models\Lamp.cpp" />
+    <ClCompile Include="src\Models\LightBeam.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
@@ -179,6 +186,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Models\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\HomeView.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
@@ -186,13 +194,15 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Builder\LevelBuilder.h" />
+    <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Managers\LevelManager.h" />
+    <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
-    <ClInclude Include="src\Factory\BackgroundFactory.h" />
-    <ClInclude Include="src\Factory\InteractableFactory.h" />
-    <ClInclude Include="src\Factory\ObjectFactory.h" />
-    <ClInclude Include="src\Models\Car.h" />
+    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\IInteractable.h" />
+    <ClInclude Include="src\Models\Lamp.h" />
+    <ClInclude Include="src\Models\LightBeam.h" />
     <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
@@ -207,6 +217,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Models\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
+    <ClInclude Include="src\Views\HomeView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
     <ClInclude Include="src\Views\View.h" />

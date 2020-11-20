@@ -64,7 +64,7 @@ void PhysicsCollisionDemo::create_text(std::string text, int x, int y, int z, in
 
 void PhysicsCollisionDemo::create_shape(float x, float y, float width, float height, bool is_dynamic)
 {
-	shapes.push_back(world_controller.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, x, y, width, height, is_dynamic));
+	//shapes.push_back(world_controller.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, x, y, width, height, is_dynamic));
 }
 
 void PhysicsCollisionDemo::run()
@@ -79,7 +79,7 @@ void PhysicsCollisionDemo::run()
 				textures.at(i)->set_y(static_cast<int>(shapes.at(i)->get_y()));
 				textures.at(i)->set_angle(static_cast<int>(shapes.at(i)->get_angle()));
 			}
-			world_controller.check_collision(shapes.at(0), shapes.at(1));
+			//world_controller.check_collision(shapes.at(0), shapes.at(1));
 			world_controller.simulate();
 		}
 		graphics_controller.update_window();

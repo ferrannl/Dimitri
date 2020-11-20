@@ -9,6 +9,7 @@
 #include <..\Game\Game\src\Events\InputEvent.h>
 #include <..\Game\Game\src\Views/CreditsView.h>
 #include <..\Game\Game\src\Views/HelpView.h>
+#include <..\Game\Game\src\Views/HomeView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>
@@ -89,9 +90,14 @@ namespace Game {
 			void draw();
 
 			/**
-			*	Sets the textures for the level view
+			*	Sets the textures for the view
 			*/
-			void set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
+			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+			
+			/**
+			*	Adds the textures for the level view
+			*/
+			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			/**
 			* Updates camera position
