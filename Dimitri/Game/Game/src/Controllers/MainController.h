@@ -22,6 +22,10 @@ namespace Game {
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
 			/**
+			*	Audio Controller
+			*/
+			std::shared_ptr<Controllers::AudioController> _audio_controller;
+			/**
 			*	Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> _level_manager;
