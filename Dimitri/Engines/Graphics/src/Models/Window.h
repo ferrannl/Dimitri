@@ -26,6 +26,7 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API Window {
 		private:
+			std::mutex _mutex;
 			/**
 			* Height of the window
 			*/
@@ -57,6 +58,8 @@ namespace Graphics {
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string& title, int height, int width);
+
+			std::mutex& get_mutex();
 
 			/**
 			* Return int is used to check if sdl is initialized.

@@ -5,6 +5,11 @@ Models::Window::Window(const std::string& title, int height, int width) : _title
 	_facade = std::make_shared<Facades::WindowFacade>();
 }
 
+std::mutex& Graphics::Models::Window::get_mutex()
+{
+	return _mutex;
+}
+
 std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {

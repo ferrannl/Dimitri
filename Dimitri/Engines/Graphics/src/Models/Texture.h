@@ -1,10 +1,9 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <mutex>
 #include "../Enums/FlipEnum.h"
 #include "../Facades/TextureFacade.h"
-
-
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS

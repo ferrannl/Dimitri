@@ -1,6 +1,4 @@
 #include "WindowController.h"
-#include <mutex>
-std::mutex mtx;
 
 namespace Game {
 	Controllers::WindowController::WindowController()
@@ -39,13 +37,13 @@ namespace Game {
 					v.second->update();
 				}
 			}
+			std::lock_guard<std::mutex> guard(_graphics_controller->get_window()->get_mutex());
 			_graphics_controller->update_window();
 		}
 	}
 
 	void Controllers::WindowController::open_view(const std::string& view_name)
 	{
-		mtx.lock();
 		if (_views.find(view_name) != _views.end()) {
 			if (!_views[view_name]->is_active()) {
 				_views[view_name]->set_active(true);
@@ -54,7 +52,6 @@ namespace Game {
 				}
 			}
 		}
-		mtx.unlock();
 	}
 
 	bool Controllers::WindowController::is_active(const std::string& view_name)
@@ -67,19 +64,16 @@ namespace Game {
 
 	void Controllers::WindowController::clear_views()
 	{
-		mtx.lock();
 		for (auto& v : _views) {
 			if (v.second->is_active()) {
 				v.second->set_active(false);
 				v.second->close();
 			}
 		}
-		mtx.unlock();
 	}
 
 	void Controllers::WindowController::toggle_view_visibility(const std::string& view_name)
 	{
-		mtx.lock();
 		if (_views.find(view_name) != _views.end()) {
 			if (_views[view_name]->is_active()) {
 				if (_views[view_name]->is_visible()) {
@@ -91,7 +85,6 @@ namespace Game {
 			}
 			_views[view_name]->set_visible(!_views[view_name]->is_visible());
 		}
-		mtx.unlock();
 	}
 
 	void Controllers::WindowController::set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures)
