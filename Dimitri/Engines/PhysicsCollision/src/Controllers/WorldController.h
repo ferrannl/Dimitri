@@ -11,12 +11,15 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Controllers
+	* \namespace PhysicsCollision::Controllers
+	* \brief Namespace for the controllers in the physics collision engine
 	*/
 	namespace Controllers {
 		/**

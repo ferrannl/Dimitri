@@ -1,12 +1,15 @@
 #pragma once
 #include <src\Enums\EventEnum.cpp>
 #include <tuple>
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the events
+	* \namespace Game::Events
+	* \brief Namespace for the events in the game
 	*/
 	namespace Events {
 		/**

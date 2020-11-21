@@ -17,11 +17,13 @@
 #endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for interfaces
+	* \namespace Audio::Interfaces
+	* \brief Namespace for the interfaces in the audio engine
 	*/
 	namespace Interfaces {
 		/**

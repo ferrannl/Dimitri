@@ -12,11 +12,13 @@
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the adapters
+	* \namespace Input::Adapters
+	* \brief Namespace for the adapters in the input engine
 	*/
 	namespace Adapters {
 		/**

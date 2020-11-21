@@ -12,11 +12,13 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the enums
+	* \namespace Graphics::Enums
+	* \brief Namespace for the enums in the graphics engine
 	*/
 	namespace Enums {
 		/**

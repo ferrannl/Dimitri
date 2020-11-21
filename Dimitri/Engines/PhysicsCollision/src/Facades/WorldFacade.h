@@ -17,12 +17,15 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Facades
+	* \namespace PhysicsCollision::Facades
+	* \brief Namespace for the facades in the physics collision engine
 	*/
 	namespace Facades {
 		/**

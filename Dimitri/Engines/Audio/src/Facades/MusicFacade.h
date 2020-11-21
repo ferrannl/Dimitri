@@ -13,11 +13,13 @@
 #endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the facades
+	* \namespace Audio::Facades
+	* \brief Namespace for the facades in the audio engine
 	*/
 	namespace Facades {
 		/**

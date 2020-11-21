@@ -12,11 +12,13 @@
 #endif
 
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Enums
+	* \namespace PhysicsCollision::Enums
+	* \brief Namespace for the enums in the physics collision engine
 	*/
 	namespace Enums {
 		/**

@@ -18,11 +18,13 @@
 #endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the controllers
+	* \namespace Audio::Controllers
+	* \brief Namespace for the controllers in the audio engine
 	*/
 	namespace Controllers {
 		/**

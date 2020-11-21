@@ -13,11 +13,13 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the adapters
+	* \namespace Graphics::Adapters
+	* \brief Namespace for the adapters in the graphics engine
 	*/
 	namespace Adapters {
 		/**

@@ -3,11 +3,13 @@
 #include <exception>
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the exceptions
+	* \namespace Audio::Exceptions
+	* \brief Namespace for the exceptions in the audio engine
 	*/
 	namespace Exceptions {
 		/**

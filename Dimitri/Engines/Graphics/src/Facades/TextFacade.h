@@ -21,11 +21,13 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the facades
+	* \namespace Graphics::Facades
+	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
 		/**

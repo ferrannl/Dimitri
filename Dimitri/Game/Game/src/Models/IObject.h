@@ -10,11 +10,13 @@
 #include "../Enums/StateEnum.cpp"
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**

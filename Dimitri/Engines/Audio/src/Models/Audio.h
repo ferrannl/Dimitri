@@ -14,11 +14,13 @@
 #endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the models
+	* \namespace Audio::Models
+	* \brief Namespace for the models in the audio engine
 	*/
 	namespace Models {
 		/**

@@ -3,11 +3,13 @@
 #include <exception>
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the exceptions
+	* \namespace Graphics::Exceptions
+	* \brief Namespace for the exceptions in the graphics engine
 	*/
 	namespace Exceptions {
 		/**

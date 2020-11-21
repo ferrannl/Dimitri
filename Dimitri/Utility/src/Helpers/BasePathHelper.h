@@ -12,7 +12,15 @@
 #define UTILITY_API
 #endif
 
+/**
+* \namespace Utility
+* \brief Namespace for the utility project
+*/
 namespace Utility {
+	/**
+	* \namespace Utility::Helpers
+	* \brief Namespace for the helpers in the utility project
+	*/
 	namespace Helpers {
 		/**
 		* Gets the path to the executable of the project 

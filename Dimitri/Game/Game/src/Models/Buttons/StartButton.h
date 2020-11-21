@@ -3,15 +3,18 @@
 #include "../../Managers/LevelManager.h"
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Namespace for the Buttons
+		* \namespace Game::Buttons
+		* \brief Namespace for the buttons in the game
 		*/
 		namespace Buttons {
 			class StartButton : public Game::Models::Button {

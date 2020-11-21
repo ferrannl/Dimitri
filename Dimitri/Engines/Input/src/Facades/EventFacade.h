@@ -15,11 +15,13 @@
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the facades
+	* \namespace Input::Facades
+	* \brief Namespace for the facades in the input engine
 	*/
 	namespace Facades {
 		/**

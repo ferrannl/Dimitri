@@ -3,11 +3,13 @@
 #include <src\Helpers\BasePathHelper.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**

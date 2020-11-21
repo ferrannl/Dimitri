@@ -2,7 +2,15 @@
 #include <Windows.h>
 #include <sysinfoapi.h>
 
+/**
+* \namespace Utility
+* \brief Namespace for the utility project
+*/
 namespace Utility {
+	/**
+	* \namespace Utility::Time
+	* \brief Namespace for the time classes in the utility project
+	*/
 	namespace Time {
 		class Interval {
 		private:

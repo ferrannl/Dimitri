@@ -14,11 +14,13 @@
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the interfacs
+	* \namespace Input::Interfaces
+	* \brief Namespace for the interfaces in the input engine
 	*/
 	namespace Interfaces {
 		/**

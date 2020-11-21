@@ -12,7 +12,15 @@
 #define UTILITY_API
 #endif
 
+/**
+* \namespace Utility
+* \brief Namespace for the utility project
+*/
 namespace Utility {
+	/**
+	* \namespace Utility::Time
+	* \brief Namespace for the time classes in the utility project
+	*/
 	namespace Time {
 		class UTILITY_API Fps
 		{

@@ -21,11 +21,13 @@ using namespace std::chrono_literals;
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the controllers
+	* \namespace Input::Controllers
+	* \brief Namespace for the controllers in the input engine
 	*/
 	namespace Controllers {
 		/**

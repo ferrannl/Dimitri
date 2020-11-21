@@ -2,12 +2,15 @@
 #include <src\Controllers\GraphicsController.h>
 #include <memory>
 #include <vector>
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**

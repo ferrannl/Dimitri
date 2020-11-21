@@ -15,11 +15,13 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the controllers
+	* \namespace Graphics::Controllers
+	* \brief Namespace for the controllers in the graphics engine
 	*/
 	namespace Controllers
 	{

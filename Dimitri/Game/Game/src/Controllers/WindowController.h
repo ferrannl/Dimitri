@@ -23,11 +23,13 @@ using namespace std::this_thread;
 using namespace std::chrono_literals;
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
