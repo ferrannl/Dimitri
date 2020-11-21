@@ -22,12 +22,13 @@ namespace Input {
 	*/
 	namespace Adapters {
 		/**
-		* Containing method to translate SDL events to EventEnum
+		* \class KeyBoardAdapter
+		* \brief Class contains the methods to translate SDL events to EventEnum
 		*/
 		class INPUT_API KeyBoardAdapter : public Interfaces::IInputAdapter {
 		public:
 			/**
-			* Method to translate SDL events to EventEnum that are being used for the keyboard
+			* \brief Translates SDL events to EventEnum that are fires by a keyboard
 			*/
 			Enums::EventEnum translate_to_enum(const SDL_Event event) const;
 		};

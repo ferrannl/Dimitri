@@ -23,57 +23,57 @@ namespace Graphics {
 	* \namespace Graphics::Controllers
 	* \brief Namespace for the controllers in the graphics engine
 	*/
-	namespace Controllers
-	{
+	namespace Controllers {
 		/**
-		* Containing all the methods needed to display an window and create and show sprites
+		* \class GraphicsController
+		* \brief Class contains the methods to handle a window and textures
 		*/
 		class GRAPHICS_API GraphicsController {
 		private:
 			/**
-			* The window model containing all data for the window
+			* \brief The Window containing the Textures
 			*/
 			std::shared_ptr<Models::Window> _window;
 		public:
 			GraphicsController();
 
 			/**
-			* Creates the window with the given parameters
+			* \brief Creates the Window with the given parameters
 			*/
 			int create_window(const std::string& title, int height, int width);
 
 			/**
-			* Adds the texture to the window
+			* \brief Adds a Texture to the window
 			*/
 			void add_texture(const std::shared_ptr<Models::Texture>& texture);
 
 			/**
-			* Removes the texture to the window
+			* \brief Removes a Texture from the window
 			*/
 			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
 
 			/**
-			* Clears all textures from the window
+			* \brief Clears all Textures from the window
 			*/
 			void clear_textures();
 
 			/**
-			* Returns the textures from the window
+			* \brief Returns the Textures from the window
 			*/
 			std::vector<std::shared_ptr<Models::Texture>> get_textures() const;
 
 			/**
-			* Updates the window
+			* \brief Updates the Window
 			*/
 			void update_window();
 
 			/**
-			* Returns the window
+			* \brief Returns the Window
 			*/
 			std::shared_ptr<Models::Window> get_window() const;
 
 			/**
-			* Returns the current fps
+			* \brief Returns the current fps
 			*/
 			int get_fps();
 
@@ -83,17 +83,17 @@ namespace Graphics {
 			void set_camera_pos(int x, int y);
 
 			/**
-			* Returns camera position
+			* \brief Returns camera position
 			*/
 			std::tuple<int, int> get_camera_pos() const;
 
 			/**
-			* Sets scene size
+			* \brief Sets scene size
 			*/
 			void set_scene_size(int height, int width);
 
 			/**
-			* Returns scene size
+			* \brief Returns scene size
 			*/
 			std::tuple<int, int> get_scene_size() const;
 		};

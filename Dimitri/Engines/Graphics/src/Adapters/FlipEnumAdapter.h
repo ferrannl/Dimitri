@@ -23,12 +23,13 @@ namespace Graphics {
 	*/
 	namespace Adapters {
 		/**
-		* Adapter for converting the FlipEnum to SDL_Rendererflip
+		* \class FlipEnumAdapter
+		* \brief Class contains the method to convert for converting the FlipEnum to SDL_Rendererflip
 		*/
 		class GRAPHICS_API FlipEnumAdapter {
 		public:
 			/**
-			* Converts the FlipEnum to SDL_Rendererflip
+			* \brief Converts the FlipEnum to SDL_Rendererflip
 			*/
 			SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
 		};

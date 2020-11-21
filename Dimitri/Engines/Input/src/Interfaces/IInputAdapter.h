@@ -24,12 +24,13 @@ namespace Input {
 	*/
 	namespace Interfaces {
 		/**
-		* Contains the methods that are being used by the adapters to translate the SDL_events to EventEnum
+		* \class IInputAdapter
+		* \brief Class contains the methods to translate the SDL_events to EventEnum
 		*/
 		class INPUT_API IInputAdapter {
 		public:
 			/**
-			* The method that to translate the SDL_events to EventEnum
+			* \brief Translates the SDL_events to EventEnum
 			*/
 			virtual Enums::EventEnum translate_to_enum(const SDL_Event event)const = 0;
 		};

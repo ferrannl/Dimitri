@@ -30,14 +30,15 @@ namespace Graphics {
 	*/
 	namespace Facades {
 		/**
-		* Containing all methods and references to draw sprites with SDL
+		* \class SpriteFacade
+		* \brief Class contains the methods to draw sprites with SDL
 		*/
 		class GRAPHICS_API SpriteFacade : public TextureFacade {
 		public:
 			SpriteFacade(const std::string& path);
 
 			/**
-			* Creates an SDL_Texture for a given path
+			* \brief Creates a SDL_Texture
 			*/
 			void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer);
 		};

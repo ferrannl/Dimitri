@@ -22,7 +22,8 @@ namespace PhysicsCollision {
 	*/
 	namespace Enums {
 		/**
-		* Enum for the different shape types
+		* \enum ShapeEnum
+		* \brief Enum Class contains the Shape types
 		*/
 		enum class PHYSICSCOLLISION_API ShapeEnum {
 			Polygon, Circle, Square

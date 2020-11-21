@@ -25,7 +25,8 @@ namespace PhysicsCollision {
 	*/
 	namespace Models {
 		/**
-		* Polygon Model
+		* \class Polygon
+		* \brief Class contains the data for a polygon Shape
 		*/
 		class PHYSICSCOLLISION_API Polygon : public Shape {
 		public:

@@ -25,7 +25,8 @@ namespace PhysicsCollision {
 	*/
 	namespace Models {
 		/**
-		* Square model
+		* \class Square
+		* \brief Class contains the data for a rectangular Shape
 		*/
 		class PHYSICSCOLLISION_API Square : public Shape {
 		public:

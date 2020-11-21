@@ -27,34 +27,35 @@ namespace Audio {
 	*/
 	namespace Interfaces {
 		/**
-		* Containing all the necesary methods an attributes that every sound/music facade should have
+		* \class IAudioFacade
+		* \brief Class contains the methods to interact with an audio file
 		*/
 		class AUDIO_API IAudioFacade {
 		protected:
 			/**
-			* Path for locating the sound file
+			* \brief Path of the audio file
 			*/
 			const std::string _path;
 		public:
 			IAudioFacade(const std::string path);
 
 			/**
-			* Plays audio
+			* \brief Plays audio file
 			*/
 			virtual void play() const = 0;
 
 			/**
-			* Resumes audio
+			* \brief Resumes audio file
 			*/
 			virtual void resume() const = 0;
 
 			/**
-			* Pauses audio
+			* \brief Pauses audio file
 			*/
 			virtual void pause() const = 0;
 
 			/**
-			* Stops audio
+			* \brief Stops audio file
 			*/
 			virtual void stop() const = 0;
 		};

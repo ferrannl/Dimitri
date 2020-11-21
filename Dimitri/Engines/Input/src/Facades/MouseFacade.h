@@ -24,12 +24,13 @@ namespace Input {
 	*/
 	namespace Facades {
 		/**
-		* Containing all methods and references needed for the mouse events from SDL
+		* \class MouseFacade
+		* \brief Class contains the methods to get the mouse events using SDL
 		*/
 		class INPUT_API MouseFacade {
 		public:
 			/**
-			* Returns the X and Y where the mouse has clicked
+			* \brief Returns the X and Y position of the mouse relative to the left corner of the window
 			*/
 			std::tuple<int, int> get_mouse_position() const;
 		};

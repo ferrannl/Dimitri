@@ -13,19 +13,23 @@ namespace Utility {
 	*/
 	namespace Interfaces {
 		template <class T>
+		/**
+		* \class IObservable
+		* \brief Class contains the template methods to notify the Observers
+		*/
 		class IObservable {
 		public:
 			/**
-			* Call the update method on all observers
+			* \brief Calls the update method on all observers
 			*/
 			virtual void notify(const T& object) = 0;
 			/**
-			* Subscribe to the observable
+			* \brief Subscribes to the observable
 			*/
 			virtual void subscribe(const std::shared_ptr<Interfaces::IObserver<T>>& observer) = 0;
 
 			/**
-			* Unsubscribe to the observable
+			* \brief Unsubscribes to the observable
 			*/
 			virtual void unsubscribe(const std::shared_ptr<IObserver<T>>& observer) = 0;
 		};

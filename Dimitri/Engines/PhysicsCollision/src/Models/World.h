@@ -23,38 +23,41 @@ namespace PhysicsCollision {
 	*/
 	namespace Models {
 		/**
-		* Contains all the methods for shape usage in World
+		* \class World
+		* \brief Class contains methods to use the shapes in the world
 		*/
 		class PHYSICSCOLLISION_API World {
 		private:
 			/**
-			* World Facade of the World
+			*\ brief An instance of WorldFacade
 			*/
 			Facades::WorldFacade _world_facade;
+
 			/**
-			* Shapes list of the world
+			* \brief A list of Shapes
 			*/
 			std::vector<std::shared_ptr<Models::Shape>> _shapes;
 		public:
 			World();
-			/**
-			* World Constructor for initializing variables
-			*/
 			World(const float width, const float height);
+
 			/**
-			* Method that adds the shape to a world
+			* \brief Adds a Shape to the World in _shapes
 			*/
 			void add_shape(const std::shared_ptr<Models::Shape>& shape);
+
 			/**
-			* Returns the shapes from a world
+			* \brief Returns _shapes
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			std::vector<std::shared_ptr<Models::Shape>> get_shapes() const;
+
 			/**
-			* Destroys the body from this world
+			* \brief Destroys the bodies from all Shapes in _shapes
 			*/
 			void destroy_bodies();
+
 			/**
-			* Calls the simulate from the World Facade
+			* \brief Simulates the World
 			*/
 			void simulate();
 		};

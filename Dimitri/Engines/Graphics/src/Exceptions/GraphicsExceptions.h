@@ -13,7 +13,8 @@ namespace Graphics {
 	*/
 	namespace Exceptions {
 		/**
-		* Thrown when an image cannot be loaded
+		* \struct CannotLoadImage
+		* \brief Exception thrown if an SDL image cannot be loaded
 		*/
 		struct CannotLoadImage : public std::exception {
 			const char* get() const throw () {
@@ -22,7 +23,8 @@ namespace Graphics {
 		};
 
 		/**
-		* Thrown when an texture cannot be created
+		* \struct CannotCreateTexture
+		* \brief Exception thrown if a Texture cannot be created
 		*/
 		struct CannotCreateTexture : public std::exception {
 			const char* get() const throw () {
@@ -31,7 +33,8 @@ namespace Graphics {
 		};
 
 		/**
-		* Thrown when an renderer cannot be created
+		* \struct CannotCreateRenderer
+		* \brief Exception thrown if a renderer cannot be created
 		*/
 		struct CannotCreateRenderer : public std::exception {
 			const char* get() const throw () {
@@ -40,7 +43,8 @@ namespace Graphics {
 		};
 
 		/**
-		* Thrown when SDL cannot be initialized
+		* \struct SDLInitFailed
+		* \brief Exception thrown if SDL cannot be initialized
 		*/
 		struct SDLInitFailed : public std::exception {
 			const char* get() const throw () {
@@ -49,7 +53,8 @@ namespace Graphics {
 		};
     
 		/**
-		* Thrown when SDL_ttf cannot be initialized
+		* \struct TTFInitFailed
+		* \brief Exception thrown if SDL_ttf cannot be initialized
 		*/
 		struct TTFInitFailed : public std::exception {
 			const char* get() const throw () {
@@ -59,7 +64,8 @@ namespace Graphics {
 
 
 		/**
-		* Thrown when an window cannot be created
+		* \struct CannotCreateWindow
+		* \brief Exception thrown if a Window cannot be created
 		*/
 		struct CannotCreateWindow : public std::exception {
 			const char* get() const throw () {
@@ -68,7 +74,8 @@ namespace Graphics {
 		};
 
 		/**
-		* Thrown when an texture cannot be rendered
+		* \struct CannotRenderSpriteTexture
+		* \brief Exception thrown if a Texture cannot be rendered
 		*/
 		struct CannotRenderSpriteTexture : public std::exception {
 			const char* get() const throw () {
@@ -76,6 +83,10 @@ namespace Graphics {
 			}
 		};
 
+		/**
+		* \struct CannotLoadFont
+		* \brief Exception thrown if a font cannot be loaded
+		*/
 		struct CannotLoadFont : public std::exception {
 			const char* get() const throw () {
 				return "Cannot load font";

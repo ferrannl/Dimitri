@@ -11,10 +11,14 @@ namespace Utility {
 	*/
 	namespace Interfaces {
 		template <class T>
+		/**
+		* \class IObserver
+		* \brief Class contains the template method to update on a fired event
+		*/
 		class IObserver {
 		public:
 			/**
-			* Update the IObserver
+			*brief Updates the IObserver
 			*/
 			virtual void update(const T& object) = 0;
 		};

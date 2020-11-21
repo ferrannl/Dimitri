@@ -12,7 +12,7 @@ namespace Game {
 		std::vector <std::string> controls = { "Links: Beweeg naar links", "Rechts: Beweeg naar rechts", "Omhoog: Spring", "L: Laad level", "C: Open credits scherm", "E: Interactie", "F: FPS aan-/uitzetten", "P: Het level pauzeren" };
 		std::vector <std::string> gameplay = { "Dimitri moet", "ongezien infiltreren", "in de geheime", "russische basis" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		Color color = { 255, 255, 255 };
+		Graphics::Models::Color color = { 255, 255, 255 };
 
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("Helpscherm", color, (window_width / 2) - 120, 600, 10, 70, 240, 0, path, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("Knoppen", color, window_width / 4 - 75, 500, 10, 60, 150, 0, path, true));

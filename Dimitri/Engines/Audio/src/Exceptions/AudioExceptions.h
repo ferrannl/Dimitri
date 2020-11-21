@@ -13,7 +13,8 @@ namespace Audio {
 	*/
 	namespace Exceptions {
 		/**
-		* Is thrown when an audio name is not unique
+		* \struct AudioNameNotUnique
+		* \brief Exception thrown if an %Audio name is not unique
 		*/
 		struct AudioNameNotUnique : public std::exception {
 			const char* get() const throw () {
@@ -22,7 +23,8 @@ namespace Audio {
 		};
 
 		/**
-		* Is thrown when an path is not valid
+		* \struct AudioNotFound
+		* \brief Exception thrown if %Audio can not be found
 		*/
 		struct AudioNotFound : public std::exception {
 			const char* get() const throw () {
@@ -31,7 +33,8 @@ namespace Audio {
 		};
 
 		/**
-		* Is thrown when the SDL initialization fails
+		* \struct SDLAudioInitFailed
+		* \brief Exception thrown if the SDL initialization fails
 		*/
 		struct SDLAudioInitFailed : public std::exception {
 			const char* get() const throw () {
@@ -40,7 +43,8 @@ namespace Audio {
 		};
 
 		/**
-		* Is thrown when the SDL_mixer initialization fails
+		* \struct SDLMixerInitFailed
+		* \brief Exception thrown if the SDL_mixer initialization fails
 		*/
 		struct SDLMixerInitFailed : public std::exception {
 			const char* get() const throw () {
@@ -49,7 +53,8 @@ namespace Audio {
 		};
 
 		/**
-		* Is thrown when the audio file cannot be loaded
+		* \struct LoadAudioFailed
+		* \brief Exception thrown if %Audio cannot be loaded
 		*/
 		struct LoadAudioFailed : public std::exception {
 			const char* get() const throw () {

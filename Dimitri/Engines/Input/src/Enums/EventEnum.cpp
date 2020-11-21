@@ -21,7 +21,8 @@ namespace Input {
 	*/
 	namespace Enums {
 		/**
-		* All key and mouse events that can be fired
+		* \enum EventEnum
+		* \brief Enum Class contains the key and mouse events that can be fired
 		*/
 		enum class INPUT_API EventEnum
 		{

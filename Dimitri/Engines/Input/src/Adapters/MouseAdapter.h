@@ -23,12 +23,13 @@ namespace Input {
 	*/
 	namespace Adapters {
 		/**
-		* Containing method to translate SDL events to EventEnum
+		* \class MouseAdapter
+		* \brief Class contains the methods to translate SDL events to EventEnum
 		*/
 		class INPUT_API MouseAdapter : public Input::Interfaces::IInputAdapter {
 		public:
 			/**
-			* Method to translate SDL events to EventEnum that are being used for the mouse
+			* \brief Translates SDL events to EventEnum that are fires by a mouse
 			*/
 			Enums::EventEnum translate_to_enum(const SDL_Event event) const;
 		};
