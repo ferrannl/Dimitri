@@ -61,9 +61,6 @@
     <ClCompile Include="src\Models\LightBeam.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Controllers\MainController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -97,6 +94,7 @@
     <ClCompile Include="src\Views\WinLevelView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">

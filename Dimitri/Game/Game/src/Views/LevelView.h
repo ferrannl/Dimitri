@@ -16,14 +16,15 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the level using the graphics controller
+		* \class LevelView
+		* \brief Class contains the methods to draw the level
 		*/
 		class LevelView : public View {
 		public:
 			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns if view is visible
 			*/
 			bool is_visible() const override;
 		};

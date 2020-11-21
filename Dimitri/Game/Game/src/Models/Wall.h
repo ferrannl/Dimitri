@@ -12,11 +12,16 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the wall object
+		* \class Wall
+		* \brief Class contains the data of the wall
 		*/
 		class Wall : public Game::Models::IObject {
 		public:
 			Wall(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+
+			/**
+			* \brief Initializes textures
+			*/
 			void initialize_textures();
 		};
 	}

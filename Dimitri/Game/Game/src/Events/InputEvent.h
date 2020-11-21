@@ -13,19 +13,22 @@ namespace Game {
 	*/
 	namespace Events {
 		/**
-		*	Contains code to keep track of user input
+		* \class InputEvent
+		* \brief Class contains the data of the user input
 		*/
 		class InputEvent {
 		public:
+			InputEvent(Input::Enums::EventEnum event_enum, std::tuple<int, int> mouse_pos);
+
 			/**
-			*	Event Enum to know which key was pressed
+			* \brief An instance of EventEnums that represent the pressed key
 			*/
 			Input::Enums::EventEnum event_enum;
+
 			/**
-			*	Current mouse position
+			* \brief Current mouse position
 			*/
 			std::tuple<int, int> mouse_pos;
-			InputEvent(Input::Enums::EventEnum event_enum, std::tuple<int, int> mouse_pos);
 		};
 	}
 }

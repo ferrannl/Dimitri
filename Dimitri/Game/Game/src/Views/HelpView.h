@@ -13,19 +13,20 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the helpview using the graphics controller
+		* \class HelpView
+		* \brief Class contains the methods to draw the help instuctions
 		*/
 		class HelpView : public View {
 		public:
 			HelpView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Initializes textures
+			* \brief Initializes textures
 			*/
 			void init_textures();
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns if view is visible
 			*/
 			bool is_visible() const override;
 		};

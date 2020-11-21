@@ -15,24 +15,25 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the fps using the graphics controller
+		* \class GameOverLevelView
+		* \brief Class contains the methods to draw the game over menu
 		*/
 		class GameOverLevelView : public View {
 		public:
 			GameOverLevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Initializes textures
+			* \brief Initializes textures
 			*/
 			void init_textures();
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns if view is visible
 			*/
 			bool is_visible() const override;
 
 			/**
-			* Add the textures to the _graphics_controller
+			* \brief Add the textures to the _graphics_controller
 			*/
 			void draw() override;
 		};

@@ -13,11 +13,16 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the wall object
+		* \class Lamp
+		* \brief Class contains the data of the Lamp
 		*/
 		class Lamp : public Game::Models::IObject {
 		public:
 			Lamp(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+
+			/**
+			* \brief Initializes textures
+			*/
 			void initialize_textures();
 		};
 	}

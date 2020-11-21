@@ -9,7 +9,8 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		*	Contains different state enums for object states
+		* \enum StateEnum
+		* \brief Enum Class contains the different state enums for object states
 		*/
 		enum class StateEnum
 		{

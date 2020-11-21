@@ -14,39 +14,45 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		*	Contains code to controller audio engine
+		* \class AudioController
+		* \brief Class contains the methods to use the audio engine
 		*/
 		class AudioController {
 		private:
 			/**
-			*	Audio controller to interact with audio engine
+			* \brief An instance of the AudioController to interact with audio engine
 			*/
 			std::unique_ptr<Audio::Controllers::AudioController> _audio_controller;
 		public:
 			AudioController();
+
 			/**
-			*	Add Music
+			* \brief Adds music
 			*/
 			void add_music(const std::string name, const std::string song_path);
+
 			/**
-			*	Add Sound
+			* \brief Adds sound
 			*/
 			void add_sound(const std::string name, const std::string song_path);
 
 			/**
-			*	Play Audio by name
+			* \brief Play Audio by name
 			*/
 			void play_audio(const std::string name);
+
 			/**
-			*	Pause Audio by name
+			* \brief Pause Audio by name
 			*/
 			void pause_audio(const std::string name);
+
 			/**
-			*	Resume Audio by name
+			* \brief Resume Audio by name
 			*/
 			void resume_audio(const std::string name);
+
 			/**
-			*	Stop Audio by name
+			* \brief Stop Audio by name
 			*/
 			void stop_audio(const std::string name);
 		};

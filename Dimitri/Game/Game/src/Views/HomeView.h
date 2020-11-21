@@ -14,41 +14,42 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the HomeView using the graphics controller
+		* \class HomeView
+		* \brief Class contains the methods to draw the home screen
 		*/
 		class HomeView : public View {
 		public:
 			HomeView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Initializes textures
+			* \brief Initializes textures
 			*/
 			void init_textures();
 
 			/**
-			* Add the textures to the _graphics_controller
-			*/
-			void draw();
-
-			/**
-			*	Returns if view is visible
+			* \brief Returns if view is visible
 			*/
 			bool is_visible() const override;
 
 			/**
-			*	Home background
+			* \brief Add the textures to the _graphics_controller
+			*/
+			void draw() override;
+
+			/**
+			* \brief The background of the View
 			*/
 			std::shared_ptr<Graphics::Models::Texture> _background;
 
 			/**
-			*	New Game Button
+			* \brief The play button
 			*/
-			std::shared_ptr<Game::Models::IObject> _buttonPlayGame;
+			std::shared_ptr<Game::Models::IObject> _button_play_game;
 
 			/**
-			*	Exit Game Button
+			* \brief The exit button
 			*/
-			std::shared_ptr<Game::Models::IObject> _buttonExitGame;
+			std::shared_ptr<Game::Models::IObject> _button_exit_game;
 		};
 	}
 }

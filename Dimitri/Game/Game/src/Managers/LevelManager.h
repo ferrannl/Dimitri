@@ -34,30 +34,35 @@ namespace Game {
 	*/
 	namespace Managers {
 		/**
-		*	Contains all code necessary for the button object
+		* \class LevelManager
+		* \brief Class contains the methods to manage the Levels
 		*/
 		class LevelManager {
 		private:
 			/**
-			*	Input Controller
+			* \brief An instance of the Input Controller
 			*/
 			std::shared_ptr<Game::Controllers::InputController> _input_controller;
+
 			/**
-			*	Level Controller
+			* \brief An instance of the Level Controller
 			*/
 			std::shared_ptr<Game::Controllers::LevelController> _level_controller;
+
 			/**
-			*	Home Controller
+			* \brief An instance of the Home Controller
 			*/
 			std::shared_ptr<Game::Controllers::HomeController> _home_controller;
+
 			/**
-			*	Window Controller
+			* \brief An instance of the Window Controller
 			*/
 			std::shared_ptr<Game::Controllers::WindowController> _window_controller;
 		public:
 			LevelManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::LevelController> level_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
+
 			/**
-			*	Loads a level 
+			* \brief Loads a level 
 			*/
 			void load_level();
 		};

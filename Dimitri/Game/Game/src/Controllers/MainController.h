@@ -16,45 +16,50 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		*	Contains code to connect input, window and level controllers and start the application
+		* \class MainController
+		* \brief Class contains the methods to navigate through Views, connect the code to connect Input-, Window- and LevelController and start the application
 		*/
 		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Utility::Interfaces::IObserver<Enums::LevelStateEnum> {
 		private:
 			/**
-			*	Input Controller
+			* \brief An instance of the InputController
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
+
 			/**
-			*	Level Manager
+			* \brief An instance of the LevelManager
 			*/
 			std::shared_ptr<Managers::LevelManager> _level_manager;
+
 			/**
-			*	Window Controller
+			* \brief An instance of the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
+
 			/**
-			*	Level Controller
+			* \brief An instance of the LevelController
 			*/
 			std::shared_ptr<Controllers::LevelController> _level_controller;
+
 			/**
-			*	Home Controller
+			* \brief An instance of the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> _home_controller;
 		public:
 			MainController();
 
 			/**
-			*	Starts polling input controller
+			* \brief Creates the Window and starts polling events
 			*/
 			void run();
 
 			/**
-			*	Update from Game::Controllers::InputController
+			* \brief Receives updates from the InputController
 			*/
 			void update(const Events::InputEvent& object);
 
 			/**
-			*	Update from LevelController
+			* \brief Updates from LevelController
 			*/
 			void update(const Enums::LevelStateEnum& object);
 		};
