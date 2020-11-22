@@ -16,7 +16,8 @@ namespace Game {
 			LEFT,
 			RIGHT,
 			HORIZONTAL,
-			VERTICAL
+			VERTICAL,
+			DISABLED
 		};
 	}
 }

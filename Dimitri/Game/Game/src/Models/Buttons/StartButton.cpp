@@ -5,7 +5,7 @@ Game::Models::Buttons::StartButton::StartButton(int x, int y, int z, int height,
 	_level_manager = level_manager;
 }
 
-void Game::Models::Buttons::StartButton::interact()
+void Game::Models::Buttons::StartButton::interact(Controllers::LevelController* ctrl)
 {
 	_level_manager->load_level();
 }

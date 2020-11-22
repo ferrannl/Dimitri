@@ -48,10 +48,7 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>> _observers;
 
-			/**
-			*	Set the level state and stops/starts the thread
-			*/
-			void set_state(Enums::LevelStateEnum state);
+
 
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller);
@@ -101,6 +98,12 @@ namespace Game {
 			*/
 			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
 
+			/**
+			*	Set the level state and stops/starts the thread
+			*/
+			void set_state(Enums::LevelStateEnum state);
+
+			void turn_off_light(const int x);
 		};
 	}
 }

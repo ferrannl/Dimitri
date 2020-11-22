@@ -25,7 +25,7 @@ namespace Game {
 				/**
 				*	Action when the button is pressed
 				*/
-				void interact();
+				void interact(Controllers::LevelController* ctrl = NULL);
 			};
 		}
 	}

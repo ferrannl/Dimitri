@@ -1,6 +1,7 @@
 #include "Switch.h"
+#include "../Controllers/LevelController.h"
 
-Game::Models::Switch::Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IInteractable(x, y, z, height, width, state)
+Game::Models::Switch::Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IInteractable(x, y, z, height, width, state), _switch_x(x)
 {
 	initialize_textures();
 	create_shape(x, y, height, width, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
@@ -13,12 +14,20 @@ void Game::Models::Switch::initialize_textures()
 	get_texture()->set_visible(true);
 }
 
-void Game::Models::Switch::interact()
+
+void Game::Models::Switch::interact(Controllers::LevelController* ctrl)
 {
 	if (_state == Game::Enums::StateEnum::LEFT) {
 		set_state(Game::Enums::StateEnum::RIGHT);
+		ctrl->turn_off_light(_switch_x);
 	}
 	else {
 		set_state(Game::Enums::StateEnum::LEFT);
 	}
 }
+
+void Game::Models::Switch::set_light(const int x)
+{
+	_switch_x = x;
+}
+

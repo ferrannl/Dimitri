@@ -157,12 +157,6 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::IObject> tile
 	_players.push_back(tile);
 }
 
-void Game::Models::Level::add_lamp(std::shared_ptr<Game::Models::IObject> tile)
-{
-	_tiles.push_back(tile);
-	_lamps.push_back(tile);
-}
-
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::IInteractable> tile)
 {
 	_interactables.push_back(tile);

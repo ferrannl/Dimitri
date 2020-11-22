@@ -1,4 +1,5 @@
 #include "Car.h"
+#include "../Controllers/LevelController.h"
 
 Game::Models::Car::Car(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IInteractable(x, y, z, height, width, state)
 {
@@ -20,6 +21,7 @@ void Game::Models::Car::initialize_textures()
 	get_texture()->set_visible(true);
 }
 
-void Game::Models::Car::interact()
+void Game::Models::Car::interact(Controllers::LevelController* ctrl)
 {
+	ctrl->set_state(Enums::LevelStateEnum::WIN);
 }

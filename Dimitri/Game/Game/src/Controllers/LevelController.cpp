@@ -48,7 +48,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			{
 				if (_level->get_player()->get_shape()->check_square_collision(interactable->get_shape()))
 				{
-					interactable->interact();
+					interactable->interact(this);
 				}
 			}
 			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
@@ -111,6 +111,15 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_level->play_music("level1");
 		}
 		notify(_state);
+	}
+}
+
+void Game::Controllers::LevelController::turn_off_light(const int x)
+{
+	for (std::shared_ptr<Models::IObject> l : _level->get_lights()) {
+		if (l->get_x() == x) {
+			l->get_texture()->set_visible(false);
+		}
 	}
 }
 

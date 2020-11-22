@@ -4,7 +4,7 @@ Game::Models::Buttons::ExitButton::ExitButton(int x, int y, int z, int height, i
 {
 }
 
-void Game::Models::Buttons::ExitButton::interact()
+void Game::Models::Buttons::ExitButton::interact(Controllers::LevelController* ctrl)
 {
 	exit(0);
 }

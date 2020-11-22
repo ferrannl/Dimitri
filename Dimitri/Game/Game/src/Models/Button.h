@@ -21,7 +21,7 @@ namespace Game {
 			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
 			void initialize_textures();
 			void update(const Game::Events::InputEvent& object);
-			virtual void interact() = 0;
+			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }

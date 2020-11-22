@@ -1,5 +1,6 @@
 #pragma once
 #include "IInteractable.h"
+
 /**
 *	Namespace for the game
 */
@@ -15,7 +16,7 @@ namespace Game {
 		public:
 			Car(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			void initialize_textures();
-			void interact();
+			void interact(Controllers::LevelController* ctrl = NULL);
 		};
 	}
 }

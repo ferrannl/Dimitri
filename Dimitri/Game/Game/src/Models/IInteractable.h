@@ -1,9 +1,14 @@
 #pragma once
 #include "IObject.h"
+
 /**
 *	Namespace for the game
 */
 namespace Game {
+	namespace Controllers {
+		class LevelController;
+	}
+
 	/**
 	*	Namespace for the Models
 	*/
@@ -18,7 +23,7 @@ namespace Game {
 			/**
 			*	Virtual method to for example change object state
 			*/
-			virtual void interact() = 0;
+			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }

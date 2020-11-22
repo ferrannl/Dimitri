@@ -4,6 +4,9 @@
 #include "../Factory/BackgroundFactory.h";
 #include "../Models/Level.h"
 
+/**
+* Namespace for the game
+*/
 namespace Game {
 	namespace Builder {
 		class LevelBuilder {

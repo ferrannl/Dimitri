@@ -6,6 +6,7 @@
 #include <src\Models\Texture.h>
 #include "../Models/IObject.h"
 #include <src/Models/Sprite.h>
+#include "../Enums/TypeEnum.cpp"
 #include "Wall.h"
 #include "Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
@@ -116,6 +117,9 @@ namespace Game {
 			*/
 			void load_objects();
 
+			/**
+			*	Adds all the shapes to the objects
+			*/
 			void add_shapes();
 
 			/**
@@ -156,28 +160,36 @@ namespace Game {
 			/**
 			*	Returns physics collision controller
 			*/
-			void add_lamp(std::shared_ptr<Game::Models::IObject> tile);
-
-			/**
-			*	Returns physics collision controller
-			*/
 			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
 
+			/**
+			*	Adds background to background list
+			*/
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
+			/**
+			*	Adds light to lights list
+			*/
 			void add_light(std::shared_ptr<Game::Models::IObject> tile);
 
+			/**
+			*	Adds shape to the shape list
+			*/
 			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
+
 			/**
 			*	Calls physics simulation
 			*/
 			void simulate();
 
 			/**
-			* Getters for level size
+			* Gets level height
 			*/
 			int get_height() const;
 
+			/**
+			* Gets level width
+			*/
 			int get_width() const;
 		};
 	}

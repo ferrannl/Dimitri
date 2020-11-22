@@ -134,6 +134,7 @@ xcopy /y /d "$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\Input.
 xcopy /y /d "$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\Audio.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\PhysicsCollision.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
+xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\DocumentHandler.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
