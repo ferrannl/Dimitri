@@ -16,54 +16,62 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the facades
+	* \namespace Graphics::Facades
+	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
 		/**
-		* Contains all the references needed for the SDL_Window
+		* \class WindowFacade
+		* \brief Class contains the references to the SDL_Window
 		*/
 		class GRAPHICS_API WindowFacade {
 		private:
 			/**
-			* An instance of FPS.
+			* \brief Contains the fps of the Window
 			*/
 			std::unique_ptr<Utility::Time::Fps> _fps;
+
 			/**
-		   * An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
-		   */
+			* \brief An instance of SDL_Window with a custom destructor
+			*/
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
 
 			/**
-			* An instance of SDL_Renderer. The SDL_DestroyRenderer has to be passed by reference becuase SDL_Renderer has a custom destructor.
+			* \brief An instance of SDL_Renderer with a custom destructor
 			*/
 			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
 
 			/**
-			* The adapter that converts the SDL_Flipenum to FlipEnum
+			* \brief The adapter that converts the SDL_FlipEnum to FlipEnum
 			*/
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
 
 			/**
-			*	Everything beneath this is for sidescrolling managment
-			*/
-
-			/**
-			*	Height and width of the window
+			* \brief The height of the Window
 			*/
 			int _window_height;
+
+			/**
+			* \brief The width of the Window
+			*/
 			int _window_width;
 
 			/**
-			*	x and y pos of camera standard 0,0; 0 = x, 1 = y
+			* \brief The camera position of the Window
+			* The standard position of the camera is 0,0
+			* \return std::tuple<width, height>
 			*/
 			std::tuple<int, int> _camera_pos;
 
+
 			/**
-			*	Height and width of scene standard equal to window height and width but can be increased for large levels; 0 = width, 1 = height
+			* \brief The width and height of the Scene
+			* \return std::tuple<width, height>
 			*/
 			std::tuple<int, int> _scene_size;
 
@@ -71,49 +79,52 @@ namespace Graphics {
 			WindowFacade();
 
 			/**
-			* Creates the instance of SDL_Renderer
+			* \brief Creates the instance of SDL_Renderer
 			*/
 			int create_renderer();
 
 			/**
-			* Creates the instance of SDL_Window
+			* \brief Creates the instance of SDL_Window
 			*/
 			int create_window(const std::string& title, int height, int width);
 
 			/**
-			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
+			* \brief Creates a TextureFacade or adds an already created TextureFacade if Texture matches
 			*/
 			void create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture);
 
 			/**
-			* Destroys the SDL_Window
+			* brief Destroys the SDL_Window
 			*/
 			void destroy();
 
 			/**
-			* Updates the window with all the sprites in the given list
+			* \brief Updates the window with all the sprites in the given list
 			*/
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 
+			/**
+			* \brief Returns the fps of the Window
+			*/
 			int get_fps();
 
 			/**
-			* Updates camera position
+			* brief Updates camera position
 			*/
 			void set_camera_pos(int x, int y);
 
 			/**
-			* Returns camera position
+			* brief Returns camera position
 			*/
 			std::tuple<int, int> get_camera_pos() const;
 
 			/**
-			* Sets scene size
+			* brief Sets scene size
 			*/
 			void set_scene_size(int height, int width);
 
 			/**
-			* Returns scene size
+			* brief Returns scene size
 			*/
 			std::tuple<int, int> get_scene_size() const;
 		};

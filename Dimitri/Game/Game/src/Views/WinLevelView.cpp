@@ -16,7 +16,7 @@ namespace Game {
 		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 5000, bg_height, bg_width, 0, bg_path, Graphics::Enums::FlipEnum::NONE, true));
 
 		std::string font_path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		Color color = { 0,0,0 };
+		Graphics::Models::Color color = { 0,0,0 };
 		int win_text_width = 3 * 20;
 		int win_text_height = 50;
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("win", color, 0, 0, 5000, win_text_height, win_text_width, 0, font_path, true));

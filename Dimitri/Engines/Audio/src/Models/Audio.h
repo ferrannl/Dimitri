@@ -14,37 +14,40 @@
 #endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the models
+	* \namespace Audio::Models
+	* \brief Namespace for the models in the audio engine
 	*/
 	namespace Models {
 		/**
-		* The audio model that can be used by the game to play audio files
+		* \class Audio
+		* \brief Class contains the methods to play audio files
 		*/
 		class AUDIO_API Audio {
 		private:
 			/**
-			* The name of the audio
+			* \brief The name of the Audio
 			*/
 			const std::string _name;
 
 			/**
-			* The audio facade containing all methods and references to play audio with SDL_Mixer
+			* \brief The Audio Facade containing all methods and references to play audio
 			*/
 			const std::shared_ptr<Interfaces::IAudioFacade> _audio_facade;
 		public:
-			Audio(const std::string name, std::shared_ptr < Interfaces::IAudioFacade> audio_facade);
+			Audio(const std::string name, std::shared_ptr<Interfaces::IAudioFacade> audio_facade);
 
 			/**
-			* Returns the name of the model
+			* \brief Returns the name of the Audio
 			*/
 			std::string get_name() const;
 
 			/**
-			* Returns the audio facade
+			* \brief Returns the %Audio Facade
 			*/
 			std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade() const;
 		};

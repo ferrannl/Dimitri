@@ -1,11 +1,13 @@
 #pragma once
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the enums
+	* \namespace Game::Enums
+	* \brief Namespace for the enums in the game
 	*/
 	namespace Enums {
 		/**

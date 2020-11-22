@@ -12,131 +12,172 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Models
+	* \namespace PhysicsCollision::Models
+	* \brief Namespace for the models in the physics collision engine
 	*/
 	namespace Models {
 		/**
-		* Shape model for creating shapes
+		* \class Shape
+		* \brief Class contains the data to create a shape
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
 			/**
-			* X position of a shape
+			* \brief X position of the Shape
 			*/
 			int _x;
+
 			/**
-			* Y position of a shape
+			* \brief Y position of the Shape
 			*/
 			int _y;
+
 			/**
-			* Width of a shape
+			* \brief Width of the Shape
 			*/
 			int _width;
+
 			/**
-			* Height of a shape
+			* \brief Height of the Shape
 			*/
 			int _height;
+
 			/**
-			* Is dynamic boolean of a shape
+			* \brief If the Shape is dynamic
 			*/
 			bool _is_dynamic;
+
 			/**
-			* Is interactable boolean of a shape
+			* \brief If the Shape is interactable
 			*/
 			bool _is_interactable;
 		protected:
 			/**
-			* Shape type
+			* \brief Type of the Shape
 			*/
 			Enums::ShapeEnum _type;
+
 			/**
-			* Shape facade of a shape
+			* \brief An instance of the ShapeFacade
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
 			Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
+
 			/**
-			* Returns the ShapeFacade from a shape
+			* \brief Returns the ShapeFacade
 			*/
-			std::shared_ptr<Facades::ShapeFacade> get_shape_facade()const;
+			std::shared_ptr<Facades::ShapeFacade> get_shape_facade() const;
+
 			/**
-			* Returns the type from a shape
+			* \brief Returns the type
 			*/
-			Enums::ShapeEnum get_type()const;
+			Enums::ShapeEnum get_type() const;
+
 			/**
-			* Sets the type of a shape
+			* \brief Sets the type the Shape
 			*/
 			void set_type(Enums::ShapeEnum type);
+
 			/**
-			*	Sets if a shape is interactable
+			* \brief Sets if the Shape is interactable
 			*/
 			void set_is_interactable(bool is_interactable);
+
 			/**
-			* Sets the x position of a shape
+			* \brief Sets the X position of the Shape
 			*/
 			void set_x(float x);
+
 			/**
-			* Set the y position of a shape
+			* \brief Set the Y position of the Shape
 			*/
 			void set_y(float y);
+
 			/**
-			* Set the width of a shape
+			* \brief Set the width of the Shape
 			*/
 			void set_width(float width);
+
 			/**
-			* Set the height of a shape
+			* \brief Set the height of the Shape
 			*/
 			void set_height(float height);
+
 			/**
-			* Returns the x position of a shape
+			* \brief Returns the X position of the Shape
 			*/
-			float get_x()const;
+			float get_x() const;
+
 			/**
-			* Returns the y position of a shape
+			* \brief Returns the Y position of the Shape
 			*/
-			float get_y()const;
+			float get_y() const;
+
 			/**
-			* Returns the width of a shape
+			* \brief Returns the width of the Shape
 			*/
 			float get_width() const;
+
 			/**
-			* Returns the height of a shape
+			* \brief Returns the height of the Shape
 			*/
 			float get_height() const;
+
 			/**
-			* Move the x position of a shape based on value. -1 or 1 means left or right
+			* \brief Move the X position of the Shape
+			* \param value -1 is left, 1 is right
 			*/
-			void move_x(const int value)const;
+			void move_x(const int value) const;
+
 			/**
-			* Move the y position of a shape
+			* \brief Move the Y position of the Shape
 			*/
-			void move_y()const;
+			void move_y() const;
+
 			/**
-			* Returns the angle of a shape
+			* \brief Returns the angle of the Shape
 			*/
-			float get_angle()const;
+			float get_angle() const;
+
 			/**
-			* Returns if a shape is dynamic
+			* \brief Returns if the Shape is dynamic
 			*/
 			bool get_is_dynamic() const;
+
 			/**
-			* Returns if a shape is interactable
+			* \brief Returns if the Shape is interactable
 			*/
 			bool get_is_interactable() const;
+
 			/**
-			* Sets the dynamic property of a shape
+			* \brief Sets if the Shape is dynamic
 			*/
 			void set_is_dynamic(bool is_dynamic);
+
 			/**
-			* Returns true when there is collision between two shapes. Else returns false
+			* \brief Checks if the Shape has collision with another shape
+			* \return True if collision, otherwise false
 			*/
 			bool check_square_collision(std::shared_ptr<Models::Shape> shape);
+
+			/**
+			* \brief Checks if the Shape has collision with another shape
+			* \return True if collision, otherwise false
+			*/
 			bool check_polygon_collision(std::shared_ptr<Models::Shape> shape);
+      
+			/**
+			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
+			*/
+			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

@@ -4,8 +4,6 @@
 #include "Texture.h"
 #include "Color.h"
 
-
-
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
@@ -16,49 +14,51 @@
 #define GRAPHICS_API
 #endif
 
-
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the models
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
 	*/
 	namespace Models {
 		/**
-		* Containing all methods and attributes to draw text
+		* \class Text
+		* \brief Class contains the data to render text
 		*/
 		class GRAPHICS_API Text : public Texture {
 		private:
 			/**
-			* The text of the Text
+			* \brief The text of the Text
 			*/
 			std::string _text;
 
 			/**
-			* The color of the Text
+			* \brief The color of the Text
 			*/
 			Color _color;
 		public:
 			Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible);
 
 			/**
-			* returns the text
+			* \brief Returns the text
 			*/
 			const std::string get_text() const;
 
 			/**
-			* returns the color
+			* \brief Returns the Color
 			*/
 			const Color get_color() const;
 
 			/**
-			* creates the texture facade
+			* \brief Creates the TextureFacade
 			*/
 			void create_texture_facade();
 
 			/**
-			* Checks if this texure matches the given texture
+			* \brief Checks if this Texure matches the given Texture
 			*/
 			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
 		};

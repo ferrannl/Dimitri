@@ -12,15 +12,18 @@
 #endif
 
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Enums
+	* \namespace PhysicsCollision::Enums
+	* \brief Namespace for the enums in the physics collision engine
 	*/
 	namespace Enums {
 		/**
-		* Enum for the different shape types
+		* \enum ShapeEnum
+		* \brief Enum Class contains the Shape types
 		*/
 		enum class PHYSICSCOLLISION_API ShapeEnum {
 			Polygon, Circle, Square

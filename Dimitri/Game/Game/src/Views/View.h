@@ -2,71 +2,77 @@
 #include <src\Controllers\GraphicsController.h>
 #include <memory>
 #include <vector>
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the view using the graphics controller
+		* \class View
+		* \brief Class contains the methods to draw the View
 		*/
 		class View {
 		private:
 			/**
-			*	If view is currently being used or not
+			* \brief If the View is currently being used or not
 			*/
 			bool _active;
+
 			/**
-			*	If view is currently visible
+			* \brief If the View is currently visible
 			*/
 			bool _visible;
 		protected:
 			/**
-			*	Graphics Controller to interact with engine
+			* \brief An instance of the GraphicsController to interact with graphics engine
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+
 			/**
-			*	Textures for current view
+			* \brief A list of the Textures for current View
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 		public:
 			View(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* Add the textures to the _graphics_controller
+			* \brief Adds the Textures to the _graphics_controller
 			*/
 			virtual void draw();
 
 			/**
-			*	Sets _textures
+			* \brief Sets _textures
 			*/
 			void set_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
 
 			/**
-			*	Adds _textures
+			* \brief Adds a Texture to _textures
 			*/
 			void add_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
 
 			/**
-			*	Returns if view is active
+			* \brief Returns if the View is active
 			*/
 			bool is_active() const;
 
 			/**
-			*	Sets _active
+			* \brief Sets _active
 			*/
 			void set_active(bool open);
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns the visible state of the View
 			*/
 			virtual bool is_visible() const;
 
 			/**
-			*	Sets _visible
+			* \brief Sets _visible
 			*/
 			void set_visible(bool visible);
 		};

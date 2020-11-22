@@ -14,7 +14,7 @@ namespace Game {
 		int height = 50;
 		_textures.clear();
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		Color color = { 255, 255, 255 };
+		Graphics::Models::Color color = { 255, 255, 255 };
 		_textures.push_back(std::make_shared<Graphics::Models::Text>(fps, color, window_width - width - 5, window_height - height, 100, height, width, 0, path, true));
 
 		View::draw();

@@ -14,26 +14,31 @@
 #define GRAPHICS_API
 #endif
 
-
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
-namespace Graphics {  
+namespace Graphics {
 	/**
-	* Namespace for the models
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
 	*/
 	namespace Models {
+		/**
+		* \class Sprite
+		* \brief Class contains the data to render an image
+		*/
 		class GRAPHICS_API Sprite : public Texture {
 		public:
 			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible);
 
 			/**
-			* creates the texture facade
+			* \brief Creates the TextureFacade
 			*/
 			void create_texture_facade();
 
 			/**
-			* Checks if this texure matches the given texture
+			* \brief Checks if this Texure matches the given Texture
 			*/
 			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
 		};
