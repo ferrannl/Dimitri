@@ -10,131 +10,145 @@
 #include "../Enums/StateEnum.cpp"
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Interface for all  objects used in game
+		* \class IObject
+		* \brief Class contains the data for an entity in a level
 		*/
 		class IObject {
 		protected:
 			/**
-			*	Position object
+			* \brief The X coordinate of the IObject
 			*/
 			int _x;
+
+			/**
+			* \brief The Y coordinate of the IObject
+			*/
 			int _y;
+
+			/**
+			* \brief The Z coordinate of the IObject
+			*/
 			int _z;
 
 			/**
-			*	Size of object
+			* \brief The height of the IObject
 			*/
 			int _height;
+
+			/**
+			* \brief The width of the IObject
+			*/
 			int _width;
 
 			/**
-			*	Object state ex: Walking, Climbing, Crouching, Jumping, Standing still. You could also specify a certain walking texture and change it every frame.
+			* \brief The state of the IObject
 			*/
 			Game::Enums::StateEnum _state;
 
 			/**
-			*	Textures saved by state for easy access
+			* \brief The Textures of the IObject saved by state
 			*/
 			std::map<Game::Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
 
 			/**
-			*	Shape of object
+			* \brief Shape of the IObject
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> _shape;
 
 			/**
-			*	Initializes textures specific to object
+			* \brief Initializes Textures
 			*/
 			virtual void initialize_textures() = 0;
-
 		public:
 			IObject(const int x, const int y, const int z, const int height, const int width, const Game::Enums::StateEnum state);
 
 			/**
-			*	Returns texture based on state
+			* \brief Returns the Texture based on state
 			*/
 			std::shared_ptr<Graphics::Models::Texture> get_texture();
 
 			/**
-			*	Returns all textures
+			* \brief Returns all Textures
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_all_textures();
 
 			/**
-			*	Returns x
+			* \brief Returns X coordinate
 			*/
 			int get_x() const;
 
 			/**
-			*	Sets x
+			* \brief Sets X coordinate
 			*/
 			void set_x(int value);
 
 			/**
-			*	Returns y
+			* \brief Returns Y coordinate
 			*/
 			int get_y() const;
 
 			/**
-			*	Sets x
+			* \brief Sets Y coordinate
 			*/
 			void set_y(int value);
 
 			/**
-			*	Returns z
+			* \brief Returns Z coordinate
 			*/
 			int get_z() const;
 
 			/**
-			*	Sets x
+			* \brief Sets Z coordinate
 			*/
 			void set_z(int value);
 
 			/**
-			*	Sets state
+			* \brief Sets state of the IObject
 			*/
 			void set_state(const Game::Enums::StateEnum& state);
 
 			/**
-			*	Returns shape
+			* \brief Returns Shape of the IObject
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
 
 			/**
-			*	Creates the shape for an object
+			* \brief Creates the shape for the IObject
 			*/
 			void create_shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
 
 			/**
-			*	Sets shape
+			* \brief Sets shape of the IObject
 			*/
 			void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 
 			/**
-			*	Adds texture
+			* \brief Adds Texture
 			*/
 			void add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
-			*	Returns height
+			* \brief Returns height of the IObject
 			*/
 			int get_height() const;
 
 			/**
-			*	Returns width
+			* \brief Returns width of the IObject
 			*/
 			int get_width() const;
 
 			/**
-			*	Updates x/y values using shape
+			* \brief Updates X and Y coordinates using the Shape
 			*/
 			void update();
 		};

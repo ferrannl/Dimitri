@@ -11,13 +11,25 @@
 #define GRAPHICS_API
 #endif
 
-
 /**
-* Holds the RGB values of a color
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
-struct GRAPHICS_API Color {
-public:
-	uint8_t red;
-	uint8_t green;
-	uint8_t blue;
-};
+namespace Graphics {
+	/**
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
+	*/
+	namespace Models {
+		/**
+		* \struct Color
+		* \brief Struct contains the RGB values of a color
+		*/
+		struct GRAPHICS_API Color {
+		public:
+			uint8_t red;
+			uint8_t green;
+			uint8_t blue;
+		};
+	}
+}

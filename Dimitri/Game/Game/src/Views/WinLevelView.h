@@ -5,32 +5,35 @@
 #include <..\Game\Game\src\Views\View.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the fps using the graphics controller
+		* \class WinLevelView
+		* \brief Class contains the methods to draw the win menu
 		*/
 		class WinLevelView : public View {
 		public:
 			WinLevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Initializes textures
+			* \brief Initializes Textures
 			*/
 			void init_textures();
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
 
 			/**
-			* Add the textures to the _graphics_controller
+			* \brief Adds the Textures to the _graphics_controller
 			*/
 			void draw() override;
 		};

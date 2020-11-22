@@ -17,177 +17,180 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the models
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
 	*/
 	namespace Models {
 		/**
-		* Holds the data the texture needs to be rendered.
+		* \class Texture
+		* \brief Class contains the data to render
 		*/
 		class GRAPHICS_API Texture {
 		private:
 			/**
-			* The x coordinate the texture is drawn to
+			* \brief The x coordinate the Texture
 			*/
 			int _x;
 
 			/**
-			* The y coordinate the texture is drawn to
+			* \brief The y coordinate the Texture
 			*/
 			int _y;
 
 			/**
-			* The z coordinate the texture is drawn to
+			* \brief The z coordinate the Texture
 			*/
 			int _z;
 
 			/**
-			* The width of the texture
+			* \brief The width of the Texture
 			*/
 			int _width;
 
 			/**
-			* The height of the texture
+			* \brief The height of the Texture
 			*/
 			int _height;
 
 			/**
-			* The angle which the texture is drawn with
+			* \brief The angle which the Texture
 			*/
 			float _angle;
 
 			/**
-			* Visibility of texture
+			* \brief Visibility of Texture
 			*/
 			bool _visible;
 
 			/**
-			* The path of the texture
+			* \brief The path of the Texture
 			*/
 			std::string _path;
 		protected:
 			/**
-			* The flip direction of the texture
+			* \brief The flip direction of the Texture
 			*/
 			Enums::FlipEnum _flipstatus;
 
 			/**
-			* The facade that holds all references to SDL
+			* \brief The TextureFacade that contains the methods to render
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
 			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible);
 
 			/**
-			* returns the y converted to be drawn from the perspective of bottom left
+			* \brief Returns the y converted to the perspective from the bottom
 			*/
 			int get_converted_y(int height) const;
 
 			/**
-			* returns the x coordinate
+			* \brief Returns the x coordinate
 			*/
 			int get_x() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
 			int get_z() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
 			int get_y() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
 			int get_width() const;
 
 			/**
-			* returns the height
+			* \brief Returns the height
 			*/
 			int get_height() const;
 
 			/**
-			* returns the angle
+			* \brief Returns the angle
 			*/
 			float get_angle() const;
 
 			/**
-			* returns the image path
+			* \brief Returns the path to the texture
 			*/
 			std::string get_path() const;
 
 			/**
-			* returns the flip direction
+			* \brief Returns the flip direction
 			*/
 			Enums::FlipEnum get_flip_status() const;
 
 			/**
-			* returns the visibility
+			* \brief Returns the visibility
 			*/
 			bool is_visible() const;
 
 			/**
-			* returns the facade of the texture for the sprite
+			* \brief Returns the TextureFacade
 			*/
 			std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
 
 			/**
-			* sets the x coordinate
+			* \brief Sets the x coordinate
 			*/
 			void set_x(const int x);
 
 			/**
-			* sets the z coordinate
+			* \brief Sets the z coordinate
 			*/
 			void set_z(const int z);
 
 			/**
-			* sets the y coordinate
+			* \brief Sets the y coordinate
 			*/
 			void set_y(const int y);
 
 			/**
-			* sets the width
+			* \brief Sets the width
 			*/
 			void set_width(const int width);
 
 			/**
-			* sets the height
+			* \brief Sets the height
 			*/
 			void set_height(const int height);
 
 			/**
-			* sets the angle
+			* \brief Sets the angle
 			*/
 			void set_angle(const float angle);
 
 			/**
-			* sets the flip direction
+			* \brief Sets the flip status
 			*/
 			void set_flip_status(const Enums::FlipEnum flipstatus);
 
 			/**
-			* sets the visibility
+			* \brief Sets the visibility
 			*/
 			void set_visible(const bool visibility);
 
 			/**
-			* sets the facade containing the references to sdl
+			* \brief Sets the facade
 			*/
 			void set_facade(const std::shared_ptr<Facades::TextureFacade>& facade);
 
 			/**
-			* creates the texture facade
+			* \brief Creates the TextureFacade
 			*/
 			virtual void create_texture_facade() = 0;
 
 			/**
-			* Checks if this texure matches the given texture
+			* \brief Checks if this Texure matches the given Texture
 			*/
 			virtual bool matches(const std::shared_ptr<Models::Texture>& texture) const = 0;
 		};

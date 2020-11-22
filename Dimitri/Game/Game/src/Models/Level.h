@@ -14,140 +14,157 @@
 #include "Lamp.h"
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the level object
+		* \class Level
+		* \brief Class contains the methods to interact with the IObjects
 		*/
-		class Level
-		{
+		class Level {
 		private:
 			/**
-			*	Audio Contoller to interact with audio engine
+			* \brief An instance of the AudioContoller to interact with audio engine
 			*/
 			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
-			
+
 			/**
-			*	PhysicsCollision Contoller to interact with Physics Collision engine
+			* \brief An instance of the PhysicsCollisionContoller to interact with physics collision engine
 			*/
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 
 			/**
-			*	List of all the shapes in level
+			* \brief List of all the Shapes in the Level
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
 			/**
-			*	Player Object
+			* \brief An instance of the Player Object
 			*/
 			std::shared_ptr<Game::Models::IObject> _player;
-			
+
 			/**
-			*	List of tiles in level
+			* \brief List of tiles in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
 
 			/**
-			*	List of lights in level
+			* \brief List of light in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _lights;
-			
+
 			/**
-			*	List of players in level
+			* \brief List of players in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
 
 			/**
-			*	List of interactables in level
+			* \brief List of interactables in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
 
 			/**
-			*	Level background
+			* \brief Texture of the background
 			*/
 			std::shared_ptr<Graphics::Models::Texture> _background;
 
 			/**
-			*	Size of the level
+			* \brief The height of the Level
 			*/
 			int _height;
+
+			/**
+			* \brief The width of the Level
+			*/
 			int _width;
-			
+
 		public:
 			Level(const std::shared_ptr<Controllers::AudioController> audio_controller);
-			
+
 			/**
-			*	Add music
+			* \brief Add music
 			*/
 			void add_music(std::string audio_name, std::string path);
+
 			/**
-			*	Add sound
+			* \brief Add sound
 			*/
 			void add_sound(std::string audio_name, std::string path);
+
 			/**
-			*	Play music
+			* \brief Play music
 			*/
 			void play_music(std::string audio_name);
+
 			/**
-			*	Stop music
+			* \brief Stop music
 			*/
 			void stop_music(std::string audio_name);
+
 			/**
-			*	Pause music
+			* \brief Pause music
 			*/
 			void pause_music(std::string audio_name);
+
 			/**
-			*	Resume music
+			* \brief Resume music
 			*/
 			void resume_music(std::string audio_name);
 
 			/**
-			*	Initializes objects
+			* \brief Initializes objects
 			*/
 			void load_objects();
 
+			/**
+			* \brief Add the Shapes of the IObjects in _shapes, _players, _lights, _tiles and _interactables in the physics collision engine
+			*/
 			void add_shapes();
 
 			/**
-			*	Returns list of all textures in level
+			* \brief Returns list of all Textures in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 
 			/**
-			*	Returns list of all lights in level
+			* \brief Returns list of all Lights in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::IObject>> get_lights() const;
-			
+
 			/**
-			*	Returns player
+			* \brief Returns the Player
 			*/
 			std::shared_ptr<Game::Models::IObject> get_player() const;
-			
+
 			/**
-			*	Returns interactables
+			* \brief Returns the interactables
 			*/
 			std::vector<std::shared_ptr<Game::Models::IInteractable>> get_interactables() const;
-			
+
 			/**
-			*	Returns physics collision controller
+			* \brief Returns the PhysicsCollisionController
 			*/
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> get_physics_collision_controller() const;
 
 			/**
-			*	Calls physics simulation
+			* \brief Calls simulate in the PhysicsCollisionController
 			*/
 			void simulate();
 
 			/**
-			* Getters for level size
+			* \brief Returns the height of the Level
 			*/
 			int get_level_height() const;
 
+			/**
+			* \brief Returns the width of the Level
+			*/
 			int get_level_width() const;
 		};
 	}

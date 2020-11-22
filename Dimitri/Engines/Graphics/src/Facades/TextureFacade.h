@@ -19,38 +19,41 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the facades
+	* \namespace Graphics::Facades
+	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
 		using TextureDestroyer = void (*)(SDL_Texture*);
 		/**
-		* Contains all the references needed for the SDL_Texture
+		* \class TextureFacade
+		* \brief Class contains the references to the SDL_Texture
 		*/
 		class GRAPHICS_API TextureFacade {
 		protected:
 			/**
-			* Path to the texture
+			* \brief Path to the Texture
 			*/
 			std::string _path;
 
 			/**
-			* An instance of SDL_Texture
+			* \brief An instance of SDL_Texture
 			*/
 			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
 		public:
 			TextureFacade(const std::string& path);
 
 			/**
-			* Creates an SDL_Texture for a given path
+			* \brief Creates a SDL_Texture
 			*/
 			virtual void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer) = 0;
 
 			/**
-			* Returns the SDL_Texture
+			* \brief Returns the SDL_Texture
 			*/
 			SDL_Texture* get_texture() const;
 		};

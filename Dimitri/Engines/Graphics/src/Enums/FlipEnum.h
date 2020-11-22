@@ -12,15 +12,18 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the enums
+	* \namespace Graphics::Enums
+	* \brief Namespace for the enums in the graphics engine
 	*/
 	namespace Enums {
 		/**
-		* Enum for the flip direction of the sprites
+		* \enum FlipEnum
+		* \brief Enum Class contains the flip direction of the sprites
 		*/
 		enum class GRAPHICS_API FlipEnum {
 			NONE, HORIZONTAL, VERTICAL

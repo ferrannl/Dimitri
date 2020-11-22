@@ -23,102 +23,112 @@ using namespace std::this_thread;
 using namespace std::chrono_literals;
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains all code to interact with window engine and show images on screen
+		* \class WindowController
+		* \brief Class contains the methods to open the Views
 		*/
 		class WindowController {
 		private:
 			/**
-			*	Graphics Controller to interact with engine
+			* \brief An instance of the GraphicsController to interact with graphics engine
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
 
 			/**
-			*	Contains all views
+			* \brief A List of all the Views
 			*/
 			std::map<std::string, std::unique_ptr<Views::View>> _views;
 
 			/**
-			*	Draw thread for updating window in background thread
+			* \brief A thread for rendering Textures on the Window
 			*/
 			std::thread draw_thread;
 
 			/**
-			*	Height and width of window
+			* \brief The height of the Window
 			*/
 			int _height;
+
+			/**
+			* \brief The width of the Window
+			*/
 			int _width;
 
 		public:
 			WindowController();
 
 			/**
-			*	Creates window
+			* \brief Creates the Window
 			*/
 			void create_window(int height, int width);
 
 			/**
-			*	Sets the views active property to true
+			* \brief Sets the Views active property to true
 			*/
 			void open_view(const std::string& view_name);
 
 			/**
-			*	Checks if the view is active
+			* \brief Checks if the View is active
 			*/
 			bool is_active(const std::string& view_name);
 
 			/**
-			*	Sets all the views active property to false
+			* \brief Sets all the Views active property to false
 			*/
 			void clear_views();
 
 			/**
-			*	Toggles the visible property of view
+			* \brief Toggles the visible property of the View
 			*/
 			void toggle_view_visibility(const std::string& view_name);
 
 			/**
-			*	Calls all draw methods on _views
+			* \brief Calls all draw methods on _views
 			*/
 			void draw();
 
 			/**
-			*	Sets the textures for the view
+			* \brief Sets the Textures for a View
 			*/
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
-			
+
 			/**
-			*	Adds the textures for the level view
+			*	 \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			/**
-			* Updates camera position
+			* \brief Updates camera position
 			*/
 			void set_camera_pos(int x, int y);
 
 			/**
-			* Updates camera position
+			* \brief Updates camera position based on a IObject
 			*/
 			void set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object);
 
 			/**
-			* Sets scene size
+			* \brief Sets scene size
 			*/
 			void set_scene_size(int height, int width);
 
 			/**
-			*	Getters window height and widht
+			* \brief Returns the height of the Window
 			*/
 			int get_window_height() const;
 
+			/**
+			* \brief Returns the width of the Window
+			*/
 			int get_window_width() const;
 		};
 	}
