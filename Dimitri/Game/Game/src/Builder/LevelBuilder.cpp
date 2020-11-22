@@ -34,7 +34,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
                 level->add_light(_objectFactory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::StateEnum::HORIZONTAL));
                 break;
             case 4:
-                level->add_interactable(_interactableFactory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::RIGHT));
+                level->add_interactable(_interactableFactory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::LEFT));
                 break;
             case 5:
                 level->add_player(std::make_shared<Models::Player>( x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::StateEnum::RIGHT ));
