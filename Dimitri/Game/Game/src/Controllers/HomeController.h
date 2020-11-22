@@ -27,14 +27,20 @@ namespace Game {
 		*/
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
+
 			/**
 			* \brief A list of the Buttons
 			*/
 			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
 			/**
 			* \brief An instance of the Audio Controller
 			*/
 			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
+
+			/**
+			* \brief The height of the scene
+			*/
 			int _scene_height;
 
 			/**
