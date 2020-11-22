@@ -13,43 +13,48 @@ using namespace std::this_thread;
 using namespace std::chrono_literals;
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains the code to controle the level model
+		* \class LevelController
+		* \brief Class LevelController contains the methods to interact with the Level
 		*/
 		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Utility::Interfaces::IObservable<Enums::LevelStateEnum> {
 		private:
 			/**
-			*	Level model
+			* \brief An Instance of the current Level
 			*/
 			std::shared_ptr<Game::Models::Level> _level;
-			/**
-			*	Simulation thread
-			*/
-			std::thread _simulation_thread;
-			/**
-			*	Keeps track of simulation thread state
-			*/
-      Enums::LevelStateEnum _state;
 
 			/**
-			*	WindowController to update camera potision
-			\*/
-			std::shared_ptr<Controllers::WindowController> _window_controller;
-			
+			* \brief An instance of the thread
+			*/
+			std::thread _simulation_thread;
+
 			/**
-			*	List of observers
+			* \brief Keeps track of simulation thread state
+			*/
+			Enums::LevelStateEnum _state;
+
+			/**
+			* \brief An Instance of the WindowController
+			*/
+			std::shared_ptr<Controllers::WindowController> _window_controller;
+
+			/**
+			* \brief List of Observers
 			*/
 			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>> _observers;
 
 			/**
-			*	Set the level state and stops/starts the thread
+			* \brief Set the level state and stops/starts the thread
 			*/
 			void set_state(Enums::LevelStateEnum state);
 
@@ -57,47 +62,47 @@ namespace Game {
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller);
 
 			/**
-			*	List of all textures in level
+			* \brief Returns a list of all Textures in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
-			
-			/**	
-			*	Update received from input controller	
-			*/	
+
+			/**
+			* \brief Receives updates from InputController
+			*/
 			void update(const Game::Events::InputEvent& object);
 
 			/**
-			*	Returns level
+			* \brief Returns the Level
 			*/
 			std::shared_ptr<Game::Models::Level> get_level() const;
 
 			/**
-			*	Start simulation
+			* \brief Starts simulation
 			*/
 			void start();
 
 			/**
-			*	Stop simulation
+			* \brief Stops simulation
 			*/
 			void stop();
 
 			/**
-			*	Simulate thread start
+			* \brief Returns the Level
 			*/
 			void simulate();
 
 			/**
-			*	Notifies observables
+			* \brief Returns the Level
 			*/
 			void notify(const Enums::LevelStateEnum& object);
 
 			/**
-			*	Add observer to list of observables
+			* \brief Add observer to list of observables
 			*/
 			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
 
 			/**
-			* Removes observer from list of observables
+			* \brief Removes observer from list of observables
 			*/
 			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
 

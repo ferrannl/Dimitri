@@ -15,32 +15,35 @@
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the facades
+	* \namespace Input::Facades
+	* \brief Namespace for the facades in the input engine
 	*/
 	namespace Facades {
 		/**
-		* Containing all methods and references used to get fired events from SDL
+		* \class EventFacade
+		* \brief Class contains the methods to get fired events using SDL
 		*/
 		class INPUT_API EventFacade {
 		private:
 			/**
-			* The event model made by SDL
+			* \brief An instance of SDL_Event
 			*/
 			SDL_Event _event;
 
 			/**
-			* Adapter used to translate the SDL events to the EvenEnum
+			* \brief Adapter used to translate the SDL events to the EvenEnum
 			*/
 			std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
 		public:
 			EventFacade();
 
 			/**
-			* returns events which are fired
+			* \brief Returns the events that are fired
 			*/
 			Enums::EventEnum poll_event();
 		};

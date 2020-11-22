@@ -1,15 +1,19 @@
 #pragma once
 #include "IObject.h"
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the player object
+		* \class Player
+		* \brief Class contains the data of the Player
 		*/
 		class Player : public Game::Models::IObject{
 		private: 
@@ -17,6 +21,10 @@ namespace Game {
 			int _jumps;
 		public:
 			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+
+			/**
+			* \brief Initializes Textures
+			*/
 			void initialize_textures();
 			bool jump();
 			void reset_jump();

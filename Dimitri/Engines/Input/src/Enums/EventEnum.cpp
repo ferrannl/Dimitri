@@ -11,15 +11,18 @@
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the enums
+	* \namespace Input::Enums
+	* \brief Namespace for the enums in the input engine
 	*/
 	namespace Enums {
 		/**
-		* All key and mouse events that can be fired
+		* \enum EventEnum
+		* \brief Enum Class contains the key and mouse events that can be fired
 		*/
 		enum class INPUT_API EventEnum
 		{
