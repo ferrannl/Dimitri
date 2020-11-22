@@ -2,7 +2,7 @@
 
 Game::Models::Player::Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state) : Game::Models::IObject(x, y, z, height, width, state)
 {
-	_jumps = 2;
+	_jumps = _max_amount_of_jumps;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -27,5 +27,5 @@ bool Game::Models::Player::jump()
 
 void Game::Models::Player::reset_jump()
 {
-	_jumps = 2;
+	_jumps = _max_amount_of_jumps;
 }
