@@ -47,7 +47,7 @@ namespace Game {
 			/**
 			* \brief An instance of the Player Object
 			*/
-			std::shared_ptr<Game::Models::IObject> _player;
+			std::shared_ptr<Game::Models::Player> _player;
 
 			/**
 			* \brief List of tiles in the Level
@@ -140,7 +140,12 @@ namespace Game {
 			/**
 			* \brief Returns the Player
 			*/
-			std::shared_ptr<Game::Models::IObject> get_player() const;
+			std::shared_ptr<Game::Models::Player> get_player() const;
+			
+			/**
+			*	\brief Returns the tiles
+			*/
+			std::vector<std::shared_ptr<Game::Models::IObject>> get_tiles() const;		
 
 			/**
 			* \brief Returns the interactables

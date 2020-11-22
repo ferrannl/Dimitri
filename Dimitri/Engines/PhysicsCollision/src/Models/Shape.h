@@ -173,6 +173,11 @@ namespace PhysicsCollision {
 			* \return True if collision, otherwise false
 			*/
 			bool check_polygon_collision(std::shared_ptr<Models::Shape> shape);
+      
+			/**
+			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
+			*/
+			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }
