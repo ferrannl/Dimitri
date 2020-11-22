@@ -2,19 +2,26 @@
 #include "IObject.h"
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Contains all code necessary for the wall object
+		* \class LightBeam
+		* \brief Class contains the data of the light beam
 		*/
 		class LightBeam : public Game::Models::IObject {
 		public:
 			LightBeam(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+
+			/**
+			* \brief Initializes Textures
+			*/
 			void initialize_textures();
 		};
 	}

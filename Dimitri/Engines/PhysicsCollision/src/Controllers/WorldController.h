@@ -11,43 +11,52 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Controllers
+	* \namespace PhysicsCollision::Controllers
+	* \brief Namespace for the controllers in the physics collision engine
 	*/
 	namespace Controllers {
 		/**
-		* Contains methods to setup the world and check colliding shapes. Also contains the simulate which updates the position of the shape of the Box2D body
+		* \class WorldController
+		* \brief Class contains methods to setup the world and interact with the shapes
 		*/
 		class PHYSICSCOLLISION_API WorldController {
 		private:
 			/**
-			* World model that contains the shapes
+			* \brief An instance of the World
 			*/
 			Models::World _world;
 		public:
 			WorldController();
+
 			/**
-			* Sets up the world with shapes
+			* \brief Sets up the world with a width and height
 			*/
 			void setup_world(const float width, const float height);
+
 			/**
-			*	Loads the created shape into the world
+			* \brief Loads Shapes into the world
 			*/
 			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape);
+
 			/**
-			* Destroys the bodies from Box2D
+			* \brief Destroys the bodies of the Shapes in the World
 			*/
 			void destroy_bodies();
+
 			/**
-			* Simulates the world and lets all shapes fall
+			* \brief Simulates the world
 			*/
 			void simulate();
+
 			/**
-			* Gets all the shapes in the world
+			* \brief Returns all the Shapes in the World
 			*/
 			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
 		};

@@ -2,7 +2,12 @@
 
 #undef main
 int main() {
-	auto controller = std::make_shared<Game::Controllers::MainController>();
-	controller->run();
+	try {
+		auto controller = std::make_shared<Game::Controllers::MainController>();
+		controller.get()->run();
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 	return 0;
 }

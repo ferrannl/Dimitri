@@ -13,16 +13,20 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Models
+	* \namespace PhysicsCollision::Models
+	* \brief Namespace for the models in the physics collision engine
 	*/
 	namespace Models {
 		/**
-		* Square model
+		* \class Square
+		* \brief Class contains the data for a rectangular Shape
 		*/
 		class PHYSICSCOLLISION_API Square : public Shape {
 		public:

@@ -12,10 +12,21 @@
 #define UTILITY_API
 #endif
 
+/**
+* \namespace Utility
+* \brief Namespace for the utility project
+*/
 namespace Utility {
+	/**
+	* \namespace Utility::Time
+	* \brief Namespace for the time classes in the utility project
+	*/
 	namespace Time {
-		class UTILITY_API Fps
-		{
+		/**
+		* \class Fps
+		* \brief Class contains the methods calculate the fps
+		*/
+		class UTILITY_API Fps {
 		protected:
 			unsigned int _fps;
 			unsigned int _fpscount;
@@ -24,10 +35,13 @@ namespace Utility {
 			Fps();
 
 			/**
-			*	Update the fps
+			* \brief Increments the fpscount and updates the fps if 1 seconds has passed
 			*/
 			void update();
 
+			/**
+			* \brief Returns the fps
+			*/
 			unsigned int get() const;
 		};
 	}

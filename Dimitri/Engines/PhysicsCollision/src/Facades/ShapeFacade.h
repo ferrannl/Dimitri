@@ -15,49 +15,60 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Facades
+	* \namespace PhysicsCollision::Facades
+	* \brief Namespace for the facades in the physics collision engine
 	*/
 	namespace Facades {
 		/**
-		* Variable for calculating the angle
+		* \var RADIAN_IN_DEGREES
+		* Variable for calculating the angle from radians to degrees
 		*/
 		float static RADIAN_IN_DEGREES = 57.3f;
 		/**
-		* Namespace for the Enums
+		* \class ShapeFacade
+		* \brief Class contains the methods to handle the shapes using Box2d
 		*/
 		class PHYSICSCOLLISION_API ShapeFacade {
 		private:
 			/**
-			* Box2D body to add to each shape
+			* \brief An instance of a Box2D body
 			*/
 			b2Body* _body;
 		public:
 			ShapeFacade();
+
 			/**
-			* Method for adding the body 
+			* \brief Adds a body
 			*/
 			void add_body(b2Body* body);
+
 			/**
-			* Getter method which returns the body
+			* \brief Returns the body
 			*/
-			b2Body* get_body()const;
+			b2Body* get_body() const;
+
 			/**
-			* Method to move the shape horizontally which needs 1 or -1 to decide which direction to move to
+			* \brief Move the X position
+			* \param value -1 is left, 1 is right
 			*/
-			void move_x(const int value)const;
+			void move_x(int value) const;
+
 			/**
-			* Method to move the shape vertically
+			* \brief Move the Y position
 			*/
-			void move_y()const;
+			void move_y() const;
+
 			/**
-			* Method which returns the angle of a shape
+			* \brief Returns the angle
 			*/
-			float get_angle()const;
+			float get_angle() const;
 		};
 		}
 }
