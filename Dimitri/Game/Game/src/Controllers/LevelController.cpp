@@ -1,9 +1,9 @@
 #include "LevelController.h"
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{window_controller}
+Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
 {
-	_level = std::make_shared<Game::Models::Level>();
+	_level = std::make_shared<Game::Models::Level>(audio_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;

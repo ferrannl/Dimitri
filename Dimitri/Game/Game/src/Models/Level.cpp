@@ -1,10 +1,9 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level()
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller) : _audio_controller(audio_controller)
 {
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_audio_controller = std::make_shared<Controllers::AudioController>();
 	_interactables = {};
 	_lights = {};
 	_players = {};

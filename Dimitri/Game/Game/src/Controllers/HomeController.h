@@ -4,6 +4,7 @@
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
 #include "../Models/Buttons/ExitButton.h"
+#include "../Controllers/AudioController.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
@@ -26,10 +27,16 @@ namespace Game {
 		*/
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
+
 			/**
 			* \brief A list of the Buttons
 			*/
 			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
+			/**
+			* \brief An instance of the Audio Controller
+			*/
+			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
 
 			/**
 			* \brief The height of the scene
@@ -41,10 +48,9 @@ namespace Game {
 			*/
 			int _scene_width;
 		public:
-			HomeController(int sceneheight, int scenewidth);
-
+			HomeController(int sceneheight, int scenewidth, std::shared_ptr<Game::Controllers::AudioController> audio_controller);
 			/**
-			* \brief Loads the buttons
+			* \brief Loads the Buttons
 			*/
 			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
 

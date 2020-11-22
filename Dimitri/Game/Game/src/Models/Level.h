@@ -85,7 +85,7 @@ namespace Game {
 			int _width;
 
 		public:
-			Level();
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller);
 
 			/**
 			* \brief Add music
