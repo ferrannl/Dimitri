@@ -63,7 +63,7 @@ namespace Game {
 			/**
 			* \brief List of players in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
+			std::vector<std::shared_ptr<Game::Models::Player>> _players;
 
 			/**
 			* \brief List of interactables in the Level
@@ -166,7 +166,7 @@ namespace Game {
 			/**
 			*	Returns physics collision controller
 			*/
-			void add_player(std::shared_ptr<Game::Models::IObject> tile);
+			void add_player(std::shared_ptr<Game::Models::Player> tile);
 
 			/**
 			*	Returns physics collision controller

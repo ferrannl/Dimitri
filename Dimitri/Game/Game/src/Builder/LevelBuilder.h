@@ -20,7 +20,7 @@ namespace Game {
 			void build_background(std::shared_ptr<Models::Level>& level);
 			void build_borders(std::shared_ptr<Models::Level>& level);
 		public:
-			std::shared_ptr<Models::Level> build(std::vector<std::vector<int>>);
+			std::shared_ptr<Models::Level> build(std::vector<std::vector<int>>, const std::shared_ptr<Controllers::AudioController> audio_controller);
 		};
 	}
 }

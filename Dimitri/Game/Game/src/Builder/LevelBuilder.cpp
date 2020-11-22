@@ -2,12 +2,12 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vector<int>> objects)
+std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vector<int>> objects, const std::shared_ptr<Controllers::AudioController> audio_controller)
 {
     int level_height = (objects.at(0).size() - 1) * TILE_SIZE;
     int level_width = (objects.size()) * TILE_SIZE;
 
-    std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>( level_width, level_height );
+    std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, level_width, level_height );
 
     int x = 0;
     int y = level_height;
@@ -37,7 +37,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
                 level->add_interactable(_interactableFactory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::RIGHT));
                 break;
             case 5:
-                level->add_player(_objectFactory.create(Enums::TypeEnum::PLAYER, x, y, 1, TILE_SIZE*2, TILE_SIZE * 2, Enums::StateEnum::RIGHT));
+                level->add_player(std::make_shared<Models::Player>( x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::StateEnum::RIGHT ));
                 break;
             case 6:
                 level->add_object(_objectFactory.create(Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::VERTICAL));
