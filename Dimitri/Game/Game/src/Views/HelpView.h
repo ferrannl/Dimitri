@@ -21,12 +21,12 @@ namespace Game {
 			HelpView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* \brief Initializes textures
+			* \brief Initializes Textures
 			*/
 			void init_textures();
 
 			/**
-			* \brief Returns if view is visible
+			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
 		};

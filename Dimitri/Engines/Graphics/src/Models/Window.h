@@ -88,7 +88,7 @@ namespace Graphics {
 			void remove_texture(const std::shared_ptr<Texture>& texture);
 
 			/**
-			* \brief Clears all textures from _textures
+			* \brief Clears all Textures from _textures
 			*/
 			void clear_textures();
 

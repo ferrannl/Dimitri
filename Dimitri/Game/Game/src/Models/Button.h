@@ -27,7 +27,7 @@ namespace Game {
 			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
 
 			/**
-			* \brief Initializes textures
+			* \brief Initializes Textures
 			*/
 			void initialize_textures();
 

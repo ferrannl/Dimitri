@@ -26,7 +26,7 @@ namespace Graphics {
 	namespace Controllers {
 		/**
 		* \class GraphicsController
-		* \brief Class contains the methods to handle a window and textures
+		* \brief Class contains the methods to handle a Window and Textures
 		*/
 		class GRAPHICS_API GraphicsController {
 		private:

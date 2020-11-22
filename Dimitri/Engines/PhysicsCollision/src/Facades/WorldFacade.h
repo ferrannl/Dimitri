@@ -35,12 +35,12 @@ namespace PhysicsCollision {
 		class PHYSICSCOLLISION_API WorldFacade {
 		private:
 			/**
-			*	An instance of the b2World
+			* \brief An instance of the b2World
 			*/
 			std::shared_ptr<b2World> _world;
 
 			/**
-			*	A list of Shaped linked to bodies, which are in this World
+			* \brief A list of Shaped linked to bodies, which are in this World
 			*/
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
 

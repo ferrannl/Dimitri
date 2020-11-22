@@ -66,7 +66,7 @@ namespace Game {
 			std::shared_ptr<PhysicsCollision::Models::Shape> _shape;
 
 			/**
-			* \brief Initializes textures
+			* \brief Initializes Textures
 			*/
 			virtual void initialize_textures() = 0;
 		public:

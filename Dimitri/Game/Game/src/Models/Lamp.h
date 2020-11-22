@@ -21,7 +21,7 @@ namespace Game {
 			Lamp(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 
 			/**
-			* \brief Initializes textures
+			* \brief Initializes Textures
 			*/
 			void initialize_textures();
 		};

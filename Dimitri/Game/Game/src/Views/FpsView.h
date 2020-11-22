@@ -23,7 +23,7 @@ namespace Game {
 			FpsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* \brief Add the textures to the _graphics_controller
+			* \brief Add the Textures to the _graphics_controller
 			*/
 			void draw() override;
 		};

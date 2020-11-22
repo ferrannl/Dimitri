@@ -15,34 +15,34 @@ namespace Game {
 	namespace Views {
 		/**
 		* \class View
-		* \brief Class contains the methods to draw the view
+		* \brief Class contains the methods to draw the View
 		*/
 		class View {
 		private:
 			/**
-			*	If the View is currently being used or not
+			* \brief If the View is currently being used or not
 			*/
 			bool _active;
 
 			/**
-			*	If the View is currently visible
+			* \brief If the View is currently visible
 			*/
 			bool _visible;
 		protected:
 			/**
-			*	An instance of the GraphicsController to interact with graphics engine
+			* \brief An instance of the GraphicsController to interact with graphics engine
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
 
 			/**
-			*	A list of the Textures for current view
+			* \brief A list of the Textures for current View
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 		public:
 			View(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* \brief Add the textures to the _graphics_controller
+			* \brief Adds the Textures to the _graphics_controller
 			*/
 			virtual void draw();
 
@@ -57,7 +57,7 @@ namespace Game {
 			void add_textures(const std::vector<std::shared_ptr<Graphics::Models::Texture>>& textures);
 
 			/**
-			* \brief Returns if view is active
+			* \brief Returns if the View is active
 			*/
 			bool is_active() const;
 
@@ -67,7 +67,7 @@ namespace Game {
 			void set_active(bool open);
 
 			/**
-			* \brief Returns if the View is visible
+			* \brief Returns the visible state of the View
 			*/
 			virtual bool is_visible() const;
 
