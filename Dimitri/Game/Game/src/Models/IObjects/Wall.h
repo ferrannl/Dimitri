@@ -1,5 +1,5 @@
 #pragma once
-#include "IObject.h"
+#include "../Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -15,9 +15,9 @@ namespace Game {
 		* \class Wall
 		* \brief Class contains the data of the wall
 		*/
-		class Wall : public Game::Models::IObject {
+		class Wall : public Models::Object {
 		public:
-			Wall(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			Wall(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

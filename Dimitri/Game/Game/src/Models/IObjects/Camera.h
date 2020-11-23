@@ -1,6 +1,5 @@
 #pragma once
-#pragma once
-#include "IObject.h"
+#include "../Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -16,9 +15,9 @@ namespace Game {
 		* \class Lamp
 		* \brief Class contains the data of the Lamp
 		*/
-		class Lamp : public Game::Models::IObject {
+		class Camera : public Models::Object {
 		public:
-			Lamp(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			Camera(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

@@ -30,8 +30,10 @@ std::vector<std::vector<int>> DocumentHandler::Readers::CsvReader::Read(const st
 		// Extract each column name
 		while (std::getline(ss, colname, ',')) {
 
-			// Initialize and add <colname, int vector> pairs to result
-			retVal.push_back({ std::vector<int> {} });
+			// Initialize and add <colname, int vector> pairs to result, columname is pushed to the vector becuase the game levels do not have colnames
+			std::vector<int> vector = {};
+			vector.push_back(std::stoi(colname));
+			retVal.push_back({ vector });
 		}
 	}
 
@@ -52,8 +54,6 @@ std::vector<std::vector<int>> DocumentHandler::Readers::CsvReader::Read(const st
 			// Increment the column index
 			colIndex++;
 		}
-
-
 	}
 
 	file.close();

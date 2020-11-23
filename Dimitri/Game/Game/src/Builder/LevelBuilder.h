@@ -1,6 +1,7 @@
 #include <vector>
 #include "../Factory/ObjectFactory.h";
 #include "../Factory/InteractableFactory.h";
+#include "../Factory/UpdatableFactory.h";
 #include "../Factory/BackgroundFactory.h";
 #include "../Models/Level.h"
 
@@ -15,6 +16,8 @@ namespace Game {
 
 			Factories::ObjectFactory _objectFactory;
 			Factories::InteractableFactory _interactableFactory;
+			Factories::UpdatableFactory _updatableFactory;
+
 			Factories::BackgroundFactory _backgroundFactory;
 
 			void build_background(std::shared_ptr<Models::Level>& level);

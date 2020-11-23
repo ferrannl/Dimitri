@@ -7,7 +7,7 @@
 #include <src\Helpers\BasePathHelper.h>
 #include <src/Models/Sprite.h>
 #include <src\Models\Shape.h>
-#include "../Enums/StateEnum.cpp"
+#include "../../Enums/StateEnum.cpp"
 
 /**
 * \namespace Game
@@ -20,48 +20,54 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class IObject
+		* \class Object
 		* \brief Class contains the data for an entity in a level
 		*/
-		class IObject {
+		class Object {
 		protected:
 			/**
-			* \brief The X coordinate of the IObject
+			* \brief The X coordinate of the Object
 			*/
 			int _x;
 
 			/**
-			* \brief The Y coordinate of the IObject
+			* \brief The Y coordinate of the Object
 			*/
 			int _y;
 
 			/**
-			* \brief The Z coordinate of the IObject
+			* \brief The Z coordinate of the Object
 			*/
 			int _z;
 
 			/**
-			* \brief The height of the IObject
+			* \brief The height of the Object
 			*/
 			int _height;
 
 			/**
-			* \brief The width of the IObject
+			* \brief The width of the Object
 			*/
 			int _width;
 
-			/**
-			* \brief The state of the IObject
-			*/
-			Game::Enums::StateEnum _state;
 
 			/**
-			* \brief The Textures of the IObject saved by state
+			* \brief The width of the Object
 			*/
-			std::map<Game::Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
+			Graphics::Models::Center _center;
 
 			/**
-			* \brief Shape of the IObject
+			* \brief The state of the Object
+			*/
+			Enums::StateEnum _state;
+
+			/**
+			* \brief The Textures of the Object saved by state
+			*/
+			std::map<Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
+
+			/**
+			* \brief Shape of the Object
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> _shape;
 
@@ -70,7 +76,7 @@ namespace Game {
 			*/
 			virtual void initialize_textures() = 0;
 		public:
-			IObject(const int x, const int y, const int z, const int height, const int width, const Game::Enums::StateEnum state);
+			Object(const int x, const int y, const int z, const int height, const int width, const Enums::StateEnum state, const Graphics::Models::Center center);
 
 			/**
 			* \brief Returns the Texture based on state
@@ -113,37 +119,37 @@ namespace Game {
 			void set_z(int value);
 
 			/**
-			* \brief Sets state of the IObject
+			* \brief Sets state of the Object
 			*/
-			void set_state(const Game::Enums::StateEnum& state);
+			void set_state(const Enums::StateEnum& state);
 
 			/**
-			* \brief Returns Shape of the IObject
+			* \brief Returns Shape of the Object
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
 
 			/**
-			* \brief Creates the shape for the IObject
+			* \brief Creates the shape for the Object
 			*/
 			void create_shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
 
 			/**
-			* \brief Sets shape of the IObject
+			* \brief Sets shape of the Object
 			*/
 			void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 
 			/**
 			* \brief Adds Texture
 			*/
-			void add_texture(const Game::Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(const Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
-			* \brief Returns height of the IObject
+			* \brief Returns height of the Object
 			*/
 			int get_height() const;
 
 			/**
-			* \brief Returns width of the IObject
+			* \brief Returns width of the Object
 			*/
 			int get_width() const;
 

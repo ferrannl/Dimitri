@@ -21,7 +21,10 @@ namespace Game {
 			CAR,
 			BG,
 			BG_TOP1,
-			BG_TOP2
+			BG_TOP2,
+			SPIKE,
+			CAM_VISION,
+			CAMERA
 		};
 	}
 }

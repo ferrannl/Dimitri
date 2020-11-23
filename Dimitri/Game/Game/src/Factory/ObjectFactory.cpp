@@ -1,31 +1,23 @@
 #include "ObjectFactory.h"
-#include "../Models/Wall.h"
-#include "../Models/Player.h"
-#include "../Models/Switch.h"
-#include "../Models/Lamp.h"
-#include "../Models/LightBeam.h"
+#include "../Models/IObjects/Wall.h"
+#include "../Models/IObjects/Lamp.h"
+#include "../Models/IObjects/Camera.h"
 
 using namespace Game;
 
-std::shared_ptr<Models::IObject> Factories::ObjectFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
+std::shared_ptr<Models::Object> Factories::ObjectFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
 {
-	std::shared_ptr<Models::IObject> instance;
+	std::shared_ptr<Models::Object> instance;
 
 	switch (type) {
 	case Enums::TypeEnum::FLOOR:
-		instance.reset(new Models::Wall{ x,y,z,height,width,state });
-		break;
-	case Enums::TypeEnum::LEVER:
-		instance.reset(new Models::Switch{ x,y,z,height,width,state });
-		break;
-	case Enums::TypeEnum::PLAYER:
-		instance.reset(new Models::Player{ x, y, z, height, width, state });
+		instance.reset(new Models::Wall{ x,y,z,height,width,state , Graphics::Models::Center{0,0} });
 		break;
 	case Enums::TypeEnum::LAMP:
-		instance.reset(new Models::Lamp{x, y, z, height, width, state});
+		instance.reset(new Models::Lamp{x, y, z, height, width, state, Graphics::Models::Center{0,0} });
 		break;
-	case Enums::TypeEnum::BEAM:
-		instance.reset(new Models::LightBeam{ x,y,z,height,width,state });
+	case Enums::TypeEnum::CAMERA:
+		instance.reset(new Models::Camera{ x, y, z, height, width, state , Graphics::Models::Center{0,0} });
 		break;
 	}
 

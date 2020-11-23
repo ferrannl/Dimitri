@@ -1,5 +1,5 @@
 #pragma once
-#include "IObject.h"
+#include "Object.h"
 
 /**
 * \namespace Game
@@ -17,16 +17,16 @@ namespace Game {
 	namespace Models {
 		/**
 		* \class IInteractable
-		* \brief Class contains the methods to be able to interact with an IObject
+		* \brief Class contains the methods to be able to interact with an Object
 		*/
-		class IInteractable : public Game::Models::IObject{
+		class Updatable : public Object {
 		public:
-			IInteractable(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
-			
+			Updatable(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+
 			/**
 			* \brief Interact with this object
 			*/
-			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
+			virtual void update(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }

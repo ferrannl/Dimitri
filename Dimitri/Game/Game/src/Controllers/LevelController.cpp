@@ -46,14 +46,14 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_E:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			for (std::shared_ptr<Models::IInteractable> interactable : _level->get_interactables())
+			for (std::shared_ptr<Models::Interactable> interactable : _level->get_interactables())
 			{
 				if (_level->get_player()->get_shape()->check_square_collision(interactable->get_shape()))
 				{
 					interactable->interact(this);
 				}
 			}
-			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
+			for (std::shared_ptr<Models::Object> light: _level->get_lights())
 			{
 				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
 				{
@@ -118,7 +118,7 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 
 void Game::Controllers::LevelController::turn_off_light(const int x)
 {
-	for (std::shared_ptr<Models::IObject> l : _level->get_lights()) {
+	for (std::shared_ptr<Models::Object> l : _level->get_lights()) {
 		if (l->get_x() == x) {
 			l->get_texture()->set_visible(false);
 		}
@@ -130,7 +130,8 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
-		for (std::shared_ptr<Models::IObject> walls : _level->get_tiles())
+
+		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
 		{
 			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
 			{
@@ -138,6 +139,12 @@ void  Game::Controllers::LevelController::simulate() {
 				break;
 			}
 		}
+
+		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
+		{
+			object->update(this);
+		}
+
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }

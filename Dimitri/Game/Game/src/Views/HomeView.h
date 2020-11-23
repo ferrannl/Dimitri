@@ -1,7 +1,7 @@
 #pragma once
 #include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
-#include "../Models/IObject.h"
+#include "../Models/Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -44,12 +44,12 @@ namespace Game {
 			/**
 			* \brief The play button
 			*/
-			std::shared_ptr<Game::Models::IObject> _button_play_game;
+			std::shared_ptr<Game::Models::Object> _button_play_game;
 
 			/**
 			* \brief The exit button
 			*/
-			std::shared_ptr<Game::Models::IObject> _button_exit_game;
+			std::shared_ptr<Game::Models::Object> _button_exit_game;
 		};
 	}
 }

@@ -1,8 +1,9 @@
 #include "InteractableFactory.h"
-#include "../Models/Wall.h"
-#include "../Models/Player.h"
-#include "../Models/Switch.h"
-#include "../Models/Car.h"
+#include "../Models/IObjects/Wall.h"
+#include "../Models/Updatables/Player.h"
+#include "../Models/Interactable/Switch.h"
+#include "../Models/Interactable/Car.h"
+#include "../Models/Updatables/Spike.h"
 #include "../Enums/TypeEnum.cpp"
 
 using namespace Game;
@@ -12,15 +13,15 @@ Game::Factories::InteractableFactory::InteractableFactory()
 	_lights = { 3560, 3240, 1600 };
 }
 
-std::shared_ptr<Models::IInteractable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
 {
-	std::shared_ptr<Models::IInteractable> instance;
+	std::shared_ptr<Models::Interactable> instance;
 	Models::Switch* lever;
 	int last;
 
 	switch (type) {
 	case Enums::TypeEnum::LEVER:
-		lever = new Models::Switch{ x,y,z,height,width, state };
+		lever = new Models::Switch{ x,y,z,height,width, state, Graphics::Models::Center{0,0} };
 		last = _lights.back();
 		lever->set_light(last);
 		_lights.pop_back();
@@ -28,7 +29,7 @@ std::shared_ptr<Models::IInteractable> Factories::InteractableFactory::create(En
 		instance.reset(lever);
 		break;
 	case Enums::TypeEnum::CAR:
-		instance.reset(new Models::Car{ x,y,z,height,width, state });
+		instance.reset(new Models::Car{ x,y,z,height,width, state, Graphics::Models::Center{0,0} });
 		break;
 	}
 

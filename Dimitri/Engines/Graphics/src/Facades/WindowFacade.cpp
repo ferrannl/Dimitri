@@ -83,7 +83,8 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 
 			//Render texture to screen
 			try {
-				SDL_Point center = { 0,0 };
+				SDL_Point center = { texture->get_center().x, texture->get_center().y };
+
 				int retVal = SDL_RenderCopyEx(_renderer.get(), texture->get_texture_facade()->get_texture(), NULL, &rect, texture->get_angle(), &center, _flip_enum_adapter.get_sdl_flip(texture->get_flip_status()));
 
 				if (retVal < NULL) {

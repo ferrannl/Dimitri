@@ -1,5 +1,5 @@
 #pragma once
-#include "IObject.h"
+#include "../Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -15,12 +15,12 @@ namespace Game {
 		* \class Player
 		* \brief Class contains the data of the Player
 		*/
-		class Player : public Game::Models::IObject{
+		class Player : public Models::Object{
 		private: 
 			const int _max_amount_of_jumps = 2;
 			int _jumps;
 		public:
-			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			Player(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

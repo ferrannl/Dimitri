@@ -1,8 +1,8 @@
 #include "Texture.h"
 using namespace Graphics;
 
-Models::Texture::Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible) :
-	_x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _angle{ angle }, _path{ path }, _facade{ nullptr }, _flipstatus{ Enums::FlipEnum::NONE }, _visible{ visible } {}
+Models::Texture::Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center) :
+	_x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _angle{ angle }, _path{ path }, _facade{ nullptr }, _flipstatus{ Enums::FlipEnum::NONE }, _visible{ visible }, _center{center} {}
 
 int Models::Texture::get_converted_y(int height) const
 {
@@ -37,6 +37,11 @@ int Models::Texture::get_height() const
 float Models::Texture::get_angle() const
 {
 	return _angle;
+}
+
+Models::Center Graphics::Models::Texture::get_center() const
+{
+	return _center;
 }
 
 bool Models::Texture::is_visible() const
@@ -97,6 +102,11 @@ void Models::Texture::set_flip_status(const Enums::FlipEnum flipstatus)
 void Models::Texture::set_visible(const bool visibility)
 {
 	_visible = visibility;
+}
+
+void Graphics::Models::Texture::set_center(const Models::Center center)
+{
+	_center = center;
 }
 
 void Models::Texture::set_facade(const std::shared_ptr<Facades::TextureFacade>& facade)

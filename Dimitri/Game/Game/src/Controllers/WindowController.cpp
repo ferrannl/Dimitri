@@ -82,7 +82,7 @@ namespace Game {
 		_graphics_controller->set_camera_pos(x, y);
 	}
 
-	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object)
+	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::Object> object)
 	{
 		int x = (object->get_x() + object->get_width() / 2) - get_window_width() / 2;
 		int y = (object->get_y() + object->get_height() / 2) - get_window_height() / 2;

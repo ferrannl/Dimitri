@@ -4,15 +4,16 @@
 #include <chrono>
 #include <thread>
 #include <src\Models\Texture.h>
-#include "../Models/IObject.h"
+#include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
 #include "../Enums/TypeEnum.cpp"
-#include "Wall.h"
-#include "Player.h"
+#include "./IObjects/Wall.h"
+#include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
-#include "Switch.h"
-#include "LightBeam.h"
+#include "./Interactable/Switch.h"
+#include "./Updatables/LightBeam.h"
 #include "Lamp.h"
+#include "./Abstract/Updatable.h"
 
 /**
 * \namespace Game
@@ -26,7 +27,7 @@ namespace Game {
 	namespace Models {
 		/**
 		* \class Level
-		* \brief Class contains the methods to interact with the IObjects
+		* \brief Class contains the methods to interact with the Objects
 		*/
 		class Level {
 		private:
@@ -53,12 +54,12 @@ namespace Game {
 			/**
 			* \brief List of tiles in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
 
 			/**
 			* \brief List of light in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _lights;
+			std::vector<std::shared_ptr<Game::Models::Object>> _lights;
 
 			/**
 			* \brief List of players in the Level
@@ -71,9 +72,14 @@ namespace Game {
 			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _backgrounds;
 
 			/**
+			* \brief List of interactables in the Level
+			*/
+			std::vector<std::shared_ptr<Models::Updatable>> _updatables;
+
+			/**
 			* \brief Texture of the background
 			*/
-			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
+			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
 			/**
 			* \brief The height of the Level
@@ -124,7 +130,7 @@ namespace Game {
 			void load_objects();
 
 			/**
-			* \brief Add the Shapes of the IObjects in _shapes, _players, _lights, _tiles and _interactables in the physics collision engine
+			* \brief Add the Shapes of the Objects in _shapes, _players, _lights, _tiles and _interactables in the physics collision engine
 			*/
 			void add_shapes();
 
@@ -136,7 +142,7 @@ namespace Game {
 			/**
 			* \brief Returns list of all Lights in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> get_lights() const;
+			std::vector<std::shared_ptr<Game::Models::Object>> get_lights() const;
 
 			/**
 			* \brief Returns the Player
@@ -146,12 +152,17 @@ namespace Game {
 			/**
 			*	\brief Returns the tiles
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> get_tiles() const;		
+			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;		
 
 			/**
 			* \brief Returns the interactables
 			*/
-			std::vector<std::shared_ptr<Game::Models::IInteractable>> get_interactables() const;
+			std::vector<std::shared_ptr<Game::Models::Interactable>> get_interactables() const;
+
+			/**
+			* \brief Returns the interactables
+			*/
+			std::vector<std::shared_ptr<Game::Models::Updatable>> get_updatables() const;
 
 			/**
 			* \brief Returns the PhysicsCollisionController
@@ -161,7 +172,7 @@ namespace Game {
 			/**
 			*	Returns physics collision controller
 			*/
-			void add_object(std::shared_ptr<Game::Models::IObject> tile);
+			void add_object(std::shared_ptr<Game::Models::Object> tile);
 
 			/**
 			*	Returns physics collision controller
@@ -171,7 +182,12 @@ namespace Game {
 			/**
 			*	Returns physics collision controller
 			*/
-			void add_interactable(std::shared_ptr<Game::Models::IInteractable> tile);
+			void add_interactable(std::shared_ptr<Game::Models::Interactable> tile);
+
+			/**
+			*	Returns physics collision controller
+			*/
+			void add_updatable(std::shared_ptr<Game::Models::Updatable> tile);
 
 			/**
 			*	Adds background to background list
@@ -181,7 +197,7 @@ namespace Game {
 			/**
 			*	Adds light to lights list
 			*/
-			void add_light(std::shared_ptr<Game::Models::IObject> tile);
+			void add_light(std::shared_ptr<Game::Models::Object> tile);
 
 			/**
 			*	Adds shape to the shape list

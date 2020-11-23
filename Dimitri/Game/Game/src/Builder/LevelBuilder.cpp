@@ -15,7 +15,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
     build_background(level);
     build_borders(level);
 
-    std::vector<std::shared_ptr<Models::IObject>> lights = {};
+    std::vector<std::shared_ptr<Models::Object>> lights = {};
 
     for (std::vector<int> vector : objects) {
         for (int object : vector) {
@@ -31,13 +31,13 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
                 break;
             case 3:
                 level->add_object(_objectFactory.create(Enums::TypeEnum::LAMP, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
-                level->add_light(_objectFactory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::StateEnum::HORIZONTAL));
+                level->add_light(_updatableFactory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::StateEnum::HORIZONTAL));
                 break;
             case 4:
                 level->add_interactable(_interactableFactory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::LEFT));
                 break;
             case 5:
-                level->add_player(std::make_shared<Models::Player>( x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::StateEnum::RIGHT ));
+                level->add_player(std::make_shared<Models::Player>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::StateEnum::RIGHT, Graphics::Models::Center{ 0,0 }));
                 break;
             case 6:
                 level->add_object(_objectFactory.create(Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::VERTICAL));
@@ -46,9 +46,23 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
                 level->add_interactable(_interactableFactory.create(Enums::TypeEnum::CAR, x, y, 1, TILE_SIZE*2, TILE_SIZE*4, Enums::StateEnum::VERTICAL));
                 break;
             case 11:
-                lights.push_back(_objectFactory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE*5, Enums::StateEnum::HORIZONTAL));
+                lights.push_back(_updatableFactory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE*5, Enums::StateEnum::HORIZONTAL));
+                break;
+            case 47:
+                lights.push_back(_updatableFactory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
+                break;
+            case 16:
+                level->add_object(_objectFactory.create(Enums::TypeEnum::CAMERA, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
+                level->add_updatable(_updatableFactory.create(Enums::TypeEnum::CAM_VISION, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::StateEnum::HORIZONTAL));
+                break;
+            case 52:
+                level->add_updatable(_updatableFactory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::StateEnum::HORIZONTAL));
+                break;
+            case 17:
+                // add enemy
                 break;
             }
+
             y -= TILE_SIZE;
         }
 

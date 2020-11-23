@@ -1,6 +1,6 @@
 #include "StartButton.h"
 
-Game::Models::Buttons::StartButton::StartButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager) : Game::Models::Button(x,y,z,height,width,state,scene_height)
+Game::Models::Buttons::StartButton::StartButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager, Graphics::Models::Center center) : Game::Models::Button(x,y,z,height,width,state,scene_height,center)
 {
 	_level_manager = level_manager;
 }
