@@ -2,6 +2,7 @@
 #include "../Facades/WindowFacade.h"
 #include "Text.h"
 #include <tuple>
+#include <mutex>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -29,6 +30,11 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API Window {
 		private:
+			/**
+			* \brief The mutex of the Window
+			*/
+			std::mutex _mutex;
+
 			/**
 			* \brief The height of the Window
 			*/
@@ -60,6 +66,11 @@ namespace Graphics {
 			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
 		public:
 			Window(const std::string& title, int height, int width);
+
+			/**
+			* \brief Returns the mutex of the Window
+			*/
+			std::mutex& get_mutex();
 
 			/**
 			* \brief Calls methods on the WindowFacade to create the everything needed to render a window
