@@ -42,9 +42,19 @@ namespace Game {
 			View(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* \brief Adds the Textures to the _graphics_controller
+			* \brief Updates the textures
 			*/
-			virtual void draw();
+			virtual void update();
+
+			/**
+			* \brief Adds the textures of the View to the Window in the GraphicsController
+			*/
+			void open();
+
+			/**
+			* \brief Removes the textures of the View to the Window in the GraphicsController
+			*/
+			virtual void close();
 
 			/**
 			* \brief Sets _textures

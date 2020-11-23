@@ -26,7 +26,7 @@ namespace Game {
 		return true;
 	}
 
-	void Views::GameOverLevelView::draw()
+	void Views::GameOverLevelView::update()
 	{
 		std::tuple<int, int> camera_pos = _graphics_controller.get()->get_camera_pos();
 
@@ -37,6 +37,5 @@ namespace Game {
 			t->set_x((window_width / 2 - t->get_width() / 2) + std::get<0>(camera_pos));
 			t->set_y((window_height / 2 - t->get_height() / 2) + std::get<1>(camera_pos));
 		}
-		View::draw();
 	}
 }

@@ -33,9 +33,9 @@ namespace Game {
 			bool is_visible() const override;
 
 			/**
-			* \brief Adds the Textures to the _graphics_controller
+			* \brief Updates the textures
 			*/
-			void draw() override;
+			void update() override;
 		};
 	}
 }
