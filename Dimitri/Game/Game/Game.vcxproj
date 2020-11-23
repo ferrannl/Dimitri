@@ -198,7 +198,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClInclude Include="src\Builder\LevelBuilder.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
-    <ClInclude Include="src\interfaces\IFactory.h" />
+    <ClInclude Include="src\Interfaces\IFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />

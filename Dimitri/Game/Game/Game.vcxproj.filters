@@ -1,191 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src\Controllers\AudioController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\CreditsView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Buttons\ExitButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\FpsView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\GameOverLevelView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\HelpView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\HomeController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\HomeView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\IInteractable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\InputController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Events\InputEvent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\IObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Lamp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Level.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\LevelController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\LevelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enums\LevelStateEnum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\LevelView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\LightBeam.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\MainController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\PauseLevelView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Buttons\StartButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enums\StateEnum.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Switch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\View.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Wall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Controllers\WindowController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\WinLevelView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Builder\LevelBuilder.cpp" />
+    <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Managers\LevelManager.cpp" />
+    <ClCompile Include="src\Models\Button.cpp" />
+    <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
+    <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
+    <ClCompile Include="src\Enums\StateEnum.cpp" />
+    <ClCompile Include="src\Enums\TypeEnum.cpp" />
+    <ClCompile Include="src\Factory\BackgroundFactory.cpp" />
+    <ClCompile Include="src\Factory\InteractableFactory.cpp" />
+    <ClCompile Include="src\Factory\ObjectFactory.cpp" />
+    <ClCompile Include="src\Models\Car.cpp" />
+    <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
+    <ClCompile Include="src\Models\IInteractable.cpp" />
+    <ClCompile Include="src\Models\Lamp.cpp" />
+    <ClCompile Include="src\Models\LightBeam.cpp" />
+    <ClCompile Include="src\Models\Switch.cpp" />
+    <ClCompile Include="src\Views\CreditsView.cpp" />
+    <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Controllers\InputController.cpp" />
+    <ClCompile Include="src\Controllers\LevelController.cpp" />
+    <ClCompile Include="src\Controllers\MainController.cpp" />
+    <ClCompile Include="src\Controllers\WindowController.cpp" />
+    <ClCompile Include="src\Events\InputEvent.cpp" />
+    <ClCompile Include="src\Models\IObject.cpp" />
+    <ClCompile Include="src\Models\Level.cpp" />
+    <ClCompile Include="src\Models\Player.cpp" />
+    <ClCompile Include="src\Models\Wall.cpp" />
+    <ClCompile Include="src\Views\FpsView.cpp" />
+    <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\HomeView.cpp" />
+    <ClCompile Include="src\Views\GameOverLevelView.cpp" />
+    <ClCompile Include="src\Views\LevelView.cpp" />
+    <ClCompile Include="src\Views\PauseLevelView.cpp" />
+    <ClCompile Include="src\Views\View.cpp" />
+    <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Controllers\AudioController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\CreditsView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Buttons\ExitButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\FpsView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\GameOverLevelView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\HelpView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\HomeController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\HomeView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\IInteractable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\InputController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\InputEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\IObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Lamp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Level.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\LevelController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\LevelManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\LevelView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\LightBeam.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\MainController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\PauseLevelView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\PhysicsCollisionController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Buttons\StartButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Switch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\View.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Wall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Controllers\WindowController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\WinLevelView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Managers\LevelManager.h" />
+    <ClInclude Include="src\Models\Button.h" />
+    <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
+    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Models\Buttons\StartButton.h" />
+    <ClInclude Include="src\Models\IInteractable.h" />
+    <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
@@ -197,29 +60,19 @@
     <ClInclude Include="src\Models\Level.h" />
     <ClInclude Include="src\Models\Player.h" />
     <ClInclude Include="src\Models\Wall.h" />
-    <ClInclude Include="src\Views\LevelView.h" />
-    <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
-    <ClInclude Include="src\Models\Switch.h" />
-    <ClInclude Include="src\Models\IInteractable.h" />
     <ClInclude Include="src\Views\FpsView.h" />
-    <ClInclude Include="src\Views\View.h" />
-    <ClInclude Include="src\Models\LightBeam.h" />
-    <ClInclude Include="src\Models\Lamp.h" />
     <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\HomeView.h" />
-    <ClInclude Include="src\Models\Button.h" />
-    <ClInclude Include="src\Controllers\HomeController.h" />
-    <ClInclude Include="src\Models\Buttons\StartButton.h" />
-    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
-    <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
-    <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
+    <ClInclude Include="src\Views\View.h" />
+    <ClInclude Include="src\Views\LevelView.h" />
+    <ClInclude Include="src\Views\WinLevelView.h" />
+    <ClInclude Include="src\Interfaces\IFactory.h" />
     <ClInclude Include="src\Models\Car.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Builder\LevelBuilder.h" />
-    <ClInclude Include="src\interfaces\IFactory.h" />
   </ItemGroup>
 </Project>

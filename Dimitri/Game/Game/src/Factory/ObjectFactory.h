@@ -1,6 +1,6 @@
 #pragma once
 #include "../Models/IObject.h"
-#include "../interfaces/IFactory.h"
+#include "../Interfaces/IFactory.h"
 
 namespace Game {
 	namespace Factories {
