@@ -1,4 +1,5 @@
 #include "LightBeam.h"
+#include "../../Controllers/LevelController.h"
 
 using namespace Game;
 
@@ -16,4 +17,7 @@ void Models::LightBeam::initialize_textures()
 
 void Game::Models::LightBeam::update(Controllers::LevelController* ctrl)
 {
+	if (_shape->check_polygon_collision(ctrl->get_level()->get_player()->get_shape())) {
+		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	}
 }

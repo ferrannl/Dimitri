@@ -3,6 +3,7 @@ using namespace PhysicsCollision;
 
 Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
+	_angle = 0;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
 
@@ -41,6 +42,11 @@ void Models::Shape::set_width(float width)
 	_width = width;
 }
 
+void PhysicsCollision::Models::Shape::set_angle(float angle)
+{
+	_angle = angle;
+}
+
 void Models::Shape::set_height(float height)
 {
 	_height = height;
@@ -68,7 +74,7 @@ float Models::Shape::get_height()const
 
 float Models::Shape::get_angle()const
 {
-	return 0;
+	return _angle;
 }
 
 bool Models::Shape::get_is_dynamic()const
@@ -116,10 +122,9 @@ bool Models::Shape::check_bottom_collision(std::shared_ptr<Models::Shape> shape)
 bool Models::Shape::check_polygon_collision(std::shared_ptr<Models::Shape> shape)
 {
 	int x = shape->get_x() + (shape->get_width() / 5);
-
+	
 	return get_x() - 1 <= x + shape->get_width() &&
 		get_x() + get_width() + 1 >= x &&
 		get_y() - 1 <= shape->get_y() + shape->get_height() &&
 		get_y() + get_height() + 1 >= shape->get_y();
 }
-

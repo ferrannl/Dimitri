@@ -40,6 +40,11 @@ namespace Game {
 			std::thread _simulation_thread;
 
 			/**
+			* \brief An instance of the thread
+			*/
+			std::thread _objects_thread;
+
+			/**
 			* \brief Keeps track of simulation thread state
 			*/
 			Enums::LevelStateEnum _state;
@@ -107,6 +112,8 @@ namespace Game {
 			void set_state(Enums::LevelStateEnum state);
 
 			void turn_off_light(const int x);
+
+			void simulate_objects();
 		};
 	}
 }

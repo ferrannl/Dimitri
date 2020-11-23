@@ -105,11 +105,13 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 		if (old_state == Enums::LevelStateEnum::ACTIVE) {
 			// active -> pause/win/game_over/inactive
 			_simulation_thread.join();
+			_objects_thread.detach();
 			_level->stop_music("level1");
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive -> active
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
+			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
 		}
 		notify(_state);
@@ -140,12 +142,19 @@ void  Game::Controllers::LevelController::simulate() {
 			}
 		}
 
+		_window_controller->set_camera_pos_based_on(_level->get_player());
+	}
+}
+
+void  Game::Controllers::LevelController::simulate_objects() {
+	while (_state == Enums::LevelStateEnum::ACTIVE) {
+		sleep_for(1ms);
+
+
 		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
 		{
 			object->update(this);
 		}
-
-		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
 

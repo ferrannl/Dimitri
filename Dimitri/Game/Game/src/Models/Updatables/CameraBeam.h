@@ -30,6 +30,7 @@ namespace Game {
 			* \brief Updates the object when interacted with
 			*/
 			void update(Controllers::LevelController* ctrl = NULL);
+			bool checkcollision(std::shared_ptr<Models::Object> object);
 		};
 	}
 }

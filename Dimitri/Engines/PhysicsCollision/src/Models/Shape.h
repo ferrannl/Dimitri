@@ -3,6 +3,9 @@
 #include <iostream>
 #include "../Enums/ShapeEnum.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
 #define PHYSICSCOLLISION_API __declspec(dllexport)
@@ -29,6 +32,8 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
+			const double DEGREES_TO_RADIANS = (double)(M_PI / 180);
+
 			/**
 			* \brief X position of the Shape
 			*/
@@ -48,6 +53,11 @@ namespace PhysicsCollision {
 			* \brief Height of the Shape
 			*/
 			int _height;
+
+			/**
+			* \brief Height of the Shape
+			*/
+			float _angle;
 
 			/**
 			* \brief If the Shape is dynamic
@@ -105,6 +115,11 @@ namespace PhysicsCollision {
 			* \brief Set the width of the Shape
 			*/
 			void set_width(float width);
+
+			/**
+			* \brief Set the width of the Shape
+			*/
+			void set_angle(float angle);
 
 			/**
 			* \brief Set the height of the Shape

@@ -19,5 +19,5 @@ void Models::Spike::initialize_textures()
 void Game::Models::Spike::update(Controllers::LevelController* ctrl)
 {
 	if (ctrl->get_level()->get_player()->get_y() <= (_y + _height))
-		ctrl->notify(Enums::LevelStateEnum::GAME_OVER);
+		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
 }

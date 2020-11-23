@@ -58,6 +58,7 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 	}
 }
 
+
 void Facades::WorldFacade::simulate() const
 {
 	float timeStep = 1.0f / 60.0f;
@@ -70,7 +71,7 @@ void Facades::WorldFacade::simulate() const
 		std::shared_ptr<Models::Shape> shape = it.first;
 		b2Body* body = it.second;
 
-		shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
-		shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
+		//shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
+		//shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
 	}
 }
