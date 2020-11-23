@@ -63,11 +63,20 @@ void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Model
 
 void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Texture>> textures)
 {
+	int min_x = std::get<0>(_camera_pos);
+	int min_y = std::get<1>(_camera_pos);
+	int max_x = _window_width + std::get<0>(_camera_pos);
+	int max_y = _window_height + std::get<1>(_camera_pos);
+
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
-		if (texture->is_visible()) {
+		if (texture->is_visible() &&
+			texture->get_x() + texture->get_width() >= min_x &&
+			texture->get_x() <= max_x &&
+			texture->get_converted_y(std::get<1>(_scene_size)) + texture->get_height() >= min_y &&
+			texture->get_converted_y(std::get<1>(_scene_size)) <= max_y) {
 			ordered_textures[texture->get_z()].push_back(texture);
 		}
 	}
@@ -112,7 +121,7 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 	int _scene_width = std::get<0>(_scene_size);
 	int _scene_height = std::get<1>(_scene_size);
 	if (x + _window_width < _scene_width && x >= 0) {
-		
+
 		std::get<0>(_camera_pos) = x;
 	}
 	else if (x + _window_width > _scene_width) {
@@ -121,7 +130,7 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 	else if (x < 0) {
 		std::get<0>(_camera_pos) = 0;
 	}
-	
+
 	int converted_y = _scene_height - (_window_height + y);
 	if (converted_y + _window_height < _scene_height && converted_y >= 0) {
 		std::get<1>(_camera_pos) = converted_y;

@@ -42,8 +42,8 @@ void Models::Window::destroy()
 
 void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture>& texture)
 {
-	_textures.push_back(texture);
 	_facade->create_texture(texture, get_matching_texture(texture));
+	_textures.push_back(texture);
 }
 
 void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& texture)

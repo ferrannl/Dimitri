@@ -2,6 +2,7 @@
 
 #undef main
 int main() {
+
 	try {
 		auto controller = std::make_shared<Game::Controllers::MainController>();
 		controller->run();

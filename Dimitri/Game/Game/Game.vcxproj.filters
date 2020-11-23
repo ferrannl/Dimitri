@@ -74,5 +74,7 @@
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Builder\LevelBuilder.h" />
+    <ClInclude Include="src\Models\Lamp.h" />
+    <ClInclude Include="src\Models\LightBeam.h" />
   </ItemGroup>
 </Project>
