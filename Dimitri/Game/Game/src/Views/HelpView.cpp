@@ -25,13 +25,15 @@ namespace Game {
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("A", color, bg_width / 2 - 220, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("D", color, bg_width / 2 - 70, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
 
-		//int start_y = 425;
-		//int step = 50;
-		//for (int i = 0; i < gameplay.size(); i++) {
-		//	int width = gameplay[i].length() * 15;
-		//	int x = (window_width / 4) * 3 - width / 2;
-		//	_textures.push_back(std::make_shared<Graphics::Models::Text>(gameplay[i], color, x, start_y - step * i, 10, 50, width, 0, path, true));
-		//}
+		color = { 255, 255, 255 };
+
+		int start_y = 425;
+		int step = 50;
+		for (int i = 0; i < gameplay.size(); i++) {
+			int width = gameplay[i].length() * 15;
+			int x = (bg_width / 4) * 3 - width / 2;
+			_textures.push_back(std::make_shared<Graphics::Models::Text>(gameplay[i], color, x + 75, start_y - step * i, 10, 50, width, 0, path, true));
+		}
 	}
 
 	bool Views::HelpView::is_visible() const
