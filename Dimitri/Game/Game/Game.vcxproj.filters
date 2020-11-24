@@ -95,6 +95,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Views\HighscoreView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Models\Buttons\HighscoreButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">
@@ -182,6 +188,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\WinLevelView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Views\HighscoreView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Buttons\HighscoreButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
