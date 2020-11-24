@@ -17,6 +17,7 @@ namespace Game {
 		* \brief Class contains the methods to get and check the personal best of a player
 		*/
 		class HighscoreView : public View {
+		public:
 			HighscoreView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**

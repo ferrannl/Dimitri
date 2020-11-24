@@ -24,6 +24,7 @@ namespace Game {
 		_views.insert({ "win_level", std::make_unique<Views::WinLevelView>(_graphics_controller) });
 		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
+		_views.insert({ "highscore", std::make_unique<Views::HighscoreView>(_graphics_controller) });
 		open_view("home");
 		toggle_view_visibility("home");
 

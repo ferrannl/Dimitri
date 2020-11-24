@@ -3,6 +3,7 @@
 #include "../Events/InputEvent.h"
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
+#include "../Models/Buttons/HighscoreButton.h"
 #include "../Models/Buttons/ExitButton.h"
 #include "../Controllers/AudioController.h"
 #include <chrono>

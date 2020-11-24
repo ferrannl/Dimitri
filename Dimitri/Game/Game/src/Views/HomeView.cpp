@@ -14,6 +14,7 @@ namespace Game {
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		std::shared_ptr<Graphics::Models::Text> title = std::make_shared<Graphics::Models::Text>("DIMITRI", color, window_width / 2 - 100, (window_height / 4 * 3), 10, 80, 200, 0, path, true);
 		std::shared_ptr<Graphics::Models::Text> subTitle = std::make_shared<Graphics::Models::Text>("De stealth game van 2020!", color, window_width / 2 - 175, (window_height / 4 * 3) - 50, 1, 50, 350, 0, path, true);
+		std::shared_ptr<Graphics::Models::Text> highscore = std::make_shared<Graphics::Models::Text>("Highscore", color, window_width - 120, window_height - 70, 1, 50, 90, 0, path, true);
 		std::shared_ptr<Graphics::Models::Text> play = std::make_shared<Graphics::Models::Text>("Play", color, window_width / 2 - 25, (window_height / 4 * 3) - 150, 1, 50, 50, 0, path, true);
 		std::shared_ptr<Graphics::Models::Text> exit = std::make_shared<Graphics::Models::Text>("Exit", color, window_width / 2 - 25, (window_height / 4 * 3) - 225, 1, 50, 50, 0, path, true);
 		_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
@@ -28,6 +29,8 @@ namespace Game {
 		_textures.push_back(play);
 		exit->set_visible(true);
 		_textures.push_back(exit);
+		highscore->set_visible(true);
+		_textures.push_back(highscore);
 	}
 
 	void Views::HomeView::draw()

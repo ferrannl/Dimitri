@@ -29,7 +29,7 @@ namespace Game {
 				* \brief Updates the object when interacted with
 				*/
 				void interact();
-			}
+			};
 		}
 	}
 }
