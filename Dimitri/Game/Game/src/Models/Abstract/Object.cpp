@@ -2,13 +2,13 @@
 
 using namespace Game;
 
-Models::Object::Object(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _state{ state }, _center{ center }
+Models::Object::Object(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _direction{ state }, _center{ center }
 {
 }
 
 std::shared_ptr<Graphics::Models::Texture> Models::Object::get_texture()
 {
-	std::shared_ptr<Graphics::Models::Texture> texture = _textures[_state];
+	std::shared_ptr<Graphics::Models::Texture> texture = _textures[_animatestate];
 	texture->set_x(this->get_x());
 	texture->set_y(this->get_y());
 	texture->set_z(this->get_z());
@@ -20,7 +20,7 @@ std::shared_ptr<Graphics::Models::Texture> Models::Object::get_texture()
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Models::Object::get_all_textures()
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> value = std::vector<std::shared_ptr<Graphics::Models::Texture>>();
-	for (std::map<Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>>::iterator it = _textures.begin(); it != _textures.end(); ++it) {
+	for (std::map<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>>::iterator it = _textures.begin(); it != _textures.end(); ++it) {
 		value.push_back(it->second);
 	}
 	return value;
@@ -34,7 +34,7 @@ int Models::Object::get_x() const
 void Models::Object::set_x(int value)
 {
 	this->_x = value;
-	_textures[_state]->set_x(_x);
+	_textures[_animatestate]->set_x(_x);
 }
 
 int Models::Object::get_y() const
@@ -45,7 +45,7 @@ int Models::Object::get_y() const
 void Models::Object::set_y(int value)
 {
 	this->_y = value;
-	_textures[_state]->set_y(_y);
+	_textures[_animatestate]->set_y(_y);
 }
 
 int Models::Object::get_z() const
@@ -56,13 +56,23 @@ int Models::Object::get_z() const
 void Models::Object::set_z(int value)
 {
 	this->_z = value;
-	_textures[_state]->set_z(_z);
+	_textures[_animatestate]->set_z(_z);
 }
 
 void Models::Object::set_state(const Enums::StateEnum& value)
 {
-	this->get_texture()->set_visible(false);
 	this->_state = value;
+}
+
+void Models::Object::set_direction(const Enums::DirectionEnum& value)
+{
+	this->_direction = value;
+}
+
+void Game::Models::Object::set_animationstate(const Enums::AnimateEnum& state)
+{
+	this->get_texture()->set_visible(false);
+	this->_animatestate = state;
 	this->get_texture()->set_visible(true);
 }
 
@@ -81,9 +91,9 @@ void Models::Object::set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> 
 	_shape = shape;
 }
 
-void Models::Object::add_texture(const Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture)
+void Models::Object::add_texture(const Enums::AnimateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture)
 {
-	this->_textures.insert(std::pair<Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
+	this->_textures.insert(std::pair<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
 }
 
 int Models::Object::get_height() const

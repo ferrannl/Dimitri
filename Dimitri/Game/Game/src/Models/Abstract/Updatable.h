@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "../../Enums/DirectionEnum.cpp"
 
 /**
 * \namespace Game
@@ -21,12 +22,12 @@ namespace Game {
 		*/
 		class Updatable : public Object {
 		public:
-			Updatable(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Interact with this object
 			*/
-			virtual void update(Controllers::LevelController* ctrl = NULL) = 0;
+			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }

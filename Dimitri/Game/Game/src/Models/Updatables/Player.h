@@ -1,5 +1,5 @@
 #pragma once
-#include "../Abstract/Object.h"
+#include "../Abstract/Updatable.h"
 
 /**
 * \namespace Game
@@ -15,12 +15,15 @@ namespace Game {
 		* \class Player
 		* \brief Class contains the data of the Player
 		*/
-		class Player : public Models::Object{
+		class Player : public Models::Updatable {
 		private: 
 			const int _max_amount_of_jumps = 2;
+			int _lastx;
+			int _lasty;
 			int _jumps;
+			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _walk;
 		public:
-			Player(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -28,6 +31,10 @@ namespace Game {
 			void initialize_textures();
 			bool jump();
 			void reset_jump();
+			void update_object(Controllers::LevelController* ctrl = NULL);
+			void walk();
+			void idle();
+			void update_state();
 		};
 	}
 }

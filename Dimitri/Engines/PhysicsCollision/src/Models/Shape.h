@@ -32,7 +32,6 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
-			const double DEGREES_TO_RADIANS = (double)(M_PI / 180);
 
 			/**
 			* \brief X position of the Shape

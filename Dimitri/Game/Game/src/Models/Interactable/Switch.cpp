@@ -3,7 +3,7 @@
 
 using namespace Game;
 
-Models::Switch::Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center), _switch_x(x)
+Models::Switch::Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center), _switch_x(x)
 {
 	initialize_textures();
 	create_shape(x, y, height, width, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
@@ -11,20 +11,24 @@ Models::Switch::Switch(int x, int y, int z, int height, int width, Game::Enums::
 
 void Models::Switch::initialize_textures()
 {
-	add_texture(Game::Enums::StateEnum::LEFT, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/switch01.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));
-	add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/switch01.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, false, _center));
+	_animatestate = Enums::AnimateEnum::IDLE1;
+
+	add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/switch01.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, false, _center));
+	add_texture(Enums::AnimateEnum::IDLE2, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/switch01.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));
 	get_texture()->set_visible(true);
 }
 
 
 void Models::Switch::interact(Controllers::LevelController* ctrl)
 {
-	if (_state == Enums::StateEnum::LEFT) {
-		set_state(Enums::StateEnum::RIGHT);
+	if (_direction == Enums::DirectionEnum::RIGHT) {
+		set_animationstate(Enums::AnimateEnum::IDLE2);
+		set_direction(Enums::DirectionEnum::LEFT);
 		ctrl->turn_off_light(_switch_x);
 	}
 	else {
-		set_state(Enums::StateEnum::LEFT);
+		set_animationstate(Enums::AnimateEnum::IDLE1);
+		set_direction(Enums::DirectionEnum::RIGHT);
 	}
 }
 

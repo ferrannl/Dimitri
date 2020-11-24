@@ -24,7 +24,7 @@ namespace Game {
 			*/
 			int _scene_height;
 		public:
-			Button(int x, int y, int z, int height, int width, Enums::StateEnum state, int scene_height, Graphics::Models::Center center);
+			Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

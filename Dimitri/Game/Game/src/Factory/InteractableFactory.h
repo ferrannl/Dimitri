@@ -10,7 +10,7 @@ namespace Game {
 		public:
 			InteractableFactory();
 
-			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state);
+			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state);
 		};
 	}
 }

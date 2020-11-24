@@ -19,7 +19,7 @@ namespace Game {
 		private:
 			float _angle;
 		public:
-			CameraBeam(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -29,7 +29,7 @@ namespace Game {
 			/**
 			* \brief Updates the object when interacted with
 			*/
-			void update(Controllers::LevelController* ctrl = NULL);
+			void update_object(Controllers::LevelController* ctrl = NULL);
 			bool checkcollision(std::shared_ptr<Models::Object> object);
 		};
 	}

@@ -71,7 +71,7 @@ void Facades::WorldFacade::simulate() const
 		std::shared_ptr<Models::Shape> shape = it.first;
 		b2Body* body = it.second;
 
-		//shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
-		//shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
+		shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
+		shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
 	}
 }

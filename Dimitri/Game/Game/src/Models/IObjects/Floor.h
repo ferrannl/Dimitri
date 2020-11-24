@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "../Abstract/Object.h"
 
 /**
@@ -13,12 +12,12 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Lamp
-		* \brief Class contains the data of the Lamp
+		* \class Wall
+		* \brief Class contains the data of the wall
 		*/
-		class Lamp : public Models::Object {
+		class Floor : public Models::Object {
 		public:
-			Lamp(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Floor(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

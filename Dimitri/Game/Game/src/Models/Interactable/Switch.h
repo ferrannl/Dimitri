@@ -19,7 +19,7 @@ namespace Game {
 		private:
 			int _switch_x;
 		public:
-			Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, Graphics::Models::Center center);
+			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

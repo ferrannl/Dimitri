@@ -163,6 +163,7 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
 {
 	_player = tile;
 	_players.push_back(tile);
+	_updatables.push_back(tile);
 }
 
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::Interactable> tile)

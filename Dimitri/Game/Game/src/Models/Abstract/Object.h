@@ -8,6 +8,8 @@
 #include <src/Models/Sprite.h>
 #include <src\Models\Shape.h>
 #include "../../Enums/StateEnum.cpp"
+#include "../../Enums/AnimateEnum.cpp"
+#include "../../Enums/DirectionEnum.cpp"
 
 /**
 * \namespace Game
@@ -50,6 +52,7 @@ namespace Game {
 			*/
 			int _width;
 
+			Enums::DirectionEnum _direction;
 
 			/**
 			* \brief The width of the Object
@@ -62,9 +65,14 @@ namespace Game {
 			Enums::StateEnum _state;
 
 			/**
+			* \brief The state of the Object
+			*/
+			Enums::AnimateEnum _animatestate;
+
+			/**
 			* \brief The Textures of the Object saved by state
 			*/
-			std::map<Enums::StateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
+			std::map<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
 
 			/**
 			* \brief Shape of the Object
@@ -76,7 +84,7 @@ namespace Game {
 			*/
 			virtual void initialize_textures() = 0;
 		public:
-			Object(const int x, const int y, const int z, const int height, const int width, const Enums::StateEnum state, const Graphics::Models::Center center);
+			Object(const int x, const int y, const int z, const int height, const int width, const Enums::DirectionEnum state, const Graphics::Models::Center center);
 
 			/**
 			* \brief Returns the Texture based on state
@@ -123,6 +131,13 @@ namespace Game {
 			*/
 			void set_state(const Enums::StateEnum& state);
 
+			void set_direction(const Enums::DirectionEnum& value);
+
+			/**
+			* \brief Sets state of the Object
+			*/
+			void set_animationstate(const Enums::AnimateEnum& state);
+
 			/**
 			* \brief Returns Shape of the Object
 			*/
@@ -141,7 +156,7 @@ namespace Game {
 			/**
 			* \brief Adds Texture
 			*/
-			void add_texture(const Enums::StateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(const Enums::AnimateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			* \brief Returns height of the Object

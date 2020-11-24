@@ -44,6 +44,10 @@
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
+    <ClCompile Include="src\Enums\DirectionEnum.cpp" />
+    <ClCompile Include="src\Enums\AnimateEnum.cpp" />
+    <ClCompile Include="src\Models\IObjects\Floor.cpp" />
+    <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
@@ -81,6 +85,9 @@
     <ClInclude Include="src\Factory\UpdatableFactory.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />
+    <ClInclude Include="src\interfaces\IFactory.h" />
+    <ClInclude Include="src\Models\IObjects\Floor.h" />
+    <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
@@ -89,8 +96,6 @@
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
-    <ClInclude Include="src\Models\IInteractable.h" />
-    <ClInclude Include="src\Models\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
@@ -98,10 +103,7 @@
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
     <ClInclude Include="src\Events\InputEvent.h" />
-    <ClInclude Include="src\Models\IObject.h" />
     <ClInclude Include="src\Models\Level.h" />
-    <ClInclude Include="src\Models\Player.h" />
-    <ClInclude Include="src\Models\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\HomeView.h" />
@@ -115,7 +117,5 @@
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Builder\LevelBuilder.h" />
-    <ClInclude Include="src\Models\Lamp.h" />
-    <ClInclude Include="src\Models\LightBeam.h" />
   </ItemGroup>
 </Project>

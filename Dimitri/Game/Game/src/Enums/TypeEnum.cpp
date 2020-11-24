@@ -15,6 +15,8 @@ namespace Game {
 		{
 			LEVER,
 			FLOOR,
+			WALL,
+			CORNER,
 			PLAYER,
 			LAMP,
 			BEAM,

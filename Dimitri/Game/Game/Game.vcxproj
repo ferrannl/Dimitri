@@ -159,6 +159,8 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
   <ItemGroup>
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Enums\AnimateEnum.cpp" />
+    <ClCompile Include="src\Enums\DirectionEnum.cpp" />
     <ClCompile Include="src\Factory\UpdatableFactory.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
@@ -175,6 +177,8 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
+    <ClCompile Include="src\Models\IObjects\Floor.cpp" />
+    <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
     <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
@@ -218,6 +222,8 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Abstract\Interactable.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />
+    <ClInclude Include="src\Models\IObjects\Floor.h" />
+    <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
     <ClInclude Include="src\Models\IObjects\Lamp.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />

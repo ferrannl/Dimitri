@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class Wall : public Models::Object {
 		public:
-			Wall(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			Wall(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

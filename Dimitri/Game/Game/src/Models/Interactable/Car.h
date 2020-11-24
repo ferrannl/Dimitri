@@ -14,7 +14,7 @@ namespace Game {
 		*/
 		class Car : public Models::Interactable {
 		public:
-			Car(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			Car(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 			void initialize_textures();
 			void interact(Controllers::LevelController* ctrl = NULL);
 		};

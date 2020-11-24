@@ -1,7 +1,8 @@
 #include "LevelController.h"
 #include <src/Controllers/DocumentController.h>
 #include "../Builder/LevelBuilder.h"
-
+#include <conio.h> 
+#include <stdio.h>
 using namespace Game;
 
 Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
@@ -27,18 +28,22 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_state(Game::Enums::StateEnum::LEFT);
+			_level->get_player()->set_direction(Game::Enums::DirectionEnum::LEFT);
+
 			_level->get_player()->get_shape()->move_x(-1);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_state(Game::Enums::StateEnum::RIGHT);
+			_level->get_player()->set_direction(Game::Enums::DirectionEnum::RIGHT);
+
 			_level->get_player()->get_shape()->move_x(1);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
+			_level->get_player()->set_state(Game::Enums::StateEnum::JUMPING);
+
 			if (_level->get_player()->jump()) {
 				_level->get_player()->get_shape()->move_y();
 			}
@@ -130,7 +135,10 @@ void Game::Controllers::LevelController::turn_off_light(const int x)
 void  Game::Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
+
 		_level->simulate();
+		_level->simulate();
+
 		_level->get_player()->update();
 
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
@@ -148,13 +156,15 @@ void  Game::Controllers::LevelController::simulate() {
 
 void  Game::Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
-		sleep_for(1ms);
+		sleep_for(36ms);
 
 
 		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
 		{
-			object->update(this);
+			object->update_object(this);
 		}
+
+		_level->get_player()->update_state();
 	}
 }
 

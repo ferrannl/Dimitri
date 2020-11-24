@@ -2,7 +2,7 @@
 
 using namespace Game;
 
-Models::Button::Button(int x, int y, int z, int height, int width, Enums::StateEnum state, int scene_height, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center)
+Models::Button::Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center)
 {
 	_scene_height = scene_height;
 	initialize_textures();
@@ -10,7 +10,10 @@ Models::Button::Button(int x, int y, int z, int height, int width, Enums::StateE
 
 void Models::Button::initialize_textures()
 {
-	add_texture(Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(0, 0, 2, 150, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, _center));
+	_animatestate = Enums::AnimateEnum::IDLE1;
+
+	add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(0, 0, 2, 150, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, _center));
+
 	get_texture()->set_visible(true);
 }
 

@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class LightBeam : public Models::Updatable {
 		public:
-			LightBeam(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -27,7 +27,7 @@ namespace Game {
 			/**
 			* \brief Updates the object when interacted with
 			*/
-			void update(Controllers::LevelController* ctrl = NULL);
+			void update_object(Controllers::LevelController* ctrl = NULL);
 		};
 	}
 }

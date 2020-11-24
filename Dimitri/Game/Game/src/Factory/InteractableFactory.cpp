@@ -13,7 +13,7 @@ Game::Factories::InteractableFactory::InteractableFactory()
 	_lights = { 3560, 3240, 1600 };
 }
 
-std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::StateEnum state)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
 {
 	std::shared_ptr<Models::Interactable> instance;
 	Models::Switch* lever;

@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class Camera : public Models::Object {
 		public:
-			Camera(int x, int y, int z, int height, int width, Enums::StateEnum state, Graphics::Models::Center center);
+			Camera(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
