@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -9,15 +11,15 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		* \enum StateEnum
-		* \brief Enum Class contains the different state enums for object states
+		*	Contains different level state enums for the level
 		*/
-		enum class StateEnum
+		enum class LevelStateEnum
 		{
-			LEFT,
-			RIGHT,
-			HORIZONTAL,
-			VERTICAL
+			ACTIVE,
+			WIN,
+			GAME_OVER,
+			PAUSED,
+			INACTIVE
 		};
 	}
 }

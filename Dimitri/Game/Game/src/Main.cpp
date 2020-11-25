@@ -4,7 +4,6 @@
 int main() {
 	try {
 		auto controller = std::make_shared<Game::Controllers::MainController>();
-		controller->setup();
 		controller->run();
 	}
 	catch (const std::exception& e) {

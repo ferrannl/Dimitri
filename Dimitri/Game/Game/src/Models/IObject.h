@@ -7,7 +7,7 @@
 #include <src\Helpers\BasePathHelper.h>
 #include <src/Models/Sprite.h>
 #include <src\Models\Shape.h>
-#include "../Enums/StateEnum.cpp"
+#include "../Enums/StateEnum.h"
 
 /**
 * \namespace Game

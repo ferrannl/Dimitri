@@ -4,7 +4,7 @@
 #include "LevelController.h"
 #include "HomeController.h"
 #include "../Models/Level.h"
-#include "../Models/Shortcut.h"
+#include "../Mediators/BaseComponent.h"
 
 /**
 * \namespace Game
@@ -20,7 +20,7 @@ namespace Game {
 		* \class MainController
 		* \brief Class contains the methods to navigate through Views, connect the code to connect Input-, Window- and LevelController and start the application
 		*/
-		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController> {
+		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Mediators::BaseComponent {
 		private:
 			/**
 			* \brief An instance of the InputController
@@ -51,23 +51,13 @@ namespace Game {
 			* \brief An instance of the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> _home_controller;
-
-			/**
-			* \brief A list of the Shortcuts
-			*/
-			std::vector<std::unique_ptr<Models::Shortcut>> _shortcuts;
 		public:
 			MainController();
 
 			/**
-			* \brief Setup the MainController with all dependencies
+			* \brief Creates the Window and starts polling events
 			*/
-			void setup();
-
-			/**
-			* \brief Subscribes the neccessary classes and starts polling events
-			*/
-			void run();			
+			void run();
 
 			/**
 			* \brief Receives updates from the InputController

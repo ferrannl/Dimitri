@@ -1,5 +1,4 @@
 #include "PauseLevelCommand.h"
-#include "CommandFactory.h"
 
 namespace Game {
 	namespace Commands {
@@ -11,7 +10,6 @@ namespace Game {
 			auto state = l_ctrl->get_state();
 			if (state == Enums::LevelStateEnum::ACTIVE) {
 				l_ctrl->set_state(Enums::LevelStateEnum::PAUSED);
-				CommandFactory::instance()->get_command("open_pause_level_view")->execute();
 			}
 			else if (state == Enums::LevelStateEnum::PAUSED) {				
 				l_ctrl->start();

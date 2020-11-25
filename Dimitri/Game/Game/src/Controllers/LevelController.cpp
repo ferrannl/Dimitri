@@ -1,18 +1,14 @@
 #include "LevelController.h"
-#include "../Commands/CommandFactory.h"
+#include "../Mediators/CommandMediator.h"
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
+Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
+	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
 {
 	_level = std::make_shared<Game::Models::Level>(audio_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_move_left"), Input::Enums::EventEnum::KEY_PRESS_LEFT));
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_move_right"), Input::Enums::EventEnum::KEY_PRESS_RIGHT));
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_jump"), Input::Enums::EventEnum::KEY_PRESS_UP));
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_interact"), Input::Enums::EventEnum::KEY_PRESS_E));
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("pause_level"), Input::Enums::EventEnum::KEY_PRESS_P));
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
@@ -22,12 +18,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
-	for (auto& s : _shortcuts) {
-		if (s->get_event() == object.event_enum) {
-			s->get_command()->execute();
-			break;
-		}
-	}
+	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
@@ -38,7 +29,6 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 void Game::Controllers::LevelController::start()
 {
 	set_state(Enums::LevelStateEnum::ACTIVE);
-	Commands::CommandFactory::instance()->get_command("open_level_view")->execute();
 }
 
 void Game::Controllers::LevelController::stop()
@@ -62,6 +52,7 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_level->play_music("level1");
 		}
+		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}
 }
 

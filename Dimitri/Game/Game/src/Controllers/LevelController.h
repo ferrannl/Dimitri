@@ -3,12 +3,12 @@
 #include "../Events/InputEvent.h"
 #include "../Controllers/WindowController.h"
 #include "../Controllers/AudioController.h"
+#include "../Mediators/BaseComponent.h"
 #include <src\Interfaces\IObservable.h>
 #include <src\Models\Texture.h>
 #include <..\Game\Game\src\Models\Level.h>
 #include <..\Game\Game\src\Events\InputEvent.h>
-#include <..\Game\Game\src\Enums\LevelStateEnum.cpp>
-#include <..\Game\Game\src\Models\Shortcut.h>
+#include <..\Game\Game\src\Enums\LevelStateEnum.h>
 #include <chrono>
 #include <thread>
 using namespace std::this_thread;
@@ -28,7 +28,7 @@ namespace Game {
 		* \class LevelController
 		* \brief Class LevelController contains the methods to interact with the Level
 		*/
-		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent> {
+		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
 			/**
 			* \brief An Instance of the current Level
@@ -49,11 +49,6 @@ namespace Game {
 			* \brief An Instance of the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
-
-			/**
-			* \brief A list of the Shortcuts
-			*/
-			std::vector<std::unique_ptr<Models::Shortcut>> _shortcuts;
 
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);

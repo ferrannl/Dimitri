@@ -2,6 +2,7 @@
 #include "IInteractable.h"
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
+#include "../Mediators/BaseComponent.h"
 
 /**
 * \namespace Game
@@ -17,14 +18,14 @@ namespace Game {
 		* \class Button
 		* \brief Class contains the methods to use a button
 		*/
-		class Button : public Game::Models::IInteractable {
+		class Button : public Game::Models::IInteractable, public Mediators::BaseComponent {
 		protected:
 			/**
 			* \brief The height of the scene
 			*/
 			int _scene_height;
 		public:
-			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
+			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, const std::string& identifier);
 
 			/**
 			* \brief Initializes Textures
