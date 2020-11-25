@@ -20,6 +20,10 @@ namespace Game {
 			std::string _identifier;
 		public:
 			BaseComponent(const std::string& identifier) : _identifier{ identifier } {}
+
+			/**
+			* \brief Return the identifier
+			*/
 			std::string get_identifier() const { return _identifier; }
 		};
 	}

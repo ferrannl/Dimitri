@@ -22,16 +22,22 @@ namespace Game {
 		*/
 		class CommandMediator {
 		private:
+			/**
+			* \brief An instance of the CommandFactory
+			*/
 			std::unique_ptr<Commands::CommandFactory> _factory;
 
 			CommandMediator(const std::shared_ptr<Controllers::MainController> main_controller);
 			CommandMediator(const CommandMediator&) = default;
 			CommandMediator& operator=(const CommandMediator&) = default;
 
+			/**
+			* \brief A singleton instance of the CommandMediator
+			*/
 			static std::unique_ptr<CommandMediator> _instance;
 		public:
 			/**
-			* \brief A singleton instance of the CommandMediator
+			* \brief Returns the singleton instance
 			*/
 			static CommandMediator* instance();
 			CommandMediator(CommandMediator&&) = delete;
@@ -42,7 +48,14 @@ namespace Game {
 			*/
 			static void init(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Executes a Command based on the sender and the input event
+			*/
 			void notify(const BaseComponent& sender, Events::InputEvent event);
+
+			/**
+			* \brief Executes a Command based on the sender and the level state enum
+			*/
 			void notify(const BaseComponent& sender, Enums::LevelStateEnum event);
 		};
 	}
