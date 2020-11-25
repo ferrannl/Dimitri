@@ -9,7 +9,7 @@ using namespace Game;
 
 Models::CameraBeam::CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
 {
-	_angle = -0.1;
+	_angle = -1;
 
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
