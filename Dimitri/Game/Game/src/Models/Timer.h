@@ -20,6 +20,8 @@ namespace Game {
 			Timer();
 			void start();
 			void stop();
+			void pause();
+			void unpause();
 
 			uint32_t getTicks();
 

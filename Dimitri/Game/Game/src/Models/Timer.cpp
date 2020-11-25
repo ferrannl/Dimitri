@@ -3,7 +3,9 @@
 Game::Models::Timer::Timer()
 {
 	_start_ticks = 0;
+    _pause_ticks = false;
 	_started = false;
+    _paused = false;
 }
 
 void Game::Models::Timer::start()
@@ -20,6 +22,36 @@ void Game::Models::Timer::stop()
 {
 	_started = false;
 	_paused = false;
+}
+
+void Game::Models::Timer::pause()
+{
+    //If the timer is running and isn't already paused
+    if (_started && !_paused)
+    {
+        //Pause the timer
+        _paused = true;
+
+        //Calculate the paused ticks
+        _pause_ticks = SDL_GetTicks() - _start_ticks;
+        _start_ticks = 0;
+    }
+}
+
+void Game::Models::Timer::unpause()
+{
+    //If the timer is running and paused
+    if (_started && _paused)
+    {
+        //Unpause the timer
+        _paused = false;
+
+        //Reset the starting ticks
+        _start_ticks = SDL_GetTicks() - _pause_ticks;
+
+        //Reset the paused ticks
+        _pause_ticks = 0;
+    }
 }
 
 uint32_t Game::Models::Timer::getTicks()
@@ -48,5 +80,5 @@ uint32_t Game::Models::Timer::getTicks()
 
 bool Game::Models::Timer::is_started()
 {
-    return mStarted;
+    return _started;
 }
