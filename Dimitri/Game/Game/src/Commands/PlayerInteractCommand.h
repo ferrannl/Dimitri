@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			PlayerInteractCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Makes the player interact
+			*/
 			void execute() override;
 		};
 	}

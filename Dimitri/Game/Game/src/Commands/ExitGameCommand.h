@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			ExitGameCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Exits the game
+			*/
 			void execute() override;
 		};
 	}

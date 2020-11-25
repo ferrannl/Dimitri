@@ -39,7 +39,7 @@ namespace Game {
 			CommandFactory(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			/**
-			* \brief A singleton instance of the CommandMediator
+			* \brief A singleton instance of the CommandFactory
 			*/
 			static CommandFactory* instance();
 			CommandFactory(CommandFactory&&) = delete;

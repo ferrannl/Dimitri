@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			OpenHomeViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Opens the home view
+			*/
 			void execute() override;
 		};
 	}

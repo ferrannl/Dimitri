@@ -17,7 +17,7 @@ namespace Game {
 	namespace Models {		
 		/**
 		* \class Shortcut
-		* \brief Class contains the methods to execute a command with a input key
+		* \brief Class contains the methods to execute a command with an input key
 		*/
 		class Shortcut {
 		private:

@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			OpenGameOverLevelViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Opens the game over level view
+			*/
 			void execute() override;
 		};
 	}

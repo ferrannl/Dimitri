@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			OpenHelpViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Opens the help view
+			*/
 			void execute() override;
 		};
 	}

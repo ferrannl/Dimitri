@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			OpenPauseLevelViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Opens the pause level view
+			*/
 			void execute() override;
 		};
 	}

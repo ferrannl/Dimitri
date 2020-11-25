@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			LoadLevelCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Loads the level
+			*/
 			void execute() override;
 		};
 	}

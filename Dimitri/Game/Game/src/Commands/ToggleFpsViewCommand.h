@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			ToggleFpsViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Toggles the fps view
+			*/
 			void execute() override;
 		};
 	}

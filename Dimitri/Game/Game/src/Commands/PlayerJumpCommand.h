@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			PlayerJumpCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Makes the player jump
+			*/
 			void execute() override;
 		};
 	}

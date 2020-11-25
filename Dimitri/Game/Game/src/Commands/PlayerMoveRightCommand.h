@@ -19,6 +19,9 @@ namespace Game {
 		public:
 			PlayerMoveRightCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Makes the player move right
+			*/
 			void execute() override;
 		};
 	}

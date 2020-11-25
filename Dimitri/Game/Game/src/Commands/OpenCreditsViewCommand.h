@@ -13,12 +13,15 @@ namespace Game {
 	namespace Commands {
 		/**
 		* \class OpenCreditsViewCommand
-		* \brief Class contains the method to open
+		* \brief Class contains the method to open the credits view
 		*/
 		class OpenCreditsViewCommand : public Command {
 		public:
 			OpenCreditsViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
+			/**
+			* \brief Opens the credits view
+			*/
 			void execute() override;
 		};
 	}
