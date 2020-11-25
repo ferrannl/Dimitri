@@ -125,7 +125,7 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 
 void Game::Controllers::LevelController::turn_off_light(const int x)
 {
-	for (std::shared_ptr<Models::Object> l : _level->get_lights()) {
+	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == x) {
 			l->get_texture()->set_visible(false);
 		}

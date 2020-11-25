@@ -21,7 +21,8 @@ namespace Game {
 			int _lastx;
 			int _lasty;
 			int _jumps;
-			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _walk;
+			void walk();
+			void idle();
 		public:
 			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
@@ -29,11 +30,11 @@ namespace Game {
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
+
+
 			bool jump();
 			void reset_jump();
 			void update_object(Controllers::LevelController* ctrl = NULL);
-			void walk();
-			void idle();
 			void update_state();
 		};
 	}

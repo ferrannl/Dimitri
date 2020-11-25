@@ -17,8 +17,8 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class IInteractable
-		* \brief Class contains the methods to be able to interact with an Object
+		* \class Updatable
+		* \brief Class contains the methods to be able to update the object
 		*/
 		class Updatable : public Object {
 		public:

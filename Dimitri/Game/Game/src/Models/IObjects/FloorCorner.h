@@ -12,8 +12,8 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Wall
-		* \brief Class contains the data of the wall
+		* \class FloorCorner
+		* \brief Class contains the data of the FloorCorner
 		*/
 		class FloorCorner : public Models::Object {
 		public:

@@ -12,8 +12,8 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Lamp
-		* \brief Class contains the data of the Lamp
+		* \class Camera
+		* \brief Class contains the data of the Camera
 		*/
 		class Camera : public Models::Object {
 		public:

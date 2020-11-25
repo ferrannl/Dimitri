@@ -3,7 +3,6 @@
 Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
 	_jumps = _max_amount_of_jumps;
-	_walk = {};
 	_lastx = x;
 	_lasty =y ;
 	_direction = Enums::DirectionEnum::RIGHT;
@@ -13,7 +12,6 @@ Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::
 
 void Game::Models::Player::initialize_textures()
 {
-
 	add_texture(Game::Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/idle/player_idle_000.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));
 	add_texture(Game::Enums::AnimateEnum::IDLE2, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/idle/player_idle_001.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));
 	add_texture(Game::Enums::AnimateEnum::IDLE3, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/idle/player_idle_002.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));

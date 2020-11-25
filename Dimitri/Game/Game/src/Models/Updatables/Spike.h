@@ -12,8 +12,8 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Switch
-		* \brief Class contains the methods and data of the Switch
+		* \class Spike
+		* \brief Class contains the methods and data of the Spike
 		*/
 		class Spike : public Models::Updatable {
 		public:
