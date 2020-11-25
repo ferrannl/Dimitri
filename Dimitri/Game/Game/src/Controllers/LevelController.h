@@ -8,6 +8,7 @@
 #include <..\Game\Game\src\Models\Level.h>
 #include <..\Game\Game\src\Events\InputEvent.h>
 #include <..\Game\Game\src\Enums\LevelStateEnum.cpp>
+#include <..\Game\Game\src\Models\Shortcut.h>
 #include <chrono>
 #include <thread>
 using namespace std::this_thread;
@@ -55,9 +56,9 @@ namespace Game {
 			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>> _observers;
 
 			/**
-			* \brief Set the level state and stops/starts the thread
+			* \brief A list of the Shortcuts
 			*/
-			void set_state(Enums::LevelStateEnum state);
+			std::vector<std::unique_ptr<Models::Shortcut>> _shortcuts;
 
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
@@ -93,7 +94,17 @@ namespace Game {
 			void simulate();
 
 			/**
-			* \brief Returns the Level
+			* \brief Set the level state and stops/starts the thread
+			*/
+			void set_state(Enums::LevelStateEnum state);
+
+			/**
+			* \brief Returns the state of the Level
+			*/
+			Enums::LevelStateEnum get_state() const;
+
+			/**
+			* \brief Notifies the observers with the level state
 			*/
 			void notify(const Enums::LevelStateEnum& object);
 

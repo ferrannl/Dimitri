@@ -1,10 +1,12 @@
 #include "ExitButton.h"
+#include "../../Commands/CommandFactory.h"
 
-Game::Models::Buttons::ExitButton::ExitButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height) : Game::Models::Button(x, y, z, height, width, state, scene_height)
-{
-}
+namespace Game {
+	Models::Buttons::ExitButton::ExitButton(int x, int y, int z, int height, int width, Enums::StateEnum state, int scene_height) :
+		Models::Button(x, y, z, height, width, state, scene_height) {}
 
-void Game::Models::Buttons::ExitButton::interact()
-{
-	exit(0);
+	void Models::Buttons::ExitButton::interact()
+	{
+		Commands::CommandFactory::instance()->get_command("exit_game")->execute();
+	}
 }

@@ -1,4 +1,5 @@
 #include "LevelController.h"
+#include "../Commands/CommandFactory.h"
 using namespace Game;
 
 Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
@@ -7,6 +8,11 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_move_left"), Input::Enums::EventEnum::KEY_PRESS_LEFT));
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_move_right"), Input::Enums::EventEnum::KEY_PRESS_RIGHT));
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_jump"), Input::Enums::EventEnum::KEY_PRESS_UP));
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_interact"), Input::Enums::EventEnum::KEY_PRESS_E));
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("level_pause"), Input::Enums::EventEnum::KEY_PRESS_P));
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
@@ -16,60 +22,11 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
-	switch (object.event_enum) {
-	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_state(Game::Enums::StateEnum::LEFT);
-			_level->get_player()->get_shape()->move_x(-1);
+	for (auto& s : _shortcuts) {
+		if (s->get_event() == object.event_enum) {
+			s->get_command()->execute();
+			break;
 		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_state(Game::Enums::StateEnum::RIGHT);
-			_level->get_player()->get_shape()->move_x(1);
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_UP:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			if (_level->get_player()->jump()) {
-				_level->get_player()->get_shape()->move_y();
-			}
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_E:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			for (std::shared_ptr<Models::IInteractable> interactable : _level->get_interactables())
-			{
-				if (_level->get_player()->get_shape()->check_square_collision(interactable->get_shape()))
-				{
-					interactable->interact();
-				}
-			}
-			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
-			{
-				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
-				{
-					set_state(Enums::LevelStateEnum::GAME_OVER);
-				}
-			}
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_P:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			set_state(Enums::LevelStateEnum::PAUSED);
-		}
-		else if (_state == Enums::LevelStateEnum::PAUSED) {
-			start();
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_W:
-		// this will obviously be triggered by an event in the future, for now a hardcoded key
-		set_state(Enums::LevelStateEnum::WIN);
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_G:
-		// this will obviously be triggered by an event in the future, for now a hardcoded key
-		set_state(Enums::LevelStateEnum::GAME_OVER);
-    break;
 	}
 }
 
@@ -123,6 +80,11 @@ void  Game::Controllers::LevelController::simulate() {
 		}
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
+}
+
+Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
+{
+	return _state;
 }
 
 void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {
