@@ -137,7 +137,6 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 
 		_level->simulate();
-		_level->simulate();
 
 		_level->get_player()->update();
 

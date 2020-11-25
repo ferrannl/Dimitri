@@ -37,7 +37,7 @@ void Game::Models::CameraBeam::update_object(Controllers::LevelController* ctrl)
 
 	get_texture()->set_angle(get_texture()->get_angle() + _angle);
 }
-
+ 
 bool Game::Models::CameraBeam::checkcollision(std::shared_ptr<Models::Object> object)
 {
 	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
