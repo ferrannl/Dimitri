@@ -128,3 +128,47 @@ bool Models::Shape::check_polygon_collision(std::shared_ptr<Models::Shape> shape
 		get_y() - 1 <= shape->get_y() + shape->get_height() &&
 		get_y() + get_height() + 1 >= shape->get_y();
 }
+
+bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shape)
+{
+	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
+
+	int originx = _x + (shape->get_width() / 2);
+	int originy = _y + (shape->get_height() / 2);
+
+	int x1 = _x;
+	int y1 = _y;
+	int x2 = _x + _width;
+	int y2 = _y;
+	int x3 = _x + (_width / 2);
+	int y3 = _y + _height;
+
+	// 1 translate to center
+	x1 -= originx;
+	y1 -= originy;
+	x2 -= originx;
+	y2 -= originy;
+
+	// 2 rotate
+	double radian = DEGREES_TO_RADIANS * (_angle * -1);
+
+	float x1r = (cos(radian) * x1) - (sin(radian) * y1) + originx;
+	float y1r = (sin(radian) * x1) + (cos(radian) * y1) + originy;
+	float x2r = (cos(radian) * x2) - (sin(radian) * y2) + originx;
+	float y2r = (sin(radian) * x2) + (cos(radian) * y2) + originy;
+
+	int playerx = shape->get_x();
+	int playery = shape->get_y();
+
+	int beam_area = area(x1r, y1r, x2r, y2r, x3, y3);
+	int a1 = area(playerx, playery, x2r, y2r, x3, y3);
+	int a2 = area(x1r, y1r, playerx, playery, x3, y3);
+	int a3 = area(x1r, y1r, x2r, y2r, playerx, playery);
+
+	return (beam_area == a1 + a2 + a3);
+}
+
+float Models::Shape::area(int x1, int y1, int x2, int y2, int x3, int y3)
+{
+	return abs(((x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2))) / 2.0);
+}

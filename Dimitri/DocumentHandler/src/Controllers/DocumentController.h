@@ -12,8 +12,20 @@
 #define DOCUMENT_API
 #endif
 
+/**
+* \namespace DocumentHandler
+* \brief Namespace for the documentHandler
+*/
 namespace DocumentHandler {
+	/**
+	* \namespace DocumentHandler.Controllers
+	* \brief Namespace for the documentHandler
+	*/
 	namespace Controllers {
+		/**
+		* \class DocumentController
+		* \brief Class contains the methods to read an file by path
+		*/
 		class DOCUMENT_API DocumentController {
 		public:
 			std::vector<std::vector<int>> Read(const std::string& path);

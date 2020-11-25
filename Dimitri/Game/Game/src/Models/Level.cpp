@@ -7,8 +7,6 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 	_height = height;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
-	_lights = {};
-	_players = {};
 	_shapes = {};
 	_tiles = {};
 	_backgrounds = {};
@@ -55,10 +53,8 @@ void Game::Models::Level::load_objects()
 
 void Game::Models::Level::add_shapes()
 {
-	for(std::shared_ptr<Game::Models::Object> _player : _players)
-	{
-		_physics_collision_controller->load_shape(_player.get()->get_shape());
-	}
+	_physics_collision_controller->load_shape(_player.get()->get_shape());
+
 	for (std::shared_ptr<Game::Models::Object> tile : _tiles)
 	{
 		_physics_collision_controller->load_shape(tile.get()->get_shape());
@@ -70,10 +66,6 @@ void Game::Models::Level::add_shapes()
 	for (std::shared_ptr<PhysicsCollision::Models::Shape> shape : _shapes)
 	{
 		_physics_collision_controller->load_shape(shape);
-	}
-	for (std::shared_ptr<Game::Models::Object> light : _lights)
-	{
-		_physics_collision_controller->load_shape(light.get()->get_shape());
 	}
 }
 
@@ -91,11 +83,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> light : _lights)
-	{
-		temp = light->get_all_textures();
-		textures.insert(textures.end(), temp.begin(), temp.end());
-	}
 	for (std::shared_ptr<Object> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
@@ -107,11 +94,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
 	return textures;
-}
-
-std::vector<std::shared_ptr<Game::Models::Object>> Game::Models::Level::get_lights() const
-{
-	return _lights;
 }
 
 std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
@@ -144,17 +126,12 @@ void Game::Models::Level::simulate()
 	_physics_collision_controller->simulate();
 }
 
-void Game::Models::Level::add_light(std::shared_ptr<Game::Models::Object> tile)
-{
-	_lights.push_back(tile);
-}
-
 void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
 {
 	_shapes.push_back(shape);
 }
 
-void Game::Models::Level::add_object(std::shared_ptr<Game::Models::Object> tile)
+void Game::Models::Level::add_tile(std::shared_ptr<Game::Models::Object> tile)
 {
 	_tiles.push_back(tile);
 }
@@ -162,7 +139,6 @@ void Game::Models::Level::add_object(std::shared_ptr<Game::Models::Object> tile)
 void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
 {
 	_player = tile;
-	_players.push_back(tile);
 	_updatables.push_back(tile);
 }
 

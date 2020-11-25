@@ -1,15 +1,18 @@
 #pragma once
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the enums
+	* \namespace Game::Enums
+	* \brief Namespace for the enums in the game
 	*/
 	namespace Enums {
 		/**
-		*	Contains different state enums for object states
+		* \enum StateEnum
+		* \brief Enum Class contains the different state enums for object states
 		*/
 		enum class TypeEnum
 		{

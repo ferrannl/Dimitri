@@ -32,6 +32,7 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
+			float area(int x1, int y1, int x2, int y2, int x3, int y3);
 
 			/**
 			* \brief X position of the Shape
@@ -192,6 +193,8 @@ namespace PhysicsCollision {
 			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
 			*/
 			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
+
+			bool check_triangle_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

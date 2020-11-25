@@ -16,10 +16,6 @@ namespace Game {
 		*/
 		enum class StateEnum
 		{
-			LEFT,
-			RIGHT,
-			HORIZONTAL,
-			VERTICAL,
 			IDLE,
 			WALKING,
 			JUMPING,

@@ -52,10 +52,13 @@ namespace Game {
 			*/
 			int _width;
 
+			/**
+			* \brief The direction the Object is faced
+			*/
 			Enums::DirectionEnum _direction;
 
 			/**
-			* \brief The width of the Object
+			* \brief The rotating cener of the Object
 			*/
 			Graphics::Models::Center _center;
 
@@ -65,12 +68,12 @@ namespace Game {
 			Enums::StateEnum _state;
 
 			/**
-			* \brief The state of the Object
+			* \brief The animationstate of the Object
 			*/
 			Enums::AnimateEnum _animatestate;
 
 			/**
-			* \brief The Textures of the Object saved by state
+			* \brief The Textures of the Object saved by animation state
 			*/
 			std::map<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>> _textures;
 
@@ -78,6 +81,11 @@ namespace Game {
 			* \brief Shape of the Object
 			*/
 			std::shared_ptr<PhysicsCollision::Models::Shape> _shape;
+
+			/**
+			* \brief Angle of the Object
+			*/
+			float _angle;
 
 			/**
 			* \brief Initializes Textures
@@ -131,10 +139,13 @@ namespace Game {
 			*/
 			void set_state(const Enums::StateEnum& state);
 
+			/**
+			* \brief Sets direction of the Object
+			*/
 			void set_direction(const Enums::DirectionEnum& value);
 
 			/**
-			* \brief Sets state of the Object
+			* \brief Sets animationstate of the Object
 			*/
 			void set_animationstate(const Enums::AnimateEnum& state);
 

@@ -8,11 +8,6 @@
 
 using namespace Game;
 
-Factories::UpdatableFactory::UpdatableFactory()
-{
-
-}
-
 std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
 {
 	std::shared_ptr<Models::Updatable> instance;

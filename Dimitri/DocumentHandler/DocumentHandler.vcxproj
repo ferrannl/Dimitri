@@ -162,7 +162,6 @@
   <ItemGroup>
     <ClInclude Include="src\Controllers\DocumentController.h" />
     <ClInclude Include="src\framework.h" />
-    <ClInclude Include="src\Interfaces\IParser.h" />
     <ClInclude Include="src\Interfaces\IReader.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Readers\CsvReader.h" />

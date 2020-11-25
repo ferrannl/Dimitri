@@ -21,9 +21,6 @@
     <ClInclude Include="src\framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Interfaces\IParser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Interfaces\IReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>

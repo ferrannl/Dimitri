@@ -11,8 +11,8 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		* \enum StateEnum
-		* \brief Enum Class contains the different state enums for object states
+		* \enum AnimateEnum
+		* \brief Enum Class contains the different state enums for animation for objects
 		*/
 		enum class AnimateEnum
 		{

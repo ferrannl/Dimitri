@@ -57,27 +57,17 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
 
 			/**
-			* \brief List of light in the Level
-			*/
-			std::vector<std::shared_ptr<Game::Models::Object>> _lights;
-
-			/**
-			* \brief List of players in the Level
-			*/
-			std::vector<std::shared_ptr<Game::Models::Player>> _players;
-
-			/**
-			* \brief List of interactables in the Level
+			* \brief List of backgrounds in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _backgrounds;
 
 			/**
-			* \brief List of interactables in the Level
+			* \brief List of updatables in the Level
 			*/
 			std::vector<std::shared_ptr<Models::Updatable>> _updatables;
 
 			/**
-			* \brief Texture of the background
+			* \brief List of interactables in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
@@ -130,7 +120,7 @@ namespace Game {
 			void load_objects();
 
 			/**
-			* \brief Add the Shapes of the Objects in _shapes, _players, _lights, _tiles and _interactables in the physics collision engine
+			* \brief Add the Shapes of the Objects in _shapes, _player, _interactables, _updatables and _tiles in the physics collision engine
 			*/
 			void add_shapes();
 
@@ -138,11 +128,6 @@ namespace Game {
 			* \brief Returns list of all Textures in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
-
-			/**
-			* \brief Returns list of all Lights in the Level
-			*/
-			std::vector<std::shared_ptr<Game::Models::Object>> get_lights() const;
 
 			/**
 			* \brief Returns the Player
@@ -160,7 +145,7 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::Interactable>> get_interactables() const;
 
 			/**
-			* \brief Returns the interactables
+			* \brief Returns the updatables
 			*/
 			std::vector<std::shared_ptr<Game::Models::Updatable>> get_updatables() const;
 
@@ -170,42 +155,37 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> get_physics_collision_controller() const;
 
 			/**
-			*	Returns physics collision controller
+			* \brief Adds tile to the _tiles list
 			*/
-			void add_object(std::shared_ptr<Game::Models::Object> tile);
+			void add_tile(std::shared_ptr<Game::Models::Object> tile);
 
 			/**
-			*	Returns physics collision controller
+			* \brief Adds player to _player
 			*/
 			void add_player(std::shared_ptr<Game::Models::Player> tile);
 
 			/**
-			*	Returns physics collision controller
+			* \brief Adds interactable to the _interactables list
 			*/
 			void add_interactable(std::shared_ptr<Game::Models::Interactable> tile);
 
 			/**
-			*	Returns physics collision controller
+			* \brief Adds updatables to the _updatables list
 			*/
 			void add_updatable(std::shared_ptr<Game::Models::Updatable> tile);
 
 			/**
-			*	Adds background to background list
+			* \brief Adds background to the _backgrounds list
 			*/
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
 			/**
-			*	Adds light to lights list
-			*/
-			void add_light(std::shared_ptr<Game::Models::Object> tile);
-
-			/**
-			*	Adds shape to the shape list
+			* \brief Adds shape to the _shapes list
 			*/
 			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 
 			/**
-			*	Calls physics simulation
+			* \brief Calls physics simulation
 			*/
 			void simulate();
 
@@ -215,7 +195,7 @@ namespace Game {
 			int get_height() const;
 
 			/**
-			* Gets level width
+			* \brief Returns the width of the Level
 			*/
 			int get_width() const;
 		};

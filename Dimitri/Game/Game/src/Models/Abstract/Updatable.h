@@ -25,7 +25,7 @@ namespace Game {
 			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
-			* \brief Interact with this object
+			* \brief update this object
 			*/
 			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
 		};

@@ -2,8 +2,20 @@
 #include "../Models/Abstract/Interactable.h"
 #include "../interfaces/IFactory.h"
 
+/**
+* \namespace Game
+* \brief Namespace for the game
+*/
 namespace Game {
+	/**
+	* \namespace Game.Factories
+	* \brief Namespace for the factories
+	*/
 	namespace Factories {
+		/**
+		* \class InteractableFactory
+		* \brief Class contains the methods to create interactables
+		*/
 		class InteractableFactory : public Interfaces::IFactory<Models::Interactable> {
 		private:
 			std::vector<int> _lights;
