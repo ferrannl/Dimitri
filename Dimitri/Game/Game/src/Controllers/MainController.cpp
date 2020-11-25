@@ -31,7 +31,6 @@ void Game::Controllers::MainController::run()
 {	
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);	
-	_level_controller->subscribe(this->shared_from_this());
 	_input_controller->poll_events();
 }
 
@@ -43,26 +42,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			s->get_command()->execute();
 			break;
 		}
-	}
-}
-
-void Game::Controllers::MainController::update(const Enums::LevelStateEnum& object)
-{
-	switch (object) {
-	case Enums::LevelStateEnum::ACTIVE:
-		_window_controller->clear_views();
-		_window_controller->open_view("level");
-		_window_controller->open_view("fps");
-		break;
-	case Enums::LevelStateEnum::WIN:
-		_window_controller->open_view("win_level");
-		break;
-	case Enums::LevelStateEnum::GAME_OVER:
-		_window_controller->open_view("game_over_level");
-		break;
-	case Enums::LevelStateEnum::PAUSED:
-		_window_controller->open_view("pause_level");
-		break;
 	}
 }
 

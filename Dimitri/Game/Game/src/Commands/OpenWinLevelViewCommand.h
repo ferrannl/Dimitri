@@ -12,12 +12,12 @@ namespace Game {
 	*/
 	namespace Commands {
 		/**
-		* \class LevelPauseCommand
-		* \brief Class contains the method to pause and play the game
+		* \class OpenWinLevelViewCommand
+		* \brief Class contains the method to open the win level view
 		*/
-		class LevelPauseCommand : public Command {
+		class OpenWinLevelViewCommand : public Command {
 		public:
-			LevelPauseCommand(const std::shared_ptr<Controllers::MainController> main_controller);
+			OpenWinLevelViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			void execute() override;
 		};

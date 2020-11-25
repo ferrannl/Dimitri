@@ -156,11 +156,15 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   <ItemGroup>
     <ClCompile Include="src\Commands\CommandFactory.cpp" />
     <ClCompile Include="src\Commands\ExitGameCommand.cpp" />
-    <ClCompile Include="src\Commands\LevelPauseCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\PauseLevelCommand.cpp" />
     <ClCompile Include="src\Commands\LoadLevelCommand.cpp" />
     <ClCompile Include="src\Commands\OpenCreditsViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHelpViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHomeViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenPauseLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenWinLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerInteractCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerJumpCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerMoveLeftCommand.cpp" />
@@ -204,11 +208,15 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Commands\Command.h" />
     <ClInclude Include="src\Commands\CommandFactory.h" />
     <ClInclude Include="src\Commands\ExitGameCommand.h" />
-    <ClInclude Include="src\Commands\LevelPauseCommand.h" />
+    <ClInclude Include="src\Commands\OpenLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\PauseLevelCommand.h" />
     <ClInclude Include="src\Commands\LoadLevelCommand.h" />
     <ClInclude Include="src\Commands\OpenCreditsViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHelpViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHomeViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenPauseLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenWinLevelViewCommand.h" />
     <ClInclude Include="src\Commands\PlayerInteractCommand.h" />
     <ClInclude Include="src\Commands\PlayerJumpCommand.h" />
     <ClInclude Include="src\Commands\PlayerMoveLeftCommand.h" />

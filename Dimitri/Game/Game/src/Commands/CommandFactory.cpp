@@ -9,7 +9,11 @@
 #include "PlayerMoveRightCommand.h"
 #include "PlayerJumpCommand.h"
 #include "PlayerInteractCommand.h"
-#include "LevelPauseCommand.h"
+#include "PauseLevelCommand.h"
+#include "OpenWinLevelViewCommand.h"
+#include "OpenPauseLevelViewCommand.h"
+#include "OpenGameOverLevelViewCommand.h"
+#include "OpenLevelViewCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -26,7 +30,11 @@ namespace Game {
 			_commands.insert(std::make_pair("player_move_right", std::make_shared<PlayerMoveRightCommand>(main_controller)));
 			_commands.insert(std::make_pair("player_jump", std::make_shared<PlayerJumpCommand>(main_controller)));
 			_commands.insert(std::make_pair("player_interact", std::make_shared<PlayerInteractCommand>(main_controller)));
-			_commands.insert(std::make_pair("level_pause", std::make_shared<LevelPauseCommand>(main_controller)));
+			_commands.insert(std::make_pair("pause_level", std::make_shared<PauseLevelCommand>(main_controller)));
+			_commands.insert(std::make_pair("open_win_level_view", std::make_shared<OpenWinLevelViewCommand>(main_controller)));
+			_commands.insert(std::make_pair("open_pause_level_view", std::make_shared<OpenPauseLevelViewCommand>(main_controller)));
+			_commands.insert(std::make_pair("open_game_over_level_view", std::make_shared<OpenGameOverLevelViewCommand>(main_controller)));
+			_commands.insert(std::make_pair("open_level_view", std::make_shared<OpenLevelViewCommand>(main_controller)));
 		}
 
 		CommandFactory* CommandFactory::instance()

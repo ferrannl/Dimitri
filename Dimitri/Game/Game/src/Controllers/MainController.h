@@ -20,7 +20,7 @@ namespace Game {
 		* \class MainController
 		* \brief Class contains the methods to navigate through Views, connect the code to connect Input-, Window- and LevelController and start the application
 		*/
-		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Utility::Interfaces::IObserver<Enums::LevelStateEnum> {
+		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController> {
 		private:
 			/**
 			* \brief An instance of the InputController
@@ -73,11 +73,6 @@ namespace Game {
 			* \brief Receives updates from the InputController
 			*/
 			void update(const Events::InputEvent& object);
-
-			/**
-			* \brief Updates from LevelController
-			*/
-			void update(const Enums::LevelStateEnum& object);
 
 			/**
 			* \brief Returns the InputController

@@ -28,7 +28,7 @@ namespace Game {
 		* \class LevelController
 		* \brief Class LevelController contains the methods to interact with the Level
 		*/
-		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Utility::Interfaces::IObservable<Enums::LevelStateEnum> {
+		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent> {
 		private:
 			/**
 			* \brief An Instance of the current Level
@@ -49,11 +49,6 @@ namespace Game {
 			* \brief An Instance of the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
-
-			/**
-			* \brief List of Observers
-			*/
-			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>> _observers;
 
 			/**
 			* \brief A list of the Shortcuts
@@ -102,21 +97,6 @@ namespace Game {
 			* \brief Returns the state of the Level
 			*/
 			Enums::LevelStateEnum get_state() const;
-
-			/**
-			* \brief Notifies the observers with the level state
-			*/
-			void notify(const Enums::LevelStateEnum& object);
-
-			/**
-			* \brief Add observer to list of observables
-			*/
-			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
-
-			/**
-			* \brief Removes observer from list of observables
-			*/
-			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
 
 		};
 	}

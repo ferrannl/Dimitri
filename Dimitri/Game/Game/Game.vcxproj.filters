@@ -107,7 +107,11 @@
     <ClCompile Include="src\Commands\PlayerMoveRightCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerJumpCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerInteractCommand.cpp" />
-    <ClCompile Include="src\Commands\LevelPauseCommand.cpp" />
+    <ClCompile Include="src\Commands\PauseLevelCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenPauseLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenWinLevelViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenLevelViewCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">
@@ -210,7 +214,11 @@
     <ClInclude Include="src\Commands\PlayerMoveRightCommand.h" />
     <ClInclude Include="src\Commands\PlayerJumpCommand.h" />
     <ClInclude Include="src\Commands\PlayerInteractCommand.h" />
-    <ClInclude Include="src\Commands\LevelPauseCommand.h" />
+    <ClInclude Include="src\Commands\PauseLevelCommand.h" />
+    <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenPauseLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenWinLevelViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenLevelViewCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

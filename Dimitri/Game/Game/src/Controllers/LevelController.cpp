@@ -12,7 +12,7 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_move_right"), Input::Enums::EventEnum::KEY_PRESS_RIGHT));
 	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_jump"), Input::Enums::EventEnum::KEY_PRESS_UP));
 	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("player_interact"), Input::Enums::EventEnum::KEY_PRESS_E));
-	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("level_pause"), Input::Enums::EventEnum::KEY_PRESS_P));
+	_shortcuts.push_back(std::make_unique<Models::Shortcut>(Commands::CommandFactory::instance()->get_command("pause_level"), Input::Enums::EventEnum::KEY_PRESS_P));
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
@@ -38,6 +38,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 void Game::Controllers::LevelController::start()
 {
 	set_state(Enums::LevelStateEnum::ACTIVE);
+	Commands::CommandFactory::instance()->get_command("open_level_view")->execute();
 }
 
 void Game::Controllers::LevelController::stop()
@@ -61,7 +62,6 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_level->play_music("level1");
 		}
-		notify(_state);
 	}
 }
 
@@ -85,19 +85,4 @@ void  Game::Controllers::LevelController::simulate() {
 Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
 	return _state;
-}
-
-void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {
-	for (auto observer : _observers) {
-		observer->update(object);
-	}
-}
-
-void Game::Controllers::LevelController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer) {
-	_observers.push_back(observer);
-}
-
-void Game::Controllers::LevelController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer)
-{
-	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
 }

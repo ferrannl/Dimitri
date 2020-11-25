@@ -1,4 +1,5 @@
 #include "PlayerInteractCommand.h"
+#include "CommandFactory.h"
 
 namespace Game {
 	namespace Commands {
@@ -22,6 +23,7 @@ namespace Game {
 				{
 					if (player->get_shape()->check_polygon_collision(light->get_shape()))
 					{
+						CommandFactory::instance()->get_command("open_game_over_level_view")->execute();
 						l_ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
 					}
 				}
