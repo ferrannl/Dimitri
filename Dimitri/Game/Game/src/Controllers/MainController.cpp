@@ -8,7 +8,8 @@ Controllers::MainController::MainController()
 	_input_controller = std::make_shared<Controllers::InputController>();
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
-	_home_controller->load_buttons(_level_manager);
+	_highscore_manager = std::make_shared<Managers::HighscoreManager>(_input_controller, _audio_controller, _window_controller, _home_controller);
+	_home_controller->load_buttons(_level_manager, _highscore_manager);
 }
 
 void Game::Controllers::MainController::run()
@@ -56,16 +57,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 			_input_controller->subscribe(_home_controller);
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_R:
-		if (_window_controller->is_active("home")) {
-			_input_controller->unsubscribe(_home_controller);
-			_window_controller->clear_views();
-			_audio_controller->play_audio("highscore");
-			_window_controller->open_view("highscore");
-			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
-			//_input_controller->subscribe(_home_controller);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_F:

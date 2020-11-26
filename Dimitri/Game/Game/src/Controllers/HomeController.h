@@ -53,7 +53,7 @@ namespace Game {
 			/**
 			* \brief Loads the Buttons
 			*/
-			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
+			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager, std::shared_ptr<Managers::HighscoreManager> highscore_manager);
 
 			/**
 			* \brief Updates the Buttons

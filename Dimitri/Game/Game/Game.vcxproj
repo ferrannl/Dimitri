@@ -155,6 +155,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Managers\HighscoreManager.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
@@ -167,6 +168,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Models\Lamp.cpp" />
     <ClCompile Include="src\Models\LightBeam.cpp" />
     <ClCompile Include="src\Models\Switch.cpp" />
+    <ClCompile Include="src\Models\Timer.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
@@ -191,6 +193,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Managers\HighscoreManager.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
@@ -201,6 +204,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Models\Lamp.h" />
     <ClInclude Include="src\Models\LightBeam.h" />
     <ClInclude Include="src\Models\Switch.h" />
+    <ClInclude Include="src\Models\Timer.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />

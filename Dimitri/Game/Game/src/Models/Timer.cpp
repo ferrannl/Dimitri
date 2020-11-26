@@ -13,7 +13,7 @@ void Game::Models::Timer::start()
 	_started = true;
     _paused = false;    
 
-	_start_ticks = SDL_GetTicks();
+	//_start_ticks = SDL_GetTicks();
     _pause_ticks = 0;   
 
 }
@@ -33,7 +33,7 @@ void Game::Models::Timer::pause()
         _paused = true;
 
         //Calculate the paused ticks
-        _pause_ticks = SDL_GetTicks() - _start_ticks;
+       // _pause_ticks = SDL_GetTicks() - _start_ticks;
         _start_ticks = 0;
     }
 }
@@ -47,7 +47,7 @@ void Game::Models::Timer::unpause()
         _paused = false;
 
         //Reset the starting ticks
-        _start_ticks = SDL_GetTicks() - _pause_ticks;
+       // _start_ticks = SDL_GetTicks() - _pause_ticks;
 
         //Reset the paused ticks
         _pause_ticks = 0;
@@ -71,7 +71,7 @@ uint32_t Game::Models::Timer::getTicks()
         else
         {
             //Return the current time minus the start time
-            time = SDL_GetTicks() - _start_ticks;
+           // time = SDL_GetTicks() - _start_ticks;
         }
     }
 

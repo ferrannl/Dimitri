@@ -6,6 +6,7 @@
 #include <src\Models\Texture.h>
 #include "../Models/IObject.h"
 #include <src/Models/Sprite.h>
+#include "../Models/Timer.h"
 #include "Wall.h"
 #include "Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
@@ -75,6 +76,11 @@ namespace Game {
 			std::shared_ptr<Graphics::Models::Texture> _background;
 
 			/**
+			* \brief Timer of a level
+			*/
+			std::shared_ptr<Models::Timer> _timer;
+
+			/**
 			* \brief The height of the Level
 			*/
 			int _height;
@@ -101,6 +107,16 @@ namespace Game {
 			* \brief Play music
 			*/
 			void play_music(std::string audio_name);
+
+			/**
+			* \brief Start timer
+			*/
+			void start_timer();
+
+			/**
+			* \brief Returns timer
+			*/
+			std::shared_ptr<Models::Timer> get_timer();
 
 			/**
 			* \brief Stop music

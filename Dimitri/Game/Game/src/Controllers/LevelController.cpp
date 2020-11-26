@@ -112,6 +112,8 @@ void  Game::Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
 		_level->simulate();
+		_level->start_timer();
+		std::cout << _level->get_timer()->getTicks() / 1000.f;
 		_level->get_player()->update();
 		for (std::shared_ptr<Models::IObject> walls : _level->get_tiles())
 		{
