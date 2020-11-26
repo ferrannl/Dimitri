@@ -95,6 +95,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Models\LevelCheatSettings.cpp" />
+    <ClCompile Include="src\Views\CheatView.cpp" />
+    <ClCompile Include="src\Controllers\CheatsController.cpp" />
+    <ClCompile Include="src\Models\Buttons\CheckBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">
@@ -184,6 +188,11 @@
     <ClInclude Include="src\Views\WinLevelView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Models\LevelCheatSettings.h" />
+    <ClInclude Include="src\Views\CheatView.h" />
+    <ClInclude Include="src\Controllers\CheatsController.h" />
+    <ClInclude Include="src\Models\Buttons\CheckBox.h" />
+    <ClInclude Include="src\Models\Check.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

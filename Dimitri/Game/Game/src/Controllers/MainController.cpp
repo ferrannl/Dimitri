@@ -7,6 +7,7 @@ Controllers::MainController::MainController()
 	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller, _audio_controller);
 	_input_controller = std::make_shared<Controllers::InputController>();
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
+	_cheats_controller = std::make_shared<Controllers::CheatsController>();
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
 	_home_controller->load_buttons(_level_manager);
 }
@@ -15,8 +16,10 @@ void Game::Controllers::MainController::run()
 {
 	_window_controller->create_window(720, 1280);
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
+	_cheats_controller->initialize_textures(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
+	_window_controller->set_textures(_cheats_controller->get_textures(), "cheats");
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_level_controller->subscribe(this->shared_from_this());
@@ -28,26 +31,38 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 	switch (object.event_enum) {
 	case Input::Enums::EventEnum::KEY_PRESS_C:
 		if (!_window_controller->is_active("credits") && !_window_controller->is_active("home")) {
+			if (_window_controller->is_active("cheats")) {
+				_input_controller->unsubscribe(_cheats_controller);
+			}
 			_window_controller->clear_views();
 			_window_controller->open_view("credits");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
 			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
+			
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_H:
 		if (!_window_controller->is_active("help") && !_window_controller->is_active("home")) {
-			_window_controller->clear_views();
+			
+			if (_window_controller->is_active("cheats")) {
+				_input_controller->unsubscribe(_cheats_controller);
+			}_window_controller->clear_views();
 			_window_controller->open_view("help");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
 			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
+			
+
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_ESC:
 		if (!_window_controller->is_active("home")) {
+			if (_window_controller->is_active("cheats")) {
+				_input_controller->unsubscribe(_cheats_controller);
+			}
 			_window_controller->clear_views();
 			_window_controller->open_view("home");
 			_window_controller->open_view("fps");
@@ -56,6 +71,20 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 			_input_controller->unsubscribe(_level_controller);
 			_input_controller->subscribe(_home_controller);
+			
+		}
+		
+		break;
+	case Input::Enums::EventEnum::KEY_PRESS_CTRL:
+		if (!_window_controller->is_active("cheats")) {
+			_window_controller->clear_views();
+			_window_controller->open_view("cheats");
+			_window_controller->open_view("fps");
+			_level_controller->stop();
+			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
+			_input_controller->unsubscribe(_level_controller);
+			_input_controller->unsubscribe(_home_controller);
+			_input_controller->subscribe(_cheats_controller);
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_F:

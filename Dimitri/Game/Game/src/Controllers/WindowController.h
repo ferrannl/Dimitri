@@ -10,6 +10,7 @@
 #include <..\Game\Game\src\Views/CreditsView.h>
 #include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views/HomeView.h>
+#include <..\Game\Game\src\Views/CheatView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>

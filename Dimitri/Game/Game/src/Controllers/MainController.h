@@ -3,6 +3,7 @@
 #include "WindowController.h"
 #include "LevelController.h"
 #include "HomeController.h"
+#include "CheatsController.h"
 #include "../Models/Level.h"
 
 /**
@@ -49,6 +50,11 @@ namespace Game {
 			* \brief An instance of the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> _home_controller;
+
+			/**
+			* \brief An instance of the HomeController
+			*/
+			std::shared_ptr<Controllers::CheatsController> _cheats_controller;
 		public:
 			MainController();
 
