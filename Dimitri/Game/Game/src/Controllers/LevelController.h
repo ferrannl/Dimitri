@@ -10,6 +10,7 @@
 #include <..\Game\Game\src\Enums\LevelStateEnum.cpp>
 #include <chrono>
 #include <thread>
+#include "../Models/LevelCheatSettings.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -107,6 +108,10 @@ namespace Game {
 			*/
 			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer);
 
+			/**
+			* \brief Updates cheat settings
+			*/
+			void update_cheats(std::shared_ptr<Game::Models::LevelCheatSettings> _settings);
 		};
 	}
 }

@@ -139,3 +139,11 @@ void Game::Controllers::LevelController::unsubscribe(const std::shared_ptr<Utili
 {
 	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
 }
+
+void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Models::LevelCheatSettings> _settings)
+{
+	//sets jumps settings
+	_level->get_player()->set_jumps(_settings->get_amount_of_jumps());
+
+	//todo set invincibility settings
+}

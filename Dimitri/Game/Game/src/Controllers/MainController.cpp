@@ -100,6 +100,7 @@ void Game::Controllers::MainController::update(const Enums::LevelStateEnum& obje
 	switch (object) {
 	case Enums::LevelStateEnum::ACTIVE:
 		_window_controller->clear_views();
+		_level_controller->update_cheats(_cheats_controller->get_cheat_settings());
 		_window_controller->open_view("level");
 		_window_controller->open_view("fps");
 		break;
