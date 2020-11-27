@@ -1,7 +1,5 @@
 #pragma once
 #define CURL_STATICLIB
-#include <curl/curl.h>
-#include "../Helpers/BasePathHelper.h"
 #include <tchar.h>
 #include <iostream>
 #include <fstream>
@@ -19,7 +17,6 @@ class advertisement {
 private:
 public:
 	advertisement();
-	size_t my_write(void* buffer, size_t size, size_t nmemb, void* param);
-	void http_download_images();
-	void unzip_file();
+	void http_download_images(std::string destination, std::string zip_location);
+	void unzip_file(std::string destination, std::string zip_location);
 };

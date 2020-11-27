@@ -3,7 +3,7 @@
 Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::string url, std::string image_path) : Game::Models::Button(x, y, z, height, width, state, scene_height)
 {
 	advertisement ad = {};
-	//ad.http_download_images();
+	ad.http_download_images(Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement/advertisement.zip" }, Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement" });
 	_url = url;
 	_image_path = image_path;
 	_width = width;

@@ -1,4 +1,5 @@
 #include "advertisement.h"
+#include <curl/curl.h>
 
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
@@ -7,12 +8,10 @@ size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
     return written;
 }
 
-void advertisement::http_download_images()
+void advertisement::http_download_images(std::string destination, std::string zip_location)
 {
     CURL* curl;
     FILE* fp;
-
-    std::string destination = Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement/advertisement.zip"};
 
     fp = fopen(destination.c_str(), "wb");
 
@@ -42,7 +41,7 @@ void advertisement::http_download_images()
 
     fclose(fp);
 
-    unzip_file();
+    unzip_file(destination, zip_location);
 
     if (res == CURLE_OK)
         std::cout << "OK";
@@ -50,11 +49,11 @@ void advertisement::http_download_images()
         std::cout << curl_easy_strerror(res);
 }
 
-void advertisement::unzip_file()
+void advertisement::unzip_file(std::string destination, std::string zip_location)
 {
-    TCHAR destination = (TCHAR)(Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement/advertisement.zip" }).c_str();
-    HZIP hz = OpenZip(_T("" + destination), 0);
-    TCHAR zip = (TCHAR)(Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement" }).c_str();
+    TCHAR destination_c_str = (TCHAR)(destination).c_str();
+    HZIP hz = OpenZip(_T("" + destination_c_str), 0);
+    TCHAR zip = (TCHAR)(zip_location).c_str();
     SetUnzipBaseDir(hz, _T("" + zip));
     ZIPENTRY ze; GetZipItem(hz, -1, &ze); int numitems = ze.index;
     for (int zi = 0; zi < numitems; zi++)
