@@ -4,12 +4,12 @@
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
 #include "../Models/Buttons/ExitButton.h"
-#include "../Models/Buttons/AdvertisementButton.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
 #include <tuple>
 #include <memory>
+#include "../Models/Buttons/AdvertisementButton.h"
 
 /**
 *	Namespace for the game
@@ -33,7 +33,10 @@ namespace Game {
 			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
 			void update(const Game::Events::InputEvent& object);
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
-
+			/**
+			*	Initialize advertisements
+			*/
+			std::shared_ptr<Game::Models::Button> get_advertisement_button();
 		};
 	}
 }

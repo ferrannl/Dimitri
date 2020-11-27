@@ -30,10 +30,10 @@
     <ClCompile Include="src\Time\Interval.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Advertisement\unzip.cpp">
+    <ClCompile Include="src\Advertisement\Advertisement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Advertisement\advertisement.cpp">
+    <ClCompile Include="src\Advertisement\Unzip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,10 +59,10 @@
     <ClInclude Include="src\Time\Interval.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Advertisement\unzip.h">
+    <ClInclude Include="src\Advertisement\Advertisement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Advertisement\advertisement.h">
+    <ClInclude Include="src\Advertisement\Unzip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Button.h"
-#include <src/Advertisement/advertisement.h>
+#include <src/Advertisement/Advertisement.h>
 #include <iostream>
 /**
 *	Namespace for the game

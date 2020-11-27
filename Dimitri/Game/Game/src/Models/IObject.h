@@ -137,6 +137,10 @@ namespace Game {
 			*	Updates x/y values using shape
 			*/
 			void update();
+			/**
+			*	Clear textures
+			*/
+			void clear_textures();
 		};
 	}
 }
