@@ -16,13 +16,13 @@ namespace Game {
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/TravelingTypewriter.ttf" };
 		Graphics::Models::Color color = { 0, 0, 0 };
 
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("F", color, bg_width / 4 - 133, bg_height / 4 * 3, 1, 40, 40, 0, path, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("H", color, bg_width / 4 - 133, bg_height / 4 * 2, 1, 40, 40, 0, path, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("E", color, bg_width / 4 - 133, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("Esc", color, bg_width / 3 - 20, bg_height / 4 * 3, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("F", color, bg_width / 4 - 135, bg_height / 4 * 3, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("H", color, bg_width / 4 - 135, bg_height / 4 * 2, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("E", color, bg_width / 4 - 135, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("Esc", color, bg_width / 3 - 22, bg_height / 4 * 3, 1, 40, 40, 0, path, true));
 
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("W", color, bg_width / 2 - 140, bg_height / 4 + 70, 1, 40, 40, 0, path, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("A", color, bg_width / 2 - 220, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("W", color, bg_width / 2 - 142, bg_height / 4 + 70, 1, 40, 40, 0, path, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("A", color, bg_width / 2 - 222, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("D", color, bg_width / 2 - 70, bg_height / 4 - 10, 1, 40, 40, 0, path, true));
 
 		color = { 255, 255, 255 };
