@@ -22,12 +22,12 @@
 
 namespace Utility{
 	namespace Advertisement {
-		class advertisement {
+		class UTILITY_API advertisement {
 		private:
 		public:
-			UTILITY_API advertisement();
-			UTILITY_API void http_download_images(std::string destination, std::string zip_location);
-			UTILITY_API void unzip_file(std::string destination, std::string zip_location);
+			 advertisement();
+			 void http_download_images(std::string destination, std::string zip_location);
+			 void unzip_file(std::string destination, std::string zip_location);
 		};
 	}
 }

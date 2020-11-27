@@ -2,7 +2,6 @@
 #include <curl/curl.h>
 #include "unzip.h"
 
-
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
     size_t written;
@@ -19,7 +18,7 @@ void Utility::Advertisement::advertisement::http_download_images(std::string des
     CURL* curl;
     FILE* fp;
 
-    fp = fopen(destination.c_str(), "wb");
+    fp = fopen(destination.c_str(),"wb");
 
     curl = curl_easy_init();
 
@@ -57,10 +56,12 @@ void Utility::Advertisement::advertisement::http_download_images(std::string des
 
 void Utility::Advertisement::advertisement::unzip_file(std::string destination, std::string zip_location)
 {
-    TCHAR destination_c_str = (TCHAR)(destination).c_str();
-    HZIP hz = OpenZip(_T("" + destination_c_str), 0);
-    TCHAR zip = (TCHAR)(zip_location).c_str();
-    SetUnzipBaseDir(hz, _T("" + zip));
+    wchar_t* wmsg = new wchar_t[strlen(destination.c_str()) + 1]; //memory allocation
+    mbstowcs(wmsg, destination.c_str(), strlen(destination.c_str()) + 1);
+    HZIP hz = OpenZip(wmsg, 0);
+    wchar_t* wmsg2 = new wchar_t[strlen(zip_location.c_str()) + 1]; //memory allocation
+    mbstowcs(wmsg2, zip_location.c_str(), strlen(zip_location.c_str()) + 1);
+    SetUnzipBaseDir(hz, wmsg2);
     ZIPENTRY ze; GetZipItem(hz, -1, &ze); int numitems = ze.index;
     for (int zi = 0; zi < numitems; zi++)
     {
@@ -68,4 +69,6 @@ void Utility::Advertisement::advertisement::unzip_file(std::string destination, 
         UnzipItem(hz, zi, ze.name);
     }
     CloseZip(hz);
+
+    remove(destination.c_str());
 }
