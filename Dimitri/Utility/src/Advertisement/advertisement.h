@@ -5,18 +5,29 @@
 #include <fstream>
 #include <windows.h>
 #include <stdio.h>
-#include <string>
-#include <vector>
-#include <cassert>
 #include <algorithm>
 #include <numeric>
 #include <functional>
-#include "unzip.h"
+#include <string>
 
-class advertisement {
-private:
-public:
-	advertisement();
-	void http_download_images(std::string destination, std::string zip_location);
-	void unzip_file(std::string destination, std::string zip_location);
-};
+#ifdef _WIN64
+#ifdef UTILITY_EXPORTS
+#define UTILITY_API __declspec(dllexport)
+#else 
+#define UTILITY_API __declspec(dllimport)
+#endif
+#else
+#define UTILITY_API
+#endif
+
+namespace Utility{
+	namespace Advertisement {
+		class advertisement {
+		private:
+		public:
+			UTILITY_API advertisement();
+			UTILITY_API void http_download_images(std::string destination, std::string zip_location);
+			UTILITY_API void unzip_file(std::string destination, std::string zip_location);
+		};
+	}
+}

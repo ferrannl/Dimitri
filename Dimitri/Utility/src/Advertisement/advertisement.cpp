@@ -1,5 +1,7 @@
 #include "advertisement.h"
 #include <curl/curl.h>
+#include "unzip.h"
+
 
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
@@ -8,7 +10,11 @@ size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
     return written;
 }
 
-void advertisement::http_download_images(std::string destination, std::string zip_location)
+Utility::Advertisement::advertisement::advertisement()
+{
+}
+
+void Utility::Advertisement::advertisement::http_download_images(std::string destination, std::string zip_location)
 {
     CURL* curl;
     FILE* fp;
@@ -49,7 +55,7 @@ void advertisement::http_download_images(std::string destination, std::string zi
         std::cout << curl_easy_strerror(res);
 }
 
-void advertisement::unzip_file(std::string destination, std::string zip_location)
+void Utility::Advertisement::advertisement::unzip_file(std::string destination, std::string zip_location)
 {
     TCHAR destination_c_str = (TCHAR)(destination).c_str();
     HZIP hz = OpenZip(_T("" + destination_c_str), 0);
