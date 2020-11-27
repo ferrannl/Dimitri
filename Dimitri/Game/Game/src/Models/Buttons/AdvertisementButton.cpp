@@ -1,10 +1,11 @@
 #include "AdvertisementButton.h"
 #include <experimental/filesystem>
 #include <ctime>
+#include "../../Controllers/WindowController.h"
 
 namespace fs = std::experimental::filesystem::v1;
 
-Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height) : Game::Models::Button(x, y, z, height, width, state, scene_height)
+Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, const std::shared_ptr<Game::Controllers::WindowController> window_controller) : Game::Models::Button(x, y, z, height, width, state, scene_height)
 {
 	images = {};
 	ad = {};
@@ -17,22 +18,18 @@ Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, in
 	}
 	_width = width;
 	_height = height;
-	initialize_textures();
+	//initialize_textures();
 }
 
 void Game::Models::Buttons::AdvertisementButton::initialize_textures()
 {
-
 	clear_textures();
 	//haal huidige texture op
 	//de graphics controller heeft een remove, geef de huidige texture mee als param op remove();
 	// call clear_textures();
 	//maak nieuwe texture
 	// graphicscontroller.add_texture(nieuwe texture)
-
-
 	srand((unsigned int)time(NULL));
-
 	int random_int = rand();
 	int image_size = images.size();
 	int randNum = (random_int % image_size);

@@ -93,7 +93,7 @@ namespace Game {
 			*	Sets the textures for the view
 			*/
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
-			
+
 			/**
 			*	Adds the textures for the level view
 			*/
@@ -120,6 +120,11 @@ namespace Game {
 			int get_window_height() const;
 
 			int get_window_width() const;
+
+			/**
+			* Get graphics controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller();
 		};
 	}
 }
