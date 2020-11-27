@@ -49,7 +49,6 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 		if (!_window_controller->is_active("home")) {
 			_window_controller->clear_views();
 			_home_controller->get_advertisement_button()->initialize_textures();
-			_window_controller->set_textures(_home_controller->get_textures(), "home");
 			_window_controller->open_view("home");
 			_window_controller->open_view("fps");
 			_level_controller->stop();
