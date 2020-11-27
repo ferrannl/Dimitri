@@ -2,6 +2,7 @@
 #include "../Button.h"
 #include <cstdlib>
 #include <windows.h>
+#include <src/Models/Text.h>
 
 /**
 *	Namespace for the game
