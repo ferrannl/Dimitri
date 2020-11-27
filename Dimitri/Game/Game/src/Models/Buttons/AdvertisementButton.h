@@ -1,8 +1,7 @@
 #pragma once
 #include "../Button.h"
 #include <cstdlib>
-#include <windows.h>
-#include <src/Models/Text.h>
+#include <src/Advertisement/advertisement.h>
 
 /**
 *	Namespace for the game

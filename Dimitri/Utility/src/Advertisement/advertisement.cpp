@@ -1,19 +1,4 @@
-#define CURL_STATICLIB
 #include "advertisement.h"
-#include <curl/curl.h>
-#include "../Helpers/BasePathHelper.h"
-#include <tchar.h>
-#include <iostream>
-#include <fstream>
-#include <windows.h>
-#include <stdio.h>
-#include <string>
-#include <vector>
-#include <cassert>
-#include <algorithm>
-#include <numeric>
-#include <functional>
-#include "unzip.h"
 
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
