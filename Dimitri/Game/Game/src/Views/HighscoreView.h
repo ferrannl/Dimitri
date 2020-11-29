@@ -1,6 +1,7 @@
 #pragma once
 #include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
+#include <string> 
 
 /**
 * \namespace Game
@@ -29,6 +30,13 @@ namespace Game {
 			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
+
+		private:
+			/**
+			* \brief Vector to save all the known times of a player
+			*/
+			std::vector<int> _record_times;
+
 		};
 	}
 }
