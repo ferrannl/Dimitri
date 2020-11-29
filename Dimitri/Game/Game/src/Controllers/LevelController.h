@@ -31,6 +31,11 @@ namespace Game {
 		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Utility::Interfaces::IObservable<Enums::LevelStateEnum> {
 		private:
 			/**
+			* \brief cheat settings
+			*/
+			std::shared_ptr<Game::Models::LevelCheatSettings> _settings;
+
+			/**
 			* \brief An Instance of the current Level
 			*/
 			std::shared_ptr<Game::Models::Level> _level;

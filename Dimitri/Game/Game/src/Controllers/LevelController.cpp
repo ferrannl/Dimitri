@@ -47,10 +47,13 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 			}
 			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
 			{
-				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
-				{
-					set_state(Enums::LevelStateEnum::GAME_OVER);
+				if (!_settings->get_invincible()) {
+					if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
+					{
+						set_state(Enums::LevelStateEnum::GAME_OVER);
+					}
 				}
+				
 			}
 		}
 		break;
@@ -140,10 +143,11 @@ void Game::Controllers::LevelController::unsubscribe(const std::shared_ptr<Utili
 	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
 }
 
-void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Models::LevelCheatSettings> _settings)
+void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Models::LevelCheatSettings> settings)
 {
-	//sets jumps settings
-	_level->get_player()->set_jumps(_settings->get_amount_of_jumps());
+	// set invincibility settings
+	_settings = settings;
 
-	//todo set invincibility settings
+	//sets jumps settings
+	_level->get_player()->set_jumps(settings->get_amount_of_jumps());
 }
