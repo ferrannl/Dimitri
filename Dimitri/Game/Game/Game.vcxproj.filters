@@ -34,7 +34,6 @@
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
     <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
     <ClCompile Include="src\Models\IObjects\Wall.cpp" />
-    <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
@@ -48,6 +47,8 @@
     <ClCompile Include="src\Enums\AnimateEnum.cpp" />
     <ClCompile Include="src\Models\IObjects\Floor.cpp" />
     <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
+    <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
+    <ClCompile Include="src\Models\Updatables\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
@@ -75,7 +76,6 @@
     <ClInclude Include="src\Models\Interactable\Switch.h" />
     <ClInclude Include="src\Models\IObjects\Lamp.h" />
     <ClInclude Include="src\Models\IObjects\Wall.h" />
-    <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
     <ClInclude Include="src\Models\Abstract\Interactable.h" />
     <ClInclude Include="src\Models\Abstract\Object.h" />
@@ -88,6 +88,8 @@
     <ClInclude Include="src\interfaces\IFactory.h" />
     <ClInclude Include="src\Models\IObjects\Floor.h" />
     <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
+    <ClInclude Include="src\Models\Updatables\Enemy.h" />
+    <ClInclude Include="src\Models\Updatables\Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />

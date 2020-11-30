@@ -177,6 +177,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
+    <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\IObjects\Floor.cpp" />
     <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
     <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
@@ -194,7 +195,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
-    <ClCompile Include="src\Models\Updatables\Player.cpp" />
+    <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Models\IObjects\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
@@ -222,6 +223,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Abstract\Interactable.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />
+    <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\IObjects\Floor.h" />
     <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
     <ClInclude Include="src\Models\IObjects\Lamp.h" />
@@ -238,7 +240,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
     <ClInclude Include="src\Events\InputEvent.h" />
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Level.h" />
-    <ClInclude Include="src\Models\Updatables\Player.h" />
+    <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Models\IObjects\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />

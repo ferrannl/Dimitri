@@ -75,7 +75,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	case Input::Enums::EventEnum::KEY_PRESS_G:
 		// this will obviously be triggered by an event in the future, for now a hardcoded key
 		set_state(Enums::LevelStateEnum::GAME_OVER);
-    break;
+		break;
 	}
 }
 
