@@ -10,6 +10,7 @@
 #include <tuple>
 #include <memory>
 #include "../Models/Buttons/AdvertisementButton.h"
+#include <src\Time\Timer\Timer.h>
 
 /**
 *	Namespace for the game
@@ -25,12 +26,11 @@ namespace Game {
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
 			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
-			std::shared_ptr<Game::Controllers::WindowController> _window_controller;
-
+			std::shared_ptr<Game::Models::Buttons::AdvertisementButton> _advertisement_button;
 			int _scene_height;
 			int _scene_width;
 		public:
-			HomeController(int sceneheight, int scenewidth, std::shared_ptr<Game::Controllers::WindowController> window_controller);
+			HomeController(int sceneheight, int scenewidth);
 			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
 			void update(const Game::Events::InputEvent& object);
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;

@@ -47,11 +47,6 @@ void Utility::Advertisement::advertisement::http_download_images(std::string des
 	fclose(fp);
 
 	unzip_file(destination, zip_location);
-
-	if (res == CURLE_OK)
-		std::cout << "OK";
-	else
-		std::cout << curl_easy_strerror(res);
 }
 
 void Utility::Advertisement::advertisement::unzip_file(std::string destination, std::string zip_location)

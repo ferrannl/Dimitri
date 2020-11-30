@@ -57,6 +57,8 @@ namespace Game {
 			*	Loads a level 
 			*/
 			void load_level();
+
+			std::shared_ptr<Game::Controllers::WindowController> get_window_controller();
 		};
 	}
 }
