@@ -78,6 +78,7 @@ void Game::Controllers::MainController::update(const Enums::LevelStateEnum& obje
 		_window_controller->open_view("win_level");
 		break;
 	case Enums::LevelStateEnum::GAME_OVER:
+		_audio_controller->play_audio("failed");
 		_window_controller->open_view("game_over_level");
 		break;
 	case Enums::LevelStateEnum::PAUSED:

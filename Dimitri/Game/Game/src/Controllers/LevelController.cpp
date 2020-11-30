@@ -6,6 +6,8 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_level = std::make_shared<Game::Models::Level>(audio_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
+	_level->add_music("failed", "/assets/audio/failed.wav");
+
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
@@ -45,7 +47,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 					interactable->interact();
 				}
 			}
-			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
+			for (std::shared_ptr<Models::IObject> light : _level->get_lights())
 			{
 				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
 				{
@@ -69,7 +71,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	case Input::Enums::EventEnum::KEY_PRESS_G:
 		// this will obviously be triggered by an event in the future, for now a hardcoded key
 		set_state(Enums::LevelStateEnum::GAME_OVER);
-    break;
+		break;
 	}
 }
 
