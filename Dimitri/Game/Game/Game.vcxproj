@@ -188,6 +188,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
+    <ClCompile Include="src\Views\TimerView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
@@ -222,6 +223,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Views\HomeView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
+    <ClInclude Include="src\Views\TimerView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\LevelView.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />

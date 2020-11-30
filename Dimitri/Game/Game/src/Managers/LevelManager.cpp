@@ -21,4 +21,5 @@ void Game::Managers::LevelManager::load_level()
 	_window_controller->set_scene_size(_level_controller->get_level()->get_level_height(), _level_controller->get_level()->get_level_width());
 	_input_controller->subscribe(_level_controller);
 	_level_controller->start();
+	_level_controller->get_level()->get_timer()->start();
 }

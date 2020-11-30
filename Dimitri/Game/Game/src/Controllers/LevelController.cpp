@@ -14,6 +14,10 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 	return _level->get_textures();
 }
 
+std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const {
+	return _level;
+}
+
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
 	switch (object.event_enum) {
@@ -73,14 +77,8 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	}
 }
 
-std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
-{
-	return _level;
-}
-
 void Game::Controllers::LevelController::start()
 {
-	_level->get_timer()->start();
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
@@ -99,11 +97,13 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			// active -> pause/win/game_over/inactive
 			_simulation_thread.join();
 			_level->stop_music("level1");
+			_level->get_timer()->pause();
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive -> active
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_level->play_music("level1");
+			_level->get_timer()->unpause();
 		}
 		notify(_state);
 	}
