@@ -3,7 +3,7 @@ using namespace Game;
 
 Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
 {
-	_level = std::make_shared<Game::Models::Level>(audio_controller);
+	_level = std::make_shared<Game::Models::Level>(audio_controller, window_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
@@ -80,6 +80,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::start()
 {
+	_level->get_timer()->start();
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
@@ -111,9 +112,8 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 void  Game::Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
+		std::cout << _level->get_timer()->getTicks() / 1000.f << '\n';
 		_level->simulate();
-		_level->start_timer();
-		std::cout << _level->get_timer()->getTicks() / 1000.f;
 		_level->get_player()->update();
 		for (std::shared_ptr<Models::IObject> walls : _level->get_tiles())
 		{

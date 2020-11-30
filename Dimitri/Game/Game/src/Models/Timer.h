@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <stdint.h>
+#include "../Controllers/WindowController.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -17,19 +18,22 @@ namespace Game {
 		*/
 		class Timer {
 		public:
-			Timer();
+			Timer(const std::shared_ptr<Controllers::WindowController> window_controller);
 			void start();
 			void stop();
 			void pause();
 			void unpause();
 
-			uint32_t getTicks();
+			Uint32 getTicks();
 
 			bool is_started();
+			bool is_paused();
+			Uint32 get_start_ticks();
 			
 		private:
+			std::shared_ptr<Controllers::WindowController> _window_controller;
 			Uint32 _pause_ticks;
-			uint32_t _start_ticks;
+			Uint32 _start_ticks;
 			
 			bool _started;
 			bool _paused;

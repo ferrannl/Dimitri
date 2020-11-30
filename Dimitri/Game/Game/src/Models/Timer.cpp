@@ -1,9 +1,9 @@
 #include "Timer.h"
 
-Game::Models::Timer::Timer()
+Game::Models::Timer::Timer(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller(window_controller)
 {
 	_start_ticks = 0;
-    _pause_ticks = false;
+    _pause_ticks = 0;
 	_started = false;
     _paused = false;
 }
@@ -13,7 +13,7 @@ void Game::Models::Timer::start()
 	_started = true;
     _paused = false;    
 
-	//_start_ticks = SDL_GetTicks();
+    _start_ticks = _window_controller->get_graphics_controller()->get_window()->get_facade()->get_ticks();
     _pause_ticks = 0;   
 
 }
@@ -22,6 +22,9 @@ void Game::Models::Timer::stop()
 {
 	_started = false;
 	_paused = false;
+
+    _start_ticks = 0;
+    _pause_ticks = 0;
 }
 
 void Game::Models::Timer::pause()
@@ -33,7 +36,7 @@ void Game::Models::Timer::pause()
         _paused = true;
 
         //Calculate the paused ticks
-       // _pause_ticks = SDL_GetTicks() - _start_ticks;
+        _pause_ticks = _window_controller->get_graphics_controller()->get_window()->get_facade()->get_ticks() - _start_ticks;
         _start_ticks = 0;
     }
 }
@@ -47,14 +50,14 @@ void Game::Models::Timer::unpause()
         _paused = false;
 
         //Reset the starting ticks
-       // _start_ticks = SDL_GetTicks() - _pause_ticks;
+        _start_ticks = _window_controller->get_graphics_controller()->get_window()->get_facade()->get_ticks() - _pause_ticks;
 
         //Reset the paused ticks
         _pause_ticks = 0;
     }
 }
 
-uint32_t Game::Models::Timer::getTicks()
+Uint32 Game::Models::Timer::getTicks()
 {
     //The actual timer time
     Uint32 time = 0;
@@ -71,7 +74,7 @@ uint32_t Game::Models::Timer::getTicks()
         else
         {
             //Return the current time minus the start time
-           // time = SDL_GetTicks() - _start_ticks;
+            time = _window_controller->get_graphics_controller()->get_window()->get_facade()->get_ticks() - _start_ticks;
         }
     }
 
@@ -81,4 +84,14 @@ uint32_t Game::Models::Timer::getTicks()
 bool Game::Models::Timer::is_started()
 {
     return _started;
+}
+
+bool Game::Models::Timer::is_paused()
+{
+    //Timer is running and paused
+    return _paused && _started;
+}
+
+Uint32 Game::Models::Timer::get_start_ticks() {
+    return _start_ticks;
 }

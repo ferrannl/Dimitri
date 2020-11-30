@@ -1,5 +1,6 @@
 #pragma once
 #include "../Controllers/AudioController.h"
+#include "../Controllers/WindowController.h"
 #include <memory>
 #include <chrono>
 #include <thread>
@@ -91,7 +92,7 @@ namespace Game {
 			int _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
 
 			/**
 			* \brief Add music
@@ -107,11 +108,6 @@ namespace Game {
 			* \brief Play music
 			*/
 			void play_music(std::string audio_name);
-
-			/**
-			* \brief Start timer
-			*/
-			void start_timer();
 
 			/**
 			* \brief Returns timer

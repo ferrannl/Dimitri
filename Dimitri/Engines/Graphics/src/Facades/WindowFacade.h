@@ -84,6 +84,11 @@ namespace Graphics {
 			int create_renderer();
 
 			/**
+			* \brief Returns the SDLGetTicks method
+			*/
+			Uint32 get_ticks();
+
+			/**
 			* \brief Creates the instance of SDL_Window
 			*/
 			int create_window(const std::string& title, int height, int width);

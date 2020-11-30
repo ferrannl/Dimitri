@@ -1,10 +1,10 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller) : _audio_controller(audio_controller)
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller) : _audio_controller(audio_controller)
 {
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_timer = std::make_shared<Models::Timer>();
+	_timer = std::make_shared<Models::Timer>(window_controller);
 	_interactables = {};
 	_lights = {};
 	_players = {};
@@ -25,11 +25,6 @@ void Game::Models::Level::add_sound(std::string audio_name, std::string path)
 void Models::Level::play_music(std::string audio_name)
 {
 	_audio_controller->play_audio(audio_name);
-}
-
-void Game::Models::Level::start_timer()
-{
-	_timer->start();
 }
 
 std::shared_ptr<Models::Timer> Game::Models::Level::get_timer()
@@ -111,6 +106,7 @@ void Game::Models::Level::load_objects()
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(_width, 0, _height, 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square));//rig
 
 	add_shapes();
+
 }
 
 void Game::Models::Level::add_shapes()

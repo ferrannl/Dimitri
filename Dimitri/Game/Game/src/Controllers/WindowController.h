@@ -131,6 +131,11 @@ namespace Game {
 			* \brief Returns the width of the Window
 			*/
 			int get_window_width() const;
+
+			/**
+			* \brief Returns the Graphics Controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
 		};
 	}
 }

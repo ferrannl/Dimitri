@@ -178,6 +178,11 @@ int Facades::WindowFacade::create_renderer()
 	}
 }
 
+Uint32 Graphics::Facades::WindowFacade::get_ticks()
+{
+	return SDL_GetTicks();
+}
+
 void Facades::WindowFacade::destroy()
 {
 	// we might want to deallocate surfaces in the future
