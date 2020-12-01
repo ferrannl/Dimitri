@@ -6,22 +6,25 @@
 #include <..\Game\Game\src\Views\View.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the level using the graphics controller
+		* \class LevelView
+		* \brief Class contains the methods to draw the level
 		*/
 		class LevelView : public View {
 		public:
 			LevelView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			*	Returns if view is visible
+			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
 		};

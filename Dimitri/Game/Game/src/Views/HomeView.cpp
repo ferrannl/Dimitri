@@ -10,7 +10,7 @@ namespace Game {
 	{
 		int window_width = _graphics_controller.get()->get_window().get()->get_width();
 		int window_height = _graphics_controller.get()->get_window().get()->get_height();
-		Color color = { 255, 255, 255 };
+		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		std::shared_ptr<Graphics::Models::Text> title = std::make_shared<Graphics::Models::Text>("DIMITRI", color, window_width / 2 - 100, (window_height / 4 * 3), 10, 80, 200, 0, path, true);
 		std::shared_ptr<Graphics::Models::Text> subTitle = std::make_shared<Graphics::Models::Text>("De stealth game van 2020!", color, window_width / 2 - 175, (window_height / 4 * 3) - 50, 1, 50, 350, 0, path, true);

@@ -9,54 +9,61 @@
 #include <iostream>
 #include <tuple>
 #include <memory>
-#include "../Models/Buttons/AdvertisementButton.h"
-#include <src\Time\Timer\Timer.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains all code to interact with window engine and show images on screen
+		* \class HomeController
+		* \brief Class contains the methods to interact with window engine and show images on screen
 		*/
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
 
 			/**
-			*	A list of all the buttons on the home screen
+			* \brief A list of the Buttons
 			*/
-			std::vector<std::shared_ptr<Game::Models::IButton>> _buttons;
-			
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
 			/**
-			*	The height of the current window
+			* \brief An instance of the Audio Controller
+			*/
+			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
+
+			/**
+			* \brief The height of the scene
 			*/
 			int _scene_height;
+
 			/**
-			*	The width of the current window
+			* \brief The width of the scene
 			*/
 			int _scene_width;
 		public:
-			HomeController(int sceneheight, int scenewidth);
+			HomeController(int sceneheight, int scenewidth, std::shared_ptr<Game::Controllers::AudioController> audio_controller);
 			/**
-			*	Loads all the buttons onto the window
+			* \brief Loads the Buttons
 			*/
 			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
+
 			/**
-			*	Checks the events for the buttons
+			* \brief Updates the Buttons
 			*/
 			void update(const Game::Events::InputEvent& object);
+
 			/**
-			*	Returns all the textures of the current object
+			* \brief Returns the Textures from the Buttons
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
-			/**
-			*	Returns the advertisement buttons
-			*/
 			std::vector < std::shared_ptr<Game::Models::IButton>> get_advertisement_buttons();
+
 		};
 	}
 }

@@ -18,15 +18,14 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	b2FixtureDef fixtureDef;
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
-	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
-		//Polygon tekenen dmv vertices
-	}
-	else if (shape->get_type() == Enums::ShapeEnum::Square) {
-		b2PolygonShape _shape;
+	b2PolygonShape _shape;
+
+	if (shape->get_type() == Enums::ShapeEnum::Square) {
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
-		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
+
+	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+	create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
@@ -71,9 +70,7 @@ void Facades::WorldFacade::simulate() const
 		std::shared_ptr<Models::Shape> shape = it.first;
 		b2Body* body = it.second;
 
-		b2Vec2 position = body->GetPosition();
-		float angle = body->GetAngle();
-		shape->set_x(body->GetWorldCenter().x - shape->get_width() / 2);
-		shape->set_y(body->GetWorldCenter().y - shape->get_height() / 2);
+		shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
+		shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
 	}
 }

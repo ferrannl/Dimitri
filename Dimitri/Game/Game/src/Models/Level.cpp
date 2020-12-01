@@ -1,11 +1,11 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level()
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller) : _audio_controller(audio_controller)
 {
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_audio_controller = std::make_shared<Controllers::AudioController>();
 	_interactables = {};
+	_lights = {};
 	_players = {};
 	_shapes = {};
 	_tiles = {};
@@ -63,6 +63,7 @@ void Game::Models::Level::load_objects()
 	//background
 	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _height, _width, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL, true);
 
+
 	//platform 1
 	_tiles.push_back(std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT));
 
@@ -86,6 +87,11 @@ void Game::Models::Level::load_objects()
 
 	//interactables
 	_interactables.push_back(std::make_shared<Switch>(650, 475, 2, 25, 25, Game::Enums::StateEnum::LEFT));
+
+	//miscelanious
+	_lights.push_back(std::make_shared<LightBeam>(700, 25, 0, 300, 300, Game::Enums::StateEnum::HORIZONTAL));
+
+	_tiles.push_back(std::make_shared<Lamp>(800, 300, 0, 100, 100, Game::Enums::StateEnum::HORIZONTAL));
 
 	//border
 	_shapes.push_back(std::make_shared<PhysicsCollision::Models::Shape>(0, _height, 1, _width, false, false , PhysicsCollision::Enums::ShapeEnum::Square));//top
@@ -114,6 +120,10 @@ void Game::Models::Level::add_shapes()
 	{
 		_physics_collision_controller->load_shape(shape);
 	}
+	for (std::shared_ptr<Game::Models::IObject> light : _lights)
+	{
+		_physics_collision_controller->load_shape(light.get()->get_shape());
+	}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
@@ -127,6 +137,11 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	for (std::shared_ptr<IObject> light : _lights)
+	{
+		temp = light->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}
 	for (std::shared_ptr<IObject> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
@@ -135,9 +150,19 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	return textures;
 }
 
-std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player() const
+std::vector<std::shared_ptr<Game::Models::IObject>> Game::Models::Level::get_lights() const
+{
+	return _lights;
+}
+
+std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
 {
 	return _player;
+}
+
+std::vector<std::shared_ptr<Game::Models::IObject>> Game::Models::Level::get_tiles() const
+{
+	return _tiles;
 }
 
 std::vector<std::shared_ptr<Game::Models::IInteractable>> Game::Models::Level::get_interactables() const

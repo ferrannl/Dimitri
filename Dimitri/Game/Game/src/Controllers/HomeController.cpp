@@ -1,10 +1,13 @@
 #include "HomeController.h"
 using namespace Game;
 
-Game::Controllers::HomeController::HomeController(int sceneheight, int scenewidth)
+Game::Controllers::HomeController::HomeController(int sceneheight, int scenewidth, std::shared_ptr<Game::Controllers::AudioController> audio_controller)
 {
 	_scene_height = sceneheight;
 	_scene_width = scenewidth;
+	_audio_controller = audio_controller;
+	_audio_controller->add_music("homescreen1", "/assets/audio/homescreen.wav");
+	_audio_controller->play_audio("homescreen1");
 }
 
 void Game::Controllers::HomeController::load_buttons(std::shared_ptr<Managers::LevelManager> level_manager)

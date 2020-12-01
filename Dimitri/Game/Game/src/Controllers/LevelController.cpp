@@ -1,11 +1,13 @@
 #include "LevelController.h"
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{window_controller}
+Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
 {
-	_level = std::make_shared<Game::Models::Level>();
+	_level = std::make_shared<Game::Models::Level>(audio_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
+	_level->add_music("failed", "/assets/audio/failed.wav");
+
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
@@ -31,16 +33,25 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->get_shape()->move_y();
+			if (_level->get_player()->jump()) {
+				_level->get_player()->get_shape()->move_y();
+			}
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_E:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
 			for (std::shared_ptr<Models::IInteractable> interactable : _level->get_interactables())
 			{
-				if (_level->get_player()->get_shape()->check_collision(interactable->get_shape()))
+				if (_level->get_player()->get_shape()->check_square_collision(interactable->get_shape()))
 				{
 					interactable->interact();
+				}
+			}
+			for (std::shared_ptr<Models::IObject> light : _level->get_lights())
+			{
+				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
+				{
+					set_state(Enums::LevelStateEnum::GAME_OVER);
 				}
 			}
 		}
@@ -60,7 +71,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 	case Input::Enums::EventEnum::KEY_PRESS_G:
 		// this will obviously be triggered by an event in the future, for now a hardcoded key
 		set_state(Enums::LevelStateEnum::GAME_OVER);
-    break;
+		break;
 	}
 }
 
@@ -104,6 +115,14 @@ void  Game::Controllers::LevelController::simulate() {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
+		for (std::shared_ptr<Models::IObject> walls : _level->get_tiles())
+		{
+			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+			{
+				_level->get_player()->reset_jump();
+				break;
+			}
+		}
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }

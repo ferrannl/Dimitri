@@ -1,22 +1,26 @@
 #pragma once
 #include "IObject.h"
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Interface for all interactables used in game for example switch, door, or camera
+		* \class IInteractable
+		* \brief Class contains the methods to be able to interact with an IObject
 		*/
 		class IInteractable : public Game::Models::IObject{
 		public:
 			IInteractable(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 			
 			/**
-			*	Virtual method to for example change object state
+			* \brief Interact with this object
 			*/
 			virtual void interact() = 0;
 		};

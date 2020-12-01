@@ -3,28 +3,36 @@
 #include <cstdlib>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the Models
+	* \namespace Game::Models
+	* \brief Namespace for the models in the game
 	*/
 	namespace Models {
 		/**
-		*	Namespace for the Buttons
+		* \namespace Game::Buttons
+		* \brief Namespace for the buttons in the game
 		*/
 		namespace Buttons {
-			class ExitButton : public Game::Models::IButton {
+			/**
+			* \class ExitButton
+			* \brief Class contains the methods close the game
+			*/
+			class ExitButton : public Game::Models::Button {
+			private:
 			public:
 				ExitButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
+
 				/**
-				*	Initializes the textures for an object
-				*/
-				void initialize_textures();
-				/**
-				*	Action when the button is pressed
+				* \brief Updates the object when interacted with
 				*/
 				void interact();
+
+				void initialize_textures();
+
 			};
 		}
 	}

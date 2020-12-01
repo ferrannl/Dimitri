@@ -12,22 +12,17 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Player
-		* \brief Class contains the data of the Player
+		* \class LightBeam
+		* \brief Class contains the data of the light beam
 		*/
-		class Player : public Game::Models::IObject{
-		private: 
-			const int _max_amount_of_jumps = 2;
-			int _jumps;
+		class LightBeam : public Game::Models::IObject {
 		public:
-			Player(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			LightBeam(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
 
 			/**
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
-			bool jump();
-			void reset_jump();
 		};
 	}
 }
