@@ -1,5 +1,5 @@
 #pragma once
-#include "../Button.h"
+#include "../IButton.h"
 #include "../../Managers/LevelManager.h"
 
 /**
@@ -14,7 +14,7 @@ namespace Game {
 		*	Namespace for the Buttons
 		*/
 		namespace Buttons {
-			class StartButton : public Game::Models::Button {
+			class StartButton : public Game::Models::IButton {
 			private:
 				/**
 				*	Level Manager

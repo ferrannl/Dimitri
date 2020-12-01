@@ -50,7 +50,10 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 			_window_controller->clear_views();
 			_window_controller->open_view("home");
 			_window_controller->open_view("fps");
-			_home_controller->get_advertisement_button()->initialize_textures();
+			for (auto b : _home_controller->get_advertisement_buttons())
+			{
+				b->initialize_textures();
+			}
 			_window_controller->add_textures(_home_controller->get_textures(), "home");
 			_level_controller->stop();
 			_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());

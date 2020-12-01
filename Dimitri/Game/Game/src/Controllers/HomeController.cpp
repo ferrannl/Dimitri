@@ -29,7 +29,14 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::HomeC
 	return button_textures;
 }
 
-std::shared_ptr<Game::Models::Button> Game::Controllers::HomeController::get_advertisement_button()
+std::vector<std::shared_ptr<Game::Models::IButton>> Game::Controllers::HomeController::get_advertisement_buttons()
 {
-	return _buttons.back();
+	std::vector<std::shared_ptr<Game::Models::IButton>> _advertisement_buttons = {};
+	for (auto b : _buttons) {
+		if (b->get_type() == Game::Enums::ButtonEnum::ADVERTISEMENT)
+		{
+			_advertisement_buttons.push_back(b);
+		}
+	}
+	return _advertisement_buttons;
 }

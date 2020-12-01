@@ -155,8 +155,9 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Enums\ButtonEnum.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
-    <ClCompile Include="src\Models\Button.cpp" />
+    <ClCompile Include="src\Models\IButton.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
@@ -189,7 +190,7 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
-    <ClInclude Include="src\Models\Button.h" />
+    <ClInclude Include="src\Models\IButton.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\Buttons\AdvertisementButton.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />

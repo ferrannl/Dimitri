@@ -25,19 +25,38 @@ namespace Game {
 		*/
 		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
 		private:
-			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
-			std::shared_ptr<Game::Models::Buttons::AdvertisementButton> _advertisement_button;
+
+			/**
+			*	A list of all the buttons on the home screen
+			*/
+			std::vector<std::shared_ptr<Game::Models::IButton>> _buttons;
+			
+			/**
+			*	The height of the current window
+			*/
 			int _scene_height;
+			/**
+			*	The width of the current window
+			*/
 			int _scene_width;
 		public:
 			HomeController(int sceneheight, int scenewidth);
+			/**
+			*	Loads all the buttons onto the window
+			*/
 			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
+			/**
+			*	Checks the events for the buttons
+			*/
 			void update(const Game::Events::InputEvent& object);
+			/**
+			*	Returns all the textures of the current object
+			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 			/**
-			*	Initialize advertisements
+			*	Returns the advertisement buttons
 			*/
-			std::shared_ptr<Game::Models::Button> get_advertisement_button();
+			std::vector < std::shared_ptr<Game::Models::IButton>> get_advertisement_buttons();
 		};
 	}
 }
