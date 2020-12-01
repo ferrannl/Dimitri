@@ -21,7 +21,7 @@ namespace Game {
 			* \class ExitButton
 			* \brief Class contains the methods close the game
 			*/
-			class ExitButton : public Game::Models::Button {
+			class ExitButton : public Game::Models::IButton {
 			private:
 			public:
 				ExitButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);

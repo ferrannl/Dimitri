@@ -21,7 +21,7 @@ namespace Game {
 			* \class StartButton
 			* \brief Class contains the methods start a level
 			*/
-			class StartButton : public Game::Models::Button {
+			class StartButton : public Game::Models::IButton {
 			private:
 				/**
 				* \brief An instance of the Level Manager

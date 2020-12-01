@@ -4,6 +4,8 @@
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
 #include "../Models/Buttons/ExitButton.h"
+#include "../Models/Buttons/AdvertisementButton.h"
+#include "AudioController.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
@@ -30,7 +32,7 @@ namespace Game {
 			/**
 			* \brief A list of the Buttons
 			*/
-			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+			std::vector<std::shared_ptr<Game::Models::IButton>> _buttons;
 
 			/**
 			* \brief An instance of the Audio Controller
