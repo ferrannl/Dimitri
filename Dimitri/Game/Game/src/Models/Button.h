@@ -1,5 +1,5 @@
 #pragma once
-#include "IInteractable.h"
+#include "./Abstract/Interactable.h"
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
 
@@ -17,14 +17,14 @@ namespace Game {
 		* \class Button
 		* \brief Class contains the methods to use a button
 		*/
-		class Button : public Game::Models::IInteractable {
+		class Button : public Models::Interactable {
 		protected:
 			/**
 			* \brief The height of the scene
 			*/
 			int _scene_height;
 		public:
-			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
+			Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -35,11 +35,10 @@ namespace Game {
 			* \brief Updates the object based on a fired event
 			*/
 			void update(const Game::Events::InputEvent& object);
-			
 			/**
 			* \brief Updates the object when interacted with
 			*/
-			virtual void interact() = 0;
+			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "IObject.h"
+#include "../Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -12,12 +12,12 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Wall
-		* \brief Class contains the data of the wall
+		* \class Camera
+		* \brief Class contains the data of the Camera
 		*/
-		class Wall : public Game::Models::IObject {
+		class Camera : public Models::Object {
 		public:
-			Wall(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			Camera(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

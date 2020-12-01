@@ -1,5 +1,5 @@
 #pragma once
-#include "IInteractable.h"
+#include "../Abstract/Interactable.h"
 
 /**
 * \namespace Game
@@ -12,12 +12,12 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Switch
-		* \brief Class contains the methods and data of the Switch
+		* \class Car
+		* \brief Class contains the methods and data of the Car
 		*/
-		class Switch : public Game::Models::IInteractable {
+		class Car : public Models::Interactable {
 		public:
-			Switch(int x, int y, int z, int height, int width, Game::Enums::StateEnum state);
+			Car(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -27,7 +27,7 @@ namespace Game {
 			/**
 			* \brief Updates the object when interacted with
 			*/
-			void interact();
+			void interact(Controllers::LevelController* ctrl = NULL);
 		};
 	}
 }

@@ -120,13 +120,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Utility</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Utility;$(SolutionDir)DocumentHandler</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib;Utility.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib;Utility.lib;DocumentHandler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\;$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <DelayLoadDLLs>Audio.dll;Graphics.dll;Input.dll;PhysicsCollision.dll;Utility.dll;DocumentHandler.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\Graphics.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
@@ -134,6 +135,7 @@ xcopy /y /d "$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\Input.
 xcopy /y /d "$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\Audio.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\PhysicsCollision.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
+xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\DocumentHandler.dll" "$(SolutionDir)Game\Game\bin\$(Platform)\$(Configuration)\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -151,21 +153,37 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <DelayLoadDLLs>Audio.dll;Graphics.dll;Input.dll;PhysicsCollision.dll;Utility.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Builder\LevelBuilder.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
+    <ClCompile Include="src\Enums\AnimateEnum.cpp" />
+    <ClCompile Include="src\Enums\DirectionEnum.cpp" />
+    <ClCompile Include="src\Factory\UpdatableFactory.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
+    <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Enums\LevelStateEnum.cpp" />
     <ClCompile Include="src\Enums\StateEnum.cpp" />
+    <ClCompile Include="src\Enums\TypeEnum.cpp" />
+    <ClCompile Include="src\Factory\BackgroundFactory.cpp" />
+    <ClCompile Include="src\Factory\InteractableFactory.cpp" />
+    <ClCompile Include="src\Factory\ObjectFactory.cpp" />
+    <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
-    <ClCompile Include="src\Models\IInteractable.cpp" />
-    <ClCompile Include="src\Models\Lamp.cpp" />
-    <ClCompile Include="src\Models\LightBeam.cpp" />
-    <ClCompile Include="src\Models\Switch.cpp" />
+    <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
+    <ClCompile Include="src\Models\IObjects\Camera.cpp" />
+    <ClCompile Include="src\Models\IObjects\Floor.cpp" />
+    <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
+    <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
+    <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
+    <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
+    <ClCompile Include="src\Models\Updatables\Spike.cpp" />
+    <ClCompile Include="src\Models\Interactable\Switch.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
@@ -174,10 +192,10 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Controllers\WindowController.cpp" />
     <ClCompile Include="src\Events\InputEvent.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Models\IObject.cpp" />
+    <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
-    <ClCompile Include="src\Models\Player.cpp" />
-    <ClCompile Include="src\Models\Wall.cpp" />
+    <ClCompile Include="src\Models\Updatables\Player.cpp" />
+    <ClCompile Include="src\Models\IObjects\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
     <ClCompile Include="src\Views\HomeView.cpp" />
@@ -188,16 +206,29 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Builder\LevelBuilder.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
+    <ClInclude Include="src\Factory\BackgroundFactory.h" />
+    <ClInclude Include="src\Factory\UpdatableFactory.h" />
+    <ClInclude Include="src\interfaces\IFactory.h" />
+    <ClInclude Include="src\Factory\InteractableFactory.h" />
+    <ClInclude Include="src\Factory\ObjectFactory.h" />
+    <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
-    <ClInclude Include="src\Models\IInteractable.h" />
-    <ClInclude Include="src\Models\Lamp.h" />
-    <ClInclude Include="src\Models\LightBeam.h" />
-    <ClInclude Include="src\Models\Switch.h" />
+    <ClInclude Include="src\Models\Interactable\Car.h" />
+    <ClInclude Include="src\Models\Abstract\Interactable.h" />
+    <ClInclude Include="src\Models\IObjects\Camera.h" />
+    <ClInclude Include="src\Models\IObjects\Floor.h" />
+    <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
+    <ClInclude Include="src\Models\IObjects\Lamp.h" />
+    <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
+    <ClInclude Include="src\Models\Updatables\LightBeam.h" />
+    <ClInclude Include="src\Models\Updatables\Spike.h" />
+    <ClInclude Include="src\Models\Interactable\Switch.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
@@ -205,10 +236,10 @@ xcopy /y /d "$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\Utility.dll"
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
     <ClInclude Include="src\Events\InputEvent.h" />
-    <ClInclude Include="src\Models\IObject.h" />
+    <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Level.h" />
-    <ClInclude Include="src\Models\Player.h" />
-    <ClInclude Include="src\Models\Wall.h" />
+    <ClInclude Include="src\Models\Updatables\Player.h" />
+    <ClInclude Include="src\Models\IObjects\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\HomeView.h" />
