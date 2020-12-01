@@ -64,6 +64,10 @@ namespace Game {
 			* \brief Returns the Textures from the Buttons
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
+			/**
+			* \brief Returns the advertisement buttons
+			*/
 			std::vector < std::shared_ptr<Game::Models::IButton>> get_advertisement_buttons();
 
 		};

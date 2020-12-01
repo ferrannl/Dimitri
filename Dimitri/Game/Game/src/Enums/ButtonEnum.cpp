@@ -1,14 +1,17 @@
 #pragma once
 /**
-*	Namespace for the game
+*	/namespace Game
+*	/brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the enums
+	*	/namespace Game::Enums
+	*	/brief Namespace for the enums
 	*/
 	namespace Enums {
 		/**
-		*	Contains different Button types
+		* \enum ButtonEnum
+		* \brief Enum Class contains the different button types
 		*/
 		enum class ButtonEnum
 		{

@@ -29,9 +29,14 @@ namespace Game {
 				std::shared_ptr<Game::Managers::LevelManager> _level_manager;
 			public:
 				StartButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager);
-				void initialize_textures();
+				
 				/**
-				*	Action when the button is pressed
+				* \brief Initializes the textures for an object
+				*/
+				void initialize_textures();
+
+				/**
+				*	/brief Action when the button is pressed
 				*/
 				void interact();
 			};

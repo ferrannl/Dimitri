@@ -13,7 +13,7 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \namespace Game::Buttons
+		* \namespace Game::Models::Buttons
 		* \brief Namespace for the buttons in the game
 		*/
 		namespace Buttons {

@@ -9,7 +9,7 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		*	Contains different level state enums for the level
+		*	/brief Contains different level state enums for the level
 		*/
 		enum class LevelStateEnum
 		{
