@@ -12,7 +12,7 @@ namespace Game {
 		int bg_width = 500;
 		int bg_height = 300;
 		std::string bg_path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/fail.png" };
-		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 5000, bg_height, bg_width, 0, bg_path, Graphics::Enums::FlipEnum::NONE, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 5000, bg_height, bg_width, 0, bg_path, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0, 0 }));
 	}
 
 	bool Views::GameOverLevelView::is_visible() const

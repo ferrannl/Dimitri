@@ -59,13 +59,6 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 					interactable->interact(this);
 				}
 			}
-			for (std::shared_ptr<Models::IObject> light: _level->get_lights())
-			{
-				if (_level->get_player()->get_shape()->check_polygon_collision(light->get_shape()))
-				{
-					set_state(Enums::LevelStateEnum::GAME_OVER);
-				}
-			}
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_P:
