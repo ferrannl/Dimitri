@@ -20,7 +20,7 @@ namespace Game {
 			/**
 			* \brief The max amount of jumps the Enemy is allowed to make
 			*/
-			const int _max_amount_of_jumps = 2;
+			const int _max_amount_of_jumps = 1;
 
 			/**
 			* \brief Last x position of last update of the Enemy

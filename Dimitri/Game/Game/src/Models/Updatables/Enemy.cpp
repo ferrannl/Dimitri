@@ -1,11 +1,12 @@
 #include "Enemy.h"
+#include "../../Controllers/LevelController.h"
 
 Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
 	_jumps = _max_amount_of_jumps;
 	_lastx = x;
 	_lasty = y;
-	_direction = Enums::DirectionEnum::RIGHT;
+	_direction = Enums::DirectionEnum::NONE;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -53,16 +54,22 @@ void Game::Models::Enemy::reset_jump()
 
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
-	if (_state == Enums::StateEnum::WALKING) {
+	bool Left = (_x - 240 < (ctrl->get_level()->get_player()->get_x()));
+	bool Right = (_x + 240 > (ctrl->get_level()->get_player()->get_x()));
+	bool In_Area = (Left && Right && (_y - 200 < (ctrl->get_level()->get_player()->get_y())) && (_y + 200 > (ctrl->get_level()->get_player()->get_y())));
+
+	if (In_Area)
+	{
 		walk();
+		if (Left) {
+			_shape->set_x(_x + 1);
+		}
+		else if (Right) {
+			_shape->set_x(_x - 1);
+		}
+		this->update();
 	}
-	else if (_state == Enums::StateEnum::JUMPING) {
-		set_animationstate(Enums::AnimateEnum::JUMP1);
-	}
-	else if (_state == Enums::StateEnum::FALLING) {
-		set_animationstate(Enums::AnimateEnum::JUMP2);
-	}
-	else if (_state == Enums::StateEnum::IDLE) {
+	else {
 		idle();
 	}
 
@@ -160,7 +167,7 @@ void Game::Models::Enemy::update_state()
 	else if (_lasty > _y) {
 		set_state(Enums::StateEnum::FALLING);
 	}
-	else if ((_lastx < _x || _lastx > _x) && _state != Enums::StateEnum::JUMPING) {
+	else if (_x) {
 		set_state(Enums::StateEnum::WALKING);
 	}
 	else if (_lastx == _x && _lasty == _y) {
