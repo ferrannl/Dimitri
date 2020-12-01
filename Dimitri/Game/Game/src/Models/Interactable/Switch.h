@@ -17,6 +17,9 @@ namespace Game {
 		*/
 		class Switch : public Models::Interactable {
 		private:
+			/**
+			* \brief The x coordinate of the beam
+			*/
 			int _switch_x;
 		public:
 			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
@@ -25,10 +28,15 @@ namespace Game {
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
+
 			/**
 			* \brief Updates the object when interacted with
 			*/
 			void interact(Controllers::LevelController* ctrl = NULL);
+
+			/**
+			* \brief Sets the x coordinate of the beam location
+			*/
 			void set_light(const int x);
 		};
 	}

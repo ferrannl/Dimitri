@@ -133,15 +133,15 @@ bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shap
 {
 	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
 
-	int originx = _x + (shape->get_width() / 2);
-	int originy = _y + (shape->get_height() / 2);
+	int originx = _x + (_width / 2);
+	int originy = _y + (_height);
 
 	int x1 = _x;
 	int y1 = _y;
 	int x2 = _x + _width;
 	int y2 = _y;
-	int x3 = _x + (_width / 2);
-	int y3 = _y + _height;
+	int x3 = originx;
+	int y3 = originy;
 
 	// 1 translate to center
 	x1 -= originx;
@@ -157,8 +157,8 @@ bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shap
 	float x2r = (cos(radian) * x2) - (sin(radian) * y2) + originx;
 	float y2r = (sin(radian) * x2) + (cos(radian) * y2) + originy;
 
-	int playerx = shape->get_x();
-	int playery = shape->get_y();
+	int playerx = shape->get_x() + (shape->get_width() / 2);
+	int playery = shape->get_y() + (shape->get_height() / 2);
 
 	int beam_area = area(x1r, y1r, x2r, y2r, x3, y3);
 	int a1 = area(playerx, playery, x2r, y2r, x3, y3);

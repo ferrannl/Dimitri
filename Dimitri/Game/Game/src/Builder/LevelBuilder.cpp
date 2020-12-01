@@ -22,42 +22,42 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
             for (int object : vector) {
                 switch (object) {
                 case 0:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::FLOOR, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 1:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::CORNER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::LEFT));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::CORNER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::LEFT));
                     break;
                 case 2:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::CORNER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::CORNER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
                     break;
                 case 3:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::LAMP, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
-                    level->add_updatable(_updatableFactory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::RIGHT));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::LAMP, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::RIGHT));
                     break;
                 case 4:
-                    level->add_interactable(_interactableFactory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
+                    level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
                     break;
                 case 5:
                     level->add_player(std::make_shared<Models::Player>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
                     break;
                 case 6:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::WALL, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::WALL, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 43:
-                    level->add_interactable(_interactableFactory.create(Enums::TypeEnum::CAR, x, y, 1, TILE_SIZE * 2, TILE_SIZE * 4, Enums::DirectionEnum::RIGHT));
+                    level->add_interactable(_interactable_factory.create(Enums::TypeEnum::CAR, x, y, 1, TILE_SIZE * 2, TILE_SIZE * 4, Enums::DirectionEnum::RIGHT));
                     break;
                 case 11:
-                    lights.push_back(_updatableFactory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    lights.push_back(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 47:
-                    lights.push_back(_updatableFactory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    lights.push_back(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 16:
-                    level->add_tile(_objectFactory.create(Enums::TypeEnum::CAMERA, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
-                    level->add_updatable(_updatableFactory.create(Enums::TypeEnum::CAM_VISION, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    level->add_tile(_object_factory.create(Enums::TypeEnum::CAMERA, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 52:
-                    level->add_updatable(_updatableFactory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 17:
                     // add enemy
@@ -89,15 +89,15 @@ void Builder::LevelBuilder::build_background(std::shared_ptr<Models::Level>& lev
     int y = 0;
 
     while (x < level->get_width()) {
-        level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG, x, y, bg_width, bg_height, 0, Enums::DirectionEnum::NONE));
+        level->add_background(_background_factory.create(Enums::TypeEnum::BG, x, y, bg_width, bg_height, 0, Enums::DirectionEnum::NONE));
 
         y += bg_height;
 
         while (y <= level->get_height()) {
-            level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG_TOP1, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
             y += top_height;
 
-            level->add_background(_backgroundFactory.create(Enums::TypeEnum::BG_TOP2, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
             y += top_height;
         }
 

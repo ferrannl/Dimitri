@@ -194,6 +194,9 @@ namespace PhysicsCollision {
 			*/
 			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
 
+			/**
+			* Returns true when there is collision between a point and a triangle. This method also uses the angle te shape is in. Else returns false
+			*/
 			bool check_triangle_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}

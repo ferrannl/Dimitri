@@ -29,22 +29,22 @@ namespace Game {
 			/**
 			* \brief Factory which creates static tiles
 			*/
-			Factories::ObjectFactory _objectFactory;
+			Factories::ObjectFactory _object_factory;
 			
 			/**
 			* \brief Factory which creates interactables
 			*/
-			Factories::InteractableFactory _interactableFactory;
+			Factories::InteractableFactory _interactable_factory;
 
 			/**
 			* \brief Factory which creates updatables
 			*/
-			Factories::UpdatableFactory _updatableFactory;
+			Factories::UpdatableFactory _updatable_factory;
 
 			/**
 			* \brief Factory which creates backgrounds
 			*/
-			Factories::BackgroundFactory _backgroundFactory;
+			Factories::BackgroundFactory _background_factory;
 
 			/**
 			* \brief Builds the backgrounds for the level
