@@ -4,7 +4,7 @@ using namespace Game;
 Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller) : _audio_controller(audio_controller)
 {
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_timer = std::make_shared<Models::Timer>(window_controller);
+	_timer = std::make_shared<Models::Timer>(600, 600, 100, 54, 100, Game::Enums::StateEnum::HORIZONTAL, window_controller);
 	_interactables = {};
 	_lights = {};
 	_players = {};
@@ -154,6 +154,8 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	temp = _timer->get_all_textures();
+	textures.insert(textures.end(), temp.begin(), temp.end());
 	return textures;
 }
 

@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <stdint.h>
 #include "../Controllers/WindowController.h"
+#include "src/Models/Texture.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -16,9 +17,9 @@ namespace Game {
 		* \class Timer
 		* \brief Class contains the data of the Timer
 		*/
-		class Timer {
+		class Timer : public Game::Models::IObject {
 		public:
-			Timer(const std::shared_ptr<Controllers::WindowController> window_controller);
+			Timer(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, const std::shared_ptr<Controllers::WindowController> window_controller);
 			void start();
 			void stop();
 			void pause();
@@ -28,9 +29,13 @@ namespace Game {
 
 			bool is_started();
 			bool is_paused();
-			Uint32 get_start_ticks();
+
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures();
+
+			void initialize_textures();
 			
 		private:
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 			std::shared_ptr<Controllers::WindowController> _window_controller;
 			Uint32 _pause_ticks;
 			Uint32 _start_ticks;

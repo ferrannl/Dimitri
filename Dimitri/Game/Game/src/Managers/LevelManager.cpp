@@ -22,4 +22,5 @@ void Game::Managers::LevelManager::load_level()
 	_input_controller->subscribe(_level_controller);
 	_level_controller->start();
 	_level_controller->get_level()->get_timer()->start();
+	//_window_controller->toggle_view_visibility("timer");
 }
