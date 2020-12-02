@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -14,10 +16,10 @@ namespace Game {
 		*/
 		enum class StateEnum
 		{
-			LEFT,
-			RIGHT,
-			HORIZONTAL,
-			VERTICAL
+			IDLE,
+			WALKING,
+			JUMPING,
+			FALLING
 		};
 	}
 }

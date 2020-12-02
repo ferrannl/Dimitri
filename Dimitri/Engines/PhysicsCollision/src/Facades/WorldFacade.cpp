@@ -47,8 +47,8 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 			fixtureDef.filter.categoryBits = 0x0002;
 		}
 		fixtureDef.filter.maskBits = 1;
-		fixtureDef.friction = 1.0f;
-		fixtureDef.density = 1.0f;
+		fixtureDef.friction = 2.0f;
+		fixtureDef.density = 2.0f;
 		body->CreateFixture(&fixtureDef);
 	}
 	else {
@@ -57,6 +57,7 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 		body->CreateFixture(&_shape, 0.0f);
 	}
 }
+
 
 void Facades::WorldFacade::simulate() const
 {

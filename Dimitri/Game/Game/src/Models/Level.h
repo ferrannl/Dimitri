@@ -5,15 +5,17 @@
 #include <chrono>
 #include <thread>
 #include <src\Models\Texture.h>
-#include "../Models/IObject.h"
+#include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
+#include "../Enums/TypeEnum.cpp"
 #include "../Models/Timer.h"
-#include "Wall.h"
-#include "Player.h"
+#include "./IObjects/Wall.h"
+#include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
-#include "Switch.h"
-#include "LightBeam.h"
+#include "./Interactable/Switch.h"
+#include "./Updatables/LightBeam.h"
 #include "Lamp.h"
+#include "./Abstract/Updatable.h"
 
 /**
 * \namespace Game
@@ -27,7 +29,7 @@ namespace Game {
 	namespace Models {
 		/**
 		* \class Level
-		* \brief Class contains the methods to interact with the IObjects
+		* \brief Class contains the methods to interact with the Objects
 		*/
 		class Level {
 		private:
@@ -54,27 +56,22 @@ namespace Game {
 			/**
 			* \brief List of tiles in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
 
 			/**
-			* \brief List of light in the Level
+			* \brief List of backgrounds in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _lights;
+			std::vector<std::shared_ptr<Graphics::Models::Sprite>> _backgrounds;
 
 			/**
-			* \brief List of players in the Level
+			* \brief List of updatables in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _players;
+			std::vector<std::shared_ptr<Models::Updatable>> _updatables;
 
 			/**
 			* \brief List of interactables in the Level
 			*/
-			std::vector<std::shared_ptr<Game::Models::IInteractable>> _interactables;
-
-			/**
-			* \brief Texture of the background
-			*/
-			std::shared_ptr<Graphics::Models::Texture> _background;
+			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
 			/**
 			* \brief Timer of a level
@@ -92,7 +89,7 @@ namespace Game {
 			int _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
 
 			/**
 			* \brief Add music
@@ -135,7 +132,7 @@ namespace Game {
 			void load_objects();
 
 			/**
-			* \brief Add the Shapes of the IObjects in _shapes, _players, _lights, _tiles and _interactables in the physics collision engine
+			* \brief Add the Shapes of the Objects in _shapes, _player, _interactables, _updatables and _tiles in the physics collision engine
 			*/
 			void add_shapes();
 
@@ -145,11 +142,6 @@ namespace Game {
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 
 			/**
-			* \brief Returns list of all Lights in the Level
-			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> get_lights() const;
-
-			/**
 			* \brief Returns the Player
 			*/
 			std::shared_ptr<Game::Models::Player> get_player() const;
@@ -157,12 +149,17 @@ namespace Game {
 			/**
 			*	\brief Returns the tiles
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> get_tiles() const;		
+			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;		
 
 			/**
 			* \brief Returns the interactables
 			*/
-			std::vector<std::shared_ptr<Game::Models::IInteractable>> get_interactables() const;
+			std::vector<std::shared_ptr<Game::Models::Interactable>> get_interactables() const;
+
+			/**
+			* \brief Returns the updatables
+			*/
+			std::vector<std::shared_ptr<Game::Models::Updatable>> get_updatables() const;
 
 			/**
 			* \brief Returns the PhysicsCollisionController
@@ -170,19 +167,49 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> get_physics_collision_controller() const;
 
 			/**
-			* \brief Calls simulate in the PhysicsCollisionController
+			* \brief Adds tile to the _tiles list
+			*/
+			void add_tile(std::shared_ptr<Game::Models::Object> tile);
+
+			/**
+			* \brief Adds player to _player
+			*/
+			void add_player(std::shared_ptr<Game::Models::Player> tile);
+
+			/**
+			* \brief Adds interactable to the _interactables list
+			*/
+			void add_interactable(std::shared_ptr<Game::Models::Interactable> tile);
+
+			/**
+			* \brief Adds updatables to the _updatables list
+			*/
+			void add_updatable(std::shared_ptr<Game::Models::Updatable> tile);
+
+			/**
+			* \brief Adds background to the _backgrounds list
+			*/
+			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
+
+			/**
+			* \brief Adds shape to the _shapes list
+			*/
+			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
+
+			/**
+			* \brief Calls physics simulation
 			*/
 			void simulate();
 
 			/**
 			* \brief Returns the height of the Level
 			*/
-			int get_level_height() const;
+			int get_height() const;
 
 			/**
 			* \brief Returns the width of the Level
 			*/
-			int get_level_width() const;
+			int get_width() const;
 		};
 	}
 

@@ -1,3 +1,5 @@
+#pragma once
+
 /**
 * \namespace Game
 * \brief Namespace for the game

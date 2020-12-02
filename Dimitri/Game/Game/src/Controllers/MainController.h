@@ -31,7 +31,7 @@ namespace Game {
 			*/
 			std::shared_ptr<Controllers::AudioController> _audio_controller;
 			/**
-			*	/brief An instance of the Level Manager
+			* \brief An instance of the Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> _level_manager;
 

@@ -27,8 +27,6 @@ namespace Game {
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
 		_views.insert({ "highscore", std::make_unique<Views::HighscoreView>(_graphics_controller) });
 		open_view("home");
-		toggle_view_visibility("home");
-
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
@@ -37,37 +35,59 @@ namespace Game {
 	{
 		while (true) {
 			sleep_for(5ms);
-			_graphics_controller->clear_textures();
 			for (auto& v : _views) {
 				if (v.second->is_active() && v.second->is_visible()) {
-					v.second->draw();
+					v.second->update();
 				}
 			}
+			std::lock_guard<std::mutex> guard(_graphics_controller->get_window()->get_mutex());
 			_graphics_controller->update_window();
 		}
 	}
 
-	void Controllers::WindowController::open_view(const std::string& view_name)
+	void Controllers::WindowController::open_view(const std::string & view_name)
 	{
-		_views[view_name]->set_active(true);
+		if (_views.find(view_name) != _views.end()) {
+			if (!_views[view_name]->is_active()) {
+				_views[view_name]->set_active(true);
+				if (_views[view_name]->is_visible()) {
+					_views[view_name]->open();
+				}
+			}
+		}
 	}
 
-	bool Controllers::WindowController::is_active(const std::string& view_name)
+	bool Controllers::WindowController::is_active(const std::string & view_name)
 	{
-		return _views[view_name]->is_active();
+		if (_views.find(view_name) != _views.end()) {
+			return _views[view_name]->is_active();
+		}
+		return false;
 	}
 
 	void Controllers::WindowController::clear_views()
 	{
 		for (auto& v : _views) {
-			v.second->set_active(false);
+			if (v.second->is_active() && v.second->is_visible()) {
+				v.second->set_active(false);
+				v.second->close();
+			}
 		}
 	}
 
-	void Controllers::WindowController::toggle_view_visibility(const std::string& view_name)
+	void Controllers::WindowController::toggle_view_visibility(const std::string & view_name)
 	{
-		Views::View* view = _views[view_name].get();
-		view->set_visible(!view->is_visible());
+		if (_views.find(view_name) != _views.end()) {
+			if (_views[view_name]->is_active()) {
+				if (_views[view_name]->is_visible()) {
+					_views[view_name]->close();
+				}
+				else {
+					_views[view_name]->open();
+				}
+			}
+			_views[view_name]->set_visible(!_views[view_name]->is_visible());
+		}
 	}
 
 	void Controllers::WindowController::set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
@@ -84,7 +104,7 @@ namespace Game {
 		_graphics_controller->set_camera_pos(x, y);
 	}
 
-	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::IObject> object)
+	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::Object> object)
 	{
 		int x = (object->get_x() + object->get_width() / 2) - get_window_width() / 2;
 		int y = (object->get_y() + object->get_height() / 2) - get_window_height() / 2;
