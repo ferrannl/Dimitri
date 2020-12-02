@@ -30,9 +30,9 @@ namespace Game {
 			TimerView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
-			* \brief Add the Textures to the _graphics_controller
+			* \brief Updates the textures
 			*/
-			void draw() override;
+			void update() override;
 		};
 	}
 }

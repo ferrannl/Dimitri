@@ -7,12 +7,11 @@ using namespace Game;
 
 Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
 {
-	_level = std::make_shared<Game::Models::Level>(audio_controller, window_controller);
 	DocumentHandler::Controllers::DocumentController ctrl;
 
 	std::vector<std::vector<int>> ret = ctrl.Read(Utility::Helpers::get_base_path() + "/assets/levels/level1.csv");
 	Builder::LevelBuilder builder{};
-	_level = builder.build(ret, audio_controller);
+	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_music("failed", "/assets/audio/failed.wav");

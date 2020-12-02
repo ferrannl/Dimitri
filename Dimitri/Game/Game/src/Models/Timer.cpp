@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-Game::Models::Timer::Timer(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, const std::shared_ptr<Controllers::WindowController> window_controller) : Game::Models::IObject(x, y, z, height, width, state)
+Game::Models::Timer::Timer(int x, int y, int z, int height, int width, Enums::DirectionEnum state, const std::shared_ptr<Controllers::WindowController> window_controller, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
     _window_controller = window_controller;
 	_start_ticks = 0;
@@ -104,12 +104,25 @@ bool Game::Models::Timer::is_paused()
 void Game::Models::Timer::initialize_textures()
 {
     std::tuple<int, int> camera_pos = _window_controller->get_graphics_controller().get()->get_camera_pos();
-
+    _animatestate = Enums::AnimateEnum::IDLE1;
     int window_width_camera = _window_controller->get_graphics_controller().get()->get_window().get()->get_width() + std::get<0>(camera_pos);
     int window_width = _window_controller->get_graphics_controller().get()->get_window().get()->get_width();
     int window_height_camera = _window_controller->get_graphics_controller().get()->get_window().get()->get_height() + std::get<1>(camera_pos);
     Graphics::Models::Color color = { 255, 255, 255 };
     std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-    add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Text>(std::to_string(getTicks() / 1000.f), color, window_width_camera - (window_width / 2) - 54, window_height_camera - 60, 100, 54, 100, 0, path, true));
+    add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Text>(std::to_string(getTicks() / 1000.f), color, window_width_camera - (window_width / 2) - 54, window_height_camera - 60, 100, 54, 150, 0, path, true, _center));
+}
 
+void Game::Models::Timer::update_object(Controllers::LevelController* ctrl)
+{
+    std::tuple<int, int> camera_pos = _window_controller->get_graphics_controller().get()->get_camera_pos();
+
+    int window_width_camera = _window_controller->get_graphics_controller().get()->get_window().get()->get_width() + std::get<0>(camera_pos);
+    int window_width = _window_controller->get_graphics_controller().get()->get_window().get()->get_width();
+    int window_height_camera = _window_controller->get_graphics_controller().get()->get_window().get()->get_height() + std::get<1>(camera_pos);
+    
+    _x = window_width_camera - (window_width / 2) - 54;
+    _y = window_height_camera - 60;
+    get_texture();
+    //get_texture().swap(val);
 }

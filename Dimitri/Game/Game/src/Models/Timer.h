@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "../Controllers/WindowController.h"
 #include "src/Models/Texture.h"
+#include "Abstract/Updatable.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -17,9 +18,9 @@ namespace Game {
 		* \class Timer
 		* \brief Class contains the data of the Timer
 		*/
-		class Timer : public Game::Models::IObject {
+		class Timer : public Models::Updatable {
 		public:
-			Timer(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, const std::shared_ptr<Controllers::WindowController> window_controller);
+			Timer(int x, int y, int z, int height, int width, Enums::DirectionEnum state, const std::shared_ptr<Controllers::WindowController> window_controller, Graphics::Models::Center center);
 			void start();
 			void stop();
 			void pause();
@@ -33,6 +34,11 @@ namespace Game {
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures();
 
 			void initialize_textures();
+
+			/**
+			* \brief Updates the object when interacted with
+			*/
+			void update_object(Controllers::LevelController* ctrl = NULL);
 			
 		private:
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
