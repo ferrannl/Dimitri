@@ -9,7 +9,7 @@ namespace Game {
 			auto state = _main_controller->get_level_controller()->get_state();
 			auto player = _main_controller->get_level_controller()->get_level()->get_player();
 			if (state == Enums::LevelStateEnum::ACTIVE) {
-				player->set_state(Game::Enums::StateEnum::LEFT);
+				player->set_direction(Game::Enums::DirectionEnum::LEFT);
 				player->get_shape()->move_x(-1);
 			}
 		}

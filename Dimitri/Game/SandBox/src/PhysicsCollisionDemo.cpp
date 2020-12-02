@@ -58,7 +58,7 @@ void PhysicsCollisionDemo::create_sprite(int x, int y, int z, int width, int hei
 
 void PhysicsCollisionDemo::create_text(std::string text, int x, int y, int z, int width, int height, std::string path, const float angle)
 {
-	Color color = { 255, 255, 255 };
+	Graphics::Models::Color color = { 255, 255, 255 };
 	graphics_controller.add_texture(std::make_shared<Graphics::Models::Text>(text, color, x, y, z, height, width, angle, path, true));
 }
 

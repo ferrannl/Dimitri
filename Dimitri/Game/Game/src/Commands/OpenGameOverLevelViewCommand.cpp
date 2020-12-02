@@ -7,6 +7,8 @@ namespace Game {
 		void OpenGameOverLevelViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
+			auto a_ctrl = _main_controller->get_audio_controller();
+			a_ctrl->play_audio("failed");
 			w_ctrl->open_view("game_over_level");
 		}
 	}

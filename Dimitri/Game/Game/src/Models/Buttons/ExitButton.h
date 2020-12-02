@@ -24,12 +24,12 @@ namespace Game {
 			class ExitButton : public Game::Models::Button {
 			private:
 			public:
-				ExitButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height);
+				ExitButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center);
 
 				/**
 				* \brief Updates the object when interacted with
 				*/
-				void interact();
+				void interact(Controllers::LevelController* ctrl = NULL);
 			};
 		}
 	}

@@ -11,18 +11,11 @@ namespace Game {
 			auto state = l_ctrl->get_state();
 			auto player = level->get_player();
 			if (state == Enums::LevelStateEnum::ACTIVE) {
-				for (std::shared_ptr<Models::IInteractable> interactable : level->get_interactables())
+				for (std::shared_ptr<Models::Interactable> interactable : level->get_interactables())
 				{
 					if (player->get_shape()->check_square_collision(interactable->get_shape()))
 					{
-						interactable->interact();
-					}
-				}
-				for (std::shared_ptr<Models::IObject> light : level->get_lights())
-				{
-					if (player->get_shape()->check_polygon_collision(light->get_shape()))
-					{
-						l_ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+						interactable->interact(l_ctrl.get());
 					}
 				}
 			}
