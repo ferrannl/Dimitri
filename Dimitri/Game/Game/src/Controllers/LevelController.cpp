@@ -132,6 +132,10 @@ void  Game::Controllers::LevelController::simulate() {
 		_level->simulate();
 
 		_level->get_player()->update();
+		for (auto enemy : _level->get_enemies())
+		{
+			enemy->update();
+		}
 
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
 		{

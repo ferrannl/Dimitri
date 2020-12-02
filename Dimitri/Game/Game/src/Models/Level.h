@@ -9,6 +9,7 @@
 #include "../Enums/TypeEnum.cpp"
 #include "./IObjects/Wall.h"
 #include "./Updatables/Player.h"
+#include "./Updatables/Enemy.h"
 #include "../Controllers/PhysicsCollisionController.h"
 #include "./Interactable/Switch.h"
 #include "./Updatables/LightBeam.h"
@@ -50,6 +51,11 @@ namespace Game {
 			* \brief An instance of the Player Object
 			*/
 			std::shared_ptr<Game::Models::Player> _player;
+
+			/**
+			* \brief Instances of the Enemy Objects
+			*/
+			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
 
 			/**
 			* \brief List of tiles in the Level
@@ -133,11 +139,16 @@ namespace Game {
 			* \brief Returns the Player
 			*/
 			std::shared_ptr<Game::Models::Player> get_player() const;
-			
+
+			/**
+			* \brief Returns the Enemies
+			*/
+			std::vector<std::shared_ptr<Game::Models::Enemy>> get_enemies() const;
+
 			/**
 			*	\brief Returns the tiles
 			*/
-			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;		
+			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;
 
 			/**
 			* \brief Returns the interactables
@@ -163,6 +174,11 @@ namespace Game {
 			* \brief Adds player to _player
 			*/
 			void add_player(std::shared_ptr<Game::Models::Player> tile);
+
+			/**
+			* \brief Adds enemy to _enemies
+			*/
+			void add_enemy(std::shared_ptr<Game::Models::Enemy> tile);
 
 			/**
 			* \brief Adds interactable to the _interactables list

@@ -62,12 +62,11 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 	{
 		walk();
 		if (Left) {
-			_shape->set_x(_x + 1);
+			_shape->move_x(1);
 		}
 		else if (Right) {
-			_shape->set_x(_x - 1);
+			_shape->move_x(-1);
 		}
-		this->update();
 	}
 	else {
 		idle();

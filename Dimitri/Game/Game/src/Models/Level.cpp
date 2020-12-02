@@ -8,6 +8,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
+	_enemies = {};
 	_tiles = {};
 	_backgrounds = {};
 	_updatables = {};
@@ -101,6 +102,11 @@ std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
 	return _player;
 }
 
+std::vector<std::shared_ptr<Game::Models::Enemy>> Game::Models::Level::get_enemies() const
+{
+	return _enemies;
+}
+
 std::vector<std::shared_ptr<Game::Models::Object>> Game::Models::Level::get_tiles() const
 {
 	return _tiles;
@@ -139,6 +145,12 @@ void Game::Models::Level::add_tile(std::shared_ptr<Game::Models::Object> tile)
 void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
 {
 	_player = tile;
+	_updatables.push_back(tile);
+}
+
+void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
+{
+	_enemies.push_back(tile);
 	_updatables.push_back(tile);
 }
 
