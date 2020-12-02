@@ -8,6 +8,8 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_level = std::make_shared<Game::Models::Level>(audio_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
+	_level->add_music("failed", "/assets/audio/failed.wav");
+
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
