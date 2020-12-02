@@ -11,7 +11,7 @@ namespace Game {
 
 		void Game::Models::Buttons::StartButton::interact()
 		{
-			Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_RIGHT, std::make_tuple(-1,-1) });
+			Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_LEFT, std::make_tuple(-1,-1) });
 		}
 	}
 }

@@ -37,7 +37,6 @@ namespace Game {
 				case Input::Enums::EventEnum::KEY_PRESS_F:
 					_factory->get_command("toggle_view")->execute();
 					break;
-
 				}
 			}
 			else if (sender.get_identifier() == "LevelController") {
@@ -61,14 +60,14 @@ namespace Game {
 			}
 			else if (sender.get_identifier() == "StartButton") {
 				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
+				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
 					_factory->get_command("load_level")->execute();
 					break;
 				}
 			}
 			else if (sender.get_identifier() == "ExitButton") {
 				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
+				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
 					_factory->get_command("exit_game")->execute();
 					break;
 				}

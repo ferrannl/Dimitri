@@ -8,7 +8,7 @@ namespace Game {
 
 		void Buttons::ExitButton::interact()
 		{
-			Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_RIGHT, std::make_tuple(-1,-1) });
+			Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_LEFT, std::make_tuple(-1,-1) });
 		}
 	}
 }
