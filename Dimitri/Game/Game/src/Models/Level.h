@@ -8,7 +8,6 @@
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
 #include "../Enums/TypeEnum.cpp"
-#include "../Models/Timer.h"
 #include "./IObjects/Wall.h"
 #include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
@@ -76,7 +75,7 @@ namespace Game {
 			/**
 			* \brief Timer of a level
 			*/
-			std::shared_ptr<Models::Timer> _timer;
+			//std::shared_ptr<Models::Timer> _timer;
 
 			/**
 			* \brief The height of the Level
@@ -105,11 +104,6 @@ namespace Game {
 			* \brief Play music
 			*/
 			void play_music(std::string audio_name);
-
-			/**
-			* \brief Returns timer
-			*/
-			std::shared_ptr<Models::Timer> get_timer();
 
 			/**
 			* \brief Stop music

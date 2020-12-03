@@ -105,14 +105,14 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
-			_level->get_timer()->pause();
+			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->pause();
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive -> active
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
-			_level->get_timer()->unpause();
+			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->unpause();
 		}
 		notify(_state);
 	}
@@ -130,9 +130,8 @@ void Game::Controllers::LevelController::turn_off_light(const int x)
 void  Game::Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
-		std::cout << _level->get_timer()->getTicks() / 1000.f << '\n';
+		//std::cout << _level->get_timer()->getTicks() / 1000.f << '\n';
 		_level->simulate();
-
 		_level->get_player()->update();
 
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())

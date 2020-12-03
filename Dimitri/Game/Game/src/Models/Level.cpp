@@ -6,7 +6,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 	_width = width;
 	_height = height;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_timer = std::make_shared<Models::Timer>(window_controller);
+	//_timer = std::make_shared<Models::Timer>(window_controller);
 	_interactables = {};
 	_shapes = {};
 	_tiles = {};
@@ -27,11 +27,6 @@ void Game::Models::Level::add_sound(std::string audio_name, std::string path)
 void Models::Level::play_music(std::string audio_name)
 {
 	_audio_controller->play_audio(audio_name);
-}
-
-std::shared_ptr<Models::Timer> Game::Models::Level::get_timer()
-{
-	return _timer;
 }
 
 void Models::Level::stop_music(std::string audio_name)
