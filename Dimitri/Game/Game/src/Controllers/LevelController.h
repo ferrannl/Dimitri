@@ -114,6 +114,12 @@ namespace Game {
 			void turn_off_light(const int x);
 
 			void simulate_objects();
+
+			
+			/**
+			* \brief Updates the highscore
+			*/
+			void update_highscore();
 		};
 	}
 }

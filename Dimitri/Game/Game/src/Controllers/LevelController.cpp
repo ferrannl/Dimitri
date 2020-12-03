@@ -161,6 +161,11 @@ void  Game::Controllers::LevelController::simulate_objects() {
 	}
 }
 
+std::shared_ptr<Controllers::WindowController> Game::Controllers::LevelController::get_window_controller() const
+{
+	return _window_controller;
+}
+
 void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {
 	for (auto observer : _observers) {
 		observer->update(object);
