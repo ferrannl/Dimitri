@@ -18,9 +18,9 @@ namespace Game {
 		* \class Timer
 		* \brief Class contains the data of the Timer
 		*/
-		class Timer : public Models::Updatable {
+		class Timer {
 		public:
-			Timer(int x, int y, int z, int height, int width, Enums::DirectionEnum state, const std::shared_ptr<Controllers::WindowController> window_controller, Graphics::Models::Center center);
+			Timer(const std::shared_ptr<Controllers::WindowController> window_controller);
 			void start();
 			void stop();
 			void pause();
@@ -31,9 +31,9 @@ namespace Game {
 			bool is_started();
 			bool is_paused();
 
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures();
+			/*std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures();
 
-			void initialize_textures();
+			void initialize_textures();*/
 
 			/**
 			* \brief Updates the object when interacted with

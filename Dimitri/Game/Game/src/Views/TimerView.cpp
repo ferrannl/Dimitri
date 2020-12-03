@@ -20,7 +20,8 @@ namespace Game {
 		_textures.clear();
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
-		_textures.push_back(std::make_shared<Graphics::Models::Text>(std::to_string(_graphics_controller->get_ticks() / 1000.f), color, window_width_camera - (window_width / 2) - timer_width, window_height_camera - 60, 100, timer_width, 100, 0, path, true, Graphics::Models::Center{ 0,0 }));
+		std::string ticks = std::to_string(_graphics_controller->get_ticks() / 1000.f);
+		_textures.push_back(std::make_shared<Graphics::Models::Text>(ticks, color, window_width_camera - (window_width / 2) - timer_width, window_height_camera - 60, 100, timer_width, 100, 0, path, true, Graphics::Models::Center{ 0,0 }));
 		open();
 
 	}

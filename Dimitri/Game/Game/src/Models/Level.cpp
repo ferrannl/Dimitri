@@ -6,7 +6,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 	_width = width;
 	_height = height;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_timer = std::make_shared<Models::Timer>(600, 600, 100, 54, 100, Enums::DirectionEnum::NONE, window_controller, Graphics::Models::Center{ 0, 0 });
+	_timer = std::make_shared<Models::Timer>(window_controller);
 	_interactables = {};
 	_shapes = {};
 	_tiles = {};
@@ -100,8 +100,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	temp = _timer->get_all_textures();
-	textures.insert(textures.end(), temp.begin(), temp.end());
 	return textures;
 }
 
@@ -149,7 +147,7 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
 {
 	_player = tile;
 	_updatables.push_back(tile);
-	_updatables.push_back(_timer);
+	//_updatables.push_back(_timer);
 }
 
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::Interactable> tile)

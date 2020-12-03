@@ -18,7 +18,7 @@ void Game::Controllers::MainController::run()
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
-	_level_controller->get_level()->get_timer()->initialize_textures();
+	//_level_controller->get_level()->get_timer()->initialize_textures();
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_level_controller->subscribe(this->shared_from_this());
@@ -74,7 +74,7 @@ void Game::Controllers::MainController::update(const Enums::LevelStateEnum& obje
 	case Enums::LevelStateEnum::ACTIVE:
 		_window_controller->clear_views();
 		_window_controller->open_view("level");
-		//_window_controller->open_view("timer");
+		_window_controller->open_view("timer");
 		_window_controller->open_view("fps");
 		break;
 	case Enums::LevelStateEnum::WIN:
