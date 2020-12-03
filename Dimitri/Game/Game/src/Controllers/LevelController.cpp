@@ -161,9 +161,9 @@ void  Game::Controllers::LevelController::simulate_objects() {
 	}
 }
 
-std::shared_ptr<Controllers::WindowController> Game::Controllers::LevelController::get_window_controller() const
+void Game::Controllers::LevelController::update_highscore()
 {
-	return _window_controller;
+	_window_controller->get_highscore_view<Views::HighscoreView>(_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->getTicks());
 }
 
 void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {

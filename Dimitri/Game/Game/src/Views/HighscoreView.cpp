@@ -3,8 +3,6 @@
 namespace Game {
 	Views::HighscoreView::HighscoreView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {
 		_record_times = {};
-		_record_times.push_back(20);
-		_record_times.push_back(30);
 		init_textures();
 	}
 
@@ -31,9 +29,12 @@ namespace Game {
 		}
 		place_margin = 0;
 		for (int i = 0; i < _record_times.size(); i++) {
-			std::string time = std::to_string(_record_times[i]);
-			_textures.push_back(std::make_shared<Graphics::Models::Text>(time, color, window_width /4 + 300, (window_height - 225) - place_margin, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }));
-			place_margin = place_margin + 48;
+			int record = _record_times[i];
+			if (record < _record_times[i + 1]) {
+				std::string time = std::to_string(_record_times[i]);
+				_textures.push_back(std::make_shared<Graphics::Models::Text>(time, color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+				place_margin = place_margin + 48;
+			}
 		}
 
 	}
@@ -41,6 +42,11 @@ namespace Game {
 	bool Views::HighscoreView::is_visible() const
 	{
 		return true;
+	}
+	void Views::HighscoreView::add_record(int record)
+	{
+		_record_times.push_back(record);
+		init_textures();
 	}
 }
 

@@ -137,6 +137,15 @@ namespace Game {
 			* \brief Returns the Graphics Controller
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
+
+			/**
+			* \brief Returns a view
+			*/
+			template <typename DerivedT>
+			void get_highscore_view(int record) {
+				auto derived = static_cast<DerivedT*>(_views["highscore"].get());
+				return derived->add_record(record);
+			}
 		};
 	}
 }
