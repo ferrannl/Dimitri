@@ -3,8 +3,7 @@
 #include "../Models/Updatables/Spike.h"
 #include "../Models/Updatables/LightBeam.h"
 #include "../Models/Updatables/CameraBeam.h"
-
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 
 using namespace Game;
 
