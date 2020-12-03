@@ -5,7 +5,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
-	_speed = 2;
+	_speed = 5;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
@@ -83,19 +83,14 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> interactable : _interactables)
+	for (std::shared_ptr<Interactable> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
-
 	}
 	for (std::shared_ptr<Updatable> updatables : _updatables)
 	{
-		updatables->set_angle(_speed);
-		if (updatables->get_type() == Game::Enums::TypeEnum::PLAYER)
-		{
-
-		}
+		updatables->set_speed(_speed);
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}

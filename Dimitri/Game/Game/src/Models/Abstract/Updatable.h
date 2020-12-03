@@ -32,7 +32,7 @@ namespace Game {
 			*/
 			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
 
-			virtual void set_angle(int speed) = 0;
+			virtual void set_speed(float speed);
 
 			Game::Enums::TypeEnum get_type();
 		};

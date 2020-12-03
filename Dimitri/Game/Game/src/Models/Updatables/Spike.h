@@ -24,7 +24,6 @@ namespace Game {
 			*/
 			void initialize_textures();
 
-			void set_angle(int speed);
 			/**
 			* \brief Updates the object when interacted with
 			*/

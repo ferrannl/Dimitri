@@ -13,11 +13,6 @@ Models::CameraBeam::CameraBeam(int x, int y, int z, int height, int width, Enums
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
-void Models::CameraBeam::set_angle(int speed)
-{
-	_angle *= speed;
-}
-
 void Models::CameraBeam::initialize_textures()
 {
 	_animatestate = Enums::AnimateEnum::IDLE1;

@@ -67,6 +67,7 @@ namespace Game {
 			*/
 			Enums::StateEnum _state;
 
+
 			/**
 			* \brief The animationstate of the Object
 			*/
@@ -103,6 +104,7 @@ namespace Game {
 			* \brief Returns all Textures
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_all_textures();
+
 
 			/**
 			* \brief Returns X coordinate

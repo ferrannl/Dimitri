@@ -17,7 +17,8 @@ namespace Game {
 		*/
 		class Player : public Models::Updatable {
 		private: 
-			int _speed;
+
+			float _speed;
 
 			/**
 			* \brief The max amount of jumps the player is allowed to make
@@ -51,7 +52,7 @@ namespace Game {
 		public:
 			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
 
-			void set_angle(int speed);
+			void set_speed(float speed)override;
 			/**
 			* \brief Initializes Textures
 			*/

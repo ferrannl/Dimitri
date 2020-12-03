@@ -18,11 +18,6 @@ void Models::Spike::initialize_textures()
 	get_texture()->set_visible(true);
 }
 
-void Models::Spike::set_angle(int speed)
-{
-	//_angle *= speed;
-}
-
 void Game::Models::Spike::update_object(Controllers::LevelController* ctrl)
 {
 	if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()))
