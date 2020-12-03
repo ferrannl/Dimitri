@@ -9,9 +9,9 @@ Models::LightBeam::LightBeam(int x, int y, int z, int height, int width, Enums::
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
-void Models::LightBeam::set_angle(int speed)
+void Game::Models::LightBeam::set_speed(float speed)
 {
-	_angle *= speed;
+	_angle *= 1;
 }
 
 void Models::LightBeam::initialize_textures()

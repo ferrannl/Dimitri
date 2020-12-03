@@ -20,6 +20,11 @@ namespace Game {
 			Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
+			* \brief Sets the speed of the object
+			*/
+			void set_speed(float speed)override;
+
+			/**
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();

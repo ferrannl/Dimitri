@@ -19,8 +19,10 @@ namespace Game {
 		public:
 			LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
-			void set_angle(int speed);
-
+			/**
+			* \brief Sets the speed of the object
+			*/
+			void set_speed(float speed)override;
 			/**
 			* \brief Initializes Textures
 			*/
