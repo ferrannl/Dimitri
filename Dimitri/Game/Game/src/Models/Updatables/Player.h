@@ -50,9 +50,13 @@ namespace Game {
 			*/
 			void idle();
 		public:
-			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
+			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
+			/**
+			* \brief Sets the speed of the player
+			*/
 			void set_speed(float speed)override;
+
 			/**
 			* \brief Initializes Textures
 			*/
@@ -78,6 +82,9 @@ namespace Game {
 			*/
 			void update_state();
 
+			/**
+			* \brief Returns the speed of the player
+			*/
 			int get_speed();
 		};
 	}

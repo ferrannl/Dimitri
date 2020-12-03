@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type) : Game::Models::Updatable(x, y, z, height, width, state, center, type)
+Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
 	_jumps = _max_amount_of_jumps;
 	_speed = 1;

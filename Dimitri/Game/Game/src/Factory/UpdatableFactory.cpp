@@ -14,13 +14,13 @@ std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::Ty
 
 	switch (type) {
 	case Enums::TypeEnum::SPIKE:
-		instance.reset(new Models::Spike{ x,y,z,height,width, state, Graphics::Models::Center{0,0}, type});
+		instance.reset(new Models::Spike{ x,y,z,height,width, state, Graphics::Models::Center{0,0}});
 		break;
 	case Enums::TypeEnum::BEAM:
-		instance.reset(new Models::LightBeam{ x,y,z,height,width,state, Graphics::Models::Center{0,0}, type});
+		instance.reset(new Models::LightBeam{ x,y,z,height,width,state, Graphics::Models::Center{0,0}});
 		break;
 	case Enums::TypeEnum::CAM_VISION:
-		instance.reset(new Models::CameraBeam{ x,y,z,height,width,state , Graphics::Models::Center{width/2,0}, type});
+		instance.reset(new Models::CameraBeam{ x,y,z,height,width,state , Graphics::Models::Center{width/2,0}});
 		break;
 	}
 

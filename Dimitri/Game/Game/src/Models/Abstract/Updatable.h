@@ -23,18 +23,18 @@ namespace Game {
 		*/
 		class Updatable : public Object {
 		protected:
-			Game::Enums::TypeEnum _type;
 		public:
-			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
+			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief update this object
 			*/
 			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
 
+			/**
+			* \brief Sets the speed
+			*/
 			virtual void set_speed(float speed);
-
-			Game::Enums::TypeEnum get_type();
 		};
 	}
 }

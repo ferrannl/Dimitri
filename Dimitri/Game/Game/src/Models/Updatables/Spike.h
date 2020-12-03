@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class Spike : public Models::Updatable {
 		public:
-			Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
+			Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

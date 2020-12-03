@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class LightBeam : public Models::Updatable {
 		public:
-			LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
+			LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			void set_angle(int speed);
 
