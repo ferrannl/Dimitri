@@ -163,7 +163,8 @@ void  Game::Controllers::LevelController::simulate_objects() {
 
 void Game::Controllers::LevelController::update_highscore()
 {
-	_window_controller->set_highscore_record<Views::HighscoreView>(std::to_string(_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->getTicks() / 1000.f));
+	std::string record = std::to_string(_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->getTicks() / 1000.f);
+	_window_controller->set_highscore_record<Views::HighscoreView>(record);
 }
 
 void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {

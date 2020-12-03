@@ -30,7 +30,7 @@ namespace Game {
 		place_margin = 0;
 		std::sort(_record_times.begin(), _record_times.end());
 		for (int i = 0; i < _record_times.size(); i++) {
-			_textures.push_back(std::make_shared<Graphics::Models::Text>(_record_times[i], color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+			_textures.push_back(std::make_shared<Graphics::Models::Text>(_record_times[i].substr(0,6), color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }));
 			place_margin = place_margin + 48;
 		}
 
