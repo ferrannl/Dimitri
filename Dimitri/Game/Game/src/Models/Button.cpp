@@ -2,7 +2,7 @@
 
 using namespace Game;
 
-Models::Button::Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center)
+Models::Button::Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center)
 {
 	_scene_height = scene_height;
 	initialize_textures();

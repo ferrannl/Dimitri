@@ -36,27 +36,27 @@ namespace Graphics {
 			/**
 			* \brief The x coordinate the Texture
 			*/
-			int _x;
+			float _x;
 
 			/**
 			* \brief The y coordinate the Texture
 			*/
-			int _y;
+			float _y;
 
 			/**
 			* \brief The z coordinate the Texture
 			*/
-			int _z;
+			float _z;
 
 			/**
 			* \brief The width of the Texture
 			*/
-			int _width;
+			float _width;
 
 			/**
 			* \brief The height of the Texture
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The angle which the Texture
@@ -88,37 +88,37 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center);
+			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
 			*/
-			int get_converted_y(int height) const;
+			float get_converted_y(float height) const;
 
 			/**
 			* \brief Returns the x coordinate
 			*/
-			int get_x() const;
+			float get_x() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_z() const;
+			float get_z() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_y() const;
+			float get_y() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_width() const;
+			float get_width() const;
 
 			/**
 			* \brief Returns the height
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns the angle
@@ -153,27 +153,27 @@ namespace Graphics {
 			/**
 			* \brief Sets the x coordinate
 			*/
-			void set_x(const int x);
+			void set_x(const float x);
 
 			/**
 			* \brief Sets the z coordinate
 			*/
-			void set_z(const int z);
+			void set_z(const float z);
 
 			/**
 			* \brief Sets the y coordinate
 			*/
-			void set_y(const int y);
+			void set_y(const float y);
 
 			/**
 			* \brief Sets the width
 			*/
-			void set_width(const int width);
+			void set_width(const float width);
 
 			/**
 			* \brief Sets the height
 			*/
-			void set_height(const int height);
+			void set_height(const float height);
 
 			/**
 			* \brief Sets the angle

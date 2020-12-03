@@ -1,7 +1,7 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
+Models::Shape::Shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
 	_angle = 0;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();

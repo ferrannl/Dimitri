@@ -30,12 +30,12 @@ namespace Graphics {
 			/**
 			* \brief The x coordinate
 			*/
-			int x;
+			float x;
 
 			/**
 			* \brief The y coordinate
 			*/
-			int y;
+			float y;
 		};
 	}
 }

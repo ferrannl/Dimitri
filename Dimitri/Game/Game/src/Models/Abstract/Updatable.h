@@ -22,7 +22,7 @@ namespace Game {
 		*/
 		class Updatable : public Object {
 		public:
-			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Updatable(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief update this object

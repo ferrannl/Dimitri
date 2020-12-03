@@ -89,15 +89,15 @@ void Builder::LevelBuilder::build_background(std::shared_ptr<Models::Level>& lev
     int y = 0;
 
     while (x < level->get_width()) {
-        level->add_background(_background_factory.create(Enums::TypeEnum::BG, x, y, bg_width, bg_height, 0, Enums::DirectionEnum::NONE));
+        level->add_background(_background_factory.create(Enums::TypeEnum::BG, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
 
         y += bg_height;
 
         while (y <= level->get_height()) {
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
             y += top_height;
 
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, top_width, top_height, 0, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
             y += top_height;
         }
 
@@ -108,8 +108,8 @@ void Builder::LevelBuilder::build_background(std::shared_ptr<Models::Level>& lev
 
 void Game::Builder::LevelBuilder::build_borders(std::shared_ptr<Game::Models::Level>& level)
 {
-    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0, level->get_height(), 1, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //top
-    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //bot
-    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, level->get_height(), 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //lef
-    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(level->get_width(), 0, level->get_height(), 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //rig
+    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0.0f, level->get_height(), 1.0f, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //top
+    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0.0f, -1.0f, 1.0f, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //bot
+    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, level->get_height(), 1.0f, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //lef
+    level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(level->get_width(), 0.0f, level->get_height(), 1.0f, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //rig
 }

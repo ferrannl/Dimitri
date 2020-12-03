@@ -37,22 +37,22 @@ namespace PhysicsCollision {
 			/**
 			* \brief X position of the Shape
 			*/
-			int _x;
+			float _x;
 
 			/**
 			* \brief Y position of the Shape
 			*/
-			int _y;
+			float _y;
 
 			/**
 			* \brief Width of the Shape
 			*/
-			int _width;
+			float _width;
 
 			/**
 			* \brief Height of the Shape
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief Height of the Shape
@@ -79,7 +79,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
+			Shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
 
 			/**
 			* \brief Returns the ShapeFacade
