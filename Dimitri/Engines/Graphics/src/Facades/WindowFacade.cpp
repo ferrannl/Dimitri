@@ -72,7 +72,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	SDL_RenderClear(_renderer.get());
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
-		if (texture->is_visible() &&
+		if (texture->is_visible() && !texture->is_dynamic()|| texture->is_visible() &&
 			texture->get_x() + texture->get_width() >= min_x &&
 			texture->get_x() <= max_x &&
 			texture->get_converted_y(std::get<1>(_scene_size)) + texture->get_height() >= min_y &&
@@ -84,9 +84,14 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	for (const std::pair<int, std::vector<std::shared_ptr<Graphics::Models::Texture>>>& kv : ordered_textures) {
 		for (const std::shared_ptr<Graphics::Models::Texture>& texture : kv.second) {
 			SDL_Rect rect;
-
-			rect.x = texture->get_x() - std::get<0>(_camera_pos);
-			rect.y = texture->get_converted_y(std::get<1>(_scene_size)) - std::get<1>(_camera_pos);
+			if (texture->is_dynamic()) {
+				rect.x = texture->get_x() - std::get<0>(_camera_pos);
+				rect.y = texture->get_converted_y(std::get<1>(_scene_size)) - std::get<1>(_camera_pos);
+			}
+			else {
+				rect.x = texture->get_x() ;
+				rect.y = texture->get_converted_y(_window_height);
+			}
 			rect.w = texture->get_width();
 			rect.h = texture->get_height();
 
