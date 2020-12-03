@@ -3,6 +3,8 @@
 #include <fstream>
 #include "../Interfaces/IReader.h"
 #include "../Readers/CsvReader.h"
+#include "../Readers/JsonReader.h"
+
 #include <src/Helpers/BasePathHelper.h>
 
 
@@ -15,6 +17,9 @@ std::vector<std::vector<int>> Controllers::DocumentController::Read(const std::s
 
 	if (filePath.extension() == ".csv") {
 		Readers::CsvReader reader {};
+		return reader.Read(filePath);
+	} else 	if (filePath.extension() == ".json") {
+		Readers::JsonReader reader{};
 		return reader.Read(filePath);
 	}
 }
