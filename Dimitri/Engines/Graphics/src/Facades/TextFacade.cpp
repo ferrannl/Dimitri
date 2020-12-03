@@ -10,7 +10,7 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 {
 	try {
 		//Open the font
-		TTF_Font* gFont = TTF_OpenFont(_path.c_str(), _height);
+		TTF_Font* gFont = TTF_OpenFont(_path.c_str(), _height * 2);
 		if (gFont == NULL)
 		{
 			throw Exceptions::CannotLoadFont();

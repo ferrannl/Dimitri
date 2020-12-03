@@ -197,6 +197,9 @@
     <ClCompile Include="src\Views\WinLevelView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Views\LevelTransitionView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Level.h">
@@ -386,6 +389,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\WinLevelView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Views\LevelTransitionView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

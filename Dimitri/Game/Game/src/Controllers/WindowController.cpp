@@ -24,7 +24,8 @@ namespace Game {
 		_views.insert({ "win_level", std::make_unique<Views::WinLevelView>(_graphics_controller) });
 		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
-		open_view("home");
+		_views.insert({ "level_transition", std::make_unique<Views::LevelTransitionView>(_graphics_controller) });
+		open_view("level_transition");
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}

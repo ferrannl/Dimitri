@@ -16,6 +16,7 @@
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
 #include <..\Game\Game\src\Views\PauseLevelView.h>
 #include <..\Game\Game\src\Views\View.h>
+#include <..\Game\Game\src\Views\LevelTransitionView.h>
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
