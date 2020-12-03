@@ -3,10 +3,15 @@
 
 using namespace Game;
 
-Models::LightBeam::LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
+Models::LightBeam::LightBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type) : Models::Updatable(x, y, z, height, width, state, center, type)
 {
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
+}
+
+void Models::LightBeam::set_angle(int speed)
+{
+	_angle *= speed;
 }
 
 void Models::LightBeam::initialize_textures()

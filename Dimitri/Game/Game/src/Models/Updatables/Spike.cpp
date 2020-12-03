@@ -4,7 +4,7 @@
 
 using namespace Game;
 
-Models::Spike::Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
+Models::Spike::Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type) : Models::Updatable(x, y, z, height, width, state, center, type)
 {
 	initialize_textures();
 	create_shape(x, y, height, width, false, false, PhysicsCollision::Enums::ShapeEnum::Square);
@@ -16,6 +16,11 @@ void Models::Spike::initialize_textures()
 
 	add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/spike.png" }, Graphics::Enums::FlipEnum::NONE, false, _center));
 	get_texture()->set_visible(true);
+}
+
+void Models::Spike::set_angle(int speed)
+{
+	//_angle *= speed;
 }
 
 void Game::Models::Spike::update_object(Controllers::LevelController* ctrl)

@@ -1,13 +1,24 @@
 #include "Player.h"
 
-Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
+Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type) : Game::Models::Updatable(x, y, z, height, width, state, center, type)
 {
 	_jumps = _max_amount_of_jumps;
+	_speed = 1;
 	_lastx = x;
 	_lasty =y ;
 	_direction = Enums::DirectionEnum::RIGHT;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
+}
+
+void Game::Models::Player::set_angle(int speed)
+{
+	_speed *= speed;
+}
+
+int Game::Models::Player::get_speed()
+{
+	return _speed;
 }
 
 void Game::Models::Player::initialize_textures()

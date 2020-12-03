@@ -92,9 +92,9 @@ void Models::Shape::set_is_dynamic(bool is_dynamic)
 	_is_dynamic = is_dynamic;
 }
 
-void Models::Shape::move_x(const int value)const
+void Models::Shape::move_x(const int direction, const int value)const
 {
-	_shape_facade->move_x(value);
+	_shape_facade->move_x(direction, value);
 }
 
 void Models::Shape::move_y()const

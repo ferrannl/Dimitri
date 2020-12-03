@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "../../Enums/DirectionEnum.cpp"
+#include "../../Enums/TypeEnum.cpp"
 
 /**
 * \namespace Game
@@ -21,13 +22,19 @@ namespace Game {
 		* \brief Class contains the methods to be able to update the object
 		*/
 		class Updatable : public Object {
+		protected:
+			Game::Enums::TypeEnum _type;
 		public:
-			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Updatable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
 
 			/**
 			* \brief update this object
 			*/
 			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
+
+			virtual void set_angle(int speed) = 0;
+
+			Game::Enums::TypeEnum get_type();
 		};
 	}
 }

@@ -150,7 +150,7 @@ namespace PhysicsCollision {
 			* \brief Move the X position of the Shape
 			* \param value -1 is left, 1 is right
 			*/
-			void move_x(const int value) const;
+			void move_x(const int direction, const int value) const;
 
 			/**
 			* \brief Move the Y position of the Shape

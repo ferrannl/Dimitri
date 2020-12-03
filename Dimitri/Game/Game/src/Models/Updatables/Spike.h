@@ -17,13 +17,14 @@ namespace Game {
 		*/
 		class Spike : public Models::Updatable {
 		public:
-			Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
 
 			/**
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
 
+			void set_angle(int speed);
 			/**
 			* \brief Updates the object when interacted with
 			*/

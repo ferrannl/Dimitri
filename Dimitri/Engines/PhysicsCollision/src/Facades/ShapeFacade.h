@@ -49,6 +49,7 @@ namespace PhysicsCollision {
 			*/
 			void add_body(b2Body* body);
 
+
 			/**
 			* \brief Returns the body
 			*/
@@ -58,7 +59,7 @@ namespace PhysicsCollision {
 			* \brief Move the X position
 			* \param value -1 is left, 1 is right
 			*/
-			void move_x(int value) const;
+			void move_x(const int direction, const int value) const;
 
 			/**
 			* \brief Move the Y position

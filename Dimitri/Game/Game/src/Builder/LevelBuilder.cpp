@@ -38,7 +38,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
                     level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
                     break;
                 case 5:
-                    level->add_player(std::make_shared<Models::Player>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
+                    level->add_player(std::make_shared<Models::Player>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }, Game::Enums::TypeEnum::PLAYER));
                     break;
                 case 6:
                     level->add_tile(_object_factory.create(Enums::TypeEnum::WALL, x, y, 1, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));

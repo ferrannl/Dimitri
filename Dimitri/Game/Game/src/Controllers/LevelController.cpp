@@ -31,14 +31,14 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
 			_level->get_player()->set_direction(Game::Enums::DirectionEnum::LEFT);
 
-			_level->get_player()->get_shape()->move_x(-1);
+			_level->get_player()->get_shape()->move_x(-1, _level->get_player()->get_speed());
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
 		if (_state == Enums::LevelStateEnum::ACTIVE) {
 			_level->get_player()->set_direction(Game::Enums::DirectionEnum::RIGHT);
 
-			_level->get_player()->get_shape()->move_x(1);
+			_level->get_player()->get_shape()->move_x(1,_level->get_player()->get_speed());
 		}
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_UP:

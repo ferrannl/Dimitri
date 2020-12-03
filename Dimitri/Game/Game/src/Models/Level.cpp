@@ -5,6 +5,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
+	_speed = 2;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
@@ -42,7 +43,6 @@ void Game::Models::Level::resume_music(std::string audio_name)
 {
 	_audio_controller->resume_audio(audio_name);
 }
-
 
 void Game::Models::Level::load_objects()
 {
@@ -87,9 +87,15 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	{
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
+
 	}
-	for (std::shared_ptr<Object> updatables : _updatables)
+	for (std::shared_ptr<Updatable> updatables : _updatables)
 	{
+		updatables->set_angle(_speed);
+		if (updatables->get_type() == Game::Enums::TypeEnum::PLAYER)
+		{
+
+		}
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}

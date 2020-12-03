@@ -5,14 +5,17 @@
 
 using namespace Game;
 
-
-
-Models::CameraBeam::CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
+Models::CameraBeam::CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type) : Models::Updatable(x, y, z, height, width, state, center, type)
 {
 	_angle = -1;
 
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
+}
+
+void Models::CameraBeam::set_angle(int speed)
+{
+	_angle *= speed;
 }
 
 void Models::CameraBeam::initialize_textures()

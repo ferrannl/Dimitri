@@ -46,6 +46,7 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
+			int _speed;
 			/**
 			* \brief An instance of the Player Object
 			*/

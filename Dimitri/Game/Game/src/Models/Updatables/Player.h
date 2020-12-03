@@ -17,6 +17,8 @@ namespace Game {
 		*/
 		class Player : public Models::Updatable {
 		private: 
+			int _speed;
+
 			/**
 			* \brief The max amount of jumps the player is allowed to make
 			*/
@@ -47,8 +49,9 @@ namespace Game {
 			*/
 			void idle();
 		public:
-			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, Game::Enums::TypeEnum type);
 
+			void set_angle(int speed);
 			/**
 			* \brief Initializes Textures
 			*/
@@ -73,6 +76,8 @@ namespace Game {
 			* \brief Checks the state of the player with by checking the increase of x and or y
 			*/
 			void update_state();
+
+			int get_speed();
 		};
 	}
 }
