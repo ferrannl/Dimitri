@@ -23,6 +23,7 @@ namespace Game {
 			* \brief Sets the speed of the object
 			*/
 			void set_speed(float speed)override;
+
 			/**
 			* \brief Initializes Textures
 			*/
