@@ -130,8 +130,4 @@ namespace Game {
 	{
 		return _graphics_controller;
 	}
-	/*std::shared_ptr<Views::HighscoreView> Controllers::WindowController::get_highscore_view() const
-	{
-		
-	}*/
 }

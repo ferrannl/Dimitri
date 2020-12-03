@@ -142,7 +142,7 @@ namespace Game {
 			* \brief Returns a view based on a template function
 			*/
 			template <typename DerivedT>
-			void set_highscore_record(uint32_t record) {
+			void set_highscore_record(std::string record) {
 				auto derived = static_cast<DerivedT*>(_views["highscore"].get());
 				return derived->add_record(record);
 			}

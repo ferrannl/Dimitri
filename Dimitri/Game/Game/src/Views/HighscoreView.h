@@ -2,6 +2,7 @@
 #include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
 #include <string> 
+#include <algorithm>
 
 /**
 * \namespace Game
@@ -31,13 +32,13 @@ namespace Game {
 			*/
 			bool is_visible() const override;
 
-			void add_record(uint32_t record);
+			void add_record(std::string record);
 
 		private:
 			/**
 			* \brief Vector to save all the known times of a player
 			*/
-			std::vector<uint32_t> _record_times;
+			std::vector<std::string> _record_times;
 
 
 		};
