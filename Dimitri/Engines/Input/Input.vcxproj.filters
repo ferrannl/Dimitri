@@ -39,15 +39,15 @@
     <ClInclude Include="src\framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enums\EventEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Facades\MouseFacade.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Facades\EventFacade.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enums\EventEnum.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Controllers\InputController.cpp">

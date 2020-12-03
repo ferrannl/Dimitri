@@ -1,8 +1,8 @@
 #include "BackgroundFactory.h"
 #include <src/Helpers/BasePathHelper.h>
 #include <src/Models/Sprite.h>
-#include "../Enums/TypeEnum.cpp"
-#include "../Enums/StateEnum.cpp"
+#include "../Enums/TypeEnum.h"
+#include "../Enums/StateEnum.h"
 
 using namespace Game;
 

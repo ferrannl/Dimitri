@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
-#include "../../Enums/DirectionEnum.cpp"
-#include "../../Enums/TypeEnum.cpp"
+#include "../../Enums/DirectionEnum.h"
+#include "../../Enums/TypeEnum.h"
 
 /**
 * \namespace Game

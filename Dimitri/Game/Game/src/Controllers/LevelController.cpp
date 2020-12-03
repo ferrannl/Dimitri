@@ -1,11 +1,13 @@
 #include "LevelController.h"
+#include "../Mediators/CommandMediator.h"
 #include <src/Controllers/DocumentController.h>
 #include "../Builder/LevelBuilder.h"
-#include <conio.h> 
+#include <conio.h>
 #include <stdio.h>
 using namespace Game;
 
-Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) : _window_controller{ window_controller }
+Game::Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
+	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
@@ -26,58 +28,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
-	switch (object.event_enum) {
-	case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_direction(Game::Enums::DirectionEnum::LEFT);
-
-			_level->get_player()->get_shape()->move_x(-1, _level->get_player()->get_speed());
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_direction(Game::Enums::DirectionEnum::RIGHT);
-
-			_level->get_player()->get_shape()->move_x(1,_level->get_player()->get_speed());
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_UP:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			_level->get_player()->set_state(Game::Enums::StateEnum::JUMPING);
-
-			if (_level->get_player()->jump()) {
-				_level->get_player()->get_shape()->move_y();
-			}
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_E:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			for (std::shared_ptr<Models::Interactable> interactable : _level->get_interactables())
-			{
-				if (_level->get_player()->get_shape()->check_square_collision(interactable->get_shape()))
-				{
-					interactable->interact(this);
-				}
-			}
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_P:
-		if (_state == Enums::LevelStateEnum::ACTIVE) {
-			set_state(Enums::LevelStateEnum::PAUSED);
-		}
-		else if (_state == Enums::LevelStateEnum::PAUSED) {
-			start();
-		}
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_W:
-		// this will obviously be triggered by an event in the future, for now a hardcoded key
-		set_state(Enums::LevelStateEnum::WIN);
-		break;
-	case Input::Enums::EventEnum::KEY_PRESS_G:
-		// this will obviously be triggered by an event in the future, for now a hardcoded key
-		set_state(Enums::LevelStateEnum::GAME_OVER);
-		break;
-	}
+	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
@@ -113,7 +64,7 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
 		}
-		notify(_state);
+		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}
 }
 
@@ -161,17 +112,7 @@ void  Game::Controllers::LevelController::simulate_objects() {
 	}
 }
 
-void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {
-	for (auto observer : _observers) {
-		observer->update(object);
-	}
-}
-
-void Game::Controllers::LevelController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer) {
-	_observers.push_back(observer);
-}
-
-void Game::Controllers::LevelController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer)
+Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
-	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
+	return _state;
 }
