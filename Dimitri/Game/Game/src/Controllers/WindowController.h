@@ -139,10 +139,10 @@ namespace Game {
 			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
 
 			/**
-			* \brief Returns a view
+			* \brief Returns a view based on a template function
 			*/
 			template <typename DerivedT>
-			void get_highscore_view(int record) {
+			void set_highscore_record(uint32_t record) {
 				auto derived = static_cast<DerivedT*>(_views["highscore"].get());
 				return derived->add_record(record);
 			}

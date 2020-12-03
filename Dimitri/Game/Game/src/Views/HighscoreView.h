@@ -31,13 +31,13 @@ namespace Game {
 			*/
 			bool is_visible() const override;
 
-			void add_record(int record);
+			void add_record(uint32_t record);
 
 		private:
 			/**
 			* \brief Vector to save all the known times of a player
 			*/
-			std::vector<int> _record_times;
+			std::vector<uint32_t> _record_times;
 
 
 		};

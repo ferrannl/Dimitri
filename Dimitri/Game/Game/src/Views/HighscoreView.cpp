@@ -29,12 +29,10 @@ namespace Game {
 		}
 		place_margin = 0;
 		for (int i = 0; i < _record_times.size(); i++) {
-			int record = _record_times[i];
-			if (record < _record_times[i + 1]) {
-				std::string time = std::to_string(_record_times[i]);
-				_textures.push_back(std::make_shared<Graphics::Models::Text>(time, color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }));
-				place_margin = place_margin + 48;
-			}
+			uint32_t record = _record_times[i];
+			std::string time = std::to_string(record);
+			_textures.push_back(std::make_shared<Graphics::Models::Text>(time, color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+			place_margin = place_margin + 48;
 		}
 
 	}
@@ -43,7 +41,7 @@ namespace Game {
 	{
 		return true;
 	}
-	void Views::HighscoreView::add_record(int record)
+	void Views::HighscoreView::add_record(uint32_t record)
 	{
 		_record_times.push_back(record);
 		init_textures();
