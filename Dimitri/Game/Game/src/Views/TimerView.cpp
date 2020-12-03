@@ -17,7 +17,6 @@ namespace Game {
 		int timer_width = 54;
 
 		close();
-		_textures.clear();
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string ticks = std::to_string(_graphics_controller->get_window()->get_facade()->get_timer()->getTicks() / 1000.f);
@@ -25,7 +24,10 @@ namespace Game {
 		open();
 
 	}
-	
+	void Views::TimerView::close() {
+		View::close();
+		_textures.clear();
+	}
 
 }
 

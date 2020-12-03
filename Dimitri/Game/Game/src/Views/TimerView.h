@@ -33,6 +33,11 @@ namespace Game {
 			* \brief Updates the textures
 			*/
 			void update() override;
+
+			/**
+			* \brief Removes the textures of the View to the Window in the GraphicsController
+			*/
+			void close() override;
 		};
 	}
 }
