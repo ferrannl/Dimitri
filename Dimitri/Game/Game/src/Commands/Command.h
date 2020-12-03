@@ -18,6 +18,9 @@ namespace Game {
 		*/
 		class Command {
 		protected:
+			/**
+			* \brief An instance of the MainController
+			*/
 			std::shared_ptr<Controllers::MainController> _main_controller;
 		public:
 			Command(const std::shared_ptr<Controllers::MainController> main_controller) : _main_controller{ main_controller } {};

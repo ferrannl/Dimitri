@@ -28,7 +28,7 @@ namespace Game {
 			std::shared_ptr<Controllers::InputController> _input_controller;
 
 			/**
-			* \brief An instance of the WindowController
+			* \brief An instance of the AudioController
 			*/
 			std::shared_ptr<Controllers::AudioController> _audio_controller;
 
@@ -70,7 +70,7 @@ namespace Game {
 			std::shared_ptr<Controllers::InputController> get_input_controller() const;
 
 			/**
-			* \brief Returns the WindowController
+			* \brief Returns the AudioController
 			*/
 			std::shared_ptr<Controllers::AudioController> get_audio_controller() const;
 
