@@ -94,10 +94,10 @@ void Builder::LevelBuilder::build_background(std::shared_ptr<Models::Level>& lev
         y += bg_height;
 
         while (y <= level->get_height()) {
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, 0, top_height, top_width, Enums::DirectionEnum::NONE));
             y += top_height;
 
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
+            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, 0, top_height, top_width, Enums::DirectionEnum::NONE));
             y += top_height;
         }
 
