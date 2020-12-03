@@ -21,7 +21,9 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Models::Object::get_all_
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> value = std::vector<std::shared_ptr<Graphics::Models::Texture>>();
 	for (std::map<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>>::iterator it = _textures.begin(); it != _textures.end(); ++it) {
-		value.push_back(it->second);
+		if (it->first != Enums::AnimateEnum::HUD1 || it->first != Enums::AnimateEnum::HUD2) {
+			value.push_back(it->second);
+		}
 	}
 	return value;
 }
