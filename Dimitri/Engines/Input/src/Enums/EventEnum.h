@@ -1,5 +1,4 @@
 #pragma once
-
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS
 #define INPUT_API __declspec(dllexport)

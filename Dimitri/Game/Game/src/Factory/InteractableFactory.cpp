@@ -4,7 +4,7 @@
 #include "../Models/Interactable/Switch.h"
 #include "../Models/Interactable/Car.h"
 #include "../Models/Updatables/Spike.h"
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 
 using namespace Game;
 

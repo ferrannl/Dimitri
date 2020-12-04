@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
-#include "../Enums/TypeEnum.cpp"
-#include "../Enums/DirectionEnum.cpp"
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 #include <src/Models/Sprite.h>
 
 /**

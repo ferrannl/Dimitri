@@ -1,5 +1,5 @@
 #include "Spike.h"
-#include "../../Enums/LevelStateEnum.cpp"
+#include "../../Enums/LevelStateEnum.h"
 #include "../../Controllers/LevelController.h"
 
 using namespace Game;

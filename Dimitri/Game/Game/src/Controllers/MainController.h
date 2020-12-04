@@ -4,6 +4,7 @@
 #include "LevelController.h"
 #include "HomeController.h"
 #include "../Models/Level.h"
+#include "../Mediators/BaseComponent.h"
 
 /**
 * \namespace Game
@@ -19,7 +20,7 @@ namespace Game {
 		* \class MainController
 		* \brief Class contains the methods to navigate through Views, connect the code to connect Input-, Window- and LevelController and start the application
 		*/
-		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Utility::Interfaces::IObserver<Enums::LevelStateEnum> {
+		class MainController : public Utility::Interfaces::IObserver<Events::InputEvent>, public std::enable_shared_from_this<MainController>, public Mediators::BaseComponent {
 		private:
 			/**
 			* \brief An instance of the InputController
@@ -27,9 +28,10 @@ namespace Game {
 			std::shared_ptr<Controllers::InputController> _input_controller;
 
 			/**
-			* \brief An instance of the WindowController
+			* \brief An instance of the AudioController
 			*/
 			std::shared_ptr<Controllers::AudioController> _audio_controller;
+
 			/**
 			* \brief An instance of the Level Manager
 			*/
@@ -63,9 +65,34 @@ namespace Game {
 			void update(const Events::InputEvent& object);
 
 			/**
-			* \brief Updates from LevelController
+			* \brief Returns the InputController
 			*/
-			void update(const Enums::LevelStateEnum& object);
+			std::shared_ptr<Controllers::InputController> get_input_controller() const;
+
+			/**
+			* \brief Returns the AudioController
+			*/
+			std::shared_ptr<Controllers::AudioController> get_audio_controller() const;
+
+			/**
+			* \brief Returns the Level Manager
+			*/
+			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
+
+			/**
+			* \brief Returns the WindowController
+			*/
+			std::shared_ptr<Controllers::WindowController> get_window_controller() const;
+
+			/**
+			* \brief Returns the LevelController
+			*/
+			std::shared_ptr<Controllers::LevelController> get_level_controller() const;
+
+			/**
+			* \brief Returns the HomeController
+			*/
+			std::shared_ptr<Controllers::HomeController> get_home_controller() const;
 		};
 	}
 }
