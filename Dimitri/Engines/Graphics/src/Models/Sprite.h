@@ -30,7 +30,7 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API Sprite : public Texture {
 		public:
-			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible, const Models::Center center);
+			Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible, const Models::Center center, int opacity = 100);
 
 			/**
 			* \brief Creates the TextureFacade

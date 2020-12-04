@@ -3,8 +3,8 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-Graphics::Facades::TextFacade::TextFacade(const std::string& path, const std::string& text, const Graphics::Models::Color& color, const int height) :
-	TextureFacade(path), _text{ text }, _color{ color.red, color.green, color.blue }, _height{ height } {}
+Graphics::Facades::TextFacade::TextFacade(const std::string& path, const std::string& text, const Graphics::Models::Color& color, const int height, int opacity) :
+	TextureFacade(path, opacity), _text{ text }, _color{ color.red, color.green, color.blue }, _height{ height } {}
 
 void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer)
 {
@@ -25,7 +25,9 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 		}
 
 		//Create texture from surface pixels
-		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), textSurface));
+		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), textSurface);
+		SDL_SetTextureAlphaMod(t, _opacity);
+		_texture.reset(t);
 		if (_texture == NULL)
 		{
 			throw Exceptions::CannotCreateTexture();

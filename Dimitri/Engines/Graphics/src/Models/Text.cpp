@@ -1,8 +1,8 @@
 #include "Text.h"
 using namespace Graphics;
 
-Models::Text::Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center) :
-	Models::Texture(x, y, z, height, width, angle, path, visible, center), _text{ text }, _color{ color} {}
+Models::Text::Text(const std::string& text, const Color& color, const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center, int opacity) :
+	Models::Texture(x, y, z, height, width, angle, path, visible, center, opacity), _text{ text }, _color{ color} {}
 
 const std::string Models::Text::get_text() const
 {
@@ -16,7 +16,7 @@ const Models::Color Models::Text::get_color() const
 
 void Models::Text::create_texture_facade()
 {
-	_facade = std::make_shared<Facades::TextFacade>(get_path(), get_text(), get_color(), get_height());
+	_facade = std::make_shared<Facades::TextFacade>(get_path(), get_text(), get_color(), get_height(), get_opacity());
 }
 
 bool Models::Text::matches(const std::shared_ptr<Models::Texture>& texture) const
@@ -28,7 +28,8 @@ bool Models::Text::matches(const std::shared_ptr<Models::Texture>& texture) cons
 			text->get_color().red == get_color().red &&
 			text->get_color().green == get_color().green &&
 			text->get_color().blue == get_color().blue &&
-			text->get_height() == get_height();
+			text->get_height() == get_height() &&
+			text->get_opacity() == get_opacity();
 	}
 	return false;
 }
