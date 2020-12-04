@@ -139,7 +139,7 @@ namespace Game {
 			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
 
 			/**
-			* \brief Returns a view based on a template function
+			* \brief Add the highscore to the HighscoreView based on a template function
 			*/
 			template <typename DerivedT>
 			void set_highscore_record(std::string record) {

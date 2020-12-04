@@ -28,15 +28,45 @@ namespace Utility {
 		class UTILITY_API Timer {
 		public:
 			Timer();
+
+			/**
+			* \brief Method to start the timer
+			*/
 			void start();
+
+			/**
+			* \brief Method to stop the timer
+			*/
 			void stop();
+
+			/**
+			* \brief Method to pause the timer
+			*/
 			void pause();
+
+			/**
+			* \brief Method to unpause the timer
+			*/
 			void unpause();
 
+			/**
+			* \brief Gets the current ticks from a level
+			*/
 			uint32_t getTicks();
+
+			/**
+			* \brief Sets the current ticks based on SDL ticks
+			*/
 			void set_current_ticks(uint32_t current_ticks);
 
+			/**
+			* \brief Returns if the timer is started or not
+			*/
 			bool is_started();
+
+			/**
+			* \brief Returns if the timer is paused or not
+			*/
 			bool is_paused();
 
 		private:
