@@ -68,6 +68,10 @@ void Game::Models::Level::add_shapes()
 	{
 		_physics_collision_controller->load_shape(shape);
 	}
+	for (std::shared_ptr<Game::Models::Enemy> enemy : _enemies)
+	{
+		_physics_collision_controller->load_shape(enemy->get_shape());
+	}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
