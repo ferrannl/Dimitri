@@ -14,7 +14,7 @@ std::vector<std::vector<int>> DocumentHandler::Readers::JsonReader::Read(const s
 	}
 
 	// adding each line to the root string so that the json parser can use it
-	std::string raw_json;
+	std::string raw_json = ("");
 	std::string line;
 	while (std::getline(json_file, line)) {
 		raw_json.append(line);
@@ -33,10 +33,14 @@ std::vector<std::vector<int>> DocumentHandler::Readers::JsonReader::Read(const s
 		throw std::runtime_error("Cannot parse json file");
 	}
 
-	for (const Json::Value& obj : root["layers"])  // iterate over "books"
-	{
-		std::cout << obj.asString();
+	try {
+		Json::Value a = root.get("layers", 0) ;
+		std::cout << a;
 	}
+	catch (std::exception e) {
+		std::cout << e.what();
+	}
+
 
 
     return std::vector<std::vector<int>>();
