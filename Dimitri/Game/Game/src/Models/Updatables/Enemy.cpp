@@ -56,16 +56,22 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
 	bool Left = (_x - 240 < (ctrl->get_level()->get_player()->get_x()));
 	bool Right = (_x + 240 > (ctrl->get_level()->get_player()->get_x()));
-	bool In_Area = (Left && Right && (_y - 200 < (ctrl->get_level()->get_player()->get_y())) && (_y + 200 > (ctrl->get_level()->get_player()->get_y())));
+	bool Top = (_y - 200 < (ctrl->get_level()->get_player()->get_y()));
+	bool Bottom = (_y + 200 > (ctrl->get_level()->get_player()->get_y()));
+	bool In_Area = (Left && Right && Top && Bottom);
 
 	if (In_Area)
 	{
 		walk();
-		if (Left) {
+		if (_x < (ctrl->get_level()->get_player()->get_x())) {
 			_shape->move_x(1);
+			_direction = Enums::DirectionEnum::RIGHT;
+			//TODO add second param speed
 		}
-		else if (Right) {
+		else {
 			_shape->move_x(-1);
+			_direction = Enums::DirectionEnum::LEFT;
+			//TODO add second param speed
 		}
 	}
 	else {

@@ -61,7 +61,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vec
 					level->add_updatable(_updatableFactory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
 					break;
 				case 53:
-					level->add_updatable(std::make_shared<Models::Enemy>(x, y, 1, TILE_SIZE * 2, TILE_SIZE, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
+					level->add_enemy(std::make_shared<Models::Enemy>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
 					break;
 				}
 
