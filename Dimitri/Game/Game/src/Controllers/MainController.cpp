@@ -50,6 +50,7 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 		break;
 	case Input::Enums::EventEnum::KEY_PRESS_ESC:
 		if (!_window_controller->is_active("home")) {
+			_window_controller->toggle_view_visibility("timer");
 			_window_controller->clear_views();
 			_window_controller->open_view("home");
 			_window_controller->open_view("fps");
@@ -72,7 +73,9 @@ void Game::Controllers::MainController::update(const Enums::LevelStateEnum& obje
 {
 	switch (object) {
 	case Enums::LevelStateEnum::ACTIVE:
+		_window_controller->toggle_view_visibility("timer");
 		_window_controller->clear_views();
+		_window_controller->toggle_view_visibility("timer");
 		_window_controller->open_view("level");
 		_window_controller->open_view("timer");
 		_window_controller->open_view("fps");
@@ -85,6 +88,7 @@ void Game::Controllers::MainController::update(const Enums::LevelStateEnum& obje
 		_window_controller->open_view("game_over_level");
 		break;
 	case Enums::LevelStateEnum::PAUSED:
+		_window_controller->toggle_view_visibility("timer");
 		_window_controller->open_view("pause_level");
 		break;
 	}

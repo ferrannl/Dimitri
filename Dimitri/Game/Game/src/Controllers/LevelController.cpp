@@ -106,7 +106,6 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_objects_thread.detach();
 			_level->stop_music("level1");
 			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->pause();
-			_window_controller->toggle_view_visibility("timer");
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive -> active
