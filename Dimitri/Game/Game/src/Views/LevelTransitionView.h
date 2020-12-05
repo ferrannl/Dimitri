@@ -39,14 +39,24 @@ namespace Game {
 			std::unique_ptr<Models::LightBeam> _lightbeam;
 
 			/**
-			* \brief An instance of the PhysicsCollisionController
+			* \brief The Texture used to add the fade in and out effect
 			*/
 			std::shared_ptr<Graphics::Models::Sprite> _mask;
+
+			/**
+			* \brief The Texture of the chosen tip
+			*/
+			std::shared_ptr<Graphics::Models::Text> _tip;
 
 			/**
 			* \brief An instance of the PhysicsCollisionController
 			*/
 			std::unique_ptr<Controllers::PhysicsCollisionController> _pc_ctrl;
+
+			/**
+			* \brief A list of tips the view can show
+			*/
+			std::vector<std::string> _tips;
 
 			/**
 			* \brief A counter to keep track of the ticks
@@ -69,6 +79,11 @@ namespace Game {
 			* \brief Updates the textures
 			*/
 			void update() override;
+
+			/**
+			* \brief Adds the textures of the View to the Window in the GraphicsController
+			*/
+			void open() override;
 
 			/**
 			* \brief Returns the visible state of the View

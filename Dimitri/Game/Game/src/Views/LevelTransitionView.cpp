@@ -4,6 +4,11 @@
 namespace Game {
 	Views::LevelTransitionView::LevelTransitionView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) :
 		View(graphics_controller), _pc_ctrl{ std::make_unique<Controllers::PhysicsCollisionController>() }, _fade_opacity{ 100 } {
+		_tips = {
+			"Door tegen een muur aan te springen, kan je nog een keer springen.",
+			"Lampen kunnen uitgezet worden door een schakelaar over te halen.",
+			"Probeer een highscore te halen door zo snel mogelijk een level te voltooien.",
+		};
 		init_textures();
 	}
 
@@ -25,37 +30,25 @@ namespace Game {
 		int tile_x = viewport_x, tile_w = 30, tile_h = 30;
 		while (tile_x <= window_width + viewport_x) {
 			_textures.push_back((Models::Floor{ tile_x, window_height - lamp_offset_h + lamp_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{tile_x + tile_w / 2, window_height - lamp_offset_h + lamp_h + tile_h / 2 + viewport_y} }).get_texture());
-			Models::Floor ground{ tile_x, window_height - lamp_offset_h - light_h + light_offset_h - tile_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{tile_x + tile_w / 2, window_height - lamp_offset_h - light_h + light_offset_h - tile_h / 2 + viewport_y} };
+			Models::Floor ground{ tile_x, _lightbeam->get_y() - tile_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{tile_x + tile_w / 2, _lightbeam->get_y() - tile_h / 2 + viewport_y} };
 			_textures.push_back(ground.get_texture());
 			_pc_ctrl->load_shape(ground.get_shape());
 			tile_x += tile_w;
 		}
 		int player_h = 120, player_w = 120;
-		_player.reset(new Models::Player(viewport_x, window_height - lamp_offset_h - light_h + light_offset_h + viewport_y, 3, player_h, player_w, Enums::DirectionEnum::RIGHT, Graphics::Models::Center{ player_w / 2 + viewport_x, window_height - lamp_offset_h - light_h + light_offset_h + player_h / 2 + viewport_y }));
+		_player.reset(new Models::Player(viewport_x, _lightbeam->get_y() + viewport_y, 3, player_h, player_w, Enums::DirectionEnum::RIGHT, Graphics::Models::Center{ player_w / 2 + viewport_x, _lightbeam->get_y() + player_h / 2 + viewport_y }));
 		for (auto t : _player->get_all_textures()) {
 			_textures.push_back(t);
 		}
 		_pc_ctrl->load_shape(_player->get_shape());
 
-		std::vector<std::string> tips{
-			"Door tegen een muur aan te springen, kan je nog een keer springen.",
-			"Lampen kunnen uitgezet worden door een schakelaar over te halen.",
-			"Probeer een highscore te halen door zo snel mogelijk een level te voltooien.",
-		};
-		srand((unsigned int)time(NULL));
-		std::string tip = tips[rand() % tips.size()];
-		int tip_w = tip.length() * 10;
-		int tip_h = 20;
-		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		Graphics::Models::Color color = { 255, 255, 255 };
-		_textures.push_back(std::make_shared<Graphics::Models::Text>(tip, color, window_width / 2 - tip_w / 2 + viewport_x, window_height - lamp_offset_h - light_h + light_offset_h - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }));
 	}
 
 	void Views::LevelTransitionView::update()
 	{
-		const int window_width = _graphics_controller->get_window()->get_width();
-		const int window_height = _graphics_controller->get_window()->get_height();
-		const int viewport_x = std::get<0>(_graphics_controller.get()->get_camera_pos());
+		int window_width = _graphics_controller->get_window()->get_width();
+		int window_height = _graphics_controller->get_window()->get_height();
+		int viewport_x = std::get<0>(_graphics_controller.get()->get_camera_pos());
 
 		++_counter;
 
@@ -96,6 +89,26 @@ namespace Game {
 			_graphics_controller->add_texture(_mask);
 			_fade_opacity--;
 		}
+	}
+
+	void Views::LevelTransitionView::open()
+	{
+		std::tuple<int, int> camera_pos = _graphics_controller.get()->get_camera_pos();
+		int window_width = _graphics_controller->get_window()->get_width();
+		int window_height = _graphics_controller->get_window()->get_height();
+		int viewport_x = std::get<0>(camera_pos);
+		int viewport_y = std::get<1>(camera_pos);
+		int tile_h = 30;
+
+		srand((unsigned int)time(NULL));
+		std::string tip = _tips[rand() % _tips.size()];
+		int tip_w = tip.length() * 10;
+		int tip_h = 20;
+		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
+		Graphics::Models::Color color = { 255, 255, 255 };
+		_tip.reset(new Graphics::Models::Text(tip, color, window_width / 2 - tip_w / 2 + viewport_x, _lightbeam->get_y() - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+		_textures.push_back(_tip);
+		View::open();
 	}
 
 	bool Views::LevelTransitionView::is_visible() const
