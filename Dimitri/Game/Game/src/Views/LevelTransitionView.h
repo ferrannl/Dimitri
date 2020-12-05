@@ -41,12 +41,22 @@ namespace Game {
 			/**
 			* \brief An instance of the PhysicsCollisionController
 			*/
+			std::shared_ptr<Graphics::Models::Sprite> _mask;
+
+			/**
+			* \brief An instance of the PhysicsCollisionController
+			*/
 			std::unique_ptr<Controllers::PhysicsCollisionController> _pc_ctrl;
 
 			/**
 			* \brief A counter to keep track of the ticks
 			*/
 			int _counter;
+
+			/**
+			* \brief The opacity of the fade in and out effect
+			*/
+			int _fade_opacity;
 		public:
 			LevelTransitionView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 

@@ -26,6 +26,7 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 
 		//Create texture from surface pixels
 		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), textSurface);
+		SDL_SetTextureBlendMode(t, SDL_BLENDMODE_BLEND);
 		SDL_SetTextureAlphaMod(t, _opacity);
 		_texture.reset(t);
 		if (_texture == NULL)
