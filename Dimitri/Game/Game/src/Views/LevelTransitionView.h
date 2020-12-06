@@ -84,6 +84,11 @@ namespace Game {
 			* \brief Adds the textures of the View to the Window in the GraphicsController
 			*/
 			void open() override;
+			
+			/**
+			* \brief Removes the textures of the View to the Window in the GraphicsController
+			*/
+			void close() override;
 
 			/**
 			* \brief Returns the visible state of the View

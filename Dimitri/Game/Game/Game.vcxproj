@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
+    <ClCompile Include="src\Commands\ClearViewsCommand.cpp" />
     <ClCompile Include="src\Commands\CommandFactory.cpp" />
     <ClCompile Include="src\Commands\ExitGameCommand.cpp" />
     <ClCompile Include="src\Commands\LoadLevelCommand.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHelpViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHomeViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenLevelTransitionViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenPauseLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenWinLevelViewCommand.cpp" />
@@ -53,6 +55,7 @@
     <ClCompile Include="src\Factory\UpdatableFactory.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
+    <ClCompile Include="src\Mediators\BaseComponent.cpp" />
     <ClCompile Include="src\Mediators\CommandMediator.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
@@ -85,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
+    <ClInclude Include="src\Commands\ClearViewsCommand.h" />
     <ClInclude Include="src\Commands\Command.h" />
     <ClInclude Include="src\Commands\CommandFactory.h" />
     <ClInclude Include="src\Commands\ExitGameCommand.h" />
@@ -93,6 +97,7 @@
     <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHelpViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHomeViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenLevelTransitionViewCommand.h" />
     <ClInclude Include="src\Commands\OpenLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenPauseLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenWinLevelViewCommand.h" />

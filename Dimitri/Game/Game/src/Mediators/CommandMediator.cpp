@@ -1,4 +1,5 @@
 #include "CommandMediator.h"
+#include "../Controllers/LevelController.h"
 
 namespace Game {
 	namespace Mediators {
@@ -40,22 +41,33 @@ namespace Game {
 				}
 			}
 			else if (sender.get_identifier() == "LevelController") {
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("player_move_left")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-					_factory->get_command("player_move_right")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_UP:
-					_factory->get_command("player_jump")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_E:
-					_factory->get_command("player_interact")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_P:
-					_factory->get_command("pause_level")->execute();
-					break;
+				BaseComponent& not_const = const_cast<BaseComponent&>(sender);
+				auto& ctrl = dynamic_cast<Controllers::LevelController&>(not_const);
+				if (ctrl.get_state() == Enums::LevelStateEnum::TRANSITION) {
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::KEY_PRESS_SPACE:
+						_factory->get_command("clear_views")->execute();
+						break;
+					}
+				}
+				else {
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
+						_factory->get_command("player_move_left")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
+						_factory->get_command("player_move_right")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_UP:
+						_factory->get_command("player_jump")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_E:
+						_factory->get_command("player_interact")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_P:
+						_factory->get_command("pause_level")->execute();
+						break;
+					}
 				}
 			}
 			else if (sender.get_identifier() == "StartButton") {
@@ -79,6 +91,9 @@ namespace Game {
 		{
 			if (sender.get_identifier() == "LevelController") {
 				switch (event) {
+				case Enums::LevelStateEnum::TRANSITION:
+					_factory->get_command("open_level_transition")->execute();
+					break;
 				case Enums::LevelStateEnum::ACTIVE:
 					_factory->get_command("open_level_view")->execute();
 					break;

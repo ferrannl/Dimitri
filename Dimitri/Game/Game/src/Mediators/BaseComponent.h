@@ -23,6 +23,7 @@ namespace Game {
 			std::string _identifier;
 		public:
 			BaseComponent(const std::string& identifier) : _identifier{ identifier } {}
+			virtual ~BaseComponent() = 0;
 
 			/**
 			* \brief Return the identifier

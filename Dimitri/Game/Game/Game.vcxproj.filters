@@ -200,6 +200,15 @@
     <ClCompile Include="src\Views\LevelTransitionView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Commands\OpenLevelTransitionViewCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Commands\ClearViewsCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mediators\BaseComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Level.h">
@@ -392,6 +401,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\LevelTransitionView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commands\OpenLevelTransitionViewCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commands\ClearViewsCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

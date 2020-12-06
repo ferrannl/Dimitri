@@ -100,6 +100,10 @@ namespace Game {
 		int viewport_y = std::get<1>(camera_pos);
 		int tile_h = 30;
 
+		_counter = 0;
+		_fade_opacity = 100;
+
+		// change tip
 		srand((unsigned int)time(NULL));
 		std::string tip = _tips[rand() % _tips.size()];
 		int tip_w = tip.length() * 10;
@@ -108,7 +112,20 @@ namespace Game {
 		Graphics::Models::Color color = { 255, 255, 255 };
 		_tip.reset(new Graphics::Models::Text(tip, color, window_width / 2 - tip_w / 2 + viewport_x, _lightbeam->get_y() - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }));
 		_textures.push_back(_tip);
+
+		// TODO set player in original pos
+		_player->get_shape()->set_x(viewport_x);
+		_player->update();
+
 		View::open();
+	}
+
+	void Views::LevelTransitionView::close()
+	{
+		_textures.push_back(_mask);
+		View::close();
+		_textures.erase(std::remove(_textures.begin(), _textures.end(), _mask), _textures.end());
+		_textures.erase(std::remove(_textures.begin(), _textures.end(), _tip), _textures.end());
 	}
 
 	bool Views::LevelTransitionView::is_visible() const

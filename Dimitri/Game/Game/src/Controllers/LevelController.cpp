@@ -38,7 +38,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::start()
 {
-	set_state(Enums::LevelStateEnum::ACTIVE);
+	set_state(Enums::LevelStateEnum::TRANSITION);
 }
 
 void Game::Controllers::LevelController::stop()
@@ -53,16 +53,25 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 		_state = new_state;
 
 		if (old_state == Enums::LevelStateEnum::ACTIVE) {
-			// active -> pause/win/game_over/inactive
+			// active -> pause/win/game_over/inactive/transition
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
-			// pause/win/game_over/inactive -> active
+			// pause/win/game_over/inactive/transition -> active
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
+		}		
+		
+		if (old_state == Enums::LevelStateEnum::TRANSITION) {
+			// transition -> active/pause/win/game_over/inactive
+			_transition_thread.detach();
+		}
+		else if (new_state == Enums::LevelStateEnum::TRANSITION) {
+			// active/pause/win/game_over/inactive -> transition
+			_transition_thread = std::thread(&Game::Controllers::LevelController::run_transition, this);
 		}
 		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}
@@ -77,14 +86,20 @@ void Game::Controllers::LevelController::turn_off_light(const int x)
 	}
 }
 
+void Game::Controllers::LevelController::run_transition()
+{
+	while (_state == Enums::LevelStateEnum::TRANSITION) {
+		sleep_for(5ms);
+		if (!_window_controller->is_active("level_transition")) { break; }
+	}
+	set_state(Enums::LevelStateEnum::ACTIVE);
+}
+
 void  Game::Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
-
 		_level->simulate();
-
 		_level->get_player()->update();
-
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
 		{
 			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
@@ -93,7 +108,6 @@ void  Game::Controllers::LevelController::simulate() {
 				break;
 			}
 		}
-
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
@@ -102,12 +116,10 @@ void  Game::Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(36ms);
 
-
 		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
 		{
 			object->update_object(this);
 		}
-
 		_level->get_player()->update_state();
 	}
 }
