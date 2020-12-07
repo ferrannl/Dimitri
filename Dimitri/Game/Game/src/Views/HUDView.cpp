@@ -12,7 +12,7 @@ namespace Game {
 		int width = 395;
 		int height = 226;
 
-		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/lives.png" };
+		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/lives.png" };
 		Graphics::Models::Color color{ 255, 255, 255 };
 		_textures.push_back(std::make_shared<Graphics::Models::Sprite>( 0, window_height - height, 100, height, width, 0, path, Graphics::Enums::FlipEnum::NONE,true, Graphics::Models::Center{ 0, 0 }, false));
 	}

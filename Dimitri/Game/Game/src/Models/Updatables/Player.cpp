@@ -36,8 +36,8 @@ void Game::Models::Player::initialize_textures()
 	add_texture(Game::Enums::AnimateEnum::JUMP1, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/jump/player_jump_001_crop.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, true));
 	add_texture(Game::Enums::AnimateEnum::JUMP2, std::make_shared<Graphics::Models::Sprite>(_x, _y, _z, _width, _height, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/jump/player_jump_002_crop.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, true));
 
-	add_texture(Game::Enums::AnimateEnum::HUD1, std::make_shared<Graphics::Models::Sprite>(0, 0, 99, 0, 0, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/jump.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, false));
-	add_texture(Game::Enums::AnimateEnum::HUD2, std::make_shared<Graphics::Models::Sprite>(0, 0, 99, 0, 0, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/jump.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, false));
+	add_texture(Game::Enums::AnimateEnum::HUD1, std::make_shared<Graphics::Models::Sprite>(0, 0, 99, 0, 0, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/jump.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, false));
+	add_texture(Game::Enums::AnimateEnum::HUD2, std::make_shared<Graphics::Models::Sprite>(0, 0, 99, 0, 0, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/jump.png" }, Graphics::Enums::FlipEnum::NONE, false, _center, false));
 	
 	jump_animation();
 
