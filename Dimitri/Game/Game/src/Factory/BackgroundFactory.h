@@ -21,7 +21,7 @@ namespace Game {
 			/**
 			* \brief Creates the background
 			*/
-			std::shared_ptr<Graphics::Models::Sprite> create(Enums::TypeEnum type, int x, int y, int width, int height, int z, Enums::DirectionEnum state);
+			std::shared_ptr<Graphics::Models::Sprite> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state);
 		};
 	}
 }

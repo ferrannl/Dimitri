@@ -25,12 +25,12 @@ namespace Game {
 			/**
 			* \brief Last x position of last update of the player
 			*/
-			int _lastx;
+			float _lastx;
 
 			/**
 			* \brief Last y position of last update of the player
 			*/
-			int _lasty;
+			float _lasty;
 
 			/**
 			* \brief The amount of jumps the player has made
@@ -47,7 +47,7 @@ namespace Game {
 			*/
 			void idle();
 		public:
-			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Player(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

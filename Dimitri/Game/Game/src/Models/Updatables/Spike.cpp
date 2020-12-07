@@ -4,7 +4,7 @@
 
 using namespace Game;
 
-Models::Spike::Spike(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
+Models::Spike::Spike(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
 {
 	initialize_textures();
 	create_shape(x, y, height, width, false, false, PhysicsCollision::Enums::ShapeEnum::Square);

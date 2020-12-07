@@ -22,21 +22,21 @@ namespace Game {
 		_pc_ctrl->setup_world(window_height, window_width);
 
 		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }));
-		int lamp_w = 100, lamp_h = 100, lamp_offset_h = 250;
-		_textures.push_back((Models::Lamp{ window_width / 2 - lamp_w / 2 + viewport_x, window_height - lamp_offset_h + viewport_y, 2, lamp_h, lamp_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{window_width / 2 + viewport_x, window_height - lamp_offset_h + lamp_h / 2 + viewport_y} }).get_texture());
-		int light_w = 400, light_h = 300, light_offset_h = 70;
-		_lightbeam.reset(new Models::LightBeam{ window_width / 2 - light_w / 2 + viewport_x, window_height - lamp_offset_h - light_h + light_offset_h + viewport_y, 1, light_h, light_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ window_width / 2 + viewport_x, window_height - lamp_offset_h - light_h + lamp_h / 2 + light_offset_h + viewport_y } });
+		float lamp_w = 100, lamp_h = 100, lamp_offset_h = 250;
+		_textures.push_back((Models::Lamp{ window_width / 2 - lamp_w / 2 + viewport_x, window_height - lamp_offset_h + viewport_y, 2, lamp_h, lamp_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } }).get_texture());
+		float light_w = 400, light_h = 300, light_offset_h = 70;
+		_lightbeam.reset(new Models::LightBeam{ window_width / 2 - light_w / 2 + viewport_x, window_height - lamp_offset_h - light_h + light_offset_h + viewport_y, 1, light_h, light_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } });
 		_textures.push_back(_lightbeam->get_texture());
-		int tile_x = viewport_x, tile_w = 30, tile_h = 30;
+		float tile_x = viewport_x, tile_w = 30, tile_h = 30;
 		while (tile_x <= window_width + viewport_x) {
-			_textures.push_back((Models::Floor{ tile_x, window_height - lamp_offset_h + lamp_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{tile_x + tile_w / 2, window_height - lamp_offset_h + lamp_h + tile_h / 2 + viewport_y} }).get_texture());
-			Models::Floor ground{ tile_x, _lightbeam->get_y() - tile_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{tile_x + tile_w / 2, _lightbeam->get_y() - tile_h / 2 + viewport_y} };
+			_textures.push_back((Models::Floor{ tile_x, window_height - lamp_offset_h + lamp_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } }).get_texture());
+			Models::Floor ground{ tile_x, _lightbeam->get_y() - tile_h + viewport_y, 1, tile_h, tile_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } };
 			_textures.push_back(ground.get_texture());
 			_pc_ctrl->load_shape(ground.get_shape());
 			tile_x += tile_w;
 		}
-		int player_h = 120, player_w = 120;
-		_player.reset(new Models::Player(viewport_x, _lightbeam->get_y() + viewport_y, 3, player_h, player_w, Enums::DirectionEnum::RIGHT, Graphics::Models::Center{ player_w / 2 + viewport_x, _lightbeam->get_y() + player_h / 2 + viewport_y }));
+		float player_h = 120, player_w = 120;
+		_player.reset(new Models::Player(viewport_x, _lightbeam->get_y() + viewport_y, 3, player_h, player_w, Enums::DirectionEnum::RIGHT, Graphics::Models::Center{ 0, 0 }));
 		for (auto t : _player->get_all_textures()) {
 			_textures.push_back(t);
 		}
@@ -84,7 +84,7 @@ namespace Game {
 			if (_mask != nullptr) {
 				_graphics_controller->remove_texture(_mask);
 			}
-			_mask.reset(new Graphics::Models::Sprite{ 0, 0, 10, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/black_bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, abs(_fade_opacity) });
+			_mask.reset(new Graphics::Models::Sprite{ 0, 0, 10, static_cast<float>(window_height), static_cast<float>(window_width), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/black_bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, abs(_fade_opacity) });
 			_graphics_controller->add_texture(_mask);
 			_fade_opacity--;
 		}

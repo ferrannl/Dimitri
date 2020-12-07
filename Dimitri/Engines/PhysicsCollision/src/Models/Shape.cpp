@@ -1,7 +1,7 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
+Models::Shape::Shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
 	_angle = 0;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
@@ -112,36 +112,27 @@ bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)
 
 bool Models::Shape::check_bottom_collision(std::shared_ptr<Models::Shape> shape)
 {
-	const int collision_height = 1;
+	const float collision_height = 1.0;
+
 	return get_x() <= shape->get_x() + shape->get_width() && 
 		get_x() + get_width() >= shape->get_x() &&
 		get_y() <= shape->get_y() + shape->get_height() &&
 		get_y() + collision_height >= shape->get_y();
 }
 
-bool Models::Shape::check_polygon_collision(std::shared_ptr<Models::Shape> shape)
-{
-	int x = shape->get_x() + (shape->get_width() / 5);
-	
-	return get_x() - 1 <= x + shape->get_width() &&
-		get_x() + get_width() + 1 >= x &&
-		get_y() - 1 <= shape->get_y() + shape->get_height() &&
-		get_y() + get_height() + 1 >= shape->get_y();
-}
-
 bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shape)
 {
 	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
 
-	int originx = _x + (_width / 2);
-	int originy = _y + (_height);
+	float originx = _x + (_width / 2);
+	float originy = _y + (_height);
 
-	int x1 = _x;
-	int y1 = _y;
-	int x2 = _x + _width;
-	int y2 = _y;
-	int x3 = originx;
-	int y3 = originy;
+	float x1 = _x;
+	float y1 = _y;
+	float x2 = _x + _width;
+	float y2 = _y;
+	float x3 = originx;
+	float y3 = originy;
 
 	// 1 translate to center
 	x1 -= originx;
@@ -157,18 +148,18 @@ bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shap
 	float x2r = (cos(radian) * x2) - (sin(radian) * y2) + originx;
 	float y2r = (sin(radian) * x2) + (cos(radian) * y2) + originy;
 
-	int playerx = shape->get_x() + (shape->get_width() / 2);
-	int playery = shape->get_y() + (shape->get_height() / 2);
+	float playerx = shape->get_x() + (shape->get_width() / 2);
+	float playery = shape->get_y() + (shape->get_height() / 2);
 
-	int beam_area = area(x1r, y1r, x2r, y2r, x3, y3);
-	int a1 = area(playerx, playery, x2r, y2r, x3, y3);
-	int a2 = area(x1r, y1r, playerx, playery, x3, y3);
-	int a3 = area(x1r, y1r, x2r, y2r, playerx, playery);
+	float beam_area = area(x1r, y1r, x2r, y2r, x3, y3);
+	float a1 = area(playerx, playery, x2r, y2r, x3, y3);
+	float a2 = area(x1r, y1r, playerx, playery, x3, y3);
+	float a3 = area(x1r, y1r, x2r, y2r, playerx, playery);
 
 	return (beam_area == a1 + a2 + a3);
 }
 
-float Models::Shape::area(int x1, int y1, int x2, int y2, int x3, int y3)
+float Models::Shape::area(float x1, float y1, float x2, float y2, float x3, float y3)
 {
 	return abs(((x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2))) / 2.0);
 }
