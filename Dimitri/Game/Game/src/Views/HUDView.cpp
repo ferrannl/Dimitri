@@ -42,6 +42,5 @@ namespace Game {
 
 	void Views::HUDView::close() {
 		View::close();
-		_textures.clear();
 	}
 }
