@@ -5,9 +5,9 @@ Game::Controllers::PhysicsCollisionController::PhysicsCollisionController()
 	_world_controller = std::make_unique<PhysicsCollision::Controllers::WorldController>();
 }
 
-void Game::Controllers::PhysicsCollisionController::simulate()
+void Game::Controllers::PhysicsCollisionController::simulate(float speed)
 {
-	_world_controller->simulate();
+	_world_controller->simulate(speed);
 }
 
 void Game::Controllers::PhysicsCollisionController::destroy_shapes()

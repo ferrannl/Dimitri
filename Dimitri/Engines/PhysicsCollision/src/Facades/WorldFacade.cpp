@@ -59,9 +59,9 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 }
 
 
-void Facades::WorldFacade::simulate() const
+void Facades::WorldFacade::simulate(float speed) const
 {
-	float timeStep = 1.0f / 60.0f;
+	float timeStep = 1.0f / (60.0f / speed);
 	int32 velocityIterations = 6;
 	int32 positionIterations = 6;
 	_world->Step(timeStep, velocityIterations, positionIterations);

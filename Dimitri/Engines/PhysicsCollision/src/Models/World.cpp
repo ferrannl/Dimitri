@@ -22,9 +22,9 @@ void Models::World::destroy_bodies()
 	}
 }
 
-void Models::World::simulate()
+void Models::World::simulate(float speed)
 {
-	_world_facade.simulate();
+	_world_facade.simulate(speed);
 }
 
 std::vector<std::shared_ptr<Models::Shape>> Models::World::get_shapes()const

@@ -5,7 +5,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
-	_speed = 5;
+	_speed = 2;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
@@ -124,7 +124,7 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 
 void Game::Models::Level::simulate()
 {
-	_physics_collision_controller->simulate();
+	_physics_collision_controller->simulate(get_player()->get_speed());
 }
 
 void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)

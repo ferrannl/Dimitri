@@ -59,7 +59,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the World
 			*/
-			void simulate();
+			void simulate(float speed);
 		};
 	}
 }

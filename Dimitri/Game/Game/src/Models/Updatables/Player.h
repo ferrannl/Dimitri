@@ -85,7 +85,7 @@ namespace Game {
 			/**
 			* \brief Returns the speed of the player
 			*/
-			int get_speed();
+			float get_speed();
 		};
 	}
 }

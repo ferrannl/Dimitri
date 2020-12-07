@@ -16,7 +16,7 @@ void Game::Models::Player::set_speed(float speed)
 	_speed *= speed;
 }
 
-int Game::Models::Player::get_speed()
+float Game::Models::Player::get_speed()
 {
 	return _speed;
 }
