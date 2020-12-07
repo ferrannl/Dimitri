@@ -152,7 +152,7 @@ namespace Game {
 			*/
 			void update();
 			/**
-			*	Clear textures
+			* \brief Clear textures
 			*/
 			void clear_textures();
 		};

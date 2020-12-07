@@ -1,15 +1,9 @@
 #include "Button.h"
 
-Game::Models::Button::Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height) : Game::Models::IInteractable(x, y, z, height, width, state)
+Game::Models::Button::Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, Game::Enums::ButtonEnum type) : Game::Models::IInteractable(x, y, z, height, width, state)
 {
+	_type = type;
 	_scene_height = scene_height;
-	initialize_textures();
-}
-
-void Game::Models::Button::initialize_textures()
-{
-	add_texture(Game::Enums::StateEnum::RIGHT, std::make_shared<Graphics::Models::Sprite>(0, 0, 2, 150, 75, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true));
-	get_texture()->set_visible(true);
 }
 
 void Game::Models::Button::update(const Game::Events::InputEvent& object)
@@ -25,4 +19,9 @@ void Game::Models::Button::update(const Game::Events::InputEvent& object)
 			interact();
 		}
 	}
+}
+
+Game::Enums::ButtonEnum Game::Models::Button::get_type()
+{
+	return _type;
 }

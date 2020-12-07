@@ -32,7 +32,7 @@ namespace Game {
 			/**
 			* \brief A list of the Buttons
 			*/
-			std::vector<std::shared_ptr<Game::Models::IButton>> _buttons;
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
 
 			/**
 			* \brief An instance of the Audio Controller
@@ -68,7 +68,7 @@ namespace Game {
 			/**
 			* \brief Returns the advertisement buttons
 			*/
-			std::vector < std::shared_ptr<Game::Models::IButton>> get_advertisement_buttons();
+			std::vector < std::shared_ptr<Game::Models::Button>> get_advertisement_buttons();
 
 		};
 	}

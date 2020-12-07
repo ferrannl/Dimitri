@@ -1,5 +1,5 @@
 #pragma once
-#include "../IButton.h"
+#include "../Button.h"
 #include <src/Advertisement/Advertisement.h>
 #include <iostream>
 #include "../../Controllers/WindowController.h"
@@ -23,7 +23,7 @@ namespace Game {
 			* \class AdvertisementButton
 			* \brief Class contains the methods for showing an advertisement
 			*/
-			class AdvertisementButton : public Game::Models::IButton {
+			class AdvertisementButton : public Game::Models::Button {
 			private:
 				/**
 				*	/brief Contains the path of the advertisement image

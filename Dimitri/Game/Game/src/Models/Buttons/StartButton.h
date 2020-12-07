@@ -1,5 +1,5 @@
 #pragma once
-#include "../IButton.h"
+#include "../Button.h"
 #include "../../Managers/LevelManager.h"
 
 /**
@@ -21,7 +21,7 @@ namespace Game {
 			* \class StartButton
 			* \brief Class contains the methods start a level
 			*/
-			class StartButton : public Game::Models::IButton {
+			class StartButton : public Game::Models::Button {
 			private:
 				/**
 				* \brief An instance of the Level Manager

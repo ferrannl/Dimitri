@@ -7,9 +7,6 @@
     <ClCompile Include="src\Controllers\AudioController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\IButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Views\CreditsView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -98,15 +95,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Enums\ButtonEnum.cpp" />
+    <ClCompile Include="src\Models\Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\AudioController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\Buttons\AdvertisementButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\IButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\CreditsView.h">
@@ -188,6 +186,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\WinLevelView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

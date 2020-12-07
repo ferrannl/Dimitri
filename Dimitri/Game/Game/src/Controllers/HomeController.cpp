@@ -32,9 +32,9 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::HomeC
 	return button_textures;
 }
 
-std::vector<std::shared_ptr<Game::Models::IButton>> Game::Controllers::HomeController::get_advertisement_buttons()
+std::vector<std::shared_ptr<Game::Models::Button>> Game::Controllers::HomeController::get_advertisement_buttons()
 {
-	std::vector<std::shared_ptr<Game::Models::IButton>> _advertisement_buttons = {};
+	std::vector<std::shared_ptr<Game::Models::Button>> _advertisement_buttons = {};
 	for (auto b : _buttons) {
 		if (b->get_type() == Game::Enums::ButtonEnum::ADVERTISEMENT)
 		{

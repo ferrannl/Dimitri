@@ -5,7 +5,7 @@
 
 namespace fs = std::experimental::filesystem::v1;
 
-Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller) : Game::Models::IButton(x, y, z, height, width, state, scene_height, Game::Enums::ButtonEnum::ADVERTISEMENT)
+Game::Models::Buttons::AdvertisementButton::AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller) : Game::Models::Button(x, y, z, height, width, state, scene_height, Game::Enums::ButtonEnum::ADVERTISEMENT)
 {
 	images = {};
 	ad = {};
