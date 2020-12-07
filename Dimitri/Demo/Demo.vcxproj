@@ -126,7 +126,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib;Utility.lib;DocumentHandler.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <DelayLoadDLLs>Audio.dll;Graphics.dll;Input.dll;PhysicsCollision.dll;Utility.dll;DocumentHandler.dll</DelayLoadDLLs>
+      <DelayLoadDLLs>
+      </DelayLoadDLLs>
       <AdditionalLibraryDirectories>$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Utility\bin\$(Platform)\$(Configuration)\;$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>

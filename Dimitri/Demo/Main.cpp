@@ -4,7 +4,11 @@
 #undef main
 int main() {
 	std::cout << "Hallo Wereld";
-	Graphics::Controllers::GraphicsController g_ctlr = {};
+	std::shared_ptr<Graphics::Controllers::GraphicsController> g_ctlr = std::make_shared<Graphics::Controllers::GraphicsController>();
 
-	g_ctlr.create_window("Demo", 720, 1280);
+	g_ctlr->create_window("Demo", 720, 1280);
+
+	while (true) {
+		
+	}
 }
