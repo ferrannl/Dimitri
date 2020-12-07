@@ -9,8 +9,8 @@ namespace Game {
 	void Views::HUDView::init_textures()
 	{
 		int window_height = _graphics_controller.get()->get_window().get()->get_height();
-		int width = 395;
-		int height = 226;
+		int width = 250;
+		int height = 143;
 
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/lives.png" };
 		Graphics::Models::Color color{ 255, 255, 255 };
@@ -19,14 +19,14 @@ namespace Game {
 
 	void Views::HUDView::update()
 	{
-		int size = 45;
-		int x1 = 230;
-		int x2 = 57;
+		int size = 28;
+		int x1 = 175;
+		int x2 = 37;
 		for (auto texture : _textures) {
 			if(texture->get_path() == Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/jump.png" })
 			if (texture->get_width() != size) {
 				texture->set_x(x1);
-				texture->set_y(_graphics_controller.get()->get_window().get()->get_height() - 70);
+				texture->set_y(_graphics_controller.get()->get_window().get()->get_height() - 40);
 				texture->set_width(size);
 				texture->set_height(size);
 				x1 += x2;
