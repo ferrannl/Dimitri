@@ -11,12 +11,12 @@ Game::Models::Player::Player(int x, int y, int z, int height, int width, Enums::
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
-void Game::Models::Player::set_speed(float speed)
+void Game::Models::Player::set_speed(const float speed)
 {
 	_speed *= speed;
 }
 
-float Game::Models::Player::get_speed()
+float Game::Models::Player::get_speed() const
 {
 	return _speed;
 }

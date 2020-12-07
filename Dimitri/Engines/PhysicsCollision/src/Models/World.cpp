@@ -22,7 +22,7 @@ void Models::World::destroy_bodies()
 	}
 }
 
-void Models::World::simulate(float speed)
+void Models::World::simulate(const float speed)const
 {
 	_world_facade.simulate(speed);
 }

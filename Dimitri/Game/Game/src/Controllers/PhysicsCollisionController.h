@@ -28,7 +28,7 @@ namespace Game {
 			/**
 			* \brief Simulates the World in the WorldController
 			*/
-			void simulate(float speed);
+			void simulate(const float speed) const;
 
 			/**
 			* \brief Destroys the bodies in the World

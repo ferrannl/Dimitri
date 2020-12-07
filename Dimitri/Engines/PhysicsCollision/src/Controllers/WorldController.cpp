@@ -19,7 +19,7 @@ void Controllers::WorldController::destroy_bodies()
 	_world.destroy_bodies();
 }
 
-void Controllers::WorldController::simulate(float speed)
+void Controllers::WorldController::simulate(const float speed)const
 {
 	_world.simulate(speed);
 }

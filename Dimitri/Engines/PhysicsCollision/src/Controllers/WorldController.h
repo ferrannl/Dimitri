@@ -53,7 +53,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the world
 			*/
-			void simulate(float speed);
+			void simulate(const float speed)const;
 
 			/**
 			* \brief Returns all the Shapes in the World
