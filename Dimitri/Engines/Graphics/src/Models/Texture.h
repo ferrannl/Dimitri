@@ -3,6 +3,7 @@
 #include <memory>
 #include "../Enums/FlipEnum.h"
 #include "../Facades/TextureFacade.h"
+#include "Center.h"
 
 
 
@@ -63,6 +64,11 @@ namespace Graphics {
 			float _angle;
 
 			/**
+			* \brief The center from the Texture
+			*/
+			Models::Center _center;
+
+			/**
 			* \brief Visibility of Texture
 			*/
 			bool _visible;
@@ -82,7 +88,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible);
+			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
@@ -118,6 +124,11 @@ namespace Graphics {
 			* \brief Returns the angle
 			*/
 			float get_angle() const;
+
+			/**
+			* \brief Returns the angle
+			*/
+			Models::Center get_center() const;
 
 			/**
 			* \brief Returns the path to the texture
@@ -178,6 +189,11 @@ namespace Graphics {
 			* \brief Sets the visibility
 			*/
 			void set_visible(const bool visibility);
+
+			/**
+			* \brief Sets the center
+			*/
+			void set_center(const Models::Center center);
 
 			/**
 			* \brief Sets the facade

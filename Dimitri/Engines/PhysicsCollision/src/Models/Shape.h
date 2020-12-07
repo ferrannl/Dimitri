@@ -3,6 +3,9 @@
 #include <iostream>
 #include "../Enums/ShapeEnum.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
 #define PHYSICSCOLLISION_API __declspec(dllexport)
@@ -29,6 +32,8 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
+			float area(int x1, int y1, int x2, int y2, int x3, int y3);
+
 			/**
 			* \brief X position of the Shape
 			*/
@@ -48,6 +53,11 @@ namespace PhysicsCollision {
 			* \brief Height of the Shape
 			*/
 			int _height;
+
+			/**
+			* \brief Height of the Shape
+			*/
+			float _angle;
 
 			/**
 			* \brief If the Shape is dynamic
@@ -105,6 +115,11 @@ namespace PhysicsCollision {
 			* \brief Set the width of the Shape
 			*/
 			void set_width(float width);
+
+			/**
+			* \brief Set the width of the Shape
+			*/
+			void set_angle(float angle);
 
 			/**
 			* \brief Set the height of the Shape
@@ -178,6 +193,11 @@ namespace PhysicsCollision {
 			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
 			*/
 			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
+
+			/**
+			* Returns true when there is collision between a point and a triangle. This method also uses the angle te shape is in. Else returns false
+			*/
+			bool check_triangle_collision(std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

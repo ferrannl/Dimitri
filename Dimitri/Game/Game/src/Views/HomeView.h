@@ -1,7 +1,7 @@
 #pragma once
 #include <..\Game\Game\src\Views\View.h>
 #include <src\Helpers\BasePathHelper.h>
-#include "../Models/IObject.h"
+#include "../Models/Abstract/Object.h"
 
 /**
 * \namespace Game
@@ -30,26 +30,6 @@ namespace Game {
 			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
-
-			/**
-			* \brief Add the Textures to the _graphics_controller
-			*/
-			void draw() override;
-
-			/**
-			* \brief The background of the View
-			*/
-			std::shared_ptr<Graphics::Models::Texture> _background;
-
-			/**
-			* \brief The play button
-			*/
-			std::shared_ptr<Game::Models::IObject> _button_play_game;
-
-			/**
-			* \brief The exit button
-			*/
-			std::shared_ptr<Game::Models::IObject> _button_exit_game;
 		};
 	}
 }

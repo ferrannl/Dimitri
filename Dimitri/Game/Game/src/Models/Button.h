@@ -1,7 +1,8 @@
 #pragma once
-#include "IInteractable.h"
+#include "./Abstract/Interactable.h"
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
+#include "../Mediators/BaseComponent.h"
 #include "../Enums/ButtonEnum.cpp"
 
 /**
@@ -18,7 +19,7 @@ namespace Game {
 		* \class Button
 		* \brief Contains all code necessary for the button object
 		*/
-		class Button : public Game::Models::IInteractable {
+		class Button : public Game::Models::Interactable, public Mediators::BaseComponent {
 		protected:
 
 			Game::Enums::ButtonEnum _type;
@@ -27,7 +28,8 @@ namespace Game {
 			*/
 			int _scene_height;
 		public:
-			Button(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, Game::Enums::ButtonEnum type);
+			Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type);
+
 			/**
 			* \brief Initializes the textures for an object
 			*/
@@ -43,7 +45,7 @@ namespace Game {
 			/**
 			* \brief Action when the Button is pressed
 			*/
-			virtual void interact() = 0;
+			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
 		};
 	}
 }
