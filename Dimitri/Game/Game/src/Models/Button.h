@@ -15,7 +15,7 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class IButton
+		* \class Button
 		* \brief Contains all code necessary for the button object
 		*/
 		class Button : public Game::Models::IInteractable {
