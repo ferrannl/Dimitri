@@ -26,7 +26,6 @@
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\Time\Fps.cpp" />
     <ClCompile Include="src\Time\Interval.cpp" />
-    <ClCompile Include="src\Time\Timer\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Advertisement\Advertisement.h" />
@@ -38,7 +37,6 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Time\Fps.h" />
     <ClInclude Include="src\Time\Interval.h" />
-    <ClInclude Include="src\Time\Timer\Timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
