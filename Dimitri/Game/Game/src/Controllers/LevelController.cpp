@@ -17,6 +17,7 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_music("failed", "/assets/audio/failed.wav");
+	_level->add_music("transition", "/assets/audio/running.wav");
 
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
@@ -58,20 +59,22 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 			_objects_thread.detach();
 			_level->stop_music("level1");
 		}
-		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
+		else if (old_state == Enums::LevelStateEnum::TRANSITION) {
+			// transition -> active/pause/win/game_over/inactive
+			_transition_thread.detach();
+			_level->stop_music("transition");
+		}
+
+		if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive/transition -> active
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
 		}		
-		
-		if (old_state == Enums::LevelStateEnum::TRANSITION) {
-			// transition -> active/pause/win/game_over/inactive
-			_transition_thread.detach();
-		}
 		else if (new_state == Enums::LevelStateEnum::TRANSITION) {
 			// active/pause/win/game_over/inactive -> transition
 			_transition_thread = std::thread(&Game::Controllers::LevelController::run_transition, this);
+			_level->play_music("transition");
 		}
 		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}

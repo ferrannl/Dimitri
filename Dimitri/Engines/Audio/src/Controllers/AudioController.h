@@ -39,12 +39,12 @@ namespace Audio {
 			std::vector<std::shared_ptr<Models::Audio>> _audios;
 
 			/**
-			* \brief Contains the amount of channels that currently are being used
+			* \brief Returns an Audio by name
 			*/
 			std::shared_ptr<Models::Audio> get_audio_by_name(const std::string name) const;
 
 			/**
-			* \brief Returns if the name for an Audio already exists in _audios
+			* \brief Contains the amount of channels that currently are being used
 			*/
 			int _channel_counter;
 
