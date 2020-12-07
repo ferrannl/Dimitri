@@ -41,7 +41,6 @@ namespace Game {
 			_textures.push_back(t);
 		}
 		_pc_ctrl->load_shape(_player->get_shape());
-
 	}
 
 	void Views::LevelTransitionView::update()
@@ -73,15 +72,15 @@ namespace Game {
 			_player->update();
 			_player->update_object();
 			_player->update_state();
-			if (_player->get_x() > window_width + viewport_x) {
-				set_active(false);
-				close();
-			}
 		}
 
 		// fade in and out effect
-		if (_counter % 21 && _fade_opacity > -100 &&
+		if (_counter % 21 &&
 			(_fade_opacity > 0 || (_fade_opacity <= 0 && _player->get_x() >= window_width - _player->get_width() - 100))) {
+			if (_fade_opacity < -100) {
+				set_active(false);
+				close();
+			}
 			if (_mask != nullptr) {
 				_graphics_controller->remove_texture(_mask);
 			}
@@ -113,9 +112,11 @@ namespace Game {
 		_tip.reset(new Graphics::Models::Text(tip, color, window_width / 2 - tip_w / 2 + viewport_x, _lightbeam->get_y() - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }));
 		_textures.push_back(_tip);
 
-		// TODO set player in original pos
+		// set player in original pos
 		_player->get_shape()->set_x(viewport_x);
 		_player->update();
+		_pc_ctrl->destroy_shape(_player->get_shape());
+		_pc_ctrl->load_shape(_player->get_shape());
 
 		View::open();
 	}
@@ -126,6 +127,7 @@ namespace Game {
 		View::close();
 		_textures.erase(std::remove(_textures.begin(), _textures.end(), _mask), _textures.end());
 		_textures.erase(std::remove(_textures.begin(), _textures.end(), _tip), _textures.end());
+		_counter = -1;
 	}
 
 	bool Views::LevelTransitionView::is_visible() const
