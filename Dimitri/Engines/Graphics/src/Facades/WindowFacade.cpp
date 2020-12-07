@@ -72,12 +72,14 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	SDL_RenderClear(_renderer.get());
 	std::map<int, std::vector<std::shared_ptr<Models::Texture>>> ordered_textures{};
 	for (std::shared_ptr<Models::Texture>& texture : textures) {
-		if (texture->is_visible() && !texture->is_dynamic()|| texture->is_visible() &&
-			texture->get_x() + texture->get_width() >= min_x &&
-			texture->get_x() <= max_x &&
-			texture->get_converted_y(std::get<1>(_scene_size)) + texture->get_height() >= min_y &&
-			texture->get_converted_y(std::get<1>(_scene_size)) <= max_y) {
-			ordered_textures[texture->get_z()].push_back(texture);
+		if (texture->is_visible()) {
+			if (!texture->is_dynamic() ||
+				texture->get_x() + texture->get_width() >= min_x &&
+				texture->get_x() <= max_x &&
+				texture->get_converted_y(std::get<1>(_scene_size)) + texture->get_height() >= min_y &&
+				texture->get_converted_y(std::get<1>(_scene_size)) <= max_y) {
+				ordered_textures[texture->get_z()].push_back(texture);
+			}
 		}
 	}
 

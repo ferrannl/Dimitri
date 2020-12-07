@@ -20,17 +20,19 @@ namespace Game {
 	void Views::HUDView::update()
 	{
 		int size = 45;
-		if (_textures.at(1)->get_width() != size) {
-			_textures.at(1)->set_x(230);
-			_textures.at(1)->set_y(_graphics_controller.get()->get_window().get()->get_height() - 70);
-			_textures.at(1)->set_width(size);
-			_textures.at(1)->set_height(size);
-
-			_textures.at(2)->set_x(287);
-			_textures.at(2)->set_y(_graphics_controller.get()->get_window().get()->get_height() - 70);
-			_textures.at(2)->set_width(size);
-			_textures.at(2)->set_height(size);
+		int x1 = 230;
+		int x2 = 57;
+		for (auto texture : _textures) {
+			if(texture->get_path() == Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/jump.png" })
+			if (texture->get_width() != size) {
+				texture->set_x(x1);
+				texture->set_y(_graphics_controller.get()->get_window().get()->get_height() - 70);
+				texture->set_width(size);
+				texture->set_height(size);
+				x1 += x2;
+			}
 		}
+		
 	}
 
 	bool Views::HUDView::is_visible() const
