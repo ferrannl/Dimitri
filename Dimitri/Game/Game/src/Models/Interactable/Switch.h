@@ -20,9 +20,9 @@ namespace Game {
 			/**
 			* \brief The x coordinate of the beam
 			*/
-			int _switch_x;
+			float _switch_x;
 		public:
-			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Switch(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
@@ -37,7 +37,7 @@ namespace Game {
 			/**
 			* \brief Sets the x coordinate of the beam location
 			*/
-			void set_light(const int x);
+			void set_light(const float x);
 		};
 	}
 }

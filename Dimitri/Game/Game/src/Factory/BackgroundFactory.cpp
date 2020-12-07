@@ -6,7 +6,7 @@
 
 using namespace Game;
 
-std::shared_ptr<Graphics::Models::Sprite> Factories::BackgroundFactory::create(Enums::TypeEnum type, int x, int y, int width, int height, int z, Enums::DirectionEnum state)
+std::shared_ptr<Graphics::Models::Sprite> Factories::BackgroundFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state)
 {
 	std::shared_ptr<Graphics::Models::Sprite> instance;
 

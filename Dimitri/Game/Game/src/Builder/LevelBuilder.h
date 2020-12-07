@@ -24,7 +24,7 @@ namespace Game {
 			/**
 			* \brief The tile size used for all the calculations 
 			*/
-			const int TILE_SIZE = 40;
+			const float TILE_SIZE = 40;
 
 			/**
 			* \brief Factory which creates static tiles

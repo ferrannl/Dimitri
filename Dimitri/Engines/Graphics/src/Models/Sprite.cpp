@@ -1,7 +1,7 @@
 #include "Sprite.h"
 using namespace Graphics;
 
-Models::Sprite::Sprite(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible, const Models::Center center, const bool is_dynamic) :
+Models::Sprite::Sprite(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible, const Models::Center center, const bool is_dynamic) :
 	Models::Texture(x, y, z, height, width, angle, path, visible, center, is_dynamic)
 {
 	_flipstatus = flipstatus;
