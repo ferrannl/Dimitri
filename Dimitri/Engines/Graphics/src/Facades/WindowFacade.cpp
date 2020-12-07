@@ -3,7 +3,7 @@
 #include <SDL_ttf.h>
 using namespace Graphics;
 
-int Facades::WindowFacade::create_window(const std::string& title, int height, int width)
+int Facades::WindowFacade::create_window(const std::string& title, float height, float width)
 {
 	_window_height = height;
 	_window_width = width;
@@ -63,10 +63,10 @@ void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Model
 
 void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Texture>> textures)
 {
-	int min_x = std::get<0>(_camera_pos);
-	int min_y = std::get<1>(_camera_pos);
-	int max_x = _window_width + std::get<0>(_camera_pos);
-	int max_y = _window_height + std::get<1>(_camera_pos);
+	float min_x = std::get<0>(_camera_pos);
+	float min_y = std::get<1>(_camera_pos);
+	float max_x = _window_width + std::get<0>(_camera_pos);
+	float max_y = _window_height + std::get<1>(_camera_pos);
 
 	//Clear screen
 	SDL_RenderClear(_renderer.get());
@@ -117,10 +117,10 @@ int Graphics::Facades::WindowFacade::get_fps()
 	return _fps->get();
 }
 
-void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
+void Graphics::Facades::WindowFacade::set_camera_pos(float x, float y)
 {
-	int _scene_width = std::get<0>(_scene_size);
-	int _scene_height = std::get<1>(_scene_size);
+	float _scene_width = std::get<0>(_scene_size);
+	float _scene_height = std::get<1>(_scene_size);
 	if (x + _window_width < _scene_width && x >= 0) {
 
 		std::get<0>(_camera_pos) = x;
@@ -145,14 +145,14 @@ void Graphics::Facades::WindowFacade::set_camera_pos(int x, int y)
 
 }
 
-std::tuple<int, int> Graphics::Facades::WindowFacade::get_camera_pos() const
+std::tuple<float, float> Graphics::Facades::WindowFacade::get_camera_pos() const
 {
 	std::tuple<int, int> converted_camera_pos = _camera_pos;
 	std::get<1>(converted_camera_pos) = std::get<1>(_scene_size) - std::get<1>(converted_camera_pos) - _window_height;
 	return converted_camera_pos;
 }
 
-void Graphics::Facades::WindowFacade::set_scene_size(int height, int width)
+void Graphics::Facades::WindowFacade::set_scene_size(float height, float width)
 {
 	std::get<1>(_scene_size) = height;
 	std::get<0>(_scene_size) = width;
@@ -161,7 +161,7 @@ void Graphics::Facades::WindowFacade::set_scene_size(int height, int width)
 	std::get<1>(_camera_pos) = height - _window_height;
 }
 
-std::tuple<int, int> Graphics::Facades::WindowFacade::get_scene_size() const
+std::tuple<float, float> Graphics::Facades::WindowFacade::get_scene_size() const
 {
 	return _scene_size;
 }
