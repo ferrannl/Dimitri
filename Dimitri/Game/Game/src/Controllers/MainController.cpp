@@ -23,6 +23,7 @@ void Game::Controllers::MainController::run()
 	_input_controller->subscribe(_home_controller);
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
+	_window_controller->add_textures(_level_controller->get_level()->get_player()->get_extra_textures(), "hud_view");
 	_input_controller->poll_events();
 }
 
