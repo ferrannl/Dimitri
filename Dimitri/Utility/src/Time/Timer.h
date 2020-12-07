@@ -26,6 +26,14 @@ namespace Utility {
 		* \brief Class contains the data of the Timer
 		*/
 		class UTILITY_API Timer {
+		private:
+			uint32_t _current_ticks;
+			uint32_t _pause_ticks;
+			uint32_t _start_ticks;
+
+			bool _started;
+			bool _paused;
+
 		public:
 			Timer();
 
@@ -69,14 +77,6 @@ namespace Utility {
 			*/
 			bool is_paused();
 
-		private:
-			uint32_t _current_ticks;
-			uint32_t _pause_ticks;
-			uint32_t _start_ticks;
-
-			bool _started;
-			bool _paused;
 		};
-
 	}
 }
