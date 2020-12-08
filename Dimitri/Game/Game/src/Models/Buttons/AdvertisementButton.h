@@ -44,6 +44,9 @@ namespace Game {
 			public:
 				AdvertisementButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller, Graphics::Models::Center center);
 			
+				/**
+				* \brief Initializes the textures for an object
+				*/
 				void initialize_textures()override;
 
 				/**

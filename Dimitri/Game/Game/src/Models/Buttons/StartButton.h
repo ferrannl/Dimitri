@@ -31,7 +31,7 @@ namespace Game {
 				StartButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager, Graphics::Models::Center center);
 
 				/**
-				*	/brief Action when the button is pressed
+				* \brief Action when the button is pressed
 				*/
 				void interact(Controllers::LevelController* ctrl = NULL);
 			};
