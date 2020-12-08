@@ -18,11 +18,12 @@ void Game::Controllers::MainController::run()
 {
 	Mediators::CommandMediator::init(this->shared_from_this());
 	_window_controller->create_window(720, 1280);
+	_window_controller->add_textures(_home_controller->get_textures(), "home");
+	_window_controller->open_view("home");
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
-	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_input_controller->poll_events();
 }
 
