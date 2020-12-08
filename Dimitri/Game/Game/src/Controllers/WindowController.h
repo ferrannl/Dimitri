@@ -17,6 +17,7 @@
 #include <..\Game\Game\src\Views\WinLevelView.h>
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
 #include <..\Game\Game\src\Views\PauseLevelView.h>
+#include <..\Game\Game\src\Views\HUDView.h>
 #include <..\Game\Game\src\Views\View.h>
 #include <chrono>
 #include <thread>

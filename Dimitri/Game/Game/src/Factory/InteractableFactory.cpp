@@ -4,7 +4,7 @@
 #include "../Models/Interactable/Switch.h"
 #include "../Models/Interactable/Car.h"
 #include "../Models/Updatables/Spike.h"
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 
 using namespace Game;
 
@@ -13,7 +13,7 @@ Game::Factories::InteractableFactory::InteractableFactory()
 	_lights = { 3560, 3240, 1600 };
 }
 
-std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state)
 {
 	std::shared_ptr<Models::Interactable> instance;
 	Models::Switch* lever;

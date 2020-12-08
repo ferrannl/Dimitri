@@ -10,7 +10,7 @@ void Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
 }
 
-void Facades::ShapeFacade::move_x(const int value)const
+void Facades::ShapeFacade::move_x(const float value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;

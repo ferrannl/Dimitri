@@ -3,12 +3,11 @@
 #include "../Models/Updatables/Spike.h"
 #include "../Models/Updatables/LightBeam.h"
 #include "../Models/Updatables/CameraBeam.h"
-
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 
 using namespace Game;
 
-std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
+std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state)
 {
 	std::shared_ptr<Models::Updatable> instance;
 

@@ -1,10 +1,14 @@
 #include "ExitButton.h"
+#include "../../Mediators/CommandMediator.h"
 
-Game::Models::Buttons::ExitButton::ExitButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center) : Game::Models::Button(x, y, z, height, width, state, scene_height, center)
-{
-}
+namespace Game {
+	namespace Models {
+		Buttons::ExitButton::ExitButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center) :
+			Button(x, y, z, height, width, state, scene_height, center, "ExitButton") {}
 
-void Game::Models::Buttons::ExitButton::interact(Controllers::LevelController* ctrl)
-{
-	exit(0);
+		void Buttons::ExitButton::interact(Controllers::LevelController* ctrl)
+		{
+			Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_LEFT, std::make_tuple(-1,-1) });
+		}
+	}
 }

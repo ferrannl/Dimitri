@@ -32,27 +32,27 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
-			float area(int x1, int y1, int x2, int y2, int x3, int y3);
+			float area(float x1, float y1, float x2, float y2, float x3, float y3);
 
 			/**
 			* \brief X position of the Shape
 			*/
-			int _x;
+			float _x;
 
 			/**
 			* \brief Y position of the Shape
 			*/
-			int _y;
+			float _y;
 
 			/**
 			* \brief Width of the Shape
 			*/
-			int _width;
+			float _width;
 
 			/**
 			* \brief Height of the Shape
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief Height of the Shape
@@ -79,7 +79,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
+			Shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
 
 			/**
 			* \brief Returns the ShapeFacade
@@ -182,12 +182,6 @@ namespace PhysicsCollision {
 			* \return True if collision, otherwise false
 			*/
 			bool check_square_collision(std::shared_ptr<Models::Shape> shape);
-
-			/**
-			* \brief Checks if the Shape has collision with another shape
-			* \return True if collision, otherwise false
-			*/
-			bool check_polygon_collision(std::shared_ptr<Models::Shape> shape);
       
 			/**
 			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false

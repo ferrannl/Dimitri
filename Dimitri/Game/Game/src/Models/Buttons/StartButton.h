@@ -28,7 +28,7 @@ namespace Game {
 				*/
 				std::shared_ptr<Game::Managers::LevelManager> _level_manager;
 			public:
-				StartButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Managers::LevelManager> level_manager, Graphics::Models::Center center);
+				StartButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, std::shared_ptr<Managers::LevelManager> level_manager, Graphics::Models::Center center);
 
 				/**
 				* \brief Updates the object when interacted with

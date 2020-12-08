@@ -7,7 +7,7 @@
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 #include "./IObjects/Wall.h"
 #include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
