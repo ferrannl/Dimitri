@@ -53,12 +53,6 @@
     <ClCompile Include="src\Models\Interactable\Switch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Models\Buttons\ExitButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Buttons\StartButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Models\Abstract\Interactable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -239,12 +233,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\Interactable\Switch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Buttons\ExitButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Buttons\StartButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Models\Abstract\Interactable.h">

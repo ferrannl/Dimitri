@@ -1,7 +1,7 @@
 #include "InputController.h"
 
 using namespace Game;
-Controllers::InputController::InputController() {
+Controllers::InputController::InputController(const std::shared_ptr<Controllers::WindowController> window_controller) : _window_controller{ window_controller } {
 	_input_controller = std::make_unique<Input::Controllers::InputController>();
 }
 
@@ -13,6 +13,7 @@ void Game::Controllers::InputController::poll_events() {
 void Game::Controllers::InputController::update(const Input::Enums::EventEnum& object)
 {
 	std::tuple<int, int> pos = _input_controller->get_mouse_position();
+	std::get<1>(pos) = _window_controller->get_scene_height() - std::get<1>(pos);
 	notify(Game::Events::InputEvent(object, pos));
 }
 

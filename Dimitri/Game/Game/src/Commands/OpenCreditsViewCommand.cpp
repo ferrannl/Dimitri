@@ -9,7 +9,9 @@ namespace Game {
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto l_ctrl = _main_controller->get_level_controller();
 			auto i_ctrl = _main_controller->get_input_controller();
-			if (!w_ctrl->is_active("credits") && !w_ctrl->is_active("home")) {
+			auto h_ctrl = _main_controller->get_home_controller();
+			i_ctrl->unsubscribe(h_ctrl);
+			if (!w_ctrl->is_active("credits")) {
 				w_ctrl->clear_views();
 				w_ctrl->open_view("credits");
 				w_ctrl->open_view("fps");

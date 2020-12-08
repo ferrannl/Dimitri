@@ -131,6 +131,11 @@ namespace Game {
 			* \brief Returns the width of the Window
 			*/
 			int get_window_width() const;
+
+			/**
+			* \brief Returns the height of the scene
+			*/
+			int get_scene_height() const;
 		};
 	}
 }

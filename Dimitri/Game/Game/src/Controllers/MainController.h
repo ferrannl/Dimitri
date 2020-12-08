@@ -5,6 +5,7 @@
 #include "HomeController.h"
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
+#include "../Managers/LevelManager.h"
 
 /**
 * \namespace Game

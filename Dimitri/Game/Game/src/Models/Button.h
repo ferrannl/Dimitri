@@ -1,8 +1,7 @@
 #pragma once
-#include "./Abstract/Interactable.h"
-#include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
 #include "../Mediators/BaseComponent.h"
+#include <src/Models/Texture.h>
 
 /**
 * \namespace Game
@@ -18,28 +17,49 @@ namespace Game {
 		* \class Button
 		* \brief Class contains the methods to use a button
 		*/
-		class Button : public Game::Models::Interactable, public Mediators::BaseComponent {
-		protected:
+		class Button : public Mediators::BaseComponent {
+		private:
 			/**
-			* \brief The height of the scene
+			* \brief The x coordinate of the button
 			*/
-			int _scene_height;
+			float _x;
+
+			/**
+			* \brief The y coordinate of the button
+			*/
+			float _y;
+
+			/**
+			* \brief The heigh of the button
+			*/
+			float _height;
+
+			/**
+			* \brief The width of the button
+			*/
+			float _width;
+
+			/**
+			* \brief The texture of the button
+			*/
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 		public:
-			Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier);
+			Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& identifier);
 
 			/**
-			* \brief Initializes Textures
+			* \brief Checks if the button is clicked
 			*/
-			void initialize_textures();
+			bool is_clicked(Game::Events::InputEvent object);
 
 			/**
-			* \brief Updates the object based on a fired event
+			* \brief Fires the button event
 			*/
-			void update(const Game::Events::InputEvent& object);
+			void on_click(Game::Events::InputEvent object);
+
 			/**
-			* \brief Updates the object when interacted with
+			* \brief Returns the texture
 			*/
-			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 		};
 	}
 }

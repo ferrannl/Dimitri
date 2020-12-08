@@ -25,12 +25,6 @@ namespace Game {
 				case Input::Enums::EventEnum::KEY_PRESS_QUIT:
 					_factory->get_command("exit_game")->execute();
 					break;
-				case Input::Enums::EventEnum::KEY_PRESS_C:
-					_factory->get_command("open_credits_view")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_H:
-					_factory->get_command("open_help_view")->execute();
-					break;
 				case Input::Enums::EventEnum::KEY_PRESS_ESC:
 					_factory->get_command("open_home_view")->execute();
 					break;
@@ -58,19 +52,17 @@ namespace Game {
 					break;
 				}
 			}
-			else if (sender.get_identifier() == "StartButton") {
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("load_level")->execute();
-					break;
-				}
+			else if (sender.get_identifier() == "Button::Start") {
+				_factory->get_command("load_level")->execute();
 			}
-			else if (sender.get_identifier() == "ExitButton") {
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("exit_game")->execute();
-					break;
-				}
+			else if (sender.get_identifier() == "Button::Help") {
+				_factory->get_command("open_help_view")->execute();
+			}
+			else if (sender.get_identifier() == "Button::Credits") {
+				_factory->get_command("open_credits_view")->execute();
+			}
+			else if (sender.get_identifier() == "Button::Exit") {
+				_factory->get_command("exit_game")->execute();
 			}
 
 		}

@@ -58,8 +58,6 @@
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
-    <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
-    <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
@@ -124,8 +122,6 @@
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Models\Button.h" />
-    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
-    <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />

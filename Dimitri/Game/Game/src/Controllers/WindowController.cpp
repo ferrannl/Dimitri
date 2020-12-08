@@ -45,7 +45,7 @@ namespace Game {
 		}
 	}
 
-	void Controllers::WindowController::open_view(const std::string & view_name)
+	void Controllers::WindowController::open_view(const std::string& view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			if (!_views[view_name]->is_active()) {
@@ -57,7 +57,7 @@ namespace Game {
 		}
 	}
 
-	bool Controllers::WindowController::is_active(const std::string & view_name)
+	bool Controllers::WindowController::is_active(const std::string& view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			return _views[view_name]->is_active();
@@ -75,7 +75,7 @@ namespace Game {
 		}
 	}
 
-	void Controllers::WindowController::toggle_view_visibility(const std::string & view_name)
+	void Controllers::WindowController::toggle_view_visibility(const std::string& view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			if (_views[view_name]->is_active()) {
@@ -97,6 +97,10 @@ namespace Game {
 	void Controllers::WindowController::add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
 	{
 		_views[view_name]->add_textures(textures);
+		if (_views[view_name]->is_active()) {
+			_views[view_name]->close();
+			_views[view_name]->open();
+		}
 	}
 
 	void Game::Controllers::WindowController::set_camera_pos(int x, int y)
@@ -124,6 +128,11 @@ namespace Game {
 	int Game::Controllers::WindowController::get_window_width() const
 	{
 		return _width;
+	}
+
+	int Controllers::WindowController::get_scene_height() const
+	{
+		return std::get<1>(_graphics_controller->get_scene_size());
 	}
 
 }
