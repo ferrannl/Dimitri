@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class FloorCorner : public Models::Object {
 		public:
-			FloorCorner(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			FloorCorner(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

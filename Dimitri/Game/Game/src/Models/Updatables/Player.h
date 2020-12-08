@@ -16,7 +16,7 @@ namespace Game {
 		* \brief Class contains the data of the Player
 		*/
 		class Player : public Models::Updatable {
-		private: 
+		private:
 
 			float _speed;
 
@@ -28,12 +28,12 @@ namespace Game {
 			/**
 			* \brief Last x position of last update of the player
 			*/
-			int _lastx;
+			float _lastx;
 
 			/**
 			* \brief Last y position of last update of the player
 			*/
-			int _lasty;
+			float _lasty;
 
 			/**
 			* \brief The amount of jumps the player has made
@@ -49,8 +49,13 @@ namespace Game {
 			* \brief Handles the idle animation of the player
 			*/
 			void idle();
+
+			/**
+			* \brief Handles the jump_hud animation of the player
+			*/
+			void jump_animation();
 		public:
-			Player(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Player(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Sets the speed of the player
@@ -86,6 +91,11 @@ namespace Game {
 			* \brief Returns the speed of the player
 			*/
 			float get_speed()const;
+			
+			/**
+			* \brief Returns Extra Textures
+			*/
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_extra_textures();
 		};
 	}
 }
