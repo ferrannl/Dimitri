@@ -7,6 +7,7 @@ namespace Game {
 		void OpenPauseLevelViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
+			w_ctrl->toggle_view_visibility("timer");
 			w_ctrl->open_view("pause_level");
 		}
 	}

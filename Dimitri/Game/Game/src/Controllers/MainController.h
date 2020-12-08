@@ -85,6 +85,11 @@ namespace Game {
 			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
 
 			/**
+			* \brief Returns the Highscore Manager
+			*/
+			std::shared_ptr<Managers::HighscoreManager> get_highscore_manager() const;
+
+			/**
 			* \brief Returns the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> get_window_controller() const;

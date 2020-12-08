@@ -1,11 +1,11 @@
 #include "HighscoreButton.h"
+#include "../../Mediators/CommandMediator.h"
 
-Game::Models::Buttons::HighscoreButton::HighscoreButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Managers::HighscoreManager> highscore_manager, Graphics::Models::Center center) : Game::Models::Button(x, y, z, height, width, state, scene_height, center)
+Game::Models::Buttons::HighscoreButton::HighscoreButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center) : Game::Models::Button(x, y, z, height, width, state, scene_height, center, "HighscoreButton")
 {
-	_highscore_manager = highscore_manager;
 }
 
 void Game::Models::Buttons::HighscoreButton::interact(Controllers::LevelController* ctrl)
 {
-	_highscore_manager->load_highscore();
+	Mediators::CommandMediator::instance()->notify(*this, { Input::Enums::EventEnum::KEY_PRESS_LEFT, std::make_tuple(-1,-1) });
 }

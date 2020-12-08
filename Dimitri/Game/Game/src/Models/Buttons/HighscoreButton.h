@@ -29,7 +29,7 @@ namespace Game {
 				*/
 				std::shared_ptr<Game::Managers::HighscoreManager> _highscore_manager;
 			public:
-				HighscoreButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Game::Managers::HighscoreManager> highscore_manager, Graphics::Models::Center center);
+				HighscoreButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center);
 
 				/**
 				* \brief Updates the object when interacted with

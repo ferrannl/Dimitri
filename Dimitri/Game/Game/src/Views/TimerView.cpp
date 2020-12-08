@@ -10,9 +10,8 @@ namespace Game {
 	{
 		std::tuple<int, int> camera_pos = _graphics_controller.get()->get_camera_pos();
 
-		int window_width_camera = _graphics_controller.get()->get_window().get()->get_width() + std::get<0>(camera_pos);
 		int window_width = _graphics_controller.get()->get_window().get()->get_width();
-		int window_height_camera = _graphics_controller.get()->get_window().get()->get_height() + std::get<1>(camera_pos);
+		int window_height = _graphics_controller.get()->get_window().get()->get_height();
 
 		int timer_width = 54;
 		close();
@@ -23,7 +22,7 @@ namespace Game {
 			_textures.clear();
 		}
 		if (!_graphics_controller->get_window()->get_facade()->get_timer()->is_paused()) {
-			_textures.push_back(std::make_shared<Graphics::Models::Text>(ticks, color, window_width_camera - (window_width / 2) - timer_width, window_height_camera - 60, 100, timer_width, 100, 0, path, true, Graphics::Models::Center{ 0,0 }));
+			_textures.push_back(std::make_shared<Graphics::Models::Text>(ticks, color, window_width - (window_width / 2) - timer_width, window_height - 60, 100, timer_width, 100, 0, path, true, Graphics::Models::Center{ 0,0 }, false));
 		}
 		open();
 

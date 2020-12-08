@@ -22,7 +22,6 @@ void Game::Controllers::MainController::run()
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
-	//_level_controller->get_level()->get_timer()->initialize_textures();
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_window_controller->add_textures(_level_controller->get_level()->get_player()->get_extra_textures(), "hud_view");
@@ -48,6 +47,11 @@ std::shared_ptr<Controllers::AudioController> Game::Controllers::MainController:
 std::shared_ptr<Managers::LevelManager> Game::Controllers::MainController::get_level_manager() const
 {
 	return _level_manager;
+}
+
+std::shared_ptr<Managers::HighscoreManager> Game::Controllers::MainController::get_highscore_manager() const
+{
+	return _highscore_manager;
 }
 
 std::shared_ptr<Controllers::WindowController> Game::Controllers::MainController::get_window_controller() const

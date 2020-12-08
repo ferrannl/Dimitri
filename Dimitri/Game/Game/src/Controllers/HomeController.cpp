@@ -13,7 +13,7 @@ Game::Controllers::HomeController::HomeController(int sceneheight, int scenewidt
 
 void Game::Controllers::HomeController::load_buttons(std::shared_ptr<Managers::LevelManager> level_manager, std::shared_ptr<Managers::HighscoreManager> highscore_manager)
 {
-	_buttons.push_back(std::make_shared<Game::Models::Buttons::HighscoreButton>(_scene_width - 130, _scene_height - 70, 1, 50, 110, Game::Enums::DirectionEnum::NONE, _scene_height, highscore_manager, Graphics::Models::Center{ 0,0 }));
+	_buttons.push_back(std::make_shared<Game::Models::Buttons::HighscoreButton>(20, _scene_height - 70, 1, 50, 110, Game::Enums::DirectionEnum::NONE, _scene_height, Graphics::Models::Center{ 0,0 }));
 	_buttons.push_back(std::make_shared<Game::Models::Buttons::StartButton>(_scene_width / 2 - 35, (_scene_height / 4 * 3) - 150, 1, 50, 70, Game::Enums::DirectionEnum::NONE, _scene_height, level_manager, Graphics::Models::Center{ 0,0 }));
 	_buttons.push_back(std::make_shared<Game::Models::Buttons::ExitButton>(_scene_width / 2 - 35, (_scene_height / 4 * 3) - 225, 1, 50, 70, Game::Enums::DirectionEnum::NONE, _scene_height, Graphics::Models::Center{ 0,0 }));
 }

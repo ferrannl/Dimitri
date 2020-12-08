@@ -119,17 +119,6 @@ void Game::Controllers::LevelController::update_highscore()
 	_window_controller->set_highscore_record<Views::HighscoreView>(record);
 }
 
-void Game::Controllers::LevelController::notify(const Enums::LevelStateEnum& object) {
-	for (auto observer : _observers) {
-		observer->update(object);
-	}
-}
-
-void Game::Controllers::LevelController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer) {
-	_observers.push_back(observer);
-}
-
-void Game::Controllers::LevelController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::LevelStateEnum>>& observer)
 Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
 	return _state;

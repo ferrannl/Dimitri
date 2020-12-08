@@ -11,21 +11,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Views\TimerView.cpp" >
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Managers\HighscoreManager.cpp" >
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Timer.cpp" >
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Models\Buttons\HighscoreButton.cpp" >
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Views\HighscoreView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -215,23 +200,23 @@
     <ClCompile Include="src\Views\HUDView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Models\Buttons\HighscoreButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Commands\OpenHighscoreViewCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Views\HighscoreView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Views\TimerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Managers\HighscoreManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Views\HighscoreView.h" >
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Buttons\HighscoreButton.h" >
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Models\Timer.h" >
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Managers\HighscoreManager.h" >
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Views\TimerView.h" >
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Models\Level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -422,6 +407,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\HUDView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Buttons\HighscoreButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commands\OpenHighscoreViewCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Views\HighscoreView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Views\TimerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Managers\HighscoreManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
