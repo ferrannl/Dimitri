@@ -10,6 +10,8 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller, _audio_controller);
 	_input_controller = std::make_shared<Controllers::InputController>(_window_controller);
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
+	_credits_controller = std::make_shared<Controllers::CreditsController>(720, 1280);
+	_help_controller = std::make_shared<Controllers::HelpController>(720, 1280);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
 }
 
@@ -23,6 +25,8 @@ void Game::Controllers::MainController::run()
 	_window_controller->set_textures(_level_controller->get_textures(), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_window_controller->add_textures(_level_controller->get_level()->get_player()->get_extra_textures(), "hud_view");
+	_window_controller->add_textures(_credits_controller->get_textures(), "credits");
+	_window_controller->add_textures(_help_controller->get_textures(), "help");
 	_input_controller->poll_events();
 }
 
@@ -60,4 +64,14 @@ std::shared_ptr<Controllers::LevelController> Game::Controllers::MainController:
 std::shared_ptr<Controllers::HomeController> Game::Controllers::MainController::get_home_controller() const
 {
 	return _home_controller;
+}
+
+std::shared_ptr<Controllers::CreditsController> Game::Controllers::MainController::get_credits_controller() const
+{
+	return _credits_controller;
+}
+
+std::shared_ptr<Controllers::HelpController> Game::Controllers::MainController::get_help_controller() const
+{
+	return _help_controller;
 }

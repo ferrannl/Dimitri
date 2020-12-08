@@ -11,14 +11,20 @@ namespace Game {
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
+			auto c_ctrl = _main_controller->get_credits_controller();
+			auto help_ctrl = _main_controller->get_help_controller();
 			if (!w_ctrl->is_active("home")) {
 				w_ctrl->clear_views();
 				w_ctrl->open_view("home");
 				w_ctrl->open_view("fps");
 				l_ctrl->stop();
-				a_ctrl->play_audio("homescreen1");
+				if (!a_ctrl->is_playing("homescreen1")) {
+					a_ctrl->play_audio("homescreen1");
+				}
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
 				i_ctrl->unsubscribe(l_ctrl);
+				i_ctrl->unsubscribe(c_ctrl);
+				i_ctrl->unsubscribe(help_ctrl);
 				i_ctrl->subscribe(h_ctrl);
 			}
 		}

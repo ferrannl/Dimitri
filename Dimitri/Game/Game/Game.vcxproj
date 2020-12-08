@@ -37,6 +37,8 @@
     <ClCompile Include="src\Commands\PlayerMoveRightCommand.cpp" />
     <ClCompile Include="src\Commands\ToggleFpsViewCommand.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Controllers\CreditsController.cpp" />
+    <ClCompile Include="src\Controllers\HelpController.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
     <ClCompile Include="src\Controllers\LevelController.cpp" />
@@ -101,6 +103,8 @@
     <ClInclude Include="src\Commands\PlayerMoveRightCommand.h" />
     <ClInclude Include="src\Commands\ToggleFpsViewCommand.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
+    <ClInclude Include="src\Controllers\CreditsController.h" />
+    <ClInclude Include="src\Controllers\HelpController.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Controllers\LevelController.h" />

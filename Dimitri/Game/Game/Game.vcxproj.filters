@@ -194,6 +194,12 @@
     <ClCompile Include="src\Views\HUDView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Controllers\CreditsController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Controllers\HelpController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Level.h">
@@ -380,6 +386,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Views\HUDView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controllers\CreditsController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Controllers\HelpController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

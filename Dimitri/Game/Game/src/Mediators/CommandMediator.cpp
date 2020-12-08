@@ -64,6 +64,9 @@ namespace Game {
 			else if (sender.get_identifier() == "Button::Exit") {
 				_factory->get_command("exit_game")->execute();
 			}
+			else if (sender.get_identifier() == "Button::Home") {
+				_factory->get_command("open_home_view")->execute();
+			}
 
 		}
 
