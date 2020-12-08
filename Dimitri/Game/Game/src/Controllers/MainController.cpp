@@ -12,6 +12,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
 	_home_controller->load_buttons(_level_manager);
+	_level_controller->load_buttons();
 }
 
 void Game::Controllers::MainController::run()

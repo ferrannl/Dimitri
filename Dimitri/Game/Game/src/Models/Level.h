@@ -3,6 +3,7 @@
 #include <memory>
 #include <chrono>
 #include <thread>
+#include "../Models/Buttons/IncreaseGameSpeedButton.h"
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
@@ -40,6 +41,11 @@ namespace Game {
 			* \brief An instance of the PhysicsCollisionContoller to interact with physics collision engine
 			*/
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
+
+			/**
+			* \brief A list of the Buttons
+			*/
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
 
 			/**
 			* \brief List of all the Shapes in the Level
@@ -84,6 +90,20 @@ namespace Game {
 
 		public:
 			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height);
+
+			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
+
+			void load_buttons();
+
+			/**
+			* 	\brief Sets the speed of the level		
+			*/
+			void set_speed(float speed);
+
+			/**
+			* 	\brief Returns the speed of the level
+			*/
+			float get_speed();
 
 			/**
 			* \brief Add music

@@ -22,6 +22,7 @@
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
     <ClCompile Include="src\Commands\CommandFactory.cpp" />
     <ClCompile Include="src\Commands\ExitGameCommand.cpp" />
+    <ClCompile Include="src\Commands\IncreaseGameSpeedCommand.cpp" />
     <ClCompile Include="src\Commands\LoadLevelCommand.cpp" />
     <ClCompile Include="src\Commands\OpenCreditsViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
@@ -59,6 +60,7 @@
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\IncreaseGameSpeedButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
@@ -88,6 +90,7 @@
     <ClInclude Include="src\Commands\Command.h" />
     <ClInclude Include="src\Commands\CommandFactory.h" />
     <ClInclude Include="src\Commands\ExitGameCommand.h" />
+    <ClInclude Include="src\Commands\IncreaseGameSpeedCommand.h" />
     <ClInclude Include="src\Commands\LoadLevelCommand.h" />
     <ClInclude Include="src\Commands\OpenCreditsViewCommand.h" />
     <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
@@ -125,6 +128,7 @@
     <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Models\Buttons\IncreaseGameSpeedButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />

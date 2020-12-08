@@ -2,6 +2,7 @@
 #include "../Mediators/CommandMediator.h"
 #include <src/Controllers/DocumentController.h>
 #include "../Builder/LevelBuilder.h"
+#include "../Models/Buttons/IncreaseGameSpeedButton.h"
 #include <conio.h>
 #include <stdio.h>
 using namespace Game;
@@ -21,13 +22,32 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
+void Game::Controllers::LevelController::load_buttons()
+{
+	_level->load_buttons();
+}
+
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
 {
 	return _level->get_textures();
 }
 
+void Game::Controllers::LevelController::set_speed(float speed)
+{
+	_level->set_speed(speed);
+}
+
+float Game::Controllers::LevelController::get_speed()
+{
+	return _level->get_speed();
+}
+
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
+	for (auto& b : _level->get_buttons())
+	{
+		b->update(object);
+	}
 	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 

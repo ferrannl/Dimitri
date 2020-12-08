@@ -21,6 +21,7 @@ void Game::Managers::LevelManager::load_level()
 	_window_controller->open_view("home");
 	_window_controller->open_view("fps");
 	_window_controller->set_scene_size(_level_controller->get_level()->get_height(), _level_controller->get_level()->get_width());
+	_level_controller->load_buttons();
 	_input_controller->subscribe(_level_controller);
 	_level_controller->start();
 }

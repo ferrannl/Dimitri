@@ -14,6 +14,7 @@
 #include "OpenPauseLevelViewCommand.h"
 #include "OpenGameOverLevelViewCommand.h"
 #include "OpenLevelViewCommand.h"
+#include "IncreaseGameSpeedCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -34,6 +35,8 @@ namespace Game {
 			_commands.insert(std::make_pair("open_pause_level_view", std::make_unique<OpenPauseLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("open_game_over_level_view", std::make_unique<OpenGameOverLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("open_level_view", std::make_unique<OpenLevelViewCommand>(main_controller)));
+			_commands.insert(std::make_pair("increase_game_speed", std::make_unique<IncreaseGameSpeedCommand>(main_controller)));
+
 		}
 
 		Command* CommandFactory::get_command(const std::string& command_name) const

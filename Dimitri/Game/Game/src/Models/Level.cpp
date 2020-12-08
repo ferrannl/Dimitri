@@ -5,13 +5,34 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
-	_speed = 2;
+	_speed = 1;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
 	_tiles = {};
+	_buttons = {};
 	_backgrounds = {};
 	_updatables = {};
+}
+
+std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
+{
+	return _buttons;
+}
+
+void Models::Level::load_buttons()
+{
+	_buttons.push_back(std::make_shared<Game::Models::Buttons::IncreaseGameSpeedButton>(605, 390, 1, 50, 70, Game::Enums::DirectionEnum::NONE, _height, Graphics::Models::Center{ 0,0 }));
+}
+
+void Models::Level::set_speed(float speed)
+{
+	_speed = speed;
+}
+
+float Game::Models::Level::get_speed()
+{
+	return _speed;
 }
 
 void Models::Level::add_music(std::string audio_name, std::string path)
