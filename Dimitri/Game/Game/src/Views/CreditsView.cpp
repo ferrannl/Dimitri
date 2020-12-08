@@ -12,14 +12,14 @@ namespace Game {
 		std::vector <std::string> names = { "Koen Baudewijns", "Olav Gerritsen", "Ferran Hendriks", "Billy Nooijens", "Max Peters", "Xia de Visser" };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("Gemaakt door", color, window_width / 2 - 150, 500, 10, 70, 300, 0, path, true, Graphics::Models::Center{ 0,0 }));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("Gemaakt door", color, window_width / 2 - 150, 500, 10, 70, 300, 0, path, true, Graphics::Models::Center{ 0,0 }, true));
 
 		int start_y = 450;
 		int step = 50;
 		for (int i = 0; i < names.size(); i++) {
 			int width = names[i].length() * 15;
 			int x = window_width / 2 - width / 2;
-			_textures.push_back(std::make_shared<Graphics::Models::Text>(names[i], color, x, start_y - step * i, 10, 50, width, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+			_textures.push_back(std::make_shared<Graphics::Models::Text>(names[i], color, x, start_y - step * i, 10, 50, width, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 		}
 	}
 

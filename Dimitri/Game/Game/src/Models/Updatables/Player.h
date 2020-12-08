@@ -46,6 +46,11 @@ namespace Game {
 			* \brief Handles the idle animation of the player
 			*/
 			void idle();
+
+			/**
+			* \brief Handles the jump_hud animation of the player
+			*/
+			void jump_animation();
 		public:
 			Player(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
@@ -73,6 +78,11 @@ namespace Game {
 			* \brief Checks the state of the player with by checking the increase of x and or y
 			*/
 			void update_state();
+
+			/**
+			* \brief Returns Extra Textures
+			*/
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_extra_textures();
 		};
 	}
 }

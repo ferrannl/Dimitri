@@ -21,7 +21,7 @@ namespace Game {
 		int viewport_y = std::get<1>(camera_pos);
 		_pc_ctrl->setup_world(window_height, window_width);
 
-		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }));
+		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false));
 		float lamp_w = 100, lamp_h = 100, lamp_offset_h = 250;
 		_textures.push_back((Models::Lamp{ window_width / 2 - lamp_w / 2 + viewport_x, window_height - lamp_offset_h + viewport_y, 2, lamp_h, lamp_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } }).get_texture());
 		float light_w = 400, light_h = 300, light_offset_h = 70;
@@ -84,7 +84,7 @@ namespace Game {
 			if (_mask != nullptr) {
 				_graphics_controller->remove_texture(_mask);
 			}
-			_mask.reset(new Graphics::Models::Sprite{ 0, 0, 10, static_cast<float>(window_height), static_cast<float>(window_width), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/black_bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, abs(_fade_opacity) });
+			_mask.reset(new Graphics::Models::Sprite{ 0, 0, 10, static_cast<float>(window_height), static_cast<float>(window_width), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/black_bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false, abs(_fade_opacity) });
 			_graphics_controller->add_texture(_mask);
 			_fade_opacity--;
 		}
@@ -109,7 +109,7 @@ namespace Game {
 		int tip_h = 20;
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
-		_tip.reset(new Graphics::Models::Text(tip, color, window_width / 2 - tip_w / 2 + viewport_x, _lightbeam->get_y() - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }));
+		_tip.reset(new Graphics::Models::Text(tip, color, window_width / 2 - tip_w / 2 + viewport_x, _lightbeam->get_y() - tile_h + ((tile_h - tip_h) / 2) + viewport_y, 3, tip_h, tip_w, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
 		_textures.push_back(_tip);
 
 		// set player in original pos

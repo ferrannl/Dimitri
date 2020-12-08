@@ -74,6 +74,11 @@ namespace Graphics {
 			bool _visible;
 
 			/**
+			* \brief if texture Is_Dynamic
+			*/
+			bool _is_dynamic;
+
+			/**
 			* \brief The path of the Texture
 			*/
 			std::string _path;
@@ -94,7 +99,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, int opacity = 100);
+			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
@@ -150,6 +155,11 @@ namespace Graphics {
 			* \brief Returns the visibility
 			*/
 			bool is_visible() const;
+
+			/**
+			* \brief Returns the dynamic
+			*/
+			bool is_dynamic() const;
 
 			/**
 			* \brief Returns the TextureFacade
