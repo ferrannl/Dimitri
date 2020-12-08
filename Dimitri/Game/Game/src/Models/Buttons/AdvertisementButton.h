@@ -42,15 +42,14 @@ namespace Game {
 				*/
 				std::shared_ptr<Game::Controllers::WindowController> _window_controller;
 			public:
-				AdvertisementButton(int x, int y, int z, int height, int width, Game::Enums::StateEnum state, int scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller);
+				AdvertisementButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller, Graphics::Models::Center center);
+			
+				void initialize_textures()override;
+
 				/**
-				*	/brief Initializes the textures of an object
+				* \brief Updates the object when interacted with
 				*/
-				void initialize_textures();
-				/**
-				*	/brief Action when the button is pressed
-				*/
-				void interact();
+				void interact(Controllers::LevelController* ctrl = NULL);
 			};
 		}
 	}

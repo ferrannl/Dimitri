@@ -15,6 +15,10 @@ namespace Game {
 				w_ctrl->clear_views();
 				w_ctrl->open_view("home");
 				w_ctrl->open_view("fps");
+				for (auto b : _main_controller->get_home_controller()->get_advertisement_buttons())
+				{
+					b->initialize_textures();
+				}
 				l_ctrl->stop();
 				a_ctrl->play_audio("homescreen1");
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());

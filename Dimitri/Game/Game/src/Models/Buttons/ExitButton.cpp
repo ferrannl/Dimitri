@@ -4,7 +4,9 @@
 namespace Game {
 	namespace Models {
 		Buttons::ExitButton::ExitButton(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center) :
-			Button(x, y, z, height, width, state, scene_height, center, "ExitButton") {}
+			Button(x, y, z, height, width, state, scene_height, center, "ExitButton", Game::Enums::ButtonEnum::EXIT) {
+			initialize_textures();
+		}
 
 		void Buttons::ExitButton::interact(Controllers::LevelController* ctrl)
 		{

@@ -33,7 +33,7 @@ namespace Game {
 			/**
 			* \brief Initializes the textures for an object
 			*/
-			virtual void initialize_textures() = 0;
+			virtual void initialize_textures();
 			/**
 			* \brief Checks if a mouse button is pressed in a given area
 			*/

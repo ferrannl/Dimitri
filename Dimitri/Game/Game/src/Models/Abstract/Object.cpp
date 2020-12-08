@@ -112,3 +112,8 @@ void Models::Object::update()
 	set_y(_shape->get_y());
 	_shape->set_angle(get_texture()->get_angle());
 }
+
+void Game::Models::Object::clear_textures()
+{
+	this->_textures.clear();
+}
