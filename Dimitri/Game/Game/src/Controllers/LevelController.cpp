@@ -21,9 +21,28 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
+void Game::Controllers::LevelController::load_buttons()
+{
+	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
+		   std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - 15, _window_controller->get_window_height() / 2 - 15, 5, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+	};
+	add_button(Game::Models::Button{ _window_controller->get_window_width() / 2.0f - 15, _window_controller->get_window_height() / 2.0f - 15, 30, 30, t, "Home" });
+}
+
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_textures() const
 {
 	return _level->get_textures();
+}
+
+std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::LevelController::get_button_textures() const
+{
+	std::vector<std::shared_ptr<Graphics::Models::Texture>> button_textures;
+	for (auto& b : get_buttons()) {
+		for (auto& t : b->get_textures()) {
+			button_textures.push_back(t);
+		}
+	}
+	return button_textures;
 }
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)

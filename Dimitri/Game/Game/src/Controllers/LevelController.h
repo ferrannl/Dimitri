@@ -58,10 +58,14 @@ namespace Game {
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
 
+			void load_buttons();
+
 			/**
 			* \brief Returns a list of all Textures in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_button_textures() const;
 
 			/**
 			* \brief Receives updates from InputController

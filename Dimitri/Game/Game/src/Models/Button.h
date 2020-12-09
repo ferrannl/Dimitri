@@ -1,6 +1,5 @@
 #pragma once
 #include "../Events/InputEvent.h"
-#include "../Mediators/BaseComponent.h"
 #include <src/Models/Texture.h>
 
 /**
@@ -17,7 +16,7 @@ namespace Game {
 		* \class Button
 		* \brief Class contains the methods to use a button
 		*/
-		class Button : public Mediators::BaseComponent {
+		class Button {
 		private:
 			/**
 			* \brief The x coordinate of the button
@@ -38,6 +37,11 @@ namespace Game {
 			* \brief The width of the button
 			*/
 			float _width;
+			
+			/**
+			* \brief The identifier of the button
+			*/
+			std::string _identifier;
 
 			/**
 			* \brief The texture of the button
@@ -52,14 +56,34 @@ namespace Game {
 			bool is_clicked(Game::Events::InputEvent object);
 
 			/**
-			* \brief Fires the button event
-			*/
-			void on_click(Game::Events::InputEvent object);
-
-			/**
 			* \brief Returns the texture
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
+			/**
+			* \brief Returns the x coordinate of the button
+			*/
+			float get_x() const;
+
+			/**
+			* \brief Returns the y coordinate of the button
+			*/
+			float get_y() const;
+
+			/**
+			* \brief Sets the x coordinate of the button
+			*/
+			void set_x(float x);
+
+			/**
+			* \brief Sets the y coordinate of the button
+			*/
+			void set_y(float y);
+
+			/**
+			* \brief Returns the identifier of the button
+			*/
+			std::string get_identifier() const;
 		};
 	}
 }

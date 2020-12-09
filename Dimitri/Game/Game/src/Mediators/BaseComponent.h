@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <memory>
+#include "../Models/Button.h"
 
 /**
 * \namespace Game
@@ -21,13 +24,29 @@ namespace Game {
 			* \brief The identifier of this component
 			*/
 			std::string _identifier;
-		public:
-			BaseComponent(const std::string& identifier) : _identifier{ identifier } {}
 
 			/**
-			* \brief Return the identifier
+			* \brief A list of the buttons
 			*/
-			std::string get_identifier() const { return _identifier; }
+			std::vector<std::unique_ptr<Game::Models::Button>> _buttons;
+		public:
+			BaseComponent(const std::string& identifier) : _identifier{ identifier } {}
+			virtual ~BaseComponent() = 0;
+
+			/**
+			* \brief Returns the identifier
+			*/
+			std::string get_identifier() const;
+
+			/**
+			* \brief Add a button to the buttons
+			*/
+			void add_button(Game::Models::Button b);
+
+			/**
+			* \brief Returns the buttons
+			*/
+			const std::vector<std::unique_ptr<Game::Models::Button>>& get_buttons() const;
 		};
 	}
 }
