@@ -11,7 +11,7 @@ namespace Game {
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
-			if (!w_ctrl->is_active("home")) {
+			if (!w_ctrl->is_active("home") && !w_ctrl->is_active("pause_level")) {
 				w_ctrl->toggle_view_visibility("timer");
 				w_ctrl->clear_views();
 				w_ctrl->open_view("home");
