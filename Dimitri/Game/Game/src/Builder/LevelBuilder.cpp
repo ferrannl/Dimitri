@@ -8,14 +8,18 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vecto
 {
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
-    std::shared_ptr<Models::Level> level = {};
 
-    for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {
-        _tile_builder.build(level, tileset);
-    }
+    std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, 4800,1440);
+
+    build_background(level);
+    build_borders(level);
 
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
 
+    }
+
+    for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {
+        _tile_builder.build(level, tileset);
     }
 
     return level;

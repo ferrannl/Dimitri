@@ -7,9 +7,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
     int level_width = (tileset.second.at(0).size() * TILE_SIZE);
 
     int x = 0;
-    int y = 0;
-
-    std::vector<std::shared_ptr<Models::Object>> lights = {};
+    int y = level_height;
 
     try {
         for (std::vector<int> vector : tileset.second) {
@@ -26,7 +24,6 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     break;
                 case 3:
                     level->add_tile(_object_factory.create(Enums::TypeEnum::LAMP, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::RIGHT));
                     break;
                 case 4:
                     level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
@@ -41,14 +38,13 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_interactable(_interactable_factory.create(Enums::TypeEnum::CAR, x, y, tileset.first, TILE_SIZE * 2, TILE_SIZE * 4, Enums::DirectionEnum::RIGHT));
                     break;
                 case 11:
-                    lights.push_back(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, 0, TILE_SIZE, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 47:
-                    lights.push_back(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, TILE_SIZE, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 16:
                     level->add_tile(_object_factory.create(Enums::TypeEnum::CAMERA, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, lights.at(lights.size() - 1)->get_x(), lights.at(lights.size() - 1)->get_y(), 0, (y - lights.at(lights.size() - 1)->get_y()) + 20, TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 52:
                     level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
@@ -62,7 +58,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
             }
 
             x = 0;
-            y += TILE_SIZE;
+            y -= TILE_SIZE;
         }
     }
     catch (std::exception e) {
