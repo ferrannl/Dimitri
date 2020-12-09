@@ -35,6 +35,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Level
 void Game::Controllers::LevelController::set_speed(float speed)
 {
 	_level->set_speed(speed);
+	_window_controller->set_speed(speed);
 }
 
 float Game::Controllers::LevelController::get_speed()

@@ -10,7 +10,7 @@ namespace Game {
 			float speed = _main_controller->get_level_controller()->get_speed();
 			if (speed < 2)
 			{
-				_main_controller->get_level_controller()->set_speed(speed + 0.5);
+				_main_controller->get_level_controller()->set_speed(speed += 0.5);
 			}
 		}
 	}

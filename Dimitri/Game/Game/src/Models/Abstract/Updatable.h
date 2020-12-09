@@ -22,7 +22,6 @@ namespace Game {
 		* \brief Class contains the methods to be able to update the object
 		*/
 		class Updatable : public Object {
-		protected:
 		public:
 			Updatable(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 

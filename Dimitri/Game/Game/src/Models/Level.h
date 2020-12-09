@@ -4,6 +4,7 @@
 #include <chrono>
 #include <thread>
 #include "../Models/Buttons/IncreaseGameSpeedButton.h"
+#include "../Models/Buttons/DecreaseGameSpeedButton.h"
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
@@ -52,7 +53,7 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
-			int _speed;
+			float _speed;
 			/**
 			* \brief An instance of the Player Object
 			*/

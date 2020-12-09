@@ -10,6 +10,7 @@ namespace Game {
 			w_ctrl->clear_views();
 			w_ctrl->open_view("level");
 			w_ctrl->open_view("hud_view");
+			w_ctrl->open_view("gameplay_speed_view");
 			w_ctrl->open_view("fps");
 		}
 	}

@@ -22,7 +22,9 @@ std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
 
 void Models::Level::load_buttons()
 {
-	_buttons.push_back(std::make_shared<Game::Models::Buttons::IncreaseGameSpeedButton>(605, 390, 1, 50, 70, Game::Enums::DirectionEnum::NONE, _height, Graphics::Models::Center{ 0,0 }));
+	_buttons.push_back(std::make_shared<Game::Models::Buttons::IncreaseGameSpeedButton>(205, 600, 1, 20, 35, Game::Enums::DirectionEnum::NONE, 720, Graphics::Models::Center{ 0,0 }));
+	_buttons.push_back(std::make_shared<Game::Models::Buttons::DecreaseGameSpeedButton>(115, 600, 1, 20, 35, Game::Enums::DirectionEnum::NONE, 720, Graphics::Models::Center{ 0,0 }));
+
 }
 
 void Models::Level::set_speed(float speed)
@@ -115,6 +117,11 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	for (std::shared_ptr<Game::Models::Button> b : _buttons)
+	{
+		temp = b->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}
 	return textures;
 }
 
@@ -145,6 +152,10 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 
 void Game::Models::Level::simulate()
 {
+	for (std::shared_ptr<Updatable> updatables : _updatables)
+	{
+		updatables->set_speed(_speed);
+	}
 	_physics_collision_controller->simulate(get_player()->get_speed());
 }
 

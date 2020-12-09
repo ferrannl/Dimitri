@@ -15,6 +15,7 @@
 #include "OpenGameOverLevelViewCommand.h"
 #include "OpenLevelViewCommand.h"
 #include "IncreaseGameSpeedCommand.h"
+#include "DecreaseGameSpeedCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -36,6 +37,7 @@ namespace Game {
 			_commands.insert(std::make_pair("open_game_over_level_view", std::make_unique<OpenGameOverLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("open_level_view", std::make_unique<OpenLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("increase_game_speed", std::make_unique<IncreaseGameSpeedCommand>(main_controller)));
+			_commands.insert(std::make_pair("decrease_game_speed", std::make_unique<DecreaseGameSpeedCommand>(main_controller)));
 
 		}
 

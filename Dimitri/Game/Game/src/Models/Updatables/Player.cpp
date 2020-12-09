@@ -13,7 +13,7 @@ Game::Models::Player::Player(float x, float y, float z, float height, float widt
 
 void Game::Models::Player::set_speed(const float speed)
 {
-	_speed *= speed;
+	_speed = speed;
 }
 
 float Game::Models::Player::get_speed() const

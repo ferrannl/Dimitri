@@ -79,6 +79,13 @@ namespace Game {
 					break;
 				}
 			}
+			else if (sender.get_identifier() == "DecreaseGameSpeedButton") {
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
+					_factory->get_command("decrease_game_speed")->execute();
+					break;
+				}
+			}
 
 		}
 

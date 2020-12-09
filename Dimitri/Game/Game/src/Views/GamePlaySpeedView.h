@@ -18,16 +18,11 @@ namespace Game {
 		* \class HudView
 		* \brief Class contains the methods to draw the hud
 		*/
-		class HUDView : public View {
+		class GamePlaySpeedView : public View {
 		private:
 			std::string path_text;
 		public:
-			HUDView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
-
-			/**
-			* \brief Initializes Textures
-			*/
-			void init_textures();
+			GamePlaySpeedView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
 			* \brief Updates the textures

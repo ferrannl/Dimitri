@@ -11,6 +11,7 @@
 #include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views/HomeView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
+#include <..\Game\Game\src\Views\GamePlaySpeedView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
@@ -64,6 +65,7 @@ namespace Game {
 			*/
 			int _width;
 
+			float _speed;
 		public:
 			WindowController();
 
@@ -106,6 +108,8 @@ namespace Game {
 			*	 \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+
+			void set_speed(float speed);
 
 			/**
 			* \brief Updates camera position

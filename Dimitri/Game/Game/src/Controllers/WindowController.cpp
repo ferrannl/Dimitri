@@ -5,6 +5,7 @@ namespace Game {
 	Controllers::WindowController::WindowController()
 	{
 		_graphics_controller = std::make_shared<Graphics::Controllers::GraphicsController>();
+		_speed = 1;
 	}
 
 	void Controllers::WindowController::create_window(int height, int width)
@@ -25,10 +26,16 @@ namespace Game {
 		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
 		_views.insert({ "hud_view", std::make_unique<Views::HUDView>(_graphics_controller) });
+		_views.insert({ "gameplay_speed_view", std::make_unique<Views::GamePlaySpeedView>(_graphics_controller) });
 
 		open_view("home");
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
+	}
+
+	void Game::Controllers::WindowController::set_speed(float speed)
+	{
+		_graphics_controller->set_speed(speed);
 	}
 
 	void Controllers::WindowController::draw()

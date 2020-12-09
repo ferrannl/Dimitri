@@ -206,6 +206,15 @@
     <ClCompile Include="src\Commands\IncreaseGameSpeedCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Models\Buttons\DecreaseGameSpeedButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Commands\DecreaseGameSpeedCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Views\GamePlaySpeedView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Level.h">
@@ -404,6 +413,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Commands\IncreaseGameSpeedCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Models\Buttons\DecreaseGameSpeedButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Commands\DecreaseGameSpeedCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Views\GamePlaySpeedView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

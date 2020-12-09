@@ -6,5 +6,11 @@ Game::Models::Updatable::Updatable(float x, float y, float z, float height, floa
 
 void Game::Models::Updatable::set_speed(float speed)
 {
-	_angle *= speed;
+	if (_angle < 0)
+	{
+		_angle = speed * -1;
+	}
+	else {
+		_angle = speed;
+	}
 }

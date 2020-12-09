@@ -34,6 +34,8 @@ namespace Graphics {
 			* \brief The Window containing the Textures
 			*/
 			std::shared_ptr<Models::Window> _window;
+
+			float _speed;
 		public:
 			GraphicsController();
 
@@ -96,6 +98,10 @@ namespace Graphics {
 			* \brief Returns scene size
 			*/
 			std::tuple<int, int> get_scene_size() const;
+
+			void set_speed(float speed);
+
+			float get_speed();
 		};
 	}
 }
