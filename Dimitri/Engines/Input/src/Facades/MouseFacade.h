@@ -1,17 +1,5 @@
 #pragma once
 #include <tuple>
-#include <SDL.h>
-#include <SDL_mouse.h>
-
-#ifdef _WIN64
-#ifdef INPUT_EXPORTS
-#define INPUT_API __declspec(dllexport)
-#else 
-#define INPUT_API __declspec(dllimport)
-#endif
-#else
-#define INPUT_API
-#endif
 
 /**
 * \namespace Input
@@ -27,7 +15,7 @@ namespace Input {
 		* \class MouseFacade
 		* \brief Class contains the methods to get the mouse events using SDL
 		*/
-		class INPUT_API MouseFacade {
+		class MouseFacade {
 		public:
 			/**
 			* \brief Returns the X and Y position of the mouse relative to the left corner of the window

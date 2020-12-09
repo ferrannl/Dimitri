@@ -3,18 +3,6 @@
 #include <memory>
 #include "../Exceptions/AudioExceptions.h"
 #include <iostream>
-#include <SDL.h>
-#include <SDL_mixer.h>
-
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
 
 /**
 * \namespace Audio
@@ -30,7 +18,7 @@ namespace Audio {
 		* \class IAudioFacade
 		* \brief Class contains the methods to interact with an audio file
 		*/
-		class AUDIO_API IAudioFacade {
+		class IAudioFacade {
 		protected:
 			/**
 			* \brief Path of the audio file

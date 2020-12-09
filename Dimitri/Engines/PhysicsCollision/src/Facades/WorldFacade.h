@@ -1,22 +1,13 @@
 #pragma once
 #include <vector>
 #include "../Models/Shape.h"
-#include <box2d/b2_world.h>
-#include <box2d/b2_math.h>
-#include <box2d/b2_body.h>
-#include <box2d/b2_fixture.h>
 #include <map>
 #include <math.h> 
 
-#ifdef _WIN64
-#ifdef PHYSICSCOLLISION_EXPORTS
-#define PHYSICSCOLLISION_API __declspec(dllexport)
-#else
-#define PHYSICSCOLLISION_API __declspec(dllimport)
-#endif
-#else
-#define PHYSICSCOLLISION_API
-#endif
+struct b2World;
+struct b2PolygonShape;
+struct b2BodyDef;
+struct b2FixtureDef;
 
 /**
 * \namespace PhysicsCollision
@@ -32,7 +23,7 @@ namespace PhysicsCollision {
 		* \class WorldFacade
 		* \brief Class contains methods to interact with a b2World
 		*/
-		class PHYSICSCOLLISION_API WorldFacade {
+		class WorldFacade {
 		private:
 			/**
 			* \brief An instance of the b2World

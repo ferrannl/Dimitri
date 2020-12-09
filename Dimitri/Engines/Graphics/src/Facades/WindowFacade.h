@@ -2,18 +2,11 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
-#include "src/Time/Fps.h"
+#include <src/Time/Fps.h>
 #include <tuple>
 
-#ifdef _WIN64
-#ifdef GRAPHICS_EXPORTS
-#define GRAPHICS_API __declspec(dllexport)
-#else 
-#define GRAPHICS_API __declspec(dllimport)
-#endif
-#else
-#define GRAPHICS_API
-#endif
+struct SDL_Window;
+struct SDL_Renderer;
 
 /**
 * \namespace Graphics
@@ -29,7 +22,7 @@ namespace Graphics {
 		* \class WindowFacade
 		* \brief Class contains the references to the SDL_Window
 		*/
-		class GRAPHICS_API WindowFacade {
+		class WindowFacade {
 		private:
 			/**
 			* \brief Contains the fps of the Window
@@ -39,13 +32,13 @@ namespace Graphics {
 			/**
 			* \brief An instance of SDL_Window with a custom destructor
 			*/
-			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
+			std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> _window;
 
 			/**
 			* \brief An instance of SDL_Renderer with a custom destructor
 			*/
-			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
-
+			std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> _renderer;
+			
 			/**
 			* \brief The adapter that converts the SDL_FlipEnum to FlipEnum
 			*/

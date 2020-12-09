@@ -99,7 +99,7 @@ namespace EngineTests
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
 
-			Assert::IsNotNull(shapes[0]->get_shape_facade()->get_body());
+			Assert::IsNotNull(shapes[0]->get_shape_facade()->get_body().get());
 		}
 	};
 }

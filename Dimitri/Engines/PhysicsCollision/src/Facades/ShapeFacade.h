@@ -1,20 +1,9 @@
 #pragma once
-#include <box2d/b2_shape.h>
-#include <box2d/b2_polygon_shape.h>
 #include <string>
 #include <vector>
 #include <iostream>
-#include <box2d\b2_body.h>
 
-#ifdef _WIN64
-#ifdef PHYSICSCOLLISION_EXPORTS
-#define PHYSICSCOLLISION_API __declspec(dllexport)
-#else
-#define PHYSICSCOLLISION_API __declspec(dllimport)
-#endif
-#else
-#define PHYSICSCOLLISION_API
-#endif
+struct b2Body;
 
 /**
 * \namespace PhysicsCollision
@@ -35,7 +24,7 @@ namespace PhysicsCollision {
 		* \class ShapeFacade
 		* \brief Class contains the methods to handle the shapes using Box2d
 		*/
-		class PHYSICSCOLLISION_API ShapeFacade {
+		class ShapeFacade {
 		private:
 			/**
 			* \brief An instance of a Box2D body
