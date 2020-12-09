@@ -21,7 +21,7 @@ namespace DocumentHandler {
 			/**
 			* \brief Reads the csv file
 			*/
-			std::vector<std::vector<int>> Read(const std::filesystem::path& path);
+			static std::vector<std::vector<int>> Read(const std::filesystem::path& path);
 		}; 
 	}
 }

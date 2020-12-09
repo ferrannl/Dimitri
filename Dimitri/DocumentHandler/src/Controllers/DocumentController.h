@@ -28,7 +28,7 @@ namespace DocumentHandler {
 		*/
 		class DOCUMENT_API DocumentController {
 		public:
-			std::vector<std::vector<int>> Read(const std::string& path);
+			std::vector<std::vector<int>> ReadTiledLevel(const std::string& path);
 		};
 	}
 }

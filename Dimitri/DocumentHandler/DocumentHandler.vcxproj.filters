@@ -30,7 +30,10 @@
     <ClInclude Include="src\Controllers\DocumentController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Readers\JsonReader.h">
+    <ClInclude Include="src\Tileson\tileson.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Readers\TiledReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +50,7 @@
     <ClCompile Include="src\Readers\CsvReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Readers\JsonReader.cpp">
+    <ClCompile Include="src\Readers\TiledReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

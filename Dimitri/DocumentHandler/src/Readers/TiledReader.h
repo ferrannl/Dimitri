@@ -1,6 +1,7 @@
 #pragma once
 #include <filesystem>
-#include "../Interfaces/IReader.h"
+#include <any>
+#include <vector>
 
 /**
 * \namespace DocumentHandler
@@ -16,12 +17,12 @@ namespace DocumentHandler {
 		* \class CsvReader
 		* \brief Class contains the methods to read an csv file by path
 		*/
-		class JsonReader : public Interfaces::IReader {
+		class TiledReader {
 		public:
 			/**
 			* \brief Reads the csv file
 			*/
-			std::vector<std::vector<int>> Read(const std::filesystem::path& path);
+			std::pair<std::vector<std::vector<int>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
 		};
 	}
 }
