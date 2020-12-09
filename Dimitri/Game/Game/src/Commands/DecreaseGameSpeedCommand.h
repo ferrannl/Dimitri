@@ -12,15 +12,15 @@ namespace Game {
 	*/
 	namespace Commands {
 		/**
-		* \class ExitGameCommand
-		* \brief Class contains the method to exit the game
+		* \class DecreaseGameSpeedCommand
+		* \brief Class contains the method to decrease the gameplay speed
 		*/
 		class DecreaseGameSpeedCommand : public Command {
 		public:
 			DecreaseGameSpeedCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			/**
-			* \brief Exits the game
+			* \brief Decreases the gameplay speed
 			*/
 			void execute() override;
 		};

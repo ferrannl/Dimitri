@@ -110,8 +110,14 @@ namespace Game {
 			*/
 			Enums::LevelStateEnum get_state() const;
 
+			/**
+			* \brief Turns of a light
+			*/
 			void turn_off_light(const int x);
 
+			/**
+			* \brief Simulates the objects
+			*/
 			void simulate_objects();
 		};
 	}

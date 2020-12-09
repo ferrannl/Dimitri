@@ -65,6 +65,9 @@ namespace Game {
 			*/
 			int _width;
 
+			/**
+			* \brief The speed for a View
+			*/
 			float _speed;
 		public:
 			WindowController();
@@ -109,6 +112,9 @@ namespace Game {
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
+			/**
+			* \brief Sets the speed for a View
+			*/
 			void set_speed(float speed);
 
 			/**
