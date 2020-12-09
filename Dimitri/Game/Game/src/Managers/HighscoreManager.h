@@ -12,19 +12,19 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		*	Predefine Input Controller
+		* \class Predefine Input Controller
 		*/
 		class InputController;
 		/**
-		*	Predefine Window Controller
+		* \class Predefine Window Controller
 		*/
 		class WindowController;
 		/**
-		*	Predefine Level Controller
+		* \class Predefine Level Controller
 		*/
 		class AudioController;
 		/**
-		*	Predefine Home Controller
+		* \class Predefine Home Controller
 		*/
 		class HomeController;
 	}

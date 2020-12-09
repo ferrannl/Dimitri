@@ -32,6 +32,9 @@ namespace Game {
 			*/
 			bool is_visible() const override;
 
+			/**
+			* \brief Adds a record to the HighscoreView
+			*/
 			void add_record(std::string record);
 
 		private:

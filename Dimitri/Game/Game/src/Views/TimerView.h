@@ -17,15 +17,9 @@ namespace Game {
 	namespace Views {
 		/**
 		* \class FpsView
-		* \brief Class contains the methods to draw the fps
+		* \brief Class contains the methods to draw the timer
 		*/
 		class TimerView : public View {
-		private:
-
-			/**
-			* \brief The level controller to update the timer
-			*/
-			//std::shared_ptr<Game::Controllers::LevelController> _level_controller;
 		public:
 			TimerView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 

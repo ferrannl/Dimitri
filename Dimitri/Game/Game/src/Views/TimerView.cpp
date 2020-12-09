@@ -3,7 +3,6 @@
 namespace Game {
 
 	Views::TimerView::TimerView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {
-		//_level_controller = level_controller;
 	}
 
 	void Views::TimerView::update()

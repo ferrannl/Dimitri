@@ -73,11 +73,6 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
 			/**
-			* \brief Timer of a level
-			*/
-			//std::shared_ptr<Models::Timer> _timer;
-
-			/**
 			* \brief The height of the Level
 			*/
 			int _height;
