@@ -27,8 +27,17 @@ namespace Utility {
 		*/
 		class UTILITY_API Timer {
 		private:
+			/**
+			* \brief The current ticks of a timer
+			*/
 			uint32_t _current_ticks;
+			/**
+			* \brief The pause ticks of a timer
+			*/
 			uint32_t _pause_ticks;
+			/**
+			* \brief The start ticks of a timer
+			*/
 			uint32_t _start_ticks;
 
 			bool _started;
