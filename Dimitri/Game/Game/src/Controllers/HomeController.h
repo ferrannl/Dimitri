@@ -10,7 +10,7 @@
 #include <src/Models/Text.h>
 #include "../Events/InputEvent.h"
 #include "../Controllers/AudioController.h"
-#include "../Models/Button.h"
+#include "../Mediators/BaseComponent.h"
 
 /**
 * \namespace Game
@@ -26,14 +26,8 @@ namespace Game {
 		* \class HomeController
 		* \brief Class contains the methods to interact with window engine and show images on screen
 		*/
-		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, std::enable_shared_from_this<HomeController> {
+		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent, std::enable_shared_from_this<HomeController> {
 		private:
-
-			/**
-			* \brief A list of the Buttons
-			*/
-			std::vector<std::unique_ptr<Game::Models::Button>> _buttons;
-
 			/**
 			* \brief An instance of the Audio Controller
 			*/

@@ -1,10 +1,9 @@
 #include "Button.h"
-#include "../Mediators/CommandMediator.h"
 
 namespace Game {
 	namespace Models {
 		Button::Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& identifier) :
-			Mediators::BaseComponent("Button::" + identifier), _x{ x }, _y{ y }, _height{ height }, _width{ width }, _textures{textures} {}
+			_x{ x }, _y{ y }, _height{ height }, _width{ width }, _textures{ textures }, _identifier{ "Button::" + identifier } {}
 
 		bool Button::is_clicked(Game::Events::InputEvent object)
 		{
@@ -17,14 +16,33 @@ namespace Game {
 			return false;
 		}
 
-		void Button::on_click(Game::Events::InputEvent object)
-		{
-			Mediators::CommandMediator::instance()->notify(*this, object);
-		}
-
 		std::vector<std::shared_ptr<Graphics::Models::Texture>> Button::get_textures() const
 		{
 			return _textures;
+		}
+
+		float Button::get_x() const
+		{
+			return _x;
+		}
+
+		float Button::get_y() const
+		{
+			return _y;
+		}
+
+		void Button::set_x(float x)
+		{
+			_x = x;
+		}
+
+		void Button::set_y(float y)
+		{
+			_y = y;
+		}
+		std::string Button::get_identifier() const
+		{
+			return _identifier;
 		}
 	}
 }

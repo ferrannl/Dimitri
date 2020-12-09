@@ -27,6 +27,7 @@ namespace Game {
 		_views.insert({ "hud_view", std::make_unique<Views::HUDView>(_graphics_controller) });
 
 		open_view("home");
+		open_view("fps");
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
@@ -103,36 +104,36 @@ namespace Game {
 		}
 	}
 
-	void Game::Controllers::WindowController::set_camera_pos(int x, int y)
+	void Controllers::WindowController::set_camera_pos(int x, int y)
 	{
 		_graphics_controller->set_camera_pos(x, y);
 	}
 
-	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Game::Models::Object> object)
+	void Controllers::WindowController::set_camera_pos_based_on(const std::shared_ptr<Models::Object> object)
 	{
 		int x = (object->get_x() + object->get_width() / 2) - get_window_width() / 2;
 		int y = (object->get_y() + object->get_height() / 2) - get_window_height() / 2;
 		set_camera_pos(x, y);
 	}
 
-	void Game::Controllers::WindowController::set_scene_size(int height, int width)
+	void Controllers::WindowController::set_scene_size(int height, int width)
 	{
 		_graphics_controller->set_scene_size(height, width);
 	}
 
-	int Game::Controllers::WindowController::get_window_height() const
+	int Controllers::WindowController::get_window_height() const
 	{
 		return _height;
 	}
 
-	int Game::Controllers::WindowController::get_window_width() const
+	int Controllers::WindowController::get_window_width() const
 	{
 		return _width;
 	}
 
-	int Controllers::WindowController::get_scene_height() const
+	std::tuple<int, int> Controllers::WindowController::get_camera_pos() const
 	{
-		return std::get<1>(_graphics_controller->get_scene_size());
+		return _graphics_controller->get_camera_pos();
 	}
 
 }

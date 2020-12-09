@@ -3,7 +3,7 @@
 #include "../Events/InputEvent.h"
 #include <vector>
 #include <memory>
-#include "../Models/Button.h"
+#include "../Mediators/BaseComponent.h"
 
 /**
 * \namespace Game
@@ -19,13 +19,8 @@ namespace Game {
 		* \class HelpController
 		* \brief Class contains the methods to interact with help view
 		*/
-		class HelpController : public Utility::Interfaces::IObserver<Events::InputEvent> {
+		class HelpController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
-			/**
-			* \brief A list of the Buttons
-			*/
-			std::vector<std::unique_ptr<Game::Models::Button>> _buttons;
-
 			/**
 			* \brief The height of the scene
 			*/

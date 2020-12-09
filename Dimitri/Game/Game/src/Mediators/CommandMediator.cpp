@@ -25,49 +25,77 @@ namespace Game {
 				case Input::Enums::EventEnum::KEY_PRESS_QUIT:
 					_factory->get_command("exit_game")->execute();
 					break;
-				case Input::Enums::EventEnum::KEY_PRESS_ESC:
-					_factory->get_command("open_home_view")->execute();
-					break;
 				case Input::Enums::EventEnum::KEY_PRESS_F:
 					_factory->get_command("toggle_view")->execute();
 					break;
 				}
 			}
 			else if (sender.get_identifier() == "LevelController") {
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("player_move_left")->execute();
+				BaseComponent& not_const = const_cast<BaseComponent&>(sender);
+				auto& ctrl = dynamic_cast<Controllers::LevelController&>(not_const);
+				switch (ctrl.get_state()) {
+				case Enums::LevelStateEnum::PAUSED:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+						notify_buttons(sender, event, {
+							{"Button::Paused::Start", "pause_level"},
+							{"Button::Paused::Home", "open_home_view"}
+							});
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_P:
+						_factory->get_command("pause_level")->execute();
+						break;
+					}
 					break;
-				case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-					_factory->get_command("player_move_right")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_UP:
-					_factory->get_command("player_jump")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_E:
-					_factory->get_command("player_interact")->execute();
-					break;
-				case Input::Enums::EventEnum::KEY_PRESS_P:
-					_factory->get_command("pause_level")->execute();
+				default:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
+						_factory->get_command("player_move_left")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
+						_factory->get_command("player_move_right")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_UP:
+						_factory->get_command("player_jump")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_E:
+						_factory->get_command("player_interact")->execute();
+						break;
+					case Input::Enums::EventEnum::KEY_PRESS_P:
+						_factory->get_command("pause_level")->execute();
+						break;
+					}
 					break;
 				}
 			}
-			else if (sender.get_identifier() == "Button::Start") {
-				_factory->get_command("load_level")->execute();
+			else if (sender.get_identifier() == "HomeController") {
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, {
+						{"Button::Start", "load_level"},
+						{"Button::Help", "open_help_view"},
+						{"Button::Credits", "open_credits_view"},
+						{"Button::Exit", "exit_game"},
+						});
+					break;
+				}
 			}
-			else if (sender.get_identifier() == "Button::Help") {
-				_factory->get_command("open_help_view")->execute();
+			else if (sender.get_identifier() == "CreditsController")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {"Button::Home", "open_home_view"} });
+					break;
+				}
 			}
-			else if (sender.get_identifier() == "Button::Credits") {
-				_factory->get_command("open_credits_view")->execute();
+			else if (sender.get_identifier() == "HelpController")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {"Button::Home", "open_home_view"} });
+					break;
+				}
 			}
-			else if (sender.get_identifier() == "Button::Exit") {
-				_factory->get_command("exit_game")->execute();
-			}
-			else if (sender.get_identifier() == "Button::Home") {
-				_factory->get_command("open_home_view")->execute();
-			}
-
 		}
 
 		void CommandMediator::notify(const BaseComponent& sender, Enums::LevelStateEnum event)
@@ -86,6 +114,19 @@ namespace Game {
 				case Enums::LevelStateEnum::PAUSED:
 					_factory->get_command("open_pause_level_view")->execute();
 					break;
+				}
+			}
+		}
+
+		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<std::string, std::string>& button_command)
+		{
+			for (auto& b : sender.get_buttons()) {
+				if (b->is_clicked(event)) {
+					for (auto& c : button_command) {
+						if (b->get_identifier() == c.first) {
+							_factory->get_command(c.second)->execute();
+						}
+					}
 				}
 			}
 		}

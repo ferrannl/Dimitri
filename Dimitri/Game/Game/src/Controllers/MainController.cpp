@@ -20,13 +20,17 @@ void Game::Controllers::MainController::run()
 	Mediators::CommandMediator::init(this->shared_from_this());
 	_window_controller->create_window(720, 1280);
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
+	_level_controller->load_buttons();
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
-	_window_controller->set_textures(_level_controller->get_textures(), "level");
+	_window_controller->set_textures(_level_controller->get_textures(Enums::LevelStateEnum::ACTIVE), "level");
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
 	_window_controller->add_textures(_level_controller->get_level()->get_player()->get_extra_textures(), "hud_view");
 	_window_controller->add_textures(_credits_controller->get_textures(), "credits");
 	_window_controller->add_textures(_help_controller->get_textures(), "help");
+	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::PAUSED), "pause_level");
+	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::GAME_OVER), "game_over_level");
+	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::WIN), "win_level");
 	_input_controller->poll_events();
 }
 

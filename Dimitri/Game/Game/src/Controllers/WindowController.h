@@ -133,9 +133,9 @@ namespace Game {
 			int get_window_width() const;
 
 			/**
-			* \brief Returns the height of the scene
+			* \brief Returns the camera position
 			*/
-			int get_scene_height() const;
+			std::tuple<int, int> get_camera_pos() const;
 		};
 	}
 }

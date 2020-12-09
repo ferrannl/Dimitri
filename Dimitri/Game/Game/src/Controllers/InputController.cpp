@@ -13,7 +13,7 @@ void Game::Controllers::InputController::poll_events() {
 void Game::Controllers::InputController::update(const Input::Enums::EventEnum& object)
 {
 	std::tuple<int, int> pos = _input_controller->get_mouse_position();
-	std::get<1>(pos) = _window_controller->get_scene_height() - std::get<1>(pos);
+	std::get<1>(pos) = _window_controller->get_window_height() - std::get<1>(pos) ;
 	notify(Game::Events::InputEvent(object, pos));
 }
 

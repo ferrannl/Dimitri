@@ -200,6 +200,9 @@
     <ClCompile Include="src\Controllers\HelpController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Mediators\BaseComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Models\Level.h">
