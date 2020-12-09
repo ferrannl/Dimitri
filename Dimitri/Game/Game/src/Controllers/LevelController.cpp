@@ -25,18 +25,47 @@ void Controllers::LevelController::load_buttons()
 {
 	Graphics::Models::Color color = { 255, 255, 255 };
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-	std::vector<std::pair<std::string, std::string>> button_map{ { "Continue", "Paused::Start" }, { "Back to home", "Paused::Home" } };
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
+
+	// pause
+	std::vector<std::pair<std::string, std::string>> button_map{ { "Continue", "Paused::Start" }, { "Back to home", "Paused::Home" } };
 	int i = 0;
 	float w = 200;
 	float h = 30;
+	float w_text;
 	for (auto b : button_map) {
-		float w_text = b.first.length() * 10;
+		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::PAUSED, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
+		i++;
+	}
+
+	// game over
+	button_map = { { "Try again", "GameOver::Start" }, { "Back to home", "GameOver::Home" } };
+	i = 0;
+	for (auto b : button_map) {
+		w_text = b.first.length() * 10;
+		t = {
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+		};
+		_buttons.push_back({ Enums::LevelStateEnum::GAME_OVER, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
+		i++;
+	}
+
+	// win
+	button_map = { { "Back to home", "Win::Home" } };
+	i = 0;
+	for (auto b : button_map) {
+		w_text = b.first.length() * 10;
+		t = {
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+		};
+		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
 	}
 }

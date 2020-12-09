@@ -47,6 +47,23 @@ namespace Game {
 						break;
 					}
 					break;
+				case Enums::LevelStateEnum::GAME_OVER:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+						notify_buttons(sender, event, {
+							{"Button::GameOver::Start", "load_level"},
+							{"Button::GameOver::Home", "open_home_view"}
+							});
+						break;
+					}
+					break;
+				case Enums::LevelStateEnum::WIN:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+						notify_buttons(sender, event, { {"Button::Win::Home", "open_home_view"} });
+						break;
+					}
+					break;
 				default:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
