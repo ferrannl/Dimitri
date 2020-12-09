@@ -219,18 +219,6 @@ namespace Graphics {
 			* \brief Checks if this Texure matches the given Texture
 			*/
 			virtual bool matches(const std::shared_ptr<Models::Texture>& texture) const = 0;
-
-			template <typename DerivedT>
-			std::string access_text_field() {
-				auto derived = static_cast<DerivedT*>(this);
-				return derived->_text;
-			}
-
-			template <typename DerivedT>
-			void set_text_field(std::string& text) {
-				auto derived = static_cast<DerivedT*>(this);
-				derived->_text = text;
-			}
 		};
-}
+	}
 }
