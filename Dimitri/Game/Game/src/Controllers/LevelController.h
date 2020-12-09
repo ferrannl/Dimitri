@@ -70,6 +70,8 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures(Enums::LevelStateEnum state) const;
 
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_button_textures() const;
+
 			/**
 			* \brief Receives updates from InputController
 			*/

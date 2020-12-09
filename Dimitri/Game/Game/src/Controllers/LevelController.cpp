@@ -89,7 +89,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelContro
 	return _level->get_textures();
 }
 
-void Controllers::LevelController::update(const Events::InputEvent& object)
+void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
 	Mediators::CommandMediator::instance()->notify(*this, object);
 }
