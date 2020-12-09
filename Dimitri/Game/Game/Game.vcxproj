@@ -121,6 +121,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Utility;$(SolutionDir)DocumentHandler</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,6 +159,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
+    <ClCompile Include="src\Builder\TileBuilder.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
     <ClCompile Include="src\Enums\AnimateEnum.cpp" />
     <ClCompile Include="src\Enums\DirectionEnum.cpp" />
@@ -207,6 +209,7 @@ xcopy /y /d "$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\Docu
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
+    <ClInclude Include="src\Builder\TileBuilder.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
     <ClInclude Include="src\Factory\UpdatableFactory.h" />

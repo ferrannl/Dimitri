@@ -48,6 +48,7 @@
     <ClCompile Include="src\Enums\AnimateEnum.cpp" />
     <ClCompile Include="src\Models\IObjects\Floor.cpp" />
     <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
+    <ClCompile Include="src\Builder\TileBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />
@@ -88,6 +89,7 @@
     <ClInclude Include="src\interfaces\IFactory.h" />
     <ClInclude Include="src\Models\IObjects\Floor.h" />
     <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
+    <ClInclude Include="src\Builder\TileBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\HomeController.h" />

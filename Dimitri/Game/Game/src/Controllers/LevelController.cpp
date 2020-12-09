@@ -9,7 +9,7 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::vector<std::vector<int>> ret = ctrl.Read(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller);
 	_level->load_objects();
