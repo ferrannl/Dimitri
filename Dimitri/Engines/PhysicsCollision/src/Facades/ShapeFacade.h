@@ -3,6 +3,16 @@
 #include <vector>
 #include <iostream>
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 struct b2Body;
 
 /**
@@ -24,7 +34,7 @@ namespace PhysicsCollision {
 		* \class ShapeFacade
 		* \brief Class contains the methods to handle the shapes using Box2d
 		*/
-		class ShapeFacade {
+		class PHYSICSCOLLISION_API ShapeFacade {
 		private:
 			/**
 			* \brief An instance of a Box2D body

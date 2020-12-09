@@ -4,6 +4,16 @@
 #include <map>
 #include <math.h> 
 
+#ifdef _WIN64
+#ifdef PHYSICSCOLLISION_EXPORTS
+#define PHYSICSCOLLISION_API __declspec(dllexport)
+#else
+#define PHYSICSCOLLISION_API __declspec(dllimport)
+#endif
+#else
+#define PHYSICSCOLLISION_API
+#endif
+
 struct b2World;
 struct b2PolygonShape;
 struct b2BodyDef;
@@ -23,7 +33,7 @@ namespace PhysicsCollision {
 		* \class WorldFacade
 		* \brief Class contains methods to interact with a b2World
 		*/
-		class WorldFacade {
+		class PHYSICSCOLLISION_API WorldFacade {
 		private:
 			/**
 			* \brief An instance of the b2World
