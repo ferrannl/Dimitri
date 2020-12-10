@@ -69,7 +69,7 @@ namespace Game {
 			/**
 			* \brief Returns an instance of the window controller
 			*/
-			std::shared_ptr<Game::Controllers::WindowController> get_window_controller();
+			std::shared_ptr<Game::Controllers::WindowController> get_window_controller()const;
 
 		};
 	}

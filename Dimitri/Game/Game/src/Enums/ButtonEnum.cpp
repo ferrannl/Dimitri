@@ -17,7 +17,8 @@ namespace Game {
 		{
 			START,
 			EXIT,
-			ADVERTISEMENT
+			ADVERTISEMENT,
+			HIGHSCORE
 		};
 	}
 }
