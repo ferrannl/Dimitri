@@ -28,10 +28,10 @@ namespace Game {
 				*/
 				std::shared_ptr<Game::Managers::LevelManager> _level_manager;
 			public:
-				StartButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, std::shared_ptr<Managers::LevelManager> level_manager, Graphics::Models::Center center);
+				StartButton(const float x, const float y, const float z, const float height, const float width, const Enums::DirectionEnum state, const float scene_height, const std::shared_ptr<Managers::LevelManager> level_manager, const Graphics::Models::Center center);
 
 				/**
-				* \brief Updates the object when interacted with
+				* \brief Action when the button is pressed
 				*/
 				void interact(Controllers::LevelController* ctrl = NULL);
 			};

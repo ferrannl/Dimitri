@@ -4,7 +4,8 @@
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
 #include "../Models/Buttons/ExitButton.h"
-#include "../Controllers/AudioController.h"
+#include "../Models/Buttons/AdvertisementButton.h"
+#include "AudioController.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
@@ -63,6 +64,11 @@ namespace Game {
 			* \brief Returns the Textures from the Buttons
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
+			/**
+			* \brief Returns the advertisement buttons
+			*/
+			std::vector < std::shared_ptr<Game::Models::Button>> get_advertisement_buttons();
 
 		};
 	}

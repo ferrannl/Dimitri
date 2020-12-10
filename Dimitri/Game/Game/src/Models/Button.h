@@ -3,6 +3,7 @@
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
 #include "../Mediators/BaseComponent.h"
+#include "../Enums/ButtonEnum.cpp"
 
 /**
 * \namespace Game
@@ -11,33 +12,38 @@
 namespace Game {
 	/**
 	* \namespace Game::Models
-	* \brief Namespace for the models in the game
+	* \brief Namespace for the Models
 	*/
 	namespace Models {
 		/**
 		* \class Button
-		* \brief Class contains the methods to use a button
+		* \brief Contains all code necessary for the button object
 		*/
 		class Button : public Game::Models::Interactable, public Mediators::BaseComponent {
 		protected:
+
+			Game::Enums::ButtonEnum _type;
 			/**
-			* \brief The height of the scene
+			* \brief Contains the height of the current window
 			*/
 			int _scene_height;
 		public:
-			Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier);
+			Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type);
 
 			/**
-			* \brief Initializes Textures
+			* \brief Initializes the textures for an object
 			*/
-			void initialize_textures();
-
+			virtual void initialize_textures();
 			/**
-			* \brief Updates the object based on a fired event
+			* \brief Checks if a mouse button is pressed in a given area
 			*/
 			void update(const Game::Events::InputEvent& object);
 			/**
-			* \brief Updates the object when interacted with
+			* \brief Returns the type of the Button
+			*/
+			Game::Enums::ButtonEnum get_type();
+			/**
+			* \brief Action when the Button is pressed
 			*/
 			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
 		};

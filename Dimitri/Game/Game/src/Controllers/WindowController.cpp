@@ -26,8 +26,6 @@ namespace Game {
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
 		_views.insert({ "hud_view", std::make_unique<Views::HUDView>(_graphics_controller) });
 
-		open_view("home");
-
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
@@ -124,6 +122,11 @@ namespace Game {
 	int Game::Controllers::WindowController::get_window_width() const
 	{
 		return _width;
+	}
+
+	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller()
+	{
+		return _graphics_controller;
 	}
 
 }
