@@ -57,12 +57,12 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 	return _level;
 }
 
-void Game::Controllers::LevelController::start()const
+void Game::Controllers::LevelController::start()
 {
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
-void Game::Controllers::LevelController::stop()const
+void Game::Controllers::LevelController::stop()
 {
 	set_state(Enums::LevelStateEnum::INACTIVE);
 }
