@@ -36,6 +36,7 @@
     <ClCompile Include="src\Commands\PlayerMoveLeftCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerMoveRightCommand.cpp" />
     <ClCompile Include="src\Commands\ToggleFpsViewCommand.cpp" />
+    <ClCompile Include="src\Controllers\AdvertisementController.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
     <ClCompile Include="src\Controllers\CreditsController.cpp" />
     <ClCompile Include="src\Controllers\HelpController.cpp" />
@@ -74,6 +75,7 @@
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\Updatables\Spike.cpp" />
+    <ClCompile Include="src\Views\AdvertisementView.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
@@ -106,6 +108,7 @@
     <ClInclude Include="src\Commands\ToggleFpsViewCommand.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
     <ClInclude Include="src\Controllers\CreditsController.h" />
+    <ClInclude Include="src\Controllers\AdvertisementController.h" />
     <ClInclude Include="src\Controllers\HelpController.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
@@ -140,6 +143,7 @@
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
     <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\Updatables\Spike.h" />
+    <ClInclude Include="src\Views\AdvertisementView.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />

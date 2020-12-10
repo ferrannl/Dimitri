@@ -12,6 +12,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
 	_credits_controller = std::make_shared<Controllers::CreditsController>(720, 1280);
 	_help_controller = std::make_shared<Controllers::HelpController>(720, 1280);
+	_advertisement_controller = std::make_shared<Controllers::AdvertisementController>(720, 1280);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
 }
 
@@ -20,7 +21,6 @@ void Game::Controllers::MainController::run()
 	Mediators::CommandMediator::init(this->shared_from_this());
 	_window_controller->create_window(720, 1280);
 	_window_controller->add_textures(_home_controller->get_textures(), "home");
-	_window_controller->open_view("home");
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_level_controller->load_buttons();
 	_input_controller->subscribe(this->shared_from_this());
@@ -33,6 +33,7 @@ void Game::Controllers::MainController::run()
 	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::PAUSED), "pause_level");
 	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::GAME_OVER), "game_over_level");
 	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::WIN), "win_level");
+	_window_controller->add_textures(_advertisement_controller->get_textures(), "advertisement_view");
 	_input_controller->poll_events();
 }
 

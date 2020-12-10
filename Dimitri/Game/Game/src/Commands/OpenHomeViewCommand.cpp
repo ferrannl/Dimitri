@@ -17,6 +17,7 @@ namespace Game {
 				w_ctrl->clear_views();
 				w_ctrl->add_textures(h_ctrl->get_textures(), "home");
 				w_ctrl->open_view("home");
+				w_ctrl->open_view("advertisement_view");
 				w_ctrl->open_view("fps");
 				l_ctrl->stop();
 				if (!a_ctrl->is_playing("homescreen1")) {

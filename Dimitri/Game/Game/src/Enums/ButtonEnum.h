@@ -25,8 +25,7 @@ namespace Game {
 			PAUSED_HOME,
 			HELP,
 			CREDITS,
-			EXIT,
-			ADVERTISEMENT
+			EXIT
 		};
 	}
 }

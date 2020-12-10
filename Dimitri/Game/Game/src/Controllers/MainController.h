@@ -4,6 +4,7 @@
 #include "LevelController.h"
 #include "HomeController.h"
 #include "CreditsController.h"
+#include "AdvertisementController.h"
 #include "HelpController.h"
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
@@ -64,6 +65,11 @@ namespace Game {
 			* \brief An instance of the HelpController
 			*/
 			std::shared_ptr<Controllers::HelpController> _help_controller;
+
+			/**
+			* \brief An instance of the AdvertisementController
+			*/
+			std::shared_ptr<Controllers::AdvertisementController> _advertisement_controller;
 		public:
 			MainController();
 

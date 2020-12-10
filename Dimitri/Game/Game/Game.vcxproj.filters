@@ -66,6 +66,8 @@
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
+    <ClCompile Include="src\Views\AdvertisementView.cpp" />
+    <ClCompile Include="src\Controllers\AdvertisementController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -132,5 +134,7 @@
     <ClInclude Include="src\Views\PauseLevelView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
+    <ClInclude Include="src\Views\AdvertisementView.h" />
+    <ClInclude Include="src\Controllers\AdvertisementController.h" />
   </ItemGroup>
 </Project>
