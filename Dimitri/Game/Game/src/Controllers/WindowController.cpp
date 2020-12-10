@@ -16,20 +16,20 @@ namespace Game {
 			return;
 		}
 
-		_views.insert({ "credits", std::make_unique<Views::CreditsView>(_graphics_controller) });
-		_views.insert({ "help", std::make_unique<Views::HelpView>(_graphics_controller) });
-		_views.insert({ "home", std::make_unique<Views::HomeView>(_graphics_controller) });
-		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
-		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
-		_views.insert({ "win_level", std::make_unique<Views::WinLevelView>(_graphics_controller) });
-		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
-		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
-		_views.insert({ "hud_view", std::make_unique<Views::HUDView>(_graphics_controller) });
-		_views.insert({ "advertisement_view", std::make_unique<Views::AdvertisementView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::CREDTIS, std::make_unique<Views::CreditsView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::HELP, std::make_unique<Views::HelpView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::HOME, std::make_unique<Views::HomeView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::LEVEL, std::make_unique<Views::LevelView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::FPS, std::make_unique<Views::FpsView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::WIN_LEVEL, std::make_unique<Views::WinLevelView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::GAME_OVER_LEVEL, std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::PAUSE_LEVEL, std::make_unique<Views::PauseLevelView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::HUD, std::make_unique<Views::HUDView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::ADVERTISEMENT, std::make_unique<Views::AdvertisementView>(_graphics_controller) });
 
-		open_view("home");
-		open_view("advertisement_view");
-		open_view("fps");
+		open_view(Enums::ViewEnum::HOME);
+		open_view(Enums::ViewEnum::ADVERTISEMENT);
+		open_view(Enums::ViewEnum::FPS);
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
@@ -47,7 +47,7 @@ namespace Game {
 		}
 	}
 
-	void Controllers::WindowController::open_view(const std::string& view_name)
+	void Controllers::WindowController::open_view(Enums::ViewEnum view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			if (!_views[view_name]->is_active()) {
@@ -59,7 +59,7 @@ namespace Game {
 		}
 	}
 
-	bool Controllers::WindowController::is_active(const std::string& view_name)
+	bool Controllers::WindowController::is_active(Enums::ViewEnum view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			return _views[view_name]->is_active();
@@ -77,7 +77,7 @@ namespace Game {
 		}
 	}
 
-	void Controllers::WindowController::toggle_view_visibility(const std::string& view_name)
+	void Controllers::WindowController::toggle_view_visibility(Enums::ViewEnum view_name)
 	{
 		if (_views.find(view_name) != _views.end()) {
 			if (_views[view_name]->is_active()) {
@@ -92,11 +92,12 @@ namespace Game {
 		}
 	}
 
-	void Controllers::WindowController::set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
+	void Controllers::WindowController::set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name)
 	{
 		_views[view_name]->set_textures(textures);
 	}
-	void Controllers::WindowController::add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name)
+
+	void Controllers::WindowController::add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name)
 	{
 		_views[view_name]->add_textures(textures);
 		if (_views[view_name]->is_active()) {

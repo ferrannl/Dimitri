@@ -12,7 +12,7 @@ namespace Game {
 	namespace Enums {
 		/**
 		* \enum ButtonEnum
-		* \brief Enum Class contains the different buttons
+		* \brief Enum Class contains the different button identifiers
 		*/
 		enum class ButtonEnum
 		{

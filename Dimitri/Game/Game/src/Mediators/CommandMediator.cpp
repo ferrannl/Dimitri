@@ -23,10 +23,10 @@ namespace Game {
 			if (sender.get_identifier() == "MainController") {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::KEY_PRESS_QUIT:
-					_factory->get_command("exit_game")->execute();
+					_factory->get_command(Enums::CommandEnum::EXIT_GAME)->execute();
 					break;
 				case Input::Enums::EventEnum::KEY_PRESS_F:
-					_factory->get_command("toggle_view")->execute();
+					_factory->get_command(Enums::CommandEnum::TOGGLE_FPS_VIEW)->execute();
 					break;
 				}
 			}
@@ -38,12 +38,12 @@ namespace Game {
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
-							{Enums::ButtonEnum::PAUSED_START, "pause_level"},
-							{Enums::ButtonEnum::PAUSED_HOME, "open_home_view"}
+							{Enums::ButtonEnum::PAUSED_START, Enums::CommandEnum::PAUSE_LEVEL},
+							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}
 							});
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
-						_factory->get_command("pause_level")->execute();
+						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
 						break;
 					}
 					break;
@@ -51,8 +51,8 @@ namespace Game {
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
-							{Enums::ButtonEnum::GAMEOVER_START, "load_level"},
-							{Enums::ButtonEnum::GAMEOVER_HOME, "open_home_view"}
+							{Enums::ButtonEnum::GAMEOVER_START, Enums::CommandEnum::LOAD_LEVEL},
+							{Enums::ButtonEnum::GAMEOVER_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}
 							});
 						break;
 					}
@@ -60,26 +60,26 @@ namespace Game {
 				case Enums::LevelStateEnum::WIN:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-						notify_buttons(sender, event, { {Enums::ButtonEnum::WIN_HOME, "open_home_view"} });
+						notify_buttons(sender, event, { {Enums::ButtonEnum::WIN_HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 						break;
 					}
 					break;
 				default:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-						_factory->get_command("player_move_left")->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_LEFT)->execute();
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-						_factory->get_command("player_move_right")->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_RIGHT)->execute();
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_UP:
-						_factory->get_command("player_jump")->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_JUMP)->execute();
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_E:
-						_factory->get_command("player_interact")->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_INTERACT)->execute();
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
-						_factory->get_command("pause_level")->execute();
+						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
 						break;
 					}
 					break;
@@ -89,10 +89,10 @@ namespace Game {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
-						{Enums::ButtonEnum::START, "load_level"},
-						{Enums::ButtonEnum::HELP, "open_help_view"},
-						{Enums::ButtonEnum::CREDITS, "open_credits_view"},
-						{Enums::ButtonEnum::EXIT, "exit_game"},
+						{Enums::ButtonEnum::START, Enums::CommandEnum::LOAD_LEVEL},
+						{Enums::ButtonEnum::HELP, Enums::CommandEnum::OPEN_HELP_VIEW},
+						{Enums::ButtonEnum::CREDITS, Enums::CommandEnum::OPEN_CREDITS_VIEW},
+						{Enums::ButtonEnum::EXIT, Enums::CommandEnum::EXIT_GAME},
 						});
 					break;
 				}
@@ -101,7 +101,7 @@ namespace Game {
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, "open_home_view"} });
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 					break;
 				}
 			}
@@ -109,7 +109,7 @@ namespace Game {
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, "open_home_view"} });
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 					break;
 				}
 			}
@@ -120,22 +120,22 @@ namespace Game {
 			if (sender.get_identifier() == "LevelController") {
 				switch (event) {
 				case Enums::LevelStateEnum::ACTIVE:
-					_factory->get_command("open_level_view")->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_VIEW)->execute();
 					break;
 				case Enums::LevelStateEnum::WIN:
-					_factory->get_command("open_win_level_view")->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_WIN_LEVEL_VIEW)->execute();
 					break;
 				case Enums::LevelStateEnum::GAME_OVER:
-					_factory->get_command("open_game_over_level_view")->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_GAME_OVER_LEVEL_VIEW)->execute();
 					break;
 				case Enums::LevelStateEnum::PAUSED:
-					_factory->get_command("open_pause_level_view")->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_PAUSE_LEVEL_VIEW)->execute();
 					break;
 				}
 			}
 		}
 
-		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, std::string>& button_command)
+		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, Enums::CommandEnum>& button_command)
 		{
 			for (auto& b : sender.get_buttons()) {
 				if (b->is_clicked(event)) {

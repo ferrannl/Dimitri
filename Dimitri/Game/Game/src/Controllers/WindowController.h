@@ -21,6 +21,7 @@
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
+#include "../Enums/ViewEnum.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -48,7 +49,7 @@ namespace Game {
 			/**
 			* \brief A List of all the Views
 			*/
-			std::map<std::string, std::unique_ptr<Views::View>> _views;
+			std::map<Enums::ViewEnum, std::unique_ptr<Views::View>> _views;
 
 			/**
 			* \brief A thread for rendering Textures on the Window
@@ -76,12 +77,12 @@ namespace Game {
 			/**
 			* \brief Sets the Views active property to true
 			*/
-			void open_view(const std::string& view_name);
+			void open_view(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Checks if the View is active
 			*/
-			bool is_active(const std::string& view_name);
+			bool is_active(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Sets all the Views active property to false
@@ -91,7 +92,7 @@ namespace Game {
 			/**
 			* \brief Toggles the visible property of the View
 			*/
-			void toggle_view_visibility(const std::string& view_name);
+			void toggle_view_visibility(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Calls all draw methods on _views
@@ -101,12 +102,12 @@ namespace Game {
 			/**
 			* \brief Sets the Textures for a View
 			*/
-			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
 
 			/**
 			* \brief dds the Textures for a View
 			*/
-			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
 
 			/**
 			* \brief Updates camera position

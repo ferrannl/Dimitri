@@ -5,6 +5,7 @@
 #include "BaseComponent.h"
 #include <memory>
 #include "../Controllers/MainController.h"
+#include "../Enums/CommandEnum.h"
 
 /**
 * \namespace Game
@@ -36,7 +37,7 @@ namespace Game {
 			*/
 			static std::unique_ptr<CommandMediator> _instance;
 
-			void notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, std::string>& button_command);
+			void notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, Enums::CommandEnum>& button_command);
 		public:
 			/**
 			* \brief Returns the singleton instance

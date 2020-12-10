@@ -136,5 +136,7 @@
     <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Views\AdvertisementView.h" />
     <ClInclude Include="src\Controllers\AdvertisementController.h" />
+    <ClInclude Include="src\Enums\CommandEnum.h" />
+    <ClInclude Include="src\Enums\ViewEnum.h" />
   </ItemGroup>
 </Project>

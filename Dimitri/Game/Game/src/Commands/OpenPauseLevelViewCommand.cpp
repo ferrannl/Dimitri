@@ -7,7 +7,7 @@ namespace Game {
 		void OpenPauseLevelViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
-			w_ctrl->open_view("pause_level");
+			w_ctrl->open_view(Enums::ViewEnum::PAUSE_LEVEL);
 		}
 	}
 }

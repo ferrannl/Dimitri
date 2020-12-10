@@ -5,6 +5,7 @@
 #include <functional>
 #include "Command.h"
 #include "../Controllers/MainController.h"
+#include "../Enums/CommandEnum.h"
 
 /**
 * \namespace Game
@@ -25,7 +26,7 @@ namespace Game {
 			/**
 			* \brief A list of the Commands
 			*/
-			std::map<std::string, std::unique_ptr<Command>> _commands;
+			std::map<Enums::CommandEnum, std::unique_ptr<Command>> _commands;
 			
 		public:
 			CommandFactory(const std::shared_ptr<Controllers::MainController> main_controller);			
@@ -33,7 +34,7 @@ namespace Game {
 			/**
 			* \brief Returns the Command by name
 			*/
-			Command* get_command(const std::string& command_name) const;
+			Command* get_command(Enums::CommandEnum command_name) const;
 		};
 	}
 }

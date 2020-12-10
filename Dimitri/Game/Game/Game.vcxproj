@@ -116,8 +116,10 @@
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
+    <ClInclude Include="src\Enums\CommandEnum.h" />
     <ClInclude Include="src\Enums\LevelStateEnum.h" />
     <ClInclude Include="src\Enums\StateEnum.h" />
+    <ClInclude Include="src\Enums\ViewEnum.h" />
     <ClInclude Include="src\Events\InputEvent.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />

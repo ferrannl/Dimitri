@@ -13,12 +13,11 @@ namespace Game {
 			auto h_ctrl = _main_controller->get_home_controller();
 			auto c_ctrl = _main_controller->get_credits_controller();
 			auto help_ctrl = _main_controller->get_help_controller();
-			if (!w_ctrl->is_active("home")) {
+			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
 				w_ctrl->clear_views();
-				w_ctrl->add_textures(h_ctrl->get_textures(), "home");
-				w_ctrl->open_view("home");
-				w_ctrl->open_view("advertisement_view");
-				w_ctrl->open_view("fps");
+				w_ctrl->open_view(Enums::ViewEnum::HOME);
+				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
+				w_ctrl->open_view(Enums::ViewEnum::FPS);
 				l_ctrl->stop();
 				if (!a_ctrl->is_playing("homescreen1")) {
 					a_ctrl->play_audio("homescreen1");
