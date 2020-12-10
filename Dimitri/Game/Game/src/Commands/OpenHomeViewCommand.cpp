@@ -14,11 +14,16 @@ namespace Game {
 			if (!w_ctrl->is_active("home") && !w_ctrl->is_active("pause_level")) {
 				w_ctrl->toggle_view_visibility("timer");
 				w_ctrl->clear_views();
+				for (auto& b : h_ctrl->get_advertisement_buttons())
+				{
+					b->initialize_textures();
+				}
+				w_ctrl->add_textures(h_ctrl->get_textures(), "home");
 				w_ctrl->open_view("home");
 				w_ctrl->open_view("fps");
 				l_ctrl->stop();
 				a_ctrl->play_audio("homescreen1");
-				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
+				w_ctrl->set_scene_size(l_ctrl->get_level()->get_height(), l_ctrl->get_level()->get_width());
 				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->subscribe(h_ctrl);
 			}

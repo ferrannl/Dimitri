@@ -105,7 +105,7 @@ namespace Game {
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			/**
-			*	 \brief dds the Textures for a View
+			* \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
