@@ -13,7 +13,9 @@ namespace Game {
 			auto h_ctrl = _main_controller->get_home_controller();
 			auto c_ctrl = _main_controller->get_credits_controller();
 			auto help_ctrl = _main_controller->get_help_controller();
+			auto h_mgr = _main_controller->get_highscore_manager();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
+				w_ctrl->toggle_view_visibility(Enums::ViewEnum::TIMER);
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
@@ -26,6 +28,7 @@ namespace Game {
 				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->unsubscribe(c_ctrl);
 				i_ctrl->unsubscribe(help_ctrl);
+				i_ctrl->unsubscribe(h_mgr);
 				i_ctrl->subscribe(h_ctrl);
 			}
 		}

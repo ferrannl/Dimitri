@@ -25,7 +25,9 @@ namespace Game {
 			HUD,
 			LEVEL,
 			PAUSE_LEVEL,
-			WIN_LEVEL
+			WIN_LEVEL,
+			HIGHSCORE,
+			TIMER,
 		};
 	}
 }

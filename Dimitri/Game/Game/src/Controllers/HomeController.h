@@ -1,5 +1,6 @@
 #pragma once
 #include "../Events/InputEvent.h"
+#include <src\Models\Texture.h>
 #include "AudioController.h"
 #include <chrono>
 #include <thread>
@@ -28,7 +29,7 @@ namespace Game {
 		* \class HomeController
 		* \brief Class contains the methods to interact with window engine and show images on screen
 		*/
-		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent, std::enable_shared_from_this<HomeController> {
+		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
 			/**
 			* \brief An instance of the Audio Controller

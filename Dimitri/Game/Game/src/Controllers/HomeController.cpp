@@ -6,6 +6,7 @@ namespace Game {
 		Mediators::BaseComponent("HomeController"), _scene_height{ sceneheight }, _scene_width{ scenewidth }, _audio_controller{ audio_controller }
 	{
 		_audio_controller->add_music("homescreen1", "/assets/audio/homescreen.wav");
+		_audio_controller->add_music("highscore", "/assets/audio/highscore.wav");
 		_audio_controller->play_audio("homescreen1");
 		load_buttons();
 	}
@@ -28,6 +29,10 @@ namespace Game {
 			add_button(Models::Button{ _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second });
 			i++;
 		}
+		t = {
+			std::make_shared<Graphics::Models::Text>("Highscore", color, 30, _scene_height - 70, 1, 50, 90, 0, path, true, Graphics::Models::Center{ 0, 0 }, true)
+		};
+		add_button(Models::Button{ 30, _scene_height - 70.0f, 50, 110, t, Enums::ButtonEnum::HIGHSCORE });
 	}
 
 	void Controllers::HomeController::update(const Events::InputEvent& object)

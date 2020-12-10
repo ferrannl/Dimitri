@@ -9,6 +9,7 @@
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
 #include "../Managers/LevelManager.h"
+#include "../Managers/HighScoreManager.h"
 
 /**
 * \namespace Game
@@ -40,6 +41,11 @@ namespace Game {
 			* \brief An instance of the Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> _level_manager;
+
+			/**
+			*	/brief An instance of the Highscore Manager
+			*/
+			std::shared_ptr<Managers::HighscoreManager> _highscore_manager;
 
 			/**
 			* \brief An instance of the WindowController
@@ -97,6 +103,11 @@ namespace Game {
 			* \brief Returns the Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
+
+			/**
+			* \brief Returns the Highscore Manager
+			*/
+			std::shared_ptr<Managers::HighscoreManager> get_highscore_manager() const;
 
 			/**
 			* \brief Returns the WindowController

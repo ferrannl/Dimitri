@@ -93,6 +93,7 @@ namespace Game {
 						{Enums::ButtonEnum::HELP, Enums::CommandEnum::OPEN_HELP_VIEW},
 						{Enums::ButtonEnum::CREDITS, Enums::CommandEnum::OPEN_CREDITS_VIEW},
 						{Enums::ButtonEnum::EXIT, Enums::CommandEnum::EXIT_GAME},
+						{Enums::ButtonEnum::HIGHSCORE, Enums::CommandEnum::LOAD_HIGHSCORE},
 						});
 					break;
 				}
@@ -106,6 +107,14 @@ namespace Game {
 				}
 			}
 			else if (sender.get_identifier() == "HelpController")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
+					break;
+				}
+			}
+			else if (sender.get_identifier() == "HighscoreManager")
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:

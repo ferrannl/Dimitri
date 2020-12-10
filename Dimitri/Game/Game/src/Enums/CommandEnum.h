@@ -31,6 +31,7 @@ namespace Game {
 			OPEN_PAUSE_LEVEL_VIEW,
 			OPEN_GAME_OVER_LEVEL_VIEW,
 			OPEN_LEVEL_VIEW,
+			LOAD_HIGHSCORE,
 		};
 	}
 }

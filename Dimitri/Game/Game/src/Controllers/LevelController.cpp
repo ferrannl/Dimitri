@@ -13,7 +13,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 
 	std::vector<std::vector<int>> ret = ctrl.Read(Utility::Helpers::get_base_path() + "/assets/levels/level1.csv");
 	Builder::LevelBuilder builder{};
-	_level = builder.build(ret, audio_controller);
+	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_sound("failed", "/assets/audio/failed.wav");
@@ -89,14 +89,14 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelContro
 	return _level->get_textures();
 }
 
+std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
+{
+	return _level;
+}
+
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
 	Mediators::CommandMediator::instance()->notify(*this, object);
-}
-
-std::shared_ptr<Models::Level> Controllers::LevelController::get_level() const
-{
-	return _level;
 }
 
 void Controllers::LevelController::start()
@@ -120,12 +120,15 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
+			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->pause();
 		}
 		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
 			// pause/win/game_over/inactive -> active
 			_simulation_thread = std::thread(&Controllers::LevelController::simulate, this);
 			_objects_thread = std::thread(&Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
+			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->unpause();
+			_window_controller->toggle_view_visibility(Enums::ViewEnum::TIMER);
 		}
 		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}
@@ -183,7 +186,13 @@ std::vector<Game::Models::Button*> Controllers::LevelController::get_buttons() c
 	return buttons;
 }
 
-Enums::LevelStateEnum Controllers::LevelController::get_state() const
+void Game::Controllers::LevelController::update_highscore()
+{
+	std::string record = std::to_string(_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->getTicks() / 1000.f);
+	_window_controller->set_highscore_record<Views::HighscoreView>(record);
+}
+
+Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
 	return _state;
 }

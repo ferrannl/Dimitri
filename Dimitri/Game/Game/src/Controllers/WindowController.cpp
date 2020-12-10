@@ -26,10 +26,13 @@ namespace Game {
 		_views.insert({ Enums::ViewEnum::PAUSE_LEVEL, std::make_unique<Views::PauseLevelView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::HUD, std::make_unique<Views::HUDView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::ADVERTISEMENT, std::make_unique<Views::AdvertisementView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::HIGHSCORE, std::make_unique<Views::HighscoreView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::TIMER, std::make_unique<Views::TimerView>(_graphics_controller) });
 
 		open_view(Enums::ViewEnum::HOME);
 		open_view(Enums::ViewEnum::ADVERTISEMENT);
 		open_view(Enums::ViewEnum::FPS);
+
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
@@ -138,9 +141,8 @@ namespace Game {
 		return _graphics_controller->get_camera_pos();
 	}
 
-	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller()
+	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller() const
 	{
 		return _graphics_controller;
 	}
-
 }

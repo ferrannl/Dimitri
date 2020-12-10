@@ -115,6 +115,12 @@ namespace Game {
 			* \brief Returns the buttons
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
+
+			
+			/**
+			* \brief Updates the highscore
+			*/
+			void update_highscore();
 		};
 	}
 }
