@@ -72,6 +72,13 @@ namespace Game {
 					break;
 				}
 			}
+			else if (sender.get_identifier() == "HighscoreButton") {
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
+					_factory->get_command("load_highscore")->execute();
+					break;
+				}
+			}
 
 		}
 

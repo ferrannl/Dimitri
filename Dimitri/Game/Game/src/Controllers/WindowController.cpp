@@ -20,10 +20,12 @@ namespace Game {
 		_views.insert({ "help", std::make_unique<Views::HelpView>(_graphics_controller) });
 		_views.insert({ "home", std::make_unique<Views::HomeView>(_graphics_controller) });
 		_views.insert({ "level", std::make_unique<Views::LevelView>(_graphics_controller) });
+		_views.insert({ "timer", std::make_unique<Views::TimerView>(_graphics_controller) });
 		_views.insert({ "fps", std::make_unique<Views::FpsView>(_graphics_controller) });
 		_views.insert({ "win_level", std::make_unique<Views::WinLevelView>(_graphics_controller) });
 		_views.insert({ "game_over_level", std::make_unique<Views::GameOverLevelView>(_graphics_controller) });
 		_views.insert({ "pause_level", std::make_unique<Views::PauseLevelView>(_graphics_controller) });
+		_views.insert({ "highscore", std::make_unique<Views::HighscoreView>(_graphics_controller) });
 		_views.insert({ "hud_view", std::make_unique<Views::HUDView>(_graphics_controller) });
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
@@ -124,9 +126,8 @@ namespace Game {
 		return _width;
 	}
 
-	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller()
+	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller() const
 	{
 		return _graphics_controller;
 	}
-
 }
