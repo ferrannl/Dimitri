@@ -11,6 +11,8 @@
 #include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views/HomeView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
+#include <..\Game\Game\src\Views\TimerView.h>
+#include <..\Game\Game\src\Views\HighscoreView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
@@ -134,9 +136,18 @@ namespace Game {
 			int get_window_width() const;
 
 			/**
-			* \brief Returns graphics controller
+			* \brief Returns the Graphics Controller
 			*/
-			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller();
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
+
+			/**
+			* \brief Add the highscore to the HighscoreView based on a template function
+			*/
+			template <typename DerivedT>
+			void set_highscore_record(std::string record) {
+				auto derived = static_cast<DerivedT*>(_views["highscore"].get());
+				derived->add_record(record);
+			}
 		};
 	}
 }

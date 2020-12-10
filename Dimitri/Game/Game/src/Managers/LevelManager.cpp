@@ -20,9 +20,10 @@ void Game::Managers::LevelManager::load_level()
 	_input_controller->subscribe(_level_controller);
 	_window_controller->set_scene_size(_level_controller->get_level()->get_height(), _level_controller->get_level()->get_width());
 	_level_controller->start();
+	_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->start();
 }
 
-std::shared_ptr<Game::Controllers::WindowController> Game::Managers::LevelManager::get_window_controller()
+std::shared_ptr<Game::Controllers::WindowController> Game::Managers::LevelManager::get_window_controller() const
 {
 	return _window_controller;
 }

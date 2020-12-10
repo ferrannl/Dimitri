@@ -82,10 +82,14 @@ namespace Game {
 				close();
 			}
 			if (_mask != nullptr) {
+				_graphics_controller->get_window()->get_mutex().lock();
 				_graphics_controller->remove_texture(_mask);
+				_graphics_controller->get_window()->get_mutex().unlock();
 			}
 			_mask.reset(new Graphics::Models::Sprite{ 0, 0, 10, static_cast<float>(window_height), static_cast<float>(window_width), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/black_bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false, abs(_fade_opacity) });
+			_graphics_controller->get_window()->get_mutex().lock();
 			_graphics_controller->add_texture(_mask);
+			_graphics_controller->get_window()->get_mutex().unlock();
 			_fade_opacity--;
 		}
 	}

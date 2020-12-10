@@ -13,6 +13,7 @@
 #include "OpenWinLevelViewCommand.h"
 #include "OpenPauseLevelViewCommand.h"
 #include "OpenGameOverLevelViewCommand.h"
+#include "OpenHighscoreViewCommand.h"
 #include "OpenLevelViewCommand.h"
 #include "OpenLevelTransitionViewCommand.h"
 #include "ClearViewsCommand.h"
@@ -38,6 +39,7 @@ namespace Game {
 			_commands.insert(std::make_pair("open_level_view", std::make_unique<OpenLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("open_level_transition", std::make_unique<OpenLevelTransitionViewCommand>(main_controller)));
 			_commands.insert(std::make_pair("clear_views", std::make_unique<ClearViewsCommand>(main_controller)));
+			_commands.insert(std::make_pair("load_highscore", std::make_unique<OpenHighscoreViewCommand>(main_controller)));
 		}
 
 		Command* CommandFactory::get_command(const std::string& command_name) const
