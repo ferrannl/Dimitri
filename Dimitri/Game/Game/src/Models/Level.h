@@ -53,7 +53,11 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
 
+			/**
+			* \brief Speed of the level
+			*/
 			float _speed;
+
 			/**
 			* \brief An instance of the Player Object
 			*/
@@ -104,7 +108,7 @@ namespace Game {
 			/**
 			* 	\brief Returns the speed of the level
 			*/
-			float get_speed();
+			float get_speed() const;
 
 			/**
 			* \brief Add music

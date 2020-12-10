@@ -32,7 +32,7 @@ void Models::Level::set_speed(float speed)
 	_speed = speed;
 }
 
-float Game::Models::Level::get_speed()
+float Game::Models::Level::get_speed()const
 {
 	return _speed;
 }
