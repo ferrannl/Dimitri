@@ -28,7 +28,7 @@ namespace Game {
 			*/
 			int _scene_height;
 		public:
-			Button(int x, int y, int z, int height, int width, Enums::DirectionEnum state, int scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type);
+			Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type);
 
 			/**
 			* \brief Initializes the textures for an object

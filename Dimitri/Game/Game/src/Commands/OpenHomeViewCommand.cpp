@@ -13,7 +13,7 @@ namespace Game {
 			auto h_ctrl = _main_controller->get_home_controller();
 			if (!w_ctrl->is_active("home")) {
 				w_ctrl->clear_views();
-				for (auto b : h_ctrl->get_advertisement_buttons())
+				for (auto& b : h_ctrl->get_advertisement_buttons())
 				{
 					b->initialize_textures();
 				}
