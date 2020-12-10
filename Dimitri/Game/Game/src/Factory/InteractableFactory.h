@@ -28,7 +28,7 @@ namespace Game {
 			/**
 			* \brief Creates the interactable
 			*/
-			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state);
+			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state);
 		};
 	}
 }

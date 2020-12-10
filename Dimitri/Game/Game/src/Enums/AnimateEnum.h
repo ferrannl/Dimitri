@@ -33,7 +33,9 @@ namespace Game {
 			WALK7,
 			WALK8,
 			JUMP1,
-			JUMP2
+			JUMP2,
+			HUD1,
+			HUD2
 		};
 	}
 }

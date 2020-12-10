@@ -24,7 +24,7 @@ namespace Game {
 			/**
 			* \brief Creates an object of type T
 			*/
-			virtual std::shared_ptr<T> create(Enums::TypeEnum type, int x, int y, int width, int height, int z, Enums::DirectionEnum state) = 0;
+			virtual std::shared_ptr<T> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state) = 0;
 		};
 	}
 }
