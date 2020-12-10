@@ -24,7 +24,7 @@ namespace Game {
 		_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, window_height, window_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false));
 		float lamp_w = 100, lamp_h = 100, lamp_offset_h = 250;
 		_textures.push_back((Models::Lamp{ window_width / 2 - lamp_w / 2 + viewport_x, window_height - lamp_offset_h + viewport_y, 2, lamp_h, lamp_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } }).get_texture());
-		float light_w = 400, light_h = 300, light_offset_h = 70;
+		float light_w = 400, light_h = 300, light_offset_h = 20;
 		_lightbeam.reset(new Models::LightBeam{ window_width / 2 - light_w / 2 + viewport_x, window_height - lamp_offset_h - light_h + light_offset_h + viewport_y, 1, light_h, light_w, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0, 0 } });
 		_textures.push_back(_lightbeam->get_texture());
 		float tile_x = viewport_x, tile_w = 30, tile_h = 30;

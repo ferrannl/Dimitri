@@ -24,6 +24,10 @@ namespace Game {
 		public:
 			BaseComponent(const std::string& identifier) : _identifier{ identifier } {}
 			virtual ~BaseComponent() = 0;
+			BaseComponent(BaseComponent const& other) = default;
+			BaseComponent& operator=(BaseComponent const& other) = default;
+			BaseComponent(BaseComponent && that) noexcept = default;
+			BaseComponent& operator=(BaseComponent && that) noexcept = default;
 
 			/**
 			* \brief Return the identifier
