@@ -17,8 +17,8 @@ namespace Game {
 		*/
 		namespace Buttons {
 			/**
-			* \class StartButton
-			* \brief Class contains the methods start a level
+			* \class IncreaseGameSpeedButton
+			* \brief Class contains the methods to increase the game speed
 			*/
 			class IncreaseGameSpeedButton : public Game::Models::Button {
 			public:

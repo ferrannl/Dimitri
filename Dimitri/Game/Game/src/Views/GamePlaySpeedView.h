@@ -15,8 +15,8 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		* \class HudView
-		* \brief Class contains the methods to draw the hud
+		* \class GamePlaySpeedView
+		* \brief Class contains the methods to draw the gameplay speed
 		*/
 		class GamePlaySpeedView : public View {
 		private:
