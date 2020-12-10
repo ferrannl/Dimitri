@@ -61,6 +61,7 @@
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
+    <ClCompile Include="src\Models\Buttons\AdvertisementButton.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Models\Button.h" />
+    <ClInclude Include="src\Models\Buttons\AdvertisementButton.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
@@ -256,7 +258,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Utility;$(SolutionDir)DocumentHandler</AdditionalIncludeDirectories>
     </ClCompile>

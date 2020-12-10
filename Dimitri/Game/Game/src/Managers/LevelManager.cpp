@@ -21,3 +21,8 @@ void Game::Managers::LevelManager::load_level()
 	_window_controller->set_scene_size(_level_controller->get_level()->get_height(), _level_controller->get_level()->get_width());
 	_level_controller->start();
 }
+
+std::shared_ptr<Game::Controllers::WindowController> Game::Managers::LevelManager::get_window_controller()
+{
+	return _window_controller;
+}

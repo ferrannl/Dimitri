@@ -127,4 +127,9 @@ namespace Game {
 		return _width;
 	}
 
+	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller()
+	{
+		return _graphics_controller;
+	}
+
 }
