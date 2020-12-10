@@ -145,7 +145,7 @@ namespace Game {
 			template <typename DerivedT>
 			void set_highscore_record(std::string record) {
 				auto derived = static_cast<DerivedT*>(_views["highscore"].get());
-				return derived->add_record(record);
+				derived->add_record(record);
 			}
 		};
 	}
