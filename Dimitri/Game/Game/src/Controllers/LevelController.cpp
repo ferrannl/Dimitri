@@ -22,7 +22,7 @@ Game::Controllers::LevelController::LevelController(const std::shared_ptr<Contro
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
-void Game::Controllers::LevelController::load_buttons()
+void Game::Controllers::LevelController::load_buttons()const
 {
 	_level->load_buttons();
 }
@@ -38,7 +38,7 @@ void Game::Controllers::LevelController::set_speed(float speed)
 	_window_controller->set_speed(speed);
 }
 
-float Game::Controllers::LevelController::get_speed()
+float Game::Controllers::LevelController::get_speed()const
 {
 	return _level->get_speed();
 }
@@ -57,12 +57,12 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 	return _level;
 }
 
-void Game::Controllers::LevelController::start()
+void Game::Controllers::LevelController::start()const
 {
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
-void Game::Controllers::LevelController::stop()
+void Game::Controllers::LevelController::stop()const
 {
 	set_state(Enums::LevelStateEnum::INACTIVE);
 }
@@ -89,7 +89,7 @@ void Game::Controllers::LevelController::set_state(Enums::LevelStateEnum new_sta
 	}
 }
 
-void Game::Controllers::LevelController::turn_off_light(const int x)
+void Game::Controllers::LevelController::turn_off_light(const int x)const
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == x) {
@@ -98,7 +98,7 @@ void Game::Controllers::LevelController::turn_off_light(const int x)
 	}
 }
 
-void  Game::Controllers::LevelController::simulate() {
+void  Game::Controllers::LevelController::simulate()const {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
 

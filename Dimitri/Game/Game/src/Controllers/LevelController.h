@@ -58,7 +58,10 @@ namespace Game {
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
 
-			void load_buttons();
+			/**
+			* \brief Loads the buttons for a level
+			*/
+			void load_buttons()const;
 
 			/**
 			* \brief Returns a list of all Textures in the Level
@@ -73,7 +76,7 @@ namespace Game {
 			/**
 			* \brief Returns the speeds of a level
 			*/
-			float get_speed();
+			float get_speed() const;
 
 			/**
 			* \brief Receives updates from InputController
@@ -98,7 +101,7 @@ namespace Game {
 			/**
 			* \brief Returns the Level
 			*/
-			void simulate();
+			void simulate()const;
 
 			/**
 			* \brief Set the level state and stops/starts the thread
@@ -113,7 +116,7 @@ namespace Game {
 			/**
 			* \brief Turns of a light
 			*/
-			void turn_off_light(const int x);
+			void turn_off_light(const int x)const;
 
 			/**
 			* \brief Simulates the objects
