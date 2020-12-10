@@ -23,7 +23,7 @@ namespace Game {
 			*/
 			class ExitButton : public Game::Models::Button {
 			public:
-				ExitButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center);
+				ExitButton(const float x, const float y, const float z, const float height, const float width, const Enums::DirectionEnum state, const float scene_height, const Graphics::Models::Center center);
 
 				/**
 				* \brief Updates the object when interacted with

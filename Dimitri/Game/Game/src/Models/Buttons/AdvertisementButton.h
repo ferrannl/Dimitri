@@ -42,7 +42,7 @@ namespace Game {
 				*/
 				std::shared_ptr<Game::Controllers::WindowController> _window_controller;
 			public:
-				AdvertisementButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, std::shared_ptr<Game::Controllers::WindowController> window_controller, Graphics::Models::Center center);
+				AdvertisementButton(const float x, const float y, const float z, const float height, const float width, const Enums::DirectionEnum state, const float scene_height, const std::shared_ptr<Game::Controllers::WindowController> window_controller, const Graphics::Models::Center center);
 			
 				/**
 				* \brief Initializes the textures for an object
