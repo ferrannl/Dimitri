@@ -4,7 +4,7 @@
 namespace Game {
 	namespace Models {
 		Buttons::DecreaseGameSpeedButton::DecreaseGameSpeedButton(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center) :
-			Button(x, y, z, height, width, state, scene_height, center, "DecreaseGameSpeedButton")
+			Button(x, y, z, height, width, state, scene_height, center, "DecreaseGameSpeedButton", Game::Enums::ButtonEnum::DECREASEGAMESPEEDBUTTON)
 		{
 		}
 

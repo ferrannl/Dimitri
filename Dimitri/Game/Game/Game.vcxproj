@@ -46,6 +46,7 @@
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Controllers\WindowController.cpp" />
     <ClCompile Include="src\Enums\AnimateEnum.h" />
+    <ClCompile Include="src\Enums\ButtonEnum.cpp" />
     <ClCompile Include="src\Enums\DirectionEnum.h" />
     <ClCompile Include="src\Enums\TypeEnum.h" />
     <ClCompile Include="src\Events\InputEvent.cpp" />
