@@ -23,13 +23,19 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		* \class LevelController
+		* \class CheatsController
 		* \brief Class CheatsController contains the methods to interact with the cheats
 		*/
 		class CheatsController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Game::Models::Check, public std::enable_shared_from_this<CheatsController> {
 		private:
+			/**
+			* \brief A list of the textures in cheats view
+			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 
+			/**
+			* \brief The cheat settings
+			*/
 			std::shared_ptr<Game::Models::LevelCheatSettings> _settings;
 
 			/**
@@ -39,6 +45,9 @@ namespace Game {
 		public:
 			CheatsController();
 
+			/**
+			* \brief Loads textures
+			*/
 			void initialize_textures(int height, int width);
 
 			/**

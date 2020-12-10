@@ -1,4 +1,5 @@
 #include "LevelCheatSettings.h"
+#include <climits>
 
 Game::Models::LevelCheatSettings::LevelCheatSettings()
 {
@@ -19,7 +20,7 @@ bool Game::Models::LevelCheatSettings::get_invincible() const
 void Game::Models::LevelCheatSettings::set_amount_of_jumps()
 {
 	if (_amount_of_jumps == _normal_amount_of_jumps) {
-		_amount_of_jumps = 100000;
+		_amount_of_jumps = INT_MAX;
 	}
 	else {
 		_amount_of_jumps = _normal_amount_of_jumps;
