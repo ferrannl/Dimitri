@@ -1,5 +1,6 @@
 #pragma once
 #include "../Controllers/AudioController.h"
+#include "../Controllers/WindowController.h"
 #include <memory>
 #include <chrono>
 #include <thread>
@@ -94,7 +95,7 @@ namespace Game {
 			int _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
 
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 

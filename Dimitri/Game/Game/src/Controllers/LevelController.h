@@ -122,6 +122,12 @@ namespace Game {
 			* \brief Simulates the objects
 			*/
 			void simulate_objects();
+
+			
+			/**
+			* \brief Updates the highscore
+			*/
+			void update_highscore();
 		};
 	}
 }

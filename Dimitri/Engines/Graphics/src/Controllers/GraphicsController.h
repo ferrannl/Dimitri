@@ -83,6 +83,11 @@ namespace Graphics {
 			int get_fps();
 
 			/**
+			* \brief Returns the current ticks
+			*/
+			Uint32 get_ticks();
+
+			/**
 			* Updates camera position
 			*/
 			void set_camera_pos(int x, int y);

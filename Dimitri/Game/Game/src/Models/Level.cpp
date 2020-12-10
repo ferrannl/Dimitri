@@ -1,7 +1,7 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height) : _audio_controller(audio_controller)
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height) : _audio_controller(audio_controller)
 {
 	_width = width;
 	_height = height;
@@ -72,6 +72,7 @@ void Game::Models::Level::load_objects()
 	_physics_collision_controller->setup_world(_height, _width);
 
 	add_shapes();
+
 }
 
 void Game::Models::Level::add_shapes()

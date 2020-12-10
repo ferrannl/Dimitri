@@ -3,6 +3,7 @@
 #include "../Events/InputEvent.h"
 #include <src\Models\Texture.h>
 #include "../Models/Buttons/StartButton.h"
+#include "../Models/Buttons/HighscoreButton.h"
 #include "../Models/Buttons/ExitButton.h"
 #include "../Models/Buttons/AdvertisementButton.h"
 #include "AudioController.h"
@@ -53,7 +54,7 @@ namespace Game {
 			/**
 			* \brief Loads the Buttons
 			*/
-			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager);
+			void load_buttons(std::shared_ptr<Managers::LevelManager> level_manager, std::shared_ptr<Managers::HighscoreManager> highscore_manager);
 
 			/**
 			* \brief Updates the Buttons

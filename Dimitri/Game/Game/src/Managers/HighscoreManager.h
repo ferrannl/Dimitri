@@ -12,19 +12,19 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		*	Predefine Input Controller
+		* \class Predefine Input Controller
 		*/
 		class InputController;
 		/**
-		*	Predefine Window Controller
+		* \class Predefine Window Controller
 		*/
 		class WindowController;
 		/**
-		*	Predefine Level Controller
+		* \class Predefine Level Controller
 		*/
-		class LevelController;
+		class AudioController;
 		/**
-		*	Predefine Home Controller
+		* \class Predefine Home Controller
 		*/
 		class HomeController;
 	}
@@ -34,10 +34,10 @@ namespace Game {
 	*/
 	namespace Managers {
 		/**
-		* \class LevelManager
-		* \brief Class contains the methods to manage the Levels
+		* \class HighscoreManager
+		* \brief Class contains the methods to manage the HighscoreView
 		*/
-		class LevelManager {
+		class HighscoreManager {
 		private:
 			/**
 			* \brief An instance of the Input Controller
@@ -45,9 +45,9 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::InputController> _input_controller;
 
 			/**
-			* \brief An instance of the Level Controller
+			* \brief An instance of the Audio Controller
 			*/
-			std::shared_ptr<Game::Controllers::LevelController> _level_controller;
+			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
 
 			/**
 			* \brief An instance of the Home Controller
@@ -59,18 +59,12 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Controllers::WindowController> _window_controller;
 		public:
-			LevelManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::LevelController> level_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
-
+			HighscoreManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::AudioController> audio_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
+		
 			/**
-			* \brief Loads a level
+			* \brief Loads the highscore
 			*/
-			void load_level();
-
-			/**
-			* \brief Returns an instance of the window controller
-			*/
-			std::shared_ptr<Game::Controllers::WindowController> get_window_controller()const;
-
+			void load_highscore();
 		};
 	}
 }

@@ -10,6 +10,7 @@
     <ClCompile Include="src\Commands\OpenCreditsViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHelpViewCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenHighscoreViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHomeViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenPauseLevelViewCommand.cpp" />
@@ -36,15 +37,17 @@
     <ClCompile Include="src\Factory\ObjectFactory.cpp" />
     <ClCompile Include="src\Factory\UpdatableFactory.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Managers\HighscoreManager.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
     <ClCompile Include="src\Mediators\CommandMediator.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
-    <ClCompile Include="src\Models\Buttons\DecreaseGameSpeedButton.cpp" />
     <ClCompile Include="src\Models\Buttons\AdvertisementButton.cpp" />
     <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\HighscoreButton.cpp" />
+    <ClCompile Include="src\Models\Buttons\DecreaseGameSpeedButton.cpp" />
     <ClCompile Include="src\Models\Buttons\IncreaseGameSpeedButton.cpp" />
     <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
@@ -64,10 +67,12 @@
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
     <ClCompile Include="src\Views\GamePlaySpeedView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
+    <ClCompile Include="src\Views\HighscoreView.cpp" />
     <ClCompile Include="src\Views\HomeView.cpp" />
     <ClCompile Include="src\Views\HUDView.cpp" />
     <ClCompile Include="src\Views\LevelView.cpp" />
     <ClCompile Include="src\Views\PauseLevelView.cpp" />
+    <ClCompile Include="src\Views\TimerView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
     <ClCompile Include="src\Enums\ButtonEnum.cpp" />
@@ -83,6 +88,7 @@
     <ClInclude Include="src\Commands\OpenCreditsViewCommand.h" />
     <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHelpViewCommand.h" />
+    <ClInclude Include="src\Commands\OpenHighscoreViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHomeViewCommand.h" />
     <ClInclude Include="src\Commands\OpenLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenPauseLevelViewCommand.h" />
@@ -108,6 +114,7 @@
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Factory\UpdatableFactory.h" />
     <ClInclude Include="src\Interfaces\IFactory.h" />
+    <ClInclude Include="src\Managers\HighscoreManager.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Mediators\BaseComponent.h" />
     <ClInclude Include="src\Mediators\CommandMediator.h" />
@@ -119,6 +126,7 @@
     <ClInclude Include="src\Models\Buttons\AdvertisementButton.h" />
     <ClInclude Include="src\Models\Buttons\ExitButton.h" />
     <ClInclude Include="src\Models\Buttons\IncreaseGameSpeedButton.h" />
+    <ClInclude Include="src\Models\Buttons\HighscoreButton.h" />
     <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />
@@ -136,11 +144,13 @@
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />
     <ClInclude Include="src\Views\GamePlaySpeedView.h" />
+    <ClInclude Include="src\Views\HighscoreView.h" />
     <ClInclude Include="src\Views\HelpView.h" />
     <ClInclude Include="src\Views\HomeView.h" />
     <ClInclude Include="src\Views\HUDView.h" />
     <ClInclude Include="src\Views\LevelView.h" />
     <ClInclude Include="src\Views\PauseLevelView.h" />
+    <ClInclude Include="src\Views\TimerView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
   </ItemGroup>

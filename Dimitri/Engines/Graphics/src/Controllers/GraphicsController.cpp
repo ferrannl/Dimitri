@@ -48,6 +48,10 @@ int Graphics::Controllers::GraphicsController::get_fps()
 	return _window->get_facade()->get_fps();
 }
 
+Uint32 Graphics::Controllers::GraphicsController::get_ticks() {
+	return _window->get_facade()->get_ticks();
+}
+
 void Graphics::Controllers::GraphicsController::set_camera_pos(int x, int y)
 {
 	_window->set_camera_pos(x, y);
