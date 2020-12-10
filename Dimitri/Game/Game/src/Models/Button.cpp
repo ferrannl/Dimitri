@@ -2,10 +2,10 @@
 
 namespace Game {
 	namespace Models {
-		Button::Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier) :
+		Button::Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type) :
 			Interactable(x, y, z, height, width, state, center), Mediators::BaseComponent(identifier) {
 			_scene_height = scene_height;
-			initialize_textures();
+			_type = type;
 		}
 
 		void Button::initialize_textures()
@@ -30,4 +30,9 @@ namespace Game {
 			}
 		}
 	}
+}
+
+Game::Enums::ButtonEnum Game::Models::Button::get_type()
+{
+	return _type;
 }

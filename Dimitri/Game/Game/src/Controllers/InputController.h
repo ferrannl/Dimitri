@@ -4,7 +4,6 @@
 #include "../Events/InputEvent.h"
 #include <vector>
 #include <tuple>
-
 /**
 * \namespace Game
 * \brief Namespace for the game

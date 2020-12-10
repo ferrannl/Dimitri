@@ -108,7 +108,7 @@ namespace Game {
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			/**
-			*	 \brief dds the Textures for a View
+			* \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
@@ -141,6 +141,11 @@ namespace Game {
 			* \brief Returns the width of the Window
 			*/
 			int get_window_width() const;
+
+			/**
+			* \brief Returns graphics controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller();
 		};
 	}
 }
