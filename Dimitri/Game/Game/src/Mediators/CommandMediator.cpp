@@ -38,8 +38,8 @@ namespace Game {
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
-							{"Button::Paused::Start", "pause_level"},
-							{"Button::Paused::Home", "open_home_view"}
+							{Enums::ButtonEnum::PAUSED_START, "pause_level"},
+							{Enums::ButtonEnum::PAUSED_HOME, "open_home_view"}
 							});
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
@@ -51,8 +51,8 @@ namespace Game {
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
-							{"Button::GameOver::Start", "load_level"},
-							{"Button::GameOver::Home", "open_home_view"}
+							{Enums::ButtonEnum::GAMEOVER_START, "load_level"},
+							{Enums::ButtonEnum::GAMEOVER_HOME, "open_home_view"}
 							});
 						break;
 					}
@@ -60,7 +60,7 @@ namespace Game {
 				case Enums::LevelStateEnum::WIN:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-						notify_buttons(sender, event, { {"Button::Win::Home", "open_home_view"} });
+						notify_buttons(sender, event, { {Enums::ButtonEnum::WIN_HOME, "open_home_view"} });
 						break;
 					}
 					break;
@@ -89,10 +89,10 @@ namespace Game {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
-						{"Button::Start", "load_level"},
-						{"Button::Help", "open_help_view"},
-						{"Button::Credits", "open_credits_view"},
-						{"Button::Exit", "exit_game"},
+						{Enums::ButtonEnum::START, "load_level"},
+						{Enums::ButtonEnum::HELP, "open_help_view"},
+						{Enums::ButtonEnum::CREDITS, "open_credits_view"},
+						{Enums::ButtonEnum::EXIT, "exit_game"},
 						});
 					break;
 				}
@@ -101,7 +101,7 @@ namespace Game {
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { {"Button::Home", "open_home_view"} });
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, "open_home_view"} });
 					break;
 				}
 			}
@@ -109,7 +109,7 @@ namespace Game {
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { {"Button::Home", "open_home_view"} });
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, "open_home_view"} });
 					break;
 				}
 			}
@@ -135,7 +135,7 @@ namespace Game {
 			}
 		}
 
-		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<std::string, std::string>& button_command)
+		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, std::string>& button_command)
 		{
 			for (auto& b : sender.get_buttons()) {
 				if (b->is_clicked(event)) {

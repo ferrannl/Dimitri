@@ -28,7 +28,7 @@ void Controllers::LevelController::load_buttons()
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 
 	// pause
-	std::vector<std::pair<std::string, std::string>> button_map{ { "Continue", "Paused::Start" }, { "Back to home", "Paused::Home" } };
+	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Continue", Enums::ButtonEnum::PAUSED_START }, { "Back to home", Enums::ButtonEnum::PAUSED_HOME } };
 	int i = 0;
 	float w = 200;
 	float h = 30;
@@ -44,7 +44,7 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// game over
-	button_map = { { "Try again", "GameOver::Start" }, { "Back to home", "GameOver::Home" } };
+	button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
 	i = 0;
 	for (auto b : button_map) {
 		w_text = b.first.length() * 10;
@@ -57,7 +57,7 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// win
-	button_map = { { "Back to home", "Win::Home" } };
+	button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
 	i = 0;
 	for (auto b : button_map) {
 		w_text = b.first.length() * 10;

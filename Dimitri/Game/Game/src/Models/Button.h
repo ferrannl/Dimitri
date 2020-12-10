@@ -1,6 +1,7 @@
 #pragma once
 #include "../Events/InputEvent.h"
 #include <src/Models/Texture.h>
+#include "../Enums/ButtonEnum.h"
 
 /**
 * \namespace Game
@@ -41,14 +42,14 @@ namespace Game {
 			/**
 			* \brief The identifier of the button
 			*/
-			std::string _identifier;
+			Enums::ButtonEnum _identifier;
 
 			/**
 			* \brief The texture of the button
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 		public:
-			Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& identifier);
+			Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier);
 
 			/**
 			* \brief Checks if the button is clicked
@@ -83,7 +84,7 @@ namespace Game {
 			/**
 			* \brief Returns the identifier of the button
 			*/
-			std::string get_identifier() const;
+			Enums::ButtonEnum get_identifier() const;
 		};
 	}
 }

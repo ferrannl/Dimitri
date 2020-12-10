@@ -2,8 +2,8 @@
 
 namespace Game {
 	namespace Models {
-		Button::Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& identifier) :
-			_x{ x }, _y{ y }, _height{ height }, _width{ width }, _textures{ textures }, _identifier{ "Button::" + identifier } {}
+		Button::Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier) :
+			_x{ x }, _y{ y }, _height{ height }, _width{ width }, _textures{ textures }, _identifier{ identifier } {}
 
 		bool Button::is_clicked(Game::Events::InputEvent object)
 		{
@@ -40,7 +40,7 @@ namespace Game {
 		{
 			_y = y;
 		}
-		std::string Button::get_identifier() const
+		Enums::ButtonEnum Button::get_identifier() const
 		{
 			return _identifier;
 		}

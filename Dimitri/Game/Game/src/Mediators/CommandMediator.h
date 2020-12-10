@@ -36,7 +36,7 @@ namespace Game {
 			*/
 			static std::unique_ptr<CommandMediator> _instance;
 
-			void notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<std::string, std::string>& button_command);
+			void notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, std::string>& button_command);
 		public:
 			/**
 			* \brief Returns the singleton instance
