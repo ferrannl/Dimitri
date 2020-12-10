@@ -183,6 +183,11 @@ namespace Game {
 			* \brief Updates X and Y coordinates using the Shape
 			*/
 			void update();
+
+			/**
+			* \brief Clear textures
+			*/
+			void clear_textures();
 		};
 	}
 }

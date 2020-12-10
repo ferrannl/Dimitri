@@ -10,15 +10,16 @@
 namespace Game {
 	/**
 	* \namespace Game::Models
-	* \brief Namespace for the models in the game
+	* \brief Namespace for the Models
 	*/
 	namespace Models {
 		/**
 		* \class Button
-		* \brief Class contains the methods to use a button
+		* \brief Contains all code necessary for the button object
 		*/
 		class Button {
 		private:
+
 			/**
 			* \brief The x coordinate of the button
 			*/
@@ -80,9 +81,9 @@ namespace Game {
 			* \brief Sets the y coordinate of the button
 			*/
 			void set_y(float y);
-
+			
 			/**
-			* \brief Returns the identifier of the button
+			* \brief Action when the Button is pressed
 			*/
 			Enums::ButtonEnum get_identifier() const;
 		};

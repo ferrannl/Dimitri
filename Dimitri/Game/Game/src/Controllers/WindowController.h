@@ -103,7 +103,7 @@ namespace Game {
 			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
 			/**
-			*	 \brief dds the Textures for a View
+			* \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
 
@@ -136,6 +136,11 @@ namespace Game {
 			* \brief Returns the camera position
 			*/
 			std::tuple<int, int> get_camera_pos() const;
+
+			/**
+			* \brief Returns graphics controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller();
 		};
 	}
 }

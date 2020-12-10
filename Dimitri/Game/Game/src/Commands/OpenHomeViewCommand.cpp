@@ -15,6 +15,7 @@ namespace Game {
 			auto help_ctrl = _main_controller->get_help_controller();
 			if (!w_ctrl->is_active("home")) {
 				w_ctrl->clear_views();
+				w_ctrl->add_textures(h_ctrl->get_textures(), "home");
 				w_ctrl->open_view("home");
 				w_ctrl->open_view("fps");
 				l_ctrl->stop();

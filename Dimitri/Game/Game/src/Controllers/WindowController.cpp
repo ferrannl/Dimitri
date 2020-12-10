@@ -28,7 +28,6 @@ namespace Game {
 
 		open_view("home");
 		open_view("fps");
-
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
 	}
 
@@ -134,6 +133,11 @@ namespace Game {
 	std::tuple<int, int> Controllers::WindowController::get_camera_pos() const
 	{
 		return _graphics_controller->get_camera_pos();
+	}
+
+	std::shared_ptr<Graphics::Controllers::GraphicsController> Controllers::WindowController::get_graphics_controller()
+	{
+		return _graphics_controller;
 	}
 
 }

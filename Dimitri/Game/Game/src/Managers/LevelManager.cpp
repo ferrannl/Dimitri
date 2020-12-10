@@ -21,3 +21,8 @@ void Game::Managers::LevelManager::load_level()
 	_input_controller->subscribe(_level_controller);
 	_level_controller->start();
 }
+
+std::shared_ptr<Game::Controllers::WindowController> Game::Managers::LevelManager::get_window_controller()
+{
+	return _window_controller;
+}
