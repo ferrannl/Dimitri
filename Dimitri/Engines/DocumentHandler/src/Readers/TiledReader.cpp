@@ -45,7 +45,9 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
                 _obj.push_back({ "id", obj.getId() });
                 _obj.push_back({ "type", obj.getType() });
                 _obj.push_back({ "name", obj.getName() });
-                _obj.push_back({ "position", obj.getPosition() });
+
+                const tson::Vector2i pos = obj.getPosition();
+                _obj.push_back({ "position", std::tuple<int,int>(pos.x, pos.y) });
 
                 for (std::pair<std::string, tson::Property> prop : obj.getProperties().getProperties()) {
                     _obj.push_back({ prop.first, prop.second.getValue() });

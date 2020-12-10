@@ -112,7 +112,7 @@ namespace Game {
 			*/
 			void set_state(Enums::LevelStateEnum state);
 
-			void turn_off_light(const int x);
+			void turn_off_light(const std::tuple<int, int> pos);
 
 			void simulate_objects();
 		};

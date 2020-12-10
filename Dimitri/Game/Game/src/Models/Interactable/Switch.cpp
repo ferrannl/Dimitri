@@ -3,7 +3,7 @@
 
 using namespace Game;
 
-Models::Switch::Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center), _switch_x(x)
+Models::Switch::Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center), _light_pos()
 {
 	initialize_textures();
 	create_shape(x, y, height, width, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
@@ -24,7 +24,7 @@ void Models::Switch::interact(Controllers::LevelController* ctrl)
 	if (_direction == Enums::DirectionEnum::RIGHT) {
 		set_animationstate(Enums::AnimateEnum::IDLE2);
 		set_direction(Enums::DirectionEnum::LEFT);
-		ctrl->turn_off_light(_switch_x);
+		ctrl->turn_off_light(_light_pos);
 	}
 	else {
 		set_animationstate(Enums::AnimateEnum::IDLE1);
@@ -32,8 +32,8 @@ void Models::Switch::interact(Controllers::LevelController* ctrl)
 	}
 }
 
-void Models::Switch::set_light(const int x)
+void Models::Switch::set_light(const std::tuple<int, int> light_pos)
 {
-	_switch_x = x;
+	_light_pos = light_pos;
 }
 

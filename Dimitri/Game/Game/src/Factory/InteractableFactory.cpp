@@ -10,27 +10,19 @@ using namespace Game;
 
 Game::Factories::InteractableFactory::InteractableFactory()
 {
-	_lights = { 3560, 3240, 1600 };
 }
 
-std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state, int light_x, int light_y)
 {
 	std::shared_ptr<Models::Interactable> instance;
-	Models::Switch* lever;
-	int last;
 
-	switch (type) {
-	case Enums::TypeEnum::LEVER:
-		lever = new Models::Switch{ x,y,z,height,width, state, Graphics::Models::Center{0,0} };
-		last = _lights.back();
-		lever->set_light(last);
-		_lights.pop_back();
-
+	if (type == Enums::TypeEnum::LEVER) {
+		Models::Switch* lever = new Models::Switch{ x,y,z,height,width, state, Graphics::Models::Center{0,0} };
+		lever->set_light(std::make_tuple(light_x, light_y));
 		instance.reset(lever);
-		break;
-	case Enums::TypeEnum::CAR:
+	}
+	else if (type == Enums::TypeEnum::CAR) {
 		instance.reset(new Models::Car{ x,y,z,height,width, state, Graphics::Models::Center{0,0} });
-		break;
 	}
 
 	return instance;

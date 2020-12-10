@@ -19,10 +19,10 @@ namespace Game {
 		* \class Interactable
 		* \brief Class contains the methods to be able to interact with an Object
 		*/
-		class Interactable : public Object{
+		class Interactable : public Object {
 		public:
 			Interactable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
-			
+
 			/**
 			* \brief Interact with this object
 			*/

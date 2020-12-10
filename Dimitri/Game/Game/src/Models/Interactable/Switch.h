@@ -20,9 +20,11 @@ namespace Game {
 			/**
 			* \brief The x coordinate of the beam
 			*/
-			int _switch_x;
+			std::tuple<int, int> _light_pos;
+
 		public:
 			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+
 
 			/**
 			* \brief Initializes Textures
@@ -37,7 +39,7 @@ namespace Game {
 			/**
 			* \brief Sets the x coordinate of the beam location
 			*/
-			void set_light(const int x);
+			void set_light(const std::tuple<int, int> light_pos);
 		};
 	}
 }

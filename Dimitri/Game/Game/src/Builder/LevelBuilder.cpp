@@ -14,12 +14,8 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vecto
     build_background(level);
     build_borders(level);
 
-    for (std::vector<std::pair<std::string, std::any>> object : objects) {
-
-    }
-
     for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {
-        _tile_builder.build(level, tileset);
+        _tile_builder.build(level, tileset, objects);
     }
 
     return level;
