@@ -40,7 +40,7 @@ namespace Game {
 			int image_size = images.size();
 			int randNum = (random_int % image_size);
 			std::string _image_path = images[randNum];
-			add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(0, 0, 2, 150, 75, 0, _image_path, Graphics::Enums::FlipEnum::NONE, true, _center));
+			add_texture(Enums::AnimateEnum::IDLE1, std::make_shared<Graphics::Models::Sprite>(0, 0, 2, 150, 75, 0, _image_path, Graphics::Enums::FlipEnum::NONE, true, _center, true));
 			get_texture()->set_visible(true);
 		}
 		
