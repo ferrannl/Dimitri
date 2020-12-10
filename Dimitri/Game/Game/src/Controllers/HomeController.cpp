@@ -15,7 +15,7 @@ namespace Game {
 	{
 		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::START },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS }, { "Exit", Enums::ButtonEnum::EXIT } };
+		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::START }, { "Highscore", Enums::ButtonEnum::HIGHSCORE },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS }, { "Exit", Enums::ButtonEnum::EXIT } };
 		std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 		int i = 0;
 		float w = 150;
@@ -29,10 +29,6 @@ namespace Game {
 			add_button(Models::Button{ _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second });
 			i++;
 		}
-		t = {
-			std::make_shared<Graphics::Models::Text>("Highscore", color, 30, _scene_height - 70, 1, 50, 90, 0, path, true, Graphics::Models::Center{ 0, 0 }, true)
-		};
-		add_button(Models::Button{ 30, _scene_height - 70.0f, 50, 110, t, Enums::ButtonEnum::HIGHSCORE });
 	}
 
 	void Controllers::HomeController::update(const Events::InputEvent& object)
