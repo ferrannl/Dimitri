@@ -16,13 +16,13 @@ namespace Game {
 		* \class UpdatableFactory
 		* \brief Class contains the methods to create updatables
 		*/
-		class UpdatableFactory : public Interfaces::IFactory<Models::Updatable> {
+		class UpdatableFactory {
 		public:
 
 			/**
 			* \brief Creates the updatable
 			*/
-			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state);
+			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state, int val = 0);
 		};
 	}
 }

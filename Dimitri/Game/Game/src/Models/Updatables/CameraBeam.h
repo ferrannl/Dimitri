@@ -16,6 +16,12 @@ namespace Game {
 		* \brief Class contains the data of the CameraBeam
 		*/
 		class CameraBeam : public Models::Updatable {
+		private:
+
+			/**
+			* \brief Bounds for the camerabeam location
+			*/
+			float _bounds;
 		public:
 			CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
@@ -28,6 +34,11 @@ namespace Game {
 			* \brief Updates the object when interacted with
 			*/
 			void update_object(Controllers::LevelController* ctrl = NULL);
+
+			/**
+			* \brief Sets the bounds of the camera beam rotation
+			*/
+			void set_bounds(float bounds);
 		};
 	}
 }

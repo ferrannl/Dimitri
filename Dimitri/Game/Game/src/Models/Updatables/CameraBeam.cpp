@@ -10,6 +10,7 @@ using namespace Game;
 Models::CameraBeam::CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
 {
 	_angle = -1;
+	_bounds = 50;
 
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
@@ -26,10 +27,10 @@ void Models::CameraBeam::initialize_textures()
 
 void Game::Models::CameraBeam::update_object(Controllers::LevelController* ctrl)
 {
-	if (get_texture()->get_angle() < -50) {
+	if (get_texture()->get_angle() < -_bounds) {
 		_angle *= -1;
 	}
-	else if (get_texture()->get_angle() > 50) {
+	else if (get_texture()->get_angle() > _bounds) {
 		_angle *= -1;
 	}
 
@@ -40,4 +41,9 @@ void Game::Models::CameraBeam::update_object(Controllers::LevelController* ctrl)
 	if (_shape->check_triangle_collision(ctrl->get_level()->get_player()->get_shape())) {
 		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
 	}
+}
+
+void Game::Models::CameraBeam::set_bounds(float bounds)
+{
+	_bounds = bounds;
 }

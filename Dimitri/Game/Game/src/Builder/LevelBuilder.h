@@ -1,7 +1,4 @@
 #include <vector>
-#include "../Factory/ObjectFactory.h";
-#include "../Factory/InteractableFactory.h";
-#include "../Factory/UpdatableFactory.h";
 #include "../Factory/BackgroundFactory.h";
 #include "../Builder/TileBuilder.h";
 #include "../Models/Level.h"
@@ -28,22 +25,10 @@ namespace Game {
 			*/
 			const int TILE_SIZE = 40;
 			
+			/**
+			* \brief Bulder for the tiles
+			*/
 			Builder::TileBuilder _tile_builder;
-
-			/**
-			* \brief Factory which creates static tiles
-			*/
-			Factories::ObjectFactory _object_factory;
-			
-			/**
-			* \brief Factory which creates interactables
-			*/
-			Factories::InteractableFactory _interactable_factory;
-
-			/**
-			* \brief Factory which creates updatables
-			*/
-			Factories::UpdatableFactory _updatable_factory;
 
 			/**
 			* \brief Factory which creates backgrounds

@@ -12,6 +12,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
     int cam_y = 0;
     int light_y = 0;
     int light_x = 0;
+    int rotation_bounds = 0;
 
     try {
         for (std::vector<int> vector : tileset.second) {
@@ -30,8 +31,8 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_tile(_object_factory.create(Enums::TypeEnum::LAMP, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
                     break;
                 case 4:
-                    light_y = get_value<int>("Lamp_yPos", get_object(objects, x, tiled_y));
-                    light_x = get_value<int>("Lamp_xPos", get_object(objects, x, tiled_y));
+                    light_y = get_value<int>("Light_yPos", get_object(objects, x, tiled_y));
+                    light_x = get_value<int>("Light_xPos", get_object(objects, x, tiled_y));
                     level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT, light_x, light_y));
                     break;
                 case 5:
@@ -45,17 +46,18 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     break;
                 case 11:
                     light_y = get_value<int>("Lamp_yPos", get_object(objects, x, tiled_y));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, 0, (light_y - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, tileset.first, (light_y - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 47:
                     cam_y = get_value<int>("Camera_yPos", get_object(objects, x, tiled_y));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, 0, (cam_y-y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    rotation_bounds = get_value<int>("Rotation_Borders", get_object(objects, x, tiled_y));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, tileset.first, (cam_y-y), TILE_SIZE * 5, Enums::DirectionEnum::NONE, rotation_bounds));
                     break;
                 case 16:
                     level->add_tile(_object_factory.create(Enums::TypeEnum::CAMERA, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 52:
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, 0, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 17:
                     // add enemy
@@ -77,6 +79,10 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
 
 const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y)
 {
+    if (objects.size() == 0) {
+        return std::vector<std::pair<std::string, std::any>>{ {"empty", "0"} };
+    }
+
     for (std::vector<std::pair<std::string, std::any>> object : objects) {
         for (std::pair<std::string, std::any> value : object) {
             if (value.first._Equal("position")) {
@@ -89,5 +95,5 @@ const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::
         }
     }
 
-    throw std::exception(("No object found at x " + std::to_string(x) + " and y " + std::to_string(y)).c_str());
+    return std::vector<std::pair<std::string, std::any>>{ {"empty", "0"} };
 }

@@ -37,7 +37,7 @@ namespace Game {
 			void interact(Controllers::LevelController* ctrl = NULL);
 
 			/**
-			* \brief Sets the x coordinate of the beam location
+			* \brief Sets the x and y coordinate of the lightbeam location
 			*/
 			void set_light(const std::tuple<int, int> light_pos);
 		};

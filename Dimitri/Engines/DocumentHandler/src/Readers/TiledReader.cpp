@@ -1,6 +1,5 @@
 #include "TiledReader.h"
 #include "../Tileson/tileson.hpp"
-#include "CsvReader.h"
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -21,8 +20,6 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
     catch (std::exception e) {
         throw std::runtime_error("Something went wrong parsing the level file");
     }
-
-
 
     std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> _retVal = {};
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = {};

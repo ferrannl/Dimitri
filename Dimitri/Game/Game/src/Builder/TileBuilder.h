@@ -52,8 +52,14 @@ namespace Game {
 			*/
 			void build(std::shared_ptr<Models::Level>& level, const std::pair<int, std::vector<std::vector<int>>>& tileset, const std::vector<std::vector<std::pair<std::string, std::any>>>& objects);
 
+			/**
+			* \brief Gets the tiled object from the list
+			*/
 			const std::vector<std::pair<std::string, std::any>> get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y);
 
+			/**
+			* \brief Get value from the tiled object
+			*/
 			template<typename T>
 			const T get_value(std::string name, const std::vector<std::pair<std::string, std::any>>& object) {
 				for (std::pair<std::string, std::any> value : object) {

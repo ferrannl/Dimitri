@@ -24,12 +24,13 @@ void Models::Switch::interact(Controllers::LevelController* ctrl)
 	if (_direction == Enums::DirectionEnum::RIGHT) {
 		set_animationstate(Enums::AnimateEnum::IDLE2);
 		set_direction(Enums::DirectionEnum::LEFT);
-		ctrl->turn_off_light(_light_pos);
 	}
 	else {
 		set_animationstate(Enums::AnimateEnum::IDLE1);
 		set_direction(Enums::DirectionEnum::RIGHT);
 	}
+
+	ctrl->toggle_light(_light_pos);
 }
 
 void Models::Switch::set_light(const std::tuple<int, int> light_pos)

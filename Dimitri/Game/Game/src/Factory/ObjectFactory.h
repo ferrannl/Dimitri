@@ -16,7 +16,7 @@ namespace Game {
 		* \class ObjectFactory
 		* \brief Class contains the methods to create tiles
 		*/
-		class ObjectFactory : public Interfaces::IFactory<Models::Object> {
+		class ObjectFactory {
 		public:
 			/**
 			* \brief Creates the background

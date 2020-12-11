@@ -8,7 +8,7 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state)
+std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state, int val)
 {
 	std::shared_ptr<Models::Updatable> instance;
 
@@ -20,7 +20,9 @@ std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::Ty
 		instance.reset(new Models::LightBeam{ x,y,z,height,width,state, Graphics::Models::Center{0,0} });
 		break;
 	case Enums::TypeEnum::CAM_VISION:
-		instance.reset(new Models::CameraBeam{ x,y,z,height,width,state , Graphics::Models::Center{width/2,0} });
+		Models::CameraBeam* beam = new Models::CameraBeam{ x,y,z,height,width,state , Graphics::Models::Center{width / 2,0} };
+		beam->set_bounds(val);
+		instance.reset(beam);
 		break;
 	}
 

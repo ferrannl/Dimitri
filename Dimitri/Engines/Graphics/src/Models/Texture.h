@@ -191,6 +191,11 @@ namespace Graphics {
 			void set_visible(const bool visibility);
 
 			/**
+			* \brief Toggle the visibility
+			*/
+			void toggle_visible();
+
+			/**
 			* \brief Sets the center
 			*/
 			void set_center(const Models::Center center);
