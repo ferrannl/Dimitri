@@ -1,18 +1,8 @@
 #pragma once
-#include "../Events/InputEvent.h"
-#include <src\Models\Texture.h>
-#include "AudioController.h"
-#include <chrono>
-#include <thread>
-#include <iostream>
-#include <tuple>
-#include <memory>
 #include <src\Interfaces\IObserver.h>
-#include <src\Models\Texture.h>
-#include <src/Models/Sprite.h>
-#include <src/Models/Text.h>
 #include "../Events/InputEvent.h"
-#include "../Controllers/AudioController.h"
+#include <vector>
+#include <memory>
 #include "../Mediators/BaseComponent.h"
 
 /**
@@ -26,16 +16,11 @@ namespace Game {
 	*/
 	namespace Controllers {
 		/**
-		* \class HomeController
-		* \brief Class contains the methods to interact with window engine and show images on screen
+		* \class CreditsController
+		* \brief Class contains the methods to interact with credits view
 		*/
-		class HomeController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
+		class CreditsController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
-			/**
-			* \brief An instance of the Audio Controller
-			*/
-			std::shared_ptr<Game::Controllers::AudioController> _audio_controller;
-
 			/**
 			* \brief The height of the scene
 			*/
@@ -46,7 +31,7 @@ namespace Game {
 			*/
 			int _scene_width;
 		public:
-			HomeController(int sceneheight, int scenewidth, std::shared_ptr<Game::Controllers::AudioController> audio_controller);
+			CreditsController(int sceneheight, int scenewidth);
 
 			/**
 			* \brief Loads the Buttons
