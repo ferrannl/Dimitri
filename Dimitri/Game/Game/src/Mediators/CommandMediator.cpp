@@ -94,6 +94,7 @@ namespace Game {
 						{Enums::ButtonEnum::CREDITS, Enums::CommandEnum::OPEN_CREDITS_VIEW},
 						{Enums::ButtonEnum::EXIT, Enums::CommandEnum::EXIT_GAME},
 						{Enums::ButtonEnum::HIGHSCORE, Enums::CommandEnum::LOAD_HIGHSCORE},
+						{Enums::ButtonEnum::SAVE_GAMES, Enums::CommandEnum::OPEN_SAVE_GAME_VIEW},
 						});
 					break;
 				}
@@ -115,6 +116,14 @@ namespace Game {
 				}
 			}
 			else if (sender.get_identifier() == "HighscoreManager")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
+					break;
+				}
+			}
+			else if (sender.get_identifier() == "SaveGameController")
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:

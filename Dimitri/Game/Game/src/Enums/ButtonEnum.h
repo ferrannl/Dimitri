@@ -26,7 +26,8 @@ namespace Game {
 			HELP,
 			CREDITS,
 			EXIT,
-			HIGHSCORE
+			HIGHSCORE,
+			SAVE_GAMES,
 		};
 	}
 }

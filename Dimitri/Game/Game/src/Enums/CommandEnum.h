@@ -32,6 +32,7 @@ namespace Game {
 			OPEN_GAME_OVER_LEVEL_VIEW,
 			OPEN_LEVEL_VIEW,
 			LOAD_HIGHSCORE,
+			OPEN_SAVE_GAME_VIEW,
 		};
 	}
 }

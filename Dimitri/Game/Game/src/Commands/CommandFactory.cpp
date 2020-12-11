@@ -15,6 +15,7 @@
 #include "OpenGameOverLevelViewCommand.h"
 #include "OpenHighscoreViewCommand.h"
 #include "OpenLevelViewCommand.h"
+#include "OpenSaveGameViewCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -36,6 +37,7 @@ namespace Game {
 			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_GAME_OVER_LEVEL_VIEW, std::make_unique<OpenGameOverLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_LEVEL_VIEW, std::make_unique<OpenLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::LOAD_HIGHSCORE, std::make_unique<OpenHighscoreViewCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_SAVE_GAME_VIEW, std::make_unique<OpenSaveGameViewCommand>(main_controller)));
 		}
 
 		Command* CommandFactory::get_command(Enums::CommandEnum command_name) const
