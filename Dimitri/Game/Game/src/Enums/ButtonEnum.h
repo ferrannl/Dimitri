@@ -28,6 +28,9 @@ namespace Game {
 			EXIT,
 			HIGHSCORE,
 			SAVE_GAMES,
+			SAVE1,
+			SAVE2,
+			SAVE3,
 		};
 	}
 }
