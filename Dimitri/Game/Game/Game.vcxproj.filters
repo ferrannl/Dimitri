@@ -72,6 +72,9 @@
     <ClCompile Include="src\Views\TimerView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
+    <ClCompile Include="src\Views\SaveGameView.cpp" />
+    <ClCompile Include="src\Commands\OpenSaveGameViewCommand.cpp" />
+    <ClCompile Include="src\Controllers\SaveGameController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -146,5 +149,8 @@
     <ClInclude Include="src\Views\TimerView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
+    <ClInclude Include="src\Views\SaveGameView.h" />
+    <ClInclude Include="src\Commands\OpenSaveGameViewCommand.h" />
+    <ClInclude Include="src\Controllers\SaveGameController.h" />
   </ItemGroup>
 </Project>
