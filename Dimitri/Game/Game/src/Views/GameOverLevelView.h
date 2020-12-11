@@ -31,11 +31,6 @@ namespace Game {
 			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
-
-			/**
-			* \brief Updates the textures
-			*/
-			void update() override;
 		};
 	}
 }

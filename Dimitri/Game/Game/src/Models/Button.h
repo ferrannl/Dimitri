@@ -1,9 +1,7 @@
 #pragma once
-#include "./Abstract/Interactable.h"
-#include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
-#include "../Mediators/BaseComponent.h"
-#include "../Enums/ButtonEnum.cpp"
+#include <src/Models/Texture.h>
+#include "../Enums/ButtonEnum.h"
 
 /**
 * \namespace Game
@@ -19,33 +17,75 @@ namespace Game {
 		* \class Button
 		* \brief Contains all code necessary for the button object
 		*/
-		class Button : public Game::Models::Interactable, public Mediators::BaseComponent {
-		protected:
+		class Button {
+		private:
 
-			Game::Enums::ButtonEnum _type;
 			/**
-			* \brief Contains the height of the current window
+			* \brief The x coordinate of the button
 			*/
-			int _scene_height;
+			float _x;
+
+			/**
+			* \brief The y coordinate of the button
+			*/
+			float _y;
+
+			/**
+			* \brief The heigh of the button
+			*/
+			float _height;
+
+			/**
+			* \brief The width of the button
+			*/
+			float _width;
+			
+			/**
+			* \brief The identifier of the button
+			*/
+			Enums::ButtonEnum _identifier;
+
+			/**
+			* \brief The texture of the button
+			*/
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 		public:
-			Button(float x, float y, float z, float height, float width, Enums::DirectionEnum state, float scene_height, Graphics::Models::Center center, const std::string& identifier, Game::Enums::ButtonEnum type);
+			Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier);
 
 			/**
-			* \brief Initializes the textures for an object
+			* \brief Checks if the button is clicked
 			*/
-			virtual void initialize_textures();
+			bool is_clicked(Game::Events::InputEvent object);
+
 			/**
-			* \brief Checks if a mouse button is pressed in a given area
+			* \brief Returns the texture
 			*/
-			void update(const Game::Events::InputEvent& object);
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+
 			/**
-			* \brief Returns the type of the Button
+			* \brief Returns the x coordinate of the button
 			*/
-			Game::Enums::ButtonEnum get_type();
+			float get_x() const;
+
+			/**
+			* \brief Returns the y coordinate of the button
+			*/
+			float get_y() const;
+
+			/**
+			* \brief Sets the x coordinate of the button
+			*/
+			void set_x(float x);
+
+			/**
+			* \brief Sets the y coordinate of the button
+			*/
+			void set_y(float y);
+			
 			/**
 			* \brief Action when the Button is pressed
 			*/
-			virtual void interact(Controllers::LevelController* ctrl = NULL) = 0;
+			Enums::ButtonEnum get_identifier() const;
 		};
 	}
 }

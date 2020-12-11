@@ -19,7 +19,10 @@
     <ClCompile Include="src\Commands\PlayerMoveLeftCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerMoveRightCommand.cpp" />
     <ClCompile Include="src\Commands\ToggleFpsViewCommand.cpp" />
+    <ClCompile Include="src\Controllers\AdvertisementController.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Controllers\CreditsController.cpp" />
+    <ClCompile Include="src\Controllers\HelpController.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
     <ClCompile Include="src\Controllers\InputController.cpp" />
     <ClCompile Include="src\Controllers\LevelController.cpp" />
@@ -27,6 +30,7 @@
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Controllers\WindowController.cpp" />
     <ClCompile Include="src\Enums\AnimateEnum.h" />
+    <ClCompile Include="src\Enums\ButtonEnum.h" />
     <ClCompile Include="src\Enums\DirectionEnum.h" />
     <ClCompile Include="src\Enums\TypeEnum.h" />
     <ClCompile Include="src\Events\InputEvent.cpp" />
@@ -37,15 +41,12 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Managers\HighscoreManager.cpp" />
     <ClCompile Include="src\Managers\LevelManager.cpp" />
+    <ClCompile Include="src\Mediators\BaseComponent.cpp" />
     <ClCompile Include="src\Mediators\CommandMediator.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
-    <ClCompile Include="src\Models\Buttons\AdvertisementButton.cpp" />
-    <ClCompile Include="src\Models\Buttons\ExitButton.cpp" />
-    <ClCompile Include="src\Models\Buttons\HighscoreButton.cpp" />
-    <ClCompile Include="src\Models\Buttons\StartButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
@@ -58,6 +59,7 @@
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\Updatables\Spike.cpp" />
+    <ClCompile Include="src\Views\AdvertisementView.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
@@ -70,6 +72,7 @@
     <ClCompile Include="src\Views\TimerView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <ClCompile Include="src\Models\Buttons\AdvertisementButton.cpp" />
   </ItemGroup>
@@ -486,6 +489,8 @@
     </ClInclude>
 =======
     <ClCompile Include="src\Enums\ButtonEnum.cpp" />
+=======
+>>>>>>> develop
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -508,14 +513,19 @@
     <ClInclude Include="src\Commands\PlayerMoveRightCommand.h" />
     <ClInclude Include="src\Commands\ToggleFpsViewCommand.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
+    <ClInclude Include="src\Controllers\CreditsController.h" />
+    <ClInclude Include="src\Controllers\AdvertisementController.h" />
+    <ClInclude Include="src\Controllers\HelpController.h" />
     <ClInclude Include="src\Controllers\HomeController.h" />
     <ClInclude Include="src\Controllers\InputController.h" />
     <ClInclude Include="src\Controllers\LevelController.h" />
     <ClInclude Include="src\Controllers\MainController.h" />
     <ClInclude Include="src\Controllers\PhysicsCollisionController.h" />
     <ClInclude Include="src\Controllers\WindowController.h" />
+    <ClInclude Include="src\Enums\CommandEnum.h" />
     <ClInclude Include="src\Enums\LevelStateEnum.h" />
     <ClInclude Include="src\Enums\StateEnum.h" />
+    <ClInclude Include="src\Enums\ViewEnum.h" />
     <ClInclude Include="src\Events\InputEvent.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
@@ -530,10 +540,6 @@
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Models\Button.h" />
-    <ClInclude Include="src\Models\Buttons\AdvertisementButton.h" />
-    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
-    <ClInclude Include="src\Models\Buttons\HighscoreButton.h" />
-    <ClInclude Include="src\Models\Buttons\StartButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />
@@ -546,6 +552,7 @@
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
     <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\Updatables\Spike.h" />
+    <ClInclude Include="src\Views\AdvertisementView.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />

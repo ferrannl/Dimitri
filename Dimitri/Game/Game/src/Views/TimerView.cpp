@@ -2,8 +2,8 @@
 
 namespace Game {
 
-	Views::TimerView::TimerView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) {
-	}
+	Views::TimerView::TimerView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) :
+		View(graphics_controller) { }
 
 	void Views::TimerView::update()
 	{
@@ -26,9 +26,15 @@ namespace Game {
 		open();
 
 	}
+
 	void Views::TimerView::close() {
 		View::close();
 		_textures.clear();
+	}
+
+	bool Views::TimerView::is_visible() const
+	{
+		return true;
 	}
 
 }

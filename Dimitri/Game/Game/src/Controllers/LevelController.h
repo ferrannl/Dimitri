@@ -60,13 +60,22 @@ namespace Game {
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
 
+			/**
+			* \brief A list of the buttons per Level State
+			*/
+			std::vector<std::pair<Enums::LevelStateEnum, std::unique_ptr<Game::Models::Button>>> _buttons;
+
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
 
+			void load_buttons();
+
 			/**
-			* \brief Returns a list of all Textures in the Level
+			* \brief Returns a list of all Textures based on the Level State
 			*/
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures(Enums::LevelStateEnum state) const;
+
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_button_textures() const;
 
 			/**
 			* \brief Receives updates from InputController
@@ -111,6 +120,11 @@ namespace Game {
 			void turn_off_light(const int x);
 
 			void simulate_objects();
+			
+			/**
+			* \brief Returns the buttons
+			*/
+			std::vector<Game::Models::Button*> get_buttons() const override;
 
 			
 			/**

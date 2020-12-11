@@ -7,7 +7,7 @@ namespace Game {
 		void ToggleFpsViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
-			w_ctrl->toggle_view_visibility("fps");
+			w_ctrl->toggle_view_visibility(Enums::ViewEnum::FPS);
 		}
 	}
 }
