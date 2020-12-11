@@ -23,6 +23,8 @@ void Game::Controllers::SaveGameController::load_buttons()
 	float w = 150;
 	float h = 50;
 	for (auto b : button_map_left) {
+
+		//billy
 		float w_text = b.first.length() * 15;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_scene_width / 3 - (w / 2) + 50, _scene_height / 4 * 3 - (120 + 70 * i), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/save_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
