@@ -11,6 +11,7 @@ namespace Game {
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
+			auto save_game_ctrl = _main_controller->get_save_game_controller();
 			auto c_ctrl = _main_controller->get_credits_controller();
 			auto help_ctrl = _main_controller->get_help_controller();
 			auto h_mgr = _main_controller->get_highscore_manager();
@@ -27,6 +28,7 @@ namespace Game {
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
 				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->unsubscribe(c_ctrl);
+				i_ctrl->unsubscribe(save_game_ctrl);
 				i_ctrl->unsubscribe(help_ctrl);
 				i_ctrl->unsubscribe(h_mgr);
 				i_ctrl->subscribe(h_ctrl);
