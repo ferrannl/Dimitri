@@ -3,7 +3,7 @@ using namespace Graphics;
 
 Controllers::GraphicsController::GraphicsController()
 {
-	_speed = 1;
+	_speed = 1.5;
 	_window = nullptr;
 }
 

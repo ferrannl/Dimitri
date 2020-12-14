@@ -5,7 +5,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
-	_speed = 1;
+	_speed = 1.5;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
