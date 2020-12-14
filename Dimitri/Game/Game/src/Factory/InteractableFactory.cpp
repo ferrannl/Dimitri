@@ -12,7 +12,7 @@ Game::Factories::InteractableFactory::InteractableFactory()
 {
 }
 
-std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state, int light_x, int light_y)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float light_x, float light_y)
 {
 	std::shared_ptr<Models::Interactable> instance;
 

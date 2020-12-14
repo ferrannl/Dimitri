@@ -4,7 +4,7 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> level_layers, const std::shared_ptr<Controllers::AudioController> audio_controller)
+std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> level_layers, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller)
 {
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
@@ -12,7 +12,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vecto
     int level_height = (tiles.at(0).second.size() - 1) * TILE_SIZE;
     int level_width = (tiles.at(0).second.at(0).size()) * TILE_SIZE;
 
-    std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, level_width, level_height);
+    std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, window_controller, level_width, level_height);
 
     build_background(level);
     build_borders(level);

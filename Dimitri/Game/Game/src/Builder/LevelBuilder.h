@@ -48,7 +48,7 @@ namespace Game {
 			/**
 			* \brief Builds the level
 			*/
-			std::shared_ptr<Models::Level> build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>, const std::shared_ptr<Controllers::AudioController> audio_controller);
+			std::shared_ptr<Models::Level> build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
 		};
 	}
 }
