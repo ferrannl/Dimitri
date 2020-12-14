@@ -78,6 +78,7 @@
     <ClCompile Include="src\Models\IObjects\Wall.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
+    <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\Updatables\Spike.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="src\Models\IObjects\Wall.h" />
     <ClInclude Include="src\Models\Level.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
+    <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
     <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\Updatables\Spike.h" />

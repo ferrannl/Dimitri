@@ -67,7 +67,7 @@ namespace Game {
 			/**
 			* \brief Instances of the Enemy Objects
 			*/
-			std::vector<std::shared_ptr<Game::Models::IObject>> _tiles;
+			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
 
 			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
 
@@ -89,15 +89,15 @@ namespace Game {
 			/**
 			* \brief The height of the Level
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The width of the Level
 			*/
-			int _width;
+			float _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height);
 
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 
@@ -221,12 +221,14 @@ namespace Game {
 			/**
 			* \brief Returns the height of the Level
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns the width of the Level
 			*/
-			int get_width() const;
+			float get_width() const;
+
+			std::shared_ptr<Game::Models::Player> get_player()const;
 		};
 	}
 

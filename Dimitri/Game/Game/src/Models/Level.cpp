@@ -1,7 +1,7 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height) : _audio_controller(audio_controller)
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height) : _audio_controller(audio_controller)
 {
 	_width = width;
 	_height = height;
@@ -189,12 +189,21 @@ void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprit
 	_backgrounds.push_back(tile);
 }
 
-int Game::Models::Level::get_height() const
+void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
+{
+}
+
+float Game::Models::Level::get_height() const
 {
 	return _height;
 }
 
-int Game::Models::Level::get_width() const
+float Game::Models::Level::get_width() const
 {
 	return _width;
+}
+
+std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
+{
+	return _player;
 }
