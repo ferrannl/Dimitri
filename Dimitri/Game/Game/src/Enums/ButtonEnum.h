@@ -31,6 +31,9 @@ namespace Game {
 			SAVE1,
 			SAVE2,
 			SAVE3,
+			NEW1,
+			NEW2,
+			NEW3
 		};
 	}
 }
