@@ -71,6 +71,12 @@ namespace Game {
 		return false;
 	}
 
+	void Controllers::WindowController::close_view(Enums::ViewEnum view_name)
+	{
+		_views[view_name]->set_active(false);
+		_views[view_name]->close();
+	}
+
 	void Controllers::WindowController::clear_views()
 	{
 		for (auto& v : _views) {

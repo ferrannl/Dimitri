@@ -7,7 +7,7 @@ namespace Game {
 		void OpenLevelViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
-			w_ctrl->clear_views();
+			w_ctrl->close_view(Enums::ViewEnum::PAUSE_LEVEL);
 			w_ctrl->open_view(Enums::ViewEnum::LEVEL);
 			w_ctrl->open_view(Enums::ViewEnum::HUD);
 			w_ctrl->open_view(Enums::ViewEnum::TIMER);

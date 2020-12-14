@@ -88,6 +88,11 @@ namespace Game {
 			bool is_active(Enums::ViewEnum view_name);
 
 			/**
+			* \brief Close a view based on the enum
+			*/
+			void close_view(Enums::ViewEnum view_name);
+
+			/**
 			* \brief Sets all the Views active property to false
 			*/
 			void clear_views();
