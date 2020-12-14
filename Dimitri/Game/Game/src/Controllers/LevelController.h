@@ -133,7 +133,7 @@ namespace Game {
 			/**
 			* \brief Turns of a light
 			*/
-			void turn_off_light(const int x)const;
+			void turn_off_light(const int x);
 
 			/**
 			* \brief Simulates the objects

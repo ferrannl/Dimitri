@@ -98,8 +98,6 @@ namespace Game {
 
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 
-			void load_buttons();
-
 			/**
 			* 	\brief Sets the speed of the level		
 			*/

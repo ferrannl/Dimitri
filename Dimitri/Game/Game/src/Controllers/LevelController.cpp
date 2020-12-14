@@ -69,7 +69,11 @@ void Controllers::LevelController::load_buttons()
 		i++;
 	}
 
-	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(605, 390, 50, 70, t, Enums::ButtonEnum::INCREASE_GAMEPLAY_SPEED) });
+	t = {};
+
+	//Gameplay speed
+	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(205, 600, 20, 35, t, Enums::ButtonEnum::INCREASE_GAMEPLAY_SPEED) });
+	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(115, 600, 20, 35, t, Enums::ButtonEnum::DECREASE_GAMEPLAY_SPEED) });
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelController::get_textures(Enums::LevelStateEnum state) const

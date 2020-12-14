@@ -5,7 +5,7 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
-	_speed = 1.5;
+	_speed = 1;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
@@ -18,10 +18,6 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
 {
 	return _buttons;
-}
-
-void Models::Level::load_buttons()
-{
 }
 
 void Models::Level::set_speed(float speed)
