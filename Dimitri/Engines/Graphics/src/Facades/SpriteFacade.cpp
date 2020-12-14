@@ -6,7 +6,7 @@ using namespace Graphics;
 
 Facades::SpriteFacade::SpriteFacade(const std::string& path, int opacity) : TextureFacade(path, opacity) {}
 
-void Facades::SpriteFacade::create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer)
+void Facades::SpriteFacade::create_texture(std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>& renderer)
 {
 	try {
 		//Load image at specified path
@@ -17,7 +17,7 @@ void Facades::SpriteFacade::create_texture(std::unique_ptr<SDL_Renderer, decltyp
 		}
 		
 		//Create texture from surface pixels
-		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), loadedSurface);
+		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), loadedSurface.get());
 		SDL_SetTextureBlendMode(t, SDL_BLENDMODE_BLEND);
 		SDL_SetTextureAlphaMod(t, _opacity);
 		_texture.reset(t);

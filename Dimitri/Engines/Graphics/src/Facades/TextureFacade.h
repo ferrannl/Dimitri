@@ -33,7 +33,7 @@ namespace Graphics {
 			/**
 			* \brief An instance of SDL_Texture
 			*/
-			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
+			std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> _texture;
 
 			/**
 			* \brief The opacity of the Texture

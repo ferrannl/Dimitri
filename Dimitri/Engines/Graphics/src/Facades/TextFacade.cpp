@@ -3,8 +3,8 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 
-Graphics::Facades::TextFacade::TextFacade(const std::string& path, const std::string& text, const Graphics::Models::Color& color, const float height) :
-	TextureFacade(path), _text{ text }, _color{ color }, _height{ height } {}
+Graphics::Facades::TextFacade::TextFacade(const std::string& path, const std::string& text, const Graphics::Models::Color& color, const float height, int opacity) :
+	TextureFacade(path, opacity), _text{ text }, _color{ color }, _height{ height } {}
 
 void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>& renderer)
 {
@@ -12,7 +12,6 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 		//Open the font
 		std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> gFont = { TTF_OpenFont(_path.c_str(), _height), TTF_CloseFont };
 
-		TTF_Font* gFont = TTF_OpenFont(_path.c_str(), _height * 2);
 		if (gFont == NULL)
 		{
 			throw Exceptions::CannotLoadFont();
@@ -25,11 +24,11 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 			throw Exceptions::CannotLoadImage();
 		}
 
-		//Create texture from surface pixels
-		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), textSurface);
+		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), loadedSurface.get());
 		SDL_SetTextureBlendMode(t, SDL_BLENDMODE_BLEND);
 		SDL_SetTextureAlphaMod(t, _opacity);
 		_texture.reset(t);
+
 		if (_texture == NULL)
 		{
 			throw Exceptions::CannotCreateTexture();
