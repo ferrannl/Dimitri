@@ -12,6 +12,7 @@ namespace Game {
 			w_ctrl->open_view(Enums::ViewEnum::HUD);
 			w_ctrl->open_view(Enums::ViewEnum::TIMER);
 			w_ctrl->open_view(Enums::ViewEnum::FPS);
+			w_ctrl->open_view(Enums::ViewEnum::GAMEPLAYSPEED);
 		}
 	}
 }

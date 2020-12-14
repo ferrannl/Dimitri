@@ -3,6 +3,7 @@ using namespace Graphics;
 
 Controllers::GraphicsController::GraphicsController()
 {
+	_speed = 1.5;
 	_window = nullptr;
 }
 
@@ -69,4 +70,14 @@ void Graphics::Controllers::GraphicsController::set_scene_size(int height, int w
 std::tuple<int, int> Graphics::Controllers::GraphicsController::get_scene_size() const
 {
 	return _window->get_scene_size();
+}
+
+void Graphics::Controllers::GraphicsController::set_speed(float speed)
+{
+	_speed = speed;
+}
+
+float Graphics::Controllers::GraphicsController::get_speed()
+{
+	return _speed;
 }

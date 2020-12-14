@@ -14,6 +14,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_help_controller = std::make_shared<Controllers::HelpController>(720, 1280);
 	_advertisement_controller = std::make_shared<Controllers::AdvertisementController>(720, 1280);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
+	_level_controller->load_buttons();
 	_highscore_manager = std::make_shared<Managers::HighscoreManager>(_input_controller, _audio_controller, _window_controller, _home_controller);
 }
 

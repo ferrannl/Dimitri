@@ -1,7 +1,7 @@
 #include "HUDView.h"
 
 namespace Game {
-	Views::HUDView::HUDView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller) 
+	Views::HUDView::HUDView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller) : View(graphics_controller)
 	{
 		init_textures();
 	}
@@ -13,6 +13,7 @@ namespace Game {
 		int height = 143;
 
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/lives.png" };
+		path_text = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color{ 255, 255, 255 };
 		_textures.push_back(std::make_shared<Graphics::Models::Sprite>( 0, window_height - height, 100, height, width, 0, path, Graphics::Enums::FlipEnum::NONE,true, Graphics::Models::Center{ 0, 0 }, false));
 	}

@@ -17,6 +17,8 @@
 #include "OpenLevelViewCommand.h"
 #include "OpenLevelTransitionViewCommand.h"
 #include "ClearViewsCommand.h"
+#include "IncreaseGameSpeedCommand.h"
+#include "DecreaseGameSpeedCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -40,6 +42,8 @@ namespace Game {
 			_commands.insert(std::make_pair(Enums::CommandEnum::LOAD_HIGHSCORE, std::make_unique<OpenHighscoreViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_LEVEL_TRANSITION_VIEW, std::make_unique<OpenLevelTransitionViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::CLEAR_VIEWS, std::make_unique<ClearViewsCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::INCREASE_GAMESPEED, std::make_unique<IncreaseGameSpeedCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::DECREASE_GAMESPEED, std::make_unique<DecreaseGameSpeedCommand>(main_controller)));
 		}
 
 		Command* CommandFactory::get_command(Enums::CommandEnum command_name) const

@@ -66,8 +66,8 @@ namespace Game {
 		}
 
 		// move the player
-		_player->get_shape()->move_x(1);
-		_pc_ctrl->simulate();
+		_player->get_shape()->move_x(1, _player->get_speed());
+		_pc_ctrl->simulate(_player->get_speed());
 		if (_counter % 5 == 0) {
 			_player->update();
 			_player->update_object();

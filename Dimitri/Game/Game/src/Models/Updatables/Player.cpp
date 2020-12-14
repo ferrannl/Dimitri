@@ -3,11 +3,22 @@
 Game::Models::Player::Player(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
 	_jumps = _max_amount_of_jumps;
+	_speed = 1;
 	_lastx = x;
 	_lasty = y;
 	_direction = Enums::DirectionEnum::RIGHT;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
+}
+
+void Game::Models::Player::set_speed(const float speed)
+{
+	_speed = speed;
+}
+
+float Game::Models::Player::get_speed() const
+{
+	return _speed;
 }
 
 void Game::Models::Player::initialize_textures()

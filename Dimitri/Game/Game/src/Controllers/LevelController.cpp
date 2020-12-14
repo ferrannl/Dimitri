@@ -2,7 +2,7 @@
 #include "../Mediators/CommandMediator.h"
 #include <src/Controllers/DocumentController.h>
 #include "../Builder/LevelBuilder.h"
-#include <conio.h> 
+#include <conio.h>
 #include <stdio.h>
 using namespace Game;
 
@@ -28,12 +28,12 @@ void Controllers::LevelController::load_buttons()
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 
 	// pause
-	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Continue", Enums::ButtonEnum::PAUSED_START }, { "Back to home", Enums::ButtonEnum::PAUSED_HOME } };
+	_button_map = { { "Continue", Enums::ButtonEnum::PAUSED_START }, { "Back to home", Enums::ButtonEnum::PAUSED_HOME } };
 	int i = 0;
 	float w = 200;
 	float h = 30;
 	float w_text;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -44,9 +44,9 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// game over
-	button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
+	_button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
 	i = 0;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -57,9 +57,9 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// win
-	button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
+	_button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
 	i = 0;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -68,6 +68,12 @@ void Controllers::LevelController::load_buttons()
 		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
 	}
+
+	t = {};
+
+	//Gameplay speed
+	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(205, 600, 20, 35, t, Enums::ButtonEnum::INCREASE_GAMEPLAY_SPEED) });
+	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(115, 600, 20, 35, t, Enums::ButtonEnum::DECREASE_GAMEPLAY_SPEED) });
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelController::get_textures(Enums::LevelStateEnum state) const
@@ -87,6 +93,17 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelContro
 		return button_textures;
 	}
 	return _level->get_textures();
+}
+
+void Game::Controllers::LevelController::set_speed(float speed)
+{
+	_level->set_speed(speed);
+	_window_controller->set_speed(speed);
+}
+
+float Game::Controllers::LevelController::get_speed()const
+{
+	return _level->get_speed();
 }
 
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const

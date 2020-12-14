@@ -147,12 +147,6 @@ namespace PhysicsCollision {
 			float get_height() const;
 
 			/**
-			* \brief Move the X position of the Shape
-			* \param value -1 is left, 1 is right
-			*/
-			void move_x(const int value) const;
-
-			/**
 			* \brief Move the Y position of the Shape
 			*/
 			void move_y() const;
@@ -175,7 +169,13 @@ namespace PhysicsCollision {
 			/**
 			* \brief Sets if the Shape is dynamic
 			*/
-			void set_is_dynamic(bool is_dynamic);
+			void set_is_dynamic(const bool is_dynamic);
+
+			/**
+			* \brief Move the X position of the Shape
+			* \param value -1 is left, 1 is right
+			*/
+			void move_x(const float direction, const float value) const;
 
 			/**
 			* \brief Checks if the Shape has collision with another shape
