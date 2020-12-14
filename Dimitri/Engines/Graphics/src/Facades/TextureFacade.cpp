@@ -3,8 +3,8 @@
 
 using namespace Graphics;
 
-Facades::TextureFacade::TextureFacade(const std::string& path) :
-	_path{ path }, _texture{ std::unique_ptr<SDL_Texture, TextureDestroyer>(nullptr, SDL_DestroyTexture) } {}
+Facades::TextureFacade::TextureFacade(const std::string& path, int opacity) :
+	_path{ path }, _opacity{ (uint8_t)(opacity * 255 / 100) }, _texture{ std::unique_ptr<SDL_Texture, TextureDestroyer>(nullptr, SDL_DestroyTexture) } {}
 
 SDL_Texture* Facades::TextureFacade::get_texture() const
 {

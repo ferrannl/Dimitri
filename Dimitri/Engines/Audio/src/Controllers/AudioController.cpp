@@ -107,3 +107,13 @@ void Controllers::AudioController::stop_audio(const std::string name) const
 		std::cout << e.get() << ": " << name << std::endl;
 	}
 }
+
+bool Audio::Controllers::AudioController::is_playing(const std::string name) const
+{
+	try {
+		return get_audio_by_name(name)->get_audio_facade()->is_playing();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
+}

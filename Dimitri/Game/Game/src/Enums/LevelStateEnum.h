@@ -11,15 +11,16 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		* \enum StateEnum
-		* \brief Enum Class contains the different state enums for object states
+		*	/brief Contains different level state enums for the level
 		*/
-		enum class StateEnum
+		enum class LevelStateEnum
 		{
-			IDLE,
-			WALKING,
-			JUMPING,
-			FALLING
+			TRANSITION,
+			ACTIVE,
+			WIN,
+			GAME_OVER,
+			PAUSED,
+			INACTIVE
 		};
 	}
 }

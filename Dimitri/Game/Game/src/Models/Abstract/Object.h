@@ -7,9 +7,9 @@
 #include <src\Helpers\BasePathHelper.h>
 #include <src/Models/Sprite.h>
 #include <src\Models\Shape.h>
-#include "../../Enums/StateEnum.cpp"
-#include "../../Enums/AnimateEnum.cpp"
-#include "../../Enums/DirectionEnum.cpp"
+#include "../../Enums/StateEnum.h"
+#include "../../Enums/AnimateEnum.h"
+#include "../../Enums/DirectionEnum.h"
 
 /**
 * \namespace Game
@@ -30,27 +30,27 @@ namespace Game {
 			/**
 			* \brief The X coordinate of the Object
 			*/
-			int _x;
+			float _x;
 
 			/**
 			* \brief The Y coordinate of the Object
 			*/
-			int _y;
+			float _y;
 
 			/**
 			* \brief The Z coordinate of the Object
 			*/
-			int _z;
+			float _z;
 
 			/**
 			* \brief The height of the Object
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The width of the Object
 			*/
-			int _width;
+			float _width;
 
 			/**
 			* \brief The direction the Object is faced
@@ -66,6 +66,7 @@ namespace Game {
 			* \brief The state of the Object
 			*/
 			Enums::StateEnum _state;
+
 
 			/**
 			* \brief The animationstate of the Object
@@ -92,7 +93,7 @@ namespace Game {
 			*/
 			virtual void initialize_textures() = 0;
 		public:
-			Object(const int x, const int y, const int z, const int height, const int width, const Enums::DirectionEnum state, const Graphics::Models::Center center);
+			Object(const float x, const float y, const float z, const float height, const float width, const Enums::DirectionEnum state, const Graphics::Models::Center center);
 
 			/**
 			* \brief Returns the Texture based on state
@@ -104,35 +105,36 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_all_textures();
 
+
 			/**
 			* \brief Returns X coordinate
 			*/
-			int get_x() const;
+			float get_x() const;
 
 			/**
 			* \brief Sets X coordinate
 			*/
-			void set_x(int value);
+			void set_x(float value);
 
 			/**
 			* \brief Returns Y coordinate
 			*/
-			int get_y() const;
+			float get_y() const;
 
 			/**
 			* \brief Sets Y coordinate
 			*/
-			void set_y(int value);
+			void set_y(float value);
 
 			/**
 			* \brief Returns Z coordinate
 			*/
-			int get_z() const;
+			float get_z() const;
 
 			/**
 			* \brief Sets Z coordinate
 			*/
-			void set_z(int value);
+			void set_z(float value);
 
 			/**
 			* \brief Sets state of the Object
@@ -157,7 +159,7 @@ namespace Game {
 			/**
 			* \brief Creates the shape for the Object
 			*/
-			void create_shape(const int x, const int y, const int height, const int width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
+			void create_shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
 
 			/**
 			* \brief Sets shape of the Object
@@ -172,17 +174,22 @@ namespace Game {
 			/**
 			* \brief Returns height of the Object
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns width of the Object
 			*/
-			int get_width() const;
+			float get_width() const;
 
 			/**
 			* \brief Updates X and Y coordinates using the Shape
 			*/
 			void update();
+
+			/**
+			* \brief Clear textures
+			*/
+			void clear_textures();
 		};
 	}
 }

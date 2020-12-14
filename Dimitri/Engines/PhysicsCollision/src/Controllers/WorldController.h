@@ -51,9 +51,14 @@ namespace PhysicsCollision {
 			void destroy_bodies();
 
 			/**
+			* \brief Destroys a body in the World
+			*/
+			void destroy_body(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape);
+
+			/**
 			* \brief Simulates the world
 			*/
-			void simulate();
+			void simulate(const float speed)const;
 
 			/**
 			* \brief Returns all the Shapes in the World

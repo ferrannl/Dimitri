@@ -1,12 +1,13 @@
 #pragma once
 #include "../Controllers/AudioController.h"
+#include "../Controllers/WindowController.h"
 #include <memory>
 #include <chrono>
 #include <thread>
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 #include "./IObjects/Wall.h"
 #include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
@@ -14,6 +15,7 @@
 #include "./Updatables/LightBeam.h"
 #include "Lamp.h"
 #include "./Abstract/Updatable.h"
+#include "Button.h"
 
 /**
 * \namespace Game
@@ -42,9 +44,19 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 
 			/**
+			* \brief A list of the Buttons
+			*/
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
+			/**
 			* \brief List of all the Shapes in the Level
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
+
+			/**
+			* \brief Speed of the level
+			*/
+			float _speed;
 
 			/**
 			* \brief An instance of the Player Object
@@ -82,7 +94,19 @@ namespace Game {
 			int _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
+
+			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
+
+			/**
+			* 	\brief Returns the speed of the level		
+			*/
+			void set_speed(float speed);
+
+			/**
+			* 	\brief Returns the speed of the level
+			*/
+			float get_speed() const;
 
 			/**
 			* \brief Add music

@@ -21,8 +21,8 @@ namespace Game {
 		*/
 		class Interactable : public Object {
 		public:
-			Interactable(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
-
+			Interactable(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			
 			/**
 			* \brief Interact with this object
 			*/

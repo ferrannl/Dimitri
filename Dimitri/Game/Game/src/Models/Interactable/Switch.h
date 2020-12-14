@@ -23,7 +23,7 @@ namespace Game {
 			std::vector<std::tuple<int, int>> _light_positions;
 
 		public:
-			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Switch(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 
 			/**
