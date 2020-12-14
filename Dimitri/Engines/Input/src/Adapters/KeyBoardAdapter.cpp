@@ -87,6 +87,8 @@ Enums::EventEnum Adapters::KeyBoardAdapter::translate_to_enum(const SDL_Event ev
             return Enums::EventEnum::KEY_PRESS_Z;
         case SDLK_BACKSPACE:
             return Enums::EventEnum::KEY_PRESS_BACKSPACE;
+        case SDLK_SPACE:
+            return Enums::EventEnum::KEY_PRESS_SPACE;
         case SDLK_ESCAPE:
             return Enums::EventEnum::KEY_PRESS_ESC;
         case SDLK_LCTRL:

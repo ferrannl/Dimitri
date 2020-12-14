@@ -39,6 +39,11 @@ namespace Game {
 			/**
 			* \brief An instance of the thread
 			*/
+			std::thread _transition_thread;
+
+			/**
+			* \brief An instance of the thread
+			*/
 			std::thread _simulation_thread;
 
 			/**
@@ -106,7 +111,12 @@ namespace Game {
 			void stop();
 
 			/**
-			* \brief Returns the Level
+			* \brief Polls events in the transition state
+			*/
+			void run_transition();
+
+			/**
+			* \brief Simulates the Level
 			*/
 			void simulate();
 

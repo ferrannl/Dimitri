@@ -35,7 +35,7 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API SpriteFacade : public TextureFacade {
 		public:
-			SpriteFacade(const std::string& path);
+			SpriteFacade(const std::string& path, int opacity);
 
 			/**
 			* \brief Creates a SDL_Texture

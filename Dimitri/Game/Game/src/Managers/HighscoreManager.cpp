@@ -13,7 +13,6 @@ void Game::Managers::HighscoreManager::load_highscore()
 {
 	if (_window_controller->is_active(Enums::ViewEnum::HOME)) {
 		_input_controller->unsubscribe(_home_controller);
-		_window_controller->toggle_view_visibility(Enums::ViewEnum::TIMER);
 		_window_controller->clear_views();
 		_audio_controller->play_audio("highscore");
 		_window_controller->open_view(Enums::ViewEnum::HIGHSCORE);

@@ -28,7 +28,8 @@ namespace Game {
 			WIN_LEVEL,
 			HIGHSCORE,
 			TIMER,
-			GamePlaySpeed
+			LEVEL_TRANSITION,
+			GAMEPLAYSPEED
 		};
 	}
 }
