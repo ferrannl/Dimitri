@@ -99,7 +99,7 @@ namespace Game {
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 
 			/**
-			* 	\brief Sets the speed of the level		
+			* 	\brief Returns the speed of the level		
 			*/
 			void set_speed(float speed);
 

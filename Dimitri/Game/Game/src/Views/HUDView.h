@@ -20,6 +20,10 @@ namespace Game {
 		*/
 		class HUDView : public View {
 		private:
+
+			/**
+			* \brief Path for the text font
+			*/
 			std::string path_text;
 		public:
 			HUDView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);

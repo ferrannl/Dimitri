@@ -18,6 +18,9 @@ namespace Game {
 		class Player : public Models::Updatable {
 		private:
 
+			/**
+			* \brief The speed of the player
+			*/
 			float _speed;
 
 			/**
