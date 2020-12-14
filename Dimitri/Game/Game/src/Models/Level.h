@@ -4,8 +4,6 @@
 #include <memory>
 #include <chrono>
 #include <thread>
-#include "../Models/Buttons/IncreaseGameSpeedButton.h"
-#include "../Models/Buttons/DecreaseGameSpeedButton.h"
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>

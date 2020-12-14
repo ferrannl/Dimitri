@@ -18,8 +18,8 @@ void Game::Managers::LevelManager::load_level()
 {
 	_input_controller->unsubscribe(_home_controller);
 	_window_controller->clear_views();
-	_window_controller->open_view("home");
-	_window_controller->open_view("gameplay_speed_view");
+	_window_controller->open_view(Enums::ViewEnum::HOME);
+	_window_controller->open_view(Enums::ViewEnum::GamePlaySpeed);
 	_window_controller->set_scene_size(_level_controller->get_level()->get_height(), _level_controller->get_level()->get_width());
 	_input_controller->subscribe(_level_controller);
 	_level_controller->start();

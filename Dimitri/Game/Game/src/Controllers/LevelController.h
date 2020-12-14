@@ -30,6 +30,7 @@ namespace Game {
 		*/
 		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
+			std::vector<std::pair<std::string, Enums::ButtonEnum>> _button_map;
 			/**
 			* \brief An Instance of the current Level
 			*/
@@ -68,14 +69,11 @@ namespace Game {
 			/**
 			* \brief Loads the buttons for a level
 			*/
-			void load_buttons()const;
 
 			/**
 			* \brief Returns a list of all Textures in the Level
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures(Enums::LevelStateEnum state) const;
-
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_button_textures() const;
 
 			/**
 			* \brief Sets the speeds of a level
@@ -110,7 +108,7 @@ namespace Game {
 			/**
 			* \brief Returns the Level
 			*/
-			void simulate()const;
+			void simulate();
 
 			/**
 			* \brief Set the level state and stops/starts the thread

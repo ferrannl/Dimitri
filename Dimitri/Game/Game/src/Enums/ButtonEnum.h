@@ -26,7 +26,9 @@ namespace Game {
 			HELP,
 			CREDITS,
 			EXIT,
-			HIGHSCORE
+			HIGHSCORE,
+			INCREASE_GAMEPLAY_SPEED,
+			DECREASE_GAMEPLAY_SPEED
 		};
 	}
 }

@@ -114,24 +114,20 @@ namespace Game {
 					break;
 				}
 			}
-			else if (sender.get_identifier() == "IncreaseGameSpeedButton") {
+			else if (sender.get_identifier() == "Increase_Game_Speed")
+			{
 				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("increase_game_speed")->execute();
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 					break;
 				}
 			}
-			else if (sender.get_identifier() == "DecreaseGameSpeedButton") {
+			else if (sender.get_identifier() == "Decrease_Game_Speed")
+			{
 				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("decrease_game_speed")->execute();
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 					break;
-				}
-			}
-			else if (sender.get_identifier() == "HighscoreButton") {
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-					_factory->get_command("load_highscore")->execute();
 				}
 			}
 				else if (sender.get_identifier() == "HighscoreManager")

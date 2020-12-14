@@ -2,7 +2,6 @@
 #include "../Mediators/CommandMediator.h"
 #include <src/Controllers/DocumentController.h>
 #include "../Builder/LevelBuilder.h"
-#include "../Models/Buttons/IncreaseGameSpeedButton.h"
 #include <conio.h>
 #include <stdio.h>
 using namespace Game;
@@ -22,25 +21,19 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
-void Game::Controllers::LevelController::load_buttons()const
-{
-	_level->load_buttons();
-}
-
 void Controllers::LevelController::load_buttons()
-
 {
 	Graphics::Models::Color color = { 255, 255, 255 };
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 
 	// pause
-	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Continue", Enums::ButtonEnum::PAUSED_START }, { "Back to home", Enums::ButtonEnum::PAUSED_HOME } };
+	_button_map = { { "Continue", Enums::ButtonEnum::PAUSED_START }, { "Back to home", Enums::ButtonEnum::PAUSED_HOME } };
 	int i = 0;
 	float w = 200;
 	float h = 30;
 	float w_text;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -51,9 +44,9 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// game over
-	button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
+	_button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
 	i = 0;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -64,9 +57,9 @@ void Controllers::LevelController::load_buttons()
 	}
 
 	// win
-	button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
+	_button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
 	i = 0;
-	for (auto b : button_map) {
+	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -75,6 +68,8 @@ void Controllers::LevelController::load_buttons()
 		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
 	}
+
+	_buttons.push_back({ Enums::LevelStateEnum::ACTIVE, std::make_unique<Models::Button>(605, 390, 50, 70, t, Enums::ButtonEnum::INCREASE_GAMEPLAY_SPEED) });
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Controllers::LevelController::get_textures(Enums::LevelStateEnum state) const
@@ -114,15 +109,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
-	for (auto& b : _level->get_buttons())
-	{
-		b->update(object);
-	}
 	Mediators::CommandMediator::instance()->notify(*this, object);
-}
-
-std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const {
-	return _level;
 }
 
 void Controllers::LevelController::start()
@@ -157,15 +144,6 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_window_controller->toggle_view_visibility(Enums::ViewEnum::TIMER);
 		}
 		Mediators::CommandMediator::instance()->notify(*this, new_state);
-	}
-}
-
-void Controllers::LevelController::turn_off_light(const int x)
-{
-	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
-		if (l->get_x() == x) {
-			l->get_texture()->set_visible(false);
-		}
 	}
 }
 
