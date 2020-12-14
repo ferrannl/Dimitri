@@ -12,13 +12,14 @@ Game::Factories::InteractableFactory::InteractableFactory()
 {
 }
 
-std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float light_x, float light_y)
+std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, std::vector<std::tuple<float, float>> lights, bool secret)
 {
 	std::shared_ptr<Models::Interactable> instance;
 
 	if (type == Enums::TypeEnum::LEVER) {
 		Models::Switch* lever = new Models::Switch{ x,y,z,height,width, state, Graphics::Models::Center{0,0} };
-		lever->set_light(std::make_tuple(light_x, light_y));
+		lever->set_light(lights);
+		lever->set_secret(secret);
 		instance.reset(lever);
 	}
 	else if (type == Enums::TypeEnum::CAR) {

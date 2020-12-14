@@ -111,11 +111,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	/*for (std::shared_ptr<Game::Models::Button> b : _buttons)
-	{
-		temp = b->get_all_textures();
-		textures.insert(textures.end(), temp.begin(), temp.end());
-	}*/
 	return textures;
 }
 

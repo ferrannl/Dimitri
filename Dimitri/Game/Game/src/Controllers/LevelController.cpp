@@ -17,6 +17,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_sound("failed", "/assets/audio/failed.wav");
+	_level->add_music("secret", "/assets/audio/rasputin.mp3");
 	_level->add_music("transition", "/assets/audio/running.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
@@ -109,6 +110,12 @@ float Game::Controllers::LevelController::get_speed()const
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
 {
 	return _level;
+}
+
+void Game::Controllers::LevelController::play_secret() {
+	_level->stop_music("level1");
+	_level->play_music("secret");
+	
 }
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)

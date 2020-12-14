@@ -5,6 +5,7 @@ using namespace Game;
 
 Models::Switch::Switch(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Interactable(x, y, z, height, width, state, center), _light_positions{}
 {
+	_secret = false;
 	initialize_textures();
 	create_shape(x, y, height, width, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -30,13 +31,22 @@ void Models::Switch::interact(Controllers::LevelController* ctrl)
 		set_direction(Enums::DirectionEnum::RIGHT);
 	}
 
+	if (_secret) {
+		ctrl->play_secret();
+	}
+
 	for(std::tuple<int, int> kp : _light_positions) {
 		ctrl->toggle_light(kp);
 	}
 }
 
-void Models::Switch::set_light(const std::tuple<int, int> light_pos)
+void Models::Switch::set_light(const std::vector<std::tuple<float, float>> light_pos)
 {
-	_light_positions.push_back(light_pos);
+	_light_positions = light_pos;
+}
+
+void Models::Switch::set_secret(const bool secret)
+{
+	_secret = secret;
 }
 

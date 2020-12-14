@@ -28,7 +28,7 @@ namespace Game {
 			/**
 			* \brief Creates the interactable
 			*/
-			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float light_x = 0, float light_y = 0);
+			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, std::vector<std::tuple<float, float>> = {}, bool secret = false);
 		};
 	}
 }

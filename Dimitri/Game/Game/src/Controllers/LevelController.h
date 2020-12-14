@@ -101,6 +101,8 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::Level> get_level() const;
 
+			void play_secret();
+
 			/**
 			* \brief Starts simulation
 			*/

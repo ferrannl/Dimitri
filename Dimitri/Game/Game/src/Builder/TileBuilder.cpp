@@ -13,6 +13,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
     int light_y = 0;
     int light_x = 0;
     int rotation_bounds = 0;
+    bool secret = false;
 
     try {
         for (std::vector<int> vector : tileset.second) {
@@ -31,9 +32,8 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_tile(_object_factory.create(Enums::TypeEnum::LAMP, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT));
                     break;
                 case 4:
-                    light_y = get_value<int>("Light_yPos", get_object(objects, x, tiled_y));
-                    light_x = get_value<int>("Light_xPos", get_object(objects, x, tiled_y));
-                    level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT, light_x, light_y));
+                    secret = get_value<bool>("Rasputin", get_object(objects, x, tiled_y));
+                    level->add_interactable(_interactable_factory.create(Enums::TypeEnum::LEVER, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::RIGHT, get_lights(get_object(objects, x, tiled_y)), secret));
                     break;
                 case 5:
                     level->add_player(std::make_shared<Models::Player>(x, y, tileset.first, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
@@ -67,6 +67,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                 x += TILE_SIZE;
             }
 
+            secret = false;
             x = 0;
             y -= TILE_SIZE;
             tiled_y += TILE_SIZE;
@@ -96,4 +97,27 @@ const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::
     }
 
     return std::vector<std::pair<std::string, std::any>>{ {"empty", "0"} };
+}
+
+std::vector<std::tuple<float, float>> Game::Builder::TileBuilder::get_lights(std::vector<std::pair<std::string, std::any>> object)
+{
+    std::vector<std::tuple<float, float>> retVal = {};
+    
+    for (std::pair<std::string, std::any> val : object) {
+        if (val.first.substr(0, 5) == "Light") {
+            std::string input = std::any_cast<std::string>(val.second);
+
+            std::size_t comma_pos = input.find(',');
+            auto a = input.substr(0, comma_pos);
+            auto a2 = input.substr(comma_pos + 1);
+
+            int xpos = stoi(input.substr(0, comma_pos));
+            int ypos = stoi(input.substr(comma_pos + 1));
+
+
+            retVal.push_back(std::make_tuple(xpos, ypos));
+        }
+    }
+
+    return retVal;
 }

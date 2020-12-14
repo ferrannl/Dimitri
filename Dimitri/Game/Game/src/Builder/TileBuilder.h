@@ -57,6 +57,8 @@ namespace Game {
 			*/
 			const std::vector<std::pair<std::string, std::any>> get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y);
 
+			std::vector<std::tuple<float, float>> get_lights(std::vector<std::pair<std::string, std::any>> object);
+
 			/**
 			* \brief Get value from the tiled object
 			*/
@@ -67,6 +69,8 @@ namespace Game {
 						return std::any_cast<T>(value.second);
 					}
 				}
+
+				return false;
 			}
 		};
 	}

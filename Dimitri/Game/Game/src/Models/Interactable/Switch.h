@@ -20,7 +20,9 @@ namespace Game {
 			/**
 			* \brief The x coordinate of the beam
 			*/
-			std::vector<std::tuple<int, int>> _light_positions;
+			std::vector<std::tuple<float, float>> _light_positions;
+
+			bool _secret;
 
 		public:
 			Switch(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
@@ -39,7 +41,8 @@ namespace Game {
 			/**
 			* \brief Sets the x and y coordinate of the lightbeam location
 			*/
-			void set_light(const std::tuple<int, int> light_pos);
+			void set_light(const std::vector<std::tuple<float, float>> light_pos);
+			void set_secret(const bool secret);
 		};
 	}
 }
