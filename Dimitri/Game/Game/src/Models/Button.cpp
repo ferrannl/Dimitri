@@ -5,7 +5,7 @@ namespace Game {
 		Button::Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier) :
 			_x{ x }, _y{ y }, _height{ height }, _width{ width }, _textures{ textures }, _identifier{ identifier } {}
 
-		bool Button::is_clicked(Game::Events::InputEvent object)
+		bool Game::Models::Button::is_clicked(Game::Events::InputEvent object)
 		{
 			if (object.event_enum == Input::Enums::EventEnum::MOUSE_PRESSED_LEFT) {
 				int x = std::get<0>(object.mouse_pos);
@@ -29,6 +29,16 @@ namespace Game {
 		float Button::get_y() const
 		{
 			return _y;
+		}
+
+		float Button::get_height() const
+		{
+			return _height;
+		}
+
+		float Button::get_width() const
+		{
+			return _width;
 		}
 
 		void Button::set_x(float x)

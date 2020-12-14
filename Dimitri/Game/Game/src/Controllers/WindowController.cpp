@@ -28,6 +28,8 @@ namespace Game {
 		_views.insert({ Enums::ViewEnum::ADVERTISEMENT, std::make_unique<Views::AdvertisementView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::HIGHSCORE, std::make_unique<Views::HighscoreView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::TIMER, std::make_unique<Views::TimerView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::CHEATS, std::make_unique<Views::CheatsView>(_graphics_controller) });
+
 
 		open_view(Enums::ViewEnum::HOME);
 		open_view(Enums::ViewEnum::ADVERTISEMENT);

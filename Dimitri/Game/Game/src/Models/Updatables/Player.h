@@ -20,7 +20,7 @@ namespace Game {
 			/**
 			* \brief The max amount of jumps the player is allowed to make
 			*/
-			const int _max_amount_of_jumps = 2;
+			int _max_amount_of_jumps = 2;
 
 			/**
 			* \brief Last x position of last update of the player
@@ -83,6 +83,11 @@ namespace Game {
 			* \brief Returns Extra Textures
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_extra_textures();
+
+			/**
+			* \brief sets max amount of jumps
+			*/
+			void set_jumps(int jumps);
 		};
 	}
 }

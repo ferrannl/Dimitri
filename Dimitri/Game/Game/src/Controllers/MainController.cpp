@@ -7,6 +7,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 {
 	_window_controller = std::make_shared<WindowController>();
 	_audio_controller = std::make_shared<Game::Controllers::AudioController>();
+	_cheats_controller = std::make_shared<Controllers::CheatsController>();
 	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller, _audio_controller);
 	_input_controller = std::make_shared<Controllers::InputController>(_window_controller);
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
@@ -37,6 +38,9 @@ void Game::Controllers::MainController::run()
 	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::WIN), Enums::ViewEnum::WIN_LEVEL);
 	_window_controller->add_textures(_advertisement_controller->get_textures(), Enums::ViewEnum::ADVERTISEMENT);
 	_window_controller->add_textures(_highscore_manager->get_textures(), Enums::ViewEnum::HIGHSCORE);
+	_cheats_controller->initialize_textures(_window_controller->get_window_height(), _window_controller->get_window_width());
+	_window_controller->set_textures(_cheats_controller->get_textures(), Enums::ViewEnum::CHEATS);
+
 	_input_controller->poll_events();
 }
 
@@ -89,4 +93,9 @@ std::shared_ptr<Controllers::CreditsController> Game::Controllers::MainControlle
 std::shared_ptr<Controllers::HelpController> Game::Controllers::MainController::get_help_controller() const
 {
 	return _help_controller;
+}
+
+std::shared_ptr<Controllers::CheatsController> Game::Controllers::MainController::get_cheats_controller() const
+{
+	return _cheats_controller;
 }

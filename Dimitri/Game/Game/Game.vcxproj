@@ -23,6 +23,7 @@
     <ClCompile Include="src\Commands\CommandFactory.cpp" />
     <ClCompile Include="src\Commands\ExitGameCommand.cpp" />
     <ClCompile Include="src\Commands\LoadLevelCommand.cpp" />
+    <ClCompile Include="src\Commands\OpenCheatsViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenCreditsViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenGameOverLevelViewCommand.cpp" />
     <ClCompile Include="src\Commands\OpenHelpViewCommand.cpp" />
@@ -36,9 +37,12 @@
     <ClCompile Include="src\Commands\PlayerJumpCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerMoveLeftCommand.cpp" />
     <ClCompile Include="src\Commands\PlayerMoveRightCommand.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInfiniteCommand.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInvincibleCommand.cpp" />
     <ClCompile Include="src\Commands\ToggleFpsViewCommand.cpp" />
     <ClCompile Include="src\Controllers\AdvertisementController.cpp" />
     <ClCompile Include="src\Controllers\AudioController.cpp" />
+    <ClCompile Include="src\Controllers\CheatsController.cpp" />
     <ClCompile Include="src\Controllers\CreditsController.cpp" />
     <ClCompile Include="src\Controllers\HelpController.cpp" />
     <ClCompile Include="src\Controllers\HomeController.cpp" />
@@ -65,6 +69,7 @@
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
+    <ClCompile Include="src\Models\CheckButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
     <ClCompile Include="src\Models\IObjects\Camera.cpp" />
@@ -73,11 +78,13 @@
     <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
     <ClCompile Include="src\Models\IObjects\Wall.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
+    <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\Player.cpp" />
     <ClCompile Include="src\Models\Updatables\Spike.cpp" />
     <ClCompile Include="src\Views\AdvertisementView.cpp" />
+    <ClCompile Include="src\Views\CheatsView.cpp" />
     <ClCompile Include="src\Views\CreditsView.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\GameOverLevelView.cpp" />
@@ -97,6 +104,7 @@
     <ClInclude Include="src\Commands\CommandFactory.h" />
     <ClInclude Include="src\Commands\ExitGameCommand.h" />
     <ClInclude Include="src\Commands\LoadLevelCommand.h" />
+    <ClInclude Include="src\Commands\OpenCheatsViewCommand.h" />
     <ClInclude Include="src\Commands\OpenCreditsViewCommand.h" />
     <ClInclude Include="src\Commands\OpenGameOverLevelViewCommand.h" />
     <ClInclude Include="src\Commands\OpenHelpViewCommand.h" />
@@ -110,8 +118,11 @@
     <ClInclude Include="src\Commands\PlayerJumpCommand.h" />
     <ClInclude Include="src\Commands\PlayerMoveLeftCommand.h" />
     <ClInclude Include="src\Commands\PlayerMoveRightCommand.h" />
+    <ClInclude Include="src\Commands\SetCheatInfiniteCommand.h" />
+    <ClInclude Include="src\Commands\SetCheatInvincibleCommand.h" />
     <ClInclude Include="src\Commands\ToggleFpsViewCommand.h" />
     <ClInclude Include="src\Controllers\AudioController.h" />
+    <ClInclude Include="src\Controllers\CheatsController.h" />
     <ClInclude Include="src\Controllers\CreditsController.h" />
     <ClInclude Include="src\Controllers\AdvertisementController.h" />
     <ClInclude Include="src\Controllers\HelpController.h" />
@@ -139,6 +150,7 @@
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Abstract\Updatable.h" />
     <ClInclude Include="src\Models\Button.h" />
+    <ClInclude Include="src\Models\CheckButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />
     <ClInclude Include="src\Models\IObjects\Camera.h" />
@@ -147,11 +159,13 @@
     <ClInclude Include="src\Models\IObjects\Lamp.h" />
     <ClInclude Include="src\Models\IObjects\Wall.h" />
     <ClInclude Include="src\Models\Level.h" />
+    <ClInclude Include="src\Models\Settings\CheatsSettings.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
     <ClInclude Include="src\Models\Updatables\Player.h" />
     <ClInclude Include="src\Models\Updatables\Spike.h" />
     <ClInclude Include="src\Views\AdvertisementView.h" />
+    <ClInclude Include="src\Views\CheatsView.h" />
     <ClInclude Include="src\Views\CreditsView.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\GameOverLevelView.h" />

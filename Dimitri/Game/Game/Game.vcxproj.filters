@@ -72,6 +72,13 @@
     <ClCompile Include="src\Views\TimerView.cpp" />
     <ClCompile Include="src\Views\View.cpp" />
     <ClCompile Include="src\Views\WinLevelView.cpp" />
+    <ClCompile Include="src\Views\CheatsView.cpp" />
+    <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
+    <ClCompile Include="src\Controllers\CheatsController.cpp" />
+    <ClCompile Include="src\Commands\OpenCheatsViewCommand.cpp" />
+    <ClCompile Include="src\Models\CheckButton.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInvincibleCommand.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInfiniteCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -146,5 +153,12 @@
     <ClInclude Include="src\Views\TimerView.h" />
     <ClInclude Include="src\Views\View.h" />
     <ClInclude Include="src\Views\WinLevelView.h" />
+    <ClInclude Include="src\Views\CheatsView.h" />
+    <ClInclude Include="src\Models\Settings\CheatsSettings.h" />
+    <ClInclude Include="src\Controllers\CheatsController.h" />
+    <ClInclude Include="src\Commands\OpenCheatsViewCommand.h" />
+    <ClInclude Include="src\Models\CheckButton.h" />
+    <ClInclude Include="src\Commands\SetCheatInvincibleCommand.h" />
+    <ClInclude Include="src\Commands\SetCheatInfiniteCommand.h" />
   </ItemGroup>
 </Project>

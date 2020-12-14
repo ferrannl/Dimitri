@@ -55,7 +55,7 @@ namespace Game {
 			/**
 			* \brief Checks if the button is clicked
 			*/
-			bool is_clicked(Game::Events::InputEvent object);
+			virtual bool is_clicked(Game::Events::InputEvent object);
 
 			/**
 			* \brief Returns the texture
@@ -71,6 +71,16 @@ namespace Game {
 			* \brief Returns the y coordinate of the button
 			*/
 			float get_y() const;
+
+			/**
+			* \brief Returns the height of the button
+			*/
+			float get_height() const;
+
+			/**
+			* \brief Returns the width of the button
+			*/
+			float get_width() const;
 
 			/**
 			* \brief Sets the x coordinate of the button

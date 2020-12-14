@@ -15,6 +15,9 @@
 #include "OpenGameOverLevelViewCommand.h"
 #include "OpenHighscoreViewCommand.h"
 #include "OpenLevelViewCommand.h"
+#include "OpenCheatsViewCommand.h"
+#include "SetCheatInfiniteCommand.h"
+#include "SetCheatInvincibleCommand.h"
 
 namespace Game {
 	namespace Commands {
@@ -36,6 +39,10 @@ namespace Game {
 			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_GAME_OVER_LEVEL_VIEW, std::make_unique<OpenGameOverLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_LEVEL_VIEW, std::make_unique<OpenLevelViewCommand>(main_controller)));
 			_commands.insert(std::make_pair(Enums::CommandEnum::LOAD_HIGHSCORE, std::make_unique<OpenHighscoreViewCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::OPEN_CHEATS_VIEW, std::make_unique<OpenCheatsViewCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::CHEATS_INFINITE, std::make_unique<SetCheatInfiniteCommand>(main_controller)));
+			_commands.insert(std::make_pair(Enums::CommandEnum::CHEATS_INVINCIBLE, std::make_unique<SetCheatInvincibleCommand>(main_controller)));
+
 		}
 
 		Command* CommandFactory::get_command(Enums::CommandEnum command_name) const

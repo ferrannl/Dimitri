@@ -19,6 +19,7 @@
 #include <..\Game\Game\src\Views\PauseLevelView.h>
 #include <..\Game\Game\src\Views\HUDView.h>
 #include <..\Game\Game\src\Views\AdvertisementView.h>
+#include <..\Game\Game\src\Views\CheatsView.h>
 #include <..\Game\Game\src\Views\View.h>
 #include <chrono>
 #include <thread>

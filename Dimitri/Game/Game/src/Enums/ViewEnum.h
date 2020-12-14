@@ -28,6 +28,7 @@ namespace Game {
 			WIN_LEVEL,
 			HIGHSCORE,
 			TIMER,
+			CHEATS,
 		};
 	}
 }
