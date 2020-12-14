@@ -17,7 +17,7 @@ namespace Game {
 		*/
 		class CameraBeam : public Models::Updatable {
 		public:
-			CameraBeam(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			CameraBeam(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

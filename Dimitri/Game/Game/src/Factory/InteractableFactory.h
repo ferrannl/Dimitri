@@ -18,11 +18,17 @@ namespace Game {
 		*/
 		class InteractableFactory : public Interfaces::IFactory<Models::Interactable> {
 		private:
+			/**
+			* \brief In this vector are the light beams saved so that when the lamp of camera is drawn the beam can get the appropiate hight.
+			*/
 			std::vector<int> _lights;
 		public:
 			InteractableFactory();
 
-			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, int x, int y, int z, int height, int width, Enums::DirectionEnum state);
+			/**
+			* \brief Creates the interactable
+			*/
+			std::shared_ptr<Models::Interactable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state);
 		};
 	}
 }

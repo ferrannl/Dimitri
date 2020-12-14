@@ -17,19 +17,27 @@ namespace Game {
 		*/
 		class Switch : public Models::Interactable {
 		private:
-			int _switch_x;
+			/**
+			* \brief The x coordinate of the beam
+			*/
+			float _switch_x;
 		public:
-			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Switch(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
+
 			/**
 			* \brief Updates the object when interacted with
 			*/
 			void interact(Controllers::LevelController* ctrl = NULL);
-			void set_light(const int x);
+
+			/**
+			* \brief Sets the x coordinate of the beam location
+			*/
+			void set_light(const float x);
 		};
 	}
 }

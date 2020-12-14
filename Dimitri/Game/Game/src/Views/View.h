@@ -49,7 +49,7 @@ namespace Game {
 			/**
 			* \brief Adds the textures of the View to the Window in the GraphicsController
 			*/
-			void open();
+			virtual void open();
 
 			/**
 			* \brief Removes the textures of the View to the Window in the GraphicsController

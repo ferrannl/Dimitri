@@ -22,13 +22,20 @@ namespace Graphics {
 	*/
 	namespace Models {
 		/**
-		* \struct Color
-		* \brief Struct contains the RGB values of a color
+		* \struct Center
+		* \brief Struct contains the center which the SDL_Texture uses for rotation
 		*/
 		struct GRAPHICS_API Center {
 		public:
-			int x;
-			int y;
+			/**
+			* \brief The x coordinate
+			*/
+			float x;
+
+			/**
+			* \brief The y coordinate
+			*/
+			float y;
 		};
 	}
 }
