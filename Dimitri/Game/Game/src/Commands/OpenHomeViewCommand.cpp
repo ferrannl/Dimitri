@@ -11,20 +11,24 @@ namespace Game {
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
-			if (!w_ctrl->is_active("home") && !w_ctrl->is_active("pause_level")) {
-				w_ctrl->toggle_view_visibility("timer");
+			auto c_ctrl = _main_controller->get_credits_controller();
+			auto help_ctrl = _main_controller->get_help_controller();
+			auto h_mgr = _main_controller->get_highscore_manager();
+			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
+				w_ctrl->toggle_view_visibility(Enums::ViewEnum::TIMER);
 				w_ctrl->clear_views();
-				for (auto& b : h_ctrl->get_advertisement_buttons())
-				{
-					b->initialize_textures();
-				}
-				w_ctrl->add_textures(h_ctrl->get_textures(), "home");
-				w_ctrl->open_view("home");
-				w_ctrl->open_view("fps");
+				w_ctrl->open_view(Enums::ViewEnum::HOME);
+				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
+				w_ctrl->open_view(Enums::ViewEnum::FPS);
 				l_ctrl->stop();
-				a_ctrl->play_audio("homescreen1");
-				w_ctrl->set_scene_size(l_ctrl->get_level()->get_height(), l_ctrl->get_level()->get_width());
+				if (!a_ctrl->is_playing("homescreen1")) {
+					a_ctrl->play_audio("homescreen1");
+				}
+				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
 				i_ctrl->unsubscribe(l_ctrl);
+				i_ctrl->unsubscribe(c_ctrl);
+				i_ctrl->unsubscribe(help_ctrl);
+				i_ctrl->unsubscribe(h_mgr);
 				i_ctrl->subscribe(h_ctrl);
 			}
 		}

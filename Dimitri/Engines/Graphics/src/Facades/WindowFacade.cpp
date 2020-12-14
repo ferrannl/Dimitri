@@ -109,7 +109,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 				}
 			}
 			catch (Exceptions::CannotRenderSpriteTexture& e) {
-				std::cout << e.get() << std::endl;
+				std::cout << e.get() + ': ' +  texture->get_path() << std::endl;
 			}
 		}
 	}

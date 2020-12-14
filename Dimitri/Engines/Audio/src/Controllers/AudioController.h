@@ -65,18 +65,15 @@ namespace Audio {
 			*/
 			void add_music(const std::string name, const std::string path);
 
-
 			/**
 			* \brief Plays Audio by the given name
 			*/
 			void play_audio(const std::string name) const;
 
-
 			/**
 			* \brief Resumes Audio by the given name
 			*/
 			void resume_audio(const std::string name) const;
-
 
 			/**
 			* \brief Pauses Audio by the given name
@@ -87,6 +84,11 @@ namespace Audio {
 			* \brief Stops Audio by the given name
 			*/
 			void stop_audio(const std::string name) const;
+
+			/**
+			* \brief Checks if the Audio by the given name is playing
+			*/
+			bool is_playing(const std::string name) const;
 		};
 	}
 }

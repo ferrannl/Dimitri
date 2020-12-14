@@ -4,6 +4,8 @@
 #include "../Events/InputEvent.h"
 #include <vector>
 #include <tuple>
+#include "../Controllers/WindowController.h"
+
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -21,6 +23,11 @@ namespace Game {
 		class InputController : public Utility::Interfaces::IObserver<Input::Enums::EventEnum>, public std::enable_shared_from_this<InputController>, public Utility::Interfaces::IObservable<Game::Events::InputEvent> {
 		private:
 			/**
+			* \brief An Instance of the WindowController
+			*/
+			std::shared_ptr<Controllers::WindowController> _window_controller;
+
+			/**
 			* \brief An instance of the InputController to interact with input engine
 			*/
 			std::unique_ptr<Input::Controllers::InputController> _input_controller;
@@ -30,7 +37,7 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>> _observers;
 		public:
-			InputController();
+			InputController(const std::shared_ptr<Controllers::WindowController> window_controller);
 			/**
 			* \brief Polls events from the input engine
 			*/

@@ -17,6 +17,7 @@
 #include "./Updatables/LightBeam.h"
 #include "Lamp.h"
 #include "./Abstract/Updatable.h"
+#include "Button.h"
 
 /**
 * \namespace Game

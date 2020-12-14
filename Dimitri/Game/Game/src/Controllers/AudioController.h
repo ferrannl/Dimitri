@@ -55,6 +55,11 @@ namespace Game {
 			* \brief Stop Audio by name
 			*/
 			void stop_audio(const std::string name);
+
+			/**
+			* \brief Returns if the Audio is playing
+			*/
+			bool is_playing(const std::string name);
 		};
 	}
 }
