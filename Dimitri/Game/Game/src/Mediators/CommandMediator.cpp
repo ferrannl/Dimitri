@@ -1,4 +1,5 @@
 #include "CommandMediator.h"
+#include "../Controllers/LevelController.h"
 
 namespace Game {
 	namespace Mediators {
@@ -64,6 +65,14 @@ namespace Game {
 						break;
 					}
 					break;
+				case Enums::LevelStateEnum::TRANSITION:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::KEY_PRESS_SPACE:
+						_factory->get_command(Enums::CommandEnum::CLEAR_VIEWS)->execute();
+						break;
+					}
+					break;
+
 				default:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
@@ -128,6 +137,9 @@ namespace Game {
 		{
 			if (sender.get_identifier() == "LevelController") {
 				switch (event) {
+				case Enums::LevelStateEnum::TRANSITION:
+					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_TRANSITION_VIEW)->execute();
+					break;
 				case Enums::LevelStateEnum::ACTIVE:
 					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_VIEW)->execute();
 					break;

@@ -20,6 +20,7 @@
 #include <..\Game\Game\src\Views\HUDView.h>
 #include <..\Game\Game\src\Views\AdvertisementView.h>
 #include <..\Game\Game\src\Views\View.h>
+#include <..\Game\Game\src\Views\LevelTransitionView.h>
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"

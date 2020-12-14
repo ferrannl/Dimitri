@@ -15,7 +15,6 @@ namespace Game {
 			auto help_ctrl = _main_controller->get_help_controller();
 			auto h_mgr = _main_controller->get_highscore_manager();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
-				w_ctrl->toggle_view_visibility(Enums::ViewEnum::TIMER);
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);

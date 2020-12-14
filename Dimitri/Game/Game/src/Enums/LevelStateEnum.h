@@ -15,6 +15,7 @@ namespace Game {
 		*/
 		enum class LevelStateEnum
 		{
+			TRANSITION,
 			ACTIVE,
 			WIN,
 			GAME_OVER,

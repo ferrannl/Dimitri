@@ -32,6 +32,11 @@ namespace Game {
 			* \brief Removes the textures of the View to the Window in the GraphicsController
 			*/
 			void close() override;
+
+			/**
+			* \brief Returns the visible state of the View
+			*/
+			bool is_visible() const override;
 		};
 	}
 }

@@ -4,7 +4,7 @@ Game::Models::Player::Player(float x, float y, float z, float height, float widt
 {
 	_jumps = _max_amount_of_jumps;
 	_lastx = x;
-	_lasty =y ;
+	_lasty = y;
 	_direction = Enums::DirectionEnum::RIGHT;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);

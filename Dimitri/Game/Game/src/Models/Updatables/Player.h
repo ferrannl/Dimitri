@@ -72,7 +72,7 @@ namespace Game {
 			/**
 			* \brief Updates the player
 			*/
-			void update_object(Controllers::LevelController* ctrl = NULL);
+			void update_object(Controllers::LevelController* ctrl = nullptr);
 
 			/**
 			* \brief Checks the state of the player with by checking the increase of x and or y

@@ -17,7 +17,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_sound("failed", "/assets/audio/failed.wav");
-
+	_level->add_music("transition", "/assets/audio/running.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
@@ -101,7 +101,7 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 
 void Controllers::LevelController::start()
 {
-	set_state(Enums::LevelStateEnum::ACTIVE);
+	set_state(Enums::LevelStateEnum::TRANSITION);
 }
 
 void Controllers::LevelController::stop()
@@ -116,19 +116,29 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 		_state = new_state;
 
 		if (old_state == Enums::LevelStateEnum::ACTIVE) {
-			// active -> pause/win/game_over/inactive
+			// active -> pause/win/game_over/inactive/transition
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
 			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->pause();
 		}
-		else if (new_state == Enums::LevelStateEnum::ACTIVE) {
-			// pause/win/game_over/inactive -> active
-			_simulation_thread = std::thread(&Controllers::LevelController::simulate, this);
-			_objects_thread = std::thread(&Controllers::LevelController::simulate_objects, this);
+		else if (old_state == Enums::LevelStateEnum::TRANSITION) {
+			// transition -> active/pause/win/game_over/inactive
+			_transition_thread.detach();
+			_level->stop_music("transition");
+		}
+
+		if (new_state == Enums::LevelStateEnum::ACTIVE) {
+			// pause/win/game_over/inactive/transition -> active
+			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
+			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
 			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->unpause();
-			_window_controller->toggle_view_visibility(Enums::ViewEnum::TIMER);
+		}
+		else if (new_state == Enums::LevelStateEnum::TRANSITION) {
+			// active/pause/win/game_over/inactive -> transition
+			_transition_thread = std::thread(&Game::Controllers::LevelController::run_transition, this);
+			_level->play_music("transition");
 		}
 		Mediators::CommandMediator::instance()->notify(*this, new_state);
 	}
@@ -143,12 +153,21 @@ void Controllers::LevelController::turn_off_light(const int x)
 	}
 }
 
+void Game::Controllers::LevelController::run_transition()
+{
+	while (_state == Enums::LevelStateEnum::TRANSITION) {
+		sleep_for(5ms);
+		if (!_window_controller->is_active(Enums::ViewEnum::LEVEL_TRANSITION)) { break; }
+	}
+	_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->start();
+	set_state(Enums::LevelStateEnum::ACTIVE);
+}
+
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
 		_level->simulate();
 		_level->get_player()->update();
-
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
 		{
 			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
@@ -157,7 +176,6 @@ void  Controllers::LevelController::simulate() {
 				break;
 			}
 		}
-
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
@@ -170,7 +188,6 @@ void  Controllers::LevelController::simulate_objects() {
 		{
 			object->update_object(this);
 		}
-
 		_level->get_player()->update_state();
 	}
 }
