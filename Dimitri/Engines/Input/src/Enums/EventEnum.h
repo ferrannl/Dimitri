@@ -1,5 +1,4 @@
 #pragma once
-
 #ifdef _WIN64
 #ifdef INPUT_EXPORTS
 #define INPUT_API __declspec(dllexport)
@@ -65,6 +64,7 @@ namespace Input {
 			KEY_PRESS_CTRL,
 			KEY_PRESS_ENTER,
 			KEY_PRESS_BACKSPACE,
+			KEY_PRESS_SPACE,
 			KEY_PRESS_SHIFT,
 			KEY_PRESS_0,
 			KEY_PRESS_1,

@@ -3,12 +3,12 @@
 
 using namespace Game;
 
-std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vector<int>> objects, const std::shared_ptr<Controllers::AudioController> audio_controller)
+std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::vector<std::vector<int>> objects, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller)
 {
 	int level_height = (objects.at(0).size() - 1) * TILE_SIZE;
 	int level_width = (objects.size()) * TILE_SIZE;
 
-	std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, level_width, level_height);
+	std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, window_controller, level_width, level_height);
 
 	int x = 0;
 	int y = level_height;

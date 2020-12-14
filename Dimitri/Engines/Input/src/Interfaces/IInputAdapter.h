@@ -1,5 +1,5 @@
 #pragma once
-#include "../enums/EventEnum.cpp"
+#include "../enums/EventEnum.h"
 #include <SDL.h>
 #include <SDL_mouse.h>
 

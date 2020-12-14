@@ -62,9 +62,15 @@ namespace Game {
 			LevelManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::LevelController> level_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
 
 			/**
-			* \brief Loads a level 
+			* \brief Loads a level
 			*/
 			void load_level();
+
+			/**
+			* \brief Returns an instance of the window controller
+			*/
+			std::shared_ptr<Game::Controllers::WindowController> get_window_controller()const;
+
 		};
 	}
 }

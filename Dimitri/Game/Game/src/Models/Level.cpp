@@ -1,17 +1,34 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height) : _audio_controller(audio_controller)
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height) : _audio_controller(audio_controller)
 {
 	_width = width;
 	_height = height;
+	_speed = 1.5;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
 	_enemies = {};
 	_tiles = {};
+	_buttons = {};
 	_backgrounds = {};
 	_updatables = {};
+}
+
+std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
+{
+	return _buttons;
+}
+
+void Models::Level::set_speed(float speed)
+{
+	_speed = speed;
+}
+
+float Game::Models::Level::get_speed()const
+{
+	return _speed;
 }
 
 void Models::Level::add_music(std::string audio_name, std::string path)
@@ -44,12 +61,12 @@ void Game::Models::Level::resume_music(std::string audio_name)
 	_audio_controller->resume_audio(audio_name);
 }
 
-
 void Game::Models::Level::load_objects()
 {
 	_physics_collision_controller->setup_world(_height, _width);
 
 	add_shapes();
+
 }
 
 void Game::Models::Level::add_shapes()
@@ -88,22 +105,23 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> interactable : _interactables)
+	for (std::shared_ptr<Interactable> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> updatables : _updatables)
+	for (std::shared_ptr<Updatable> updatables : _updatables)
 	{
+		updatables->set_speed(_speed);
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	/*for (std::shared_ptr<Game::Models::Button> b : _buttons)
+	{
+		temp = b->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}*/
 	return textures;
-}
-
-std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
-{
-	return _player;
 }
 
 std::vector<std::shared_ptr<Game::Models::Enemy>> Game::Models::Level::get_enemies() const
@@ -133,7 +151,11 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 
 void Game::Models::Level::simulate()
 {
-	_physics_collision_controller->simulate();
+	for (std::shared_ptr<Updatable> updatables : _updatables)
+	{
+		updatables->set_speed(_speed);
+	}
+	_physics_collision_controller->simulate(get_player()->get_speed());
 }
 
 void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
@@ -152,12 +174,6 @@ void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
 	_updatables.push_back(tile);
 }
 
-void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
-{
-	_enemies.push_back(tile);
-	_updatables.push_back(tile);
-}
-
 void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::Interactable> tile)
 {
 	_interactables.push_back(tile);
@@ -173,12 +189,21 @@ void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprit
 	_backgrounds.push_back(tile);
 }
 
-int Game::Models::Level::get_height() const
+void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
+{
+}
+
+float Game::Models::Level::get_height() const
 {
 	return _height;
 }
 
-int Game::Models::Level::get_width() const
+float Game::Models::Level::get_width() const
 {
 	return _width;
+}
+
+std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
+{
+	return _player;
 }

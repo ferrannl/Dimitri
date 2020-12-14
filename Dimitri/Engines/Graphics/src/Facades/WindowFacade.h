@@ -3,6 +3,7 @@
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
 #include "src/Time/Fps.h"
+#include "src/Time/Timer.h"
 #include <tuple>
 
 #ifdef _WIN64
@@ -37,6 +38,11 @@ namespace Graphics {
 			std::unique_ptr<Utility::Time::Fps> _fps;
 
 			/**
+			* \brief Contains a timer object
+			*/
+			std::shared_ptr<Utility::Time::Timer> _timer;
+
+			/**
 			* \brief An instance of SDL_Window with a custom destructor
 			*/
 			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
@@ -66,14 +72,14 @@ namespace Graphics {
 			* The standard position of the camera is 0,0
 			* \return std::tuple<width, height>
 			*/
-			std::tuple<int, int> _camera_pos;
+			std::tuple<float, float> _camera_pos;
 
 
 			/**
 			* \brief The width and height of the Scene
 			* \return std::tuple<width, height>
 			*/
-			std::tuple<int, int> _scene_size;
+			std::tuple<float, float> _scene_size;
 
 		public:
 			WindowFacade();
@@ -84,9 +90,14 @@ namespace Graphics {
 			int create_renderer();
 
 			/**
+			* \brief Returns the timer ticks 
+			*/
+			uint32_t get_ticks();
+
+			/**
 			* \brief Creates the instance of SDL_Window
 			*/
-			int create_window(const std::string& title, int height, int width);
+			int create_window(const std::string& title, float height, float width);
 
 			/**
 			* \brief Creates a TextureFacade or adds an already created TextureFacade if Texture matches
@@ -111,22 +122,27 @@ namespace Graphics {
 			/**
 			* brief Updates camera position
 			*/
-			void set_camera_pos(int x, int y);
+			void set_camera_pos(float x, float y);
 
 			/**
 			* brief Returns camera position
 			*/
-			std::tuple<int, int> get_camera_pos() const;
+			std::tuple<float, float> get_camera_pos() const;
 
 			/**
 			* brief Sets scene size
 			*/
-			void set_scene_size(int height, int width);
+			void set_scene_size(float height, float width);
 
 			/**
 			* brief Returns scene size
 			*/
-			std::tuple<int, int> get_scene_size() const;
+			std::tuple<float, float> get_scene_size() const;
+
+			/**
+			* \brief Returns the timer
+			*/
+			std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

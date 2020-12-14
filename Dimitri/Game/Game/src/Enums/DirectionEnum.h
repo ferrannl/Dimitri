@@ -11,15 +11,16 @@ namespace Game {
 	*/
 	namespace Enums {
 		/**
-		* \enum StateEnum
-		* \brief Enum Class contains the different state enums for object states
+		* \enum DirectionEnum
+		* \brief Enum Class contains the different direction state enums for object directions
 		*/
-		enum class StateEnum
+		enum class DirectionEnum
 		{
-			IDLE,
-			WALKING,
-			JUMPING,
-			FALLING
+			LEFT,
+			RIGHT,
+			UP,
+			DOWN,
+			NONE
 		};
 	}
 }

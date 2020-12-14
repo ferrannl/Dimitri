@@ -1,5 +1,5 @@
 #pragma once
-#include <src\Enums\EventEnum.cpp>
+#include <src\Enums\EventEnum.h>
 #include <tuple>
 
 /**

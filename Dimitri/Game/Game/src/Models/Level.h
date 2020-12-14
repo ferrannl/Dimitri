@@ -1,12 +1,13 @@
 #pragma once
 #include "../Controllers/AudioController.h"
+#include "../Controllers/WindowController.h"
 #include <memory>
 #include <chrono>
 #include <thread>
 #include <src\Models\Texture.h>
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
-#include "../Enums/TypeEnum.cpp"
+#include "../Enums/TypeEnum.h"
 #include "./IObjects/Wall.h"
 #include "./Updatables/Player.h"
 #include "./Updatables/Enemy.h"
@@ -15,6 +16,7 @@
 #include "./Updatables/LightBeam.h"
 #include "Lamp.h"
 #include "./Abstract/Updatable.h"
+#include "Button.h"
 
 /**
 * \namespace Game
@@ -43,9 +45,19 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 
 			/**
+			* \brief A list of the Buttons
+			*/
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
+			/**
 			* \brief List of all the Shapes in the Level
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
+
+			/**
+			* \brief Speed of the level
+			*/
+			float _speed;
 
 			/**
 			* \brief An instance of the Player Object
@@ -55,12 +67,9 @@ namespace Game {
 			/**
 			* \brief Instances of the Enemy Objects
 			*/
-			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
-
-			/**
-			* \brief List of tiles in the Level
-			*/
 			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
+
+			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
 
 			/**
 			* \brief List of backgrounds in the Level
@@ -73,22 +82,34 @@ namespace Game {
 			std::vector<std::shared_ptr<Models::Updatable>> _updatables;
 
 			/**
-			* \brief List of interactables in the Level
+			* \brief List of updatables in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
 			/**
 			* \brief The height of the Level
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The width of the Level
 			*/
-			int _width;
+			float _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const int width, const int height);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height);
+
+			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
+
+			/**
+			* 	\brief Returns the speed of the level		
+			*/
+			void set_speed(float speed);
+
+			/**
+			* 	\brief Returns the speed of the level
+			*/
+			float get_speed() const;
 
 			/**
 			* \brief Add music
@@ -138,17 +159,12 @@ namespace Game {
 			/**
 			* \brief Returns the Player
 			*/
-			std::shared_ptr<Game::Models::Player> get_player() const;
-
-			/**
-			* \brief Returns the Enemies
-			*/
 			std::vector<std::shared_ptr<Game::Models::Enemy>> get_enemies() const;
 
 			/**
 			*	\brief Returns the tiles
 			*/
-			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;
+			std::vector<std::shared_ptr<Game::Models::Object>> get_tiles() const;		
 
 			/**
 			* \brief Returns the interactables
@@ -176,11 +192,6 @@ namespace Game {
 			void add_player(std::shared_ptr<Game::Models::Player> tile);
 
 			/**
-			* \brief Adds enemy to _enemies
-			*/
-			void add_enemy(std::shared_ptr<Game::Models::Enemy> tile);
-
-			/**
 			* \brief Adds interactable to the _interactables list
 			*/
 			void add_interactable(std::shared_ptr<Game::Models::Interactable> tile);
@@ -195,6 +206,8 @@ namespace Game {
 			*/
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
+			void add_enemy(std::shared_ptr<Game::Models::Enemy> tile);
+
 			/**
 			* \brief Adds shape to the _shapes list
 			*/
@@ -208,12 +221,14 @@ namespace Game {
 			/**
 			* \brief Returns the height of the Level
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns the width of the Level
 			*/
-			int get_width() const;
+			float get_width() const;
+
+			std::shared_ptr<Game::Models::Player> get_player()const;
 		};
 	}
 

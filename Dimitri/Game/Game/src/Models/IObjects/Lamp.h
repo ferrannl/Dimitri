@@ -18,7 +18,7 @@ namespace Game {
 		*/
 		class Lamp : public Models::Object {
 		public:
-			Lamp(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Lamp(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
 			* \brief Initializes Textures

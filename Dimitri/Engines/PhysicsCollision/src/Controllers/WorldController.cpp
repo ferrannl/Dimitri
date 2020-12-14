@@ -19,9 +19,14 @@ void Controllers::WorldController::destroy_bodies()
 	_world.destroy_bodies();
 }
 
-void Controllers::WorldController::simulate()
+void Controllers::WorldController::destroy_body(const std::shared_ptr<Models::Shape>& shape)
 {
-	_world.simulate();
+	_world.destroy_body(shape);
+}
+
+void Controllers::WorldController::simulate(const float speed)const
+{
+	_world.simulate(speed);
 }
 
 std::vector<std::shared_ptr<Models::Shape>> Controllers::WorldController::get_shapes()const {

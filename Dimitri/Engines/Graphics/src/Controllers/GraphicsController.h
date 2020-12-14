@@ -34,6 +34,11 @@ namespace Graphics {
 			* \brief The Window containing the Textures
 			*/
 			std::shared_ptr<Models::Window> _window;
+
+			/**
+			* \brief The speed for the View
+			*/
+			float _speed;
 		public:
 			GraphicsController();
 
@@ -78,6 +83,11 @@ namespace Graphics {
 			int get_fps();
 
 			/**
+			* \brief Returns the current ticks
+			*/
+			Uint32 get_ticks();
+
+			/**
 			* Updates camera position
 			*/
 			void set_camera_pos(int x, int y);
@@ -96,6 +106,16 @@ namespace Graphics {
 			* \brief Returns scene size
 			*/
 			std::tuple<int, int> get_scene_size() const;
+
+			/**
+			* \brief Sets the speed for the View
+			*/
+			void set_speed(float speed);
+
+			/**
+			* \brief Returns the speed for the View
+			*/
+			float get_speed();
 		};
 	}
 }

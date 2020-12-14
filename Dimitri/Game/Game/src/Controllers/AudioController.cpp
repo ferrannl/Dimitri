@@ -34,3 +34,8 @@ void Controllers::AudioController::resume_audio(const std::string name)
 {
 	_audio_controller->resume_audio(name);
 }
+
+bool Game::Controllers::AudioController::is_playing(const std::string name)
+{
+	return _audio_controller->is_playing(name);
+}

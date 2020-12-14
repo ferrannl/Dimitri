@@ -36,27 +36,27 @@ namespace Graphics {
 			/**
 			* \brief The x coordinate the Texture
 			*/
-			int _x;
+			float _x;
 
 			/**
 			* \brief The y coordinate the Texture
 			*/
-			int _y;
+			float _y;
 
 			/**
 			* \brief The z coordinate the Texture
 			*/
-			int _z;
+			float _z;
 
 			/**
 			* \brief The width of the Texture
 			*/
-			int _width;
+			float _width;
 
 			/**
 			* \brief The height of the Texture
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The angle which the Texture
@@ -74,9 +74,20 @@ namespace Graphics {
 			bool _visible;
 
 			/**
+			* \brief if texture Is_Dynamic
+			*/
+			bool _is_dynamic;
+
+			/**
 			* \brief The path of the Texture
 			*/
 			std::string _path;
+
+			/**
+			* \brief The opacity of the Texture
+			* 0 is transparent, 100 is opaque
+			*/
+			int _opacity;
 		protected:
 			/**
 			* \brief The flip direction of the Texture
@@ -88,37 +99,37 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string& path, const bool visible, const Models::Center center);
+			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
 			*/
-			int get_converted_y(int height) const;
+			float get_converted_y(float height) const;
 
 			/**
 			* \brief Returns the x coordinate
 			*/
-			int get_x() const;
+			float get_x() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_z() const;
+			float get_z() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_y() const;
+			float get_y() const;
 
 			/**
 			* \brief Returns the z coordinate
 			*/
-			int get_width() const;
+			float get_width() const;
 
 			/**
 			* \brief Returns the height
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns the angle
@@ -146,6 +157,11 @@ namespace Graphics {
 			bool is_visible() const;
 
 			/**
+			* \brief Returns the dynamic
+			*/
+			bool is_dynamic() const;
+
+			/**
 			* \brief Returns the TextureFacade
 			*/
 			std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
@@ -153,27 +169,27 @@ namespace Graphics {
 			/**
 			* \brief Sets the x coordinate
 			*/
-			void set_x(const int x);
+			void set_x(const float x);
 
 			/**
 			* \brief Sets the z coordinate
 			*/
-			void set_z(const int z);
+			void set_z(const float z);
 
 			/**
 			* \brief Sets the y coordinate
 			*/
-			void set_y(const int y);
+			void set_y(const float y);
 
 			/**
 			* \brief Sets the width
 			*/
-			void set_width(const int width);
+			void set_width(const float width);
 
 			/**
 			* \brief Sets the height
 			*/
-			void set_height(const int height);
+			void set_height(const float height);
 
 			/**
 			* \brief Sets the angle
@@ -194,6 +210,12 @@ namespace Graphics {
 			* \brief Sets the center
 			*/
 			void set_center(const Models::Center center);
+
+			/**
+			* \brief Returns the opacity of the Texture
+			* \return 0 is transparent, 100 is opaque
+			*/
+			int get_opacity() const;
 
 			/**
 			* \brief Sets the facade
