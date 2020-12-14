@@ -46,6 +46,11 @@ namespace Audio {
 			* \brief Stops audio file
 			*/
 			virtual void stop() const = 0;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			virtual bool is_playing() const = 0;
 		};
 	}
 }

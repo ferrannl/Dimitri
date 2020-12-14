@@ -36,3 +36,8 @@ void Facades::MusicFacade::stop() const
 {
 	Mix_HaltMusic();
 }
+
+bool Audio::Facades::MusicFacade::is_playing() const
+{
+	return Mix_PlayingMusic() != 0;
+}

@@ -3,8 +3,13 @@
 #include "WindowController.h"
 #include "LevelController.h"
 #include "HomeController.h"
+#include "CreditsController.h"
+#include "AdvertisementController.h"
+#include "HelpController.h"
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
+#include "../Managers/LevelManager.h"
+#include "../Managers/HighScoreManager.h"
 
 /**
 * \namespace Game
@@ -38,6 +43,11 @@ namespace Game {
 			std::shared_ptr<Managers::LevelManager> _level_manager;
 
 			/**
+			*	/brief An instance of the Highscore Manager
+			*/
+			std::shared_ptr<Managers::HighscoreManager> _highscore_manager;
+
+			/**
 			* \brief An instance of the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
@@ -51,6 +61,21 @@ namespace Game {
 			* \brief An instance of the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> _home_controller;
+
+			/**
+			* \brief An instance of the CreditsController
+			*/
+			std::shared_ptr<Controllers::CreditsController> _credits_controller;
+
+			/**
+			* \brief An instance of the HelpController
+			*/
+			std::shared_ptr<Controllers::HelpController> _help_controller;
+
+			/**
+			* \brief An instance of the AdvertisementController
+			*/
+			std::shared_ptr<Controllers::AdvertisementController> _advertisement_controller;
 		public:
 			MainController();
 
@@ -80,6 +105,11 @@ namespace Game {
 			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
 
 			/**
+			* \brief Returns the Highscore Manager
+			*/
+			std::shared_ptr<Managers::HighscoreManager> get_highscore_manager() const;
+
+			/**
 			* \brief Returns the WindowController
 			*/
 			std::shared_ptr<Controllers::WindowController> get_window_controller() const;
@@ -93,6 +123,16 @@ namespace Game {
 			* \brief Returns the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> get_home_controller() const;
+
+			/**
+			* \brief Returns the CreditsController
+			*/
+			std::shared_ptr<Controllers::CreditsController> get_credits_controller() const;
+
+			/**
+			* \brief Returns the HelpController
+			*/
+			std::shared_ptr<Controllers::HelpController> get_help_controller() const;
 		};
 	}
 }

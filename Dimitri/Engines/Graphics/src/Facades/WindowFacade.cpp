@@ -27,6 +27,7 @@ int Facades::WindowFacade::create_window(const std::string& title, float height,
 			throw Exceptions::CannotCreateWindow();
 		}
 		_fps = std::make_unique<Utility::Time::Fps>();
+		_timer = std::make_shared<Utility::Time::Timer>();
 		return 1;
 	}
 	catch (Exceptions::SDLInitFailed& e) {
@@ -109,7 +110,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 				}
 			}
 			catch (Exceptions::CannotRenderSpriteTexture& e) {
-				std::cout << e.get() << std::endl;
+				std::cout << e.get() + ': ' +  texture->get_path() << std::endl;
 			}
 		}
 	}
@@ -118,6 +119,7 @@ void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Te
 	SDL_RenderPresent(_renderer.get());
 
 	_fps->update();
+	_timer->set_current_ticks(get_ticks());
 }
 
 int Graphics::Facades::WindowFacade::get_fps()
@@ -174,6 +176,11 @@ std::tuple<float, float> Graphics::Facades::WindowFacade::get_scene_size() const
 	return _scene_size;
 }
 
+std::shared_ptr<Utility::Time::Timer> Graphics::Facades::WindowFacade::get_timer() const
+{
+	return _timer;
+}
+
 Facades::WindowFacade::WindowFacade() : _window(nullptr, SDL_DestroyWindow), _renderer(nullptr, SDL_DestroyRenderer), _flip_enum_adapter{} {}
 
 int Facades::WindowFacade::create_renderer()
@@ -194,6 +201,11 @@ int Facades::WindowFacade::create_renderer()
 		std::cout << e.get() << std::endl;
 		return NULL;
 	}
+}
+
+uint32_t Graphics::Facades::WindowFacade::get_ticks()
+{
+	return SDL_GetTicks();
 }
 
 void Facades::WindowFacade::destroy()

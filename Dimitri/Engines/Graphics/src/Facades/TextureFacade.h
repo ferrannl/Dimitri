@@ -33,9 +33,15 @@ namespace Graphics {
 			/**
 			* \brief An instance of SDL_Texture
 			*/
-			std::unique_ptr<SDL_Texture, void (*)(SDL_Texture*)> _texture;
+			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
+
+			/**
+			* \brief The opacity of the Texture
+			* 0 is transparent, 255 is opaque
+			*/
+			uint8_t _opacity;
 		public:
-			TextureFacade(const std::string& path);
+			TextureFacade(const std::string& path, int opacity);
 
 			/**
 			* \brief Creates a SDL_Texture

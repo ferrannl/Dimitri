@@ -12,7 +12,7 @@ namespace Game {
 				l_ctrl->set_state(Enums::LevelStateEnum::PAUSED);
 			}
 			else if (state == Enums::LevelStateEnum::PAUSED) {				
-				l_ctrl->start();
+				l_ctrl->set_state(Enums::LevelStateEnum::ACTIVE);
 			}
 		}
 	}

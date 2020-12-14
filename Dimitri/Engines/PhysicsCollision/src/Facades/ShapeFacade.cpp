@@ -14,15 +14,15 @@ void Facades::ShapeFacade::add_body(b2Body* body) {
 	_body = body;
 }
 
-void Facades::ShapeFacade::move_x(const float value)const
+void Facades::ShapeFacade::move_x(const float direction, const float value)const
 {
 	b2Vec2 vel = _body->GetLinearVelocity();
 	float velChange;
-	if (value == -1) {
-		velChange = -30 - vel.x;
+	if (direction == -1) {
+		velChange = (-30 * value) - vel.x;
 	}
 	else {
-		velChange = 30 - vel.x;
+		velChange = (30 * value) - vel.x;
 	}
 	float impulse = _body->GetMass() * velChange; //disregard time factor
 	_body->ApplyLinearImpulse(b2Vec2(impulse, 0), _body->GetWorldCenter(), true);

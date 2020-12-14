@@ -11,15 +11,21 @@
 #include <..\Game\Game\src\Views/HelpView.h>
 #include <..\Game\Game\src\Views/HomeView.h>
 #include <..\Game\Game\src\Views\LevelView.h>
+#include <..\Game\Game\src\Views\TimerView.h>
+#include <..\Game\Game\src\Views\HighscoreView.h>
+#include <..\Game\Game\src\Views\GamePlaySpeedView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
 #include <..\Game\Game\src\Views\PauseLevelView.h>
 #include <..\Game\Game\src\Views\HUDView.h>
+#include <..\Game\Game\src\Views\AdvertisementView.h>
 #include <..\Game\Game\src\Views\View.h>
+#include <..\Game\Game\src\Views\LevelTransitionView.h>
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
+#include "../Enums/ViewEnum.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -47,7 +53,7 @@ namespace Game {
 			/**
 			* \brief A List of all the Views
 			*/
-			std::map<std::string, std::unique_ptr<Views::View>> _views;
+			std::map<Enums::ViewEnum, std::unique_ptr<Views::View>> _views;
 
 			/**
 			* \brief A thread for rendering Textures on the Window
@@ -64,6 +70,10 @@ namespace Game {
 			*/
 			int _width;
 
+			/**
+			* \brief The speed for a View
+			*/
+			float _speed;
 		public:
 			WindowController();
 
@@ -75,12 +85,12 @@ namespace Game {
 			/**
 			* \brief Sets the Views active property to true
 			*/
-			void open_view(const std::string& view_name);
+			void open_view(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Checks if the View is active
 			*/
-			bool is_active(const std::string& view_name);
+			bool is_active(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Sets all the Views active property to false
@@ -90,7 +100,7 @@ namespace Game {
 			/**
 			* \brief Toggles the visible property of the View
 			*/
-			void toggle_view_visibility(const std::string& view_name);
+			void toggle_view_visibility(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Calls all draw methods on _views
@@ -100,12 +110,17 @@ namespace Game {
 			/**
 			* \brief Sets the Textures for a View
 			*/
-			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
 
 			/**
-			*	 \brief dds the Textures for a View
+			* \brief dds the Textures for a View
 			*/
-			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, const std::string& view_name);
+			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
+
+			/**
+			* \brief Sets the speed for a View
+			*/
+			void set_speed(float speed);
 
 			/**
 			* \brief Updates camera position
@@ -131,6 +146,25 @@ namespace Game {
 			* \brief Returns the width of the Window
 			*/
 			int get_window_width() const;
+
+			/**
+			* \brief Returns the camera position
+			*/
+			std::tuple<int, int> get_camera_pos() const;
+
+			/**
+			* \brief Returns the Graphics Controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
+
+			/**
+			* \brief Add the highscore to the HighscoreView based on a template function
+			*/
+			template <typename DerivedT>
+			void set_highscore_record(std::string record) {
+				auto derived = static_cast<DerivedT*>(_views[Enums::ViewEnum::HIGHSCORE].get());
+				derived->add_record(record);
+			}
 		};
 	}
 }

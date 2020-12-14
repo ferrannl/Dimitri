@@ -35,3 +35,8 @@ void Facades::SoundFacade::stop() const
 {
 	Mix_HaltChannel(_channel);
 }
+
+bool Audio::Facades::SoundFacade::is_playing() const
+{
+	return Mix_Playing(_channel) != 0;
+}

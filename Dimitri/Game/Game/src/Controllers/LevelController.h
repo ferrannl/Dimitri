@@ -30,10 +30,16 @@ namespace Game {
 		*/
 		class LevelController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
+			std::vector<std::pair<std::string, Enums::ButtonEnum>> _button_map;
 			/**
 			* \brief An Instance of the current Level
 			*/
 			std::shared_ptr<Game::Models::Level> _level;
+
+			/**
+			* \brief An instance of the thread
+			*/
+			std::thread _transition_thread;
 
 			/**
 			* \brief An instance of the thread
@@ -55,13 +61,34 @@ namespace Game {
 			*/
 			std::shared_ptr<Controllers::WindowController> _window_controller;
 
+			/**
+			* \brief A list of the buttons per Level State
+			*/
+			std::vector<std::pair<Enums::LevelStateEnum, std::unique_ptr<Game::Models::Button>>> _buttons;
+
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
+
+			void load_buttons();
+
+			/**
+			* \brief Loads the buttons for a level
+			*/
 
 			/**
 			* \brief Returns a list of all Textures in the Level
 			*/
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures(Enums::LevelStateEnum state) const;
+
+			/**
+			* \brief Sets the speeds of a level
+			*/
+			void set_speed(float speed);
+
+			/**
+			* \brief Returns the speeds of a level
+			*/
+			float get_speed() const;
 
 			/**
 			* \brief Receives updates from InputController
@@ -84,7 +111,12 @@ namespace Game {
 			void stop();
 
 			/**
-			* \brief Returns the Level
+			* \brief Polls events in the transition state
+			*/
+			void run_transition();
+
+			/**
+			* \brief Simulates the Level
 			*/
 			void simulate();
 
@@ -98,9 +130,26 @@ namespace Game {
 			*/
 			Enums::LevelStateEnum get_state() const;
 
+			/**
+			* \brief Turns of a light
+			*/
 			void turn_off_light(const int x);
 
+			/**
+			* \brief Simulates the objects
+			*/
 			void simulate_objects();
+
+			/**
+			* \brief Returns the buttons
+			*/
+			std::vector<Game::Models::Button*> get_buttons() const override;
+
+
+			/**
+			* \brief Updates the highscore
+			*/
+			void update_highscore();
 		};
 	}
 }

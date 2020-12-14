@@ -22,9 +22,15 @@ void Models::World::destroy_bodies()
 	}
 }
 
-void Models::World::simulate()
+void PhysicsCollision::Models::World::destroy_body(const std::shared_ptr<Models::Shape>& shape)
 {
-	_world_facade.simulate();
+	_shapes.erase(std::remove(_shapes.begin(), _shapes.end(), shape), _shapes.end());
+	_world_facade.destroy_body(shape->get_shape_facade());
+}
+
+void Models::World::simulate(const float speed)const
+{
+	_world_facade.simulate(speed);
 }
 
 std::vector<std::shared_ptr<Models::Shape>> Models::World::get_shapes()const

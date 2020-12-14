@@ -7,7 +7,7 @@ namespace Game {
 		void OpenWinLevelViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
-			w_ctrl->open_view("win_level");
+			w_ctrl->open_view(Enums::ViewEnum::WIN_LEVEL);
 		}
 	}
 }

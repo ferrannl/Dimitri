@@ -2,7 +2,8 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
-#include <src/Time/Fps.h>
+#include "src/Time/Fps.h"
+#include "src/Time/Timer.h"
 #include <tuple>
 
 struct SDL_Window;
@@ -28,6 +29,11 @@ namespace Graphics {
 			* \brief Contains the fps of the Window
 			*/
 			std::unique_ptr<Utility::Time::Fps> _fps;
+
+			/**
+			* \brief Contains a timer object
+			*/
+			std::shared_ptr<Utility::Time::Timer> _timer;
 
 			/**
 			* \brief An instance of SDL_Window with a custom destructor
@@ -77,6 +83,11 @@ namespace Graphics {
 			int create_renderer();
 
 			/**
+			* \brief Returns the timer ticks 
+			*/
+			uint32_t get_ticks();
+
+			/**
 			* \brief Creates the instance of SDL_Window
 			*/
 			int create_window(const std::string& title, float height, float width);
@@ -120,6 +131,11 @@ namespace Graphics {
 			* brief Returns scene size
 			*/
 			std::tuple<float, float> get_scene_size() const;
+
+			/**
+			* \brief Returns the timer
+			*/
+			std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

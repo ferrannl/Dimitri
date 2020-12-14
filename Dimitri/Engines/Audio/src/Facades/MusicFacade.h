@@ -46,6 +46,11 @@ namespace Audio {
 			* \brief Stops the audio file using SDL_Mixer
 			*/
 			void stop() const;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			bool is_playing() const;
 		};
 	}
 }

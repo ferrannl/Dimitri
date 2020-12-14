@@ -16,7 +16,13 @@ namespace Game {
 		* \brief Class contains the data of the Player
 		*/
 		class Player : public Models::Updatable {
-		private: 
+		private:
+
+			/**
+			* \brief The speed of the player
+			*/
+			float _speed;
+
 			/**
 			* \brief The max amount of jumps the player is allowed to make
 			*/
@@ -55,6 +61,11 @@ namespace Game {
 			Player(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center);
 
 			/**
+			* \brief Sets the speed of the player
+			*/
+			void set_speed(float speed)override;
+
+			/**
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
@@ -72,13 +83,18 @@ namespace Game {
 			/**
 			* \brief Updates the player
 			*/
-			void update_object(Controllers::LevelController* ctrl = NULL);
+			void update_object(Controllers::LevelController* ctrl = nullptr);
 
 			/**
 			* \brief Checks the state of the player with by checking the increase of x and or y
 			*/
 			void update_state();
 
+			/**
+			* \brief Returns the speed of the player
+			*/
+			float get_speed()const;
+			
 			/**
 			* \brief Returns Extra Textures
 			*/

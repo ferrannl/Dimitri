@@ -12,6 +12,7 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 		//Open the font
 		std::unique_ptr<TTF_Font, void(*)(TTF_Font*)> gFont = { TTF_OpenFont(_path.c_str(), _height), TTF_CloseFont };
 
+		TTF_Font* gFont = TTF_OpenFont(_path.c_str(), _height * 2);
 		if (gFont == NULL)
 		{
 			throw Exceptions::CannotLoadFont();
@@ -25,7 +26,10 @@ void Graphics::Facades::TextFacade::create_texture(std::unique_ptr<SDL_Renderer,
 		}
 
 		//Create texture from surface pixels
-		_texture.reset(SDL_CreateTextureFromSurface(renderer.get(), loadedSurface.get()));
+		SDL_Texture* t = SDL_CreateTextureFromSurface(renderer.get(), textSurface);
+		SDL_SetTextureBlendMode(t, SDL_BLENDMODE_BLEND);
+		SDL_SetTextureAlphaMod(t, _opacity);
+		_texture.reset(t);
 		if (_texture == NULL)
 		{
 			throw Exceptions::CannotCreateTexture();
