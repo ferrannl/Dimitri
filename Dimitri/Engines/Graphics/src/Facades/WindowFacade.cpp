@@ -26,6 +26,7 @@ int Facades::WindowFacade::create_window(const std::string& title, float height,
 		if (_window == NULL) {
 			throw Exceptions::CannotCreateWindow();
 		}
+
 		_fps = std::make_unique<Utility::Time::Fps>();
 		_timer = std::make_shared<Utility::Time::Timer>();
 		return 1;

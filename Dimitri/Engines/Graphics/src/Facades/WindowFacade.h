@@ -2,8 +2,8 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
-#include "src/Time/Fps.h"
-#include "src/Time/Timer.h"
+#include <src/Time/Fps.h>
+#include <src/Time/Timer.h>
 #include <tuple>
 
 struct SDL_Window;
