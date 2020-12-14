@@ -20,7 +20,7 @@ namespace Game {
 			/**
 			* \brief The x coordinate of the beam
 			*/
-			std::tuple<int, int> _light_pos;
+			std::vector<std::tuple<int, int>> _light_positions;
 
 		public:
 			Switch(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
