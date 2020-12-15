@@ -1,17 +1,6 @@
 #pragma once
 #include "../enums/EventEnum.h"
 #include <SDL.h>
-#include <SDL_mouse.h>
-
-#ifdef _WIN64
-#ifdef INPUT_EXPORTS
-#define INPUT_API __declspec(dllexport)
-#else 
-#define INPUT_API __declspec(dllimport)
-#endif
-#else
-#define INPUT_API
-#endif
 
 /**
 * \namespace Input
@@ -27,7 +16,7 @@ namespace Input {
 		* \class IInputAdapter
 		* \brief Class contains the methods to translate the SDL_events to EventEnum
 		*/
-		class INPUT_API IInputAdapter {
+		class IInputAdapter {
 		public:
 			/**
 			* \brief Translates the SDL_events to EventEnum

@@ -2,16 +2,6 @@
 #include "../Enums/FlipEnum.h"
 #include <SDL.h>
 
-#ifdef _WIN64
-#ifdef GRAPHICS_EXPORTS
-#define GRAPHICS_API __declspec(dllexport)
-#else 
-#define GRAPHICS_API __declspec(dllimport)
-#endif
-#else
-#define GRAPHICS_API
-#endif
-
 /**
 * \namespace Graphics
 * \brief Namespace for the graphics engine
@@ -26,7 +16,7 @@ namespace Graphics {
 		* \class FlipEnumAdapter
 		* \brief Class contains the method to convert for converting the FlipEnum to SDL_Rendererflip
 		*/
-		class GRAPHICS_API FlipEnumAdapter {
+		class FlipEnumAdapter {
 		public:
 			/**
 			* \brief Converts the FlipEnum to SDL_Rendererflip

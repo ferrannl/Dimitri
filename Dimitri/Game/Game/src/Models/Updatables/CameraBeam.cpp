@@ -7,7 +7,6 @@
 using namespace Game;
 
 
-
 Models::CameraBeam::CameraBeam(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : Models::Updatable(x, y, z, height, width, state, center)
 {
 	_angle = -1;

@@ -1,4 +1,6 @@
 #include "EventFacade.h" 
+#include "../Adapters/KeyBoardAdapter.h"
+#include "../Adapters/MouseAdapter.h"
 using namespace Input;
 
 Facades::EventFacade::EventFacade()
@@ -7,8 +9,7 @@ Facades::EventFacade::EventFacade()
 }
 
 Enums::EventEnum Facades::EventFacade::poll_event()
-{
-	
+{	
 	if (SDL_PollEvent(&_event) != 0)
 	{
         switch (_event.type) {

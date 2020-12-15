@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "../../Enums/DirectionEnum.h"
+#include "../../Enums/TypeEnum.h"
 
 /**
 * \namespace Game
@@ -28,6 +29,11 @@ namespace Game {
 			* \brief update this object
 			*/
 			virtual void update_object(Controllers::LevelController* ctrl = NULL) = 0;
+
+			/**
+			* \brief Sets the speed
+			*/
+			virtual void set_speed(float speed);
 		};
 	}
 }

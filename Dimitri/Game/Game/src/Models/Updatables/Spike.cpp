@@ -10,6 +10,11 @@ Models::Spike::Spike(float x, float y, float z, float height, float width, Enums
 	create_shape(x, y, height, width, false, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
+void Game::Models::Spike::set_speed(float speed)
+{
+	_angle *= 1;
+}
+
 void Models::Spike::initialize_textures()
 {
 	_animatestate = Enums::AnimateEnum::IDLE1;

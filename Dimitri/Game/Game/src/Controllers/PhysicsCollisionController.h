@@ -28,12 +28,17 @@ namespace Game {
 			/**
 			* \brief Simulates the World in the WorldController
 			*/
-			void simulate();
+			void simulate(const float speed) const;
 
 			/**
 			* \brief Destroys the bodies in the World
 			*/
 			void destroy_shapes();
+
+			/**
+			* \brief Destroys a body in the World
+			*/
+			void destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape);
 
 			/**
 			* \brief Loads the Shape into the World

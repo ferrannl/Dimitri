@@ -5,12 +5,29 @@ Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_c
 {
 	_width = width;
 	_height = height;
+	_speed = 1.5;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
 	_interactables = {};
 	_shapes = {};
 	_tiles = {};
+	_buttons = {};
 	_backgrounds = {};
 	_updatables = {};
+}
+
+std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
+{
+	return _buttons;
+}
+
+void Models::Level::set_speed(float speed)
+{
+	_speed = speed;
+}
+
+float Game::Models::Level::get_speed()const
+{
+	return _speed;
 }
 
 void Models::Level::add_music(std::string audio_name, std::string path)
@@ -42,7 +59,6 @@ void Game::Models::Level::resume_music(std::string audio_name)
 {
 	_audio_controller->resume_audio(audio_name);
 }
-
 
 void Game::Models::Level::load_objects()
 {
@@ -84,16 +100,22 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> interactable : _interactables)
+	for (std::shared_ptr<Interactable> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<Object> updatables : _updatables)
+	for (std::shared_ptr<Updatable> updatables : _updatables)
 	{
+		updatables->set_speed(_speed);
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
+	/*for (std::shared_ptr<Game::Models::Button> b : _buttons)
+	{
+		temp = b->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}*/
 	return textures;
 }
 
@@ -124,7 +146,11 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 
 void Game::Models::Level::simulate()
 {
-	_physics_collision_controller->simulate();
+	for (std::shared_ptr<Updatable> updatables : _updatables)
+	{
+		updatables->set_speed(_speed);
+	}
+	_physics_collision_controller->simulate(get_player()->get_speed());
 }
 
 void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)

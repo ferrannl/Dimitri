@@ -5,6 +5,7 @@ namespace Game {
 	Controllers::WindowController::WindowController()
 	{
 		_graphics_controller = std::make_shared<Graphics::Controllers::GraphicsController>();
+		_speed = 1;
 	}
 
 	void Controllers::WindowController::create_window(int height, int width)
@@ -29,6 +30,8 @@ namespace Game {
 		_views.insert({ Enums::ViewEnum::HIGHSCORE, std::make_unique<Views::HighscoreView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::TIMER, std::make_unique<Views::TimerView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::CHEATS, std::make_unique<Views::CheatsView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::LEVEL_TRANSITION, std::make_unique<Views::LevelTransitionView>(_graphics_controller) });
+		_views.insert({ Enums::ViewEnum::GAMEPLAYSPEED, std::make_unique<Views::GamePlaySpeedView>(_graphics_controller) });
 
 
 		open_view(Enums::ViewEnum::HOME);
@@ -36,6 +39,11 @@ namespace Game {
 		open_view(Enums::ViewEnum::FPS);
 
 		draw_thread = std::thread(&Controllers::WindowController::draw, this);
+	}
+
+	void Game::Controllers::WindowController::set_speed(float speed)
+	{
+		_graphics_controller->set_speed(speed);
 	}
 
 	void Controllers::WindowController::draw()
@@ -70,6 +78,12 @@ namespace Game {
 			return _views[view_name]->is_active();
 		}
 		return false;
+	}
+
+	void Controllers::WindowController::close_view(Enums::ViewEnum view_name)
+	{
+		_views[view_name]->set_active(false);
+		_views[view_name]->close();
 	}
 
 	void Controllers::WindowController::clear_views()

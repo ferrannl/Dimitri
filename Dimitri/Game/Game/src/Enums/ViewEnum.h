@@ -29,6 +29,8 @@ namespace Game {
 			HIGHSCORE,
 			TIMER,
 			CHEATS,
+			LEVEL_TRANSITION,
+			GAMEPLAYSPEED
 		};
 	}
 }

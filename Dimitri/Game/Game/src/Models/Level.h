@@ -44,9 +44,19 @@ namespace Game {
 			std::shared_ptr<Game::Controllers::PhysicsCollisionController> _physics_collision_controller;
 
 			/**
+			* \brief A list of the Buttons
+			*/
+			std::vector<std::shared_ptr<Game::Models::Button>> _buttons;
+
+			/**
 			* \brief List of all the Shapes in the Level
 			*/
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> _shapes;
+
+			/**
+			* \brief Speed of the level
+			*/
+			float _speed;
 
 			/**
 			* \brief An instance of the Player Object
@@ -85,6 +95,18 @@ namespace Game {
 
 		public:
 			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
+
+			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
+
+			/**
+			* 	\brief Returns the speed of the level		
+			*/
+			void set_speed(float speed);
+
+			/**
+			* 	\brief Returns the speed of the level
+			*/
+			float get_speed() const;
 
 			/**
 			* \brief Add music

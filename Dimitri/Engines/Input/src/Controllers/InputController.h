@@ -1,9 +1,9 @@
 #pragma once
 #include "../Facades/EventFacade.h"
 #include "../Facades/MouseFacade.h"
-#include <SDL.h>
-#include "../../../../Utility/src/Interfaces/IObservable.h"
-#include "../../../../Utility/src/Interfaces/IObserver.h"
+#include "../Enums/EventEnum.h";
+#include <src/Interfaces/IObservable.h>
+#include <src/Interfaces/IObserver.h>
 #include <chrono>
 #include <thread>
 #include <vector>

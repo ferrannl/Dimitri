@@ -106,3 +106,8 @@ std::tuple<int, int> Graphics::Models::Window::get_scene_size() const
 {
 	return _facade->get_scene_size();
 }
+
+std::shared_ptr<Utility::Time::Timer> Graphics::Models::Window::get_timer() const
+{
+	return _facade->get_timer();
+}

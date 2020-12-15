@@ -1,4 +1,5 @@
 #include "CommandMediator.h"
+#include "../Controllers/LevelController.h"
 
 namespace Game {
 	namespace Mediators {
@@ -39,7 +40,7 @@ namespace Game {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
 							{Enums::ButtonEnum::PAUSED_START, Enums::CommandEnum::PAUSE_LEVEL},
-							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}
+							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}, 
 							});
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
@@ -64,6 +65,14 @@ namespace Game {
 						break;
 					}
 					break;
+				case Enums::LevelStateEnum::TRANSITION:
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::KEY_PRESS_SPACE:
+						_factory->get_command(Enums::CommandEnum::CLEAR_VIEWS)->execute();
+						break;
+					}
+					break;
+
 				default:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
@@ -81,6 +90,11 @@ namespace Game {
 					case Input::Enums::EventEnum::KEY_PRESS_P:
 						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
 						break;
+					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+						notify_buttons(sender, event, {
+							{Enums::ButtonEnum::INCREASE_GAMEPLAY_SPEED, Enums::CommandEnum::INCREASE_GAMESPEED},
+							{Enums::ButtonEnum::DECREASE_GAMEPLAY_SPEED, Enums::CommandEnum::DECREASE_GAMESPEED}
+							});
 					}
 					break;
 				}
@@ -115,12 +129,12 @@ namespace Game {
 					break;
 				}
 			}
-			else if (sender.get_identifier() == "HighscoreManager")
-			{
-				switch (event.event_enum) {
-				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
-					break;
+				else if (sender.get_identifier() == "HighscoreManager")
+				{
+					switch (event.event_enum) {
+					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+						notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
+						break;
 				}
 			}
 			else if (sender.get_identifier() == "CheatsController")
@@ -141,6 +155,9 @@ namespace Game {
 		{
 			if (sender.get_identifier() == "LevelController") {
 				switch (event) {
+				case Enums::LevelStateEnum::TRANSITION:
+					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_TRANSITION_VIEW)->execute();
+					break;
 				case Enums::LevelStateEnum::ACTIVE:
 					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_VIEW)->execute();
 					break;
@@ -160,6 +177,7 @@ namespace Game {
 		void CommandMediator::notify_buttons(const BaseComponent& sender, Events::InputEvent event, const std::map<Enums::ButtonEnum, Enums::CommandEnum>& button_command)
 		{
 			for (auto& b : sender.get_buttons()) {
+
 				if (b->is_clicked(event)) {
 					for (auto& c : button_command) {
 						if (b->get_identifier() == c.first) {

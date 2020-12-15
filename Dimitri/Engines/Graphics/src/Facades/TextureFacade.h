@@ -3,20 +3,11 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include<stdarg.h>
+#include <stdarg.h>
 #include <iostream>"
-#include <SDL.h>
-#include <SDL_image.h>
 
-#ifdef _WIN64
-#ifdef GRAPHICS_EXPORTS
-#define GRAPHICS_API __declspec(dllexport)
-#else 
-#define GRAPHICS_API __declspec(dllimport)
-#endif
-#else
-#define GRAPHICS_API
-#endif
+struct SDL_Renderer;
+struct SDL_Texture;
 
 /**
 * \namespace Graphics
@@ -28,12 +19,11 @@ namespace Graphics {
 	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
-		using TextureDestroyer = void (*)(SDL_Texture*);
 		/**
 		* \class TextureFacade
 		* \brief Class contains the references to the SDL_Texture
 		*/
-		class GRAPHICS_API TextureFacade {
+		class TextureFacade {
 		protected:
 			/**
 			* \brief Path to the Texture
@@ -43,14 +33,20 @@ namespace Graphics {
 			/**
 			* \brief An instance of SDL_Texture
 			*/
-			std::unique_ptr<SDL_Texture, TextureDestroyer> _texture;
+			std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)> _texture;
+
+			/**
+			* \brief The opacity of the Texture
+			* 0 is transparent, 255 is opaque
+			*/
+			uint8_t _opacity;
 		public:
-			TextureFacade(const std::string& path);
+			TextureFacade(const std::string& path, int opacity);
 
 			/**
 			* \brief Creates a SDL_Texture
 			*/
-			virtual void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer) = 0;
+			virtual void create_texture(std::unique_ptr<SDL_Renderer, void (*)(SDL_Renderer*)>& renderer) = 0;
 
 			/**
 			* \brief Returns the SDL_Texture
