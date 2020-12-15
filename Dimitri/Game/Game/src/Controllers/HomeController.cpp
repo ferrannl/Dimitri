@@ -26,7 +26,7 @@ namespace Game {
 				std::make_shared<Graphics::Models::Sprite>(_scene_width / 2 - (w / 2), _scene_height / 4 * 3 - (120 + 70 * i), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 				std::make_shared<Graphics::Models::Text>(b.first, color, _scene_width / 2 - (w_text / 2), _scene_height / 4 * 3 - (120 + 70 * i), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 			};
-			add_button(Models::Button{ _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second });
+			add_button(std::make_unique<Game::Models::Button>( _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second ));
 			i++;
 		}
 	}

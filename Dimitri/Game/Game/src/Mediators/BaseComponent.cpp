@@ -11,13 +11,8 @@ namespace Game {
 			return _identifier;
 		}
 
-		void BaseComponent::add_button(Game::Models::Button b) {
-			_buttons.push_back(std::make_unique<Game::Models::Button>(b));
-		}
-
-		void BaseComponent::add_check_button(Game::Models::CheckButton b)
-		{
-			_buttons.push_back(std::make_unique<Game::Models::CheckButton>(b));
+		void BaseComponent::add_button(std::unique_ptr<Game::Models::Button> b) {
+			_buttons.push_back(std::move(b));
 		}
 
 		std::vector<Game::Models::Button*> BaseComponent::get_buttons() const {

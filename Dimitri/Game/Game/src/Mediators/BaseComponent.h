@@ -46,12 +46,7 @@ namespace Game {
 			/**
 			* \brief Add a button to the buttons
 			*/
-			void add_button(Game::Models::Button b);
-
-			/**
-			* \brief Add check button to buttons
-			*/
-			void add_check_button(Game::Models::CheckButton b);
+			void add_button(std::unique_ptr<Game::Models::Button> b);
 
 			/**
 			* \brief Returns the buttons
