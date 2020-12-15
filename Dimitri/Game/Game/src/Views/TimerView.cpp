@@ -16,11 +16,11 @@ namespace Game {
 		close();
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
-		std::string ticks = std::to_string(_graphics_controller->get_window()->get_facade()->get_timer()->getTicks() / 1000.f);
+		std::string ticks = std::to_string(_graphics_controller->get_window()->get_timer()->getTicks() / 1000.f);
 		if (!is_visible()) {
 			_textures.clear();
 		}
-		if (!_graphics_controller->get_window()->get_facade()->get_timer()->is_paused()) {
+		if (!_graphics_controller->get_window()->get_timer()->is_paused()) {
 			_textures.push_back(std::make_shared<Graphics::Models::Text>(ticks, color, window_width - (window_width / 2) - timer_width, window_height - 60, 100, timer_width, 100, 0, path, true, Graphics::Models::Center{ 0,0 }, false));
 		}
 		open();

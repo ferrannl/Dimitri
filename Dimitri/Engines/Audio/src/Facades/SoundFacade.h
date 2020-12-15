@@ -2,15 +2,7 @@
 #include "../Interfaces/IAudioFacade.h"
 #include "../Exceptions/AudioExceptions.h"
 
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
+struct Mix_Chunk;
 
 /**
 * \namespace Audio
@@ -26,12 +18,12 @@ namespace Audio {
 		* \class SoundFacade
 		* \brief Class contains the methods to interact with SDL_Mixer for sound
 		*/
-		class AUDIO_API SoundFacade : public Interfaces::IAudioFacade {
+		class SoundFacade : public Interfaces::IAudioFacade {
 		private:
 			/**
 			* \brief The Mix_Music from SDL2 to be able to perform actions on the audio file
 			*/
-			std::unique_ptr<Mix_Chunk, decltype (&Mix_FreeChunk)> _sound;
+			std::unique_ptr<Mix_Chunk, void(*)(Mix_Chunk*)> _sound;
 
 			/**
 			* \brief The channel of the current audio file

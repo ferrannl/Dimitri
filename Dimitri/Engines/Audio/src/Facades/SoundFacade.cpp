@@ -1,4 +1,7 @@
 #include "SoundFacade.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+
 using namespace Audio;
 
 Facades::SoundFacade::SoundFacade(const std::string path, int channel) : Interfaces::IAudioFacade(path), _channel{ channel }, _sound(nullptr, Mix_FreeChunk) {

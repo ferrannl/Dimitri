@@ -1,7 +1,5 @@
 #include "Timer.h"
 
-
-
 Utility::Time::Timer::Timer()
 {
     _current_ticks = 0;

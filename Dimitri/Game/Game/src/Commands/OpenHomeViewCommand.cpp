@@ -20,9 +20,7 @@ namespace Game {
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
 				w_ctrl->open_view(Enums::ViewEnum::FPS);
 				l_ctrl->stop();
-				if (!a_ctrl->is_playing("homescreen1")) {
-					a_ctrl->play_audio("homescreen1");
-				}
+				a_ctrl->play_audio("homescreen1");
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
 				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->unsubscribe(c_ctrl);
