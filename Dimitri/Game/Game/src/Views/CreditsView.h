@@ -2,7 +2,7 @@
 #include "../Views/View.h"
 #include "../Views/View.h"
 #include <src\Helpers\BasePathHelper.h>
-
+ 
 /**
 * \namespace Game
 * \brief Namespace for the game
