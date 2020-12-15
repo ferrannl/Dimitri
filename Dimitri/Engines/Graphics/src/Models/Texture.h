@@ -5,8 +5,6 @@
 #include "../Facades/TextureFacade.h"
 #include "Center.h"
 
-
-
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
@@ -82,6 +80,12 @@ namespace Graphics {
 			* \brief The path of the Texture
 			*/
 			std::string _path;
+
+			/**
+			* \brief The opacity of the Texture
+			* 0 is transparent, 100 is opaque
+			*/
+			int _opacity;
 		protected:
 			/**
 			* \brief The flip direction of the Texture
@@ -93,7 +97,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic);
+			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
@@ -204,6 +208,12 @@ namespace Graphics {
 			* \brief Sets the center
 			*/
 			void set_center(const Models::Center center);
+
+			/**
+			* \brief Returns the opacity of the Texture
+			* \return 0 is transparent, 100 is opaque
+			*/
+			int get_opacity() const;
 
 			/**
 			* \brief Sets the facade

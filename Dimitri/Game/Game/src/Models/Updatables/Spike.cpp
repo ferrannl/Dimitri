@@ -10,6 +10,11 @@ Models::Spike::Spike(float x, float y, float z, float height, float width, Enums
 	create_shape(x, y, height, width, false, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
+void Game::Models::Spike::set_speed(float speed)
+{
+	_angle *= 1;
+}
+
 void Models::Spike::initialize_textures()
 {
 	_animatestate = Enums::AnimateEnum::IDLE1;
@@ -20,6 +25,8 @@ void Models::Spike::initialize_textures()
 
 void Game::Models::Spike::update_object(Controllers::LevelController* ctrl)
 {
-	if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()))
-		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	if (!ctrl->get_cheats_settings()->get_invincible()) {
+		if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()))
+			ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	}
 }

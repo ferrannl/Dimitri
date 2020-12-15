@@ -9,6 +9,11 @@ Models::LightBeam::LightBeam(float x, float y, float z, float height, float widt
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
 
+void Game::Models::LightBeam::set_speed(float speed)
+{
+	_angle *= 1;
+}
+
 void Models::LightBeam::initialize_textures()
 {
 	_animatestate = Enums::AnimateEnum::IDLE1;
@@ -19,7 +24,9 @@ void Models::LightBeam::initialize_textures()
 
 void Game::Models::LightBeam::update_object(Controllers::LevelController* ctrl)
 {
-	if (_shape->check_triangle_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
-		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	if (!ctrl->get_cheats_settings()->get_invincible()) {
+		if (_shape->check_triangle_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
+			ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+		}
 	}
 }

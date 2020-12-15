@@ -147,6 +147,11 @@ namespace Graphics {
 			* \brief Returns scene size
 			*/
 			std::tuple<int, int> get_scene_size() const;
+
+			/**
+			* \brief Returns timer
+			*/
+			std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

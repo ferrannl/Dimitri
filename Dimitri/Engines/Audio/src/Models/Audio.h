@@ -3,16 +3,6 @@
 #include "../Interfaces/IAudioFacade.h"
 #include <memory>
 
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
-
 /**
 * \namespace Audio
 * \brief Namespace for the audio engine
@@ -27,7 +17,7 @@ namespace Audio {
 		* \class Audio
 		* \brief Class contains the methods to play audio files
 		*/
-		class AUDIO_API Audio {
+		class Audio {
 		private:
 			/**
 			* \brief The name of the Audio

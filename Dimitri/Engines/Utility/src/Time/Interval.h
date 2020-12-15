@@ -2,6 +2,16 @@
 #include <Windows.h>
 #include <sysinfoapi.h>
 
+#ifdef _WIN64
+#ifdef UTILITY_EXPORTS
+#define UTILITY_API __declspec(dllexport)
+#else 
+#define UTILITY_API __declspec(dllimport)
+#endif
+#else
+#define UTILITY_API
+#endif
+
 /**
 * \namespace Utility
 * \brief Namespace for the utility project
@@ -16,7 +26,7 @@ namespace Utility {
 		* \class Interval
 		* \brief Class contains the methods calculate the interval
 		*/
-		class Interval {
+		class UTILITY_API Interval {
 		private:
 			unsigned int initial_;
 		public:

@@ -19,6 +19,12 @@ namespace Game {
 		* \brief Class contains the methods to draw the hud
 		*/
 		class HUDView : public View {
+		private:
+
+			/**
+			* \brief Path for the text font
+			*/
+			std::string path_text;
 		public:
 			HUDView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
@@ -41,6 +47,7 @@ namespace Game {
 			* \brief Returns the visible state of the View
 			*/
 			bool is_visible() const override;
+
 		};
 	}
 }

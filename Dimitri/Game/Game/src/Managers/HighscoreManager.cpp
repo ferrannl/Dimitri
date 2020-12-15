@@ -13,7 +13,6 @@ void Game::Managers::HighscoreManager::load_highscore()
 {
 	if (_window_controller->is_active(Enums::ViewEnum::HOME)) {
 		_input_controller->unsubscribe(_home_controller);
-		_window_controller->toggle_view_visibility(Enums::ViewEnum::TIMER);
 		_window_controller->clear_views();
 		_audio_controller->play_audio("highscore");
 		_window_controller->open_view(Enums::ViewEnum::HIGHSCORE);
@@ -28,7 +27,7 @@ void Game::Managers::HighscoreManager::load_buttons()
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
 		   std::make_shared<Graphics::Models::Sprite>(10, window_height - 45, 3, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 	};
-	add_button(Game::Models::Button{ 10, window_height - 45.0f, 30, 30, t, Enums::ButtonEnum::HOME });
+	add_button(std::make_unique<Game::Models::Button>( 10, window_height - 45.0f, 30, 30, t, Enums::ButtonEnum::HOME ));
 }
 
 void Game::Managers::HighscoreManager::update(const Game::Events::InputEvent& object)

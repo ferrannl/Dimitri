@@ -1,10 +1,7 @@
 #pragma once
-#include <box2d/b2_shape.h>
-#include <box2d/b2_polygon_shape.h>
 #include <string>
 #include <vector>
 #include <iostream>
-#include <box2d\b2_body.h>
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
@@ -15,6 +12,8 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
+struct b2Body;
 
 /**
 * \namespace PhysicsCollision
@@ -50,15 +49,16 @@ namespace PhysicsCollision {
 			void add_body(b2Body* body);
 
 			/**
-			* \brief Returns the body
-			*/
-			b2Body* get_body() const;
-
-			/**
 			* \brief Move the X position
 			* \param value -1 is left, 1 is right
 			*/
-			void move_x(float value) const;
+			void move_x(const float direction, const float value) const;
+
+
+			/**
+			* \brief Returns the body
+			*/
+			b2Body* get_body() const;
 
 			/**
 			* \brief Move the Y position

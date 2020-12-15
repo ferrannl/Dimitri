@@ -87,14 +87,14 @@ bool Models::Shape::get_is_interactable()const
 	return _is_interactable;
 }
 
-void Models::Shape::set_is_dynamic(bool is_dynamic)
+void Models::Shape::set_is_dynamic(const bool is_dynamic)
 {
 	_is_dynamic = is_dynamic;
 }
 
-void Models::Shape::move_x(const int value)const
+void Models::Shape::move_x(const float direction, const float value)const
 {
-	_shape_facade->move_x(value);
+	_shape_facade->move_x(direction, value);
 }
 
 void Models::Shape::move_y()const

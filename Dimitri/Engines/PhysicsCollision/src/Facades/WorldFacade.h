@@ -1,10 +1,6 @@
 #pragma once
 #include <vector>
 #include "../Models/Shape.h"
-#include <box2d/b2_world.h>
-#include <box2d/b2_math.h>
-#include <box2d/b2_body.h>
-#include <box2d/b2_fixture.h>
 #include <map>
 #include <math.h> 
 
@@ -17,6 +13,11 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
+struct b2World;
+struct b2PolygonShape;
+struct b2BodyDef;
+struct b2FixtureDef;
 
 /**
 * \namespace PhysicsCollision
@@ -54,7 +55,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the World
 			*/
-			void simulate() const;
+			void simulate(const float speed) const;
 
 			/**
 			* \brief Adds a Shape to the World

@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include <src\Controllers\GraphicsController.h>
-//#include <../Game/Game/src/Controllers/LevelController.h>
 #include <src\Helpers\BasePathHelper.h>
 #include <..\Game\Game\src\Views\View.h>
 
@@ -32,6 +31,11 @@ namespace Game {
 			* \brief Removes the textures of the View to the Window in the GraphicsController
 			*/
 			void close() override;
+
+			/**
+			* \brief Returns the visible state of the View
+			*/
+			bool is_visible() const override;
 		};
 	}
 }

@@ -13,6 +13,7 @@
 #include <..\Game\Game\src\Views\LevelView.h>
 #include <..\Game\Game\src\Views\TimerView.h>
 #include <..\Game\Game\src\Views\HighscoreView.h>
+#include <..\Game\Game\src\Views\GamePlaySpeedView.h>
 #include <..\Game\Game\src\Views\FpsView.h>
 #include <..\Game\Game\src\Views\WinLevelView.h>
 #include <..\Game\Game\src\Views\GameOverLevelView.h>
@@ -20,7 +21,9 @@
 #include <..\Game\Game\src\Views\HUDView.h>
 #include <..\Game\Game\src\Views\AdvertisementView.h>
 #include <..\Game\Game\src\Views\SaveGameView.h>
+#include <..\Game\Game\src\Views\CheatsView.h>
 #include <..\Game\Game\src\Views\View.h>
+#include <..\Game\Game\src\Views\LevelTransitionView.h>
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
@@ -69,6 +72,10 @@ namespace Game {
 			*/
 			int _width;
 
+			/**
+			* \brief The speed for a View
+			*/
+			float _speed;
 		public:
 			WindowController();
 
@@ -86,6 +93,11 @@ namespace Game {
 			* \brief Checks if the View is active
 			*/
 			bool is_active(Enums::ViewEnum view_name);
+
+			/**
+			* \brief Close a view based on the enum
+			*/
+			void close_view(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Sets all the Views active property to false
@@ -111,6 +123,11 @@ namespace Game {
 			* \brief dds the Textures for a View
 			*/
 			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
+
+			/**
+			* \brief Sets the speed for a View
+			*/
+			void set_speed(float speed);
 
 			/**
 			* \brief Updates camera position
