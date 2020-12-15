@@ -6,9 +6,9 @@
 #include "../Mediators/BaseComponent.h"
 #include <src\Interfaces\IObservable.h>
 #include <src\Models\Texture.h>
-#include <..\Game\Game\src\Models\Level.h>
-#include <..\Game\Game\src\Events\InputEvent.h>
-#include <..\Game\Game\src\Enums\LevelStateEnum.h>
+#include "../Models/Level.h"
+#include "../Events/InputEvent.h"
+#include "../Enums/LevelStateEnum.h"
 #include <chrono>
 #include <thread>
 #include <any>

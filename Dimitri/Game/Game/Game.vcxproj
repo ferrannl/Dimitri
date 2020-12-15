@@ -120,14 +120,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Engines\Utility;$(SolutionDir)DocumentHandler</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engines\PhysicsCollision;$(SolutionDir)Engines\Input;$(SolutionDir)Engines\Audio;$(SolutionDir)Engines\Graphics;$(SolutionDir)Engines\Utility;$(SolutionDir)Engines\DocumentHandler</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Graphics.lib;PhysicsCollision.lib;Input.lib;Audio.lib;Utility.lib;DocumentHandler.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Utility\bin\$(Platform)\$(Configuration)\;$(SolutionDir)DocumentHandler\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Engines\PhysicsCollision\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Audio\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Input\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Graphics\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\Utility\bin\$(Platform)\$(Configuration)\;$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
       <DelayLoadDLLs>Audio.dll;Graphics.dll;Input.dll;PhysicsCollision.dll;Utility.dll;DocumentHandler.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
     <PostBuildEvent>
