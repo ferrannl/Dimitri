@@ -44,7 +44,8 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     break;
                 case 11:
                     val1 = get_value<int>("Lamp_yPos", get_object(objects, x, tiled_y));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, tileset.first, (val1 - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    secret = get_value<bool>("Visible", get_object(objects, x, tiled_y));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, tileset.first, (val1 - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE, 0, secret));
                     break;
                 case 47:
                     val1 = get_value<int>("Camera_yPos", get_object(objects, x, tiled_y));
