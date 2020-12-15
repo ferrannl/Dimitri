@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Abstract/Interactable.h"
-#include "../interfaces/IFactory.h"
-
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -17,14 +17,7 @@ namespace Game {
 		* \brief Class contains the methods to create interactables
 		*/
 		class InteractableFactory {
-		private:
-			/**
-			* \brief In this vector are the light beams saved so that when the lamp of camera is drawn the beam can get the appropiate hight.
-			*/
-			std::vector<int> _lights;
 		public:
-			InteractableFactory();
-
 			/**
 			* \brief Creates the interactable
 			*/

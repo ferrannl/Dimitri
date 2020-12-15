@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Abstract/Object.h"
-#include "../interfaces/IFactory.h"
-
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 /**
 * \namespace Game
 * \brief Namespace for the game

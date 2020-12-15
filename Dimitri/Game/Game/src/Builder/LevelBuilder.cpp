@@ -9,7 +9,7 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vecto
     std::vector<std::pair<int, std::vector<std::vector<int>>>> tiles = level_layers.first;
     std::vector<std::vector<std::pair<std::string, std::any>>> objects = level_layers.second;
 
-    int level_height = (tiles.at(0).second.size() - 1) * TILE_SIZE;
+    int level_height = (tiles.at(0).second.size()) * TILE_SIZE;
     int level_width = (tiles.at(0).second.at(0).size()) * TILE_SIZE;
 
     std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, window_controller, level_width, level_height);

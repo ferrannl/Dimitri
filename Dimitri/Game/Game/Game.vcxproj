@@ -272,7 +272,6 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClInclude Include="src\Enums\ViewEnum.h" />
     <ClInclude Include="src\Factory\BackgroundFactory.h" />
     <ClInclude Include="src\Factory\UpdatableFactory.h" />
-    <ClInclude Include="src\interfaces\IFactory.h" />
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Managers\HighscoreManager.h" />

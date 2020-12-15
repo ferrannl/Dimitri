@@ -8,10 +8,6 @@
 
 using namespace Game;
 
-Game::Factories::InteractableFactory::InteractableFactory()
-{
-}
-
 std::shared_ptr<Models::Interactable> Factories::InteractableFactory::create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, std::vector<std::tuple<float, float>> lights, bool secret)
 {
 	std::shared_ptr<Models::Interactable> instance;

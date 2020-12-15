@@ -3,16 +3,14 @@ using namespace Game;
 
 void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, const std::pair<int, std::vector<std::vector<int>>>& tileset, const std::vector<std::vector<std::pair<std::string, std::any>>>& objects)
 {
-    int level_height = (tileset.second.size() - 1) * TILE_SIZE;
-    int level_width = (tileset.second.at(0).size() - 1) * TILE_SIZE;
+    int level_height = (((tileset.second.size()) * TILE_SIZE));
+    int level_width = (tileset.second.at(0).size()) * TILE_SIZE;
 
     int x = 0;
-    int y = level_height;
+    int y = level_height - TILE_SIZE;
     int tiled_y = 0;
-    int cam_y = 0;
-    int light_y = 0;
-    int light_x = 0;
-    int rotation_bounds = 0;
+    int val1 = 0;
+    int val2 = 0;
     bool secret = false;
 
     try {
@@ -45,13 +43,13 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_interactable(_interactable_factory.create(Enums::TypeEnum::CAR, x, y, tileset.first, TILE_SIZE * 2, TILE_SIZE * 4, Enums::DirectionEnum::RIGHT));
                     break;
                 case 11:
-                    light_y = get_value<int>("Lamp_yPos", get_object(objects, x, tiled_y));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, tileset.first, (light_y - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
+                    val1 = get_value<int>("Lamp_yPos", get_object(objects, x, tiled_y));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::BEAM, x, y, tileset.first, (val1 - y), TILE_SIZE * 5, Enums::DirectionEnum::NONE));
                     break;
                 case 47:
-                    cam_y = get_value<int>("Camera_yPos", get_object(objects, x, tiled_y));
-                    rotation_bounds = get_value<int>("Rotation_Borders", get_object(objects, x, tiled_y));
-                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, tileset.first, (cam_y-y), TILE_SIZE * 5, Enums::DirectionEnum::NONE, rotation_bounds));
+                    val1 = get_value<int>("Camera_yPos", get_object(objects, x, tiled_y));
+                    val2 = get_value<int>("Rotation_Borders", get_object(objects, x, tiled_y));
+                    level->add_updatable(_updatable_factory.create(Enums::TypeEnum::CAM_VISION, x, y, tileset.first, (val1 -y), TILE_SIZE * 5, Enums::DirectionEnum::NONE, val2));
                     break;
                 case 16:
                     level->add_tile(_object_factory.create(Enums::TypeEnum::CAMERA, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));

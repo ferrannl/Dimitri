@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Abstract/Updatable.h"
-#include "../interfaces/IFactory.h"
-
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -18,7 +18,6 @@ namespace Game {
 		*/
 		class UpdatableFactory {
 		public:
-
 			/**
 			* \brief Creates the updatable
 			*/

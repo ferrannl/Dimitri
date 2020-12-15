@@ -41,11 +41,6 @@ namespace Game {
 			* \brief Factory which creates updatables
 			*/
 			Factories::UpdatableFactory _updatable_factory;
-
-			/**
-			* \brief Factory which creates backgrounds
-			*/
-			Factories::BackgroundFactory _background_factory;
 		public:
 			/**
 			* \brief Builds the level
@@ -57,6 +52,9 @@ namespace Game {
 			*/
 			const std::vector<std::pair<std::string, std::any>> get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y);
 
+			/**
+			* \brief Gets all the light coordinates for the switches
+			*/
 			std::vector<std::tuple<float, float>> get_lights(std::vector<std::pair<std::string, std::any>> object);
 
 			/**
@@ -70,7 +68,9 @@ namespace Game {
 					}
 				}
 
-				return false;
+				if (std::is_same<T, bool>::value) {
+					return false;
+				}
 			}
 		};
 	}
