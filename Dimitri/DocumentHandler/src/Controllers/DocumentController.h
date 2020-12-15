@@ -28,7 +28,15 @@ namespace DocumentHandler {
 		*/
 		class DOCUMENT_API DocumentController {
 		public:
+			/**
+			* \brief Reads from a file
+			*/
 			std::vector<std::vector<int>> Read(const std::string& path);
+			
+			/**
+			* \brief Writes to a file
+			*/
+			void Write(const std::string& path, std::vector<std::vector<int>> data);
 		};
 	}
 }
