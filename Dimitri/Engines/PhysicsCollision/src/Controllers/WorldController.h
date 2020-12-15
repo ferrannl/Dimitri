@@ -48,7 +48,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Destroys the bodies of the Shapes in the World
 			*/
-			void destroy_bodies();
+			void destroy_bodies() const;
 
 			/**
 			* \brief Destroys a body in the World
@@ -58,7 +58,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the world
 			*/
-			void simulate(const float speed)const;
+			void simulate(float speed)const;
 
 			/**
 			* \brief Returns all the Shapes in the World

@@ -55,17 +55,17 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the World
 			*/
-			void simulate(const float speed) const;
+			void simulate(float speed) const;
 
 			/**
 			* \brief Adds a Shape to the World
 			*/
-			void add_shape(std::shared_ptr<Models::Shape> shape);
+			void add_shape(const std::shared_ptr<Models::Shape> shape);
 
 			/**
 			* \brief Creates a polygon body
 			*/
-			void create_polygon_body(b2PolygonShape& _shape, b2BodyDef& bodyDef, b2FixtureDef& fixtureDef, b2Body*& body, std::shared_ptr<Models::Shape> shape);
+			void create_polygon_body(const b2PolygonShape& _shape, b2BodyDef& bodyDef, b2FixtureDef& fixtureDef, b2Body*& body, const std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

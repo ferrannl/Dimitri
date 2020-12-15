@@ -32,7 +32,7 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Shape {
 		private:
-			float area(float x1, float y1, float x2, float y2, float x3, float y3);
+			float area(float x1, float y1, float x2, float y2, float x3, float y3) const;
 
 			/**
 			* \brief X position of the Shape
@@ -79,7 +79,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
+			Shape(float x, float y, float height, float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
 
 			/**
 			* \brief Returns the ShapeFacade
@@ -94,12 +94,12 @@ namespace PhysicsCollision {
 			/**
 			* \brief Sets the type the Shape
 			*/
-			void set_type(Enums::ShapeEnum type);
+			void set_type(const Enums::ShapeEnum type);
 
 			/**
 			* \brief Sets if the Shape is interactable
 			*/
-			void set_is_interactable(bool is_interactable);
+			void set_is_interactable(const bool is_interactable);
 
 			/**
 			* \brief Sets the X position of the Shape
@@ -175,23 +175,23 @@ namespace PhysicsCollision {
 			* \brief Move the X position of the Shape
 			* \param value -1 is left, 1 is right
 			*/
-			void move_x(const float direction, const float value) const;
+			void move_x(float direction, float value) const;
 
 			/**
 			* \brief Checks if the Shape has collision with another shape
 			* \return True if collision, otherwise false
 			*/
-			bool check_square_collision(std::shared_ptr<Models::Shape> shape);
+			bool check_square_collision(const std::shared_ptr<Models::Shape> shape)const;
       
 			/**
 			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
 			*/
-			bool check_bottom_collision(std::shared_ptr<Models::Shape> shape);
+			bool check_bottom_collision(const std::shared_ptr<Models::Shape> shape)const;
 
 			/**
 			* Returns true when there is collision between a point and a triangle. This method also uses the angle te shape is in. Else returns false
 			*/
-			bool check_triangle_collision(std::shared_ptr<Models::Shape> shape);
+			bool check_triangle_collision(const std::shared_ptr<Models::Shape> shape) const;
 		};
 	}
 }

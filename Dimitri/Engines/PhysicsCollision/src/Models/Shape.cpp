@@ -17,7 +17,7 @@ Enums::ShapeEnum Models::Shape::get_type()const
 	return _type;
 }
 
-void Models::Shape::set_type(Enums::ShapeEnum type)
+void Models::Shape::set_type(const Enums::ShapeEnum type)
 {
 	_type = type;
 }
@@ -102,7 +102,7 @@ void Models::Shape::move_y()const
 	_shape_facade->move_y();
 }
 
-bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)
+bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)const
 {
 	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
 		get_x() + get_width() + 1 >= shape->get_x() &&
@@ -110,7 +110,7 @@ bool Models::Shape::check_square_collision(std::shared_ptr<Models::Shape> shape)
 		get_y() + get_height() + 1 >= shape->get_y();
 }
 
-bool Models::Shape::check_bottom_collision(std::shared_ptr<Models::Shape> shape)
+bool Models::Shape::check_bottom_collision(std::shared_ptr<Models::Shape> shape)const
 {
 	const float collision_height = 1.0;
 
@@ -120,7 +120,7 @@ bool Models::Shape::check_bottom_collision(std::shared_ptr<Models::Shape> shape)
 		get_y() + collision_height >= shape->get_y();
 }
 
-bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shape)
+bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shape)const
 {
 	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
 
@@ -159,7 +159,7 @@ bool Models::Shape::check_triangle_collision(std::shared_ptr<Models::Shape> shap
 	return (beam_area == a1 + a2 + a3);
 }
 
-float Models::Shape::area(float x1, float y1, float x2, float y2, float x3, float y3)
+float Models::Shape::area(float x1, float y1, float x2, float y2, float x3, float y3)const
 {
 	return abs(((x1 * (y2 - y3)) + (x2 * (y3 - y1)) + (x3 * (y1 - y2))) / 2.0);
 }

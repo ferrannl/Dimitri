@@ -30,7 +30,7 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Square : public Shape {
 		public:
-			Square(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
+			Square(float x, float y, float height, float width, const bool is_dynamic, const bool is_interactable, const Enums::ShapeEnum type);
 		};
 	}
 }
