@@ -26,9 +26,9 @@ namespace Game {
 			CheckButton(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier);
 
 			/**
-			* \brief Checks if the button is clicked
+			* \brief Can be used for animating a button click
 			*/
-			bool is_clicked(Game::Events::InputEvent object) override;
+			void button_visual_action() override;
 		};
 	}
 }

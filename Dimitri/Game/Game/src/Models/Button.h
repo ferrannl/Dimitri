@@ -55,7 +55,12 @@ namespace Game {
 			/**
 			* \brief Checks if the button is clicked
 			*/
-			virtual bool is_clicked(Game::Events::InputEvent object);
+			bool is_clicked(Game::Events::InputEvent object);
+
+			/**
+			* \brief Can be used for animating a button click
+			*/
+			virtual void button_visual_action();
 
 			/**
 			* \brief Returns the texture

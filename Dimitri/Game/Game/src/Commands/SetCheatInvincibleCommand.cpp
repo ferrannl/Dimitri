@@ -6,4 +6,6 @@ Game::Commands::SetCheatInvincibleCommand::SetCheatInvincibleCommand(const std::
 
 void Game::Commands::SetCheatInvincibleCommand::execute()
 {
+	auto c_settings = _main_controller->get_cheats_controller()->get_cheat_settings();
+	c_settings->set_invincible();
 }

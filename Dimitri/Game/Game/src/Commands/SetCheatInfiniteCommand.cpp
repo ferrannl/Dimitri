@@ -6,4 +6,6 @@ Game::Commands::SetCheatInfiniteCommand::SetCheatInfiniteCommand(const std::shar
 
 void Game::Commands::SetCheatInfiniteCommand::execute()
 {
+	auto c_settings = _main_controller->get_cheats_controller()->get_cheat_settings();
+	c_settings->set_amount_of_jumps();
 }

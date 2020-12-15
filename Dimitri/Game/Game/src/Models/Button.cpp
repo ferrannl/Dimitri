@@ -11,9 +11,17 @@ namespace Game {
 				int x = std::get<0>(object.mouse_pos);
 				int y = std::get<1>(object.mouse_pos);
 
-				return x >= _x && x <= _x + _width && y <= _y + _height && y >= _y;
+				if (x >= get_x() && x <= get_x() + get_width() && y <= get_y() + get_height() && y >= get_y()) {
+					button_visual_action();
+					return true;
+				}
 			}
 			return false;
+		}
+
+		void Button::button_visual_action()
+		{
+			return;
 		}
 
 		std::vector<std::shared_ptr<Graphics::Models::Texture>> Button::get_textures() const
