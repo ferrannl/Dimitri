@@ -80,12 +80,12 @@ namespace Graphics {
 			/**
 			* \brief Returns the current fps
 			*/
-			int get_fps();
+			float get_fps() const;
 
 			/**
 			* \brief Returns the current ticks
 			*/
-			Uint32 get_ticks();
+			Uint32 get_ticks() const;
 
 			/**
 			* Updates camera position
@@ -95,7 +95,7 @@ namespace Graphics {
 			/**
 			* \brief Returns camera position
 			*/
-			std::tuple<int, int> get_camera_pos() const;
+			std::tuple<float, float> get_camera_pos() const;
 
 			/**
 			* \brief Sets scene size
@@ -110,12 +110,12 @@ namespace Graphics {
 			/**
 			* \brief Sets the speed for the View
 			*/
-			void set_speed(float speed);
+			void set_speed(const float speed);
 
 			/**
 			* \brief Returns the speed for the View
 			*/
-			float get_speed();
+			float get_speed() const;
 		};
 	}
 }

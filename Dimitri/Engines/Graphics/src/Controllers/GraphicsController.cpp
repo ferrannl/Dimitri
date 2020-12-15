@@ -43,12 +43,12 @@ std::shared_ptr<Models::Window> Controllers::GraphicsController::get_window() co
 	return _window;
 }
 
-int Graphics::Controllers::GraphicsController::get_fps()
+float Graphics::Controllers::GraphicsController::get_fps() const
 {
 	return _window->get_facade()->get_fps();
 }
 
-Uint32 Graphics::Controllers::GraphicsController::get_ticks() {
+Uint32 Graphics::Controllers::GraphicsController::get_ticks() const {
 	return _window->get_facade()->get_ticks();
 }
 
@@ -57,7 +57,7 @@ void Graphics::Controllers::GraphicsController::set_camera_pos(int x, int y)
 	_window->set_camera_pos(x, y);
 }
 
-std::tuple<int, int> Graphics::Controllers::GraphicsController::get_camera_pos() const
+std::tuple<float, float> Graphics::Controllers::GraphicsController::get_camera_pos() const
 {
 	return _window->get_camera_pos();
 }
@@ -77,7 +77,7 @@ void Graphics::Controllers::GraphicsController::set_speed(float speed)
 	_speed = speed;
 }
 
-float Graphics::Controllers::GraphicsController::get_speed()
+float Graphics::Controllers::GraphicsController::get_speed() const
 {
 	return _speed;
 }

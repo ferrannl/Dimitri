@@ -20,7 +20,7 @@ std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std:
 	return nullptr;
 }
 
-int Models::Window::create()
+int Models::Window::create() const
 {
 	int retVal = NULL;
 
@@ -30,12 +30,12 @@ int Models::Window::create()
 	return retVal;
 }
 
-void Models::Window::update()
+void Models::Window::update() const
 {
 	_facade->update_window(_textures);
 }
 
-void Models::Window::destroy()
+void Models::Window::destroy() const
 {
 	_facade->destroy();
 }
@@ -87,7 +87,7 @@ std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() co
 	return _facade;
 }
 
-void Graphics::Models::Window::set_camera_pos(int x, int y)
+void Graphics::Models::Window::set_camera_pos(float x, float y)
 {
 	_facade->set_camera_pos(x,y);
 }
