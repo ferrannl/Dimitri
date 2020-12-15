@@ -10,12 +10,12 @@ Game::Controllers::CheatsController::CheatsController(): Mediators::BaseComponen
 	_settings = std::make_shared<Game::Models::CheatsSettings>();
 }
 
-void Game::Controllers::CheatsController::initialize_textures(int height, int width)
+void Game::Controllers::CheatsController::initialize_textures(float height, float width)
 {
 	
 
-	int window_width = width;
-	int window_height = height;
+	float window_width = width;
+	float window_height = height;
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 	Graphics::Models::Color color = { 255, 255, 255 };
 

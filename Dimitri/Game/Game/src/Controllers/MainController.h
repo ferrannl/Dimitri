@@ -79,7 +79,7 @@ namespace Game {
 			std::shared_ptr<Controllers::AdvertisementController> _advertisement_controller;
 
 			/**
-			* \brief An instance of the HomeController
+			* \brief An instance of the CheatsController
 			*/
 			std::shared_ptr<Controllers::CheatsController> _cheats_controller;
 		public:

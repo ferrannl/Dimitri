@@ -13,14 +13,14 @@ namespace Game {
 	namespace Commands {
 		/**
 		* \class SetCheatsInfiniteCommand
-		* \brief Class contains the method to open the help view
+		* \brief Class contains the method to set jumps to infinite
 		*/
 		class SetCheatInfiniteCommand : public Command {
 		public:
 			SetCheatInfiniteCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			/**
-			* \brief Opens the help view
+			* \brief contains the method to set jumps to infinite
 			*/
 			void execute() override;
 		};

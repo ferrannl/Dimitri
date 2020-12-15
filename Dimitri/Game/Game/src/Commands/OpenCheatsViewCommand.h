@@ -13,14 +13,14 @@ namespace Game {
 	namespace Commands {
 		/**
 		* \class OpenCheatsViewCommand
-		* \brief Class contains the method to open the help view
+		* \brief Class contains the method to open the cheats view
 		*/
 		class OpenCheatsViewCommand : public Command {
 		public:
 			OpenCheatsViewCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			/**
-			* \brief Opens the help view
+			* \brief Opens the cheats view
 			*/
 			void execute() override;
 		};

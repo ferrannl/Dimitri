@@ -13,14 +13,14 @@ namespace Game {
 	namespace Commands {
 		/**
 		* \class SetCheatsInvincibleCommand
-		* \brief Class contains the method to open the help view
+		* \brief Class contains the method to set player invincinble
 		*/
 		class SetCheatInvincibleCommand : public Command {
 		public:
 			SetCheatInvincibleCommand(const std::shared_ptr<Controllers::MainController> main_controller);
 
 			/**
-			* \brief Opens the help view
+			* \brief contains the method to set player invincinble
 			*/
 			void execute() override;
 		};

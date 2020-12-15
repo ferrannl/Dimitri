@@ -27,8 +27,8 @@ namespace Game {
 		class CheatsController : public Utility::Interfaces::IObserver<Events::InputEvent>, public Mediators::BaseComponent {
 		private:
 			/**
-				* \brief A list of the textures in cheats view
-				*/
+			* \brief A list of the textures in cheats view
+			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
 
 			/**
@@ -42,7 +42,7 @@ namespace Game {
 			/**
 			* \brief Loads textures
 			*/
-			void initialize_textures(int height, int width);
+			void initialize_textures(float height, float width);
 
 			/**
 			* \brief Receives updates from InputController
