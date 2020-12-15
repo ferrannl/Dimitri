@@ -230,3 +230,17 @@ Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
 	return _state;
 }
+
+void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Models::CheatsSettings> settings)
+{
+	// set invincibility settings
+	_settings = settings;
+
+	//sets jumps settings
+	_level->get_player()->set_jumps(settings->get_amount_of_jumps());
+}
+
+std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::LevelController::get_cheats_settings()
+{
+	return _settings;
+}
