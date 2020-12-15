@@ -82,6 +82,9 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 	else {
 		get_texture()->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 	}
+	if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
+		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	}
 }
 
 void Game::Models::Enemy::walk()
