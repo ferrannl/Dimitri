@@ -137,7 +137,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
-			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->pause();
+			_window_controller->get_graphics_controller()->get_window()->get_timer()->pause();
 		}
 		else if (old_state == Enums::LevelStateEnum::TRANSITION) {
 			// transition -> active/pause/win/game_over/inactive
@@ -150,7 +150,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_simulation_thread = std::thread(&Game::Controllers::LevelController::simulate, this);
 			_objects_thread = std::thread(&Game::Controllers::LevelController::simulate_objects, this);
 			_level->play_music("level1");
-			_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->unpause();
+			_window_controller->get_graphics_controller()->get_window()->get_timer()->unpause();
 		}
 		else if (new_state == Enums::LevelStateEnum::TRANSITION) {
 			// active/pause/win/game_over/inactive -> transition
@@ -176,7 +176,7 @@ void Game::Controllers::LevelController::run_transition()
 		sleep_for(5ms);
 		if (!_window_controller->is_active(Enums::ViewEnum::LEVEL_TRANSITION)) { break; }
 	}
-	_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->start();
+	_window_controller->get_graphics_controller()->get_window()->get_timer()->start();
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
 
@@ -222,7 +222,7 @@ std::vector<Game::Models::Button*> Controllers::LevelController::get_buttons() c
 
 void Game::Controllers::LevelController::update_highscore()
 {
-	std::string record = std::to_string(_window_controller->get_graphics_controller()->get_window()->get_facade()->get_timer()->getTicks() / 1000.f);
+	std::string record = std::to_string(_window_controller->get_graphics_controller()->get_window()->get_timer()->getTicks() / 1000.f);
 	_window_controller->set_highscore_record<Views::HighscoreView>(record);
 }
 

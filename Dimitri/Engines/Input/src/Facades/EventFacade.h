@@ -1,18 +1,6 @@
 #pragma once
-#include "../Adapters/KeyBoardAdapter.h"
-#include "../Adapters/MouseAdapter.h"
 #include <memory>
-#include <SDL.h>
-
-#ifdef _WIN64
-#ifdef INPUT_EXPORTS
-#define INPUT_API __declspec(dllexport)
-#else 
-#define INPUT_API __declspec(dllimport)
-#endif
-#else
-#define INPUT_API
-#endif
+#include "../Interfaces/IInputAdapter.h"
 
 /**
 * \namespace Input
@@ -28,7 +16,7 @@ namespace Input {
 		* \class EventFacade
 		* \brief Class contains the methods to get fired events using SDL
 		*/
-		class INPUT_API EventFacade {
+		class EventFacade {
 		private:
 			/**
 			* \brief An instance of SDL_Event

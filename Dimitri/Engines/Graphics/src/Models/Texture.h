@@ -5,8 +5,6 @@
 #include "../Facades/TextureFacade.h"
 #include "Center.h"
 
-
-
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)

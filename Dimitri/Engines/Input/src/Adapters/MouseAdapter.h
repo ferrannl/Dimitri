@@ -2,16 +2,6 @@
 #include <tuple>
 #include "../interfaces/IInputAdapter.h"
 
-#ifdef _WIN64
-#ifdef INPUT_EXPORTS
-#define INPUT_API __declspec(dllexport)
-#else 
-#define INPUT_API __declspec(dllimport)
-#endif
-#else
-#define INPUT_API
-#endif
-
 /**
 * \namespace Input
 * \brief Namespace for the input engine
@@ -26,7 +16,7 @@ namespace Input {
 		* \class MouseAdapter
 		* \brief Class contains the methods to translate SDL events to EventEnum
 		*/
-		class INPUT_API MouseAdapter : public Input::Interfaces::IInputAdapter {
+		class MouseAdapter : public Input::Interfaces::IInputAdapter {
 		public:
 			/**
 			* \brief Translates SDL events to EventEnum that are fires by a mouse

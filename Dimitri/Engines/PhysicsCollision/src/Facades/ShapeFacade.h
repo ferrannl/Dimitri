@@ -1,10 +1,7 @@
 #pragma once
-#include <box2d/b2_shape.h>
-#include <box2d/b2_polygon_shape.h>
 #include <string>
 #include <vector>
 #include <iostream>
-#include <box2d\b2_body.h>
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
@@ -15,6 +12,8 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
+struct b2Body;
 
 /**
 * \namespace PhysicsCollision
