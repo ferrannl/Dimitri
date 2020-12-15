@@ -73,6 +73,7 @@ namespace Game {
 			* \brief Checks the state of the Enemy with by checking the increase of x and or y
 			*/
 			void update_state();
+
 		};
 	}
 }

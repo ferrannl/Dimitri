@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Abstract/Object.h"
-#include "../interfaces/IFactory.h"
-
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -16,7 +16,7 @@ namespace Game {
 		* \class ObjectFactory
 		* \brief Class contains the methods to create tiles
 		*/
-		class ObjectFactory : public Interfaces::IFactory<Models::Object> {
+		class ObjectFactory {
 		public:
 			/**
 			* \brief Creates the background

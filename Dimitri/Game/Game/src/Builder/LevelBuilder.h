@@ -1,9 +1,8 @@
 #include <vector>
-#include "../Factory/ObjectFactory.h";
-#include "../Factory/InteractableFactory.h";
-#include "../Factory/UpdatableFactory.h";
 #include "../Factory/BackgroundFactory.h";
+#include "../Builder/TileBuilder.h";
 #include "../Models/Level.h"
+#include <any>
 
 /**
 * \namespace Game
@@ -25,21 +24,11 @@ namespace Game {
 			* \brief The tile size used for all the calculations 
 			*/
 			const int TILE_SIZE = 40;
-
-			/**
-			* \brief Factory which creates static tiles
-			*/
-			Factories::ObjectFactory _objectFactory;
 			
 			/**
-			* \brief Factory which creates interactables
+			* \brief Bulder for the tiles
 			*/
-			Factories::InteractableFactory _interactableFactory;
-
-			/**
-			* \brief Factory which creates updatables
-			*/
-			Factories::UpdatableFactory _updatableFactory;
+			Builder::TileBuilder _tile_builder;
 
 			/**
 			* \brief Factory which creates backgrounds
@@ -59,7 +48,7 @@ namespace Game {
 			/**
 			* \brief Builds the level
 			*/
-			std::shared_ptr<Models::Level> build(std::vector<std::vector<int>>, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
+			std::shared_ptr<Models::Level> build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
 		};
 	}
 }

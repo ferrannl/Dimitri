@@ -78,6 +78,7 @@
     <ClCompile Include="src\Views\WinLevelView.cpp" />
     <ClCompile Include="src\Commands\DecreaseGameSpeedCommand.cpp" />
     <ClCompile Include="src\Views\GamePlaySpeedView.cpp" />
+    <ClCompile Include="src\Builder\TileBuilder.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="src\Views\WinLevelView.h" />
     <ClInclude Include="src\Commands\DecreaseGameSpeedCommand.h" />
     <ClInclude Include="src\Views\GamePlaySpeedView.h" />
+    <ClInclude Include="src\Builder\TileBuilder.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
   </ItemGroup>
 </Project>

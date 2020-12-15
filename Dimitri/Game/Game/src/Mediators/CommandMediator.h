@@ -1,7 +1,7 @@
 #pragma once
 #include "../Commands/CommandFactory.h"
 #include "../Events/InputEvent.h"
-#include <..\Game\Game\src\Enums\LevelStateEnum.h>
+#include "../Enums/LevelStateEnum.h"
 #include "BaseComponent.h"
 #include <memory>
 #include "../Controllers/MainController.h"

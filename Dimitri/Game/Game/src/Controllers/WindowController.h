@@ -6,22 +6,22 @@
 #include <thread>
 #include <src\Controllers\GraphicsController.h>
 #include <src\Interfaces\IObserver.h>
-#include <..\Game\Game\src\Events\InputEvent.h>
-#include <..\Game\Game\src\Views/CreditsView.h>
-#include <..\Game\Game\src\Views/HelpView.h>
-#include <..\Game\Game\src\Views/HomeView.h>
-#include <..\Game\Game\src\Views\LevelView.h>
-#include <..\Game\Game\src\Views\TimerView.h>
-#include <..\Game\Game\src\Views\HighscoreView.h>
-#include <..\Game\Game\src\Views\GamePlaySpeedView.h>
-#include <..\Game\Game\src\Views\FpsView.h>
-#include <..\Game\Game\src\Views\WinLevelView.h>
-#include <..\Game\Game\src\Views\GameOverLevelView.h>
-#include <..\Game\Game\src\Views\PauseLevelView.h>
-#include <..\Game\Game\src\Views\HUDView.h>
-#include <..\Game\Game\src\Views\AdvertisementView.h>
-#include <..\Game\Game\src\Views\View.h>
-#include <..\Game\Game\src\Views\LevelTransitionView.h>
+#include "../Events/InputEvent.h"
+#include "../Views/CreditsView.h"
+#include "../Views/HelpView.h"
+#include "../Views/HomeView.h"
+#include "../Views/LevelView.h"
+#include "../Views/TimerView.h"
+#include "../Views/HighscoreView.h"
+#include "../Views/GamePlaySpeedView.h"
+#include "../Views/FpsView.h"
+#include "../Views/WinLevelView.h"
+#include "../Views/GameOverLevelView.h"
+#include "../Views/PauseLevelView.h"
+#include "../Views/HUDView.h"
+#include "../Views/AdvertisementView.h"
+#include "../Views/View.h"
+#include "../Views/LevelTransitionView.h"
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
@@ -91,6 +91,11 @@ namespace Game {
 			* \brief Checks if the View is active
 			*/
 			bool is_active(Enums::ViewEnum view_name);
+
+			/**
+			* \brief Close a view based on the enum
+			*/
+			void close_view(Enums::ViewEnum view_name);
 
 			/**
 			* \brief Sets all the Views active property to false

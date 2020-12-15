@@ -1,6 +1,8 @@
 #include "WindowFacade.h"
 #include <map>
 #include <SDL_ttf.h>
+#include <SDL.h>
+#include <SDL_image.h>
 using namespace Graphics;
 
 int Facades::WindowFacade::create_window(const std::string& title, float height, float width)
@@ -24,6 +26,7 @@ int Facades::WindowFacade::create_window(const std::string& title, float height,
 		if (_window == NULL) {
 			throw Exceptions::CannotCreateWindow();
 		}
+
 		_fps = std::make_unique<Utility::Time::Fps>();
 		_timer = std::make_shared<Utility::Time::Timer>();
 		return 1;
@@ -59,7 +62,6 @@ void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Model
 		texture->create_texture_facade();
 		texture->get_texture_facade()->create_texture(_renderer);
 	}
-
 }
 
 void Facades::WindowFacade::update_window(std::vector<std::shared_ptr<Models::Texture>> textures)
@@ -209,11 +211,7 @@ uint32_t Graphics::Facades::WindowFacade::get_ticks()
 
 void Facades::WindowFacade::destroy()
 {
-	// we might want to deallocate surfaces in the future
-	//Destroy window
-	SDL_DestroyWindow(_window.get());
-	_window = NULL;
-	TTF_Quit();
 	//Quit SDL subsystems
 	SDL_Quit();
+	TTF_Quit();
 }

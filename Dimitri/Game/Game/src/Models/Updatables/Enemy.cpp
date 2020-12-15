@@ -64,14 +64,12 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 	{
 		walk();
 		if (_x < (ctrl->get_level()->get_player()->get_x())) {
-			_shape->move_x(1, ctrl->get_speed());
+			_shape->move_x(1, 1);
 			_direction = Enums::DirectionEnum::RIGHT;
-			//TODO add second param speed
 		}
 		else {
-			_shape->move_x(-1, ctrl->get_speed());
+			_shape->move_x(-1, 1);
 			_direction = Enums::DirectionEnum::LEFT;
-			//TODO add second param speed
 		}
 	}
 	else {

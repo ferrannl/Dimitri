@@ -116,11 +116,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	/*for (std::shared_ptr<Game::Models::Button> b : _buttons)
-	{
-		temp = b->get_all_textures();
-		textures.insert(textures.end(), temp.begin(), temp.end());
-	}*/
 	return textures;
 }
 
@@ -191,6 +186,8 @@ void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprit
 
 void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
 {
+	_enemies.push_back(tile);
+	_updatables.push_back(tile);
 }
 
 float Game::Models::Level::get_height() const
