@@ -110,7 +110,7 @@ namespace Graphics {
 			/**
 			* \brief Sets the speed for the View
 			*/
-			void set_speed(const float speed);
+			void set_speed(float speed);
 
 			/**
 			* \brief Returns the speed for the View
