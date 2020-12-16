@@ -6,6 +6,7 @@
 #include "HomeController.h"
 #include "CreditsController.h"
 #include "AdvertisementController.h"
+#include "LevelSelectorController.h"
 #include "HelpController.h"
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
@@ -33,6 +34,11 @@ namespace Game {
 			* \brief An instance of the InputController
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
+
+			/**
+			* \brief An instance of the LevelSelectorController
+			*/
+			std::shared_ptr<Controllers::LevelSelectorController> _level_selector_controller;
 
 			/**
 			* \brief An instance of the AudioController
@@ -115,6 +121,11 @@ namespace Game {
 			* \brief Returns the Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
+
+			/**
+			* \brief Returns the LevelSelectorController
+			*/
+			std::shared_ptr<Controllers::LevelSelectorController> get_level_selector_controller() const;
 
 			/**
 			* \brief Returns the Highscore Manager
