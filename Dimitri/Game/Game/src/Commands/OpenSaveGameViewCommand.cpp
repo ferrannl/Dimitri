@@ -18,7 +18,6 @@ namespace Game {
 				w_ctrl->open_view(Enums::ViewEnum::FPS);
 				l_ctrl->stop();
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
-				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->subscribe(save_game_ctrl);
 			}
 		}
