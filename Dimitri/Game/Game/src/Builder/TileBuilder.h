@@ -41,6 +41,12 @@ namespace Game {
 			* \brief Factory which creates updatables
 			*/
 			Factories::UpdatableFactory _updatable_factory;
+
+
+			/**
+			* \brief Factory which creates backgrounds
+			*/
+			Factories::BackgroundFactory _background_factory;
 		public:
 			/**
 			* \brief Builds the level

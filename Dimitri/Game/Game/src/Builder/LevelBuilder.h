@@ -1,6 +1,7 @@
 #include <vector>
 #include "../Factory/BackgroundFactory.h";
 #include "../Builder/TileBuilder.h";
+#include "../Builder/BackgroundBuilder.h";
 #include "../Models/Level.h"
 #include <any>
 
@@ -29,6 +30,11 @@ namespace Game {
 			* \brief Bulder for the tiles
 			*/
 			Builder::TileBuilder _tile_builder;
+
+			/**
+* \brief Bulder for the tiles
+*/
+			Builder::BackgroundBuilder _background_builder;
 
 			/**
 			* \brief Factory which creates backgrounds

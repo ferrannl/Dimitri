@@ -3,11 +3,8 @@ using namespace Game;
 
 void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, const std::pair<int, std::vector<std::vector<int>>>& tileset, const std::vector<std::vector<std::pair<std::string, std::any>>>& objects)
 {
-    int level_height = (((tileset.second.size()) * TILE_SIZE));
-    int level_width = (tileset.second.at(0).size()) * TILE_SIZE;
-
     int x = 0;
-    int y = level_height - TILE_SIZE;
+    int y = (level->get_height() - TILE_SIZE);
     int tiled_y = 0;
     int val1 = 0;
     int val2 = 0;
@@ -61,8 +58,17 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                 case 17:
                     // add enemy
                     break;
+                case 1260:
+                    level->add_background(_background_factory.create(Enums::TypeEnum::BG, x, y, tileset.first, 720, 680, Enums::DirectionEnum::NONE));
+                    break;
+                case 576:
+                    level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, tileset.first, 80, 680, Enums::DirectionEnum::NONE));
+                    break;
+                case 468:
+                    level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, tileset.first, 80, 680, Enums::DirectionEnum::NONE));
+                    break;
                 }
-
+                
                 x += TILE_SIZE;
             }
 

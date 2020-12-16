@@ -14,41 +14,18 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(std::pair<std::vecto
 
     std::shared_ptr<Models::Level> level = std::make_shared<Models::Level>(audio_controller, window_controller, level_width, level_height);
 
-    build_background(level);
     build_borders(level);
 
     for (std::pair<int, std::vector<std::vector<int>>> tileset : tiles) {
-        _tile_builder.build(level, tileset, objects);
+        if (tileset.first == 1) {
+            _background_builder.build(level, tileset, objects);
+        }
+        else {
+            _tile_builder.build(level, tileset, objects);
+        }
     }
 
     return level;
-}
-
-void Builder::LevelBuilder::build_background(std::shared_ptr<Models::Level>& level) {
-    int bg_height = 720;
-    int bg_width = 680;
-    int top_height = 80;
-    int top_width = bg_width;
-
-    int x = 0;
-    int y = 0;
-
-    while (x < level->get_width()) {
-        level->add_background(_background_factory.create(Enums::TypeEnum::BG, x, y, 0, bg_height, bg_width, Enums::DirectionEnum::NONE));
-
-        y += bg_height;
-
-        while (y <= level->get_height()) {
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP1, x, y, 0, top_height, top_width, Enums::DirectionEnum::NONE));
-            y += top_height;
-
-            level->add_background(_background_factory.create(Enums::TypeEnum::BG_TOP2, x, y, 0, top_height, top_width, Enums::DirectionEnum::NONE));
-            y += top_height;
-        }
-
-        y = 0;
-        x += bg_width;
-    }
 }
 
 void Game::Builder::LevelBuilder::build_borders(std::shared_ptr<Game::Models::Level>& level)
