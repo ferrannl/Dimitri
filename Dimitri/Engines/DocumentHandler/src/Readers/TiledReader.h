@@ -20,7 +20,7 @@ namespace DocumentHandler {
 		class TiledReader {
 		public:
 			/**
-			* \brief Reads the csv file
+			* \brief Reads the tiled file
 			*/
 			std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
 
