@@ -52,10 +52,10 @@ namespace Game {
 			_commands.insert(std::make_pair(Enums::CommandEnum::DECREASE_GAMESPEED, std::make_unique<DecreaseGameSpeedCommand>(main_controller)));
 		}
 
-		Command* CommandFactory::get_command(Enums::CommandEnum command_name) const
+		const std::unique_ptr<Command>& CommandFactory::get_command(Enums::CommandEnum command_name) const
 		{
 			if (_commands.find(command_name) != _commands.end()) {
-				return _commands.at(command_name).get();
+				return _commands.at(command_name);
 			}
 			return nullptr;
 		}
