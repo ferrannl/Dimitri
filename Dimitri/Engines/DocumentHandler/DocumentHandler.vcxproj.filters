@@ -30,13 +30,16 @@
     <ClInclude Include="src\Readers\TiledReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Interfaces\IWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Interfaces\IReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Readers\TextReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Writers\TextWriter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Interfaces\IWriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
