@@ -6,11 +6,12 @@
 #include "../Mediators/BaseComponent.h"
 #include <src\Interfaces\IObservable.h>
 #include <src\Models\Texture.h>
-#include <..\Game\Game\src\Models\Level.h>
-#include <..\Game\Game\src\Events\InputEvent.h>
-#include <..\Game\Game\src\Enums\LevelStateEnum.h>
+#include "../Models/Level.h"
+#include "../Events/InputEvent.h"
+#include "../Enums/LevelStateEnum.h"
 #include <chrono>
 #include <thread>
+#include <any>
 #include "../Models/Settings/CheatsSettings.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
@@ -106,6 +107,8 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::Level> get_level() const;
 
+			void play_secret();
+
 			/**
 			* \brief Starts simulation
 			*/
@@ -137,11 +140,6 @@ namespace Game {
 			Enums::LevelStateEnum get_state() const;
 
 			/**
-			* \brief Turns of a light
-			*/
-			void turn_off_light(const int x);
-
-			/**
 			* \brief Simulates the objects
 			*/
 			void simulate_objects();
@@ -151,6 +149,7 @@ namespace Game {
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
 
+			void toggle_light(const std::tuple<int, int>& pos);
 
 			/**
 			* \brief Updates the highscore
