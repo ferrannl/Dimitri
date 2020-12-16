@@ -40,7 +40,7 @@ namespace Graphics {
 			*/
 			const Color _color;
 		public:
-			Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
+			Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, const bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the text

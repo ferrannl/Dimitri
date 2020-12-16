@@ -38,7 +38,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Sets up the world with a width and height
 			*/
-			void setup_world(const float width, const float height);
+			void setup_world(float width, float height);
 
 			/**
 			* \brief Loads Shapes into the world

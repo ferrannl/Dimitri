@@ -1,7 +1,7 @@
 #include "Texture.h"
 using namespace Graphics;
 
-Models::Texture::Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity) :
+Models::Texture::Texture(float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, bool is_dynamic, int opacity) :
 	_x{ x }, _y{ y }, _z{ z }, _height{ height }, _width{ width }, _angle{ angle }, _path{ path }, _facade{ nullptr }, _flipstatus{ Enums::FlipEnum::NONE }, _visible{ visible }, _center{center}, _is_dynamic{is_dynamic}, _opacity{ opacity } {}
 
 float Models::Texture::get_converted_y(float height) const
@@ -69,47 +69,47 @@ std::shared_ptr<Facades::TextureFacade> Models::Texture::get_texture_facade() co
 	return _facade;
 }
 
-void Models::Texture::set_x(const float x)
+void Models::Texture::set_x(float x)
 {
 	_x = x;
 }
 
-void Models::Texture::set_z(const float z)
+void Models::Texture::set_z(float z)
 {
 	_z = z;
 }
 
-void Models::Texture::set_y(const float y)
+void Models::Texture::set_y(float y)
 {
 	_y = y;
 }
 
-void Models::Texture::set_width(const float width)
+void Models::Texture::set_width(float width)
 {
 	_width = width;
 }
 
-void Models::Texture::set_height(const float height)
+void Models::Texture::set_height(float height)
 {
 	_height = height;
 }
 
-void Models::Texture::set_angle(const float angle)
+void Models::Texture::set_angle(float angle)
 {
 	_angle = angle;
 }
 
-void Models::Texture::set_flip_status(const Enums::FlipEnum flipstatus)
+void Models::Texture::set_flip_status(Enums::FlipEnum flipstatus)
 {
 	_flipstatus = flipstatus;
 }
 
-void Models::Texture::set_visible(const bool visibility)
+void Models::Texture::set_visible(bool visibility)
 {
 	_visible = visibility;
 }
 
-void Graphics::Models::Texture::set_center(const Models::Center center)
+void Graphics::Models::Texture::set_center(const Models::Center& center)
 {
 	_center = center;
 }

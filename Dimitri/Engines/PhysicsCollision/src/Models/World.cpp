@@ -3,7 +3,7 @@ using namespace PhysicsCollision;
 
 Models::World::World() {}
 
-Models::World::World(const float width, const float height)
+Models::World::World(float width, float height)
 {
 	_world_facade = std::make_shared<Facades::WorldFacade>();
 	_shapes = std::vector<std::shared_ptr<Models::Shape>>();

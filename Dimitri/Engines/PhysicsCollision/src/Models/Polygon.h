@@ -30,7 +30,7 @@ namespace PhysicsCollision {
 		*/
 		class PHYSICSCOLLISION_API Polygon : public Shape {
 		public:
-			Polygon(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, const Enums::ShapeEnum type);
+			Polygon(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, Enums::ShapeEnum type);
 		};
 		}
 }

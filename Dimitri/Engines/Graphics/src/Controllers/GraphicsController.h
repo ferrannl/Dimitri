@@ -33,7 +33,7 @@ namespace Graphics {
 			/**
 			* \brief The Window containing the Textures
 			*/
-			std::shared_ptr<Models::Window> _window;
+			std::unique_ptr<Models::Window> _window;
 
 			/**
 			* \brief The speed for the View
@@ -75,7 +75,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the Window
 			*/
-			std::shared_ptr<Models::Window> get_window() const;
+			const std::unique_ptr<Models::Window>& get_window() const;
 
 			/**
 			* \brief Returns the current fps

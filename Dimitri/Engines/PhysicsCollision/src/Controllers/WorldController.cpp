@@ -5,7 +5,7 @@ using namespace PhysicsCollision;
 Controllers::WorldController::WorldController() {
 }
 
-void Controllers::WorldController::setup_world(const float width, const float height) {
+void Controllers::WorldController::setup_world(float width, float height) {
 	_world = Models::World{ width, height };
 }
 

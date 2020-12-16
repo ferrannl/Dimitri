@@ -53,7 +53,7 @@ namespace Graphics {
 			/**
 			* \brief Instance of the WindowFacade
 			*/
-			std::shared_ptr<Facades::WindowFacade> _facade;
+			std::unique_ptr<Facades::WindowFacade> _facade;
 
 			/**
 			* \brief A list of the Textures displayed in the Window
@@ -124,9 +124,14 @@ namespace Graphics {
 			const std::string get_title() const;
 
 			/**
-			* \brief Returns the WindowFacade
+			* \brief Returns the fps
 			*/
-			std::shared_ptr<Facades::WindowFacade> get_facade() const;
+			int get_fps() const;
+
+			/**
+			* \brief Returns the timer ticks
+			*/
+			int get_ticks() const;
 
 			/**
 			* \brief Updates camera position

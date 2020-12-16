@@ -79,7 +79,7 @@ namespace PhysicsCollision {
 			*/
 			std::shared_ptr<Facades::ShapeFacade> _shape_facade;
 		public:
-			Shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, const Enums::ShapeEnum type);
+			Shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, Enums::ShapeEnum type);
 
 			/**
 			* \brief Returns the ShapeFacade
@@ -94,7 +94,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Sets the type the Shape
 			*/
-			void set_type(const Enums::ShapeEnum type);
+			void set_type(Enums::ShapeEnum type);
 
 			/**
 			* \brief Sets if the Shape is interactable

@@ -1,7 +1,7 @@
 #include "Shape.h"
 using namespace PhysicsCollision;
 
-Models::Shape::Shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, const Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
+Models::Shape::Shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, Enums::ShapeEnum type) : _type{ type }, _height{ height }, _width{ width }, _x{ x }, _y{ y }, _is_dynamic{ is_dynamic }, _is_interactable{ is_interactable }
 {
 	_angle = 0;
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
@@ -17,7 +17,7 @@ Enums::ShapeEnum Models::Shape::get_type()const
 	return _type;
 }
 
-void Models::Shape::set_type(const Enums::ShapeEnum type)
+void Models::Shape::set_type(Enums::ShapeEnum type)
 {
 	_type = type;
 }

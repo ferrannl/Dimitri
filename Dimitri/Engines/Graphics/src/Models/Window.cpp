@@ -2,7 +2,7 @@
 using namespace Graphics;
 
 Models::Window::Window(const std::string& title, int height, int width) : _title{ title }, _height{ height }, _width{ width } {
-	_facade = std::make_shared<Facades::WindowFacade>();
+	_facade = std::make_unique<Facades::WindowFacade>();
 }
 
 std::mutex& Graphics::Models::Window::get_mutex()
@@ -82,9 +82,14 @@ const std::string Models::Window::get_title() const
 	return _title;
 }
 
-std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() const
+int Graphics::Models::Window::get_fps() const
 {
-	return _facade;
+	return _facade->get_fps();
+}
+
+int Graphics::Models::Window::get_ticks() const
+{
+	return _facade->get_ticks();
 }
 
 void Graphics::Models::Window::set_camera_pos(float x, float y)
