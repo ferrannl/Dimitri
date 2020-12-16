@@ -28,6 +28,6 @@ void Game::Builder::BackgroundBuilder::build(std::shared_ptr<Models::Level>& lev
         }
     }
     catch (std::exception e) {
-        throw std::runtime_error("Something went wrong during the creation phase of the tiles, make sure it has tilesetid 1");
+        throw std::runtime_error("Something went wrong during the creation phase of the background, make sure it has tilesetid 1");
     }
 }
