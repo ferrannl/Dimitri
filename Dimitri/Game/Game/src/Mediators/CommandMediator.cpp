@@ -103,7 +103,6 @@ namespace Game {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
-						{Enums::ButtonEnum::START, Enums::CommandEnum::LOAD_LEVEL},
 						{Enums::ButtonEnum::HELP, Enums::CommandEnum::OPEN_HELP_VIEW},
 						{Enums::ButtonEnum::CREDITS, Enums::CommandEnum::OPEN_CREDITS_VIEW},
 						{Enums::ButtonEnum::EXIT, Enums::CommandEnum::EXIT_GAME},

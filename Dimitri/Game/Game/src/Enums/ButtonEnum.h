@@ -18,7 +18,6 @@ namespace Game {
 		{
 			HOME,
 			WIN_HOME,
-			START,
 			GAMEOVER_START,
 			PAUSED_START,
 			GAMEOVER_HOME,
