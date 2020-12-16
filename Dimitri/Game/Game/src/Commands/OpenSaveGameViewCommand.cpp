@@ -7,7 +7,6 @@ namespace Game {
 		void OpenSaveGameViewCommand::execute()
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
-			auto l_ctrl = _main_controller->get_level_controller();
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
 			auto save_game_ctrl = _main_controller->get_save_game_controller();
