@@ -28,6 +28,7 @@ namespace Game {
 			WIN_LEVEL,
 			HIGHSCORE,
 			TIMER,
+			SAVE_GAME,
 			CHEATS,
 			LEVEL_TRANSITION,
 			GAMEPLAYSPEED
