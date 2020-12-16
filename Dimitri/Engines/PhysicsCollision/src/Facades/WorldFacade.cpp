@@ -15,7 +15,7 @@ Facades::WorldFacade::WorldFacade()
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
 }
 
-void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade>& shape_facade)
+void Facades::WorldFacade::destroy_body(const std::shared_ptr<Facades::ShapeFacade>& shape_facade)
 {
 	_world->DestroyBody(shape_facade->get_body());
 }

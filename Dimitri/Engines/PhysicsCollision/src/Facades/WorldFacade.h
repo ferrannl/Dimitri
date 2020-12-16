@@ -50,7 +50,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Destroy the body of a ShapeFacade
 			*/
-			void destroy_body(std::shared_ptr<Facades::ShapeFacade>& shape_facade);
+			void destroy_body(const std::shared_ptr<Facades::ShapeFacade>& shape_facade);
 
 			/**
 			* \brief Simulates the World
