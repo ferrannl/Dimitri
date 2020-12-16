@@ -1,5 +1,6 @@
 #include "CameraBeam.h"
 #include "../../Controllers/LevelController.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -36,9 +37,10 @@ void Game::Models::CameraBeam::update_object(Controllers::LevelController* ctrl)
 	get_texture()->set_angle(get_texture()->get_angle() + _angle);
 
 	_shape->set_angle(get_texture()->get_angle());
-
-	if (_shape->check_triangle_collision(ctrl->get_level()->get_player()->get_shape())) {
-		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	if (!ctrl->get_cheats_settings()->get_invincible()) {
+		if (_shape->check_triangle_collision(ctrl->get_level()->get_player()->get_shape())) {
+			ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+		}
 	}
 }
 

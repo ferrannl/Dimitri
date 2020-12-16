@@ -22,6 +22,7 @@
 #include "../Views/AdvertisementView.h"
 #include "../Views/View.h"
 #include "../Views/LevelTransitionView.h"
+#include "../Views/CheatsView.h"
 #include <chrono>
 #include <thread>
 #include "../Models/Abstract/Object.h"
