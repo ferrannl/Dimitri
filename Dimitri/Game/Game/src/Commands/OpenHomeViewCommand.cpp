@@ -16,6 +16,7 @@ namespace Game {
 			auto cheats_ctrl = _main_controller->get_cheats_controller();
 			auto help_ctrl = _main_controller->get_help_controller();
 			auto h_mgr = _main_controller->get_highscore_manager();
+			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
@@ -29,6 +30,7 @@ namespace Game {
 				i_ctrl->unsubscribe(l_ctrl);
 				i_ctrl->unsubscribe(c_ctrl);
 				i_ctrl->unsubscribe(save_game_ctrl);
+				i_ctrl->unsubscribe(level_selector_ctrl);
 				i_ctrl->unsubscribe(help_ctrl);
 				i_ctrl->unsubscribe(h_mgr);
 				i_ctrl->unsubscribe(cheats_ctrl);

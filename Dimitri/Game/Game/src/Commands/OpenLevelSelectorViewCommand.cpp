@@ -9,7 +9,9 @@ namespace Game {
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
+			auto save_game_ctrl = _main_controller->get_save_game_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::LEVEL_SELECTOR)) {
+				i_ctrl->unsubscribe(save_game_ctrl);
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::LEVEL_SELECTOR);
 				w_ctrl->open_view(Enums::ViewEnum::FPS);
