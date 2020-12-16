@@ -11,12 +11,13 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::vector<std::vector<int>> ret = ctrl.Read(Utility::Helpers::get_base_path() + "/assets/levels/level1.csv");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level2.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_sound("failed", "/assets/audio/failed.wav");
+	_level->add_music("secret", "/assets/audio/rasputin.mp3");
 	_level->add_music("transition", "/assets/audio/running.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
@@ -111,6 +112,12 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 	return _level;
 }
 
+void Game::Controllers::LevelController::play_secret() {
+	_level->stop_music("level1");
+	_level->play_music("secret");
+	
+}
+
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
 {
 	Mediators::CommandMediator::instance()->notify(*this, object);
@@ -161,11 +168,11 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 	}
 }
 
-void Controllers::LevelController::turn_off_light(const int x)
+void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>& pos)
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
-		if (l->get_x() == x) {
-			l->get_texture()->set_visible(false);
+		if (l->get_x() == std::get<0>(pos) && l->get_y() == std::get<1>(pos)) {
+			l->get_texture()->toggle_visible();
 		}
 	}
 }

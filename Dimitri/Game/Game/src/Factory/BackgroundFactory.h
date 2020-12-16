@@ -1,6 +1,7 @@
 #pragma once
 #include <src/Models/Sprite.h>
-#include "../interfaces/IFactory.h"
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 
 /**
 * \namespace Game
@@ -16,7 +17,7 @@ namespace Game {
 		* \class BackgroundFactory
 		* \brief Class contains the methods to create backgrounds
 		*/
-		class BackgroundFactory : public Interfaces::IFactory<Graphics::Models::Sprite> {
+		class BackgroundFactory {
 		public:
 			/**
 			* \brief Creates the background

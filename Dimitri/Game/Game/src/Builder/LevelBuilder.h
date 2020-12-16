@@ -1,9 +1,9 @@
 #include <vector>
-#include "../Factory/ObjectFactory.h";
-#include "../Factory/InteractableFactory.h";
-#include "../Factory/UpdatableFactory.h";
 #include "../Factory/BackgroundFactory.h";
+#include "../Builder/TileBuilder.h";
+#include "../Builder/BackgroundBuilder.h";
 #include "../Models/Level.h"
+#include <any>
 
 /**
 * \namespace Game
@@ -24,32 +24,22 @@ namespace Game {
 			/**
 			* \brief The tile size used for all the calculations 
 			*/
-			const float TILE_SIZE = 40;
-
-			/**
-			* \brief Factory which creates static tiles
-			*/
-			Factories::ObjectFactory _object_factory;
+			const int TILE_SIZE = 40;
 			
 			/**
-			* \brief Factory which creates interactables
+			* \brief Builder for the tiles
 			*/
-			Factories::InteractableFactory _interactable_factory;
+			Builder::TileBuilder _tile_builder;
 
 			/**
-			* \brief Factory which creates updatables
+			* \brief Builder for the backgrounds
 			*/
-			Factories::UpdatableFactory _updatable_factory;
+			Builder::BackgroundBuilder _background_builder;
 
 			/**
 			* \brief Factory which creates backgrounds
 			*/
 			Factories::BackgroundFactory _background_factory;
-
-			/**
-			* \brief Builds the backgrounds for the level
-			*/
-			void build_background(std::shared_ptr<Models::Level>& level);
 
 			/**
 			* \brief Builds invisible borders for the level
@@ -59,7 +49,7 @@ namespace Game {
 			/**
 			* \brief Builds the level
 			*/
-			std::shared_ptr<Models::Level> build(std::vector<std::vector<int>>, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
+			std::shared_ptr<Models::Level> build(const std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>& level_layers, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
 		};
 	}
 }
