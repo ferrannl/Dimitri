@@ -98,6 +98,11 @@ namespace Game {
 			float get_speed() const;
 
 			/**
+			* \brief Sets up the level
+			*/
+			void setup_level(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
+
+			/**
 			* \brief Receives updates from InputController
 			*/
 			void update(const Game::Events::InputEvent& object);

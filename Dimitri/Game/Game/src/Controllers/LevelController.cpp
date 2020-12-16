@@ -9,17 +9,7 @@ using namespace Game;
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
 	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
 {
-	DocumentHandler::Controllers::DocumentController ctrl;
-
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level2.json");
-	Builder::LevelBuilder builder{};
-	_level = builder.build(ret, audio_controller, window_controller);
-	_level->load_objects();
-	_level->add_music("level1", "/assets/audio/billy.wav");
-	_level->add_sound("failed", "/assets/audio/failed.wav");
-	_level->add_music("secret", "/assets/audio/rasputin.mp3");
-	_level->add_music("transition", "/assets/audio/running.wav");
-	_state = Enums::LevelStateEnum::INACTIVE;
+	setup_level(window_controller, audio_controller);
 }
 
 void Controllers::LevelController::load_buttons()
@@ -105,6 +95,21 @@ void Game::Controllers::LevelController::set_speed(float speed)
 float Game::Controllers::LevelController::get_speed()const
 {
 	return _level->get_speed();
+}
+
+void Game::Controllers::LevelController::setup_level(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller)
+{
+	DocumentHandler::Controllers::DocumentController ctrl;
+
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/tutorial.json");
+	Builder::LevelBuilder builder{};
+	_level = builder.build(ret, audio_controller, window_controller);
+	_level->load_objects();
+	_level->add_music("level1", "/assets/audio/billy.wav");
+	_level->add_sound("failed", "/assets/audio/failed.wav");
+	_level->add_music("secret", "/assets/audio/rasputin.mp3");
+	_level->add_music("transition", "/assets/audio/running.wav");
+	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const

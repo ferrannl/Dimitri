@@ -40,7 +40,7 @@ namespace Game {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
 							{Enums::ButtonEnum::PAUSED_START, Enums::CommandEnum::PAUSE_LEVEL},
-							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}, 
+							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
 							});
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
@@ -129,22 +129,22 @@ namespace Game {
 					break;
 				}
 			}
-				else if (sender.get_identifier() == "HighscoreManager")
-				{
-					switch (event.event_enum) {
-					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-						notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
-						break;
+			else if (sender.get_identifier() == "HighscoreManager")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
+					break;
 				}
 			}
 			else if (sender.get_identifier() == "CheatsController")
 			{
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
-					notify_buttons(sender, event, { 
+					notify_buttons(sender, event, {
 						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
 						{Enums::ButtonEnum::CHEATS_CHECKBOX_INFINITE, Enums::CommandEnum::CHEATS_INFINITE},
-						{Enums::ButtonEnum::CHEATS_CHECKBOX_INVINCIBLE, Enums::CommandEnum::CHEATS_INVINCIBLE}, 
+						{Enums::ButtonEnum::CHEATS_CHECKBOX_INVINCIBLE, Enums::CommandEnum::CHEATS_INVINCIBLE},
 						});
 					break;
 				}
@@ -155,9 +155,17 @@ namespace Game {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
 						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
-						{Enums::ButtonEnum::NEW1, Enums::CommandEnum::LOAD_LEVEL},
-						{Enums::ButtonEnum::NEW2, Enums::CommandEnum::OPEN_LEVEL_SELECTOR_VIEW} });
+						{Enums::ButtonEnum::NEW1, Enums::CommandEnum::OPEN_LEVEL_SELECTOR_VIEW} });
 					break;
+				}
+			}
+			else if (sender.get_identifier() == "LevelSelectorController") {
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, {
+						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
+						{Enums::ButtonEnum::START_TUTORIAL, Enums::CommandEnum::LOAD_LEVEL}
+						});
 				}
 			}
 		}
