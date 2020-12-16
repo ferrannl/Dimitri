@@ -149,6 +149,9 @@ namespace Game {
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
 
+			/**
+			* \brief Toggles a light in the level
+			*/
 			void toggle_light(const std::tuple<int, int>& pos);
 
 			/**
@@ -164,7 +167,7 @@ namespace Game {
 			/**
 			* \brief Updates cheat settings
 			*/
-			std::shared_ptr<Game::Models::CheatsSettings> get_cheats_settings();
+			const std::shared_ptr<Game::Models::CheatsSettings>& get_cheats_settings();
 		};
 	}
 }

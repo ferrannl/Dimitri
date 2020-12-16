@@ -44,7 +44,7 @@ namespace Game {
 			/**
 			* \brief Returns the Textures from the Buttons
 			*/
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
+			const std::vector<std::shared_ptr<Graphics::Models::Texture>>& get_textures() const;
 
 		};
 	}

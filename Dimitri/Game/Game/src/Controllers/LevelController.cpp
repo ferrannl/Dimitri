@@ -34,7 +34,7 @@ void Controllers::LevelController::load_buttons()
 	float w = 200;
 	float h = 30;
 	float w_text;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -47,7 +47,7 @@ void Controllers::LevelController::load_buttons()
 	// game over
 	_button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
 	i = 0;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -60,7 +60,7 @@ void Controllers::LevelController::load_buttons()
 	// win
 	_button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
 	i = 0;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -190,8 +190,10 @@ void Game::Controllers::LevelController::run_transition()
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
+
 		_level->simulate();
 		_level->get_player()->update();
+
 		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
 		{
 			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
@@ -247,7 +249,7 @@ void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Mod
 	_level->get_player()->set_jumps(settings->get_amount_of_jumps());
 }
 
-std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::LevelController::get_cheats_settings()
+const std::shared_ptr<Game::Models::CheatsSettings>& Game::Controllers::LevelController::get_cheats_settings()
 {
 	return _settings;
 }

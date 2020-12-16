@@ -98,52 +98,52 @@ namespace Game {
 			/**
 			* \brief Returns the InputController
 			*/
-			std::shared_ptr<Controllers::InputController> get_input_controller() const;
+			const std::shared_ptr<Controllers::InputController>& get_input_controller() const;
 
 			/**
 			* \brief Returns the AudioController
 			*/
-			std::shared_ptr<Controllers::AudioController> get_audio_controller() const;
+			const std::shared_ptr<Controllers::AudioController>& get_audio_controller() const;
 
 			/**
 			* \brief Returns the Level Manager
 			*/
-			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
+			const std::shared_ptr<Managers::LevelManager>& get_level_manager() const;
 
 			/**
 			* \brief Returns the Highscore Manager
 			*/
-			std::shared_ptr<Managers::HighscoreManager> get_highscore_manager() const;
+			const std::shared_ptr<Managers::HighscoreManager>& get_highscore_manager() const;
 
 			/**
 			* \brief Returns the WindowController
 			*/
-			std::shared_ptr<Controllers::WindowController> get_window_controller() const;
+			const std::shared_ptr<Controllers::WindowController>& get_window_controller() const;
 
 			/**
 			* \brief Returns the LevelController
 			*/
-			std::shared_ptr<Controllers::LevelController> get_level_controller() const;
+			const std::shared_ptr<Controllers::LevelController>& get_level_controller() const;
 
 			/**
 			* \brief Returns the HomeController
 			*/
-			std::shared_ptr<Controllers::HomeController> get_home_controller() const;
+			const std::shared_ptr<Controllers::HomeController>& get_home_controller() const;
 
 			/**
 			* \brief Returns the CreditsController
 			*/
-			std::shared_ptr<Controllers::CreditsController> get_credits_controller() const;
+			const std::shared_ptr<Controllers::CreditsController>& get_credits_controller() const;
 
 			/**
 			* \brief Returns the HelpController
 			*/
-			std::shared_ptr<Controllers::HelpController> get_help_controller() const;
+			const std::shared_ptr<Controllers::HelpController>& get_help_controller() const;
 
 			/**
 			* \brief Returns the CheatsController
 			*/
-			std::shared_ptr<Controllers::CheatsController> get_cheats_controller() const;
+			const std::shared_ptr<Controllers::CheatsController>& get_cheats_controller() const;
 		};
 	}
 }

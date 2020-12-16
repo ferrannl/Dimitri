@@ -12,8 +12,6 @@ Game::Controllers::CheatsController::CheatsController(): Mediators::BaseComponen
 
 void Game::Controllers::CheatsController::initialize_textures(float height, float width)
 {
-	
-
 	float window_width = width;
 	float window_height = height;
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
@@ -31,6 +29,7 @@ void Game::Controllers::CheatsController::initialize_textures(float height, floa
 		std::make_shared<Graphics::Models::Sprite>(window_width / 2 + 100 + 50, 400, 10, 40, 40, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button_border_gray.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, true),
 		std::make_shared<Graphics::Models::Sprite>(window_width / 2 + 100 + 50, 400, 11, 40 + 30, 40 + 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/check.png" }, Graphics::Enums::FlipEnum::NONE, false, Graphics::Models::Center{ 0,0 }, true),
 	};
+
 	add_button(std::make_unique<Game::Models::CheckButton>( window_width / 2 + 100 + 50.0f, 400, 40,40, t1, Enums::ButtonEnum::CHEATS_CHECKBOX_INFINITE ));
 
 
@@ -39,6 +38,7 @@ void Game::Controllers::CheatsController::initialize_textures(float height, floa
 		std::make_shared<Graphics::Models::Sprite>(window_width / 2 + 100 + 50, 300, 10, 40, 40, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button_border_gray.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, true),
 		std::make_shared<Graphics::Models::Sprite>(window_width / 2 + 100 + 50, 300, 11, 40 + 30, 40 + 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/check.png" }, Graphics::Enums::FlipEnum::NONE, false, Graphics::Models::Center{ 0,0 }, true),
 	};
+
 	add_button(std::make_unique<Game::Models::CheckButton>(window_width / 2 + 100 + 50.0f, 300, 40,40, t2, Enums::ButtonEnum::CHEATS_CHECKBOX_INVINCIBLE ));
 
 	_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0 - 240, window_height - 270, 0, 340, 650, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg_cheats.jpg" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, true));
@@ -52,6 +52,7 @@ void Game::Controllers::CheatsController::update(const Game::Events::InputEvent&
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::CheatsController::get_textures() const
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> all_textures;
+	
 	//gets all buttons textures
 	for (auto& b : get_buttons()) {
 		for (auto& t : b->get_textures()) {
@@ -62,10 +63,11 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Cheat
 	for (auto& b : _textures) {
 		all_textures.push_back(b);
 	}
+
 	return all_textures;
 }
 
-std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::CheatsController::get_cheat_settings() const
+const std::shared_ptr<Game::Models::CheatsSettings>& Game::Controllers::CheatsController::get_cheat_settings() const
 {
 	return _settings;
 }

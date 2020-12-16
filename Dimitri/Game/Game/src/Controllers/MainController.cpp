@@ -51,52 +51,52 @@ void Controllers::MainController::update(const Events::InputEvent& object)
 	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 
-std::shared_ptr<Controllers::InputController> Game::Controllers::MainController::get_input_controller() const
+const std::shared_ptr<Controllers::InputController>& Game::Controllers::MainController::get_input_controller() const
 {
 	return _input_controller;
 }
 
-std::shared_ptr<Controllers::AudioController> Game::Controllers::MainController::get_audio_controller() const
+const std::shared_ptr<Controllers::AudioController>& Game::Controllers::MainController::get_audio_controller() const
 {
 	return _audio_controller;
 }
 
-std::shared_ptr<Managers::LevelManager> Game::Controllers::MainController::get_level_manager() const
+const std::shared_ptr<Managers::LevelManager>& Game::Controllers::MainController::get_level_manager() const
 {
 	return _level_manager;
 }
 
-std::shared_ptr<Managers::HighscoreManager> Game::Controllers::MainController::get_highscore_manager() const
+const std::shared_ptr<Managers::HighscoreManager>& Game::Controllers::MainController::get_highscore_manager() const
 {
 	return _highscore_manager;
 }
 
-std::shared_ptr<Controllers::WindowController> Game::Controllers::MainController::get_window_controller() const
+const std::shared_ptr<Controllers::WindowController>& Game::Controllers::MainController::get_window_controller() const
 {
 	return _window_controller;
 }
 
-std::shared_ptr<Controllers::LevelController> Game::Controllers::MainController::get_level_controller() const
+const std::shared_ptr<Controllers::LevelController>& Game::Controllers::MainController::get_level_controller() const
 {
 	return _level_controller;
 }
 
-std::shared_ptr<Controllers::HomeController> Game::Controllers::MainController::get_home_controller() const
+const std::shared_ptr<Controllers::HomeController>& Game::Controllers::MainController::get_home_controller() const
 {
 	return _home_controller;
 }
 
-std::shared_ptr<Controllers::CreditsController> Game::Controllers::MainController::get_credits_controller() const
+const std::shared_ptr<Controllers::CreditsController>& Game::Controllers::MainController::get_credits_controller() const
 {
 	return _credits_controller;
 }
 
-std::shared_ptr<Controllers::HelpController> Game::Controllers::MainController::get_help_controller() const
+const std::shared_ptr<Controllers::HelpController>& Game::Controllers::MainController::get_help_controller() const
 {
 	return _help_controller;
 }
 
-std::shared_ptr<Controllers::CheatsController> Game::Controllers::MainController::get_cheats_controller() const
+const std::shared_ptr<Controllers::CheatsController>& Game::Controllers::MainController::get_cheats_controller() const
 {
 	return _cheats_controller;
 }

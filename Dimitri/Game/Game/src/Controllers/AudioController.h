@@ -29,37 +29,37 @@ namespace Game {
 			/**
 			* \brief Adds music
 			*/
-			void add_music(const std::string name, const std::string song_path);
+			void add_music(const std::string& name, const std::string& song_path);
 
 			/**
 			* \brief Adds sound
 			*/
-			void add_sound(const std::string name, const std::string song_path);
+			void add_sound(const std::string& name, const std::string& song_path);
 
 			/**
 			* \brief Play Audio by name
 			*/
-			void play_audio(const std::string name);
+			void play_audio(const std::string& name);
 
 			/**
 			* \brief Pause Audio by name
 			*/
-			void pause_audio(const std::string name);
+			void pause_audio(const std::string& name);
 
 			/**
 			* \brief Resume Audio by name
 			*/
-			void resume_audio(const std::string name);
+			void resume_audio(const std::string& name);
 
 			/**
 			* \brief Stop Audio by name
 			*/
-			void stop_audio(const std::string name);
+			void stop_audio(const std::string& name);
 
 			/**
 			* \brief Returns if the Audio is playing
 			*/
-			bool is_playing(const std::string name);
+			bool is_playing(const std::string& name);
 		};
 	}
 }
