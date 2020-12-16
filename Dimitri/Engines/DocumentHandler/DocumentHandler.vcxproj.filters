@@ -21,13 +21,13 @@
     <ClInclude Include="src\framework.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Interfaces\IReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Readers\CsvReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Controllers\DocumentController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tileson\tileson.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Readers\TiledReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Readers\TextReader.h">
@@ -50,7 +50,7 @@
     <ClCompile Include="src\Controllers\DocumentController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Readers\CsvReader.cpp">
+    <ClCompile Include="src\Readers\TiledReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Readers\TextReader.cpp">

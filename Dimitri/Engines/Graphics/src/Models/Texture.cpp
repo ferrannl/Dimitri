@@ -104,9 +104,14 @@ void Models::Texture::set_flip_status(const Enums::FlipEnum flipstatus)
 	_flipstatus = flipstatus;
 }
 
-void Models::Texture::set_visible(const bool visibility)
+void Models::Texture::set_visible(bool visibility)
 {
 	_visible = visibility;
+}
+
+void Models::Texture::toggle_visible()
+{
+	_visible = !_visible;
 }
 
 void Graphics::Models::Texture::set_center(const Models::Center center)

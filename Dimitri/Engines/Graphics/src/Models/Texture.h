@@ -202,7 +202,12 @@ namespace Graphics {
 			/**
 			* \brief Sets the visibility
 			*/
-			void set_visible(const bool visibility);
+			void set_visible(bool visibility);
+
+			/**
+			* \brief Toggle the visibility
+			*/
+			void toggle_visible();
 
 			/**
 			* \brief Sets the center
