@@ -27,6 +27,12 @@ namespace Game {
 			*/
 			int _lastx;
 
+			int _base_x;
+			int _area_left;
+			int _area_right;
+			int _area_top;
+			int _area_bottom;
+
 			/**
 			* \brief Last y position of last update of the Enemy
 			*/
@@ -47,7 +53,7 @@ namespace Game {
 			*/
 			void idle();
 		public:
-			Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center);
+			Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
 
 			/**
 			* \brief Initializes Textures

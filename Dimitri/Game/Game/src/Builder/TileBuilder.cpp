@@ -58,7 +58,12 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
 					level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
 					break;
 				case 17:
-					level->add_enemy(std::make_shared<Models::Enemy>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }));
+					level->add_enemy(std::make_shared<Models::Enemy>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 }, 
+						get_value<int>("Area_Left", get_object(objects, x, tiled_y)),
+						get_value<int>("Area_Right", get_object(objects, x, tiled_y)),
+						get_value<int>("Area_Top", get_object(objects, x, tiled_y)),
+						get_value<int>("Area_Bottom", get_object(objects, x, tiled_y))
+						));
 					break;
 				}
 
