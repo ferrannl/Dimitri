@@ -1,10 +1,10 @@
 #include "AdvertisementController.h"
-#include <experimental/filesystem>
+#include <filesystem>
 #include <src/Advertisement/Advertisement.h>
 #include <iostream>
 #include <src/Models/Sprite.h>
 #include <src/Helpers/BasePathHelper.h>
-namespace fs = std::experimental::filesystem::v1;
+namespace fs = std::filesystem;
 using namespace Game;
 
 Game::Controllers::AdvertisementController::AdvertisementController(int sceneheight, int scenewidth) :
