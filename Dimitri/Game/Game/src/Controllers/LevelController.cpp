@@ -11,7 +11,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level3.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level2.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
@@ -168,7 +168,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 	}
 }
 
-void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int> pos)
+void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>& pos)
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == std::get<0>(pos) && l->get_y() == std::get<1>(pos)) {

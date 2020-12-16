@@ -14,8 +14,8 @@ namespace DocumentHandler {
 	*/
 	namespace Readers {
 		/**
-		* \class CsvReader
-		* \brief Class contains the methods to read an csv file by path
+		* \class TiledReader
+		* \brief Class contains the methods to read an tiled json file by path
 		*/
 		class TiledReader {
 		public:
@@ -23,7 +23,11 @@ namespace DocumentHandler {
 			* \brief Reads the csv file
 			*/
 			std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
-			std::vector<std::vector<int>> ReadTiles(const std::vector<uint32_t>& tiles, const int& width);
+
+			/**
+			* \brief Reads the tiles
+			*/
+			std::vector<std::vector<int>> ReadTiles(const std::vector<uint32_t>& tiles, int width);
 		};
 	}
 }

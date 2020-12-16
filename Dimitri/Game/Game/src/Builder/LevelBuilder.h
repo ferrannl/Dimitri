@@ -27,24 +27,19 @@ namespace Game {
 			const int TILE_SIZE = 40;
 			
 			/**
-			* \brief Bulder for the tiles
+			* \brief Builder for the tiles
 			*/
 			Builder::TileBuilder _tile_builder;
 
 			/**
-* \brief Bulder for the tiles
-*/
+			* \brief Builder for the backgrounds
+			*/
 			Builder::BackgroundBuilder _background_builder;
 
 			/**
 			* \brief Factory which creates backgrounds
 			*/
 			Factories::BackgroundFactory _background_factory;
-
-			/**
-			* \brief Builds the backgrounds for the level
-			*/
-			void build_background(std::shared_ptr<Models::Level>& level);
 
 			/**
 			* \brief Builds invisible borders for the level
@@ -54,7 +49,7 @@ namespace Game {
 			/**
 			* \brief Builds the level
 			*/
-			std::shared_ptr<Models::Level> build(std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
+			std::shared_ptr<Models::Level> build(const std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>>& level_layers, const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller);
 		};
 	}
 }

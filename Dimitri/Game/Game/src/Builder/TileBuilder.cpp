@@ -83,7 +83,7 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
     }
 }
 
-const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y)
+const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, int x, int y)
 {
     if (objects.size() == 0) {
         return std::vector<std::pair<std::string, std::any>>{ {"empty", "0"} };
@@ -104,7 +104,7 @@ const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::
     return std::vector<std::pair<std::string, std::any>>{ {"empty", "0"} };
 }
 
-std::vector<std::tuple<float, float>> Game::Builder::TileBuilder::get_lights(std::vector<std::pair<std::string, std::any>> object)
+std::vector<std::tuple<float, float>> Game::Builder::TileBuilder::get_lights(const std::vector<std::pair<std::string, std::any>>& object)
 {
     std::vector<std::tuple<float, float>> retVal = {};
     

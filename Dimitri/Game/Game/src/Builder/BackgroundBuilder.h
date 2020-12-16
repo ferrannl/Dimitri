@@ -14,8 +14,8 @@ namespace Game {
 	*/
 	namespace Builder {
 		/**
-		* \class LevelBuilder
-		* \brief Class contains the methods to build a level
+		* \class BackgroundBuilder
+		* \brief Class contains the methods to build the background
 		*/
 		class BackgroundBuilder {
 		private:

@@ -140,11 +140,6 @@ namespace Game {
 			Enums::LevelStateEnum get_state() const;
 
 			/**
-			* \brief Turns of a light
-			*/
-			void turn_off_light(const int x);
-
-			/**
 			* \brief Simulates the objects
 			*/
 			void simulate_objects();
@@ -154,7 +149,7 @@ namespace Game {
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
 
-			void toggle_light(const std::tuple<int, int> pos);
+			void toggle_light(const std::tuple<int, int>& pos);
 
 			/**
 			* \brief Updates the highscore
