@@ -15,7 +15,7 @@ namespace Game {
 	{
 		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::START }, { "Highscore", Enums::ButtonEnum::HIGHSCORE },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS },{ "Cheats", Enums::ButtonEnum::CHEATS }, { "Exit", Enums::ButtonEnum::EXIT } };
+		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::SAVE_GAMES }, { "Highscore", Enums::ButtonEnum::HIGHSCORE },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS },{ "Cheats", Enums::ButtonEnum::CHEATS }, { "Exit", Enums::ButtonEnum::EXIT } };
 		std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 		int i = 0;
 		float w = 150;

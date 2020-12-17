@@ -109,6 +109,11 @@ void Models::Texture::set_visible(bool visibility)
 	_visible = visibility;
 }
 
+void Models::Texture::toggle_visible()
+{
+	_visible = !_visible;
+}
+
 void Graphics::Models::Texture::set_center(const Models::Center& center)
 {
 	_center = center;

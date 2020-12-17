@@ -1,7 +1,7 @@
 #pragma once
 #include "../Models/Abstract/Updatable.h"
-#include "../interfaces/IFactory.h"
-
+#include "../Enums/TypeEnum.h"
+#include "../Enums/DirectionEnum.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -16,13 +16,12 @@ namespace Game {
 		* \class UpdatableFactory
 		* \brief Class contains the methods to create updatables
 		*/
-		class UpdatableFactory : public Interfaces::IFactory<Models::Updatable> {
+		class UpdatableFactory {
 		public:
-
 			/**
 			* \brief Creates the updatable
 			*/
-			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state);
+			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float val = 0, bool val2 = true);
 		};
 	}
 }

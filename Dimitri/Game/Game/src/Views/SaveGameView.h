@@ -1,8 +1,8 @@
 #pragma once
 #include "../Views/View.h"
-#include "../Views/View.h"
 #include <src\Helpers\BasePathHelper.h>
- 
+#include "../Models/Abstract/Object.h"
+
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -14,12 +14,12 @@ namespace Game {
 	*/
 	namespace Views {
 		/**
-		* \class CreditsView
-		* \brief Class contains the methods to draw the credits
+		* \class SaveGameView
+		* \brief Class contains the methods to draw the home screen
 		*/
-		class CreditsView : public View {
+		class SaveGameView : public View {
 		public:
-			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
+			SaveGameView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
 
 			/**
 			* \brief Initializes Textures

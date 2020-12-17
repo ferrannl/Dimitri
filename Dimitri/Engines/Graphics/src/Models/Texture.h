@@ -8,7 +8,7 @@
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
-#else 
+#else
 #define GRAPHICS_API __declspec(dllimport)
 #endif
 #else
@@ -203,6 +203,11 @@ namespace Graphics {
 			* \brief Sets the visibility
 			*/
 			void set_visible(bool visibility);
+
+			/**
+			* \brief Toggle the visibility
+			*/
+			void toggle_visible();
 
 			/**
 			* \brief Sets the center
