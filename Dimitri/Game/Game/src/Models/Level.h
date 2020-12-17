@@ -8,7 +8,7 @@
 #include "./Abstract/Object.h"
 #include <src/Models/Sprite.h>
 #include "../Enums/TypeEnum.h"
-#include "./IObjects/Wall.h"
+#include "./Objects/Wall.h"
 #include "./Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"
 #include "./Interactable/Switch.h"

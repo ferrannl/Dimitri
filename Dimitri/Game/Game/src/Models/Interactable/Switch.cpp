@@ -45,7 +45,7 @@ void Models::Switch::set_light(const std::vector<std::tuple<float, float>> light
 	_light_positions = light_pos;
 }
 
-void Models::Switch::set_secret(const bool secret)
+void Models::Switch::set_secret(bool secret)
 {
 	_secret = secret;
 }
