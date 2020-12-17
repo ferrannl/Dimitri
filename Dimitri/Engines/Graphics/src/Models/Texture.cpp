@@ -84,17 +84,17 @@ void Models::Texture::set_y(float y)
 	_y = y;
 }
 
-void Models::Texture::set_width(const float width)
+void Models::Texture::set_width(float width)
 {
 	_width = width;
 }
 
-void Models::Texture::set_height(const float height)
+void Models::Texture::set_height(float height)
 {
 	_height = height;
 }
 
-void Models::Texture::set_angle(const float angle)
+void Models::Texture::set_angle(float angle)
 {
 	_angle = angle;
 }
@@ -104,7 +104,7 @@ void Models::Texture::set_flip_status(const Enums::FlipEnum flipstatus)
 	_flipstatus = flipstatus;
 }
 
-void Models::Texture::set_visible(const bool visibility)
+void Models::Texture::set_visible(bool visibility)
 {
 	_visible = visibility;
 }

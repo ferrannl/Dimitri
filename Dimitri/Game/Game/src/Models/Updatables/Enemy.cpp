@@ -61,8 +61,8 @@ void Game::Models::Enemy::reset_jump()
 
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
-	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
-	bool Right = (_x + _area_right > (ctrl->get_level()->get_player()->get_x()));
+	bool Left = (_base_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
+	bool Right = (_base_x + (_area_right) > (ctrl->get_level()->get_player()->get_x()));
 	bool Top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
 	bool Bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
 	bool In_Area = (Left && Right && Top && Bottom);
@@ -93,6 +93,13 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 		else if (_x <= _base_x - _area_left) {
 			_direction = Enums::DirectionEnum::RIGHT;
 			_moving_direction = 1;
+		}
+		if (_moving_direction == 1)
+		{
+			_direction = Enums::DirectionEnum::RIGHT;
+		}
+		else {
+			_direction = Enums::DirectionEnum::LEFT;
 		}
 		_shape->move_x(_moving_direction, 0.5);
 

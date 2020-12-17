@@ -97,7 +97,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
+			Texture(float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center center, bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
@@ -182,27 +182,27 @@ namespace Graphics {
 			/**
 			* \brief Sets the width
 			*/
-			void set_width(const float width);
+			void set_width(float width);
 
 			/**
 			* \brief Sets the height
 			*/
-			void set_height(const float height);
+			void set_height(float height);
 
 			/**
 			* \brief Sets the angle
 			*/
-			void set_angle(const float angle);
+			void set_angle(float angle);
 
 			/**
 			* \brief Sets the flip status
 			*/
-			void set_flip_status(const Enums::FlipEnum flipstatus);
+			void set_flip_status(Enums::FlipEnum flipstatus);
 
 			/**
 			* \brief Sets the visibility
 			*/
-			void set_visible(const bool visibility);
+			void set_visible(bool visibility);
 
 			/**
 			* \brief Toggle the visibility
