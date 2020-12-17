@@ -12,6 +12,7 @@ Game::Models::Settings::Settings(int save) : _save(save)
 		}
 		else {
 			_save_file.at(0).push_back(0);
+			_document_handler->Write(_save_path, _save_file);
 		}
 	}
 	else {
@@ -19,6 +20,7 @@ Game::Models::Settings::Settings(int save) : _save(save)
 		v.push_back(0);
 		_save_file.push_back(v);
 		_unlocked_level = 0;
+		_document_handler->Write(_save_path, _save_file);
 	}
 	_current_level = _unlocked_level;
 }
