@@ -67,6 +67,11 @@ namespace Game {
 			void load_level();
 
 			/**
+			* \brief Sets the LevelController
+			*/
+			void set_level_controller(const std::shared_ptr<Game::Controllers::LevelController>& level_controller);
+
+			/**
 			* \brief Returns an instance of the window controller
 			*/
 			std::shared_ptr<Game::Controllers::WindowController> get_window_controller()const;

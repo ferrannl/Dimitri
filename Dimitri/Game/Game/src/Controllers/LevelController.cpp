@@ -7,9 +7,8 @@
 using namespace Game;
 
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
-	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
+	_window_controller{ window_controller }, _audio_controller{ audio_controller }, Mediators::BaseComponent("LevelController")
 {
-	setup_level(window_controller, audio_controller);
 }
 
 void Controllers::LevelController::load_buttons()
@@ -97,13 +96,13 @@ float Game::Controllers::LevelController::get_speed()const
 	return _level->get_speed();
 }
 
-void Game::Controllers::LevelController::setup_level(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller)
+void Game::Controllers::LevelController::setup_level(const std::string& level)
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/tutorial.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/" + level + ".json");
 	Builder::LevelBuilder builder{};
-	_level = builder.build(ret, audio_controller, window_controller);
+	_level = builder.build(ret, _audio_controller, _window_controller);
 	_level->load_objects();
 	_level->add_music("level1", "/assets/audio/billy.wav");
 	_level->add_sound("failed", "/assets/audio/failed.wav");
@@ -207,6 +206,12 @@ void  Controllers::LevelController::simulate() {
 		}
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
+}
+
+void Game::Controllers::LevelController::clear_level()
+{
+	_level->get_physics_collision_controller()->destroy_shapes();
+	_window_controller->get_graphics_controller()->clear_textures();
 }
 
 void  Controllers::LevelController::simulate_objects() {

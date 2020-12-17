@@ -22,6 +22,12 @@ void Game::Managers::LevelManager::load_level()
 	_level_controller->start();
 }
 
+void Game::Managers::LevelManager::set_level_controller(const std::shared_ptr<Game::Controllers::LevelController>& level_controller)
+{
+	_level_controller = level_controller;
+}
+
+
 std::shared_ptr<Game::Controllers::WindowController> Game::Managers::LevelManager::get_window_controller() const
 {
 	return _window_controller;

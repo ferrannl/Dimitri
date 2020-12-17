@@ -18,6 +18,7 @@ namespace Game {
 			auto h_mgr = _main_controller->get_highscore_manager();
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
+				l_ctrl->clear_level();
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);

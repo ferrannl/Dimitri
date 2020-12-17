@@ -17,7 +17,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_save_game_controller = std::make_shared<Controllers::SaveGameController>(720, 1280);
 	_advertisement_controller = std::make_shared<Controllers::AdvertisementController>(720, 1280);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
-	_level_controller->load_buttons();
+	//_level_controller->load_buttons();
 	_highscore_manager = std::make_shared<Managers::HighscoreManager>(_input_controller, _audio_controller, _window_controller, _home_controller);
 }
 
@@ -27,18 +27,12 @@ void Game::Controllers::MainController::run()
 	_window_controller->create_window(720, 1280);
 	_window_controller->add_textures(_home_controller->get_textures(), Enums::ViewEnum::HOME);
 	_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
-	_level_controller->load_buttons();
 	_highscore_manager->load_buttons();
 	_input_controller->subscribe(this->shared_from_this());
 	_input_controller->subscribe(_home_controller);
-	_window_controller->set_textures(_level_controller->get_textures(Enums::LevelStateEnum::ACTIVE), Enums::ViewEnum::LEVEL);
 	_window_controller->add_textures(_home_controller->get_textures(), Enums::ViewEnum::HOME);
-	_window_controller->add_textures(_level_controller->get_level()->get_player()->get_extra_textures(), Enums::ViewEnum::HUD);
 	_window_controller->add_textures(_credits_controller->get_textures(), Enums::ViewEnum::CREDTIS);
 	_window_controller->add_textures(_help_controller->get_textures(), Enums::ViewEnum::HELP);
-	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::PAUSED), Enums::ViewEnum::PAUSE_LEVEL);
-	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::GAME_OVER), Enums::ViewEnum::GAME_OVER_LEVEL);
-	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::WIN), Enums::ViewEnum::WIN_LEVEL);
 	_window_controller->add_textures(_advertisement_controller->get_textures(), Enums::ViewEnum::ADVERTISEMENT);
 	_window_controller->add_textures(_highscore_manager->get_textures(), Enums::ViewEnum::HIGHSCORE);
 	_window_controller->add_textures(_save_game_controller->get_textures(), Enums::ViewEnum::SAVE_GAME);
@@ -113,4 +107,9 @@ std::shared_ptr<Controllers::HelpController> Game::Controllers::MainController::
 std::shared_ptr<Controllers::CheatsController> Game::Controllers::MainController::get_cheats_controller() const
 {
 	return _cheats_controller;
+}
+
+void Game::Controllers::MainController::set_level_controller(std::shared_ptr<Game::Controllers::LevelController>& level_controller)
+{
+	_level_controller = level_controller;
 }

@@ -166,6 +166,8 @@ namespace Game {
 			* \brief Returns the CheatsController
 			*/
 			std::shared_ptr<Controllers::CheatsController> get_cheats_controller() const;
+
+			void set_level_controller(std::shared_ptr<Game::Controllers::LevelController>& level_controller);
 		};
 	}
 }

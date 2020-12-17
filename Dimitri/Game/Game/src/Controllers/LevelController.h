@@ -64,6 +64,11 @@ namespace Game {
 			std::shared_ptr<Controllers::WindowController> _window_controller;
 
 			/**
+			* \brief An Instance of the AudioController
+			*/
+			std::shared_ptr<Controllers::AudioController> _audio_controller;
+
+			/**
 			* \brief A list of the buttons per Level State
 			*/
 			std::vector<std::pair<Enums::LevelStateEnum, std::unique_ptr<Game::Models::Button>>> _buttons;
@@ -100,7 +105,7 @@ namespace Game {
 			/**
 			* \brief Sets up the level
 			*/
-			void setup_level(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
+			void setup_level(const std::string& level);
 
 			/**
 			* \brief Receives updates from InputController
@@ -133,6 +138,11 @@ namespace Game {
 			* \brief Simulates the Level
 			*/
 			void simulate();
+
+			/**
+			* \brief Clears the level
+			*/
+			void clear_level();
 
 			/**
 			* \brief Set the level state and stops/starts the thread
