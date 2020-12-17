@@ -56,6 +56,10 @@ void Game::Models::Settings::set_unlocked_level(int unlocked_level)
 		//negatief progress niet doen
 		return;
 	}if (unlocked_level > 3) {
+		//ophogen wanneer er meer levels zijn
+		return;
+	}if (unlocked_level -1 != _current_level) {
+		//geen extra levels unlocken door een gehaald level te halen
 		return;
 	}
 	_unlocked_level = unlocked_level;

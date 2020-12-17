@@ -9,6 +9,7 @@ namespace Game {
 			if (param > _main_controller->get_settings()->get_unlocked_level()) {
 				return;
 			}
+			_main_controller->get_settings()->set_current_level(param);
 
 			auto l_mgr = _main_controller->get_level_manager();
 			auto a_ctrl = _main_controller->get_audio_controller();
