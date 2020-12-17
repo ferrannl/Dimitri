@@ -11,7 +11,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/tutorial.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
@@ -37,7 +37,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::PAUSED, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
@@ -50,7 +50,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::GAME_OVER, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
@@ -63,7 +63,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });

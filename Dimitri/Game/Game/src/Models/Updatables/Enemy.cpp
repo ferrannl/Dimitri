@@ -85,6 +85,7 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 		}
 	}
 	else if (!_standstill) {
+		walk();
 		if (_x >= _base_x + _area_right) {
 			_direction = Enums::DirectionEnum::LEFT;
 			_moving_direction = -1;
