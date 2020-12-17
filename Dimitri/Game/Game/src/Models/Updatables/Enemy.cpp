@@ -62,7 +62,7 @@ void Game::Models::Enemy::reset_jump()
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
 	bool Left = (_base_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
-	bool Right = (_base_x + (_area_right) > (ctrl->get_level()->get_player()->get_x()));
+	bool Right = ((_base_x + _width) + (_area_right) > (ctrl->get_level()->get_player()->get_x()));
 	bool Top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
 	bool Bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
 	bool In_Area = (Left && Right && Top && Bottom);
@@ -115,8 +115,10 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 	else {
 		get_texture()->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 	}
-	if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
-		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+	if (!ctrl->get_cheats_settings()->get_invincible()) {
+		if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
+			ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+		}
 	}
 }
 

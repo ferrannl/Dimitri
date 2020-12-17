@@ -69,6 +69,9 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
 
+			/**
+			* \brief List of the enemies
+			*/
 			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
 
 			/**
@@ -99,6 +102,9 @@ namespace Game {
 		public:
 			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height);
 
+			/**
+			* \brief Returns a list of buttons
+			*/
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 
 			/**
@@ -206,6 +212,9 @@ namespace Game {
 			*/
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
+			/**
+			* \brief Adds an enemy to the level
+			*/
 			void add_enemy(std::shared_ptr<Game::Models::Enemy> tile);
 
 			/**
@@ -228,6 +237,9 @@ namespace Game {
 			*/
 			float get_width() const;
 
+			/**
+			* \brief Returns the player
+			*/
 			std::shared_ptr<Game::Models::Player> get_player()const;
 		};
 	}

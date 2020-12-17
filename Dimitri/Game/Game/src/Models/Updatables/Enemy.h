@@ -27,13 +27,41 @@ namespace Game {
 			*/
 			float _lastx;
 
+			/**
+			* \brief The x position where the enemy starts
+			*/
 			float _base_x;
+
+			/**
+			* \brief The left area where the enemy can see the player
+			*/
 			int _area_left;
+
+			/**
+			* \brief The right area where the enemy can see the player
+			*/
 			int _area_right;
+
+			/**
+			* \brief The top area where the enemy can see the player
+			*/
 			int _area_top;
+
+			/**
+			* \brief The bottom area where the enemy can see the player
+			*/
 			int _area_bottom;
+
+			/**
+			* \brief The direction where the enemy is walking
+			*/
 			int _moving_direction;
+
+			/**
+			* \brief Boolean for checking if the enemy is moving
+			*/
 			bool _standstill;
+
 			/**
 			* \brief Last y position of last update of the Enemy
 			*/
