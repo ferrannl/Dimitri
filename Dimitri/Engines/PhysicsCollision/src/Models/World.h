@@ -31,7 +31,7 @@ namespace PhysicsCollision {
 			/**
 			*\ brief An instance of WorldFacade
 			*/
-			Facades::WorldFacade _world_facade;
+			std::shared_ptr<Facades::WorldFacade> _world_facade;
 
 			/**
 			* \brief A list of Shapes
@@ -39,7 +39,7 @@ namespace PhysicsCollision {
 			std::vector<std::shared_ptr<Models::Shape>> _shapes;
 		public:
 			World();
-			World(const float width, const float height);
+			World(float width, float height);
 
 			/**
 			* \brief Adds a Shape to the World in _shapes
@@ -54,7 +54,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Destroys the bodies from all Shapes in _shapes
 			*/
-			void destroy_bodies();
+			void destroy_bodies()const;
 
 			/**
 			* \brief Destroys the body from a Shape in _shapes
@@ -64,7 +64,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the World
 			*/
-			void simulate(const float speed)const;
+			void simulate(float speed)const;
 		};
 	}
 }

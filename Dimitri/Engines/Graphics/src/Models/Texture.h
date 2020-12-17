@@ -8,7 +8,7 @@
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
-#else 
+#else
 #define GRAPHICS_API __declspec(dllimport)
 #endif
 #else
@@ -167,17 +167,17 @@ namespace Graphics {
 			/**
 			* \brief Sets the x coordinate
 			*/
-			void set_x(const float x);
+			void set_x(float x);
 
 			/**
 			* \brief Sets the z coordinate
 			*/
-			void set_z(const float z);
+			void set_z(float z);
 
 			/**
 			* \brief Sets the y coordinate
 			*/
-			void set_y(const float y);
+			void set_y(float y);
 
 			/**
 			* \brief Sets the width

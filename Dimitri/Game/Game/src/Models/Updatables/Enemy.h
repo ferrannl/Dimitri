@@ -20,14 +20,14 @@ namespace Game {
 			/**
 			* \brief The max amount of jumps the Enemy is allowed to make
 			*/
-			const int _max_amount_of_jumps = 1;
+			const static int _max_amount_of_jumps = 1;
 
 			/**
 			* \brief Last x position of last update of the Enemy
 			*/
-			int _lastx;
+			float _lastx;
 
-			int _base_x;
+			float _base_x;
 			int _area_left;
 			int _area_right;
 			int _area_top;
@@ -37,7 +37,7 @@ namespace Game {
 			/**
 			* \brief Last y position of last update of the Enemy
 			*/
-			int _lasty;
+			float _lasty;
 
 			/**
 			* \brief The amount of jumps the Enemy has made
@@ -54,7 +54,7 @@ namespace Game {
 			*/
 			void idle();
 		public:
-			Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
+			Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
 
 			/**
 			* \brief Initializes Textures

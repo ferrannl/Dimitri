@@ -2,6 +2,7 @@
 #include "InputController.h"
 #include "WindowController.h"
 #include "LevelController.h"
+#include "SaveGameController.h"
 #include "HomeController.h"
 #include "CreditsController.h"
 #include "AdvertisementController.h"
@@ -10,6 +11,7 @@
 #include "../Mediators/BaseComponent.h"
 #include "../Managers/LevelManager.h"
 #include "../Managers/HighScoreManager.h"
+#include "CheatsController.h"
 
 /**
 * \namespace Game
@@ -58,6 +60,11 @@ namespace Game {
 			std::shared_ptr<Controllers::LevelController> _level_controller;
 
 			/**
+			* \brief An instance of the SaveGameController
+			*/
+			std::shared_ptr<Controllers::SaveGameController> _save_game_controller;
+
+			/**
 			* \brief An instance of the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> _home_controller;
@@ -76,6 +83,11 @@ namespace Game {
 			* \brief An instance of the AdvertisementController
 			*/
 			std::shared_ptr<Controllers::AdvertisementController> _advertisement_controller;
+
+			/**
+			* \brief An instance of the CheatsController
+			*/
+			std::shared_ptr<Controllers::CheatsController> _cheats_controller;
 		public:
 			MainController();
 
@@ -120,6 +132,11 @@ namespace Game {
 			std::shared_ptr<Controllers::LevelController> get_level_controller() const;
 
 			/**
+			* \brief Returns the SaveGameController
+			*/
+			std::shared_ptr<Controllers::SaveGameController> get_save_game_controller() const;
+
+			/**
 			* \brief Returns the HomeController
 			*/
 			std::shared_ptr<Controllers::HomeController> get_home_controller() const;
@@ -133,6 +150,11 @@ namespace Game {
 			* \brief Returns the HelpController
 			*/
 			std::shared_ptr<Controllers::HelpController> get_help_controller() const;
+
+			/**
+			* \brief Returns the CheatsController
+			*/
+			std::shared_ptr<Controllers::CheatsController> get_cheats_controller() const;
 		};
 	}
 }

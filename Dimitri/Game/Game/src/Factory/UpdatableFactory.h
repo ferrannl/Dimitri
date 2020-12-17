@@ -21,7 +21,7 @@ namespace Game {
 			/**
 			* \brief Creates the updatable
 			*/
-			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float val = 0);
+			std::shared_ptr<Models::Updatable> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state, float val = 0, bool val2 = true);
 		};
 	}
 }

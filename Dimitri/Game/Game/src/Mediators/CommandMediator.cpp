@@ -103,11 +103,12 @@ namespace Game {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
-						{Enums::ButtonEnum::START, Enums::CommandEnum::LOAD_LEVEL},
 						{Enums::ButtonEnum::HELP, Enums::CommandEnum::OPEN_HELP_VIEW},
 						{Enums::ButtonEnum::CREDITS, Enums::CommandEnum::OPEN_CREDITS_VIEW},
 						{Enums::ButtonEnum::EXIT, Enums::CommandEnum::EXIT_GAME},
 						{Enums::ButtonEnum::HIGHSCORE, Enums::CommandEnum::LOAD_HIGHSCORE},
+						{Enums::ButtonEnum::SAVE_GAMES, Enums::CommandEnum::OPEN_SAVE_GAME_VIEW},
+						{Enums::ButtonEnum::CHEATS, Enums::CommandEnum::OPEN_CHEATS_VIEW},
 						});
 					break;
 				}
@@ -134,6 +135,28 @@ namespace Game {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, { {Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW} });
 						break;
+				}
+			}
+			else if (sender.get_identifier() == "CheatsController")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, { 
+						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
+						{Enums::ButtonEnum::CHEATS_CHECKBOX_INFINITE, Enums::CommandEnum::CHEATS_INFINITE},
+						{Enums::ButtonEnum::CHEATS_CHECKBOX_INVINCIBLE, Enums::CommandEnum::CHEATS_INVINCIBLE}, 
+						});
+					break;
+				}
+			}
+			else if (sender.get_identifier() == "SaveGameController")
+			{
+				switch (event.event_enum) {
+				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
+					notify_buttons(sender, event, {
+						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
+						{Enums::ButtonEnum::NEW1, Enums::CommandEnum::LOAD_LEVEL} });
+					break;
 				}
 			}
 		}

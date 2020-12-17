@@ -53,7 +53,7 @@ namespace Graphics {
 			/**
 			* \brief Instance of the WindowFacade
 			*/
-			std::shared_ptr<Facades::WindowFacade> _facade;
+			std::unique_ptr<Facades::WindowFacade> _facade;
 
 			/**
 			* \brief A list of the Textures displayed in the Window
@@ -76,17 +76,17 @@ namespace Graphics {
 			* \brief Calls methods on the WindowFacade to create the everything needed to render a window
 			* \return 0 or greater if initialization succeeded, otherwise initialization failed
 			*/
-			int create();
+			int create() const;
 
 			/**
 			* \brief Updates the Window
 			*/
-			void update();
+			void update() const;
 
 			/**
 			* \brief Destroys the window
 			*/
-			void destroy();
+			void destroy() const;
 
 			/**
 			* \brief Adds the Texture to _textures
@@ -124,14 +124,19 @@ namespace Graphics {
 			const std::string get_title() const;
 
 			/**
-			* \brief Returns the WindowFacade
+			* \brief Returns the fps
 			*/
-			std::shared_ptr<Facades::WindowFacade> get_facade() const;
+			int get_fps() const;
+
+			/**
+			* \brief Returns the timer ticks
+			*/
+			int get_ticks() const;
 
 			/**
 			* \brief Updates camera position
 			*/
-			void set_camera_pos(int x, int y);
+			void set_camera_pos(float x, float y);
 
 			/**
 			* \brief Returns camera position

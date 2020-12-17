@@ -1,15 +1,15 @@
 #include "Enemy.h"
 #include "../../Controllers/LevelController.h"
 
-Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom) : Game::Models::Updatable(x, y, z, height, width, state, center)
+Game::Models::Enemy::Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom) : Game::Models::Updatable(x,y,z,height,width,state,center)
 {
 	_jumps = _max_amount_of_jumps;
 	_lastx = x;
 	_base_x = x;
 	_area_left = area_left;
 	_area_right = area_right;
-	_area_top = area_bottom;
-	_area_bottom = area_top;
+	_area_top = area_top;
+	_area_bottom = area_bottom;
 	_lasty = y;
 	_moving_direction = { 1 };
 	_direction = Enums::DirectionEnum::NONE;
@@ -61,13 +61,13 @@ void Game::Models::Enemy::reset_jump()
 
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
-	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x()));
+	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
 	bool Right = (_x + _area_right > (ctrl->get_level()->get_player()->get_x()));
-	bool Top = (_y - _area_top < (ctrl->get_level()->get_player()->get_y()));
-	bool Bottom = (_y + _area_bottom > (ctrl->get_level()->get_player()->get_y()));
+	bool Top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
+	bool Bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
 	bool In_Area = (Left && Right && Top && Bottom);
 	bool Bounds_Left = (_x > _base_x - _area_left);
-	bool Bounds_Right = (_x < _base_x + _area_right);
+	bool Bounds_Right= (_x < _base_x + _area_right);
 
 	if (In_Area)
 	{
@@ -108,7 +108,7 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 		get_texture()->set_flip_status(Graphics::Enums::FlipEnum::NONE);
 	}
 	if (_shape->check_square_collision(ctrl->get_level()->get_player()->get_shape()) && get_texture()->is_visible()) {
-		//ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
+		ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
 	}
 }
 
