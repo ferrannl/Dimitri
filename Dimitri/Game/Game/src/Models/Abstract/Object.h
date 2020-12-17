@@ -67,7 +67,6 @@ namespace Game {
 			*/
 			Enums::StateEnum _state;
 
-
 			/**
 			* \brief The animationstate of the Object
 			*/
@@ -105,7 +104,6 @@ namespace Game {
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_all_textures();
 
-
 			/**
 			* \brief Returns X coordinate
 			*/
@@ -139,37 +137,39 @@ namespace Game {
 			/**
 			* \brief Sets state of the Object
 			*/
-			void set_state(const Enums::StateEnum& state);
+			void set_state(const Enums::StateEnum state);
 
 			/**
 			* \brief Sets direction of the Object
 			*/
-			void set_direction(const Enums::DirectionEnum& value);
+			void set_direction(const Enums::DirectionEnum value);
 
 			/**
 			* \brief Sets animationstate of the Object
 			*/
-			void set_animationstate(const Enums::AnimateEnum& state);
+			void set_animationstate(const Enums::AnimateEnum state);
+
+			void toggle_visibility();
 
 			/**
 			* \brief Returns Shape of the Object
 			*/
-			std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
+			const std::shared_ptr<PhysicsCollision::Models::Shape>& get_shape() const;
 
 			/**
 			* \brief Creates the shape for the Object
 			*/
-			void create_shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type);
+			void create_shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, PhysicsCollision::Enums::ShapeEnum type);
 
-			/**
-			* \brief Sets shape of the Object
-			*/
-			void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
+			///**
+			//* \brief Sets shape of the Object
+			//*/
+			//void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
 
 			/**
 			* \brief Adds Texture
 			*/
-			void add_texture(const Enums::AnimateEnum& state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(Enums::AnimateEnum state, std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			* \brief Returns height of the Object

@@ -23,7 +23,7 @@ namespace Game {
 		int size = 28;
 		int x1 = 175;
 		int x2 = 37;
-		for (auto texture : _textures) {
+		for (auto& texture : _textures) {
 			if(texture->get_path() == Utility::Helpers::get_base_path() + std::string{ "/assets/images/hud/jump.png" })
 			if (texture->get_width() != size) {
 				texture->set_x(x1);

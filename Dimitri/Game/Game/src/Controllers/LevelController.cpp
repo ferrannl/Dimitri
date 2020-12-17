@@ -11,7 +11,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level2.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
@@ -172,7 +172,7 @@ void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == std::get<0>(pos) && l->get_y() == std::get<1>(pos)) {
-			l->get_texture()->toggle_visible();
+			l->toggle_visibility();
 		}
 	}
 }
@@ -194,7 +194,7 @@ void  Controllers::LevelController::simulate() {
 		_level->simulate();
 		_level->get_player()->update();
 
-		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
+		for (const std::shared_ptr<Models::Object>& walls : _level->get_tiles())
 		{
 			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
 			{
@@ -202,6 +202,7 @@ void  Controllers::LevelController::simulate() {
 				break;
 			}
 		}
+
 		_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
@@ -210,10 +211,11 @@ void  Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(36ms);
 
-		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
+		for (const std::shared_ptr<Models::Updatable>& object : _level->get_updatables())
 		{
 			object->update_object(this);
 		}
+
 		_level->get_player()->update_state();
 	}
 }

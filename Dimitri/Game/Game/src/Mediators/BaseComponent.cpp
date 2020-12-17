@@ -6,7 +6,7 @@ namespace Game {
 	namespace Mediators {
 		BaseComponent::~BaseComponent() {}
 
-		std::string BaseComponent::get_identifier() const
+		const std::string& BaseComponent::get_identifier() const
 		{
 			return _identifier;
 		}

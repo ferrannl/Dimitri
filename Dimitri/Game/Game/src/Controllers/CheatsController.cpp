@@ -20,6 +20,7 @@ void Game::Controllers::CheatsController::initialize_textures(float height, floa
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
 		std::make_shared<Graphics::Models::Sprite>(10, 0 + 10, 3, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 	};
+
 	add_button(std::make_unique<Game::Models::Button>(10, 0 + 10.0f, 30, 30, t, Enums::ButtonEnum::HOME ));
 
 	_textures.push_back(std::make_shared<Graphics::Models::Text>("Cheats", color, window_width / 2 - 150, 500, 10, 70, 300, 0, path, true, Graphics::Models::Center{ 0,0 }, true));
