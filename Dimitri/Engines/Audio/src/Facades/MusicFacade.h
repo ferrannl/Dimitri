@@ -25,7 +25,7 @@ namespace Audio {
 			*/
 			std::unique_ptr<_Mix_Music, void(*)(_Mix_Music*)> _music;
 		public:
-			MusicFacade(const std::string path);
+			MusicFacade(const std::string& path);
 
 			/**
 			* \brief Plays the audio file using SDL_Mixer
