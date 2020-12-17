@@ -104,6 +104,11 @@ namespace Game {
 			* \brief sets max amount of jumps
 			*/
 			void set_jumps(int jumps);
+
+			/**
+			* \brief Clears extra textures
+			*/
+			void clear_extra_textures();
 		};
 	}
 }

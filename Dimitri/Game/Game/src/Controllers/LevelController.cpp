@@ -210,6 +210,7 @@ void  Controllers::LevelController::simulate() {
 
 void Game::Controllers::LevelController::clear_level()
 {
+	_level->get_player()->clear_extra_textures();
 	_level->get_physics_collision_controller()->destroy_shapes();
 	_window_controller->get_graphics_controller()->clear_textures();
 }
