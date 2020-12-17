@@ -12,7 +12,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level3.json");
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
 	Builder::LevelBuilder builder{};
 	_level = builder.build(ret, audio_controller, window_controller);
 	_level->load_objects();
@@ -23,6 +23,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_level->add_sound("danger", "/assets/audio/danger.wav");
 	_level->add_sound("switch", "/assets/audio/switch.wav");
 	_level->add_sound("win", "/assets/audio/win.wav");
+	_level->add_sound("enemynear", "/assets/audio/enemynearby.mp3", 0);
 
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
@@ -150,6 +151,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_objects_thread.detach();
 			_level->stop_music("level1");
 			_level->stop_music("danger");
+			_level->stop_music("enemynear");
 			_window_controller->get_graphics_controller()->get_window()->get_timer()->pause();
 		}
 		else if (old_state == Enums::LevelStateEnum::TRANSITION) {

@@ -29,12 +29,12 @@ namespace Game {
 			/**
 			* \brief Adds music
 			*/
-			void add_music(const std::string name, const std::string song_path);
+			void add_music(const std::string name, const std::string song_path, int volume = 50);
 
 			/**
 			* \brief Adds sound
 			*/
-			void add_sound(const std::string name, const std::string song_path);
+			void add_sound(const std::string name, const std::string song_path, int volume = 50);
 
 			/**
 			* \brief Play Audio by name
@@ -55,6 +55,11 @@ namespace Game {
 			* \brief Stop Audio by name
 			*/
 			void stop_audio(const std::string name);
+
+			/**
+			* \brief Sets the volume of the Audio
+			*/
+			void set_volume(const std::string name, int vol);
 
 			/**
 			* \brief Returns if the Audio is playing

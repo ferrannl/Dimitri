@@ -14,7 +14,8 @@ Game::Models::Enemy::Enemy(float x, float y, float z, float height, float width,
 	_moving_direction = { 1 };
 	_direction = Enums::DirectionEnum::NONE;
 	_standstill = false;
-	_playing = false;
+	_playing_alarm = false;
+	_playing_adaptive = false;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -70,11 +71,16 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 	bool Bounds_Left = (_x > _base_x - _area_left);
 	bool Bounds_Right= (_x < _base_x + _area_right);
 
+	int difx = ctrl->get_level()->get_player()->get_x() - _x;
+	int dify = ctrl->get_level()->get_player()->get_y() - _y;
+
 	if (In_Area)
 	{
-		if (!_playing) {
+		if (!_playing_alarm) {
 			ctrl->get_level()->play_music("danger");
-			_playing = true;
+			ctrl->get_level()->stop_music("enemynear");
+			_playing_alarm = true;
+			_playing_adaptive = false;
 		}
 
 		walk();
@@ -91,11 +97,26 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 		}
 	}
 	else if (!_standstill) {
-		if (_playing) {
+		if (_playing_alarm) {
 			ctrl->get_level()->stop_music("danger");
-			_playing = false;
+			_playing_alarm = false;
 		}
+		else {
+			int xbound = 500;
+			int ybound = 500;
+			if (abs(difx) < xbound && abs(dify) < ybound) {
+				if (!_playing_adaptive) {
+					ctrl->get_level()->play_music("enemynear");
+					_playing_adaptive = true;
+				}
+
+
+				ctrl->get_level()->volume_control("enemynear", ((xbound - abs(difx))/10));
+			};
+		}
+
 		walk();
+
 		if (_x >= _base_x + _area_right) {
 			_direction = Enums::DirectionEnum::LEFT;
 			_moving_direction = -1;

@@ -120,12 +120,12 @@ namespace Game {
 			/**
 			* \brief Add music
 			*/
-			void add_music(std::string audio_name, std::string path);
+			void add_music(std::string audio_name, std::string path, int volume = 50);
 
 			/**
 			* \brief Add sound
 			*/
-			void add_sound(std::string audio_name, std::string path);
+			void add_sound(std::string audio_name, std::string path, int volume = 50);
 
 			/**
 			* \brief Play music
@@ -146,6 +146,8 @@ namespace Game {
 			* \brief Resume music
 			*/
 			void resume_music(std::string audio_name);
+
+			void volume_control(std::string audio_name, int volume);
 
 			/**
 			* \brief Initializes objects

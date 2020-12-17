@@ -31,14 +31,14 @@ float Game::Models::Level::get_speed()const
 	return _speed;
 }
 
-void Models::Level::add_music(std::string audio_name, std::string path)
+void Models::Level::add_music(std::string audio_name, std::string path, int volume)
 {
-	_audio_controller->add_music(audio_name, path);
+	_audio_controller->add_music(audio_name, path, volume);
 }
 
-void Game::Models::Level::add_sound(std::string audio_name, std::string path)
+void Game::Models::Level::add_sound(std::string audio_name, std::string path, int volume)
 {
-	_audio_controller->add_sound(audio_name, path);
+	_audio_controller->add_sound(audio_name, path, volume);
 }
 
 void Models::Level::play_music(std::string audio_name)
@@ -59,6 +59,11 @@ void Game::Models::Level::pause_music(std::string audio_name)
 void Game::Models::Level::resume_music(std::string audio_name)
 {
 	_audio_controller->resume_audio(audio_name);
+}
+
+void Game::Models::Level::volume_control(std::string audio_name, int volume)
+{
+	_audio_controller->set_volume(audio_name, volume);
 }
 
 void Game::Models::Level::load_objects()

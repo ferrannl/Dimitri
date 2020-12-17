@@ -17,12 +17,12 @@ std::shared_ptr<Models::Audio> Controllers::AudioController::get_audio_by_name(c
 	throw Exceptions::AudioNotFound();
 }
 
-void Controllers::AudioController::add_sound(const std::string name, const std::string path)
+void Controllers::AudioController::add_sound(const std::string name, const std::string path, int volume)
 {
 	try {
 		if (!name_exists(name)) {
 			try {
-				_audios.push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter)));
+				_audios.push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::SoundFacade>(path, _channel_counter, volume), volume));
 				_channel_counter++;
 			}
 			catch (Exceptions::LoadAudioFailed e) {
@@ -38,12 +38,12 @@ void Controllers::AudioController::add_sound(const std::string name, const std::
 	}
 }
 
-void Controllers::AudioController::add_music(const std::string name, const std::string path)
+void Controllers::AudioController::add_music(const std::string name, const std::string path, int volume)
 {
 	try {
 		if (!name_exists(name)) {
 			try {
-				_audios.push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path)));
+				_audios.push_back(std::make_shared<Models::Audio>(name, std::make_shared<Facades::MusicFacade>(path, volume), volume));
 			}
 			catch (Exceptions::LoadAudioFailed e) {
 				std::cout << e.get() << ": " << name << std::endl;
@@ -102,6 +102,16 @@ void Controllers::AudioController::stop_audio(const std::string name) const
 {
 	try {
 		get_audio_by_name(name)->get_audio_facade()->stop();
+	}
+	catch (Exceptions::AudioNotFound e) {
+		std::cout << e.get() << ": " << name << std::endl;
+	}
+}
+
+void Controllers::AudioController::control_music(const std::string name, int volume)
+{
+	try {
+		get_audio_by_name(name)->get_audio_facade()->set_volume(volume);
 	}
 	catch (Exceptions::AudioNotFound e) {
 		std::cout << e.get() << ": " << name << std::endl;

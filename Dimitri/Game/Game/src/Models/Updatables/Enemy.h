@@ -82,7 +82,9 @@ namespace Game {
 			*/
 			void idle();
 
-			bool _playing;
+			bool _playing_alarm;
+			bool _playing_adaptive;
+			int last_dif;
 		public:
 			Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
 
