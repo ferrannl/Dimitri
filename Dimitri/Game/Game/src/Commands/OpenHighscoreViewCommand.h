@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Opens the highscore view
 			*/
-			void execute(int param) override;
+			void execute(int param = 0) override;
 		};
 	}
 }
