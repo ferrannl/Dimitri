@@ -6,6 +6,10 @@ namespace Game {
 
 		void LoadLevelCommand::execute(int param)
 		{
+			if (param > _main_controller->get_settings()->get_unlocked_level()) {
+				return;
+			}
+
 			auto l_mgr = _main_controller->get_level_manager();
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto c_ctrl = _main_controller->get_cheats_controller();
