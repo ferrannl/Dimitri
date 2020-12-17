@@ -12,6 +12,7 @@ namespace Game {
 			auto a_ctrl = _main_controller->get_audio_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
 			auto c_ctrl = _main_controller->get_credits_controller();
+			auto cheats_ctrl = _main_controller->get_cheats_controller();
 			auto help_ctrl = _main_controller->get_help_controller();
 			auto h_mgr = _main_controller->get_highscore_manager();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
@@ -26,6 +27,7 @@ namespace Game {
 				i_ctrl->unsubscribe(c_ctrl);
 				i_ctrl->unsubscribe(help_ctrl);
 				i_ctrl->unsubscribe(h_mgr);
+				i_ctrl->unsubscribe(cheats_ctrl);
 				i_ctrl->subscribe(h_ctrl);
 			}
 		}
