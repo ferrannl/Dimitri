@@ -39,7 +39,6 @@ float Models::Object::get_x() const
 void Models::Object::set_x(float value)
 {
 	this->_x = value;
-	_textures[_animatestate]->set_x(_x);
 }
 
 float Models::Object::get_y() const
@@ -50,7 +49,6 @@ float Models::Object::get_y() const
 void Models::Object::set_y(float value)
 {
 	this->_y = value;
-	_textures[_animatestate]->set_y(_y);
 }
 
 float Models::Object::get_z() const
@@ -61,7 +59,6 @@ float Models::Object::get_z() const
 void Models::Object::set_z(float value)
 {
 	this->_z = value;
-	_textures[_animatestate]->set_z(_z);
 }
 
 void Models::Object::set_state(const Enums::StateEnum& value)
@@ -88,7 +85,7 @@ std::shared_ptr<PhysicsCollision::Models::Shape> Models::Object::get_shape() con
 
 void Models::Object::create_shape(const float x, const float y, const float height, const float width, const bool is_dynamic, const bool is_interactable, const PhysicsCollision::Enums::ShapeEnum type)
 {
-	set_shape(std::make_shared<PhysicsCollision::Models::Shape>(x, y, height, width, is_dynamic,is_interactable, type));
+	set_shape(std::make_shared<PhysicsCollision::Models::Shape>(x, y, height, width, is_dynamic, is_interactable, type));
 }
 
 void Models::Object::set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
