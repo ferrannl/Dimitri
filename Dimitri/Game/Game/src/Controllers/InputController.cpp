@@ -18,8 +18,18 @@ void Game::Controllers::InputController::update(const Input::Enums::EventEnum& o
 }
 
 void Game::Controllers::InputController::notify(const Game::Events::InputEvent& object) {
-	for (auto& observer : _observers) {
-		observer->update(object);
+	if (_observers.size() == 0) { return; }
+	for (auto observer : _observers) {
+		try {
+			observer->update(object);
+		}
+		catch (std::exception e) {
+			std::cout << std::endl << "Woops, something went wrong!" << std::endl;
+			std::cout << std::endl << e.what() << std::endl;
+		}
+		catch (...) {
+			std::cout << std::endl << "Woops, something went wrong! - Unknown" << std::endl;
+		}
 	}
 }
 

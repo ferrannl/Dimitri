@@ -21,14 +21,15 @@ void Game::Controllers::LevelSelectorController::load_buttons()
 	int i = 0;
 	float w = 200;
 	float h = 170;
+	int counter = 0;
 	for (auto b : button_map_left) {
 
 		t = {};
 		add_button(std::make_unique<Models::Button>(_scene_height / 4 * 3 - 375 + (248 * i), _scene_width / 3 - (w / 2) + 30, h, w, t, b.second));
+		get_buttons().back()->set_param(counter);
+		counter++;
 		i++;
 	}
-	//add_button(std::make_unique<Game::Models::Button>(50, _scene_height - 65.0f, 30, 30, t, Enums::ButtonEnum::START_TUTORIAL));
-	//TODO ADD BUTTONS FOR OTHER LEVELS
 }
 
 void Game::Controllers::LevelSelectorController::update(const Game::Events::InputEvent& object)

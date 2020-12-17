@@ -18,10 +18,20 @@ namespace Game {
 			auto h_mgr = _main_controller->get_highscore_manager();
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
+				
 				if (l_ctrl->get_level()) {
 					l_ctrl->stop();
 					l_ctrl->clear_level();
 				}
+				i_ctrl->unsubscribe(l_ctrl);
+				i_ctrl->unsubscribe(c_ctrl);
+				i_ctrl->unsubscribe(save_game_ctrl);
+				i_ctrl->unsubscribe(level_selector_ctrl);
+				i_ctrl->unsubscribe(help_ctrl);
+				i_ctrl->unsubscribe(h_mgr);
+				i_ctrl->unsubscribe(cheats_ctrl);
+				i_ctrl->subscribe(h_ctrl);
+
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
@@ -31,14 +41,6 @@ namespace Game {
 					a_ctrl->play_audio("homescreen1");
 				}
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());
-				i_ctrl->unsubscribe(l_ctrl);
-				i_ctrl->unsubscribe(c_ctrl);
-				i_ctrl->unsubscribe(save_game_ctrl);
-				i_ctrl->unsubscribe(level_selector_ctrl);
-				i_ctrl->unsubscribe(help_ctrl);
-				i_ctrl->unsubscribe(h_mgr);
-				i_ctrl->unsubscribe(cheats_ctrl);
-				i_ctrl->subscribe(h_ctrl);
 			}
 		}
 	}

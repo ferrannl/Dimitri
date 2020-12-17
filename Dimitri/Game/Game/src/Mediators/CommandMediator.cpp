@@ -164,7 +164,10 @@ namespace Game {
 				case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 					notify_buttons(sender, event, {
 						{Enums::ButtonEnum::HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
-						{Enums::ButtonEnum::START_TUTORIAL, Enums::CommandEnum::LOAD_LEVEL}
+						{Enums::ButtonEnum::START_TUTORIAL, Enums::CommandEnum::LOAD_LEVEL},
+						{Enums::ButtonEnum::START_LEVEL_1, Enums::CommandEnum::LOAD_LEVEL},
+						{Enums::ButtonEnum::START_LEVEL_2, Enums::CommandEnum::LOAD_LEVEL},
+						{Enums::ButtonEnum::START_LEVEL_3, Enums::CommandEnum::LOAD_LEVEL},
 						});
 				}
 			}
