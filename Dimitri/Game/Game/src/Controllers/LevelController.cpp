@@ -115,7 +115,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 void Game::Controllers::LevelController::play_secret() {
 	_level->stop_music("level1");
 	_level->play_music("secret");
-	
+
 }
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)

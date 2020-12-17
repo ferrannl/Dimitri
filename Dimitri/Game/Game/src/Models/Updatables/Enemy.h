@@ -32,7 +32,8 @@ namespace Game {
 			int _area_right;
 			int _area_top;
 			int _area_bottom;
-
+			int _moving_direction;
+			bool _standstill;
 			/**
 			* \brief Last y position of last update of the Enemy
 			*/

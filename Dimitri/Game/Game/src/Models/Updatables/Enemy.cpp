@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "../../Controllers/LevelController.h"
 
-Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom) : Game::Models::Updatable(x,y,z,height,width,state,center)
+Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom) : Game::Models::Updatable(x, y, z, height, width, state, center)
 {
 	_jumps = _max_amount_of_jumps;
 	_lastx = x;
@@ -11,7 +11,9 @@ Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::Di
 	_area_top = area_bottom;
 	_area_bottom = area_top;
 	_lasty = y;
+	_moving_direction = { 1 };
 	_direction = Enums::DirectionEnum::NONE;
+	_standstill = false;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -61,11 +63,11 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
 	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x()));
 	bool Right = (_x + _area_right > (ctrl->get_level()->get_player()->get_x()));
-	bool Top = (_y - _area_top< (ctrl->get_level()->get_player()->get_y()));
-	bool Bottom = (_y + _area_bottom> (ctrl->get_level()->get_player()->get_y()));
+	bool Top = (_y - _area_top < (ctrl->get_level()->get_player()->get_y()));
+	bool Bottom = (_y + _area_bottom > (ctrl->get_level()->get_player()->get_y()));
 	bool In_Area = (Left && Right && Top && Bottom);
 	bool Bounds_Left = (_x > _base_x - _area_left);
-	bool Bounds_Right= (_x < _base_x + _area_right);
+	bool Bounds_Right = (_x < _base_x + _area_right);
 
 	if (In_Area)
 	{
@@ -74,13 +76,26 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 			_shape->move_x(1, 1);
 			_direction = Enums::DirectionEnum::RIGHT;
 		}
-		else{
+		else {
 			if (Bounds_Left)
 			{
 				_shape->move_x(-1, 1);
 				_direction = Enums::DirectionEnum::LEFT;
 			}
 		}
+	}
+	else if (!_standstill) {
+		if (_x >= _base_x + _area_right) {
+			_direction = Enums::DirectionEnum::LEFT;
+			_moving_direction = -1;
+		}
+		else if (_x <= _base_x - _area_left) {
+			_direction = Enums::DirectionEnum::RIGHT;
+			_moving_direction = 1;
+		}
+		_shape->move_x(_moving_direction, 0.5);
+
+
 	}
 	else {
 		idle();
