@@ -18,11 +18,6 @@ namespace Game {
 		class Enemy : public Models::Updatable {
 		private:
 			/**
-			* \brief The max amount of jumps the Enemy is allowed to make
-			*/
-			const static int _max_amount_of_jumps = 1;
-
-			/**
 			* \brief Last x position of last update of the Enemy
 			*/
 			float _lastx;
@@ -73,6 +68,16 @@ namespace Game {
 			int _jumps;
 
 			/**
+			* \brief Bool to check if the alarm is playing
+			*/
+			bool _playing_alarm;
+
+			/**
+			* \brief Bool to check if the adaptive sound is playing
+			*/
+			bool _playing_adaptive;
+
+			/**
 			* \brief Handles the walk animation of the Enemy
 			*/
 			void walk();
@@ -82,9 +87,25 @@ namespace Game {
 			*/
 			void idle();
 
-			bool _playing_alarm;
-			bool _playing_adaptive;
-			int last_dif;
+			/**
+			* \brief Handles the ai path logic of the Enemy
+			*/
+			void walk_in_area(Controllers::LevelController* ctrl);
+
+			/**
+			* \brief Handles the ai chase player logic of the Enemy
+			*/
+			void chase_player(Controllers::LevelController* ctrl);
+
+			/**
+			* \brief Handles the logic when the alarm should go off
+			*/
+			void play_alarm(Controllers::LevelController* ctrl);
+
+			/**
+			* \brief Handles the logic when the adaptive sound should play
+			*/
+			void play_adaptive(Controllers::LevelController* ctrl);
 		public:
 			Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
 
@@ -112,7 +133,6 @@ namespace Game {
 			* \brief Checks the state of the Enemy with by checking the increase of x and or y
 			*/
 			void update_state();
-
 		};
 	}
 }

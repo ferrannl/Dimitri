@@ -3,7 +3,6 @@
 
 Game::Models::Enemy::Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom) : Game::Models::Updatable(x,y,z,height,width,state,center)
 {
-	_jumps = _max_amount_of_jumps;
 	_lastx = x;
 	_base_x = x;
 	_area_left = area_left;
@@ -45,96 +44,21 @@ void Game::Models::Enemy::initialize_textures()
 	get_texture()->set_visible(true);
 }
 
-bool Game::Models::Enemy::jump()
-{
-	if (_jumps > 0) {
-		_jumps--;
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-void Game::Models::Enemy::reset_jump()
-{
-	_jumps = _max_amount_of_jumps;
-}
-
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
-	bool Left = (_base_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
-	bool Right = ((_base_x + _width) + (_area_right) > (ctrl->get_level()->get_player()->get_x()));
-	bool Top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
-	bool Bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
-	bool In_Area = (Left && Right && Top && Bottom);
-	bool Bounds_Left = (_x > _base_x - _area_left);
-	bool Bounds_Right= (_x < _base_x + _area_right);
+	bool left = (_base_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
+	bool right = ((_base_x + _width) + (_area_right) > (ctrl->get_level()->get_player()->get_x()));
+	bool top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
+	bool bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
 
-	int difx = ctrl->get_level()->get_player()->get_x() - _x;
-	int dify = ctrl->get_level()->get_player()->get_y() - _y;
-
-	if (In_Area)
+	if (left && right && top && bottom)
 	{
-		if (!_playing_alarm) {
-			ctrl->get_level()->play_music("danger");
-			ctrl->get_level()->stop_music("enemynear");
-			_playing_alarm = true;
-			_playing_adaptive = false;
-		}
-
-		walk();
-		if (_x < (ctrl->get_level()->get_player()->get_x()) && Bounds_Right) {
-			_shape->move_x(1, 1);
-			_direction = Enums::DirectionEnum::RIGHT;
-		}
-		else {
-			if (Bounds_Left)
-			{
-				_shape->move_x(-1, 1);
-				_direction = Enums::DirectionEnum::LEFT;
-			}
-		}
+		play_alarm(ctrl);
+		chase_player(ctrl);
 	}
 	else if (!_standstill) {
-		if (_playing_alarm) {
-			ctrl->get_level()->stop_music("danger");
-			_playing_alarm = false;
-		}
-		else {
-			int xbound = 500;
-			int ybound = 500;
-			if (abs(difx) < xbound && abs(dify) < ybound) {
-				if (!_playing_adaptive) {
-					ctrl->get_level()->play_music("enemynear");
-					_playing_adaptive = true;
-				}
-
-
-				ctrl->get_level()->volume_control("enemynear", ((xbound - abs(difx))/10));
-			};
-		}
-
-		walk();
-
-		if (_x >= _base_x + _area_right) {
-			_direction = Enums::DirectionEnum::LEFT;
-			_moving_direction = -1;
-		}
-		else if (_x <= _base_x - _area_left) {
-			_direction = Enums::DirectionEnum::RIGHT;
-			_moving_direction = 1;
-		}
-		if (_moving_direction == 1)
-		{
-			_direction = Enums::DirectionEnum::RIGHT;
-		}
-		else {
-			_direction = Enums::DirectionEnum::LEFT;
-		}
-		_shape->move_x(_moving_direction, 0.5);
-
-
+		play_adaptive(ctrl);
+		walk_in_area(ctrl);
 	}
 	else {
 		idle();
@@ -151,6 +75,104 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 			ctrl->set_state(Enums::LevelStateEnum::GAME_OVER);
 		}
 	}
+}
+
+void Game::Models::Enemy::walk_in_area(Controllers::LevelController* ctrl)
+{
+	walk();
+
+	if (_x >= _base_x + _area_right) {
+		_direction = Enums::DirectionEnum::LEFT;
+		_moving_direction = -1;
+	}
+	else if (_x <= _base_x - _area_left) {
+		_direction = Enums::DirectionEnum::RIGHT;
+		_moving_direction = 1;
+	}
+	if (_moving_direction == 1)
+	{
+		_direction = Enums::DirectionEnum::RIGHT;
+	}
+	else {
+		_direction = Enums::DirectionEnum::LEFT;
+	}
+
+	_shape->move_x(_moving_direction, 0.5);
+}
+
+void Game::Models::Enemy::chase_player(Controllers::LevelController* ctrl)
+{
+	bool bounds_right = (_x > _base_x - _area_left);
+	bool bounds_left = (_x < _base_x + _area_right);
+
+	walk();
+
+	if (_x < (ctrl->get_level()->get_player()->get_x()) && bounds_left) {
+		_shape->move_x(1, 1);
+		_direction = Enums::DirectionEnum::RIGHT;
+	}
+	else if (bounds_right)
+	{
+		_shape->move_x(-1, 1);
+		_direction = Enums::DirectionEnum::LEFT;
+	}
+}
+
+void Game::Models::Enemy::play_alarm(Controllers::LevelController* ctrl)
+{
+	if (!_playing_alarm) {
+		ctrl->get_level()->play_music("danger");
+		ctrl->get_level()->stop_music("enemynear");
+		_playing_alarm = true;
+		_playing_adaptive = false;
+	}
+}
+
+void Game::Models::Enemy::play_adaptive(Controllers::LevelController* ctrl)
+{
+	if (_playing_alarm) {
+		ctrl->get_level()->stop_music("danger");
+		_playing_alarm = false;
+	}
+
+	int difx = ctrl->get_level()->get_player()->get_x() - _x;
+	int dify = ctrl->get_level()->get_player()->get_y() - _y;
+
+	int xbound = 500;
+	int ybound = 400;
+
+	if (abs(difx) < xbound && abs(dify) < ybound) {
+		if (!_playing_adaptive) {
+			ctrl->get_level()->play_music("enemynear");
+			_playing_adaptive = true;
+		}
+
+		int new_vol = ((xbound - abs(difx)) / 5);
+		ctrl->get_level()->volume_control("enemynear", new_vol);
+	}
+	else if (_playing_adaptive) {
+		ctrl->get_level()->stop_music("enemynear");
+		_playing_adaptive = false;
+	};
+}
+
+void Game::Models::Enemy::update_state()
+{
+	if (_lasty < _y) {
+		set_state(Enums::StateEnum::JUMPING);
+	}
+	else if (_lasty > _y) {
+		set_state(Enums::StateEnum::FALLING);
+	}
+	else if (_x) {
+		set_state(Enums::StateEnum::WALKING);
+	}
+	else if (_lastx == _x && _lasty == _y) {
+		set_state(Enums::StateEnum::IDLE);
+	}
+
+	_lastx = _x;
+	_lasty = _y;
 }
 
 void Game::Models::Enemy::walk()
@@ -229,23 +251,4 @@ void Game::Models::Enemy::idle()
 	else if (_animatestate == Game::Enums::AnimateEnum::IDLE8) {
 		set_animationstate(Game::Enums::AnimateEnum::IDLE1);
 	}
-}
-
-void Game::Models::Enemy::update_state()
-{
-	if (_lasty < _y) {
-		set_state(Enums::StateEnum::JUMPING);
-	}
-	else if (_lasty > _y) {
-		set_state(Enums::StateEnum::FALLING);
-	}
-	else if (_x) {
-		set_state(Enums::StateEnum::WALKING);
-	}
-	else if (_lastx == _x && _lasty == _y) {
-		set_state(Enums::StateEnum::IDLE);
-	}
-
-	_lastx = _x;
-	_lasty = _y;
 }
