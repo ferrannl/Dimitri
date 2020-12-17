@@ -43,7 +43,7 @@ namespace Game {
 							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}, 
 							});
 						break;
-					case Input::Enums::EventEnum::KEY_PRESS_P:
+					case Input::Enums::EventEnum::KEY_PRESS_ESC:
 						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
 						break;
 					}
