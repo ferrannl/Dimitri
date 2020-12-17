@@ -21,6 +21,9 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_level->add_music("secret", "/assets/audio/rasputin.mp3");
 	_level->add_music("transition", "/assets/audio/running.wav");
 	_level->add_sound("danger", "/assets/audio/danger.wav");
+	_level->add_sound("switch", "/assets/audio/switch.wav");
+	_level->add_sound("win", "/assets/audio/win.wav");
+
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 

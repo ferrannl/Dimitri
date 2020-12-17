@@ -22,6 +22,8 @@ void Models::Switch::initialize_textures()
 
 void Models::Switch::interact(Controllers::LevelController* ctrl)
 {
+	ctrl->get_level()->play_music("switch");
+
 	if (_direction == Enums::DirectionEnum::RIGHT) {
 		set_animationstate(Enums::AnimateEnum::IDLE2);
 		set_direction(Enums::DirectionEnum::LEFT);

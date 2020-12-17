@@ -13,13 +13,16 @@ Models::Object::Object(float x, float y, float z, float height, float width, Enu
 std::shared_ptr<Graphics::Models::Texture> Models::Object::get_texture()
 {
 	mtx.lock();
+
 	std::shared_ptr<Graphics::Models::Texture> texture = _textures[_animatestate];
 	texture->set_x(this->get_x());
 	texture->set_y(this->get_y());
 	texture->set_z(this->get_z());
 	texture->set_height(this->_height);
 	texture->set_width(this->_width);
+
 	mtx.unlock();
+
 	return texture;
 }
 
