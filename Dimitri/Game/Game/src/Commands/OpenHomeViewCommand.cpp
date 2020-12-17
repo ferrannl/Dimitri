@@ -18,12 +18,15 @@ namespace Game {
 			auto h_mgr = _main_controller->get_highscore_manager();
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
-				l_ctrl->clear_level();
+				if (l_ctrl->get_level()) {
+					l_ctrl->clear_level();
+					l_ctrl->stop();
+				}
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
 				w_ctrl->open_view(Enums::ViewEnum::ADVERTISEMENT);
 				w_ctrl->open_view(Enums::ViewEnum::FPS);
-				l_ctrl->stop();
+				
 				if (!a_ctrl->is_playing("homescreen1")) {
 					a_ctrl->play_audio("homescreen1");
 				}
