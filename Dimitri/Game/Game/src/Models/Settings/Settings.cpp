@@ -55,6 +55,8 @@ void Game::Models::Settings::set_unlocked_level(int unlocked_level)
 	if (unlocked_level < _unlocked_level) {
 		//negatief progress niet doen
 		return;
+	}if (unlocked_level > 3) {
+		return;
 	}
 	_unlocked_level = unlocked_level;
 	_save_file.at(0).at(0) = _unlocked_level;
