@@ -81,6 +81,8 @@ namespace Game {
 			* \brief Handles the idle animation of the Enemy
 			*/
 			void idle();
+
+			bool _playing;
 		public:
 			Enemy(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center, int area_left, int area_right, int area_top, int area_bottom);
 

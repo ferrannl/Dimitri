@@ -19,27 +19,34 @@ void Game::Controllers::SaveGameController::load_buttons()
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map_left{ { "Save1", Enums::ButtonEnum::SAVE1 }, { "Save2", Enums::ButtonEnum::SAVE2 },{ "Save3", Enums::ButtonEnum::SAVE3 } };
 	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map_right{ { "New", Enums::ButtonEnum::NEW1 }, { "New", Enums::ButtonEnum::NEW2 },{ "New", Enums::ButtonEnum::NEW3 } };
+	
 	int i = 0;
 	float w = 150;
 	float h = 50;
+
 	for (auto b : button_map_left) {
+		w = 500;
+		h = 100;
 
 		float w_text = b.first.length() * 15;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_scene_width / 3 - (w / 2) + 50, _scene_height / 4 * 3 - (120 + 70 * i), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/grey_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
-			std::make_shared<Graphics::Models::Text>(b.first, color, _scene_width / 3 - (w_text / 2) + 50, _scene_height / 4 * 3 - (120 + 70 * i), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+			std::make_shared<Graphics::Models::Sprite>(_scene_width / 2 - (w / 2), _scene_height / 4 * 3 - (120 + (h + 25) * i), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/grey_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _scene_width / 3 - (w_text / 2) + 50, (_scene_height / 4 * 3 - (120 + (h + 25) * i)) + 25, 3, h / 2, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		add_button(std::make_unique<Models::Button>(_scene_width / 3 - (w / 2) + 50, _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second));
 		i++;
 	}
 	int j = 0;
 	for (auto b : button_map_right) {
+		w = 150;
+		h = 50;
+
 		float w_text = b.first.length() * 15;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(((_scene_width / 3) * 2) - (w / 2) - 50, _scene_height / 4 * 3 - (120 + 70 * j), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
-			std::make_shared<Graphics::Models::Text>(b.first, color, ((_scene_width / 3) * 2) - (w_text / 2) - 50, _scene_height / 4 * 3 - (120 + 70 * j), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+			std::make_shared<Graphics::Models::Sprite>(((_scene_width / 3) * 2) - (w / 2) - 100, _scene_height / 4 * 3 - (95 + 125 * j), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, ((_scene_width / 3) * 2) - (w_text / 2) - 100, _scene_height / 4 * 3 - (95 + 125 * j), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
-		add_button(std::make_unique<Models::Button>(((_scene_width / 3) * 2) - (w / 2) - 50, _scene_height / 4.0f * 3 - (120 + 70 * j), h, w, t, b.second));
+		add_button(std::make_unique<Models::Button>(((_scene_width / 3) * 2) - (w / 2) - 100, _scene_height / 4 * 3 - (95 + 125 * j), h, w, t, b.second));
 		j++;
 	}
 }

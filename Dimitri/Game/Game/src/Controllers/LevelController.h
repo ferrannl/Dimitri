@@ -73,6 +73,7 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::CheatsSettings> _settings;
 
+			bool _updating_objects;
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
 

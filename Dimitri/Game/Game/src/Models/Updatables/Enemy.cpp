@@ -14,6 +14,7 @@ Game::Models::Enemy::Enemy(float x, float y, float z, float height, float width,
 	_moving_direction = { 1 };
 	_direction = Enums::DirectionEnum::NONE;
 	_standstill = false;
+	_playing = false;
 	initialize_textures();
 	create_shape(x, y, height, width, true, false, PhysicsCollision::Enums::ShapeEnum::Square);
 }
@@ -71,6 +72,11 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 
 	if (In_Area)
 	{
+		if (!_playing) {
+			ctrl->get_level()->play_music("danger");
+			_playing = true;
+		}
+
 		walk();
 		if (_x < (ctrl->get_level()->get_player()->get_x()) && Bounds_Right) {
 			_shape->move_x(1, 1);
@@ -85,6 +91,10 @@ void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 		}
 	}
 	else if (!_standstill) {
+		if (_playing) {
+			ctrl->get_level()->stop_music("danger");
+			_playing = false;
+		}
 		walk();
 		if (_x >= _base_x + _area_right) {
 			_direction = Enums::DirectionEnum::LEFT;

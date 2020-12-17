@@ -4,10 +4,11 @@
 #include "../Builder/LevelBuilder.h"
 #include <conio.h>
 #include <stdio.h>
+
 using namespace Game;
 
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
-	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
+	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController"), _updating_objects{false}
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
@@ -19,6 +20,7 @@ Controllers::LevelController::LevelController(const std::shared_ptr<Controllers:
 	_level->add_sound("failed", "/assets/audio/failed.wav");
 	_level->add_music("secret", "/assets/audio/rasputin.mp3");
 	_level->add_music("transition", "/assets/audio/running.wav");
+	_level->add_sound("danger", "/assets/audio/danger.wav");
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
@@ -144,6 +146,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
+			_level->stop_music("danger");
 			_window_controller->get_graphics_controller()->get_window()->get_timer()->pause();
 		}
 		else if (old_state == Enums::LevelStateEnum::TRANSITION) {
@@ -190,25 +193,26 @@ void Game::Controllers::LevelController::run_transition()
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
+		if (!_updating_objects) {
+			_level->simulate();
 
-		_level->simulate();
-
-		_level->get_player()->update();
-		for (auto enemy : _level->get_enemies())
-		{
-			enemy->update();
-		}
-
-		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
-		{
-			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+			_level->get_player()->update();
+			for (auto enemy : _level->get_enemies())
 			{
-				_level->get_player()->reset_jump();
-				break;
+				enemy->update();
 			}
-		}
 
-		_window_controller->set_camera_pos_based_on(_level->get_player());
+			for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
+			{
+				if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+				{
+					_level->get_player()->reset_jump();
+					break;
+				}
+			}
+
+			_window_controller->set_camera_pos_based_on(_level->get_player());
+		}
 	}
 }
 
