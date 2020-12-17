@@ -3,6 +3,16 @@
 #include <src/Models/Sprite.h>
 #include "../Mediators/CommandMediator.h"
 
+std::string Game::Controllers::SaveGameController::get_text_for_save(Game::Models::Settings settings) const
+{
+	switch (settings.get_unlocked_level()) {
+	case 0:
+		return "New";
+	default:
+		return "level " + std::to_string(settings.get_unlocked_level());
+	}
+}
+
 Game::Controllers::SaveGameController::SaveGameController(int sceneheight, int scenewidth) :
 	Mediators::BaseComponent("SaveGameController"), _scene_height{ sceneheight }, _scene_width{ scenewidth }
 {
@@ -17,8 +27,13 @@ void Game::Controllers::SaveGameController::load_buttons()
 	};
 	add_button(std::make_unique<Game::Models::Button>( 10, _scene_height - 65.0f, 30, 30, t, Enums::ButtonEnum::HOME ));
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
+
 	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map_left{ { "Save1", Enums::ButtonEnum::SAVE1 }, { "Save2", Enums::ButtonEnum::SAVE2 },{ "Save3", Enums::ButtonEnum::SAVE3 } };
-	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map_right{ { "New", Enums::ButtonEnum::NEW1 }, { "New", Enums::ButtonEnum::NEW1 },{ "New", Enums::ButtonEnum::NEW1 } };
+	std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map_right{ 
+		{ get_text_for_save(Game::Models::Settings(1)), Enums::ButtonEnum::NEW1 },
+		{ get_text_for_save(Game::Models::Settings(2)), Enums::ButtonEnum::NEW1 },
+		{ get_text_for_save(Game::Models::Settings(3)), Enums::ButtonEnum::NEW1 }
+	};
 	int i = 0;
 	float w = 150;
 	float h = 50;
