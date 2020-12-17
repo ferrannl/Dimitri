@@ -19,8 +19,8 @@ namespace Game {
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::HOME)) {
 				if (l_ctrl->get_level()) {
-					l_ctrl->clear_level();
 					l_ctrl->stop();
+					l_ctrl->clear_level();
 				}
 				w_ctrl->clear_views();
 				w_ctrl->open_view(Enums::ViewEnum::HOME);
