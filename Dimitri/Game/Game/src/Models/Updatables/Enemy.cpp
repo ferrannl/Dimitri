@@ -8,8 +8,8 @@ Game::Models::Enemy::Enemy(int x, int y, int z, int height, int width, Enums::Di
 	_base_x = x;
 	_area_left = area_left;
 	_area_right = area_right;
-	_area_top = area_bottom;
-	_area_bottom = area_top;
+	_area_top = area_top;
+	_area_bottom = area_bottom;
 	_lasty = y;
 	_direction = Enums::DirectionEnum::NONE;
 	initialize_textures();
@@ -59,13 +59,13 @@ void Game::Models::Enemy::reset_jump()
 
 void Game::Models::Enemy::update_object(Controllers::LevelController* ctrl)
 {
-	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x()));
+	bool Left = (_x - _area_left < (ctrl->get_level()->get_player()->get_x() + ctrl->get_level()->get_player()->get_width()));
 	bool Right = (_x + _area_right > (ctrl->get_level()->get_player()->get_x()));
-	bool Top = (_y - _area_top< (ctrl->get_level()->get_player()->get_y()));
-	bool Bottom = (_y + _area_bottom> (ctrl->get_level()->get_player()->get_y()));
+	bool Top = (_y + _area_top > (ctrl->get_level()->get_player()->get_y()));
+	bool Bottom = (_y - _area_bottom < (ctrl->get_level()->get_player()->get_y() + ctrl->get_level()->get_player()->get_height()));
 	bool In_Area = (Left && Right && Top && Bottom);
 	bool Bounds_Left = (_x > _base_x - _area_left);
-	bool Bounds_Right= (_x < _base_x + _area_right);
+	bool Bounds_Right= (_x < _base_x + (_area_right - 80));
 
 	if (In_Area)
 	{
