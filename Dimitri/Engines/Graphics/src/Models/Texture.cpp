@@ -69,17 +69,17 @@ std::shared_ptr<Facades::TextureFacade> Models::Texture::get_texture_facade() co
 	return _facade;
 }
 
-void Models::Texture::set_x(const float x)
+void Models::Texture::set_x(float x)
 {
 	_x = x;
 }
 
-void Models::Texture::set_z(const float z)
+void Models::Texture::set_z(float z)
 {
 	_z = z;
 }
 
-void Models::Texture::set_y(const float y)
+void Models::Texture::set_y(float y)
 {
 	_y = y;
 }

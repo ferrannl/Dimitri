@@ -115,7 +115,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 void Game::Controllers::LevelController::play_secret() {
 	_level->stop_music("level1");
 	_level->play_music("secret");
-	
+
 }
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
@@ -168,7 +168,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 	}
 }
 
-void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int> pos)
+void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>& pos)
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == std::get<0>(pos) && l->get_y() == std::get<1>(pos)) {
@@ -244,4 +244,18 @@ void Game::Controllers::LevelController::update_highscore()
 Enums::LevelStateEnum Game::Controllers::LevelController::get_state() const
 {
 	return _state;
+}
+
+void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Models::CheatsSettings> settings)
+{
+	// set invincibility settings
+	_settings = settings;
+
+	//sets jumps settings
+	_level->get_player()->set_jumps(settings->get_amount_of_jumps());
+}
+
+std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::LevelController::get_cheats_settings()
+{
+	return _settings;
 }

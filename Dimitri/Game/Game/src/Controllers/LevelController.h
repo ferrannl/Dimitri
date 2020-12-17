@@ -12,6 +12,7 @@
 #include <chrono>
 #include <thread>
 #include <any>
+#include "../Models/Settings/CheatsSettings.h"
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -66,6 +67,11 @@ namespace Game {
 			* \brief A list of the buttons per Level State
 			*/
 			std::vector<std::pair<Enums::LevelStateEnum, std::unique_ptr<Game::Models::Button>>> _buttons;
+
+			/**
+			* \brief cheat settings
+			*/
+			std::shared_ptr<Game::Models::CheatsSettings> _settings;
 
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
@@ -134,11 +140,6 @@ namespace Game {
 			Enums::LevelStateEnum get_state() const;
 
 			/**
-			* \brief Turns of a light
-			*/
-			void turn_off_light(const int x);
-
-			/**
 			* \brief Simulates the objects
 			*/
 			void simulate_objects();
@@ -148,12 +149,22 @@ namespace Game {
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
 
-			void toggle_light(const std::tuple<int, int> pos);
+			void toggle_light(const std::tuple<int, int>& pos);
 
 			/**
 			* \brief Updates the highscore
 			*/
 			void update_highscore();
+
+			/**
+			* \brief Updates cheat settings
+			*/
+			void update_cheats(std::shared_ptr<Game::Models::CheatsSettings> _settings);
+
+			/**
+			* \brief Updates cheat settings
+			*/
+			std::shared_ptr<Game::Models::CheatsSettings> get_cheats_settings();
 		};
 	}
 }

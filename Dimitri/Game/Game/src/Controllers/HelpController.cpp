@@ -16,7 +16,7 @@ void Game::Controllers::HelpController::load_buttons()
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
 		std::make_shared<Graphics::Models::Sprite>(10, _scene_height - 65, 3, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 	};
-	add_button(Game::Models::Button{ 10, _scene_height - 65.0f, 30, 30, t, Enums::ButtonEnum::HOME });
+	add_button(std::make_unique<Game::Models::Button>(10, _scene_height - 65.0f, 30, 30, t, Enums::ButtonEnum::HOME ));
 }
 
 void Game::Controllers::HelpController::update(const Game::Events::InputEvent& object)

@@ -17,8 +17,8 @@ namespace Game {
 	*/
 	namespace Builder {
 		/**
-		* \class LevelBuilder
-		* \brief Class contains the methods to build a level
+		* \class TileBuilder
+		* \brief Class contains the methods to build tiles
 		*/
 		class TileBuilder {
 		private:
@@ -41,6 +41,12 @@ namespace Game {
 			* \brief Factory which creates updatables
 			*/
 			Factories::UpdatableFactory _updatable_factory;
+
+
+			/**
+			* \brief Factory which creates backgrounds
+			*/
+			Factories::BackgroundFactory _background_factory;
 		public:
 			/**
 			* \brief Builds the level
@@ -50,18 +56,18 @@ namespace Game {
 			/**
 			* \brief Gets the tiled object from the list
 			*/
-			const std::vector<std::pair<std::string, std::any>> get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, const int x, const int y);
+			const std::vector<std::pair<std::string, std::any>> get_object(const std::vector<std::vector<std::pair<std::string, std::any>>>& objects, int x, int y);
 
 			/**
 			* \brief Gets all the light coordinates for the switches
 			*/
-			std::vector<std::tuple<float, float>> get_lights(std::vector<std::pair<std::string, std::any>> object);
+			std::vector<std::tuple<float, float>> get_lights(const std::vector<std::pair<std::string, std::any>>& object);
 
 			/**
 			* \brief Get value from the tiled object
 			*/
 			template<typename T>
-			const T get_value(std::string name, const std::vector<std::pair<std::string, std::any>>& object) {
+			const T get_value(const std::string& name, const std::vector<std::pair<std::string, std::any>>& object) {
 				for (std::pair<std::string, std::any> value : object) {
 					if (value.first == name) {
 						return std::any_cast<T>(value.second);

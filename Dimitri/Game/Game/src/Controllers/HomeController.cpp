@@ -15,7 +15,7 @@ namespace Game {
 	{
 		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
-		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::START }, { "Highscore", Enums::ButtonEnum::HIGHSCORE },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS }, { "Exit", Enums::ButtonEnum::EXIT } };
+		std::vector<std::pair<std::string, Enums::ButtonEnum>> button_map{ { "Play", Enums::ButtonEnum::SAVE_GAMES }, { "Highscore", Enums::ButtonEnum::HIGHSCORE },{ "Help", Enums::ButtonEnum::HELP },{ "Credits", Enums::ButtonEnum::CREDITS },{ "Cheats", Enums::ButtonEnum::CHEATS }, { "Exit", Enums::ButtonEnum::EXIT } };
 		std::vector<std::shared_ptr<Graphics::Models::Texture>> t;
 		int i = 0;
 		float w = 150;
@@ -26,7 +26,7 @@ namespace Game {
 				std::make_shared<Graphics::Models::Sprite>(_scene_width / 2 - (w / 2), _scene_height / 4 * 3 - (120 + 70 * i), 2, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 				std::make_shared<Graphics::Models::Text>(b.first, color, _scene_width / 2 - (w_text / 2), _scene_height / 4 * 3 - (120 + 70 * i), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 			};
-			add_button(Models::Button{ _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second });
+			add_button(std::make_unique<Game::Models::Button>( _scene_width / 2 - (w / 2), _scene_height / 4.0f * 3 - (120 + 70 * i), h, w, t, b.second ));
 			i++;
 		}
 	}

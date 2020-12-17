@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include "../Models/Button.h"
+#include "../Models/CheckButton.h"
 
 /**
 * \namespace Game
@@ -45,7 +46,7 @@ namespace Game {
 			/**
 			* \brief Add a button to the buttons
 			*/
-			void add_button(Game::Models::Button b);
+			void add_button(std::unique_ptr<Game::Models::Button> b);
 
 			/**
 			* \brief Returns the buttons

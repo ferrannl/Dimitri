@@ -220,3 +220,11 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Player::ge
 	}
 	return extra_textures;
 }
+
+void Game::Models::Player::set_jumps(int jumps)
+{
+	_max_amount_of_jumps = jumps;
+	if (_jumps > _max_amount_of_jumps) {
+		_jumps = jumps;
+	}
+}
