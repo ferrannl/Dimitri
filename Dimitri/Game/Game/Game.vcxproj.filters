@@ -32,10 +32,6 @@
     <ClCompile Include="src\Controllers\MainController.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Controllers\WindowController.cpp" />
-    <ClCompile Include="src\Enums\AnimateEnum.h" />
-    <ClCompile Include="src\Enums\ButtonEnum.h" />
-    <ClCompile Include="src\Enums\DirectionEnum.h" />
-    <ClCompile Include="src\Enums\TypeEnum.h" />
     <ClCompile Include="src\Events\InputEvent.cpp" />
     <ClCompile Include="src\Factory\BackgroundFactory.cpp" />
     <ClCompile Include="src\Factory\InteractableFactory.cpp" />
@@ -79,6 +75,17 @@
     <ClCompile Include="src\Commands\DecreaseGameSpeedCommand.cpp" />
     <ClCompile Include="src\Views\GamePlaySpeedView.cpp" />
     <ClCompile Include="src\Builder\TileBuilder.cpp" />
+    <ClCompile Include="src\Controllers\SaveGameController.cpp" />
+    <ClCompile Include="src\Views\SaveGameView.cpp" />
+    <ClCompile Include="src\Commands\OpenSaveGameViewCommand.cpp" />
+    <ClCompile Include="src\Builder\BackgroundBuilder.cpp" />
+    <ClCompile Include="src\Commands\OpenCheatsViewCommand.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInfiniteCommand.cpp" />
+    <ClCompile Include="src\Commands\SetCheatInvincibleCommand.cpp" />
+    <ClCompile Include="src\Controllers\CheatsController.cpp" />
+    <ClCompile Include="src\Models\CheckButton.cpp" />
+    <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
+    <ClCompile Include="src\Views\CheatsView.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -123,7 +130,6 @@
     <ClInclude Include="src\Factory\InteractableFactory.h" />
     <ClInclude Include="src\Factory\ObjectFactory.h" />
     <ClInclude Include="src\Factory\UpdatableFactory.h" />
-    <ClInclude Include="src\Interfaces\IFactory.h" />
     <ClInclude Include="src\Managers\HighscoreManager.h" />
     <ClInclude Include="src\Managers\LevelManager.h" />
     <ClInclude Include="src\Mediators\BaseComponent.h" />
@@ -161,6 +167,23 @@
     <ClInclude Include="src\Commands\DecreaseGameSpeedCommand.h" />
     <ClInclude Include="src\Views\GamePlaySpeedView.h" />
     <ClInclude Include="src\Builder\TileBuilder.h" />
+    <ClInclude Include="src\Controllers\SaveGameController.h" />
+    <ClInclude Include="src\Views\SaveGameView.h" />
+    <ClInclude Include="src\Commands\OpenSaveGameViewCommand.h" />
+    <ClInclude Include="src\Builder\BackgroundBuilder.h" />
+    <ClInclude Include="src\Commands\OpenCheatsViewCommand.h" />
+    <ClInclude Include="src\Commands\SetCheatInfiniteCommand.h" />
+    <ClInclude Include="src\Commands\SetCheatInvincibleCommand.h" />
+    <ClInclude Include="src\Controllers\CheatsController.h" />
+    <ClInclude Include="src\Enums\AnimateEnum.h" />
+    <ClInclude Include="src\Enums\ButtonEnum.h" />
+    <ClInclude Include="src\Enums\DirectionEnum.h" />
+    <ClInclude Include="src\Enums\TypeEnum.h" />
+    <ClInclude Include="src\Models\Buttons\ExitButton.h" />
+    <ClInclude Include="src\Models\Buttons\StartButton.h" />
+    <ClInclude Include="src\Models\CheckButton.h" />
+    <ClInclude Include="src\Models\Settings\CheatsSettings.h" />
+    <ClInclude Include="src\Views\CheatsView.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
   </ItemGroup>
 </Project>

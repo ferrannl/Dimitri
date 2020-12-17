@@ -159,6 +159,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\SaveGameController.cpp" />
+    <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Views\SaveGameView.cpp" />
     <ClCompile Include="src\Commands\OpenSaveGameViewCommand.cpp" />
     <ClCompile Include="src\Builder\BackgroundBuilder.cpp" />
@@ -199,7 +200,6 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Mediators\BaseComponent.cpp" />
     <ClCompile Include="src\Mediators\CommandMediator.cpp" />
     <ClCompile Include="src\Models\Abstract\Updatable.cpp" />
-    <ClInclude Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Controllers\PhysicsCollisionController.cpp" />
     <ClCompile Include="src\Factory\BackgroundFactory.cpp" />
@@ -247,6 +247,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Controllers\SaveGameController.h" />
+    <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Views\SaveGameView.h" />
     <ClInclude Include="src\Commands\OpenSaveGameViewCommand.h" />
     <ClInclude Include="src\Builder\BackgroundBuilder.h" />
@@ -271,7 +272,6 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClInclude Include="src\Commands\OpenWinLevelViewCommand.h" />
     <ClInclude Include="src\Commands\PauseLevelCommand.h" />
     <ClInclude Include="src\Commands\PlayerInteractCommand.h" />
-    <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Commands\PlayerJumpCommand.h" />
     <ClInclude Include="src\Commands\PlayerMoveLeftCommand.h" />
     <ClInclude Include="src\Commands\PlayerMoveRightCommand.h" />

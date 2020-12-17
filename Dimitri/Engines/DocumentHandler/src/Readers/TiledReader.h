@@ -23,7 +23,7 @@ namespace DocumentHandler {
 			* \brief Reads the csv file
 			*/
 			std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
-			std::vector<std::vector<int>> ReadTiles(const std::vector<uint32_t>& tiles, const int& width);
+			std::vector<std::vector<int>> ReadTiles(const std::vector<uint32_t>& tiles, int width);
 		};
 	}
 }
