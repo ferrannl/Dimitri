@@ -13,6 +13,7 @@
 #include "../Managers/LevelManager.h"
 #include "../Managers/HighScoreManager.h"
 #include "CheatsController.h"
+#include "../Models/Settings/Settings.h"
 
 /**
 * \namespace Game
@@ -94,6 +95,11 @@ namespace Game {
 			* \brief An instance of the CheatsController
 			*/
 			std::shared_ptr<Controllers::CheatsController> _cheats_controller;
+
+			/**
+			* \brief An instance of the Settings 
+			*/
+			std::shared_ptr<Models::Settings> _settings;
 		public:
 			MainController();
 
@@ -167,7 +173,20 @@ namespace Game {
 			*/
 			std::shared_ptr<Controllers::CheatsController> get_cheats_controller() const;
 
+			/**
+			* \brief Sets Level Controller
+			*/
 			void set_level_controller(std::shared_ptr<Game::Controllers::LevelController>& level_controller);
+
+			/**
+			* \brief Returns the settings
+			*/
+			std::shared_ptr<Models::Settings> get_settings() const;
+			
+			/**
+			* \brief Sets settings
+			*/
+			void set_settings(const std::shared_ptr<Models::Settings>& settings);
 		};
 	}
 }

@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		OpenHomeViewCommand::OpenHomeViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenHomeViewCommand::execute()
+		void OpenHomeViewCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto l_ctrl = _main_controller->get_level_controller();

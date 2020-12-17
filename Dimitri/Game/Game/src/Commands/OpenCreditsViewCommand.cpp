@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		OpenCreditsViewCommand::OpenCreditsViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenCreditsViewCommand::execute()
+		void OpenCreditsViewCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto l_ctrl = _main_controller->get_level_controller();

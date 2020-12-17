@@ -23,7 +23,7 @@ namespace Game {
 			/**
 			* \brief Makes the player move left
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

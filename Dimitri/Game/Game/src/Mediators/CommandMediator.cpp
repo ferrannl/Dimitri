@@ -24,10 +24,10 @@ namespace Game {
 			if (sender.get_identifier() == "MainController") {
 				switch (event.event_enum) {
 				case Input::Enums::EventEnum::KEY_PRESS_QUIT:
-					_factory->get_command(Enums::CommandEnum::EXIT_GAME)->execute();
+					_factory->get_command(Enums::CommandEnum::EXIT_GAME)->execute(-1);
 					break;
 				case Input::Enums::EventEnum::KEY_PRESS_F:
-					_factory->get_command(Enums::CommandEnum::TOGGLE_FPS_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::TOGGLE_FPS_VIEW)->execute(-1);
 					break;
 				}
 			}
@@ -68,7 +68,7 @@ namespace Game {
 				case Enums::LevelStateEnum::TRANSITION:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_SPACE:
-						_factory->get_command(Enums::CommandEnum::CLEAR_VIEWS)->execute();
+						_factory->get_command(Enums::CommandEnum::CLEAR_VIEWS)->execute(-1);
 						break;
 					}
 					break;
@@ -76,19 +76,19 @@ namespace Game {
 				default:
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::KEY_PRESS_LEFT:
-						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_LEFT)->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_LEFT)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_RIGHT:
-						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_RIGHT)->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_MOVE_RIGHT)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_UP:
-						_factory->get_command(Enums::CommandEnum::PLAYER_JUMP)->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_JUMP)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_E:
-						_factory->get_command(Enums::CommandEnum::PLAYER_INTERACT)->execute();
+						_factory->get_command(Enums::CommandEnum::PLAYER_INTERACT)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_P:
-						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
+						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
@@ -175,19 +175,19 @@ namespace Game {
 			if (sender.get_identifier() == "LevelController") {
 				switch (event) {
 				case Enums::LevelStateEnum::TRANSITION:
-					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_TRANSITION_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_TRANSITION_VIEW)->execute(-1);
 					break;
 				case Enums::LevelStateEnum::ACTIVE:
-					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_LEVEL_VIEW)->execute(-1);
 					break;
 				case Enums::LevelStateEnum::WIN:
-					_factory->get_command(Enums::CommandEnum::OPEN_WIN_LEVEL_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_WIN_LEVEL_VIEW)->execute(-1);
 					break;
 				case Enums::LevelStateEnum::GAME_OVER:
-					_factory->get_command(Enums::CommandEnum::OPEN_GAME_OVER_LEVEL_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_GAME_OVER_LEVEL_VIEW)->execute(-1);
 					break;
 				case Enums::LevelStateEnum::PAUSED:
-					_factory->get_command(Enums::CommandEnum::OPEN_PAUSE_LEVEL_VIEW)->execute();
+					_factory->get_command(Enums::CommandEnum::OPEN_PAUSE_LEVEL_VIEW)->execute(-1);
 					break;
 				}
 			}
@@ -199,8 +199,8 @@ namespace Game {
 
 				if (b->is_clicked(event)) {
 					for (auto& c : button_command) {
-						if (b->get_identifier() == c.first) {
-							_factory->get_command(c.second)->execute();
+						if (b->get_identifier() == c.first) {				
+							_factory->get_command(c.second)->execute(b->get_param());
 						}
 					}
 				}

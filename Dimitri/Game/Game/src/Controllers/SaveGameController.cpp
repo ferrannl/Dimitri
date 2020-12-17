@@ -33,6 +33,7 @@ void Game::Controllers::SaveGameController::load_buttons()
 		i++;
 	}
 	int j = 0;
+	int counter = 1;
 	for (auto b : button_map_right) {
 		float w_text = b.first.length() * 15;
 		t = {
@@ -40,6 +41,8 @@ void Game::Controllers::SaveGameController::load_buttons()
 			std::make_shared<Graphics::Models::Text>(b.first, color, ((_scene_width / 3) * 2) - (w_text / 2) - 50, _scene_height / 4 * 3 - (120 + 70 * j), 3, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		add_button(std::make_unique<Models::Button>( ((_scene_width / 3) * 2) - (w / 2) - 50, _scene_height / 4.0f * 3 - (120 + 70 * j), h, w, t, b.second ));
+		get_buttons().back()->set_param(counter);
+		counter++;
 		j++;
 	}
 }

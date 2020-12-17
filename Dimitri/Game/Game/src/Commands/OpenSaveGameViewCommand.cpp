@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		OpenSaveGameViewCommand::OpenSaveGameViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenSaveGameViewCommand::execute()
+		void OpenSaveGameViewCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto i_ctrl = _main_controller->get_input_controller();

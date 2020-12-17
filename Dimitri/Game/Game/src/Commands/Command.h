@@ -26,9 +26,9 @@ namespace Game {
 			Command(const std::shared_ptr<Controllers::MainController> main_controller) : _main_controller{ main_controller } {};
 
 			/**
-			* \brief Executes the logic of the command
+			* \brief Executes the logic of the command with parameter
 			*/
-			virtual void execute() = 0;
+			virtual void execute(int param) = 0;
 		};
 	}
 }

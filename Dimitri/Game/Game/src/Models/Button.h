@@ -49,6 +49,11 @@ namespace Game {
 			* \brief The texture of the button
 			*/
 			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
+
+			/**
+			* \brief Optional int param
+			*/
+			int _param;
 		public:
 			Button(float x, float y, float height, float width, const std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ButtonEnum identifier);
 
@@ -97,6 +102,16 @@ namespace Game {
 			*/
 			void set_y(float y);
 			
+			/**
+			* \brief Returns the y coordinate of the button
+			*/
+			int get_param() const;
+
+			/**
+			* \brief Sets the y coordinate of the button
+			*/
+			void set_param(int param);
+
 			/**
 			* \brief Action when the Button is pressed
 			*/

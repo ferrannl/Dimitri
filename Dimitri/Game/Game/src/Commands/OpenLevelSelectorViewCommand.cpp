@@ -1,11 +1,15 @@
 #include "OpenLevelSelectorViewCommand.h"
+#include "../Models/Settings/Settings.h";
 
 namespace Game {
 	namespace Commands {
 		OpenLevelSelectorViewCommand::OpenLevelSelectorViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenLevelSelectorViewCommand::execute()
+		void OpenLevelSelectorViewCommand::execute(int param)
 		{
+			if (param != -1) {
+				_main_controller->set_settings(std::make_shared<Models::Settings>(param));
+			}
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto i_ctrl = _main_controller->get_input_controller();
 			auto level_selector_ctrl = _main_controller->get_level_selector_controller();

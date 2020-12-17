@@ -4,7 +4,7 @@ Game::Commands::OpenCheatsViewCommand::OpenCheatsViewCommand(const std::shared_p
 {
 }
 
-void Game::Commands::OpenCheatsViewCommand::execute()
+void Game::Commands::OpenCheatsViewCommand::execute(int param)
 {
 	auto w_ctrl = _main_controller->get_window_controller();
 	auto l_ctrl = _main_controller->get_level_controller();

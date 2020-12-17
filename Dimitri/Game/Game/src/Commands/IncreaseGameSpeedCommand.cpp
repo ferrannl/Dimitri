@@ -5,7 +5,7 @@ namespace Game {
 	namespace Commands {
 		IncreaseGameSpeedCommand::IncreaseGameSpeedCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void IncreaseGameSpeedCommand::execute()
+		void IncreaseGameSpeedCommand::execute(int param)
 		{
 			float speed = _main_controller->get_level_controller()->get_speed();
 			if (speed < 2)

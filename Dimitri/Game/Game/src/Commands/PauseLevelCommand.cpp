@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		PauseLevelCommand::PauseLevelCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void PauseLevelCommand::execute()
+		void PauseLevelCommand::execute(int param)
 		{
 			auto l_ctrl = _main_controller->get_level_controller();
 			auto state = l_ctrl->get_state();
