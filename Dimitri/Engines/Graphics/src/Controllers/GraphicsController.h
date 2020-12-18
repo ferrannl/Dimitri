@@ -50,12 +50,12 @@ namespace Graphics {
 			/**
 			* \brief Adds a Texture to the window
 			*/
-			void add_texture(const std::shared_ptr<Models::Texture>& texture);
+			void add_texture(const std::shared_ptr<Models::Texture> texture);
 
 			/**
 			* \brief Removes a Texture from the window
 			*/
-			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
+			void remove_texture(const std::shared_ptr<Models::Texture> texture);
 
 			/**
 			* \brief Clears all Textures from the window

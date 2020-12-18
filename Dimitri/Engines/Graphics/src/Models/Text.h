@@ -60,7 +60,7 @@ namespace Graphics {
 			/**
 			* \brief Checks if this Texure matches the given Texture
 			*/
-			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
+			bool matches(const std::shared_ptr<Models::Texture> texture) const;
 		};
 	}
 }

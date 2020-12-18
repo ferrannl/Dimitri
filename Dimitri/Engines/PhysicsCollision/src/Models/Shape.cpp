@@ -7,7 +7,7 @@ Models::Shape::Shape(float x, float y, float height, float width, bool is_dynami
 	_shape_facade = std::make_shared<Facades::ShapeFacade>();
 }
 
-std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
+const std::shared_ptr<Facades::ShapeFacade> Models::Shape::get_shape_facade()const
 {
 	return _shape_facade;
 }
@@ -102,7 +102,7 @@ void Models::Shape::move_y()const
 	_shape_facade->move_y();
 }
 
-bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape>& shape) const
+bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape> shape) const
 {
 	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
 		get_x() + get_width() + 1 >= shape->get_x() &&
@@ -110,7 +110,7 @@ bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape>&
 		get_y() + get_height() + 1 >= shape->get_y();
 }
 
-bool Models::Shape::check_bottom_collision(const std::shared_ptr<Models::Shape>& shape) const
+bool Models::Shape::check_bottom_collision(const std::shared_ptr<Models::Shape> shape) const
 {
 	const float collision_height = 1.0;
 
@@ -120,7 +120,7 @@ bool Models::Shape::check_bottom_collision(const std::shared_ptr<Models::Shape>&
 		get_y() + collision_height >= shape->get_y();
 }
 
-bool Models::Shape::check_triangle_collision(const std::shared_ptr<Models::Shape>& shape)const
+bool Models::Shape::check_triangle_collision(const std::shared_ptr<Models::Shape> shape)const
 {
 	double DEGREES_TO_RADIANS = (double)(M_PI / 180);
 

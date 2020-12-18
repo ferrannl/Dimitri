@@ -39,9 +39,9 @@ namespace Graphics {
 			/**
 			* \brief The height of the TextFacade
 			*/
-			const float _height;
+			float _height;
 		public:
-			TextFacade(const std::string& path, const std::string& text, const Models::Color& color, const float height, int opacity);
+			TextFacade(const std::string& path, const std::string& text, const Models::Color& color, float height, int opacity);
 
 			/**
 			* \brief Creates a SDL_Texture

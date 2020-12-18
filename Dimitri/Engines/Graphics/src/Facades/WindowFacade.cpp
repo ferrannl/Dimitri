@@ -45,7 +45,7 @@ int Facades::WindowFacade::create_window(const std::string& title, float height,
 	}
 }
 
-void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture)
+void Graphics::Facades::WindowFacade::create_texture(const std::shared_ptr<Models::Texture> texture, const std::shared_ptr<Models::Texture> matching_texture)
 {
 	if (!_renderer) {
 		std::cout << "Create a renderer first" << std::endl;
@@ -177,7 +177,7 @@ std::tuple<float, float> Graphics::Facades::WindowFacade::get_scene_size() const
 	return _scene_size;
 }
 
-const std::shared_ptr<Utility::Time::Timer>& Graphics::Facades::WindowFacade::get_timer() const
+const std::shared_ptr<Utility::Time::Timer> Graphics::Facades::WindowFacade::get_timer() const
 {
 	return _timer;
 }

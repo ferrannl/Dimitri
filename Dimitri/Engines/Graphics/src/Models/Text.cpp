@@ -19,7 +19,7 @@ void Models::Text::create_texture_facade()
 	_facade = std::make_shared<Facades::TextFacade>(get_path(), get_text(), get_color(), get_height(), get_opacity());
 }
 
-bool Models::Text::matches(const std::shared_ptr<Models::Texture>& texture) const
+bool Models::Text::matches(const std::shared_ptr<Models::Texture> texture) const
 {
 	std::shared_ptr<Models::Text> text = std::dynamic_pointer_cast<Models::Text>(texture);
 	if (text.get()) {

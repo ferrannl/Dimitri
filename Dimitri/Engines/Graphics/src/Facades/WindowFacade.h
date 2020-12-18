@@ -95,7 +95,7 @@ namespace Graphics {
 			/**
 			* \brief Creates a TextureFacade or adds an already created TextureFacade if Texture matches
 			*/
-			void create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture);
+			void create_texture(const std::shared_ptr<Models::Texture> texture, const std::shared_ptr<Models::Texture> matching_texture);
 
 			/**
 			* brief Destroys the SDL_Window
@@ -135,7 +135,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the timer
 			*/
-			const std::shared_ptr<Utility::Time::Timer>& get_timer() const;
+			const std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

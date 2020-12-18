@@ -9,7 +9,7 @@ Models::World::World(float width, float height)
 	_shapes = std::vector<std::shared_ptr<Models::Shape>>();
 }
 
-void Models::World::add_shape(const std::shared_ptr<Models::Shape>& shape)
+void Models::World::add_shape(const std::shared_ptr<Models::Shape> shape)
 {
 	_shapes.push_back(shape);
 	_world_facade->add_shape(shape);
@@ -22,7 +22,7 @@ void Models::World::destroy_bodies()const
 	}
 }
 
-void PhysicsCollision::Models::World::destroy_body(const std::shared_ptr<Models::Shape>& shape)
+void PhysicsCollision::Models::World::destroy_body(const std::shared_ptr<Models::Shape> shape)
 {
 	_shapes.erase(std::remove(_shapes.begin(), _shapes.end(), shape), _shapes.end());
 	_world_facade->destroy_body(shape->get_shape_facade());

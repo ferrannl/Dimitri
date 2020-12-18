@@ -44,7 +44,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Adds a Shape to the World in _shapes
 			*/
-			void add_shape(const std::shared_ptr<Models::Shape>& shape);
+			void add_shape(const std::shared_ptr<Models::Shape> shape);
 
 			/**
 			* \brief Returns _shapes
@@ -59,7 +59,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Destroys the body from a Shape in _shapes
 			*/
-			void destroy_body(const std::shared_ptr<Models::Shape>& shape);
+			void destroy_body(const std::shared_ptr<Models::Shape> shape);
 
 			/**
 			* \brief Simulates the World
