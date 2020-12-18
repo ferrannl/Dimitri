@@ -97,7 +97,7 @@ namespace Graphics {
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, bool is_dynamic, int opacity = 100);
+			Texture(float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center center, bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the y converted to the perspective from the bottom
