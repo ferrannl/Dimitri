@@ -24,9 +24,10 @@ void Game::Managers::HighscoreManager::load_buttons()
 {
 	int window_height = _window_controller->get_window_height();
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
-		   std::make_shared<Graphics::Models::Sprite>(10, window_height - 45, 3, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+		std::make_shared<Graphics::Models::Sprite>(40, window_height - 95, 3, 50, 60, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 	};
-	add_button(std::make_unique<Game::Models::Button>( 10, window_height - 45.0f, 30, 30, t, Enums::ButtonEnum::HOME ));
+	add_button(std::make_unique<Game::Models::Button>(40, window_height - 95, 50, 60, t, Enums::ButtonEnum::HOME));
+
 }
 
 void Game::Managers::HighscoreManager::update(const Game::Events::InputEvent& object)

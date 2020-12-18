@@ -33,7 +33,7 @@ namespace Graphics {
 			/**
 			* \brief The Window containing the Textures
 			*/
-			std::shared_ptr<Models::Window> _window;
+			std::unique_ptr<Models::Window> _window;
 
 			/**
 			* \brief The speed for the View
@@ -50,12 +50,12 @@ namespace Graphics {
 			/**
 			* \brief Adds a Texture to the window
 			*/
-			void add_texture(const std::shared_ptr<Models::Texture>& texture);
+			void add_texture(const std::shared_ptr<Models::Texture> texture);
 
 			/**
 			* \brief Removes a Texture from the window
 			*/
-			void remove_texture(const std::shared_ptr<Models::Texture>& texture);
+			void remove_texture(const std::shared_ptr<Models::Texture> texture);
 
 			/**
 			* \brief Clears all Textures from the window
@@ -75,17 +75,17 @@ namespace Graphics {
 			/**
 			* \brief Returns the Window
 			*/
-			std::shared_ptr<Models::Window> get_window() const;
+			const std::unique_ptr<Models::Window>& get_window() const;
 
 			/**
 			* \brief Returns the current fps
 			*/
-			int get_fps();
+			float get_fps() const;
 
 			/**
 			* \brief Returns the current ticks
 			*/
-			Uint32 get_ticks();
+			Uint32 get_ticks() const;
 
 			/**
 			* Updates camera position
@@ -95,7 +95,7 @@ namespace Graphics {
 			/**
 			* \brief Returns camera position
 			*/
-			std::tuple<int, int> get_camera_pos() const;
+			std::tuple<float, float> get_camera_pos() const;
 
 			/**
 			* \brief Sets scene size
@@ -115,7 +115,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the speed for the View
 			*/
-			float get_speed();
+			float get_speed() const;
 		};
 	}
 }

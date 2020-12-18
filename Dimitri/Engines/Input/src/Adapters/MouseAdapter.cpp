@@ -1,7 +1,7 @@
 #include "MouseAdapter.h"
 using namespace Input;
 
-Enums::EventEnum Adapters::MouseAdapter::translate_to_enum(const SDL_Event event) const {
+Enums::EventEnum Adapters::MouseAdapter::translate_to_enum(const SDL_Event& event) const {
 	switch (event.type)
 	{
 	case SDL_MOUSEBUTTONDOWN:

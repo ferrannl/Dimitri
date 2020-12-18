@@ -38,7 +38,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Sets up the world with a width and height
 			*/
-			void setup_world(const float width, const float height);
+			void setup_world(float width, float height);
 
 			/**
 			* \brief Loads Shapes into the world
@@ -48,7 +48,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Destroys the bodies of the Shapes in the World
 			*/
-			void destroy_bodies();
+			void destroy_bodies() const;
 
 			/**
 			* \brief Destroys a body in the World
@@ -58,12 +58,12 @@ namespace PhysicsCollision {
 			/**
 			* \brief Simulates the world
 			*/
-			void simulate(const float speed)const;
+			void simulate(float speed)const;
 
 			/**
 			* \brief Returns all the Shapes in the World
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			const std::vector<std::shared_ptr<Models::Shape>>& get_shapes()const;
 		};
 	}
 }

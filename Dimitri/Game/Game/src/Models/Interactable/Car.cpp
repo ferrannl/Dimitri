@@ -27,6 +27,7 @@ void Models::Car::initialize_textures()
 
 void Game::Models::Car::interact(Controllers::LevelController* ctrl)
 {
+	ctrl->get_level()->play_music("win");
 	ctrl->set_state(Enums::LevelStateEnum::WIN);
 	ctrl->update_highscore();
 }

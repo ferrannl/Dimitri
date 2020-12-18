@@ -25,7 +25,7 @@ namespace Audio {
 			*/
 			std::unique_ptr<_Mix_Music, void(*)(_Mix_Music*)> _music;
 		public:
-			MusicFacade(const std::string path);
+			MusicFacade(const std::string& path, int volume);
 
 			/**
 			* \brief Plays the audio file using SDL_Mixer
@@ -41,6 +41,11 @@ namespace Audio {
 			* \brief Pauses the audio file using SDL_Mixer
 			*/
 			void pause() const;
+
+			/**
+			* \brief Increases or decreases the volume using SDL_Mixer
+			*/
+			void set_volume(int value);
 
 			/**
 			* \brief Stops the audio file using SDL_Mixer

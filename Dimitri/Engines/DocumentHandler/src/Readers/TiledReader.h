@@ -15,7 +15,7 @@ namespace DocumentHandler {
 	namespace Readers {
 		/**
 		* \class TiledReader
-		* \brief Class contains the methods to read an tiled json file by path
+		* \brief Class contains the methods to read a tile file by path
 		*/
 		class TiledReader {
 		public:
@@ -23,7 +23,7 @@ namespace DocumentHandler {
 			* \brief Reads the tiled file
 			*/
 			std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
-
+			
 			/**
 			* \brief Reads the tiles
 			*/

@@ -43,9 +43,9 @@ namespace Game {
 							{Enums::ButtonEnum::PAUSED_HOME, Enums::CommandEnum::OPEN_HOME_VIEW},
 							});
 						break;
-					/*case Input::Enums::EventEnum::KEY_PRESS_P:
+					case Input::Enums::EventEnum::KEY_PRESS_ESC:
 						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
-						break;*/
+						break;
 					}
 					break;
 				case Enums::LevelStateEnum::GAME_OVER:
@@ -87,7 +87,7 @@ namespace Game {
 					case Input::Enums::EventEnum::KEY_PRESS_E:
 						_factory->get_command(Enums::CommandEnum::PLAYER_INTERACT)->execute(-1);
 						break;
-					case Input::Enums::EventEnum::KEY_PRESS_P:
+					case Input::Enums::EventEnum::KEY_PRESS_ESC:
 						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute(-1);
 						break;
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:

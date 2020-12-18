@@ -77,15 +77,13 @@ namespace Game {
 			* \brief cheat settings
 			*/
 			std::shared_ptr<Game::Models::CheatsSettings> _settings;
-
 		public:
 			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
-
-			void load_buttons();
 
 			/**
 			* \brief Loads the buttons for a level
 			*/
+			void load_buttons();
 
 			/**
 			* \brief Returns a list of all Textures in the Level
@@ -117,6 +115,9 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::Level> get_level() const;
 
+			/**
+			* \brief Loads the secret audio
+			*/
 			void play_secret();
 
 			/**
@@ -164,6 +165,9 @@ namespace Game {
 			*/
 			std::vector<Game::Models::Button*> get_buttons() const override;
 
+			/**
+			* \brief Toggles a light on or off
+			*/
 			void toggle_light(const std::tuple<int, int>& pos);
 
 			/**

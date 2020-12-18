@@ -52,7 +52,7 @@ namespace PhysicsCollision {
 			* \brief Move the X position
 			* \param value -1 is left, 1 is right
 			*/
-			void move_x(const float direction, const float value) const;
+			void move_x(float direction, float value) const;
 
 
 			/**

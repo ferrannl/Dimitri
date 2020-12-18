@@ -10,7 +10,7 @@
 #ifdef _WIN64
 #ifdef AUDIO_EXPORTS
 #define AUDIO_API __declspec(dllexport)
-#else 
+#else
 #define AUDIO_API __declspec(dllimport)
 #endif
 #else
@@ -41,7 +41,7 @@ namespace Audio {
 			/**
 			* \brief Returns an Audio by name
 			*/
-			std::shared_ptr<Models::Audio> get_audio_by_name(const std::string name) const;
+			const std::shared_ptr<Models::Audio> get_audio_by_name(const std::string& name) const;
 
 			/**
 			* \brief Contains the amount of channels that currently are being used
@@ -51,44 +51,49 @@ namespace Audio {
 			/**
 			* \brief Returns if the name for an Audio already exists in _audios
 			*/
-			bool name_exists(const std::string name);
+			bool name_exists(const std::string& name) const;
 		public:
 			AudioController();
 
 			/**
 			* \brief Adds audio file which represents a sound effect to _audios
 			*/
-			void add_sound(const std::string name, const std::string path);
+			void add_sound(const std::string& name, const std::string& path, int volume);
 
 			/**
 			* \brief Adds audio file which represents a music to _audios
 			*/
-			void add_music(const std::string name, const std::string path);
+			void add_music(const std::string& name, const std::string& path, int volume);
 
 			/**
 			* \brief Plays Audio by the given name
 			*/
-			void play_audio(const std::string name) const;
+			void play_audio(const std::string& name) const;
 
 			/**
 			* \brief Resumes Audio by the given name
 			*/
-			void resume_audio(const std::string name) const;
+			void resume_audio(const std::string& name) const;
 
 			/**
 			* \brief Pauses Audio by the given name
 			*/
-			void pause_audio(const std::string name) const;
+			void pause_audio(const std::string& name) const;
 
 			/**
 			* \brief Stops Audio by the given name
 			*/
-			void stop_audio(const std::string name) const;
+			void stop_audio(const std::string& name) const;
+
+			/**
+			* \brief Controls the volumeo of the sound/music
+			*/
+			void control_volume(const std::string& name, int volume);
 
 			/**
 			* \brief Checks if the Audio by the given name is playing
 			*/
-			bool is_playing(const std::string name) const;
+			bool is_playing(const std::string& name) const;
 		};
 	}
 }

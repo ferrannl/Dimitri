@@ -15,12 +15,12 @@ Facades::WorldFacade::WorldFacade()
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
 }
 
-void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
+void Facades::WorldFacade::destroy_body(const std::shared_ptr<Facades::ShapeFacade> shape_facade)
 {
 	_world->DestroyBody(shape_facade->get_body());
 }
 
-void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
+void Facades::WorldFacade::add_shape(const std::shared_ptr<Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
 	b2Body* body = nullptr;
@@ -37,7 +37,7 @@ void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
 	shape->get_shape_facade()->add_body(body);
 }
 
-void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape) {
+void Facades::WorldFacade::create_polygon_body(const b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, const std::shared_ptr<Models::Shape> shape) {
 	if (shape->get_is_dynamic())
 	{
 		bodyDef.type = b2_dynamicBody;
@@ -67,7 +67,7 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 }
 
 
-void Facades::WorldFacade::simulate(const float speed) const
+void Facades::WorldFacade::simulate(float speed) const
 {
 	float timeStep = 1.0f / (60.0f / speed);
 	int32 velocityIterations = 6;

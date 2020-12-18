@@ -24,8 +24,13 @@ namespace Audio {
 			* \brief Path of the audio file
 			*/
 			const std::string _path;
+
+			/**
+			* \brief Sets the audio volume
+			*/
+			int _volume;
 		public:
-			IAudioFacade(const std::string path);
+			IAudioFacade(const std::string& path, int volume);
 
 			/**
 			* \brief Plays audio file
@@ -51,6 +56,11 @@ namespace Audio {
 			* \brief Checks if the audio file is playing
 			*/
 			virtual bool is_playing() const = 0;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			virtual void set_volume(int value) = 0;
 		};
 	}
 }

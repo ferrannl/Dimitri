@@ -4,6 +4,7 @@
 #include "../Builder/LevelBuilder.h"
 #include <conio.h>
 #include <stdio.h>
+
 using namespace Game;
 
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
@@ -26,7 +27,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::PAUSED, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
@@ -39,7 +40,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::GAME_OVER, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
@@ -52,7 +53,7 @@ void Controllers::LevelController::load_buttons()
 	for (auto b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/buttons.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
 			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
@@ -108,6 +109,10 @@ void Game::Controllers::LevelController::setup_level(const std::string& level)
 	_level->add_sound("failed", "/assets/audio/failed.wav");
 	_level->add_music("secret", "/assets/audio/rasputin.mp3");
 	_level->add_music("transition", "/assets/audio/running.wav");
+  _level->add_sound("danger", "/assets/audio/danger.wav");
+	_level->add_sound("switch", "/assets/audio/switch.wav");
+	_level->add_sound("win", "/assets/audio/win.wav");
+	_level->add_sound("enemynear", "/assets/audio/enemynearby.mp3", 0);
 	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
@@ -119,7 +124,7 @@ std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_lev
 void Game::Controllers::LevelController::play_secret() {
 	_level->stop_music("level1");
 	_level->play_music("secret");
-	
+
 }
 
 void Game::Controllers::LevelController::update(const Game::Events::InputEvent& object)
@@ -148,6 +153,8 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 			_simulation_thread.join();
 			_objects_thread.detach();
 			_level->stop_music("level1");
+			_level->stop_music("danger");
+			_level->stop_music("enemynear");
 			_window_controller->get_graphics_controller()->get_window()->get_timer()->pause();
 		}
 		else if (old_state == Enums::LevelStateEnum::TRANSITION) {
@@ -194,17 +201,24 @@ void Game::Controllers::LevelController::run_transition()
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
-		_level->simulate();
-		_level->get_player()->update();
-		for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
-		{
-			if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+			_level->simulate();
+
+			_level->get_player()->update();
+			for (auto enemy : _level->get_enemies())
 			{
-				_level->get_player()->reset_jump();
-				break;
+				enemy->update();
 			}
-		}
-		_window_controller->set_camera_pos_based_on(_level->get_player());
+
+			for (std::shared_ptr<Models::Object> walls : _level->get_tiles())
+			{
+				if (_level->get_player()->get_shape()->check_bottom_collision(walls->get_shape()))
+				{
+					_level->get_player()->reset_jump();
+					break;
+				}
+			}
+
+			_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
 }
 

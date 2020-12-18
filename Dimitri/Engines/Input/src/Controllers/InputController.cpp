@@ -1,11 +1,8 @@
 #include "InputController.h"
 using namespace Input;
 
-Controllers::InputController::InputController()
-{
-	_event_facade = std::make_unique<Facades::EventFacade>();
-	_mouse_facade = std::make_unique<Facades::MouseFacade>();
-}
+Controllers::InputController::InputController() :
+	_event_facade{ std::make_unique<Facades::EventFacade>() }, _mouse_facade{ std::make_unique<Facades::MouseFacade>() } {}
 
 std::tuple<int, int> Controllers::InputController::get_mouse_position()
 {

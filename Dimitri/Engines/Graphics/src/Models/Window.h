@@ -53,7 +53,7 @@ namespace Graphics {
 			/**
 			* \brief Instance of the WindowFacade
 			*/
-			std::shared_ptr<Facades::WindowFacade> _facade;
+			std::unique_ptr<Facades::WindowFacade> _facade;
 
 			/**
 			* \brief A list of the Textures displayed in the Window
@@ -63,7 +63,7 @@ namespace Graphics {
 			/**
 			* \brief Returns a Texture if a matching Texture already exists
 			*/
-			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture> texture) const;
 		public:
 			Window(const std::string& title, int height, int width);
 
@@ -76,27 +76,27 @@ namespace Graphics {
 			* \brief Calls methods on the WindowFacade to create the everything needed to render a window
 			* \return 0 or greater if initialization succeeded, otherwise initialization failed
 			*/
-			int create();
+			int create() const;
 
 			/**
 			* \brief Updates the Window
 			*/
-			void update();
+			void update() const;
 
 			/**
 			* \brief Destroys the window
 			*/
-			void destroy();
+			void destroy() const;
 
 			/**
 			* \brief Adds the Texture to _textures
 			*/
-			void add_texture(const std::shared_ptr<Texture>& texture);
+			void add_texture(const std::shared_ptr<Texture> texture);
 
 			/**
 			* \brief Removes the Texture from _textures
 			*/
-			void remove_texture(const std::shared_ptr<Texture>& texture);
+			void remove_texture(const std::shared_ptr<Texture> texture);
 
 			/**
 			* \brief Clears all Textures from _textures
@@ -106,7 +106,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the Textures
 			*/
-			std::vector<std::shared_ptr<Texture>> get_textures() const;
+			const std::vector<std::shared_ptr<Texture>>& get_textures() const;
 
 			/**
 			* \brief Returns the height of the Window
@@ -121,17 +121,22 @@ namespace Graphics {
 			/**
 			* \brief Returns the title of the window
 			*/
-			const std::string get_title() const;
+			const std::string& get_title() const;
 
 			/**
-			* \brief Returns the WindowFacade
+			* \brief Returns the fps
 			*/
-			std::shared_ptr<Facades::WindowFacade> get_facade() const;
+			int get_fps() const;
+
+			/**
+			* \brief Returns the timer ticks
+			*/
+			int get_ticks() const;
 
 			/**
 			* \brief Updates camera position
 			*/
-			void set_camera_pos(int x, int y);
+			void set_camera_pos(float x, float y);
 
 			/**
 			* \brief Returns camera position
@@ -151,7 +156,7 @@ namespace Graphics {
 			/**
 			* \brief Returns timer
 			*/
-			std::shared_ptr<Utility::Time::Timer> get_timer() const;
+			const std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

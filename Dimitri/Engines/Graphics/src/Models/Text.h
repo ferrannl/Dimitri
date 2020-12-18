@@ -33,24 +33,24 @@ namespace Graphics {
 			/**
 			* \brief The text of the Text
 			*/
-			std::string _text;
+			const std::string _text;
 
 			/**
 			* \brief The color of the Text
 			*/
-			Color _color;
+			const Color _color;
 		public:
-			Text(const std::string& text, const Color& color, const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
+			Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the text
 			*/
-			const std::string get_text() const;
+			const std::string& get_text() const;
 
 			/**
 			* \brief Returns the Color
 			*/
-			const Color get_color() const;
+			const Color& get_color() const;
 
 			/**
 			* \brief Creates the TextureFacade
@@ -60,7 +60,7 @@ namespace Graphics {
 			/**
 			* \brief Checks if this Texure matches the given Texture
 			*/
-			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
+			bool matches(const std::shared_ptr<Models::Texture> texture) const;
 		};
 	}
 }

@@ -21,7 +21,7 @@ namespace Graphics {
 			/**
 			* \brief Converts the FlipEnum to SDL_Rendererflip
 			*/
-			SDL_RendererFlip get_sdl_flip(const Enums::FlipEnum flipstatus);
+			SDL_RendererFlip get_sdl_flip(Enums::FlipEnum flipstatus);
 		};
 	}
 }
