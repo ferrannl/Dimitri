@@ -8,7 +8,7 @@
 using namespace Game;
 
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
-	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController"), _updating_objects{false}
+	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
 {
 	DocumentHandler::Controllers::DocumentController ctrl;
 
@@ -198,7 +198,6 @@ void Game::Controllers::LevelController::run_transition()
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(1ms);
-		if (!_updating_objects) {
 			_level->simulate();
 
 			_level->get_player()->update();
@@ -217,7 +216,6 @@ void  Controllers::LevelController::simulate() {
 			}
 
 			_window_controller->set_camera_pos_based_on(_level->get_player());
-		}
 	}
 }
 
