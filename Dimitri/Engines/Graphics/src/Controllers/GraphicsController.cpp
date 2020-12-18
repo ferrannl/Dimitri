@@ -13,12 +13,12 @@ int Controllers::GraphicsController::create_window(const std::string& title, int
 	return _window->create();
 }
 
-void Graphics::Controllers::GraphicsController::add_texture(const std::shared_ptr<Models::Texture>& texture)
+void Graphics::Controllers::GraphicsController::add_texture(const std::shared_ptr<Models::Texture> texture)
 {
 	_window->add_texture(texture);
 }
 
-void Graphics::Controllers::GraphicsController::remove_texture(const std::shared_ptr<Models::Texture>& texture)
+void Graphics::Controllers::GraphicsController::remove_texture(const std::shared_ptr<Models::Texture> texture)
 {
 	_window->remove_texture(texture);
 }

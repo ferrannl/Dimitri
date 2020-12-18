@@ -10,7 +10,7 @@ std::mutex& Graphics::Models::Window::get_mutex()
 	return _mutex;
 }
 
-std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
+std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture> texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {
 		if (t->matches(texture)) {
@@ -40,13 +40,13 @@ void Models::Window::destroy() const
 	_facade->destroy();
 }
 
-void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture>& texture)
+void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture> texture)
 {
 	_facade->create_texture(texture, get_matching_texture(texture));
 	_textures.push_back(texture);
 }
 
-void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& texture)
+void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture> texture)
 {
 	std::vector<std::shared_ptr<Texture>>::iterator it = std::find(_textures.begin(), _textures.end(), texture);
 
@@ -62,7 +62,7 @@ void Graphics::Models::Window::clear_textures()
 	_textures.clear();
 }
 
-std::vector<std::shared_ptr<Models::Texture>> Graphics::Models::Window::get_textures() const
+const std::vector<std::shared_ptr<Models::Texture>>& Graphics::Models::Window::get_textures() const
 {
 	return _textures;
 }
@@ -77,7 +77,7 @@ int Models::Window::get_width() const
 	return _width;
 }
 
-const std::string Models::Window::get_title() const
+const std::string& Models::Window::get_title() const
 {
 	return _title;
 }
@@ -112,7 +112,7 @@ std::tuple<int, int> Graphics::Models::Window::get_scene_size() const
 	return _facade->get_scene_size();
 }
 
-std::shared_ptr<Utility::Time::Timer> Graphics::Models::Window::get_timer() const
+const std::shared_ptr<Utility::Time::Timer> Graphics::Models::Window::get_timer() const
 {
 	return _facade->get_timer();
 }

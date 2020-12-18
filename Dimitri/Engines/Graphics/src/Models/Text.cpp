@@ -4,12 +4,12 @@ using namespace Graphics;
 Models::Text::Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, bool is_dynamic, int opacity) :
 	Models::Texture(x, y, z, height, width, angle, path, visible, center, is_dynamic, opacity), _text{ text }, _color{ color} {}
 
-std::string Models::Text::get_text() const
+const std::string& Models::Text::get_text() const
 {
 	return _text;
 }
 
-Models::Color Models::Text::get_color() const
+const Models::Color& Models::Text::get_color() const
 {
 	return _color;
 }
@@ -19,7 +19,7 @@ void Models::Text::create_texture_facade()
 	_facade = std::make_shared<Facades::TextFacade>(get_path(), get_text(), get_color(), get_height(), get_opacity());
 }
 
-bool Models::Text::matches(const std::shared_ptr<Models::Texture>& texture) const
+bool Models::Text::matches(const std::shared_ptr<Models::Texture> texture) const
 {
 	std::shared_ptr<Models::Text> text = std::dynamic_pointer_cast<Models::Text>(texture);
 	if (text.get()) {
