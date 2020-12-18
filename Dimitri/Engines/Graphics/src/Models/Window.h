@@ -63,7 +63,7 @@ namespace Graphics {
 			/**
 			* \brief Returns a Texture if a matching Texture already exists
 			*/
-			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture> texture) const;
+			const std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture> texture) const;
 		public:
 			Window(const std::string& title, int height, int width);
 

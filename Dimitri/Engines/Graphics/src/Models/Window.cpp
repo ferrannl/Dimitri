@@ -10,7 +10,7 @@ std::mutex& Graphics::Models::Window::get_mutex()
 	return _mutex;
 }
 
-std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture> texture) const
+const std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture> texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {
 		if (t->matches(texture)) {
