@@ -2,7 +2,7 @@
 using namespace Audio;
 
 Models::Audio::Audio(const std::string& name, std::unique_ptr<Interfaces::IAudioFacade> audio_facade, int volume) :
-	_name{ name }, _audio_facade{ std::move(audio_facade), _volume {volume} }{}
+	_name{ name }, _audio_facade{ std::move(audio_facade) }, _volume{ volume }{}
 
 int Models::Audio::get_volume() const
 {
