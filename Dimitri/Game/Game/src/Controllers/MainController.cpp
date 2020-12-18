@@ -91,6 +91,16 @@ void Game::Controllers::MainController::set_save_game_controller(const std::shar
 	_save_game_controller = save_game_controller;
 }
 
+std::shared_ptr<Models::Highscore> Game::Controllers::MainController::get_highscore() const
+{
+	return _highscore;
+}
+
+void Game::Controllers::MainController::set_highscore(const std::shared_ptr<Models::Highscore>& highscore)
+{
+	_highscore = highscore;
+}
+
 std::shared_ptr<Controllers::HomeController> Game::Controllers::MainController::get_home_controller() const
 {
 	return _home_controller;

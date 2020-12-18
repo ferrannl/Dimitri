@@ -1,5 +1,5 @@
 #include "OpenLevelSelectorViewCommand.h"
-#include "../Models/Settings/Settings.h";
+#include "../Models/Settings/Highscore.h";
 
 namespace Game {
 	namespace Commands {
@@ -9,6 +9,7 @@ namespace Game {
 		{
 			if (param != -1) {
 				_main_controller->set_settings(std::make_shared<Models::Settings>(param));
+				_main_controller->set_highscore(std::make_shared<Models::Highscore>(param));
 			}
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto i_ctrl = _main_controller->get_input_controller();

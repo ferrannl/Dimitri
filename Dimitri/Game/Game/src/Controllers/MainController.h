@@ -14,6 +14,7 @@
 #include "../Managers/HighScoreManager.h"
 #include "CheatsController.h"
 #include "../Models/Settings/Settings.h"
+#include "../Models/Settings/Highscore.h"
 
 /**
 * \namespace Game
@@ -100,6 +101,12 @@ namespace Game {
 			* \brief An instance of the Settings 
 			*/
 			std::shared_ptr<Models::Settings> _settings;
+			
+			/**
+			* \brief An instance of the Settings
+			*/
+			std::shared_ptr<Models::Highscore> _highscore;
+
 		public:
 			MainController();
 
@@ -192,6 +199,16 @@ namespace Game {
 			* \brief Sets Save Game Controller
 			*/
 			void  set_save_game_controller(const std::shared_ptr<Controllers::SaveGameController>& save_game_controller);
+
+			/**
+			* \brief Returns the highscore
+			*/
+			std::shared_ptr<Models::Highscore> get_highscore() const;
+
+			/**
+			* \brief Sets highscore
+			*/
+			void set_highscore(const std::shared_ptr<Models::Highscore>& highscore);
 		};
 	}
 }

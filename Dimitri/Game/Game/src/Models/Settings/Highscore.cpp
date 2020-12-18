@@ -1,7 +1,7 @@
 #include "Highscore.h"
 #include <src\Helpers\BasePathHelper.h>
 
-Game::Models::Highscore::Highscore(int save)
+Game::Models::Highscore::Highscore(int save) : _save{save}
 {
 	_document_handler = std::make_unique<DocumentHandler::Controllers::DocumentController>();
 	_save_path = std::string{ Utility::Helpers::get_base_path() + "/assets/saves/save" + std::to_string(_save) + ".txt" };
@@ -12,8 +12,8 @@ Game::Models::Highscore::Highscore(int save)
 			_save_file.at(0).push_back(std::to_string(0));
 		}
 		//checks if highscores are initialized
-		for (int i = 0; i < 4; i++) {
-			if (_save_file.size() < i|| _save_file.at(i).size() == 0) {
+		if (_save_file.size() == 1) {
+			for (int i = 0; i < 4; i++) {	
 				std::vector<std::string> h{};
 				h.push_back(std::to_string(i));
 				_save_file.push_back(h);
