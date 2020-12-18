@@ -11,13 +11,7 @@ Game::Managers::HighscoreManager::HighscoreManager(std::shared_ptr<Game::Control
 
 void Game::Managers::HighscoreManager::load_highscore()
 {
-	if (_window_controller->is_active(Enums::ViewEnum::HOME)) {
-		_input_controller->unsubscribe(_home_controller);
-		_window_controller->clear_views();
-		_window_controller->open_view(Enums::ViewEnum::HIGHSCORE);
-		_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
-		_input_controller->subscribe(this->shared_from_this());
-	}
+
 }
 
 void Game::Managers::HighscoreManager::load_buttons()
