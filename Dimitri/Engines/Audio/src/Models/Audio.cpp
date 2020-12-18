@@ -9,7 +9,7 @@ const std::string Models::Audio::get_name() const
 	return _name;
 }
 
-const Interfaces::IAudioFacade* Models::Audio::get_audio_facade() const
+const std::unique_ptr<Interfaces::IAudioFacade>& Models::Audio::get_audio_facade() const
 {
-	return _audio_facade.get();
+	return _audio_facade;
 }

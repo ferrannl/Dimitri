@@ -39,7 +39,7 @@ namespace Audio {
 			/**
 			* \brief Returns the %Audio Facade
 			*/
-			const Interfaces::IAudioFacade* get_audio_facade() const;
+			const std::unique_ptr<Interfaces::IAudioFacade>& get_audio_facade() const;
 		};
 	}
 }
