@@ -1,4 +1,5 @@
 #include "TileBuilder.h"
+
 using namespace Game;
 
 void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, const std::pair<int, std::vector<std::vector<int>>>& tileset, const std::vector<std::vector<std::pair<std::string, std::any>>>& objects)
@@ -56,9 +57,15 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 17:
+                    level->add_enemy(std::make_shared<Models::Enemy>(x, y, 1, TILE_SIZE * 2, TILE_SIZE * 2, Enums::DirectionEnum::NONE, Graphics::Models::Center{ 0,0 },
+                        get_value<int>("Area_Left", get_object(objects, x, tiled_y)),
+                        get_value<int>("Area_Right", get_object(objects, x, tiled_y)),
+                        get_value<int>("Area_Top", get_object(objects, x, tiled_y)),
+                        get_value<int>("Area_Bottom", get_object(objects, x, tiled_y))
+                        ));
                     break;
                 }
-                
+
                 x += TILE_SIZE;
             }
 
@@ -97,7 +104,7 @@ const std::vector<std::pair<std::string, std::any>> Game::Builder::TileBuilder::
 std::vector<std::tuple<float, float>> Game::Builder::TileBuilder::get_lights(const std::vector<std::pair<std::string, std::any>>& object)
 {
     std::vector<std::tuple<float, float>> retVal = {};
-    
+
     for (std::pair<std::string, std::any> val : object) {
         if (val.first.substr(0, 5) == "Light") {
             std::string input = std::any_cast<std::string>(val.second);

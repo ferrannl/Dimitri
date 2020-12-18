@@ -28,4 +28,3 @@ std::shared_ptr<Models::Updatable> Factories::UpdatableFactory::create(Enums::Ty
 
 	return instance;
 }
-

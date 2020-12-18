@@ -23,7 +23,6 @@ namespace Game {
 			* \brief Initializes Textures
 			*/
 			void initialize_textures();
-
 			/**
 			* \brief Updates the object when interacted with
 			*/

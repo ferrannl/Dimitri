@@ -10,7 +10,7 @@
 #ifdef _WIN64
 #ifdef AUDIO_EXPORTS
 #define AUDIO_API __declspec(dllexport)
-#else 
+#else
 #define AUDIO_API __declspec(dllimport)
 #endif
 #else
@@ -58,12 +58,12 @@ namespace Audio {
 			/**
 			* \brief Adds audio file which represents a sound effect to _audios
 			*/
-			void add_sound(const std::string& name, const std::string& path);
+			void add_sound(const std::string& name, const std::string& path, int volume);
 
 			/**
 			* \brief Adds audio file which represents a music to _audios
 			*/
-			void add_music(const std::string& name, const std::string& path);
+			void add_music(const std::string& name, const std::string& path, int volume);
 
 			/**
 			* \brief Plays Audio by the given name
@@ -84,6 +84,11 @@ namespace Audio {
 			* \brief Stops Audio by the given name
 			*/
 			void stop_audio(const std::string& name) const;
+
+			/**
+			* \brief Controls the volumeo of the sound/music
+			*/
+			void control_volume(const std::string& name, int volume);
 
 			/**
 			* \brief Checks if the Audio by the given name is playing

@@ -4,6 +4,7 @@
 #include "../Factory/UpdatableFactory.h";
 #include "../Factory/BackgroundFactory.h";
 #include "../Models/Level.h"
+#include "../Models/Updatables/Enemy.h"
 #include <any>
 
 /**

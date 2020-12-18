@@ -10,6 +10,7 @@
 #include "../Enums/TypeEnum.h"
 #include "./Objects/Wall.h"
 #include "./Updatables/Player.h"
+#include "./Updatables/Enemy.h"
 #include "../Controllers/PhysicsCollisionController.h"
 #include "./Interactable/Switch.h"
 #include "./Updatables/LightBeam.h"
@@ -64,9 +65,14 @@ namespace Game {
 			std::shared_ptr<Game::Models::Player> _player;
 
 			/**
-			* \brief List of tiles in the Level
+			* \brief Instances of the Enemy Objects
 			*/
 			std::vector<std::shared_ptr<Game::Models::Object>> _tiles;
+
+			/**
+			* \brief List of the enemies
+			*/
+			std::vector<std::shared_ptr<Game::Models::Enemy>> _enemies;
 
 			/**
 			* \brief List of backgrounds in the Level
@@ -79,23 +85,26 @@ namespace Game {
 			std::vector<std::shared_ptr<Models::Updatable>> _updatables;
 
 			/**
-			* \brief List of interactables in the Level
+			* \brief List of updatables in the Level
 			*/
 			std::vector<std::shared_ptr<Game::Models::Interactable>> _interactables;
 
 			/**
 			* \brief The height of the Level
 			*/
-			int _height;
+			float _height;
 
 			/**
 			* \brief The width of the Level
 			*/
-			int _width;
+			float _width;
 
 		public:
-			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const int width, const int height);
+			Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height);
 
+			/**
+			* \brief Returns a list of buttons
+			*/
 			std::vector<std::shared_ptr<Game::Models::Button>> get_buttons();
 
 			/**
@@ -111,12 +120,12 @@ namespace Game {
 			/**
 			* \brief Add music
 			*/
-			void add_music(std::string audio_name, std::string path);
+			void add_music(std::string audio_name, std::string path, int volume = 50);
 
 			/**
 			* \brief Add sound
 			*/
-			void add_sound(std::string audio_name, std::string path);
+			void add_sound(std::string audio_name, std::string path, int volume = 50);
 
 			/**
 			* \brief Play music
@@ -138,6 +147,8 @@ namespace Game {
 			*/
 			void resume_music(std::string audio_name);
 
+			void volume_control(std::string audio_name, int volume);
+
 			/**
 			* \brief Initializes objects
 			*/
@@ -156,8 +167,8 @@ namespace Game {
 			/**
 			* \brief Returns the Player
 			*/
-			std::shared_ptr<Game::Models::Player> get_player() const;
-			
+			std::vector<std::shared_ptr<Game::Models::Enemy>> get_enemies() const;
+
 			/**
 			*	\brief Returns the tiles
 			*/
@@ -204,6 +215,11 @@ namespace Game {
 			void add_background(std::shared_ptr<Graphics::Models::Sprite> tile);
 
 			/**
+			* \brief Adds an enemy to the level
+			*/
+			void add_enemy(std::shared_ptr<Game::Models::Enemy> tile);
+
+			/**
 			* \brief Adds shape to the _shapes list
 			*/
 			void add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
@@ -216,12 +232,17 @@ namespace Game {
 			/**
 			* \brief Returns the height of the Level
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
 			* \brief Returns the width of the Level
 			*/
-			int get_width() const;
+			float get_width() const;
+
+			/**
+			* \brief Returns the player
+			*/
+			std::shared_ptr<Game::Models::Player> get_player()const;
 		};
 	}
 

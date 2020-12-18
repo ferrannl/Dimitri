@@ -22,10 +22,10 @@ namespace Game {
 		class LevelBuilder {
 		private:
 			/**
-			* \brief The tile size used for all the calculations 
+			* \brief The tile size used for all the calculations
 			*/
 			const int TILE_SIZE = 40;
-			
+
 			/**
 			* \brief Builder for the tiles
 			*/
@@ -39,7 +39,7 @@ namespace Game {
 			/**
 			* \brief Factory which creates backgrounds
 			*/
-			Factories::BackgroundFactory _background_factory;
+			Factories::BackgroundFactory _backgroundFactory;
 
 			/**
 			* \brief Builds invisible borders for the level

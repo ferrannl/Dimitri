@@ -10,6 +10,7 @@
 #include "../../Enums/StateEnum.h"
 #include "../../Enums/AnimateEnum.h"
 #include "../../Enums/DirectionEnum.h"
+#include <mutex> 
 
 /**
 * \namespace Game
@@ -91,6 +92,11 @@ namespace Game {
 			* \brief Initializes Textures
 			*/
 			virtual void initialize_textures() = 0;
+
+			/**
+			* \brief used for locking textures
+			*/
+			std::mutex _mtx;
 		public:
 			Object(float x, float y, float z, float height, float width, Enums::DirectionEnum state, const Graphics::Models::Center& center);
 
