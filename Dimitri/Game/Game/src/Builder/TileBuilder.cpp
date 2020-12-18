@@ -56,7 +56,6 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                     level->add_updatable(_updatable_factory.create(Enums::TypeEnum::SPIKE, x, y, tileset.first, TILE_SIZE, TILE_SIZE, Enums::DirectionEnum::NONE));
                     break;
                 case 17:
-                    get_value<int>("Area_Left", get_object(objects, x, tiled_y));
                     break;
                 }
                 

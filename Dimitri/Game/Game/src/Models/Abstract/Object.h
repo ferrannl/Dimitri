@@ -92,7 +92,7 @@ namespace Game {
 			*/
 			virtual void initialize_textures() = 0;
 		public:
-			Object(const float x, const float y, const float z, const float height, const float width, const Enums::DirectionEnum state, const Graphics::Models::Center center);
+			Object(const float x, const float y, const float z, const float height, const float width, Enums::DirectionEnum state, const Graphics::Models::Center center);
 
 			/**
 			* \brief Returns the Texture based on state
@@ -137,18 +137,21 @@ namespace Game {
 			/**
 			* \brief Sets state of the Object
 			*/
-			void set_state(const Enums::StateEnum state);
+			void set_state(Enums::StateEnum state);
 
 			/**
 			* \brief Sets direction of the Object
 			*/
-			void set_direction(const Enums::DirectionEnum value);
+			void set_direction(Enums::DirectionEnum value);
 
 			/**
 			* \brief Sets animationstate of the Object
 			*/
-			void set_animationstate(const Enums::AnimateEnum state);
+			void set_animationstate(Enums::AnimateEnum state);
 
+			/**
+			* \brief Toggles visibility of texture
+			*/
 			void toggle_visibility();
 
 			/**
@@ -161,15 +164,10 @@ namespace Game {
 			*/
 			void create_shape(float x, float y, float height, float width, bool is_dynamic, bool is_interactable, PhysicsCollision::Enums::ShapeEnum type);
 
-			///**
-			//* \brief Sets shape of the Object
-			//*/
-			//void set_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape);
-
 			/**
 			* \brief Adds Texture
 			*/
-			void add_texture(Enums::AnimateEnum state, std::shared_ptr<Graphics::Models::Texture> texture);
+			void add_texture(Enums::AnimateEnum state, const std::shared_ptr<Graphics::Models::Texture>& texture);
 
 			/**
 			* \brief Returns height of the Object
