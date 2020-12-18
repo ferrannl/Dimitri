@@ -11,6 +11,7 @@ Game::Controllers::LevelSelectorController::LevelSelectorController(int scenehei
 
 void Game::Controllers::LevelSelectorController::load_buttons()
 {
+	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 	Graphics::Models::Color color = { 255, 255, 255 };
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> t{
 		std::make_shared<Graphics::Models::Sprite>(10, _scene_height - 65, 3, 30, 30, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/back_button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -30,6 +31,12 @@ void Game::Controllers::LevelSelectorController::load_buttons()
 		counter++;
 		i++;
 	}
+
+	t = {
+			std::make_shared<Graphics::Models::Sprite>(_scene_width / 2, _scene_height /4 - 50 , 3, 50, 150, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>("Highscore", color, _scene_width / 2 + 25, _scene_height / 4 - 50 , 3, 50, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+	};
+	add_button(std::make_unique<Models::Button>(_scene_width / 2, _scene_height / 4 - 50, 50, 150, t, Enums::ButtonEnum::HIGHSCORE));
 }
 
 void Game::Controllers::LevelSelectorController::update(const Game::Events::InputEvent& object)

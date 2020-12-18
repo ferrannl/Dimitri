@@ -168,6 +168,7 @@ namespace Game {
 						{Enums::ButtonEnum::START_LEVEL_1, Enums::CommandEnum::LOAD_LEVEL},
 						{Enums::ButtonEnum::START_LEVEL_2, Enums::CommandEnum::LOAD_LEVEL},
 						{Enums::ButtonEnum::START_LEVEL_3, Enums::CommandEnum::LOAD_LEVEL},
+						{Enums::ButtonEnum::HIGHSCORE, Enums::CommandEnum::LOAD_HIGHSCORE}
 						});
 				}
 			}
