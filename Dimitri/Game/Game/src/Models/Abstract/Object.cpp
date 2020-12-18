@@ -89,7 +89,7 @@ void Game::Models::Object::toggle_visibility()
 	this->get_texture()->toggle_visible();
 }
 
-const std::shared_ptr<PhysicsCollision::Models::Shape>& Models::Object::get_shape() const
+const std::shared_ptr<PhysicsCollision::Models::Shape> Models::Object::get_shape() const
 {
 	return _shape;
 }
@@ -99,7 +99,7 @@ void Models::Object::create_shape(float x, float y, float height, float width, b
 	_shape = std::make_shared<PhysicsCollision::Models::Shape>(x, y, height, width, is_dynamic, is_interactable, type);
 }
 
-void Models::Object::add_texture(Enums::AnimateEnum state, const std::shared_ptr<Graphics::Models::Texture>& texture)
+void Models::Object::add_texture(Enums::AnimateEnum state, const std::shared_ptr<Graphics::Models::Texture> texture)
 {
 	this->_textures.insert(std::pair<Enums::AnimateEnum, std::shared_ptr<Graphics::Models::Texture>>(state, texture));
 }

@@ -163,7 +163,7 @@ namespace Game {
 			/**
 			* \brief Returns Shape of the Object
 			*/
-			const std::shared_ptr<PhysicsCollision::Models::Shape>& get_shape() const;
+			const std::shared_ptr<PhysicsCollision::Models::Shape> get_shape() const;
 
 			/**
 			* \brief Creates the shape for the Object
@@ -173,7 +173,7 @@ namespace Game {
 			/**
 			* \brief Adds Texture
 			*/
-			void add_texture(Enums::AnimateEnum state, const std::shared_ptr<Graphics::Models::Texture>& texture);
+			void add_texture(Enums::AnimateEnum state, const std::shared_ptr<Graphics::Models::Texture> texture);
 
 			/**
 			* \brief Returns height of the Object
