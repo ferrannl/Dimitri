@@ -62,7 +62,7 @@ void Graphics::Models::Window::clear_textures()
 	_textures.clear();
 }
 
-std::vector<std::shared_ptr<Models::Texture>> Graphics::Models::Window::get_textures() const
+const std::vector<std::shared_ptr<Models::Texture>>& Graphics::Models::Window::get_textures() const
 {
 	return _textures;
 }
@@ -77,7 +77,7 @@ int Models::Window::get_width() const
 	return _width;
 }
 
-const std::string Models::Window::get_title() const
+const std::string& Models::Window::get_title() const
 {
 	return _title;
 }
@@ -112,7 +112,7 @@ std::tuple<int, int> Graphics::Models::Window::get_scene_size() const
 	return _facade->get_scene_size();
 }
 
-std::shared_ptr<Utility::Time::Timer> Graphics::Models::Window::get_timer() const
+const std::shared_ptr<Utility::Time::Timer>& Graphics::Models::Window::get_timer() const
 {
 	return _facade->get_timer();
 }

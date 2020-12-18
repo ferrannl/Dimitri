@@ -106,7 +106,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the Textures
 			*/
-			std::vector<std::shared_ptr<Texture>> get_textures() const;
+			const std::vector<std::shared_ptr<Texture>>& get_textures() const;
 
 			/**
 			* \brief Returns the height of the Window
@@ -121,7 +121,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the title of the window
 			*/
-			const std::string get_title() const;
+			const std::string& get_title() const;
 
 			/**
 			* \brief Returns the fps
@@ -156,7 +156,7 @@ namespace Graphics {
 			/**
 			* \brief Returns timer
 			*/
-			std::shared_ptr<Utility::Time::Timer> get_timer() const;
+			const std::shared_ptr<Utility::Time::Timer>& get_timer() const;
 		};
 	}
 }

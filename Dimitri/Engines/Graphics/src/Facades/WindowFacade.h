@@ -135,7 +135,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the timer
 			*/
-			std::shared_ptr<Utility::Time::Timer> get_timer() const;
+			const std::shared_ptr<Utility::Time::Timer>& get_timer() const;
 		};
 	}
 }

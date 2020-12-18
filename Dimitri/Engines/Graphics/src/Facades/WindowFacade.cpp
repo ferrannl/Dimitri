@@ -177,7 +177,7 @@ std::tuple<float, float> Graphics::Facades::WindowFacade::get_scene_size() const
 	return _scene_size;
 }
 
-std::shared_ptr<Utility::Time::Timer> Graphics::Facades::WindowFacade::get_timer() const
+const std::shared_ptr<Utility::Time::Timer>& Graphics::Facades::WindowFacade::get_timer() const
 {
 	return _timer;
 }

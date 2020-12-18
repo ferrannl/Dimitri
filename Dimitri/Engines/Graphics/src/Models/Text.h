@@ -40,17 +40,17 @@ namespace Graphics {
 			*/
 			const Color _color;
 		public:
-			Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, const bool is_dynamic, int opacity = 100);
+			Text(const std::string& text, const Color& color, float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center& center, bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Returns the text
 			*/
-			std::string get_text() const;
+			const std::string& get_text() const;
 
 			/**
 			* \brief Returns the Color
 			*/
-			Color get_color() const;
+			const Color& get_color() const;
 
 			/**
 			* \brief Creates the TextureFacade
