@@ -84,7 +84,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Returns the ShapeFacade
 			*/
-			std::shared_ptr<Facades::ShapeFacade> get_shape_facade() const;
+			const std::shared_ptr<Facades::ShapeFacade> get_shape_facade() const;
 
 			/**
 			* \brief Returns the type
@@ -181,17 +181,17 @@ namespace PhysicsCollision {
 			* \brief Checks if the Shape has collision with another shape
 			* \return True if collision, otherwise false
 			*/
-			bool check_square_collision(const std::shared_ptr<Models::Shape>& shape)const;
+			bool check_square_collision(const std::shared_ptr<Models::Shape> shape)const;
       
 			/**
 			* Returns true when there is collision between the bottom of current shape en the top of the other shape. Else returns false
 			*/
-			bool check_bottom_collision(const std::shared_ptr<Models::Shape>& shape)const;
+			bool check_bottom_collision(const std::shared_ptr<Models::Shape> shape)const;
 
 			/**
 			* Returns true when there is collision between a point and a triangle. This method also uses the angle te shape is in. Else returns false
 			*/
-			bool check_triangle_collision(const std::shared_ptr<Models::Shape>& shape) const;
+			bool check_triangle_collision(const std::shared_ptr<Models::Shape> shape) const;
 		};
 	}
 }

@@ -29,6 +29,6 @@ void Controllers::WorldController::simulate(float speed)const
 	_world.simulate(speed);
 }
 
-std::vector<std::shared_ptr<Models::Shape>> Controllers::WorldController::get_shapes()const {
+const std::vector<std::shared_ptr<Models::Shape>>& Controllers::WorldController::get_shapes()const {
 	return _world.get_shapes();
 }

@@ -30,7 +30,7 @@ namespace Graphics {
 		*/
 		class GRAPHICS_API Sprite : public Texture {
 		public:
-			Sprite(const float x, const float y, const float z, const float height, const float width, const float angle, const std::string& path, const Enums::FlipEnum flipstatus, const bool visible, const Models::Center center, const bool is_dynamic, int opacity = 100);
+			Sprite(float x, float y, float z, float height, float width, float angle, const std::string& path, Enums::FlipEnum flipstatus, bool visible, const Models::Center& center, bool is_dynamic, int opacity = 100);
 
 			/**
 			* \brief Creates the TextureFacade
@@ -40,7 +40,7 @@ namespace Graphics {
 			/**
 			* \brief Checks if this Texure matches the given Texture
 			*/
-			bool matches(const std::shared_ptr<Models::Texture>& texture) const;
+			bool matches(const std::shared_ptr<Models::Texture> texture) const;
 		};
 	}
 }
