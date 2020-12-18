@@ -52,7 +52,7 @@ namespace Game {
 					switch (event.event_enum) {
 					case Input::Enums::EventEnum::MOUSE_PRESSED_LEFT:
 						notify_buttons(sender, event, {
-							{Enums::ButtonEnum::GAMEOVER_START, Enums::CommandEnum::LOAD_LEVEL},
+							{Enums::ButtonEnum::GAMEOVER_START, Enums::CommandEnum::TRY_AGAIN_GAME},
 							{Enums::ButtonEnum::GAMEOVER_HOME, Enums::CommandEnum::OPEN_HOME_VIEW}
 							});
 						break;

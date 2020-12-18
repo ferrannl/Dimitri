@@ -159,6 +159,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Commands\OpenLevelSelectorViewCommand.cpp" />
+    <ClCompile Include="src\Commands\TryAgainCommand.cpp" />
     <ClCompile Include="src\Controllers\LevelSelectorController.cpp" />
     <ClCompile Include="src\Controllers\SaveGameController.cpp" />
     <ClCompile Include="src\Models\Settings\Settings.cpp" />
@@ -250,6 +251,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Commands\OpenLevelSelectorViewCommand.h" />
+    <ClInclude Include="src\Commands\TryAgainCommand.h" />
     <ClInclude Include="src\Controllers\LevelSelectorController.h" />
     <ClInclude Include="src\Controllers\SaveGameController.h" />
     <ClInclude Include="src\Models\Settings\Settings.h" />
