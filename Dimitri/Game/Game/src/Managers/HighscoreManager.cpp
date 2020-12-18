@@ -37,6 +37,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Managers::Highscor
 			button_textures.push_back(t);
 		}
 	}
+	button_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _window_controller->get_window_height(), _window_controller->get_window_width(), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/records.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0, 0 }, false));
 	return button_textures;
 }
 

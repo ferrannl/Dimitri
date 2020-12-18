@@ -20,9 +20,106 @@ namespace Game {
 			std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/TravelingTypewriter.ttf" };
 			int place_margin = 0;
 
-			for (auto highscore : _main_controller->get_highscore()->get_highscores(0)) {
-				t.push_back(std::make_shared<Graphics::Models::Text>(highscore.substr(0, 6), color, window_width / 4 + 300, (window_height - 225) - place_margin, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+			int x_offset = 0;
+			int y_offset = 0;
+			
+			//tutorial
+			t.push_back(std::make_shared<Graphics::Models::Text>("Tutorial", color, 470 + x_offset, 550+y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+			
+			int text_y_offset = -50;
+			int text_x_offset = -50;
+			for (int i = 1; i < 6; i++) {
+				t.push_back(std::make_shared<Graphics::Models::Text>(std::to_string(i) + ".", color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+				text_y_offset += -40;
 			}
+
+			std::vector<std::string> highscores = _main_controller->get_highscore()->get_highscores(0);
+
+			text_y_offset = -50;
+			text_x_offset = 30;
+			for (int i = 0; i < 5; i++) {
+				if (highscores.size() > i) {
+					t.push_back(std::make_shared<Graphics::Models::Text>(highscores.at(i).substr(0,6), color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+					text_y_offset += -40;
+				}
+				else {
+					break;
+				}
+			}
+
+			//level 1
+			x_offset = 240;
+			y_offset = 0;
+
+			t.push_back(std::make_shared<Graphics::Models::Text>("Level 1", color, 470 + x_offset, 550 + y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+			text_y_offset = -50;
+			text_x_offset = -50;
+			for (int i = 1; i < 6; i++) {
+				t.push_back(std::make_shared<Graphics::Models::Text>(std::to_string(i) + ".", color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+				text_y_offset += -40;
+			}
+			highscores = _main_controller->get_highscore()->get_highscores(1);
+
+			text_y_offset = -50;
+			text_x_offset = 30;
+			for (int i = 0; i < 5; i++) {
+				if (highscores.size() > i) {
+					t.push_back(std::make_shared<Graphics::Models::Text>(highscores.at(i).substr(0, 6), color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+					text_y_offset += -40;
+				}
+				else {
+					break;
+				}
+			}
+			//level 2
+			x_offset = 0;
+			y_offset = -270;
+
+			t.push_back(std::make_shared<Graphics::Models::Text>("Level 2", color, 470 + x_offset, 550 + y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+			text_y_offset = -50;
+			text_x_offset = -50;
+			for (int i = 1; i < 6; i++) {
+				t.push_back(std::make_shared<Graphics::Models::Text>(std::to_string(i) + ".", color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+				text_y_offset += -40;
+			}
+			highscores = _main_controller->get_highscore()->get_highscores(2);
+
+			text_y_offset = -50;
+			text_x_offset = 30;
+			for (int i = 0; i < 5; i++) {
+				if (highscores.size() > i) {
+					t.push_back(std::make_shared<Graphics::Models::Text>(highscores.at(i).substr(0, 6), color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+					text_y_offset += -40;
+				}
+				else {
+					break;
+				}
+			}
+			//level 3
+			x_offset = 240;
+			y_offset = -270;
+
+			t.push_back(std::make_shared<Graphics::Models::Text>("Level 3", color, 470 + x_offset, 550 + y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+			text_y_offset = -50;
+			text_x_offset = -50;
+			for (int i = 1; i < 6; i++) {
+				t.push_back(std::make_shared<Graphics::Models::Text>(std::to_string(i) + ".", color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+				text_y_offset += -40;
+			}
+			highscores = _main_controller->get_highscore()->get_highscores(3);
+
+			text_y_offset = -50;
+			text_x_offset = 30;
+			for (int i = 0; i < 5; i++) {
+				if (highscores.size() > i) {
+					t.push_back(std::make_shared<Graphics::Models::Text>(highscores.at(i).substr(0, 6), color, 470 + x_offset + text_x_offset, 550 + y_offset + text_y_offset, 1, 40, 100, 0, path, true, Graphics::Models::Center{ 0, 0 }, false));
+					text_y_offset += -40;
+				}
+				else {
+					break;
+				}
+			}
+
 			w_ctrl->set_textures(t, Enums::ViewEnum::HIGHSCORE);
 
 			if (w_ctrl->is_active(Enums::ViewEnum::LEVEL_SELECTOR)) {
