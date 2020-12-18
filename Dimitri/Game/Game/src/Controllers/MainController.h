@@ -2,6 +2,7 @@
 #include "InputController.h"
 #include "WindowController.h"
 #include "LevelController.h"
+#include "SaveGameController.h"
 #include "HomeController.h"
 #include "CreditsController.h"
 #include "AdvertisementController.h"
@@ -57,6 +58,11 @@ namespace Game {
 			* \brief An instance of the LevelController
 			*/
 			std::shared_ptr<Controllers::LevelController> _level_controller;
+
+			/**
+			* \brief An instance of the SaveGameController
+			*/
+			std::shared_ptr<Controllers::SaveGameController> _save_game_controller;
 
 			/**
 			* \brief An instance of the HomeController
@@ -124,6 +130,11 @@ namespace Game {
 			* \brief Returns the LevelController
 			*/
 			const std::shared_ptr<Controllers::LevelController>& get_level_controller() const;
+
+			/**
+			* \brief Returns the SaveGameController
+			*/
+			std::shared_ptr<Controllers::SaveGameController> get_save_game_controller() const;
 
 			/**
 			* \brief Returns the HomeController

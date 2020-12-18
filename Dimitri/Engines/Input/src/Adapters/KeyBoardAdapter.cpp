@@ -1,7 +1,7 @@
 #include "KeyBoardAdapter.h"
 using namespace Input;
 
-Enums::EventEnum Adapters::KeyBoardAdapter::translate_to_enum(const SDL_Event event)const
+Enums::EventEnum Adapters::KeyBoardAdapter::translate_to_enum(const SDL_Event& event)const
 {
 	switch (event.key.keysym.sym)
 	{

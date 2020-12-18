@@ -158,6 +158,9 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Controllers\SaveGameController.cpp" />
+    <ClCompile Include="src\Views\SaveGameView.cpp" />
+    <ClCompile Include="src\Commands\OpenSaveGameViewCommand.cpp" />
     <ClCompile Include="src\Builder\BackgroundBuilder.cpp" />
     <ClCompile Include="src\Builder\LevelBuilder.cpp" />
     <ClCompile Include="src\Builder\TileBuilder.cpp" />
@@ -242,6 +245,9 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Controllers\SaveGameController.h" />
+    <ClInclude Include="src\Views\SaveGameView.h" />
+    <ClInclude Include="src\Commands\OpenSaveGameViewCommand.h" />
     <ClInclude Include="src\Builder\BackgroundBuilder.h" />
     <ClInclude Include="src\Builder\LevelBuilder.h" />
     <ClInclude Include="src\Builder\TileBuilder.h" />

@@ -2,7 +2,7 @@
 using namespace Graphics;
 
 Models::Window::Window(const std::string& title, int height, int width) : _title{ title }, _height{ height }, _width{ width } {
-	_facade = std::make_shared<Facades::WindowFacade>();
+	_facade = std::make_unique<Facades::WindowFacade>();
 }
 
 std::mutex& Graphics::Models::Window::get_mutex()
@@ -20,7 +20,7 @@ std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std:
 	return nullptr;
 }
 
-int Models::Window::create()
+int Models::Window::create() const
 {
 	int retVal = NULL;
 
@@ -30,12 +30,12 @@ int Models::Window::create()
 	return retVal;
 }
 
-void Models::Window::update()
+void Models::Window::update() const
 {
 	_facade->update_window(_textures);
 }
 
-void Models::Window::destroy()
+void Models::Window::destroy() const
 {
 	_facade->destroy();
 }
@@ -82,12 +82,17 @@ const std::string Models::Window::get_title() const
 	return _title;
 }
 
-std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() const
+int Graphics::Models::Window::get_fps() const
 {
-	return _facade;
+	return _facade->get_fps();
 }
 
-void Graphics::Models::Window::set_camera_pos(int x, int y)
+int Graphics::Models::Window::get_ticks() const
+{
+	return _facade->get_ticks();
+}
+
+void Graphics::Models::Window::set_camera_pos(float x, float y)
 {
 	_facade->set_camera_pos(x,y);
 }

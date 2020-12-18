@@ -26,7 +26,7 @@ namespace Input {
 			/**
 			* \brief Adapter used to translate the SDL events to the EvenEnum
 			*/
-			std::shared_ptr<Interfaces::IInputAdapter> _input_adapter;
+			std::unique_ptr<Interfaces::IInputAdapter> _input_adapter;
 		public:
 			EventFacade();
 

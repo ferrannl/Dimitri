@@ -13,6 +13,7 @@ Controllers::MainController::MainController() : Mediators::BaseComponent("MainCo
 	_home_controller = std::make_shared<Controllers::HomeController>(720, 1280, _audio_controller);
 	_credits_controller = std::make_shared<Controllers::CreditsController>(720, 1280);
 	_help_controller = std::make_shared<Controllers::HelpController>(720, 1280);
+	_save_game_controller = std::make_shared<Controllers::SaveGameController>(720, 1280);
 	_advertisement_controller = std::make_shared<Controllers::AdvertisementController>(720, 1280);
 	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
 	_level_controller->load_buttons();
@@ -39,6 +40,7 @@ void Game::Controllers::MainController::run()
 	_window_controller->add_textures(_level_controller->get_textures(Enums::LevelStateEnum::WIN), Enums::ViewEnum::WIN_LEVEL);
 	_window_controller->add_textures(_advertisement_controller->get_textures(), Enums::ViewEnum::ADVERTISEMENT);
 	_window_controller->add_textures(_highscore_manager->get_textures(), Enums::ViewEnum::HIGHSCORE);
+	_window_controller->add_textures(_save_game_controller->get_textures(), Enums::ViewEnum::SAVE_GAME);
 	_cheats_controller->initialize_textures(_window_controller->get_window_height(), _window_controller->get_window_width());
 	_window_controller->set_textures(_cheats_controller->get_textures(), Enums::ViewEnum::CHEATS);
 
@@ -79,6 +81,11 @@ const std::shared_ptr<Controllers::WindowController>& Game::Controllers::MainCon
 const std::shared_ptr<Controllers::LevelController>& Game::Controllers::MainController::get_level_controller() const
 {
 	return _level_controller;
+}
+
+const std::shared_ptr<Controllers::SaveGameController>& Game::Controllers::MainController::get_save_game_controller() const
+{
+	return _save_game_controller;
 }
 
 const std::shared_ptr<Controllers::HomeController>& Game::Controllers::MainController::get_home_controller() const

@@ -9,7 +9,7 @@ Controllers::GraphicsController::GraphicsController()
 
 int Controllers::GraphicsController::create_window(const std::string& title, int height, int width)
 {
-	_window = std::make_shared<Models::Window>(title, height, width);
+	_window = std::make_unique<Models::Window>(title, height, width);
 	return _window->create();
 }
 
@@ -38,18 +38,18 @@ void Controllers::GraphicsController::update_window()
 	_window->update();
 }
 
-std::shared_ptr<Models::Window> Controllers::GraphicsController::get_window() const
+const std::unique_ptr<Models::Window>& Controllers::GraphicsController::get_window() const
 {
 	return _window;
 }
 
-int Graphics::Controllers::GraphicsController::get_fps()
+float Graphics::Controllers::GraphicsController::get_fps() const
 {
-	return _window->get_facade()->get_fps();
+	return _window->get_fps();
 }
 
-Uint32 Graphics::Controllers::GraphicsController::get_ticks() {
-	return _window->get_facade()->get_ticks();
+Uint32 Graphics::Controllers::GraphicsController::get_ticks() const {
+	return _window->get_ticks();
 }
 
 void Graphics::Controllers::GraphicsController::set_camera_pos(int x, int y)
@@ -57,7 +57,7 @@ void Graphics::Controllers::GraphicsController::set_camera_pos(int x, int y)
 	_window->set_camera_pos(x, y);
 }
 
-std::tuple<int, int> Graphics::Controllers::GraphicsController::get_camera_pos() const
+std::tuple<float, float> Graphics::Controllers::GraphicsController::get_camera_pos() const
 {
 	return _window->get_camera_pos();
 }
@@ -77,7 +77,7 @@ void Graphics::Controllers::GraphicsController::set_speed(float speed)
 	_speed = speed;
 }
 
-float Graphics::Controllers::GraphicsController::get_speed()
+float Graphics::Controllers::GraphicsController::get_speed() const
 {
 	return _speed;
 }
