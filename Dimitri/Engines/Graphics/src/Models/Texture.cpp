@@ -54,7 +54,7 @@ bool Graphics::Models::Texture::is_dynamic() const
 	return _is_dynamic;
 }
 
-std::string Models::Texture::get_path() const
+const std::string& Models::Texture::get_path() const
 {
 	return _path;
 }
@@ -64,7 +64,7 @@ Enums::FlipEnum Models::Texture::get_flip_status() const
 	return _flipstatus;
 }
 
-std::shared_ptr<Facades::TextureFacade> Models::Texture::get_texture_facade() const
+const std::shared_ptr<Facades::TextureFacade> Models::Texture::get_texture_facade() const
 {
 	return _facade;
 }
@@ -124,7 +124,7 @@ int Graphics::Models::Texture::get_opacity() const
 	return _opacity;
 }
 
-void Models::Texture::set_facade(const std::shared_ptr<Facades::TextureFacade>& facade)
+void Models::Texture::set_facade(const std::shared_ptr<Facades::TextureFacade> facade)
 {
 	_facade = facade;
 }

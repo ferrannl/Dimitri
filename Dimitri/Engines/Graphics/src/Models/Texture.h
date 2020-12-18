@@ -142,7 +142,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the path to the texture
 			*/
-			std::string get_path() const;
+			const std::string& get_path() const;
 
 			/**
 			* \brief Returns the flip direction
@@ -162,7 +162,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the TextureFacade
 			*/
-			std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
+			const std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
 
 			/**
 			* \brief Sets the x coordinate
@@ -223,7 +223,7 @@ namespace Graphics {
 			/**
 			* \brief Sets the facade
 			*/
-			void set_facade(const std::shared_ptr<Facades::TextureFacade>& facade);
+			void set_facade(const std::shared_ptr<Facades::TextureFacade> facade);
 
 			/**
 			* \brief Creates the TextureFacade
@@ -233,7 +233,7 @@ namespace Graphics {
 			/**
 			* \brief Checks if this Texure matches the given Texture
 			*/
-			virtual bool matches(const std::shared_ptr<Models::Texture>& texture) const = 0;
+			virtual bool matches(const std::shared_ptr<Models::Texture> texture) const = 0;
 		};
 	}
 }
