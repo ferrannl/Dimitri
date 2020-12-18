@@ -44,7 +44,7 @@ namespace Game {
 							});
 						break;
 					case Input::Enums::EventEnum::KEY_PRESS_ESC:
-						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute();
+						_factory->get_command(Enums::CommandEnum::PAUSE_LEVEL)->execute(-1);
 						break;
 					}
 					break;
