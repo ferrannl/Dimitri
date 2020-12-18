@@ -12,8 +12,6 @@ Game::Controllers::CheatsController::CheatsController() : Mediators::BaseCompone
 
 void Game::Controllers::CheatsController::initialize_textures(float height, float width)
 {
-
-
 	float window_width = width;
 	float window_height = height;
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };

@@ -30,8 +30,8 @@ std::shared_ptr<Models::Level> Builder::LevelBuilder::build(const std::pair<std:
 
 void Game::Builder::LevelBuilder::build_borders(std::shared_ptr<Game::Models::Level>& level)
 {
-	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0, level->get_height(), 1, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //top
-	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0, -1, 1, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //bot
-	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(-1, 0, level->get_height(), 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //lef
-	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(level->get_width(), 0, level->get_height(), 1, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //rig
+	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0.0f, level->get_height(), 1.0f, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //top
+	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(0.0f, -1.0f, 1.0f, level->get_width(), false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //bot
+	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(-1.0f, 0.0f, level->get_height(), 1.0f, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //lef
+	level->add_shape(std::make_shared<PhysicsCollision::Models::Shape>(level->get_width(), 0.0f, level->get_height(), 1.0f, false, false, PhysicsCollision::Enums::ShapeEnum::Square)); //rig
 }

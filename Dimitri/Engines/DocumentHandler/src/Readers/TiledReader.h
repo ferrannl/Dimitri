@@ -14,8 +14,8 @@ namespace DocumentHandler {
 	*/
 	namespace Readers {
 		/**
-		* \class CsvReader
-		* \brief Class contains the methods to read an tile file by path
+		* \class TiledReader
+		* \brief Class contains the methods to read a tile file by path
 		*/
 		class TiledReader {
 		public:
