@@ -25,7 +25,7 @@ namespace Audio {
 			*/
 			const std::string _path;
 		public:
-			IAudioFacade(const std::string path);
+			IAudioFacade(const std::string& path);
 
 			/**
 			* \brief Plays audio file

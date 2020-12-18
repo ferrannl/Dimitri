@@ -3,7 +3,7 @@
 
 using namespace Input;
 
-std::tuple<int, int> Facades::MouseFacade::get_mouse_position() const
+const std::tuple<int, int> Facades::MouseFacade::get_mouse_position() const
 {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
