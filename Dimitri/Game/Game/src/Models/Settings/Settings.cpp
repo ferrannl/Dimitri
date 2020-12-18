@@ -8,7 +8,7 @@ Game::Models::Settings::Settings(int save) : _save(save)
 	_save_file = _document_handler->Read(_save_path);
 	if (_save_file.size() != 0) {
 		if(_save_file.at(0).size() != 0){
-			_unlocked_level = _save_file.at(0).at(0);
+			_unlocked_level = std::stoi(_save_file.at(0).at(0));
 		}
 		else {
 			_save_file.at(0).push_back(0);
@@ -16,8 +16,8 @@ Game::Models::Settings::Settings(int save) : _save(save)
 		}
 	}
 	else {
-		std::vector<int> v{};
-		v.push_back(0);
+		std::vector<std::string> v{};
+		v.push_back(std::to_string(0));
 		_save_file.push_back(v);
 		_unlocked_level = 0;
 		_document_handler->Write(_save_path, _save_file);
@@ -63,6 +63,6 @@ void Game::Models::Settings::set_unlocked_level(int unlocked_level)
 		return;
 	}
 	_unlocked_level = unlocked_level;
-	_save_file.at(0).at(0) = _unlocked_level;
+	_save_file.at(0).at(0) = std::to_string(_unlocked_level);
 	_document_handler->Write(_save_path, _save_file);
 }

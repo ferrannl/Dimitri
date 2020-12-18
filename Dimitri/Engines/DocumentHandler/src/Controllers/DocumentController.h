@@ -37,11 +37,11 @@ namespace DocumentHandler {
 			/**
 			* \brief Reads from a file
 			*/
-			std::vector<std::vector<int>> Read(const std::string& path);
+			std::vector<std::vector<std::string>> Read(const std::string& path);
 			/**
 			* \brief Writes to a file
 			*/
-			void Write(const std::string& path, std::vector<std::vector<int>> data);
+			void Write(const std::string& path, std::vector<std::vector<std::string>> data);
 		};
 	}
 }

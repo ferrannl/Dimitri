@@ -22,7 +22,7 @@ std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vecto
 	}
 }
 
-void DocumentHandler::Controllers::DocumentController::Write(const std::string& path, std::vector<std::vector<int>> data)
+void DocumentHandler::Controllers::DocumentController::Write(const std::string& path, std::vector<std::vector<std::string>> data)
 {
 	fs::path filePath = path;
 
@@ -32,7 +32,7 @@ void DocumentHandler::Controllers::DocumentController::Write(const std::string& 
 	}
 }
 
-std::vector<std::vector<int>> DocumentHandler::Controllers::DocumentController::Read(const std::string& path) {
+std::vector<std::vector<std::string>> DocumentHandler::Controllers::DocumentController::Read(const std::string& path) {
 
 	fs::path filePath = path;
 

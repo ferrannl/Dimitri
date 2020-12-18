@@ -19,7 +19,7 @@ namespace DocumentHandler {
 			/**
 			* \brief calls the needed reader by file header and returns vector
 			*/
-			virtual std::vector<std::vector<int>> Read(const std::filesystem::path& path) = 0;
+			virtual std::vector<std::vector<std::string>> Read(const std::filesystem::path& path) = 0;
 		};
 	}
 }

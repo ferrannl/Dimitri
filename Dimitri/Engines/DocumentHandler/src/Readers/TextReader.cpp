@@ -4,9 +4,9 @@
 #include <sstream>
 using namespace std;
 
-std::vector<std::vector<int>> DocumentHandler::Readers::TextReader::Read(const std::filesystem::path& path)
+std::vector<std::vector<std::string>> DocumentHandler::Readers::TextReader::Read(const std::filesystem::path& path)
 {
-	std::vector<std::vector<int>> result;
+	std::vector<std::vector<std::string>> result;
 
 	// Create a text string, which is used to output the text file
 	string output;
@@ -19,10 +19,10 @@ std::vector<std::vector<int>> DocumentHandler::Readers::TextReader::Read(const s
 		// Output the text from the file
 		cout << output;
 		if (output == "next") {
-			result.push_back(std::vector<int>());
+			result.push_back(std::vector<std::string>());
 		}
 		else {
-			result.back().push_back(stoi(output));
+			result.back().push_back(output);
 		}
 	}
 

@@ -13,10 +13,10 @@ namespace Game {
 	*/
 	namespace Models {
 		/**
-		* \class Settings
-		* \brief Class contains the settings for level and logic for saves
+		* \class Highscore
+		* \brief Class contains the information for highscore 
 		*/
-		class Settings {
+		class Highscore {
 		private:
 			/**
 			* \brief Current save
@@ -24,10 +24,10 @@ namespace Game {
 			int _save;
 
 			/**
-			* \brief Current Level 
+			* \brief Current Level
 			*/
 			int _current_level;
-	
+
 			/**
 			* \brief Current Level
 			*/
@@ -42,14 +42,14 @@ namespace Game {
 			* \brief Path to save file
 			*/
 			std::string _save_path;
-			
+
 			/**
 			* \brief Save File
 			*/
-			std::vector<std::vector<std::string>> _save_file;
+			std::vector<std::vector<int>> _save_file;
 
 		public:
-			Settings(int save);
+			Highscore(int save);
 			/**
 			* \brief Returns current level
 			*/
@@ -58,24 +58,6 @@ namespace Game {
 			* \brief Sets current level
 			*/
 			void set_current_level(int current_level);
-
-			/**
-			* \brief Returns save
-			*/
-			int get_save();
-			/**
-			* \brief Sets save
-			*/
-			void set_save(int save);
-
-			/**
-			* \brief Returns unlocked level
-			*/
-			int get_unlocked_level();
-			/**
-			* \brief Sets unlocked level
-			*/
-			void set_unlocked_level(int unlocked_level);
 		};
 	}
 }

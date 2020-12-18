@@ -21,7 +21,7 @@ namespace DocumentHandler {
 			/**
 			* \brief Reads the text file
 			*/
-			std::vector<std::vector<int>> Read(const std::filesystem::path& path);
+			std::vector<std::vector<std::string>> Read(const std::filesystem::path& path);
 		};
 	}
 }

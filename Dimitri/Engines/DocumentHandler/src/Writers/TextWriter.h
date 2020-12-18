@@ -21,7 +21,7 @@ namespace DocumentHandler {
 			/**
 			* \brief Writes to text file
 			*/
-			void Write(const std::string& path, std::vector<std::vector<int>> data);
+			void Write(const std::string& path, std::vector<std::vector<std::string>> data);
 		};
 	}
 }

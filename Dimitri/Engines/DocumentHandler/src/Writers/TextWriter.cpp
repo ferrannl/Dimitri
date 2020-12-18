@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-void DocumentHandler::Writers::TextWriter::Write(const std::string& path, std::vector<std::vector<int>> data)
+void DocumentHandler::Writers::TextWriter::Write(const std::string& path, std::vector<std::vector<std::string>> data)
 {
 	//create/open file
 	ofstream File(path);
@@ -13,7 +13,7 @@ void DocumentHandler::Writers::TextWriter::Write(const std::string& path, std::v
 	for (auto vec : data) {
 		File << "next\n";
 		for (auto num : vec) {
-			File << to_string(num) + "\n";
+			File << num + "\n";
 		}
 	}
 
