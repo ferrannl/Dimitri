@@ -63,7 +63,7 @@ namespace Graphics {
 			/**
 			* \brief Returns a Texture if a matching Texture already exists
 			*/
-			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture> texture) const;
 		public:
 			Window(const std::string& title, int height, int width);
 
@@ -91,12 +91,12 @@ namespace Graphics {
 			/**
 			* \brief Adds the Texture to _textures
 			*/
-			void add_texture(const std::shared_ptr<Texture>& texture);
+			void add_texture(const std::shared_ptr<Texture> texture);
 
 			/**
 			* \brief Removes the Texture from _textures
 			*/
-			void remove_texture(const std::shared_ptr<Texture>& texture);
+			void remove_texture(const std::shared_ptr<Texture> texture);
 
 			/**
 			* \brief Clears all Textures from _textures
@@ -106,7 +106,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the Textures
 			*/
-			std::vector<std::shared_ptr<Texture>> get_textures() const;
+			const std::vector<std::shared_ptr<Texture>>& get_textures() const;
 
 			/**
 			* \brief Returns the height of the Window
@@ -121,7 +121,7 @@ namespace Graphics {
 			/**
 			* \brief Returns the title of the window
 			*/
-			const std::string get_title() const;
+			const std::string& get_title() const;
 
 			/**
 			* \brief Returns the fps
@@ -156,7 +156,7 @@ namespace Graphics {
 			/**
 			* \brief Returns timer
 			*/
-			std::shared_ptr<Utility::Time::Timer> get_timer() const;
+			const std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

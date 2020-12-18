@@ -63,7 +63,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Returns all the Shapes in the World
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			const std::vector<std::shared_ptr<Models::Shape>>& get_shapes()const;
 		};
 	}
 }
