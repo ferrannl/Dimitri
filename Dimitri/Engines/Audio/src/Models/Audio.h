@@ -27,19 +27,19 @@ namespace Audio {
 			/**
 			* \brief The Audio Facade containing all methods and references to play audio
 			*/
-			const std::shared_ptr<Interfaces::IAudioFacade> _audio_facade;
+			const std::unique_ptr<Interfaces::IAudioFacade> _audio_facade;
 
 			/**
 			* \brief The volume of the current audio
 			*/
 			int _volume;
 		public:
-			Audio(const std::string name, std::shared_ptr<Interfaces::IAudioFacade> audio_facade, int volume);
+			Audio(const std::string& name, std::unique_ptr<Interfaces::IAudioFacade> audio_facade, int volume);
 
 			/**
 			* \brief Returns the name of the Audio
 			*/
-			std::string get_name() const;
+			const std::string get_name() const;
 
 			/**
 			* \brief Returns the volume of the Audio
@@ -49,7 +49,7 @@ namespace Audio {
 			/**
 			* \brief Returns the %Audio Facade
 			*/
-			std::shared_ptr<Interfaces::IAudioFacade> get_audio_facade() const;
+			const std::unique_ptr<Interfaces::IAudioFacade>& get_audio_facade() const;
 		};
 	}
 }

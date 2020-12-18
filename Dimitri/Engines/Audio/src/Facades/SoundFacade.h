@@ -30,7 +30,7 @@ namespace Audio {
 			*/
 			const int _channel;
 		public:
-			SoundFacade(const std::string path, int channel, int volume);
+			SoundFacade(const std::string& path, int channel, int volume);
 
 			/**
 			* \brief Plays the audio file using SDL_Mixer
@@ -56,7 +56,7 @@ namespace Audio {
 			* \brief Stops the audio file using SDL_Mixer
 			*/
 			void stop() const;
-			
+
 			/**
 			* \brief Checks if the audio file is playing
 			*/

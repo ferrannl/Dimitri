@@ -21,9 +21,9 @@ namespace Game {
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("E", color, bg_width / 4 - 135, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("Esc", color, bg_width / 3 - 22, bg_height / 4 * 3, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("W", color, bg_width / 2 - 142, bg_height / 4 + 70, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("A", color, bg_width / 2 - 222, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("D", color, bg_width / 2 - 70, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("/\\", color, bg_width / 2 - 147, bg_height / 4 + 70, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>("<", color, bg_width / 2 - 222, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
+		_textures.push_back(std::make_shared<Graphics::Models::Text>(">", color, bg_width / 2 - 70, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 
 		color = { 255, 255, 255 };
 

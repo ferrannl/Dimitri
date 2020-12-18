@@ -30,7 +30,7 @@ namespace Audio {
 			*/
 			int _volume;
 		public:
-			IAudioFacade(const std::string path, int volume);
+			IAudioFacade(const std::string& path, int volume);
 
 			/**
 			* \brief Plays audio file

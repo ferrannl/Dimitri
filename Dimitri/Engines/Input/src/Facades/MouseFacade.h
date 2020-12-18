@@ -20,7 +20,7 @@ namespace Input {
 			/**
 			* \brief Returns the X and Y position of the mouse relative to the left corner of the window
 			*/
-			std::tuple<int, int> get_mouse_position() const;
+			const std::tuple<int, int> get_mouse_position() const;
 		};
 	}
 }

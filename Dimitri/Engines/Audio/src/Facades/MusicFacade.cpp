@@ -5,10 +5,8 @@
 using namespace Audio;
 
 
-Facades::MusicFacade::MusicFacade(const std::string path, int volume) : Interfaces::IAudioFacade(path, volume), _music(nullptr, Mix_FreeMusic) {
-
+Facades::MusicFacade::MusicFacade(const std::string& path, int volume) : Interfaces::IAudioFacade(path, volume), _music(nullptr, Mix_FreeMusic) {
 	Mix_VolumeMusic(_volume);
-
 	_music.reset(Mix_LoadMUS(_path.c_str()));
 	if (_music == NULL)
 	{

@@ -20,7 +20,7 @@ namespace Input {
 			/**
 			* \brief Translates SDL events to EventEnum that are fires by a keyboard
 			*/
-			Enums::EventEnum translate_to_enum(const SDL_Event event) const;
+			Enums::EventEnum translate_to_enum(const SDL_Event& event) const;
 		};
 	}
 }
