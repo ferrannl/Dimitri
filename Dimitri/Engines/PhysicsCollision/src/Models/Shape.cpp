@@ -102,7 +102,7 @@ void Models::Shape::move_y()const
 	_shape_facade->move_y();
 }
 
-bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape>& shape)const
+bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape>& shape) const
 {
 	return get_x() - 1 <= shape->get_x() + shape->get_width() &&
 		get_x() + get_width() + 1 >= shape->get_x() &&
@@ -110,7 +110,7 @@ bool Models::Shape::check_square_collision(const std::shared_ptr<Models::Shape>&
 		get_y() + get_height() + 1 >= shape->get_y();
 }
 
-bool Models::Shape::check_bottom_collision(const std::shared_ptr<Models::Shape>& shape)const
+bool Models::Shape::check_bottom_collision(const std::shared_ptr<Models::Shape>& shape) const
 {
 	const float collision_height = 1.0;
 

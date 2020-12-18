@@ -49,7 +49,7 @@ namespace PhysicsCollision {
 			/**
 			* \brief Returns _shapes
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes() const;
+			const std::vector<std::shared_ptr<Models::Shape>>& get_shapes() const;
 
 			/**
 			* \brief Destroys the bodies from all Shapes in _shapes

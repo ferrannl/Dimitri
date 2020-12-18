@@ -33,7 +33,7 @@ void Models::World::simulate(float speed)const
 	_world_facade->simulate(speed);
 }
 
-std::vector<std::shared_ptr<Models::Shape>> Models::World::get_shapes()const
+const std::vector<std::shared_ptr<Models::Shape>>& Models::World::get_shapes()const
 {
 	return _shapes;
 }
