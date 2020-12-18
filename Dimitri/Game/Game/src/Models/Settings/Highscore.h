@@ -24,16 +24,6 @@ namespace Game {
 			int _save;
 
 			/**
-			* \brief Current Level
-			*/
-			int _current_level;
-
-			/**
-			* \brief Current Level
-			*/
-			int _unlocked_level;
-
-			/**
 			* \brief Document Handler
 			*/
 			std::unique_ptr<DocumentHandler::Controllers::DocumentController> _document_handler;
@@ -46,18 +36,20 @@ namespace Game {
 			/**
 			* \brief Save File
 			*/
-			std::vector<std::vector<int>> _save_file;
+			std::vector<std::vector<std::string>> _save_file;
 
 		public:
 			Highscore(int save);
+			
 			/**
-			* \brief Returns current level
+			* \brief Returns current highscores for level
 			*/
-			int get_current_level();
+			std::vector<std::string> get_highscores(int level) const;
+
 			/**
-			* \brief Sets current level
+			* \brief Add highscore to level
 			*/
-			void set_current_level(int current_level);
+			void add_highscore(int level, const std::string& highscore);
 		};
 	}
 }
