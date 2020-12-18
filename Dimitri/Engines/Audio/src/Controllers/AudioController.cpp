@@ -108,7 +108,7 @@ void Controllers::AudioController::stop_audio(const std::string name) const
 	}
 }
 
-void Controllers::AudioController::control_music(const std::string name, int volume)
+void Controllers::AudioController::control_volume(const std::string& name, int volume)
 {
 	try {
 		get_audio_by_name(name)->get_audio_facade()->set_volume(volume);

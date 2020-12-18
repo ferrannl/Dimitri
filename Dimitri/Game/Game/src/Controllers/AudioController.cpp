@@ -37,7 +37,7 @@ void Controllers::AudioController::resume_audio(const std::string name)
 
 void Controllers::AudioController::set_volume(const std::string name, int vol)
 {
-	_audio_controller->control_music(name, vol);
+	_audio_controller->control_volume(name, vol);
 }
 
 bool Game::Controllers::AudioController::is_playing(const std::string name)

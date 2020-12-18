@@ -85,8 +85,10 @@ namespace Audio {
 			*/
 			void stop_audio(const std::string name) const;
 
-
-			void control_music(const std::string name, int volume);
+			/**
+			* \brief Controls the volumeo of the sound/music
+			*/
+			void control_volume(const std::string& name, int volume);
 
 			/**
 			* \brief Checks if the Audio by the given name is playing
