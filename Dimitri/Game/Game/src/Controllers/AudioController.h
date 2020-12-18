@@ -59,7 +59,7 @@ namespace Game {
 			/**
 			* \brief Sets the volume of the Audio
 			*/
-			void set_volume(const std::string name, int vol);
+			void set_volume(const std::string& name, int vol);
 
 			/**
 			* \brief Returns if the Audio is playing

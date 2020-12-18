@@ -35,7 +35,7 @@ void Controllers::AudioController::resume_audio(const std::string name)
 	_audio_controller->resume_audio(name);
 }
 
-void Controllers::AudioController::set_volume(const std::string name, int vol)
+void Controllers::AudioController::set_volume(const std::string& name, int vol)
 {
 	_audio_controller->control_volume(name, vol);
 }

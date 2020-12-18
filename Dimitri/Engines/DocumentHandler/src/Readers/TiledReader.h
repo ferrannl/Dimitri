@@ -15,14 +15,18 @@ namespace DocumentHandler {
 	namespace Readers {
 		/**
 		* \class CsvReader
-		* \brief Class contains the methods to read an csv file by path
+		* \brief Class contains the methods to read an tile file by path
 		*/
 		class TiledReader {
 		public:
 			/**
-			* \brief Reads the csv file
+			* \brief Reads the tiled file
 			*/
 			std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> Read(const std::filesystem::path& path);
+			
+			/**
+			* \brief Reads the tiles
+			*/
 			std::vector<std::vector<int>> ReadTiles(const std::vector<uint32_t>& tiles, int width);
 		};
 	}

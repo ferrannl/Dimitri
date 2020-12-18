@@ -1,8 +1,7 @@
 #include "Object.h"
-#include <mutex>  
 
 using namespace Game;
-std::mutex mtx;
+
 Models::Object::Object(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _direction{ state }, _center{ center }
 {
 	_angle = 0.0f;
@@ -12,7 +11,7 @@ Models::Object::Object(float x, float y, float z, float height, float width, Enu
 
 std::shared_ptr<Graphics::Models::Texture> Models::Object::get_texture()
 {
-	mtx.lock();
+	_mtx.lock();
 
 	std::shared_ptr<Graphics::Models::Texture> texture = _textures[_animatestate];
 	texture->set_x(this->get_x());
@@ -21,7 +20,7 @@ std::shared_ptr<Graphics::Models::Texture> Models::Object::get_texture()
 	texture->set_height(this->_height);
 	texture->set_width(this->_width);
 
-	mtx.unlock();
+	_mtx.unlock();
 
 	return texture;
 }

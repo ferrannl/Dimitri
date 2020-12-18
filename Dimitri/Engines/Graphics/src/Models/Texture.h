@@ -212,7 +212,7 @@ namespace Graphics {
 			/**
 			* \brief Sets the center
 			*/
-			void set_center(const Models::Center center);
+			void set_center(const Models::Center& center);
 
 			/**
 			* \brief Returns the opacity of the Texture
