@@ -2,7 +2,7 @@
 
 using namespace Game;
 
-Models::Object::Object(float x, float y, float z, float height, float width, Enums::DirectionEnum state, Graphics::Models::Center center) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _direction{ state }, _center{ center }
+Models::Object::Object(float x, float y, float z, float height, float width, Enums::DirectionEnum state, const Graphics::Models::Center& center) : _x{ x }, _y{ y }, _z{ z }, _width{ width }, _height{ height }, _direction{ state }, _center{ center }
 {
 	_angle = 0.0f;
 	_animatestate = Enums::AnimateEnum::IDLE1;

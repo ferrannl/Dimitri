@@ -92,7 +92,7 @@ namespace Game {
 			*/
 			virtual void initialize_textures() = 0;
 		public:
-			Object(const float x, const float y, const float z, const float height, const float width, Enums::DirectionEnum state, const Graphics::Models::Center center);
+			Object(float x, float y, float z, float height, float width, Enums::DirectionEnum state, const Graphics::Models::Center& center);
 
 			/**
 			* \brief Returns the Texture based on state

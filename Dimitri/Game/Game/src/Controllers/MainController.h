@@ -134,7 +134,7 @@ namespace Game {
 			/**
 			* \brief Returns the SaveGameController
 			*/
-			std::shared_ptr<Controllers::SaveGameController> get_save_game_controller() const;
+			const std::shared_ptr<Controllers::SaveGameController>& get_save_game_controller() const;
 
 			/**
 			* \brief Returns the HomeController
