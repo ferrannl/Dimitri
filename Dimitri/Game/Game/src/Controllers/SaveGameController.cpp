@@ -60,6 +60,7 @@ void Game::Controllers::SaveGameController::load_buttons()
 		counter++;
 		j++;
 	}
+
 }
 
 void Game::Controllers::SaveGameController::update(const Game::Events::InputEvent& object)
@@ -75,5 +76,6 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::SaveG
 			button_textures.push_back(t);
 		}
 	}
+	button_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _scene_height, _scene_width, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/home_bg_emtpy.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0, 0 }, true));
 	return button_textures;
 }

@@ -8,11 +8,15 @@ namespace Game {
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			auto i_ctrl = _main_controller->get_input_controller();
-			auto save_game_ctrl = _main_controller->get_save_game_controller();
 			auto h_ctrl = _main_controller->get_home_controller();
 			if (!w_ctrl->is_active(Enums::ViewEnum::SAVE_GAME)) {
 				i_ctrl->unsubscribe(h_ctrl);
 				w_ctrl->clear_views();
+				
+				_main_controller->set_save_game_controller(std::make_shared<Controllers::SaveGameController>(w_ctrl->get_window_height(), w_ctrl->get_window_width()));
+				auto save_game_ctrl = _main_controller->get_save_game_controller();
+				w_ctrl->set_textures(save_game_ctrl->get_textures(), Enums::ViewEnum::SAVE_GAME);
+
 				w_ctrl->open_view(Enums::ViewEnum::SAVE_GAME);
 				w_ctrl->open_view(Enums::ViewEnum::FPS);
 				w_ctrl->set_scene_size(w_ctrl->get_window_height(), w_ctrl->get_window_width());

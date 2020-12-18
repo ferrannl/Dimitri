@@ -187,6 +187,11 @@ namespace Game {
 			* \brief Sets settings
 			*/
 			void set_settings(const std::shared_ptr<Models::Settings>& settings);
+
+			/**
+			* \brief Sets Save Game Controller
+			*/
+			void  set_save_game_controller(const std::shared_ptr<Controllers::SaveGameController>& save_game_controller);
 		};
 	}
 }
