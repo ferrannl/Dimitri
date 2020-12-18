@@ -68,7 +68,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Cheat
 	return all_textures;
 }
 
-const std::shared_ptr<Game::Models::CheatsSettings>& Game::Controllers::CheatsController::get_cheat_settings() const
+std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::CheatsController::get_cheat_settings() const
 {
 	return _settings;
 }

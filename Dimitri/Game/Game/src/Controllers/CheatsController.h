@@ -57,7 +57,7 @@ namespace Game {
 			/**
 			* \brief Returns cheat settings
 			*/
-			const std::shared_ptr<Game::Models::CheatsSettings>& get_cheat_settings() const;
+			std::shared_ptr<Game::Models::CheatsSettings> get_cheat_settings() const;
 		};
 	}
 }

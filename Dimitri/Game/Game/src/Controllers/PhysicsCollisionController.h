@@ -38,12 +38,12 @@ namespace Game {
 			/**
 			* \brief Destroys a body in the World
 			*/
-			void destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape);
+			void destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
 
 			/**
 			* \brief Loads the Shape into the World
 			*/
-			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape);
+			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
 
 			/**
 			* \brief Setup world

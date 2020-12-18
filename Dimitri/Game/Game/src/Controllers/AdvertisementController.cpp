@@ -28,7 +28,7 @@ void Game::Controllers::AdvertisementController::load_advertisements()
 	}
 }
 
-const std::vector<std::shared_ptr<Graphics::Models::Texture>>& Game::Controllers::AdvertisementController::get_textures() const
+ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::AdvertisementController::get_textures() const
 {
 	return _advertisements;
 }

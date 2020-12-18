@@ -251,7 +251,7 @@ void Game::Controllers::LevelController::update_cheats(std::shared_ptr<Game::Mod
 	_level->get_player()->set_jumps(settings->get_amount_of_jumps());
 }
 
-const std::shared_ptr<Game::Models::CheatsSettings>& Game::Controllers::LevelController::get_cheats_settings()
+std::shared_ptr<Game::Models::CheatsSettings> Game::Controllers::LevelController::get_cheats_settings()
 {
 	return _settings;
 }

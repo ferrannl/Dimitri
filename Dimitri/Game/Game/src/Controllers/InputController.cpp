@@ -23,11 +23,11 @@ void Game::Controllers::InputController::notify(const Game::Events::InputEvent& 
 	}
 }
 
-void Game::Controllers::InputController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>& observer) {
+void Game::Controllers::InputController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>> observer) {
 	_observers.push_back(observer);
 }
 
-void Game::Controllers::InputController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>>& observer)
+void Game::Controllers::InputController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Game::Events::InputEvent>> observer)
 {
 	if (std::find(_observers.begin(), _observers.end(), observer) != _observers.end()) {
 		_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
