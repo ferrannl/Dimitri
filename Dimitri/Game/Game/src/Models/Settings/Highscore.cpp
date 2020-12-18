@@ -1,5 +1,6 @@
 #include "Highscore.h"
 #include <src\Helpers\BasePathHelper.h>
+#include <algorithm>
 
 Game::Models::Highscore::Highscore(int save) : _save{save}
 {
@@ -48,11 +49,13 @@ std::vector<std::string> Game::Models::Highscore::get_highscores(int level) cons
 			result.push_back(score);
 		}
 	}
+	std::sort(result.begin(), result.end());
 	return result;
 }
 
 void Game::Models::Highscore::add_highscore(int level, const std::string& highscore)
 {
+	_save_file = _document_handler->Read(_save_path);
 	_save_file.at(level + 1).push_back(highscore);
 	_document_handler->Write(_save_path, _save_file);
 }
