@@ -17,7 +17,6 @@ std::vector<std::vector<std::string>> DocumentHandler::Readers::TextReader::Read
 	// Use a while loop together with the getline() function to read the file line by line
 	while (getline(file, output)) {
 		// Output the text from the file
-		cout << output;
 		if (output == "next") {
 			result.push_back(std::vector<std::string>());
 		}
