@@ -87,6 +87,7 @@
     <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
     <ClCompile Include="src\Views\CheatsView.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
+    <ClCompile Include="src\Factory\TutorialFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -185,5 +186,6 @@
     <ClInclude Include="src\Models\Settings\CheatsSettings.h" />
     <ClInclude Include="src\Views\CheatsView.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
+    <ClInclude Include="src\Factory\TutorialFactory.h" />
   </ItemGroup>
 </Project>
