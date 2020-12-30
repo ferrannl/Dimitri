@@ -207,6 +207,8 @@ void Game::Models::Player::update_state()
 
 	_lastx = _x;
 	_lasty = _y;
+
+
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Player::get_extra_textures()

@@ -40,7 +40,7 @@ void Controllers::LevelController::load_buttons()
 	float w = 200;
 	float h = 30;
 	float w_text;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -53,7 +53,7 @@ void Controllers::LevelController::load_buttons()
 	// game over
 	_button_map = { { "Try again", Enums::ButtonEnum::GAMEOVER_START }, { "Back to home", Enums::ButtonEnum::GAMEOVER_HOME } };
 	i = 0;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -66,7 +66,7 @@ void Controllers::LevelController::load_buttons()
 	// win
 	_button_map = { { "Back to home", Enums::ButtonEnum::WIN_HOME } };
 	i = 0;
-	for (auto b : _button_map) {
+	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
 			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
@@ -180,7 +180,7 @@ void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>
 {
 	for (std::shared_ptr<Models::Object> l : _level->get_updatables()) {
 		if (l->get_x() == std::get<0>(pos) && l->get_y() == std::get<1>(pos)) {
-			l->get_texture()->toggle_visible();
+			l->toggle_visibility();
 		}
 	}
 }
@@ -223,10 +223,11 @@ void  Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
 		sleep_for(36ms);
 
-		for (std::shared_ptr<Models::Updatable> object : _level->get_updatables())
+		for (const std::shared_ptr<Models::Updatable>& object : _level->get_updatables())
 		{
 			object->update_object(this);
 		}
+
 		_level->get_player()->update_state();
 	}
 }

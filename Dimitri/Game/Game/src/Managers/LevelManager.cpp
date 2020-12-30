@@ -6,7 +6,7 @@
 
 using namespace Game;
 
-Game::Managers::LevelManager::LevelManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::LevelController> level_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller)
+Game::Managers::LevelManager::LevelManager(std::shared_ptr<Game::Controllers::InputController>& input_controller, std::shared_ptr<Game::Controllers::LevelController>& level_controller, std::shared_ptr<Game::Controllers::WindowController>& window_controller, std::shared_ptr<Game::Controllers::HomeController>& home_controller)
 {
 	_input_controller = input_controller;
 	_window_controller = window_controller;

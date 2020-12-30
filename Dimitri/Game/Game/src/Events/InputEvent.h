@@ -18,7 +18,7 @@ namespace Game {
 		*/
 		class InputEvent {
 		public:
-			InputEvent(Input::Enums::EventEnum event_enum, std::tuple<int, int> mouse_pos);
+			InputEvent(Input::Enums::EventEnum event_enum, const std::tuple<int, int>& mouse_pos);
 
 			/**
 			* \brief An instance of EventEnums that represent the pressed key

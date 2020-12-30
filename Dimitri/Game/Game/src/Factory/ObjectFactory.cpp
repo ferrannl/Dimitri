@@ -1,9 +1,9 @@
 #include "ObjectFactory.h"
-#include "../Models/IObjects/Wall.h"
-#include "../Models/IObjects/Lamp.h"
-#include "../Models/IObjects/Camera.h"
-#include "../Models/IObjects/FloorCorner.h"
-#include "../Models/IObjects/Floor.h"
+#include "../Models/Objects/Wall.h"
+#include "../Models/Objects/Lamp.h"
+#include "../Models/Objects/Camera.h"
+#include "../Models/Objects/FloorCorner.h"
+#include "../Models/Objects/Floor.h"
 
 using namespace Game;
 

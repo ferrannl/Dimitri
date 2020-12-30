@@ -67,12 +67,12 @@ namespace Input {
 			/**
 			* \brief Subscribes on this observable
 			*/
-			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer);
+			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
 
 			/**
 			* \brief Unsubscribes on this observable
 			*/
-			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer);
+			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
 			
 			/**
 			* \brief Notifies observers if event is fired

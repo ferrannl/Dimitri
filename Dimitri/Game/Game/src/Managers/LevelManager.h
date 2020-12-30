@@ -59,7 +59,7 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Controllers::WindowController> _window_controller;
 		public:
-			LevelManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::LevelController> level_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
+			LevelManager(std::shared_ptr<Game::Controllers::InputController>& input_controller, std::shared_ptr<Game::Controllers::LevelController>& level_controller, std::shared_ptr<Game::Controllers::WindowController>& window_controller, std::shared_ptr<Game::Controllers::HomeController>& home_controller);
 
 			/**
 			* \brief Loads a level

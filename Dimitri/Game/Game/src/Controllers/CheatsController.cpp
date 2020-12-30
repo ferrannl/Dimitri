@@ -50,6 +50,7 @@ void Game::Controllers::CheatsController::update(const Game::Events::InputEvent&
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::CheatsController::get_textures() const
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> all_textures;
+	
 	//gets all buttons textures
 	for (auto& b : get_buttons()) {
 		for (auto& t : b->get_textures()) {
@@ -60,6 +61,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::Cheat
 	for (auto& b : _textures) {
 		all_textures.push_back(b);
 	}
+
 	return all_textures;
 }
 

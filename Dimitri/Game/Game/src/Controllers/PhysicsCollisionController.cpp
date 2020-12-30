@@ -15,12 +15,12 @@ void Game::Controllers::PhysicsCollisionController::destroy_shapes()
 	_world_controller->destroy_bodies();
 }
 
-void Game::Controllers::PhysicsCollisionController::destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape)
+void Game::Controllers::PhysicsCollisionController::destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
 	_world_controller->destroy_body(_shape);
 }
 
-void Game::Controllers::PhysicsCollisionController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& _shape)
+void Game::Controllers::PhysicsCollisionController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
 	_world_controller->load_shape(_shape);
 }
