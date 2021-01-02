@@ -42,6 +42,11 @@ namespace DocumentHandler {
 			* \brief Writes to a file
 			*/
 			void Write(const std::string& path, std::vector<std::vector<std::string>> data);
+			
+			/**
+			* \brief Checks if directory exists if not creates one
+			*/
+			void CheckIfDirectoryExists(const std::string& path);
 		};
 	}
 }

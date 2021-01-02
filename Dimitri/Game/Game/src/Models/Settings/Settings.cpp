@@ -4,6 +4,7 @@
 Game::Models::Settings::Settings(int save) : _save(save)
 {
 	_document_handler = std::make_unique<DocumentHandler::Controllers::DocumentController>();
+	_document_handler->CheckIfDirectoryExists(std::string{ Utility::Helpers::get_base_path() + "/assets/saves" });
 	_save_path = std::string{ Utility::Helpers::get_base_path() + "/assets/saves/save" + std::to_string(_save) + ".txt" };
 	_save_file = _document_handler->Read(_save_path);
 	if (_save_file.size() != 0) {

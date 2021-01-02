@@ -32,6 +32,13 @@ void DocumentHandler::Controllers::DocumentController::Write(const std::string& 
 	}
 }
 
+void DocumentHandler::Controllers::DocumentController::CheckIfDirectoryExists(const std::string& path)
+{
+	if (!fs::exists(path)) {
+		fs::create_directory(path);
+	}
+}
+
 std::vector<std::vector<std::string>> DocumentHandler::Controllers::DocumentController::Read(const std::string& path) {
 
 	fs::path filePath = path;
