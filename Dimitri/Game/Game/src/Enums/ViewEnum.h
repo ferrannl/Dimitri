@@ -31,7 +31,8 @@ namespace Game {
 			SAVE_GAME,
 			CHEATS,
 			LEVEL_TRANSITION,
-			GAMEPLAYSPEED
+			GAMEPLAYSPEED,
+			LEVEL_SELECTOR
 		};
 	}
 }

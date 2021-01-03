@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Opens the cheats view
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

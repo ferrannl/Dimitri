@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Makes the player interact
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

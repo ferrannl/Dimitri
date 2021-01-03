@@ -61,6 +61,7 @@ namespace Game {
 			* \brief An instance of the Window Controller
 			*/
 			std::shared_ptr<Game::Controllers::WindowController> _window_controller;
+
 		public:
 			HighscoreManager(std::shared_ptr<Game::Controllers::InputController> input_controller, std::shared_ptr<Game::Controllers::AudioController> audio_controller, std::shared_ptr<Game::Controllers::WindowController> window_controller, std::shared_ptr<Game::Controllers::HomeController> home_controller);
 

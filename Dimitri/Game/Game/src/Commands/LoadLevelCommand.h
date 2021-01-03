@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Loads the level
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

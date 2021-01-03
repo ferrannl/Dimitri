@@ -8,24 +8,8 @@
 using namespace Game;
 
 Controllers::LevelController::LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller) :
-	_window_controller{ window_controller }, Mediators::BaseComponent("LevelController")
+	_window_controller{ window_controller }, _audio_controller{ audio_controller }, Mediators::BaseComponent("LevelController")
 {
-	DocumentHandler::Controllers::DocumentController ctrl;
-
-	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/level1.json");
-	Builder::LevelBuilder builder{};
-	_level = builder.build(ret, audio_controller, window_controller);
-	_level->load_objects();
-	_level->add_music("level1", "/assets/audio/billy.wav");
-	_level->add_sound("failed", "/assets/audio/failed.wav");
-	_level->add_music("secret", "/assets/audio/rasputin.mp3");
-	_level->add_music("transition", "/assets/audio/running.wav");
-	_level->add_sound("danger", "/assets/audio/danger.wav");
-	_level->add_sound("switch", "/assets/audio/switch.wav");
-	_level->add_sound("win", "/assets/audio/win.wav");
-	_level->add_sound("enemynear", "/assets/audio/enemynearby.mp3", 0);
-
-	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
 void Controllers::LevelController::load_buttons()
@@ -43,8 +27,8 @@ void Controllers::LevelController::load_buttons()
 	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
-			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 105, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 106, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::PAUSED, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
@@ -56,8 +40,8 @@ void Controllers::LevelController::load_buttons()
 	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
-			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 105, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 106, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::GAME_OVER, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
@@ -69,8 +53,8 @@ void Controllers::LevelController::load_buttons()
 	for (auto& b : _button_map) {
 		w_text = b.first.length() * 10;
 		t = {
-			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 5, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
-			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 6, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
+			std::make_shared<Graphics::Models::Sprite>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 105, h, w, 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/button.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0,0 }, false),
+			std::make_shared<Graphics::Models::Text>(b.first, color, _window_controller->get_window_width() / 2 - (w_text / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), 106, h, w_text, 0, path, true, Graphics::Models::Center{ 0, 0 }, false)
 		};
 		_buttons.push_back({ Enums::LevelStateEnum::WIN, std::make_unique<Models::Button>(_window_controller->get_window_width() / 2 - (w / 2), _window_controller->get_window_height() / 2 - (25 + 50 * i), h, w, t, b.second) });
 		i++;
@@ -111,6 +95,25 @@ void Game::Controllers::LevelController::set_speed(float speed)
 float Game::Controllers::LevelController::get_speed()const
 {
 	return _level->get_speed();
+}
+
+void Game::Controllers::LevelController::setup_level(const std::string& level)
+{
+	DocumentHandler::Controllers::DocumentController ctrl;
+
+	std::pair<std::vector<std::pair<int, std::vector<std::vector<int>>>>, std::vector<std::vector<std::pair<std::string, std::any>>>> ret = ctrl.ReadTiledLevel(Utility::Helpers::get_base_path() + "/assets/levels/" + level + ".json");
+	Builder::LevelBuilder builder{};
+	_level = builder.build(ret, _audio_controller, _window_controller);
+	_level->load_objects();
+	_level->add_music("level1", "/assets/audio/billy.wav");
+	_level->add_sound("failed", "/assets/audio/failed.wav");
+	_level->add_music("secret", "/assets/audio/rasputin.mp3");
+	_level->add_music("transition", "/assets/audio/running.wav");
+  _level->add_sound("danger", "/assets/audio/danger.wav");
+	_level->add_sound("switch", "/assets/audio/switch.wav");
+	_level->add_sound("win", "/assets/audio/win.wav");
+	_level->add_sound("enemynear", "/assets/audio/enemynearby.mp3", 0);
+	_state = Enums::LevelStateEnum::INACTIVE;
 }
 
 std::shared_ptr<Game::Models::Level> Game::Controllers::LevelController::get_level() const
@@ -217,6 +220,14 @@ void  Controllers::LevelController::simulate() {
 
 			_window_controller->set_camera_pos_based_on(_level->get_player());
 	}
+}
+
+void Game::Controllers::LevelController::clear_level()
+{
+	_level->get_player()->clear_extra_textures();
+	_level->get_physics_collision_controller()->destroy_shapes();
+	_window_controller->get_graphics_controller()->clear_textures();
+	_level = nullptr;
 }
 
 void  Controllers::LevelController::simulate_objects() {

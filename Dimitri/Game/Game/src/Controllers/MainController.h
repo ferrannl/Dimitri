@@ -6,12 +6,15 @@
 #include "HomeController.h"
 #include "CreditsController.h"
 #include "AdvertisementController.h"
+#include "LevelSelectorController.h"
 #include "HelpController.h"
 #include "../Models/Level.h"
 #include "../Mediators/BaseComponent.h"
 #include "../Managers/LevelManager.h"
 #include "../Managers/HighScoreManager.h"
 #include "CheatsController.h"
+#include "../Models/Settings/Settings.h"
+#include "../Models/Settings/Highscore.h"
 
 /**
 * \namespace Game
@@ -33,6 +36,11 @@ namespace Game {
 			* \brief An instance of the InputController
 			*/
 			std::shared_ptr<Controllers::InputController> _input_controller;
+
+			/**
+			* \brief An instance of the LevelSelectorController
+			*/
+			std::shared_ptr<Controllers::LevelSelectorController> _level_selector_controller;
 
 			/**
 			* \brief An instance of the AudioController
@@ -88,6 +96,17 @@ namespace Game {
 			* \brief An instance of the CheatsController
 			*/
 			std::shared_ptr<Controllers::CheatsController> _cheats_controller;
+
+			/**
+			* \brief An instance of the Settings 
+			*/
+			std::shared_ptr<Models::Settings> _settings;
+			
+			/**
+			* \brief An instance of the Settings
+			*/
+			std::shared_ptr<Models::Highscore> _highscore;
+
 		public:
 			MainController();
 
@@ -115,6 +134,11 @@ namespace Game {
 			* \brief Returns the Level Manager
 			*/
 			std::shared_ptr<Managers::LevelManager> get_level_manager() const;
+
+			/**
+			* \brief Returns the LevelSelectorController
+			*/
+			std::shared_ptr<Controllers::LevelSelectorController> get_level_selector_controller() const;
 
 			/**
 			* \brief Returns the Highscore Manager
@@ -155,6 +179,36 @@ namespace Game {
 			* \brief Returns the CheatsController
 			*/
 			std::shared_ptr<Controllers::CheatsController> get_cheats_controller() const;
+
+			/**
+			* \brief Sets Level Controller
+			*/
+			void set_level_controller(std::shared_ptr<Game::Controllers::LevelController>& level_controller);
+
+			/**
+			* \brief Returns the settings
+			*/
+			std::shared_ptr<Models::Settings> get_settings() const;
+			
+			/**
+			* \brief Sets settings
+			*/
+			void set_settings(const std::shared_ptr<Models::Settings>& settings);
+
+			/**
+			* \brief Sets Save Game Controller
+			*/
+			void  set_save_game_controller(const std::shared_ptr<Controllers::SaveGameController>& save_game_controller);
+
+			/**
+			* \brief Returns the highscore
+			*/
+			std::shared_ptr<Models::Highscore> get_highscore() const;
+
+			/**
+			* \brief Sets highscore
+			*/
+			void set_highscore(const std::shared_ptr<Models::Highscore>& highscore);
 		};
 	}
 }

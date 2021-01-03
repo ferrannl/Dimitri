@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		PlayerJumpCommand::PlayerJumpCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void PlayerJumpCommand::execute()
+		void PlayerJumpCommand::execute(int param)
 		{
 			auto state = _main_controller->get_level_controller()->get_state();
 			auto player = _main_controller->get_level_controller()->get_level()->get_player();

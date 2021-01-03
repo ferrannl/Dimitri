@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		OpenLevelViewCommand::OpenLevelViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenLevelViewCommand::execute()
+		void OpenLevelViewCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			w_ctrl->close_view(Enums::ViewEnum::PAUSE_LEVEL);

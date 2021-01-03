@@ -23,7 +23,7 @@ namespace Game {
 			/**
 			* \brief Opens the SaveGame view
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

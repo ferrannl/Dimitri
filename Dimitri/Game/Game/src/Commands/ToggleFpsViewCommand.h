@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Toggles the fps view
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

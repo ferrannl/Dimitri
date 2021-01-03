@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		ClearViewsCommand::ClearViewsCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void ClearViewsCommand::execute()
+		void ClearViewsCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			w_ctrl->clear_views();

@@ -230,3 +230,10 @@ void Game::Models::Player::set_jumps(int jumps)
 		_jumps = jumps;
 	}
 }
+
+void Game::Models::Player::clear_extra_textures()
+{
+	for (auto t : get_extra_textures()) {
+		t->set_visible(false);
+	}
+}
