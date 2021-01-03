@@ -41,7 +41,7 @@ namespace Game {
 			/**
 			* \brief Returns the identifier
 			*/
-			std::string get_identifier() const;
+			const std::string& get_identifier() const;
 
 			/**
 			* \brief Add a button to the buttons

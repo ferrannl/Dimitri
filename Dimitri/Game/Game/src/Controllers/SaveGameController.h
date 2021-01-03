@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 #include "../Mediators/BaseComponent.h"
-
+#include "../Models/Settings/Settings.h"
 /**
 * \namespace Game
 * \brief Namespace for the game
@@ -30,6 +30,11 @@ namespace Game {
 			* \brief The width of the scene
 			*/
 			int _scene_width;
+
+			/**
+			* \brief Returns save game string
+			*/
+			std::string get_text_for_save(Game::Models::Settings settings) const;
 		public:
 			SaveGameController(int sceneheight, int scenewidth);
 

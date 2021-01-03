@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Closes all views
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

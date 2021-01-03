@@ -87,6 +87,12 @@
     <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
     <ClCompile Include="src\Views\CheatsView.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
+    <ClCompile Include="src\Commands\OpenLevelSelectorViewCommand.cpp" />
+    <ClCompile Include="src\Commands\TryAgainCommand.cpp" />
+    <ClCompile Include="src\Controllers\LevelSelectorController.cpp" />
+    <ClCompile Include="src\Models\Settings\Settings.cpp" />
+    <ClCompile Include="src\Views\LevelSelectorView.cpp" />
+    <ClCompile Include="src\Models\Settings\Highscore.cpp" />
     <ClCompile Include="src\Factory\TutorialFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,5 +193,11 @@
     <ClInclude Include="src\Views\CheatsView.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Factory\TutorialFactory.h" />
+    <ClInclude Include="src\Commands\OpenLevelSelectorViewCommand.h" />
+    <ClInclude Include="src\Commands\TryAgainCommand.h" />
+    <ClInclude Include="src\Controllers\LevelSelectorController.h" />
+    <ClInclude Include="src\Models\Settings\Settings.h" />
+    <ClInclude Include="src\Views\LevelSelectorView.h" />
+    <ClInclude Include="src\Models\Settings\Highscore.h" />
   </ItemGroup>
 </Project>

@@ -207,6 +207,8 @@ void Game::Models::Player::update_state()
 
 	_lastx = _x;
 	_lasty = _y;
+
+
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Player::get_extra_textures()
@@ -226,5 +228,12 @@ void Game::Models::Player::set_jumps(int jumps)
 	_max_amount_of_jumps = jumps;
 	if (_jumps > _max_amount_of_jumps) {
 		_jumps = jumps;
+	}
+}
+
+void Game::Models::Player::clear_extra_textures()
+{
+	for (auto t : get_extra_textures()) {
+		t->set_visible(false);
 	}
 }

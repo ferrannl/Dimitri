@@ -1,8 +1,8 @@
 #pragma once
 #include "../Views/View.h"
 #include <src\Helpers\BasePathHelper.h>
-#include "../Models/IObjects/Lamp.h"
-#include "../Models/IObjects/Floor.h"
+#include "../Models/Objects/Lamp.h"
+#include "../Models/Objects/Floor.h"
 #include "../Models/Updatables/LightBeam.h"
 #include "../Models/Updatables/Player.h"
 #include "../Controllers/PhysicsCollisionController.h"

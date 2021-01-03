@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		PlayerMoveLeftCommand::PlayerMoveLeftCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void PlayerMoveLeftCommand::execute()
+		void PlayerMoveLeftCommand::execute(int param)
 		{
 			auto state = _main_controller->get_level_controller()->get_state();
 			auto player = _main_controller->get_level_controller()->get_level()->get_player();

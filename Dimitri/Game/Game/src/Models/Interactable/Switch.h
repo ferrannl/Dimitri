@@ -42,7 +42,7 @@ namespace Game {
 			* \brief Sets the x and y coordinate of the lightbeam location
 			*/
 			void set_light(const std::vector<std::tuple<float, float>> light_pos);
-			void set_secret(const bool secret);
+			void set_secret(bool secret);
 		};
 	}
 }

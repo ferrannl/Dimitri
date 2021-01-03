@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Pauses or resumes the game
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

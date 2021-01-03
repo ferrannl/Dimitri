@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		OpenLevelTransitionViewCommand::OpenLevelTransitionViewCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void OpenLevelTransitionViewCommand::execute()
+		void OpenLevelTransitionViewCommand::execute(int param)
 		{
 			auto w_ctrl = _main_controller->get_window_controller();
 			w_ctrl->clear_views();

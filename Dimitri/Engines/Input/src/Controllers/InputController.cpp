@@ -16,12 +16,12 @@ void Controllers::InputController::notify(const Enums::EventEnum& object)
 	}
 }
 
-void Controllers::InputController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer)
+void Controllers::InputController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
 {
 	_observers.push_back(observer);
 }
 
-void Input::Controllers::InputController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>& observer)
+void Input::Controllers::InputController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
 {
 	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
 }

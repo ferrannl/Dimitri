@@ -11,13 +11,7 @@ Game::Managers::HighscoreManager::HighscoreManager(std::shared_ptr<Game::Control
 
 void Game::Managers::HighscoreManager::load_highscore()
 {
-	if (_window_controller->is_active(Enums::ViewEnum::HOME)) {
-		_input_controller->unsubscribe(_home_controller);
-		_window_controller->clear_views();
-		_window_controller->open_view(Enums::ViewEnum::HIGHSCORE);
-		_window_controller->set_scene_size(_window_controller->get_window_height(), _window_controller->get_window_width());
-		_input_controller->subscribe(this->shared_from_this());
-	}
+
 }
 
 void Game::Managers::HighscoreManager::load_buttons()
@@ -35,7 +29,7 @@ void Game::Managers::HighscoreManager::update(const Game::Events::InputEvent& ob
 	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 
-std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Managers::HighscoreManager::get_textures() const
+const std::vector<std::shared_ptr<Graphics::Models::Texture>>& Game::Managers::HighscoreManager::get_textures() const
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> button_textures;
 	for (auto& b : get_buttons()) {
@@ -43,6 +37,7 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Managers::Highscor
 			button_textures.push_back(t);
 		}
 	}
+	button_textures.push_back(std::make_shared<Graphics::Models::Sprite>(0, 0, 0, _window_controller->get_window_height(), _window_controller->get_window_width(), 0, Utility::Helpers::get_base_path() + std::string{ "/assets/images/records.png" }, Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0, 0 }, false));
 	return button_textures;
 }
 

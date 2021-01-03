@@ -33,7 +33,7 @@ namespace Game {
 		_views.insert({ Enums::ViewEnum::CHEATS, std::make_unique<Views::CheatsView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::LEVEL_TRANSITION, std::make_unique<Views::LevelTransitionView>(_graphics_controller) });
 		_views.insert({ Enums::ViewEnum::GAMEPLAYSPEED, std::make_unique<Views::GamePlaySpeedView>(_graphics_controller) });
-
+		_views.insert({ Enums::ViewEnum::LEVEL_SELECTOR, std::make_unique<Views::LevelSelectorView>(_graphics_controller) });
 
 		open_view(Enums::ViewEnum::HOME);
 		open_view(Enums::ViewEnum::ADVERTISEMENT);

@@ -21,13 +21,14 @@ void Game::Controllers::AdvertisementController::load_advertisements()
 	Utility::Advertisement::advertisement ad{};
 	ad.http_download_images(Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement.zip" }, Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement" });
 	std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/images/advertisement" };
+
 	for (auto& entry : fs::directory_iterator(path))
 	{
 		_advertisements.push_back(std::make_shared<Graphics::Models::Sprite>(20, 20, 1, h, w, 0, entry.path().string(), Graphics::Enums::FlipEnum::NONE, true, Graphics::Models::Center{ 0, 0 }, true));
 	}
 }
 
-std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::AdvertisementController::get_textures() const
+ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Controllers::AdvertisementController::get_textures() const
 {
 	return _advertisements;
 }

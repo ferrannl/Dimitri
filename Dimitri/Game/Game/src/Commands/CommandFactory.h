@@ -34,7 +34,7 @@ namespace Game {
 			/**
 			* \brief Returns the Command by name
 			*/
-			Command* get_command(Enums::CommandEnum command_name) const;
+			const std::unique_ptr<Command>& get_command(Enums::CommandEnum command_name) const;
 		};
 	}
 }

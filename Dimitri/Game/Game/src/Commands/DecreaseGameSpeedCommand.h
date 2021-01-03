@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief Decreases the gameplay speed
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

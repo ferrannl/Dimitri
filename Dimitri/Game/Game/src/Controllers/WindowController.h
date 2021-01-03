@@ -9,6 +9,7 @@
 #include "../Events/InputEvent.h"
 #include "../Views/CreditsView.h"
 #include "../Views/HelpView.h"
+#include "../Views/LevelSelectorView.h"
 #include "../Views/HomeView.h"
 #include "../Views/LevelView.h"
 #include "../Views/TimerView.h"

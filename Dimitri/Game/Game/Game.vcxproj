@@ -158,7 +158,13 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Commands\OpenLevelSelectorViewCommand.cpp" />
+    <ClCompile Include="src\Commands\TryAgainCommand.cpp" />
+    <ClCompile Include="src\Controllers\LevelSelectorController.cpp" />
     <ClCompile Include="src\Controllers\SaveGameController.cpp" />
+    <ClCompile Include="src\Models\Settings\Highscore.cpp" />
+    <ClCompile Include="src\Models\Settings\Settings.cpp" />
+    <ClCompile Include="src\Views\LevelSelectorView.cpp" />
     <ClCompile Include="src\Factory\TutorialFactory.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Views\SaveGameView.cpp" />
@@ -209,10 +215,10 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Models\CheckButton.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Abstract\Interactable.cpp" />
-    <ClCompile Include="src\Models\IObjects\Camera.cpp" />
-    <ClCompile Include="src\Models\IObjects\Floor.cpp" />
-    <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
-    <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
+    <ClCompile Include="src\Models\Objects\Camera.cpp" />
+    <ClCompile Include="src\Models\Objects\Floor.cpp" />
+    <ClCompile Include="src\Models\Objects\FloorCorner.cpp" />
+    <ClCompile Include="src\Models\Objects\Lamp.cpp" />
     <ClCompile Include="src\Models\Settings\CheatsSettings.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
@@ -231,7 +237,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Models\Abstract\Object.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
     <ClCompile Include="src\Models\Updatables\Player.cpp" />
-    <ClCompile Include="src\Models\IObjects\Wall.cpp" />
+    <ClCompile Include="src\Models\Objects\Wall.cpp" />
     <ClCompile Include="src\Views\FpsView.cpp" />
     <ClCompile Include="src\Views\GamePlaySpeedView.cpp" />
     <ClCompile Include="src\Views\HelpView.cpp" />
@@ -247,7 +253,13 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Views\WinLevelView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Commands\OpenLevelSelectorViewCommand.h" />
+    <ClInclude Include="src\Commands\TryAgainCommand.h" />
+    <ClInclude Include="src\Controllers\LevelSelectorController.h" />
     <ClInclude Include="src\Controllers\SaveGameController.h" />
+    <ClInclude Include="src\Models\Settings\Highscore.h" />
+    <ClInclude Include="src\Models\Settings\Settings.h" />
+    <ClInclude Include="src\Views\LevelSelectorView.h" />
     <ClInclude Include="src\Factory\TutorialFactory.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Views\SaveGameView.h" />
@@ -309,10 +321,10 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClInclude Include="src\Models\CheckButton.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Abstract\Interactable.h" />
-    <ClInclude Include="src\Models\IObjects\Camera.h" />
-    <ClInclude Include="src\Models\IObjects\Floor.h" />
-    <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
-    <ClInclude Include="src\Models\IObjects\Lamp.h" />
+    <ClInclude Include="src\Models\Objects\Camera.h" />
+    <ClInclude Include="src\Models\Objects\Floor.h" />
+    <ClInclude Include="src\Models\Objects\FloorCorner.h" />
+    <ClInclude Include="src\Models\Objects\Lamp.h" />
     <ClInclude Include="src\Models\Settings\CheatsSettings.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
@@ -330,7 +342,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClInclude Include="src\Models\Abstract\Object.h" />
     <ClInclude Include="src\Models\Level.h" />
     <ClInclude Include="src\Models\Updatables\Player.h" />
-    <ClInclude Include="src\Models\IObjects\Wall.h" />
+    <ClInclude Include="src\Models\Objects\Wall.h" />
     <ClInclude Include="src\Views\FpsView.h" />
     <ClInclude Include="src\Views\GamePlaySpeedView.h" />
     <ClInclude Include="src\Views\HelpView.h" />

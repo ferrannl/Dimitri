@@ -162,9 +162,13 @@
   <ItemGroup>
     <ClInclude Include="src\Controllers\DocumentController.h" />
     <ClInclude Include="src\framework.h" />
+    <ClInclude Include="src\Interfaces\IReader.h" />
+    <ClInclude Include="src\Interfaces\IWriter.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Readers\TextReader.h" />
     <ClInclude Include="src\Readers\TiledReader.h" />
     <ClInclude Include="src\Tileson\tileson.hpp" />
+    <ClInclude Include="src\Writers\TextWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Controllers\DocumentController.cpp" />
@@ -175,7 +179,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Readers\TextReader.cpp" />
     <ClCompile Include="src\Readers\TiledReader.cpp" />
+    <ClCompile Include="src\Writers\TextWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

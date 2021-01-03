@@ -22,7 +22,7 @@ namespace Game {
 			/**
 			* \brief contains the method to set jumps to infinite
 			*/
-			void execute() override;
+			void execute(int param) override;
 		};
 	}
 }

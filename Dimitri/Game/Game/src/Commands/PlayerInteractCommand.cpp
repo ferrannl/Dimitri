@@ -4,7 +4,7 @@ namespace Game {
 	namespace Commands {
 		PlayerInteractCommand::PlayerInteractCommand(const std::shared_ptr<Controllers::MainController> main_controller) : Command(main_controller) {}
 
-		void PlayerInteractCommand::execute()
+		void PlayerInteractCommand::execute(int param)
 		{
 			auto l_ctrl = _main_controller->get_level_controller();
 			auto level = l_ctrl->get_level();

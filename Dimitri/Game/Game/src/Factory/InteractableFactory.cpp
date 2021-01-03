@@ -1,5 +1,5 @@
 #include "InteractableFactory.h"
-#include "../Models/IObjects/Wall.h"
+#include "../Models/Objects/Wall.h"
 #include "../Models/Updatables/Player.h"
 #include "../Models/Interactable/Switch.h"
 #include "../Models/Interactable/Car.h"
