@@ -17,6 +17,7 @@ namespace Game {
 		std::string path = Utility::Helpers::get_base_path() + std::string{ "/assets/fonts/font1.ttf" };
 		Graphics::Models::Color color = { 255, 255, 255 };
 		std::string ticks = std::to_string(_graphics_controller->get_window()->get_timer()->getTicks() / 1000.f);
+		ticks = ticks.substr(0, ticks.find(".") + 2);
 		if (!is_visible()) {
 			_textures.clear();
 		}

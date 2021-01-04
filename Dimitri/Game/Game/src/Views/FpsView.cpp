@@ -7,7 +7,7 @@ namespace Game {
 	void Views::FpsView::update()
 	{
 		std::string fps = std::to_string(_graphics_controller.get()->get_fps());
-
+		fps = fps.substr(0, fps.find("."));
 		int window_width = _graphics_controller.get()->get_window().get()->get_width();
 		int window_height = _graphics_controller.get()->get_window().get()->get_height();
 		int width = fps.size() * 15;
