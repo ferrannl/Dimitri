@@ -35,7 +35,6 @@ namespace Utility{
 		* \brief Class contains the the methods to retreive the advertisement images
 		*/
 		class UTILITY_API advertisement {
-		private:
 		public:
 			 advertisement();
 			 /**
