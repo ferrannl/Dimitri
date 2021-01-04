@@ -192,6 +192,7 @@ void Game::Controllers::LevelController::run_transition()
 {
 	while (_state == Enums::LevelStateEnum::TRANSITION) {
 		sleep_for(5ms);
+
 		if (!_window_controller->is_active(Enums::ViewEnum::LEVEL_TRANSITION)) { break; }
 	}
 	_window_controller->get_graphics_controller()->get_window()->get_timer()->start();
@@ -200,7 +201,6 @@ void Game::Controllers::LevelController::run_transition()
 
 void  Controllers::LevelController::simulate() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
-		sleep_for(1ms);
 			_level->simulate();
 
 			_level->get_player()->update();
@@ -219,6 +219,8 @@ void  Controllers::LevelController::simulate() {
 			}
 
 			_window_controller->set_camera_pos_based_on(_level->get_player());
+
+			sleep_for(1ms);
 	}
 }
 
@@ -240,6 +242,8 @@ void  Controllers::LevelController::simulate_objects() {
 		}
 
 		_level->get_player()->update_state();
+
+		sleep_for(36ms);
 	}
 }
 
