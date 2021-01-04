@@ -1,6 +1,8 @@
 #include "advertisement.h"
 #include <curl/curl.h>
 #include "unzip.h"
+#include <filesystem>
+namespace fs = std::filesystem;
 
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream)
 {
@@ -13,13 +15,19 @@ Utility::Advertisement::advertisement::advertisement()
 {
 }
 
+void Utility::Advertisement::advertisement::delete_images(const std::string& destination)
+{
+		fs::remove_all(destination);
+}
+
 void Utility::Advertisement::advertisement::http_download_images(std::string destination, std::string zip_location)
 {
+	delete_images(zip_location);
 	CURL* curl;
 	FILE* fp;
 
 	fp = fopen(destination.c_str(), "wb");
-
+	
 	curl = curl_easy_init();
 
 	/* A long parameter set to 1 tells the library to follow any Location: header
