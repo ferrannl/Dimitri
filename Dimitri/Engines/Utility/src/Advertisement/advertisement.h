@@ -27,8 +27,8 @@ namespace Utility{
 		public:
 			 advertisement();
 			 void delete_images(const std::string& destination);
-			 void http_download_images(std::string destination, std::string zip_location);
-			 void unzip_file(std::string destination, std::string zip_location);
+			 void http_download_images(const std::string& destination, const std::string& zip_location);
+			 void unzip_file(const std::string& destination, const std::string& zip_location);
 		};
 	}
 }

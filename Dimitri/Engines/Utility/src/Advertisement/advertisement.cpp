@@ -20,7 +20,7 @@ void Utility::Advertisement::advertisement::delete_images(const std::string& des
 		fs::remove_all(destination);
 }
 
-void Utility::Advertisement::advertisement::http_download_images(std::string destination, std::string zip_location)
+void Utility::Advertisement::advertisement::http_download_images(const std::string& destination, const std::string& zip_location)
 {
 	delete_images(zip_location);
 	CURL* curl;
@@ -57,7 +57,7 @@ void Utility::Advertisement::advertisement::http_download_images(std::string des
 	unzip_file(destination, zip_location);
 }
 
-void Utility::Advertisement::advertisement::unzip_file(std::string destination, std::string zip_location)
+void Utility::Advertisement::advertisement::unzip_file(const std::string& destination, const std::string& zip_location)
 {
 	wchar_t* wmsg = new wchar_t[strlen(destination.c_str()) + 1]; //memory allocation
 	mbstowcs(wmsg, destination.c_str(), strlen(destination.c_str()) + 1);
