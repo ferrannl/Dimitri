@@ -17,7 +17,6 @@ namespace Game {
 		Graphics::Models::Color color = { 0, 0, 0 };
 
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("F", color, bg_width / 4 - 135, bg_height / 4 * 3, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
-		_textures.push_back(std::make_shared<Graphics::Models::Text>("H", color, bg_width / 4 - 135, bg_height / 4 * 2, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("E", color, bg_width / 4 - 135, bg_height / 4 - 10, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 		_textures.push_back(std::make_shared<Graphics::Models::Text>("Esc", color, bg_width / 3 - 22, bg_height / 4 * 3, 1, 40, 40, 0, path, true, Graphics::Models::Center{ 0, 0 }, true));
 
