@@ -83,7 +83,7 @@ namespace Game {
 			/**
 			* \brief Returns the Textures from the Buttons
 			*/
-			const std::vector<std::shared_ptr<Graphics::Models::Texture>>& get_textures() const;
+			std::vector<std::shared_ptr<Graphics::Models::Texture>> get_textures() const;
 		};
 	}
 }
