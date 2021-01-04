@@ -14,13 +14,13 @@ namespace Game {
 	*/
 	namespace Factories {
 		/**
-		* \class BackgroundFactory
+		* \class Tutorialfactory
 		* \brief Class contains the methods to create backgrounds
 		*/
 		class TutorialFactory {
 		public:
 			/**
-			* \brief Creates the background
+			* \brief Creates the tutorial images
 			*/
 			std::shared_ptr<Graphics::Models::Sprite> create(Enums::TypeEnum type, float x, float y, float z, float height, float width, Enums::DirectionEnum state);
 		};
