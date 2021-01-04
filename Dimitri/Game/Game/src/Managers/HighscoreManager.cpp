@@ -29,7 +29,7 @@ void Game::Managers::HighscoreManager::update(const Game::Events::InputEvent& ob
 	Mediators::CommandMediator::instance()->notify(*this, object);
 }
 
-const std::vector<std::shared_ptr<Graphics::Models::Texture>>& Game::Managers::HighscoreManager::get_textures() const
+ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Managers::HighscoreManager::get_textures() const
 {
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> button_textures;
 	for (auto& b : get_buttons()) {
