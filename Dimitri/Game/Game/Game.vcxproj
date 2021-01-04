@@ -165,6 +165,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClCompile Include="src\Models\Settings\Highscore.cpp" />
     <ClCompile Include="src\Models\Settings\Settings.cpp" />
     <ClCompile Include="src\Views\LevelSelectorView.cpp" />
+    <ClCompile Include="src\Factory\TutorialFactory.cpp" />
     <ClCompile Include="src\Models\Updatables\Enemy.cpp" />
     <ClCompile Include="src\Views\SaveGameView.cpp" />
     <ClCompile Include="src\Commands\OpenSaveGameViewCommand.cpp" />
@@ -259,6 +260,7 @@ xcopy /y /d "$(SolutionDir)Engines\DocumentHandler\bin\$(Platform)\$(Configurati
     <ClInclude Include="src\Models\Settings\Highscore.h" />
     <ClInclude Include="src\Models\Settings\Settings.h" />
     <ClInclude Include="src\Views\LevelSelectorView.h" />
+    <ClInclude Include="src\Factory\TutorialFactory.h" />
     <ClInclude Include="src\Models\Updatables\Enemy.h" />
     <ClInclude Include="src\Views\SaveGameView.h" />
     <ClInclude Include="src\Commands\OpenSaveGameViewCommand.h" />

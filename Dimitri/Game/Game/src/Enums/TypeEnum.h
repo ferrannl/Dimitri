@@ -29,7 +29,16 @@ namespace Game {
 			BG_TOP2,
 			SPIKE,
 			CAM_VISION,
-			CAMERA
+			CAMERA,
+			TUT1,
+			TUT2,
+			TUT3,
+			TUT4,
+			TUT5,
+			TUT6,
+			TUT7,
+			TUT8,
+			TUT9
 		};
 	}
 }

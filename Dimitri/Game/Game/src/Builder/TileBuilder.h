@@ -2,7 +2,7 @@
 #include "../Factory/ObjectFactory.h";
 #include "../Factory/InteractableFactory.h";
 #include "../Factory/UpdatableFactory.h";
-#include "../Factory/BackgroundFactory.h";
+#include "../Factory/TutorialFactory.h";
 #include "../Models/Level.h"
 #include "../Models/Updatables/Enemy.h"
 #include <any>
@@ -45,9 +45,9 @@ namespace Game {
 
 
 			/**
-			* \brief Factory which creates backgrounds
+			* \brief Factory which creates tutorial images
 			*/
-			Factories::BackgroundFactory _background_factory;
+			Factories::TutorialFactory _tutorial_factory;
 		public:
 			/**
 			* \brief Builds the level

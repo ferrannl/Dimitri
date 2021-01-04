@@ -64,6 +64,33 @@ void Game::Builder::TileBuilder::build(std::shared_ptr<Models::Level>& level, co
                         get_value<int>("Area_Bottom", get_object(objects, x, tiled_y))
                         ));
                     break;
+                case 468:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT1, x, y, tileset.first, TILE_SIZE * 4, TILE_SIZE * 8, Enums::DirectionEnum::NONE));
+                    break;
+                case 469:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT2, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 7, Enums::DirectionEnum::NONE));
+                    break;
+                case 470:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT3, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 7, Enums::DirectionEnum::NONE));
+                    break;
+                case 471:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT4, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 7, Enums::DirectionEnum::NONE));
+                    break;
+                case 472:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT5, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 7, Enums::DirectionEnum::NONE));
+                    break;
+                case 473:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT6, x, y, tileset.first, TILE_SIZE * 4, TILE_SIZE * 8, Enums::DirectionEnum::NONE));
+                    break;
+                case 474:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT7, x, y, tileset.first, TILE_SIZE * 4, TILE_SIZE * 8, Enums::DirectionEnum::NONE));
+                    break;
+                case 475:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT8, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 6, Enums::DirectionEnum::NONE));
+                    break;
+                case 476:
+                    level->add_background(_tutorial_factory.create(Enums::TypeEnum::TUT9, x, y, tileset.first, TILE_SIZE * 3, TILE_SIZE * 7, Enums::DirectionEnum::NONE));
+                    break;
                 }
 
                 x += TILE_SIZE;
