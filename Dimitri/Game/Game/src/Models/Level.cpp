@@ -1,22 +1,44 @@
 #include "Level.h"
 using namespace Game;
 
-Models::Level::Level()
+Models::Level::Level(const std::shared_ptr<Controllers::AudioController> audio_controller, const std::shared_ptr<Controllers::WindowController> window_controller, const float width, const float height) : _audio_controller(audio_controller)
 {
+	_width = width;
+	_height = height;
+	_speed = 1.5;
 	_physics_collision_controller = std::make_shared<Game::Controllers::PhysicsCollisionController>();
-	_audio_controller = std::make_shared<Controllers::AudioController>();
+	_interactables = {};
+	_shapes = {};
+	_enemies = {};
 	_tiles = {};
-	_borders = {};
+	_buttons = {};
+	_backgrounds = {};
+	_updatables = {};
 }
 
-void Models::Level::add_music(std::string audio_name, std::string path)
+std::vector<std::shared_ptr<Game::Models::Button>> Models::Level::get_buttons()
 {
-	_audio_controller->add_music(audio_name, path);
+	return _buttons;
 }
 
-void Game::Models::Level::add_sound(std::string audio_name, std::string path)
+void Models::Level::set_speed(float speed)
 {
-	_audio_controller->add_sound(audio_name, path);
+	_speed = speed;
+}
+
+float Game::Models::Level::get_speed()const
+{
+	return _speed;
+}
+
+void Models::Level::add_music(std::string audio_name, std::string path, int volume)
+{
+	_audio_controller->add_music(audio_name, path, volume);
+}
+
+void Game::Models::Level::add_sound(std::string audio_name, std::string path, int volume)
+{
+	_audio_controller->add_sound(audio_name, path, volume);
 }
 
 void Models::Level::play_music(std::string audio_name)
@@ -39,76 +61,39 @@ void Game::Models::Level::resume_music(std::string audio_name)
 	_audio_controller->resume_audio(audio_name);
 }
 
+void Game::Models::Level::volume_control(std::string audio_name, int volume)
+{
+	_audio_controller->set_volume(audio_name, volume);
+}
 
 void Game::Models::Level::load_objects()
 {
-	//Here a file is loaded/parsed and turned into a level
-	_player = std::make_shared<Player>(200, 200, 1, 50, 50, Game::Enums::StateEnum::RIGHT);
-	_player->set_shape(_physics_collision_controller->create_shape(_player->get_x(), _player->get_y(), _player->get_width(), _player->get_height(), true));
+	_physics_collision_controller->setup_world(_height, _width);
 
-	//floor
-	std::shared_ptr<IObject> tile = std::make_shared<Wall>(0, 0, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
+	add_shapes();
 
-	tile = std::make_shared<Wall>(25, 0, 1, 25, 1030, Game::Enums::StateEnum::HORIZONTAL);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
+}
 
-	tile = std::make_shared<Wall>(1055, 0, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
+void Game::Models::Level::add_shapes()
+{
+	_physics_collision_controller->load_shape(_player.get()->get_shape());
 
-	_background = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 720, 1080, 0,Utility::Helpers::get_base_path() + std::string{ "/assets/images/bg.png" }, Graphics::Enums::FlipEnum::HORIZONTAL);
-	_background->set_visible(true);
-
-	//platform 1
-	tile = std::make_shared<Wall>(200, 150, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(225, 150, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(325, 150, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-	//platform 2
-	tile = std::make_shared<Wall>(400, 300, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(425, 300, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(525, 300, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-	//platform 3
-	tile = std::make_shared<Wall>(600, 450, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(625, 450, 1, 25, 100, Game::Enums::StateEnum::HORIZONTAL);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	tile = std::make_shared<Wall>(725, 450, 1, 25, 25, Game::Enums::StateEnum::RIGHT);
-	tile->set_shape(_physics_collision_controller->create_shape(tile->get_x(), tile->get_y(), tile->get_width(), tile->get_height(), false));
-	_tiles.push_back(tile);
-
-	//interactables
-	std::shared_ptr<IInteractable> interactable = std::make_shared<Switch>(650, 475, 1, 25, 25, Game::Enums::StateEnum::LEFT);
-	interactable->set_shape(_physics_collision_controller->create_shape(interactable->get_x(), interactable->get_y(), interactable->get_width(), interactable->get_height(), false));
-	_interactables.push_back(interactable);
-
-	//border 
-	_borders.push_back(_physics_collision_controller->create_shape(0, 721, 1080, 1, false));//top
-	_borders.push_back(_physics_collision_controller->create_shape(0, -1, 1080, 1, false));//bot
-	_borders.push_back(_physics_collision_controller->create_shape(-1, 0, 1, 720, false));//lef
-	_borders.push_back(_physics_collision_controller->create_shape(1081, 0, 1, 720, false));//rig
+	for (std::shared_ptr<Game::Models::Object> tile : _tiles)
+	{
+		_physics_collision_controller->load_shape(tile.get()->get_shape());
+	}
+	for (std::shared_ptr<Game::Models::Interactable> interactable : _interactables)
+	{
+		_physics_collision_controller->load_shape(interactable.get()->get_shape());
+	}
+	for (std::shared_ptr<PhysicsCollision::Models::Shape> shape : _shapes)
+	{
+		_physics_collision_controller->load_shape(shape);
+	}
+	for (std::shared_ptr<Game::Models::Enemy> enemy : _enemies)
+	{
+		_physics_collision_controller->load_shape(enemy->get_shape());
+	}
 }
 
 std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get_textures() const
@@ -116,28 +101,47 @@ std::vector<std::shared_ptr<Graphics::Models::Texture>> Game::Models::Level::get
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> textures = {};
 	std::vector<std::shared_ptr<Graphics::Models::Texture>> temp = _player->get_all_textures();
 	textures.insert(textures.end(), temp.begin(), temp.end());
-	textures.push_back(_background);
-	for (std::shared_ptr<IObject> tile : _tiles)
+
+	for (std::shared_ptr<Graphics::Models::Texture> bg : _backgrounds) {
+		textures.push_back(bg);
+	}
+	for (std::shared_ptr<Object> tile : _tiles)
 	{
 		temp = tile->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
-	for (std::shared_ptr<IObject> interactable : _interactables)
+	for (std::shared_ptr<Interactable> interactable : _interactables)
 	{
 		temp = interactable->get_all_textures();
+		textures.insert(textures.end(), temp.begin(), temp.end());
+	}
+	for (std::shared_ptr<Updatable> updatables : _updatables)
+	{
+		updatables->set_speed(_speed);
+		temp = updatables->get_all_textures();
 		textures.insert(textures.end(), temp.begin(), temp.end());
 	}
 	return textures;
 }
 
-std::shared_ptr<Game::Models::IObject> Game::Models::Level::get_player() const
+std::vector<std::shared_ptr<Game::Models::Enemy>> Game::Models::Level::get_enemies() const
 {
-	return _player;
+	return _enemies;
 }
 
-std::vector<std::shared_ptr<Game::Models::IInteractable>> Game::Models::Level::get_interactables() const
+std::vector<std::shared_ptr<Game::Models::Object>> Game::Models::Level::get_tiles() const
+{
+	return _tiles;
+}
+
+std::vector<std::shared_ptr<Game::Models::Interactable>> Game::Models::Level::get_interactables() const
 {
 	return _interactables;
+}
+
+std::vector<std::shared_ptr<Game::Models::Updatable>> Game::Models::Level::get_updatables() const
+{
+	return _updatables;
 }
 
 std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Level::get_physics_collision_controller() const
@@ -147,5 +151,61 @@ std::shared_ptr<Game::Controllers::PhysicsCollisionController> Game::Models::Lev
 
 void Game::Models::Level::simulate()
 {
-	_physics_collision_controller->simulate();
+	for (std::shared_ptr<Updatable> updatables : _updatables)
+	{
+		updatables->set_speed(_speed);
+	}
+	_physics_collision_controller->simulate(get_player()->get_speed());
+}
+
+void Game::Models::Level::add_shape(std::shared_ptr<PhysicsCollision::Models::Shape> shape)
+{
+	_shapes.push_back(shape);
+}
+
+void Game::Models::Level::add_tile(std::shared_ptr<Game::Models::Object> tile)
+{
+	_tiles.push_back(tile);
+}
+
+void Game::Models::Level::add_player(std::shared_ptr<Game::Models::Player> tile)
+{
+	_player = tile;
+	_updatables.push_back(tile);
+}
+
+void Game::Models::Level::add_interactable(std::shared_ptr<Game::Models::Interactable> tile)
+{
+	_interactables.push_back(tile);
+}
+
+void Game::Models::Level::add_updatable(std::shared_ptr<Game::Models::Updatable> tile)
+{
+	_updatables.push_back(tile);
+}
+
+void Game::Models::Level::add_background(std::shared_ptr<Graphics::Models::Sprite> tile)
+{
+	_backgrounds.push_back(tile);
+}
+
+void Game::Models::Level::add_enemy(std::shared_ptr<Game::Models::Enemy> tile)
+{
+	_enemies.push_back(tile);
+	_updatables.push_back(tile);
+}
+
+float Game::Models::Level::get_height() const
+{
+	return _height;
+}
+
+float Game::Models::Level::get_width() const
+{
+	return _width;
+}
+
+std::shared_ptr<Game::Models::Player> Game::Models::Level::get_player() const
+{
+	return _player;
 }

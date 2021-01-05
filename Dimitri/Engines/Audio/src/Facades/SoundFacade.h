@@ -2,60 +2,65 @@
 #include "../Interfaces/IAudioFacade.h"
 #include "../Exceptions/AudioExceptions.h"
 
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
+struct Mix_Chunk;
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the facades
+	* \namespace Audio::Facades
+	* \brief Namespace for the facades in the audio engine
 	*/
 	namespace Facades {
 		/**
-		* Class containing methods and references for using SDL_Mixer for sound
+		* \class SoundFacade
+		* \brief Class contains the methods to interact with SDL_Mixer for sound
 		*/
-		class AUDIO_API SoundFacade : public Interfaces::IAudioFacade {
+		class SoundFacade : public Interfaces::IAudioFacade {
 		private:
 			/**
-			* The sound model used by the SDL_Mixer methods
+			* \brief The Mix_Music from SDL2 to be able to perform actions on the audio file
 			*/
-			std::unique_ptr<Mix_Chunk, decltype (&Mix_FreeChunk)> _sound;
+			std::unique_ptr<Mix_Chunk, void(*)(Mix_Chunk*)> _sound;
 
 			/**
-			* The channel of the current sound file
+			* \brief The channel of the current audio file
 			*/
 			const int _channel;
 		public:
-			SoundFacade(const std::string path, int channel);
+			SoundFacade(const std::string& path, int channel, int volume);
 
 			/**
-			* Plays the sound file using the SDL_Mixer methods
+			* \brief Plays the audio file using SDL_Mixer
 			*/
 			void play() const;
 
 			/**
-			* Resumes the sound file using the SDL_Mixer methods
+			* \brief Resumes the audio file using SDL_Mixer
 			*/
 			void resume() const;
 
 			/**
-			* Pauses the sound file using the SDL_Mixer methods
+			* \brief Pauses the audio file using SDL_Mixer
 			*/
 			void pause() const;
 
 			/**
-			* Stops the sound file using the SDL_Mixer methods
+			* \brief Increases or decreases the volume using SDL_Mixer
+			*/
+			void set_volume(int value);
+
+			/**
+			* \brief Stops the audio file using SDL_Mixer
 			*/
 			void stop() const;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			bool is_playing() const;
 		};
 	}
 }

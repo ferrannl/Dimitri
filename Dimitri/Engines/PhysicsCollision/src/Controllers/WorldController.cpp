@@ -3,41 +3,32 @@
 using namespace PhysicsCollision;
 
 Controllers::WorldController::WorldController() {
-	_shapeController = ShapeController{};
 }
 
-void Controllers::WorldController::setup_world(const float width, const float height) {
+void Controllers::WorldController::setup_world(float width, float height) {
 	_world = Models::World{ width, height };
 }
 
-std::shared_ptr<Models::Shape> Controllers::WorldController::create_shape(PhysicsCollision::Enums::ShapeEnum type, float x, float y, float width, float height, bool is_dynamic)
+void Controllers::WorldController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape)
 {
-	std::shared_ptr<Models::Shape> shape = _shapeController.create_shape(type,x,y, width, height, is_dynamic);
 	_world.add_shape(shape);
-	return shape;
 }
 
-bool Controllers::WorldController::check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2)
-{
-	if (shape1->get_x() - 1 <= shape2->get_x() + shape2->get_width() &&
-		shape1->get_x() + shape1->get_width() + 1 >= shape2->get_x() &&
-		shape1->get_y() - 1 <= shape2->get_y() + shape2->get_height() &&
-		shape1->get_y() + shape1->get_height() + 1 >= shape2->get_y()) {
-		return true;
-	}
-	return false;
-}
-
-void Controllers::WorldController::destroy_bodies()
+void Controllers::WorldController::destroy_bodies() const
 {
 	_world.destroy_bodies();
 }
 
-void Controllers::WorldController::simulate()
+void Controllers::WorldController::destroy_body(const std::shared_ptr<Models::Shape>& shape)
 {
-	_world.simulate();
+	_world.destroy_body(shape);
 }
 
-std::vector<std::shared_ptr<Models::Shape>> Controllers::WorldController::get_shapes()const {
+void Controllers::WorldController::simulate(float speed)const
+{
+	_world.simulate(speed);
+}
+
+const std::vector<std::shared_ptr<Models::Shape>>& Controllers::WorldController::get_shapes()const {
 	return _world.get_shapes();
 }

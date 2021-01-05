@@ -1,59 +1,52 @@
 #pragma once
-#include <SDL.h>
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include <SDL_image.h>
 #include <memory>
 #include "../Exceptions/GraphicsExceptions.h"
 #include <iostream>
 #include "TextureFacade.h"
 #include "../Models/Color.h"
 
-#ifdef _WIN64
-#ifdef GRAPHICS_EXPORTS
-#define GRAPHICS_API __declspec(dllexport)
-#else 
-#define GRAPHICS_API __declspec(dllimport)
-#endif
-#else
-#define GRAPHICS_API
-#endif
+struct SDL_Renderer;
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the facades
+	* \namespace Graphics::Facades
+	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
 		/**
-		* Containing all methods and references to draw text with SDL_ttf
+		* \class TextFacade
+		* \brief Class contains the methods to draw text with SDL_ttf
 		*/
-		class GRAPHICS_API TextFacade : public TextureFacade {
+		class TextFacade : public TextureFacade {
 		private:
 			/**
-			* Text of the TextFacade
+			* \brief The text of the TextFacade
 			*/
-			std::string _text;
+			const std::string _text;
 
 			/**
-			* Color of the TextFacade
+			* \brief The Color of the TextFacade
 			*/
-			SDL_Color _color;
+			const Graphics::Models::Color& _color;
 
 			/**
-			* Height of the TextFacade
+			* \brief The height of the TextFacade
 			*/
-			int _height;
+			float _height;
 		public:
-			TextFacade(const std::string path, const std::string text, const Color color, const int height);
+			TextFacade(const std::string& path, const std::string& text, const Models::Color& color, float height, int opacity);
 
 			/**
-			* Creates an SDL_Texture for a given path
+			* \brief Creates a SDL_Texture
 			*/
-			void create_texture(std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>& renderer);
+			void create_texture(std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)>& renderer);
 		};
 	}
 }

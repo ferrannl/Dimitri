@@ -27,7 +27,7 @@ namespace EngineTests
 		{
 			Graphics::Controllers::GraphicsController ctrl = create_window();
 
-			std::shared_ptr<Graphics::Models::Texture> texture = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 100, 100, 0, "no path", Graphics::Enums::FlipEnum::HORIZONTAL);
+			std::shared_ptr<Graphics::Models::Texture> texture = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 100, 100, 0, "no path", Graphics::Enums::FlipEnum::HORIZONTAL, false, Graphics::Models::Center{0,0}, true);
 			ctrl.add_texture(texture);
 
 			Assert::IsTrue(ctrl.get_textures().at(0) == texture);
@@ -37,7 +37,7 @@ namespace EngineTests
 		{
 			Graphics::Controllers::GraphicsController ctrl = create_window();
 
-			std::shared_ptr<Graphics::Models::Texture> texture = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 100, 100, 0, "no path", Graphics::Enums::FlipEnum::HORIZONTAL);
+			std::shared_ptr<Graphics::Models::Texture> texture = std::make_shared<Graphics::Models::Sprite>(0, 0, 0, 100, 100, 0, "no path", Graphics::Enums::FlipEnum::HORIZONTAL, false, Graphics::Models::Center{ 0,0 }, true);
 			ctrl.add_texture(texture);
 
 			ctrl.remove_texture(texture);

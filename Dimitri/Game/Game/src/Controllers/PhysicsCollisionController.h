@@ -3,41 +3,53 @@
 #include <src\Controllers\WorldController.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains all code to interact with physics collision engine to simulate gravity and collision
+		* \class PhysicsCollisionController
+		* \brief Class contains the methods to interact with physics collision engine
 		*/
 		class PhysicsCollisionController {
 		private:
+			/**
+			* \brief An instance of the WorldController
+			*/
 			std::unique_ptr<PhysicsCollision::Controllers::WorldController> _world_controller;
 		public:
 			PhysicsCollisionController();
 
 			/**
-			*	Calls world_controller->simulate
+			* \brief Simulates the World in the WorldController
 			*/
-			void simulate();
+			void simulate(const float speed) const;
 
 			/**
-			*	Calls world_controller->destroy_bodies
+			* \brief Destroys the bodies in the World
 			*/
 			void destroy_shapes();
 
 			/**
-			*	Creates shape
+			* \brief Destroys a body in the World
 			*/
-			std::shared_ptr<PhysicsCollision::Models::Shape> create_shape(float x, float y, float width, float height, bool is_dynamic);
+			void destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
 
 			/**
-			*	Check collision
+			* \brief Loads the Shape into the World
 			*/
-			bool check_collision(std::shared_ptr<PhysicsCollision::Models::Shape> shape1, std::shared_ptr<PhysicsCollision::Models::Shape> shape2);
+			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape);
+
+			/**
+			* \brief Setup world
+			*/
+			void setup_world(int height, int width);
+
 		};
 	}
 }

@@ -2,78 +2,140 @@
 #include "../Models/Sprite.h"
 #include "../Models/Text.h"
 #include "../Adapters/FlipEnumAdapter.h"
-#include "src/Time/Fps.h"
+#include <src/Time/Fps.h>
+#include <src/Time/Timer.h>
+#include <tuple>
 
-#ifdef _WIN64
-#ifdef GRAPHICS_EXPORTS
-#define GRAPHICS_API __declspec(dllexport)
-#else 
-#define GRAPHICS_API __declspec(dllimport)
-#endif
-#else
-#define GRAPHICS_API
-#endif
+struct SDL_Window;
+struct SDL_Renderer;
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the facades
+	* \namespace Graphics::Facades
+	* \brief Namespace for the facades in the graphics engine
 	*/
 	namespace Facades {
 		/**
-		* Contains all the references needed for the SDL_Window
+		* \class WindowFacade
+		* \brief Class contains the references to the SDL_Window
 		*/
-		class GRAPHICS_API WindowFacade {
+		class WindowFacade {
 		private:
 			/**
-			* An instance of FPS.
+			* \brief Contains the fps of the Window
 			*/
-			Utility::Time::Fps fps = {};
-			/**
-		   * An instance of SDL_Window. The SDL_Destroywindow has to be passed by reference becuase SDL_Window has a custom destructor.
-		   */
-			std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> _window;
+			std::unique_ptr<Utility::Time::Fps> _fps;
 
 			/**
-			* An instance of SDL_Renderer. The SDL_DestroyRenderer has to be passed by reference becuase SDL_Renderer has a custom destructor.
+			* \brief Contains a timer object
 			*/
-			std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> _renderer;
+			std::shared_ptr<Utility::Time::Timer> _timer;
 
 			/**
-			* The adapter that converts the SDL_Flipenum to FlipEnum
+			* \brief An instance of SDL_Window with a custom destructor
+			*/
+			std::unique_ptr<SDL_Window, void(*)(SDL_Window*)> _window;
+
+			/**
+			* \brief An instance of SDL_Renderer with a custom destructor
+			*/
+			std::unique_ptr<SDL_Renderer, void(*)(SDL_Renderer*)> _renderer;
+			
+			/**
+			* \brief The adapter that converts the SDL_FlipEnum to FlipEnum
 			*/
 			Adapters::FlipEnumAdapter _flip_enum_adapter;
+
+			/**
+			* \brief The height of the Window
+			*/
+			int _window_height;
+
+			/**
+			* \brief The width of the Window
+			*/
+			int _window_width;
+
+			/**
+			* \brief The camera position of the Window
+			* The standard position of the camera is 0,0
+			* \return std::tuple<width, height>
+			*/
+			std::tuple<float, float> _camera_pos;
+
+
+			/**
+			* \brief The width and height of the Scene
+			* \return std::tuple<width, height>
+			*/
+			std::tuple<float, float> _scene_size;
+
 		public:
 			WindowFacade();
 
 			/**
-			* Creates the instance of SDL_Renderer
+			* \brief Creates the instance of SDL_Renderer
 			*/
 			int create_renderer();
 
 			/**
-			* Creates the instance of SDL_Window
+			* \brief Returns the timer ticks 
 			*/
-			int create_window(const std::string title, const int height, const int width);
+			uint32_t get_ticks();
 
 			/**
-			* Creates a TextureFacade or adds a already created TextureFacade if Texture matches
+			* \brief Creates the instance of SDL_Window
 			*/
-			void create_texture(const std::shared_ptr<Models::Texture>& texture, const std::shared_ptr<Models::Texture>& matching_texture);
+			int create_window(const std::string& title, float height, float width);
 
 			/**
-			* Destroys the SDL_Window
+			* \brief Creates a TextureFacade or adds an already created TextureFacade if Texture matches
+			*/
+			void create_texture(const std::shared_ptr<Models::Texture> texture, const std::shared_ptr<Models::Texture> matching_texture);
+
+			/**
+			* brief Destroys the SDL_Window
 			*/
 			void destroy();
 
 			/**
-			* Updates the window with all the sprites in the given list
+			* \brief Updates the window with all the sprites in the given list
 			*/
 			void update_window(const std::vector<std::shared_ptr<Models::Texture>> textures);
 
-			void switch_fps();
+			/**
+			* \brief Returns the fps of the Window
+			*/
+			int get_fps();
+
+			/**
+			* brief Updates camera position
+			*/
+			void set_camera_pos(float x, float y);
+
+			/**
+			* brief Returns camera position
+			*/
+			std::tuple<float, float> get_camera_pos() const;
+
+			/**
+			* brief Sets scene size
+			*/
+			void set_scene_size(float height, float width);
+
+			/**
+			* brief Returns scene size
+			*/
+			std::tuple<float, float> get_scene_size() const;
+
+			/**
+			* \brief Returns the timer
+			*/
+			const std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include "../Facades/EventFacade.h"
 #include "../Facades/MouseFacade.h"
-#include <SDL.h>
-#include "../../../../Utility/src/Interfaces/IObservable.h"
-#include "../../../../Utility/src/Interfaces/IObserver.h"
+#include "../Enums/EventEnum.h";
+#include <src/Interfaces/IObservable.h>
+#include <src/Interfaces/IObserver.h>
 #include <chrono>
 #include <thread>
+#include <vector>
 using namespace std::this_thread;
 using namespace std::chrono_literals;
 
@@ -20,30 +21,33 @@ using namespace std::chrono_literals;
 #endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the controllers
+	* \namespace Input::Controllers
+	* \brief Namespace for the controllers in the input engine
 	*/
 	namespace Controllers {
 		/**
-		* Is being used as an observable and contains the method to get fired events
+		* \class InputController
+		* \brief Class contains the methods the method to get the fired events
 		*/
 		class INPUT_API InputController : public Utility::Interfaces::IObservable<Enums::EventEnum> {
 		private:
 			/**
-			* The observer that observes key and mouse events
+			* \brief The Observers that observe the EventEnum
 			*/
-			std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> _observer;
+			std::vector<std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>>> _observers;
 
 			/**
-			* The facade that contains the method from SDL which are needed for mouse events
+			* \brief An instance of the MouseFacade to get the mouse position
 			*/
 			std::unique_ptr<Facades::MouseFacade> _mouse_facade;
 
 			/**
-			* The facade that contains the method from SDL which are needed for keyboard events
+			* \brief An instance of the EventFacade to get the keyboard events
 			*/
 			std::unique_ptr<Facades::EventFacade> _event_facade;
 
@@ -51,22 +55,27 @@ namespace Input {
 			InputController();
 
 			/**
-			* Returns the X and Y of where the mouse clicked on the screen
+			* \brief Returns the X and Y position of the mouse relative to the left corner of the window
 			*/
 			std::tuple<int, int> get_mouse_position();
 
 			/**
-			* notifies the observers
+			* \brief Notifies the Observers
 			*/
 			void notify(const Enums::EventEnum& object);
 
 			/**
-			* Subscribes on this observable
+			* \brief Subscribes on this observable
 			*/
-			void subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
+			void subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
+
+			/**
+			* \brief Unsubscribes on this observable
+			*/
+			void unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer);
 			
 			/**
-			* Polls if events are fired
+			* \brief Notifies observers if event is fired
 			*/
 			void poll_events();
 		};

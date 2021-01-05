@@ -4,49 +4,67 @@
 #include <src\Helpers\BasePathHelper.h>
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains code to controller audio engine
+		* \class AudioController
+		* \brief Class contains the methods to use the audio engine
 		*/
 		class AudioController {
 		private:
 			/**
-			*	Audio controller to interact with audio engine
+			* \brief An instance of the AudioController to interact with audio engine
 			*/
 			std::unique_ptr<Audio::Controllers::AudioController> _audio_controller;
 		public:
 			AudioController();
-			/**
-			*	Add Music
-			*/
-			void add_music(const std::string name, const std::string song_path);
-			/**
-			*	Add Sound
-			*/
-			void add_sound(const std::string name, const std::string song_path);
 
 			/**
-			*	Play Audio by name
+			* \brief Adds music
 			*/
-			void play_audio(const std::string name);
+			void add_music(const std::string& name, const std::string& song_path, int volume = 50);
+
 			/**
-			*	Pause Audio by name
+			* \brief Adds sound
 			*/
-			void pause_audio(const std::string name);
+			void add_sound(const std::string& name, const std::string& song_path, int volume = 50);
+
 			/**
-			*	Resume Audio by name
+			* \brief Play Audio by name
 			*/
-			void resume_audio(const std::string name);
+			void play_audio(const std::string& name);
+
 			/**
-			*	Stop Audio by name
+			* \brief Pause Audio by name
 			*/
-			void stop_audio(const std::string name);
+			void pause_audio(const std::string& name);
+
+			/**
+			* \brief Resume Audio by name
+			*/
+			void resume_audio(const std::string& name);
+
+			/**
+			* \brief Stop Audio by name
+			*/
+			void stop_audio(const std::string& name);
+
+			/**
+			* \brief Sets the volume of the Audio
+			*/
+			void set_volume(const std::string& name, int vol);
+
+			/**
+			* \brief Returns if the Audio is playing
+			*/
+			bool is_playing(const std::string& name);
 		};
 	}
 }

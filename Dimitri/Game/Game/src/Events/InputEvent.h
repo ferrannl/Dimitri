@@ -1,28 +1,34 @@
 #pragma once
-#include <src\Enums\EventEnum.cpp>
+#include <src\Enums\EventEnum.h>
 #include <tuple>
+
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the events
+	* \namespace Game::Events
+	* \brief Namespace for the events in the game
 	*/
 	namespace Events {
 		/**
-		*	Contains code to keep track of user input
+		* \class InputEvent
+		* \brief Class contains the data of the user input
 		*/
 		class InputEvent {
 		public:
+			InputEvent(Input::Enums::EventEnum event_enum, const std::tuple<int, int>& mouse_pos);
+
 			/**
-			*	Event Enum to know which key was pressed
+			* \brief An instance of EventEnums that represent the pressed key
 			*/
 			Input::Enums::EventEnum event_enum;
+
 			/**
-			*	Current mouse position
+			* \brief Current mouse position
 			*/
 			std::tuple<int, int> mouse_pos;
-			InputEvent(Input::Enums::EventEnum event_enum, std::tuple<int, int> mouse_pos);
 		};
 	}
 }

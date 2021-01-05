@@ -1,11 +1,8 @@
 #include "InputController.h"
 using namespace Input;
 
-Controllers::InputController::InputController()
-{
-	_event_facade = std::make_unique<Facades::EventFacade>();
-	_mouse_facade = std::make_unique<Facades::MouseFacade>();
-}
+Controllers::InputController::InputController() :
+	_event_facade{ std::make_unique<Facades::EventFacade>() }, _mouse_facade{ std::make_unique<Facades::MouseFacade>() } {}
 
 std::tuple<int, int> Controllers::InputController::get_mouse_position()
 {
@@ -14,14 +11,20 @@ std::tuple<int, int> Controllers::InputController::get_mouse_position()
 
 void Controllers::InputController::notify(const Enums::EventEnum& object)
 {
-	_observer->update(object);
+	for (auto& observer : _observers) {
+		observer->update(object);
+	}
 }
 
-void Controllers::InputController::subscribe(std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
+void Controllers::InputController::subscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
 {
-	_observer = observer;
+	_observers.push_back(observer);
 }
 
+void Input::Controllers::InputController::unsubscribe(const std::shared_ptr<Utility::Interfaces::IObserver<Enums::EventEnum>> observer)
+{
+	_observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
+}
 
 void Controllers::InputController::poll_events()
 {

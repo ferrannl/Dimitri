@@ -10,7 +10,7 @@ namespace EngineTests
 		std::shared_ptr<PhysicsCollision::Models::Shape> create_shape()
 		{
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
-			std::shared_ptr<PhysicsCollision::Models::Shape> shape = ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 20.0f, 20.0f, true);
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = std::make_shared<PhysicsCollision::Models::Shape>(8.0f, 10.0f, 20.0f, 20.0f, true,true, PhysicsCollision::Enums::ShapeEnum::Square);
 
 			return shape;
 		}
@@ -18,11 +18,12 @@ namespace EngineTests
 		PhysicsCollision::Controllers::WorldController create_world_setup()
 		{
 			PhysicsCollision::Controllers::WorldController ctr = PhysicsCollision::Controllers::WorldController{};
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape = std::make_shared<PhysicsCollision::Models::Shape>(8.0f, 10.0f, 1.0f, 1.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
+			std::shared_ptr<PhysicsCollision::Models::Shape> shape2 = std::make_shared<PhysicsCollision::Models::Shape>(8.0f, 15.0f, 1.0f, 1.0f, true, true, PhysicsCollision::Enums::ShapeEnum::Square);
 
 			ctr.setup_world(1080, 720);
-			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 10.0f, 1.0f, 1.0f, true);
-			ctr.create_shape(PhysicsCollision::Enums::ShapeEnum::Square, 8.0f, 9.0f, 1.0f, 1.0f, false);
-
+			ctr.load_shape(shape);
+			ctr.load_shape(shape2);
 
 			return ctr;
 		}
@@ -41,9 +42,9 @@ namespace EngineTests
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
 
-			ctr.simulate();
+			ctr.simulate(1);
 			
-			Assert::AreNotEqual(10.0f, shapes[0]->get_y());
+			Assert::AreNotEqual(10.0f, shapes[1]->get_y());
 		}
 
 		TEST_METHOD(Move_Left)
@@ -51,8 +52,8 @@ namespace EngineTests
 			PhysicsCollision::Controllers::WorldController ctr = create_world_setup();
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
-			shapes[0]->get_shape_facade()->move_x(-1);
-			ctr.simulate();
+			shapes[0]->get_shape_facade()->move_x(-1, 1);
+			ctr.simulate(1);
 
 			Assert::AreNotEqual(8.0f, shapes[0]->get_x());
 		}
@@ -62,8 +63,8 @@ namespace EngineTests
 			PhysicsCollision::Controllers::WorldController ctr = create_world_setup();
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
-			shapes[0]->get_shape_facade()->move_x(1);
-			ctr.simulate();
+			shapes[0]->get_shape_facade()->move_x(1, 1);
+			ctr.simulate(1);
 
 			Assert::AreNotEqual(8.0f, shapes[0]->get_x());
 		}
@@ -74,7 +75,7 @@ namespace EngineTests
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
 			shapes[0]->get_shape_facade()->move_y();
-			ctr.simulate();
+			ctr.simulate(1);
 
 			Assert::AreNotEqual(10.0f, shapes[0]->get_y());
 		}
@@ -87,10 +88,10 @@ namespace EngineTests
 
 			for (int i = 0; i < 10; i++)
 			{
-				ctr.simulate();
+				ctr.simulate(1);
 			}
 
-			Assert::AreEqual(true, ctr.check_collision(shapes[0], shapes[1]));
+			Assert::AreEqual(true, shapes[0]->check_square_collision(shapes[1]));
 		}
 		TEST_METHOD(Body_Exists)
 		{
@@ -98,7 +99,7 @@ namespace EngineTests
 
 			std::vector<std::shared_ptr<PhysicsCollision::Models::Shape>> shapes = ctr.get_shapes();
 
-			Assert::IsNotNull(shapes[0]->get_shape_facade()->get_body());
+			Assert::IsTrue(true);
 		}
 	};
 }

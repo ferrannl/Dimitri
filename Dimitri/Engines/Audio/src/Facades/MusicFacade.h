@@ -2,55 +2,60 @@
 #include "../Interfaces/IAudioFacade.h"
 #include "../Exceptions/AudioExceptions.h"
 
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
+struct _Mix_Music;
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for the facades
+	* \namespace Audio::Facades
+	* \brief Namespace for the facades in the audio engine
 	*/
 	namespace Facades {
 		/**
-		* Class containing methods and references for using SDL_Mixer for music
+		* \class MusicFacade
+		* \brief Class contains the methods to interact with SDL_Mixer for music
 		*/
-		class AUDIO_API MusicFacade : public Interfaces::IAudioFacade {
+		class MusicFacade : public Interfaces::IAudioFacade {
 		private:
 			/**
-			* The music model used by the SDL_Mixer methods
+			* \brief The Mix_Music from SDL2 to be able to perform actions on the audio file
 			*/
-			std::unique_ptr<Mix_Music, decltype (&Mix_FreeMusic)> _music;
+			std::unique_ptr<_Mix_Music, void(*)(_Mix_Music*)> _music;
 		public:
-			MusicFacade(const std::string path);
+			MusicFacade(const std::string& path, int volume);
 
 			/**
-			* Plays the music file using the SDL_Mixer methods
+			* \brief Plays the audio file using SDL_Mixer
 			*/
 			void play() const;
 
 			/**
-			* Resumes the music file using the SDL_Mixer methods
+			* \brief Resumes the audio file using SDL_Mixer
 			*/
 			void resume() const;
 
 			/**
-			* Pauses the music file using the SDL_Mixer methods
+			* \brief Pauses the audio file using SDL_Mixer
 			*/
 			void pause() const;
 
 			/**
-			* Stops the music file using the SDL_Mixer methods
+			* \brief Increases or decreases the volume using SDL_Mixer
+			*/
+			void set_volume(int value);
+
+			/**
+			* \brief Stops the audio file using SDL_Mixer
 			*/
 			void stop() const;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			bool is_playing() const;
 		};
 	}
 }

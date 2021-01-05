@@ -1,11 +1,14 @@
 #include "TextureFacade.h"
 #include <SDL_ttf.h>
+#include <SDL.h>
+#include <SDL_image.h>
 
 using namespace Graphics;
 
-Facades::TextureFacade::TextureFacade(const std::string path) : _path{ path }, _texture(nullptr, SDL_DestroyTexture) {}
+Facades::TextureFacade::TextureFacade(const std::string& path, int opacity) :
+	_path{ path }, _opacity{ (uint8_t)(opacity * 255 / 100) }, _texture{ std::unique_ptr<SDL_Texture, void(*)(SDL_Texture*)>(nullptr, SDL_DestroyTexture) } {}
 
-std::shared_ptr<SDL_Texture> Facades::TextureFacade::get_texture() const
+SDL_Texture* Facades::TextureFacade::get_texture() const
 {
-	return _texture;
+	return _texture.get();
 }

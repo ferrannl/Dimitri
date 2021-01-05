@@ -1,6 +1,5 @@
 #pragma once
 #include "../Models/World.h"
-#include "ShapeController.h"
 #include <string>
 
 #ifdef _WIN64
@@ -12,53 +11,59 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Controllers
+	* \namespace PhysicsCollision::Controllers
+	* \brief Namespace for the controllers in the physics collision engine
 	*/
 	namespace Controllers {
 		/**
-		* Contains methods to setup the world and check colliding shapes. Also contains the simulate which updates the position of the shape of the Box2D body
+		* \class WorldController
+		* \brief Class contains methods to setup the world and interact with the shapes
 		*/
 		class PHYSICSCOLLISION_API WorldController {
 		private:
 			/**
-			* World model that contains the shapes
+			* \brief An instance of the World
 			*/
 			Models::World _world;
-			/**
-			* ShapeController that creates shapes
-			*/
-			ShapeController _shapeController;
 		public:
 			WorldController();
+
 			/**
-			* Sets up the world with shapes
+			* \brief Sets up the world with a width and height
 			*/
-			void setup_world(const float width, const float height);
+			void setup_world(float width, float height);
+
 			/**
-			* Creates the shape based on given parameters
+			* \brief Loads Shapes into the world
 			*/
-			std::shared_ptr<Models::Shape> create_shape(const Enums::ShapeEnum type, const float x, const float y, float width, float height, const bool is_dynamic);
+			void load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape);
+
 			/**
-			* Returns true when there is collision between two shapes. Else returns false
+			* \brief Destroys the bodies of the Shapes in the World
 			*/
-			bool check_collision(std::shared_ptr<Models::Shape> shape1, std::shared_ptr<Models::Shape> shape2);
+			void destroy_bodies() const;
+
 			/**
-			* Destroys the bodies from Box2D
+			* \brief Destroys a body in the World
 			*/
-			void destroy_bodies();
+			void destroy_body(const std::shared_ptr<PhysicsCollision::Models::Shape>& shape);
+
 			/**
-			* Simulates the world and lets all shapes fall
+			* \brief Simulates the world
 			*/
-			void simulate();
+			void simulate(float speed)const;
+
 			/**
-			* Gets all the shapes in the world
+			* \brief Returns all the Shapes in the World
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			const std::vector<std::shared_ptr<Models::Shape>>& get_shapes()const;
 		};
 	}
 }

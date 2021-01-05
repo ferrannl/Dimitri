@@ -1,7 +1,12 @@
 #include "MusicFacade.h"
+#include <SDL.h>
+#include <SDL_mixer.h>
+
 using namespace Audio;
 
-Facades::MusicFacade::MusicFacade(const std::string path) : Interfaces::IAudioFacade(path), _music(nullptr, Mix_FreeMusic) {
+
+Facades::MusicFacade::MusicFacade(const std::string& path, int volume) : Interfaces::IAudioFacade(path, volume), _music(nullptr, Mix_FreeMusic) {
+	Mix_VolumeMusic(_volume);
 	_music.reset(Mix_LoadMUS(_path.c_str()));
 	if (_music == NULL)
 	{
@@ -28,7 +33,20 @@ void Facades::MusicFacade::pause() const
 	}
 }
 
+void Facades::MusicFacade::set_volume(int value)
+{
+	_volume = value;
+	if (Mix_PlayingMusic) {
+		Mix_VolumeMusic(_volume);
+	}
+}
+
 void Facades::MusicFacade::stop() const
 {
 	Mix_HaltMusic();
+}
+
+bool Audio::Facades::MusicFacade::is_playing() const
+{
+	return Mix_PlayingMusic() != 0;
 }

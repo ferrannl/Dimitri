@@ -5,9 +5,9 @@ Game::Controllers::PhysicsCollisionController::PhysicsCollisionController()
 	_world_controller = std::make_unique<PhysicsCollision::Controllers::WorldController>();
 }
 
-void Game::Controllers::PhysicsCollisionController::simulate()
+void Game::Controllers::PhysicsCollisionController::simulate(const float speed)const
 {
-	_world_controller->simulate();
+	_world_controller->simulate(speed);
 }
 
 void Game::Controllers::PhysicsCollisionController::destroy_shapes()
@@ -15,12 +15,17 @@ void Game::Controllers::PhysicsCollisionController::destroy_shapes()
 	_world_controller->destroy_bodies();
 }
 
-std::shared_ptr<PhysicsCollision::Models::Shape> Game::Controllers::PhysicsCollisionController::create_shape(float x, float y, float width, float height, bool is_dynamic)
+void Game::Controllers::PhysicsCollisionController::destroy_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
-	return _world_controller->create_shape(PhysicsCollision::Enums::ShapeEnum::Square, x, y, width, height, is_dynamic);
+	_world_controller->destroy_body(_shape);
 }
 
-bool Game::Controllers::PhysicsCollisionController::check_collision(std::shared_ptr<PhysicsCollision::Models::Shape> shape1, std::shared_ptr<PhysicsCollision::Models::Shape> shape2)
+void Game::Controllers::PhysicsCollisionController::load_shape(const std::shared_ptr<PhysicsCollision::Models::Shape> _shape)
 {
-	return _world_controller->check_collision(shape1, shape2);
+	_world_controller->load_shape(_shape);
+}
+
+void Game::Controllers::PhysicsCollisionController::setup_world(int height, int width)
+{
+	_world_controller->setup_world(width, height);
 }

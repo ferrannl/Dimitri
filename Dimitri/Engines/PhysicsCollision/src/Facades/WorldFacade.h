@@ -1,11 +1,8 @@
 #pragma once
 #include <vector>
 #include "../Models/Shape.h"
-#include <box2d/b2_world.h>
-#include <box2d/b2_math.h>
-#include <box2d/b2_body.h>
-#include <box2d/b2_fixture.h>
 #include <map>
+#include <math.h> 
 
 #ifdef _WIN64
 #ifdef PHYSICSCOLLISION_EXPORTS
@@ -16,45 +13,59 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
+struct b2World;
+struct b2PolygonShape;
+struct b2BodyDef;
+struct b2FixtureDef;
+
 /**
-* Namespace for the PhysicsCollision engine
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Facades
+	* \namespace PhysicsCollision::Facades
+	* \brief Namespace for the facades in the physics collision engine
 	*/
 	namespace Facades {
 		/**
-		* Contains methods to add and destroy the bodies of the world
+		* \class WorldFacade
+		* \brief Class contains methods to interact with a b2World
 		*/
 		class PHYSICSCOLLISION_API WorldFacade {
 		private:
 			/**
-			* World object of the WorldFacade
+			* \brief An instance of the b2World
 			*/
 			std::shared_ptr<b2World> _world;
+
 			/**
-			* World bodies KeyValuePair of Shape and b2Body 
+			* \brief A list of Shaped linked to bodies, which are in this World
 			*/
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
+
 		public:
 			WorldFacade();
 			/**
-			* Destroy the body of the world
+			* \brief Destroy the body of a ShapeFacade
 			*/
-			void destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade);
+			void destroy_body(const std::shared_ptr<Facades::ShapeFacade> shape_facade);
+
 			/**
-			* Simulates the world object with gravity
+			* \brief Simulates the World
 			*/
-			void simulate()const;
+			void simulate(float speed) const;
+
 			/**
-			* Adds the shape to the world shapes
+			* \brief Adds a Shape to the World
 			*/
-			void add_shape(std::shared_ptr<Models::Shape> shape);
+			void add_shape(const std::shared_ptr<Models::Shape> shape);
+
 			/**
-			* Creates a polygon object
+			* \brief Creates a polygon body
 			*/
-			void create_polygon_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape);
+			void create_polygon_body(const b2PolygonShape& _shape, b2BodyDef& bodyDef, b2FixtureDef& fixtureDef, b2Body*& body, const std::shared_ptr<Models::Shape> shape);
 		};
 	}
 }

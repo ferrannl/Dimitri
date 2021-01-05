@@ -3,58 +3,64 @@
 #include <memory>
 #include "../Exceptions/AudioExceptions.h"
 #include <iostream>
-#include <SDL.h>
-#include <SDL_mixer.h>
-
-#ifdef _WIN64
-#ifdef AUDIO_EXPORTS
-#define AUDIO_API __declspec(dllexport)
-#else 
-#define AUDIO_API __declspec(dllimport)
-#endif
-#else
-#define AUDIO_API
-#endif
 
 /**
-* Namespace for the audio engine
+* \namespace Audio
+* \brief Namespace for the audio engine
 */
 namespace Audio {
 	/**
-	* Namespace for interfaces
+	* \namespace Audio::Interfaces
+	* \brief Namespace for the interfaces in the audio engine
 	*/
 	namespace Interfaces {
 		/**
-		* Containing all the necesary methods an attributes that every sound/music facade should have
+		* \class IAudioFacade
+		* \brief Class contains the methods to interact with an audio file
 		*/
-		class AUDIO_API IAudioFacade {
+		class IAudioFacade {
 		protected:
 			/**
-			* Path for locating the sound file
+			* \brief Path of the audio file
 			*/
 			const std::string _path;
-		public:
-			IAudioFacade(const std::string path);
 
 			/**
-			* Plays audio
+			* \brief Sets the audio volume
+			*/
+			int _volume;
+		public:
+			IAudioFacade(const std::string& path, int volume);
+
+			/**
+			* \brief Plays audio file
 			*/
 			virtual void play() const = 0;
 
 			/**
-			* Resumes audio
+			* \brief Resumes audio file
 			*/
 			virtual void resume() const = 0;
 
 			/**
-			* Pauses audio
+			* \brief Pauses audio file
 			*/
 			virtual void pause() const = 0;
 
 			/**
-			* Stops audio
+			* \brief Stops audio file
 			*/
 			virtual void stop() const = 0;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			virtual bool is_playing() const = 0;
+
+			/**
+			* \brief Checks if the audio file is playing
+			*/
+			virtual void set_volume(int value) = 0;
 		};
 	}
 }

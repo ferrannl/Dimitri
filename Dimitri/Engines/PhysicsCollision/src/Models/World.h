@@ -11,49 +11,60 @@
 #else
 #define PHYSICSCOLLISION_API
 #endif
+
 /**
-* Namespace for the PhysicsCollision engines
+* \namespace PhysicsCollision
+* \brief Namespace for the physics collision engine
 */
 namespace PhysicsCollision {
 	/**
-	* Namespace for the Models
+	* \namespace PhysicsCollision::Models
+	* \brief Namespace for the models in the physics collision engine
 	*/
 	namespace Models {
 		/**
-		* Contains all the methods for shape usage in World
+		* \class World
+		* \brief Class contains methods to use the shapes in the world
 		*/
 		class PHYSICSCOLLISION_API World {
 		private:
 			/**
-			* World Facade of the World
+			*\ brief An instance of WorldFacade
 			*/
-			Facades::WorldFacade _world_facade;
+			std::shared_ptr<Facades::WorldFacade> _world_facade;
+
 			/**
-			* Shapes list of the world
+			* \brief A list of Shapes
 			*/
 			std::vector<std::shared_ptr<Models::Shape>> _shapes;
 		public:
 			World();
+			World(float width, float height);
+
 			/**
-			* World Constructor for initializing variables
+			* \brief Adds a Shape to the World in _shapes
 			*/
-			World(const float width, const float height);
+			void add_shape(const std::shared_ptr<Models::Shape> shape);
+
 			/**
-			* Method that adds the shape to a world
+			* \brief Returns _shapes
 			*/
-			void add_shape(std::shared_ptr<Models::Shape> shape);
+			const std::vector<std::shared_ptr<Models::Shape>>& get_shapes() const;
+
 			/**
-			* Returns the shapes from a world
+			* \brief Destroys the bodies from all Shapes in _shapes
 			*/
-			std::vector<std::shared_ptr<Models::Shape>> get_shapes()const;
+			void destroy_bodies()const;
+
 			/**
-			* Destroys the body from this world
+			* \brief Destroys the body from a Shape in _shapes
 			*/
-			void destroy_bodies();
+			void destroy_body(const std::shared_ptr<Models::Shape> shape);
+
 			/**
-			* Calls the simulate from the World Facade
+			* \brief Simulates the World
 			*/
-			void simulate();
+			void simulate(float speed)const;
 		};
 	}
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include "../Facades/WindowFacade.h"
 #include "Text.h"
+#include <tuple>
+#include <mutex>
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
@@ -13,97 +15,148 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the models
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
 	*/
 	namespace Models {
 		/**
-		* Holds the data the window needs to be generated.
+		* \class Window
+		* \brief Class contains the data to render the window
 		*/
 		class GRAPHICS_API Window {
 		private:
 			/**
-			* Height of the window
+			* \brief The mutex of the Window
+			*/
+			std::mutex _mutex;
+
+			/**
+			* \brief The height of the Window
 			*/
 			int _height;
 
 			/**
-			* Width of the window
+			* \brief The width of the Window
 			*/
 			int _width;
 
 			/**
-			* Title of the window, displayed in the frame
+			* \brief The title of the Window that is displayed in the frame
 			*/
 			const std::string _title;
 
 			/**
-			* Holds all functions and references to sdl which can be used to create/destroy/update windows and render sprites
+			* \brief Instance of the WindowFacade
 			*/
-			std::shared_ptr<Facades::WindowFacade> _facade;
+			std::unique_ptr<Facades::WindowFacade> _facade;
 
 			/**
-			* Holds all the textures displayed in the window
+			* \brief A list of the Textures displayed in the Window
 			*/
 			std::vector<std::shared_ptr<Texture>> _textures;
 
 			/**
-			* Returns a Texture if a matching Texture already exists
+			* \brief Returns a Texture if a matching Texture already exists
 			*/
-			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const;
+			std::shared_ptr<Models::Texture> get_matching_texture(const std::shared_ptr<Models::Texture> texture) const;
 		public:
-			Window(const std::string title, const int height, const int width);
+			Window(const std::string& title, int height, int width);
 
 			/**
-			* Return int is used to check if sdl is initialized.
-			* if int is < 0, the initialization failed
+			* \brief Returns the mutex of the Window
 			*/
-			int create();
+			std::mutex& get_mutex();
 
 			/**
-			* Updates a window
+			* \brief Calls methods on the WindowFacade to create the everything needed to render a window
+			* \return 0 or greater if initialization succeeded, otherwise initialization failed
 			*/
-			void update();
+			int create() const;
 
 			/**
-			* Destroys a window
+			* \brief Updates the Window
 			*/
-			void destroy();
+			void update() const;
 
 			/**
-			* Adds the Texture to _textures
+			* \brief Destroys the window
 			*/
-			void add_texture(const std::shared_ptr<Texture>& texture);
+			void destroy() const;
 
 			/**
-			* Removes the Texture from _textures
+			* \brief Adds the Texture to _textures
 			*/
-			void remove_texture(const std::shared_ptr<Texture>& texture);
+			void add_texture(const std::shared_ptr<Texture> texture);
 
 			/**
-			* Returns the textures list of this model
+			* \brief Removes the Texture from _textures
 			*/
-			std::vector<std::shared_ptr<Texture>> get_textures() const;
+			void remove_texture(const std::shared_ptr<Texture> texture);
 
 			/**
-			* Returns the height of this window
+			* \brief Clears all Textures from _textures
+			*/
+			void clear_textures();
+
+			/**
+			* \brief Returns the Textures
+			*/
+			const std::vector<std::shared_ptr<Texture>>& get_textures() const;
+
+			/**
+			* \brief Returns the height of the Window
 			*/
 			int get_height() const;
 
 			/**
-			* Returns the width of this window
+			* \brief Returns the width of the Window
 			*/
 			int get_width() const;
 
 			/**
-			* Returns the title of this window
+			* \brief Returns the title of the window
 			*/
-			const std::string get_title() const;
+			const std::string& get_title() const;
 
-			std::shared_ptr<Facades::WindowFacade> get_facade() const;
+			/**
+			* \brief Returns the fps
+			*/
+			int get_fps() const;
+
+			/**
+			* \brief Returns the timer ticks
+			*/
+			int get_ticks() const;
+
+			/**
+			* \brief Updates camera position
+			*/
+			void set_camera_pos(float x, float y);
+
+			/**
+			* \brief Returns camera position
+			*/
+			std::tuple<int, int> get_camera_pos() const;
+
+			/**
+			* \brief Sets scene size
+			*/
+			void set_scene_size(int height, int width);
+
+			/**
+			* \brief Returns scene size
+			*/
+			std::tuple<int, int> get_scene_size() const;
+
+			/**
+			* \brief Returns timer
+			*/
+			const std::shared_ptr<Utility::Time::Timer> get_timer() const;
 		};
 	}
 }

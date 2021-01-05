@@ -1,35 +1,26 @@
 #pragma once
 #include <tuple>
-#include <SDL.h>
-#include <SDL_mouse.h>
-
-#ifdef _WIN64
-#ifdef INPUT_EXPORTS
-#define INPUT_API __declspec(dllexport)
-#else 
-#define INPUT_API __declspec(dllimport)
-#endif
-#else
-#define INPUT_API
-#endif
 
 /**
-* Namespace for the input engine
+* \namespace Input
+* \brief Namespace for the input engine
 */
 namespace Input {
 	/**
-	* Namespace for the facades
+	* \namespace Input::Facades
+	* \brief Namespace for the facades in the input engine
 	*/
 	namespace Facades {
 		/**
-		* Containing all methods and references needed for the mouse events from SDL
+		* \class MouseFacade
+		* \brief Class contains the methods to get the mouse events using SDL
 		*/
-		class INPUT_API MouseFacade {
+		class MouseFacade {
 		public:
 			/**
-			* Returns the X and Y where the mouse has clicked
+			* \brief Returns the X and Y position of the mouse relative to the left corner of the window
 			*/
-			std::tuple<int, int> get_mouse_position() const;
+			const std::tuple<int, int> get_mouse_position() const;
 		};
 	}
 }

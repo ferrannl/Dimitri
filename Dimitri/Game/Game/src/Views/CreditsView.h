@@ -1,60 +1,35 @@
 #pragma once
-#include <memory>
-#include <src\Controllers\GraphicsController.h>
+#include "../Views/View.h"
+#include "../Views/View.h"
 #include <src\Helpers\BasePathHelper.h>
-#include <chrono>
-#include <thread>
-using namespace std::this_thread;
-using namespace std::chrono_literals;
-
+ 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the views
+	* \namespace Game::Views
+	* \brief Namespace for the views in the game
 	*/
 	namespace Views {
 		/**
-		*	Containing all the code to draw the level using the graphics controller
+		* \class CreditsView
+		* \brief Class contains the methods to draw the credits
 		*/
-		class CreditsView {
-		private:
-			/**
-			*	Graphics controller to update window
-			*/
-			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
-			/**
-			*	Textures for current view
-			*/
-			std::vector<std::shared_ptr<Graphics::Models::Texture>> _textures;
-			/**
-			*	Draw thread for updating window in background thread
-			*/
-			std::thread draw_thread;
+		class CreditsView : public View {
 		public:
 			CreditsView(const std::shared_ptr<Graphics::Controllers::GraphicsController>& graphics_controller);
-			/**
-			*	If view is currently being used or not
-			*/
-			bool is_open; // TODO: delete var when screen navigation is implemented
 
 			/**
-			*	Initializes textures
+			* \brief Initializes Textures
 			*/
 			void init_textures();
+
 			/**
-			*	Open window loads textures into graphics
+			* \brief Returns the visible state of the View
 			*/
-			void open();
-			/**
-			*	Removes textures from window
-			*/
-			void close();
-			/**
-			*	Loop for updating window
-			*/
-			void draw();
+			bool is_visible() const override;
 		};
 	}
 }

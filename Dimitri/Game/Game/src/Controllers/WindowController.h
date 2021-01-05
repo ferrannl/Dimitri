@@ -1,73 +1,178 @@
 #pragma once
+#include <vector>
+#include <memory>
+#include <map>
+#include <string>
+#include <thread>
 #include <src\Controllers\GraphicsController.h>
-#include "../Views/CreditsView.h"
 #include <src\Interfaces\IObserver.h>
 #include "../Events/InputEvent.h"
 #include "../Views/CreditsView.h"
+#include "../Views/HelpView.h"
+#include "../Views/LevelSelectorView.h"
+#include "../Views/HomeView.h"
 #include "../Views/LevelView.h"
+#include "../Views/TimerView.h"
+#include "../Views/HighscoreView.h"
+#include "../Views/GamePlaySpeedView.h"
+#include "../Views/FpsView.h"
+#include "../Views/WinLevelView.h"
+#include "../Views/GameOverLevelView.h"
+#include "../Views/PauseLevelView.h"
+#include "../Views/HUDView.h"
+#include "../Views/AdvertisementView.h"
+#include "../Views/View.h"
+#include "../Views/SaveGameView.h"
+#include "../Views/LevelTransitionView.h"
+#include "../Views/CheatsView.h"
+#include <chrono>
+#include <thread>
+#include "../Models/Abstract/Object.h"
+#include "../Enums/ViewEnum.h"
+using namespace std::this_thread;
+using namespace std::chrono_literals;
 
 /**
-*	Namespace for the game
+* \namespace Game
+* \brief Namespace for the game
 */
 namespace Game {
 	/**
-	*	Namespace for the controllers
+	* \namespace Game::Controllers
+	* \brief Namespace for the controllers in the game
 	*/
 	namespace Controllers {
 		/**
-		*	Contains all code to interact with window engine and show images on screen
+		* \class WindowController
+		* \brief Class contains the methods to open the Views
 		*/
-		class WindowController : public Utility::Interfaces::IObserver<Game::Events::InputEvent> {
+		class WindowController {
 		private:
 			/**
-			*	Graphics Controller to interact with engine
+			* \brief An instance of the GraphicsController to interact with graphics engine
 			*/
 			std::shared_ptr<Graphics::Controllers::GraphicsController> _graphics_controller;
+
 			/**
-			*	Credits view to show credits
+			* \brief A List of all the Views
 			*/
-			std::unique_ptr<Views::CreditsView> _credits_view;
+			std::map<Enums::ViewEnum, std::unique_ptr<Views::View>> _views;
+
 			/**
-			*	Level view to show level
+			* \brief A thread for rendering Textures on the Window
 			*/
-			std::unique_ptr<Views::LevelView> _level_view;
+			std::thread draw_thread;
+
 			/**
-			*	Checks if there is already a rendered view
+			* \brief The height of the Window
 			*/
-			bool _open_window;
+			int _height;
+
+			/**
+			* \brief The width of the Window
+			*/
+			int _width;
+
+			/**
+			* \brief The speed for a View
+			*/
+			float _speed;
 		public:
 			WindowController();
+
 			/**
-			*	Update from Game::Controllers::InputController
-			*/
-			void update(const Game::Events::InputEvent& object);
-			
-			/**
-			*	Creates window
+			* \brief Creates the Window
 			*/
 			void create_window(int height, int width);
 
 			/**
-			*	Adds Texture to window
+			* \brief Sets the Views active property to true
 			*/
-			void add_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
-			/**
-			*	Removes texture from window
-			*/
-			void remove_texture(const std::shared_ptr<Graphics::Models::Texture>& texture);
-			/**
-			*	Refreshes window
-			*/
-			void update_window();
-			/**
-			*	Destroys window
-			*/
-			void destroy_window();
+			void open_view(Enums::ViewEnum view_name);
 
 			/**
-			*	Sets the textures for the level view
+			* \brief Checks if the View is active
 			*/
-			void set_level_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures);
+			bool is_active(Enums::ViewEnum view_name);
+
+			/**
+			* \brief Close a view based on the enum
+			*/
+			void close_view(Enums::ViewEnum view_name);
+
+			/**
+			* \brief Sets all the Views active property to false
+			*/
+			void clear_views();
+
+			/**
+			* \brief Toggles the visible property of the View
+			*/
+			void toggle_view_visibility(Enums::ViewEnum view_name);
+
+			/**
+			* \brief Calls all draw methods on _views
+			*/
+			void draw();
+
+			/**
+			* \brief Sets the Textures for a View
+			*/
+			void set_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
+
+			/**
+			* \brief dds the Textures for a View
+			*/
+			void add_textures(std::vector<std::shared_ptr<Graphics::Models::Texture>> textures, Enums::ViewEnum view_name);
+
+			/**
+			* \brief Sets the speed for a View
+			*/
+			void set_speed(float speed);
+
+			/**
+			* \brief Updates camera position
+			*/
+			void set_camera_pos(int x, int y);
+
+			/**
+			* \brief Updates camera position based on a Object
+			*/
+			void set_camera_pos_based_on(const std::shared_ptr<Game::Models::Object> object);
+
+			/**
+			* \brief Sets scene size
+			*/
+			void set_scene_size(int height, int width);
+
+			/**
+			* \brief Returns the height of the Window
+			*/
+			int get_window_height() const;
+
+			/**
+			* \brief Returns the width of the Window
+			*/
+			int get_window_width() const;
+
+			/**
+			* \brief Returns the camera position
+			*/
+			std::tuple<int, int> get_camera_pos() const;
+
+			/**
+			* \brief Returns the Graphics Controller
+			*/
+			std::shared_ptr<Graphics::Controllers::GraphicsController> get_graphics_controller() const;
+
+			/**
+			* \brief Add the highscore to the HighscoreView based on a template function
+			*/
+			template <typename DerivedT>
+			void set_highscore_record(std::string record) {
+				auto derived = static_cast<DerivedT*>(_views[Enums::ViewEnum::HIGHSCORE].get());
+				derived->add_record(record);
+			}
 		};
 	}
 }

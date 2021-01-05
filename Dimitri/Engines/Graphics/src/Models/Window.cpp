@@ -1,21 +1,26 @@
 #include "Window.h"
 using namespace Graphics;
 
-Models::Window::Window(const std::string title, const int height, const int width) : _title{ title }, _height{ height }, _width{ width } {
-	_facade = std::make_shared<Facades::WindowFacade>();
+Models::Window::Window(const std::string& title, int height, int width) : _title{ title }, _height{ height }, _width{ width } {
+	_facade = std::make_unique<Facades::WindowFacade>();
 }
 
-std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture>& texture) const
+std::mutex& Graphics::Models::Window::get_mutex()
+{
+	return _mutex;
+}
+
+std::shared_ptr<Models::Texture> Models::Window::get_matching_texture(const std::shared_ptr<Models::Texture> texture) const
 {
 	for (std::shared_ptr<Models::Texture> t : _textures) {
-		if (t.get()->matches(texture)) {
+		if (t->matches(texture)) {
 			return t;
 		}
 	}
 	return nullptr;
 }
 
-int Models::Window::create()
+int Models::Window::create() const
 {
 	int retVal = NULL;
 
@@ -25,23 +30,23 @@ int Models::Window::create()
 	return retVal;
 }
 
-void Models::Window::update()
+void Models::Window::update() const
 {
 	_facade->update_window(_textures);
 }
 
-void Models::Window::destroy()
+void Models::Window::destroy() const
 {
 	_facade->destroy();
 }
 
-void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture>& texture)
+void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture> texture)
 {
-	_textures.push_back(texture);
 	_facade->create_texture(texture, get_matching_texture(texture));
+	_textures.push_back(texture);
 }
 
-void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& texture)
+void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture> texture)
 {
 	std::vector<std::shared_ptr<Texture>>::iterator it = std::find(_textures.begin(), _textures.end(), texture);
 
@@ -52,7 +57,12 @@ void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture>& te
 	}
 }
 
-std::vector<std::shared_ptr<Models::Texture>> Graphics::Models::Window::get_textures() const
+void Graphics::Models::Window::clear_textures()
+{
+	_textures.clear();
+}
+
+const std::vector<std::shared_ptr<Models::Texture>>& Graphics::Models::Window::get_textures() const
 {
 	return _textures;
 }
@@ -67,12 +77,42 @@ int Models::Window::get_width() const
 	return _width;
 }
 
-const std::string Models::Window::get_title() const
+const std::string& Models::Window::get_title() const
 {
 	return _title;
 }
 
-std::shared_ptr<Facades::WindowFacade> Graphics::Models::Window::get_facade() const
+int Graphics::Models::Window::get_fps() const
 {
-	return _facade;
+	return _facade->get_fps();
+}
+
+int Graphics::Models::Window::get_ticks() const
+{
+	return _facade->get_ticks();
+}
+
+void Graphics::Models::Window::set_camera_pos(float x, float y)
+{
+	_facade->set_camera_pos(x,y);
+}
+
+std::tuple<int, int> Graphics::Models::Window::get_camera_pos() const
+{
+	return _facade->get_camera_pos();
+}
+
+void Graphics::Models::Window::set_scene_size(int height, int width)
+{
+	_facade->set_scene_size(height, width);
+}
+
+std::tuple<int, int> Graphics::Models::Window::get_scene_size() const
+{
+	return _facade->get_scene_size();
+}
+
+const std::shared_ptr<Utility::Time::Timer> Graphics::Models::Window::get_timer() const
+{
+	return _facade->get_timer();
 }

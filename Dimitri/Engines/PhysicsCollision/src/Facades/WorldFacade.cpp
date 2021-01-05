@@ -1,4 +1,11 @@
 #include "WorldFacade.h"
+#include <box2d/b2_world.h>
+#include <box2d/b2_math.h>
+#include <box2d/b2_body.h>
+#include <box2d/b2_fixture.h>
+#include <box2d/b2_shape.h>
+#include <box2d/b2_polygon_shape.h>
+
 using namespace PhysicsCollision;
 
 Facades::WorldFacade::WorldFacade()
@@ -8,37 +15,48 @@ Facades::WorldFacade::WorldFacade()
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
 }
 
-void Facades::WorldFacade::destroy_body(std::shared_ptr<Facades::ShapeFacade> shape_facade)
+void Facades::WorldFacade::destroy_body(const std::shared_ptr<Facades::ShapeFacade> shape_facade)
 {
 	_world->DestroyBody(shape_facade->get_body());
 }
 
-void Facades::WorldFacade::add_shape(std::shared_ptr<Models::Shape> shape)
+void Facades::WorldFacade::add_shape(const std::shared_ptr<Models::Shape> shape)
 {
 	b2FixtureDef fixtureDef;
 	b2Body* body = nullptr;
 	b2BodyDef bodyDef;
-	if (shape->get_type() == Enums::ShapeEnum::Polygon) {
-		//Polygon tekenen dmv vertices
-	}
-	else if (shape->get_type() == Enums::ShapeEnum::Square) {
-		b2PolygonShape _shape;
+	b2PolygonShape _shape;
+
+	if (shape->get_type() == Enums::ShapeEnum::Square) {
 		_shape.SetAsBox(shape->get_width() / 2, shape->get_height() / 2);
-		bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
-		create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	}
+
+	bodyDef.position.Set(shape->get_x() + shape->get_width() / 2, shape->get_y() + shape->get_height() / 2);
+	create_polygon_body(_shape, bodyDef, fixtureDef, body, shape);
 	_world_bodies[shape] = body;
 	shape->get_shape_facade()->add_body(body);
 }
 
-void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, std::shared_ptr<Models::Shape> shape) {
+void Facades::WorldFacade::create_polygon_body(const b2PolygonShape &_shape, b2BodyDef &bodyDef, b2FixtureDef &fixtureDef, b2Body* &body, const std::shared_ptr<Models::Shape> shape) {
 	if (shape->get_is_dynamic())
 	{
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.angle = 0;
 		body = _world->CreateBody(&bodyDef);
 		fixtureDef.shape = &_shape;
-		fixtureDef.density = 1.0f;
+		if (shape->get_is_interactable())
+		{
+			fixtureDef.filter.groupIndex = 1;
+			fixtureDef.filter.categoryBits = 0x0001;
+		}
+		else {
+			fixtureDef.filter.groupIndex = -1;
+			fixtureDef.filter.categoryBits = 0x0002;
+		}
+		fixtureDef.filter.maskBits = 1;
+		fixtureDef.friction = 1.0f;
+		fixtureDef.density = 2.5f;
+		fixtureDef.restitution = 0.0f;
 		body->CreateFixture(&fixtureDef);
 	}
 	else {
@@ -48,9 +66,10 @@ void Facades::WorldFacade::create_polygon_body(b2PolygonShape &_shape, b2BodyDef
 	}
 }
 
-void Facades::WorldFacade::simulate() const
+
+void Facades::WorldFacade::simulate(float speed) const
 {
-	float timeStep = 1.0f / 60.0f;
+	float timeStep = 1.0f / (60.0f / speed);
 	int32 velocityIterations = 6;
 	int32 positionIterations = 6;
 	_world->Step(timeStep, velocityIterations, positionIterations);
@@ -60,9 +79,7 @@ void Facades::WorldFacade::simulate() const
 		std::shared_ptr<Models::Shape> shape = it.first;
 		b2Body* body = it.second;
 
-		b2Vec2 position = body->GetPosition();
-		float angle = body->GetAngle();
-		shape->set_x(body->GetWorldCenter().x - shape->get_width() / 2);
-		shape->set_y(body->GetWorldCenter().y - shape->get_height() / 2);
+		shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
+		shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
 	}
 }

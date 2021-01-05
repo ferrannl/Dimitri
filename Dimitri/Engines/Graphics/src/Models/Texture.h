@@ -3,13 +3,12 @@
 #include <memory>
 #include "../Enums/FlipEnum.h"
 #include "../Facades/TextureFacade.h"
-
-
+#include "Center.h"
 
 #ifdef _WIN64
 #ifdef GRAPHICS_EXPORTS
 #define GRAPHICS_API __declspec(dllexport)
-#else 
+#else
 #define GRAPHICS_API __declspec(dllimport)
 #endif
 #else
@@ -17,179 +16,224 @@
 #endif
 
 /**
-* Namespace for the graphics engine
+* \namespace Graphics
+* \brief Namespace for the graphics engine
 */
 namespace Graphics {
 	/**
-	* Namespace for the models
+	* \namespace Graphics::Models
+	* \brief Namespace for the models in the graphics engine
 	*/
 	namespace Models {
 		/**
-		* Holds the data the texture needs to be rendered.
+		* \class Texture
+		* \brief Class contains the data to render
 		*/
 		class GRAPHICS_API Texture {
 		private:
 			/**
-			* The x coordinate the texture is drawn to
+			* \brief The x coordinate the Texture
 			*/
-			int _x;
+			float _x;
 
 			/**
-			* The y coordinate the texture is drawn to
+			* \brief The y coordinate the Texture
 			*/
-			int _y;
+			float _y;
 
 			/**
-			* The z coordinate the texture is drawn to
+			* \brief The z coordinate the Texture
 			*/
-			int _z;
+			float _z;
 
 			/**
-			* The width of the texture
+			* \brief The width of the Texture
 			*/
-			int _width;
+			float _width;
 
 			/**
-			* The height of the texture
+			* \brief The height of the Texture
 			*/
-			int _height;
+			float _height;
 
 			/**
-			* The angle which the texture is drawn with
+			* \brief The angle which the Texture
 			*/
 			float _angle;
 
 			/**
-			* Visibility of texture
+			* \brief The center from the Texture
+			*/
+			Models::Center _center;
+
+			/**
+			* \brief Visibility of Texture
 			*/
 			bool _visible;
 
 			/**
-			* The path of the texture
+			* \brief if texture Is_Dynamic
+			*/
+			bool _is_dynamic;
+
+			/**
+			* \brief The path of the Texture
 			*/
 			std::string _path;
+
+			/**
+			* \brief The opacity of the Texture
+			* 0 is transparent, 100 is opaque
+			*/
+			int _opacity;
 		protected:
 			/**
-			* The flip direction of the texture
+			* \brief The flip direction of the Texture
 			*/
 			Enums::FlipEnum _flipstatus;
 
 			/**
-			* The facade that holds all references to SDL
+			* \brief The TextureFacade that contains the methods to render
 			*/
 			std::shared_ptr<Facades::TextureFacade> _facade;
 		public:
-			Texture(const int x, const int y, const int z, const int height, const int width, const float angle, const std::string path);
+			Texture(float x, float y, float z, float height, float width, float angle, const std::string& path, bool visible, const Models::Center center, bool is_dynamic, int opacity = 100);
 
 			/**
-			* returns the y converted to be drawn from the perspective of bottom left
+			* \brief Returns the y converted to the perspective from the bottom
 			*/
-			int get_converted_y(int height) const;
+			float get_converted_y(float height) const;
 
 			/**
-			* returns the x coordinate
+			* \brief Returns the x coordinate
 			*/
-			int get_x() const;
+			float get_x() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
-			int get_z() const;
+			float get_z() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
-			int get_y() const;
+			float get_y() const;
 
 			/**
-			* returns the z coordinate
+			* \brief Returns the z coordinate
 			*/
-			int get_width() const;
+			float get_width() const;
 
 			/**
-			* returns the height
+			* \brief Returns the height
 			*/
-			int get_height() const;
+			float get_height() const;
 
 			/**
-			* returns the angle
+			* \brief Returns the angle
 			*/
 			float get_angle() const;
 
 			/**
-			* returns the image path
+			* \brief Returns the angle
 			*/
-			std::string get_path() const;
+			Models::Center get_center() const;
 
 			/**
-			* returns the flip direction
+			* \brief Returns the path to the texture
+			*/
+			const std::string& get_path() const;
+
+			/**
+			* \brief Returns the flip direction
 			*/
 			Enums::FlipEnum get_flip_status() const;
 
 			/**
-			* returns the visibility
+			* \brief Returns the visibility
 			*/
-			bool get_visible() const;
+			bool is_visible() const;
 
 			/**
-			* returns the facade of the texture for the sprite
+			* \brief Returns the dynamic
 			*/
-			std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
+			bool is_dynamic() const;
 
 			/**
-			* sets the x coordinate
+			* \brief Returns the TextureFacade
 			*/
-			void set_x(const int x);
+			const std::shared_ptr<Facades::TextureFacade> get_texture_facade() const;
 
 			/**
-			* sets the z coordinate
+			* \brief Sets the x coordinate
 			*/
-			void set_z(const int z);
+			void set_x(float x);
 
 			/**
-			* sets the y coordinate
+			* \brief Sets the z coordinate
 			*/
-			void set_y(const int y);
+			void set_z(float z);
 
 			/**
-			* sets the width
+			* \brief Sets the y coordinate
 			*/
-			void set_width(const int width);
+			void set_y(float y);
 
 			/**
-			* sets the height
+			* \brief Sets the width
 			*/
-			void set_height(const int height);
+			void set_width(float width);
 
 			/**
-			* sets the angle
+			* \brief Sets the height
 			*/
-			void set_angle(const float angle);
+			void set_height(float height);
 
 			/**
-			* sets the flip direction
+			* \brief Sets the angle
 			*/
-			void set_flip_status(const Enums::FlipEnum flipstatus);
+			void set_angle(float angle);
 
 			/**
-			* sets the visibility
+			* \brief Sets the flip status
 			*/
-			void set_visible(const bool visibility);
+			void set_flip_status(Enums::FlipEnum flipstatus);
 
 			/**
-			* sets the facade containing the references to sdl
+			* \brief Sets the visibility
 			*/
-			void set_facade(const std::shared_ptr<Facades::TextureFacade>& facade);
+			void set_visible(bool visibility);
 
 			/**
-			* creates the texture facade
+			* \brief Toggle the visibility
+			*/
+			void toggle_visible();
+
+			/**
+			* \brief Sets the center
+			*/
+			void set_center(const Models::Center& center);
+
+			/**
+			* \brief Returns the opacity of the Texture
+			* \return 0 is transparent, 100 is opaque
+			*/
+			int get_opacity() const;
+
+			/**
+			* \brief Sets the facade
+			*/
+			void set_facade(const std::shared_ptr<Facades::TextureFacade> facade);
+
+			/**
+			* \brief Creates the TextureFacade
 			*/
 			virtual void create_texture_facade() = 0;
 
 			/**
-			* Checks if this texure matches the given texture
+			* \brief Checks if this Texure matches the given Texture
 			*/
-			virtual bool matches(const std::shared_ptr<Models::Texture>& texture) const = 0;
+			virtual bool matches(const std::shared_ptr<Models::Texture> texture) const = 0;
 		};
 	}
 }
