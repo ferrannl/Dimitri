@@ -234,7 +234,6 @@ void Game::Controllers::LevelController::clear_level()
 
 void  Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
-		sleep_for(36ms);
 
 		for (const std::shared_ptr<Models::Updatable>& object : _level->get_updatables())
 		{
