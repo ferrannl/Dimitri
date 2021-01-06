@@ -48,11 +48,6 @@
     <ClCompile Include="src\Models\Button.cpp" />
     <ClCompile Include="src\Models\Interactable\Car.cpp" />
     <ClCompile Include="src\Models\Interactable\Switch.cpp" />
-    <ClCompile Include="src\Models\IObjects\Camera.cpp" />
-    <ClCompile Include="src\Models\IObjects\Floor.cpp" />
-    <ClCompile Include="src\Models\IObjects\FloorCorner.cpp" />
-    <ClCompile Include="src\Models\IObjects\Lamp.cpp" />
-    <ClCompile Include="src\Models\IObjects\Wall.cpp" />
     <ClCompile Include="src\Models\Level.cpp" />
     <ClCompile Include="src\Models\Updatables\CameraBeam.cpp" />
     <ClCompile Include="src\Models\Updatables\LightBeam.cpp" />
@@ -94,6 +89,11 @@
     <ClCompile Include="src\Views\LevelSelectorView.cpp" />
     <ClCompile Include="src\Models\Settings\Highscore.cpp" />
     <ClCompile Include="src\Factory\TutorialFactory.cpp" />
+    <ClCompile Include="src\Models\Objects\Camera.cpp" />
+    <ClCompile Include="src\Models\Objects\Floor.cpp" />
+    <ClCompile Include="src\Models\Objects\FloorCorner.cpp" />
+    <ClCompile Include="src\Models\Objects\Lamp.cpp" />
+    <ClCompile Include="src\Models\Objects\Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Builder\LevelBuilder.h" />
@@ -147,11 +147,6 @@
     <ClInclude Include="src\Models\Button.h" />
     <ClInclude Include="src\Models\Interactable\Car.h" />
     <ClInclude Include="src\Models\Interactable\Switch.h" />
-    <ClInclude Include="src\Models\IObjects\Camera.h" />
-    <ClInclude Include="src\Models\IObjects\Floor.h" />
-    <ClInclude Include="src\Models\IObjects\FloorCorner.h" />
-    <ClInclude Include="src\Models\IObjects\Lamp.h" />
-    <ClInclude Include="src\Models\IObjects\Wall.h" />
     <ClInclude Include="src\Models\Level.h" />
     <ClInclude Include="src\Models\Updatables\CameraBeam.h" />
     <ClInclude Include="src\Models\Updatables\LightBeam.h" />
@@ -199,5 +194,10 @@
     <ClInclude Include="src\Models\Settings\Settings.h" />
     <ClInclude Include="src\Views\LevelSelectorView.h" />
     <ClInclude Include="src\Models\Settings\Highscore.h" />
+    <ClInclude Include="src\Models\Objects\Camera.h" />
+    <ClInclude Include="src\Models\Objects\Floor.h" />
+    <ClInclude Include="src\Models\Objects\FloorCorner.h" />
+    <ClInclude Include="src\Models\Objects\Lamp.h" />
+    <ClInclude Include="src\Models\Objects\Wall.h" />
   </ItemGroup>
 </Project>

@@ -19,6 +19,7 @@ void Game::Controllers::InputController::update(const Input::Enums::EventEnum& o
 
 void Game::Controllers::InputController::notify(const Game::Events::InputEvent& object) {
 	if (_observers.size() == 0) { return; }
+	
 	for (auto observer : _observers) {
 		try {
 			observer->update(object);

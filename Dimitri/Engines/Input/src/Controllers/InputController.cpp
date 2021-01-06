@@ -1,4 +1,5 @@
 #include "InputController.h"
+#include <iostream>
 using namespace Input;
 
 Controllers::InputController::InputController() :
@@ -29,8 +30,9 @@ void Input::Controllers::InputController::unsubscribe(const std::shared_ptr<Util
 void Controllers::InputController::poll_events()
 {
 	while (true) {
-		sleep_for(5ms);
+		sleep_for(70ms);
 		Enums::EventEnum event = _event_facade->poll_event();
+
 		if (event != Enums::EventEnum::NOT_SUPPORTED) {
 			notify(event);
 		}

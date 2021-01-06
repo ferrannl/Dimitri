@@ -1,6 +1,7 @@
 #include "EventFacade.h" 
 #include "../Adapters/KeyBoardAdapter.h"
 #include "../Adapters/MouseAdapter.h"
+#include <iostream>
 using namespace Input;
 
 Facades::EventFacade::EventFacade() : _event{}, _input_adapter{ nullptr } {}
