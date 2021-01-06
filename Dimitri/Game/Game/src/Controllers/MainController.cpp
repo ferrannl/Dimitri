@@ -40,6 +40,15 @@ void Game::Controllers::MainController::run()
 	_input_controller->poll_events();
 }
 
+void Controllers::MainController::reset() {
+	_input_controller->unsubscribe(_level_selector_controller);
+	_input_controller->unsubscribe(_level_controller);
+
+	_audio_controller = std::make_shared<Game::Controllers::AudioController>();
+	_level_selector_controller = std::make_shared<Controllers::LevelSelectorController>(720, 1080);
+	_level_controller = std::make_shared<Controllers::LevelController>(_window_controller, _audio_controller);
+	_level_manager = std::make_shared<Managers::LevelManager>(_input_controller, _level_controller, _window_controller, _home_controller);
+}
 
 void Controllers::MainController::update(const Events::InputEvent& object)
 {

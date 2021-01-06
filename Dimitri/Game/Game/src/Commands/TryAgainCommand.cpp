@@ -20,7 +20,7 @@ void Game::Commands::TryAgainCommand::execute(int param)
 
 	if (l_ctrl->get_level()) {
 		l_ctrl->stop();
-		sleep_for(10ms);
+		sleep_for(100ms);
 		l_ctrl->clear_level();
 	}
 

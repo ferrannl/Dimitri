@@ -48,13 +48,7 @@ void Graphics::Models::Window::add_texture(const std::shared_ptr<Texture> textur
 
 void Graphics::Models::Window::remove_texture(const std::shared_ptr<Texture> texture)
 {
-	std::vector<std::shared_ptr<Texture>>::iterator it = std::find(_textures.begin(), _textures.end(), texture);
-
-	// If element was found 
-	if (it != _textures.end()) {
-		int index = std::distance(_textures.begin(), it);
-		_textures.erase(_textures.begin() + index);
-	}
+	_textures.erase(std::remove(_textures.begin(), _textures.end(), texture), _textures.end());
 }
 
 void Graphics::Models::Window::clear_textures()

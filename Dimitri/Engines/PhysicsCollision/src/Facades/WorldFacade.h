@@ -45,12 +45,13 @@ namespace PhysicsCollision {
 			*/
 			std::map<std::shared_ptr<Models::Shape>, b2Body*> _world_bodies;
 
+			bool _destroy_bodies;
 		public:
 			WorldFacade();
 			/**
 			* \brief Destroy the body of a ShapeFacade
 			*/
-			void destroy_body(const std::shared_ptr<Facades::ShapeFacade> shape_facade);
+			void destroy_body();
 
 			/**
 			* \brief Simulates the World

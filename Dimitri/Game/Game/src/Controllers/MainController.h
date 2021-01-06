@@ -118,6 +118,7 @@ namespace Game {
 			/**
 			* \brief Receives updates from the InputController
 			*/
+			void reset();
 			void update(const Events::InputEvent& object);
 
 			/**

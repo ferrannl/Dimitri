@@ -17,15 +17,13 @@ void Models::World::add_shape(const std::shared_ptr<Models::Shape> shape)
 
 void Models::World::destroy_bodies()const
 {
-	for (int i = 0; i < _shapes.size(); i++) {
-		_world_facade->destroy_body(_shapes.at(i)->get_shape_facade());
-	}
+	_world_facade->destroy_body();
 }
 
 void PhysicsCollision::Models::World::destroy_body(const std::shared_ptr<Models::Shape> shape)
 {
-	_shapes.erase(std::remove(_shapes.begin(), _shapes.end(), shape), _shapes.end());
-	_world_facade->destroy_body(shape->get_shape_facade());
+	//_shapes.erase(std::remove(_shapes.begin(), _shapes.end(), shape), _shapes.end());
+	//_world_facade->destroy_body(shape->get_shape_facade());
 }
 
 void Models::World::simulate(float speed)const

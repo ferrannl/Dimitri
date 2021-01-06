@@ -69,7 +69,7 @@ namespace Game {
 			/**
 			* \brief Sets the LevelController
 			*/
-			void set_level_controller(const std::shared_ptr<Game::Controllers::LevelController>& level_controller);
+			void set_level_controller(std::shared_ptr<Game::Controllers::LevelController> level_controller);
 
 			/**
 			* \brief Returns an instance of the window controller

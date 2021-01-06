@@ -13,11 +13,12 @@ Facades::WorldFacade::WorldFacade()
 	b2Vec2 gravity(0.0f, -10.0f);
 	_world = std::make_shared<b2World>(gravity);
 	_world_bodies = std::map<std::shared_ptr<Models::Shape>, b2Body*>();
+	_destroy_bodies = false;
 }
 
-void Facades::WorldFacade::destroy_body(const std::shared_ptr<Facades::ShapeFacade> shape_facade)
+void Facades::WorldFacade::destroy_body()
 {
-	_world->DestroyBody(shape_facade->get_body());
+	_destroy_bodies = true;
 }
 
 void Facades::WorldFacade::add_shape(const std::shared_ptr<Models::Shape> shape)
@@ -81,5 +82,12 @@ void Facades::WorldFacade::simulate(float speed) const
 
 		shape->set_x(round(body->GetWorldCenter().x - shape->get_width() / 2));
 		shape->set_y(round(body->GetWorldCenter().y - shape->get_height() / 2));
+	}
+
+	if (_destroy_bodies) {
+		for (auto const& it : _world_bodies)
+		{
+			_world->DestroyBody(it.second);
+		}
 	}
 }

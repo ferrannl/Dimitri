@@ -78,7 +78,7 @@ namespace Game {
 			*/
 			std::shared_ptr<Game::Models::CheatsSettings> _settings;
 		public:
-			LevelController(const std::shared_ptr<Controllers::WindowController> window_controller, const std::shared_ptr<Controllers::AudioController> audio_controller);
+			LevelController(std::shared_ptr<Controllers::WindowController> window_controller, std::shared_ptr<Controllers::AudioController> audio_controller);
 
 			/**
 			* \brief Loads the buttons for a level

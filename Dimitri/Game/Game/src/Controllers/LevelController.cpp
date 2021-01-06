@@ -134,7 +134,9 @@ void Game::Controllers::LevelController::update(const Game::Events::InputEvent& 
 
 void Controllers::LevelController::start()
 {
-	set_state(Enums::LevelStateEnum::TRANSITION);
+	_window_controller->get_graphics_controller()->get_window()->get_timer()->start();
+	set_state(Enums::LevelStateEnum::ACTIVE);
+
 }
 
 void Controllers::LevelController::stop()
@@ -150,7 +152,7 @@ void Controllers::LevelController::set_state(Enums::LevelStateEnum new_state)
 
 		if (old_state == Enums::LevelStateEnum::ACTIVE) {
 			// active -> pause/win/game_over/inactive/transition
-			_simulation_thread.join();
+			_simulation_thread.detach();
 			_objects_thread.detach();
 			_level->stop_music("level1");
 			_level->stop_music("danger");
@@ -190,11 +192,11 @@ void Game::Controllers::LevelController::toggle_light(const std::tuple<int, int>
 
 void Game::Controllers::LevelController::run_transition()
 {
-	while (_state == Enums::LevelStateEnum::TRANSITION) {
-		sleep_for(5ms);
+	//while (_state == Enums::LevelStateEnum::TRANSITION) {
+	//	sleep_for(5ms);
 
-		if (!_window_controller->is_active(Enums::ViewEnum::LEVEL_TRANSITION)) { break; }
-	}
+	//	if (!_window_controller->is_active(Enums::ViewEnum::LEVEL_TRANSITION)) { break; }
+	//}
 	_window_controller->get_graphics_controller()->get_window()->get_timer()->start();
 	set_state(Enums::LevelStateEnum::ACTIVE);
 }
@@ -229,12 +231,12 @@ void Game::Controllers::LevelController::clear_level()
 	_level->get_player()->clear_extra_textures();
 	_level->get_physics_collision_controller()->destroy_shapes();
 	_window_controller->get_graphics_controller()->clear_textures();
+
 	_level = nullptr;
 }
 
 void  Controllers::LevelController::simulate_objects() {
 	while (_state == Enums::LevelStateEnum::ACTIVE) {
-		sleep_for(36ms);
 
 		for (const std::shared_ptr<Models::Updatable>& object : _level->get_updatables())
 		{
