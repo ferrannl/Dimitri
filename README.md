@@ -58,7 +58,7 @@ At the top level, the repository looks like this:
 ├── .github/          # GitHub configuration (e.g. pull request template)
 ├── .gitignore        # Git ignore rules
 └── README.md         # This file
-
+```
 Inside the Dimitri/ directory you will find the actual project code and build-related files (e.g. solution / project files or source folders). The exact layout may vary between releases, but typically includes:
 
 src/ or similar: C++ source files (.cpp)
